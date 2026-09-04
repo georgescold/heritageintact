@@ -29,7 +29,14 @@ export type Order = {
 
 type Db = { leads: Lead[]; orders: Order[] };
 
-const FILE = path.join(process.cwd(), "data", "db.json");
+/**
+ * En local : ./data/db.json (ignoré par git).
+ * Sur Vercel : le disque est en lecture seule sauf /tmp, et /tmp est éphémère.
+ * Les données ne survivent donc pas à un redéploiement tant que Supabase n'est pas branché.
+ */
+const FILE = process.env.VERCEL
+  ? path.join("/tmp", "heritage-intact-db.json")
+  : path.join(process.cwd(), "data", "db.json");
 
 async function read(): Promise<Db> {
   try {
