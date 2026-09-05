@@ -84,20 +84,6 @@ export const PRODUCTS: Record<ProductSku, Product> = {
 };
 
 /**
- * Avis clients. `null` tant qu'il n'y en a aucun de réel — et c'est le cas.
- *
- * Afficher une note sans clients serait une allégation d'avis inexistants
- * (art. L121-2 et L111-7-2 du code de la consommation). Le jour où les 10
- * testeurs du programme bêta auront donné leur accord ÉCRIT, renseigner ici :
- *
- *   export const REVIEWS = { note: "4,8", nombre: 12 } as const;
- *
- * La note apparaîtra alors dans la barre de confiance, sur les trois landing
- * pages et le bon de commande, sans autre modification.
- */
-export const REVIEWS: { note: string; nombre: number } | null = null;
-
-/**
  * Les trois structures de landing page en test (05-funnel/landing-pages.md).
  * Le chemin d'arrivée est enregistré sur chaque lead : sans ça, on ne peut
  * comparer que les taux d'opt-in, jamais ce qui se passe après.

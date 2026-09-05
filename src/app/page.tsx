@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Footer } from "@/components/Chrome";
-import { TrustBar } from "@/components/TrustBar";
 import { OptinForm } from "@/components/OptinForm";
 import { ExitPopup } from "@/components/ExitPopup";
 import { ProofUnderButton } from "@/components/LpExtras";
 import { StickyCta } from "@/components/StickyCta";
-import { UrgencyBar, UrgencyUnderButton } from "@/components/Urgency";
+import { UrgencyBar, UrgencyCountdown, UrgencyUnderButton } from "@/components/Urgency";
 import {
   BeforeAfter,
   Disqualification,
@@ -69,8 +68,6 @@ export default function LandingPage() {
       <main className="flex-1">
         <Hero form={<OptinForm cta="Voir la vidéo maintenant" />} />
 
-        <TrustBar />
-
         {/* 1. RÊVE — toujours en premier */}
         <TheDreamFirst />
 
@@ -110,8 +107,24 @@ export default function LandingPage() {
 
         {/* 11. CTA */}
         <Section tone="grey" id="acces">
-          <SectionTitle>Ce que vous recevez, dans les deux minutes</SectionTitle>
+          <SectionTitle>Il reste une décision à prendre ce soir. Elle est gratuite.</SectionTitle>
 
+          <div className="mb-6 space-y-3 text-[1.06rem]">
+            <p>
+              Vous avez lu jusqu&apos;ici. Donc quelque chose, dans cette page, vous a parlé.
+              Peut-être la maison. Peut-être la phrase que vos enfants diront de vous.
+            </p>
+            <p>
+              Ce que vous ferez dans les trente prochaines secondes ne changera pas votre
+              patrimoine. Ça changera seulement ce que vous saurez ce soir, en vous couchant.{" "}
+              <strong>Et à partir de là, c&apos;est vous qui décidez</strong> — au lieu que ce soit
+              décidé pour vous, dans quinze ans, par un barème.
+            </p>
+          </div>
+
+          <p className="mb-3 text-[1.05rem] font-bold text-blue">
+            Ce que vous recevez, dans les deux minutes&nbsp;:
+          </p>
           <ul className="mb-6 space-y-2 text-[1.05rem]">
             {[
               "La vidéo de 9 minutes : les 3 Verrous, expliqués en français, sans un mot de jargon.",
@@ -161,15 +174,29 @@ export default function LandingPage() {
 
       <StickyCta label="Voir la vidéo de 9 minutes — gratuit" />
 
-      <ExitPopup
-        storageKey="lp"
-        title="Avant de partir : savez-vous laquelle de vos trois dates se ferme en premier ?"
-      >
-        <p className="mb-3 text-[0.98rem]">
-          Le compteur des 15 ans, votre 70e anniversaire, votre 71e. L&apos;une des trois est déjà
-          passée pour beaucoup de gens de votre âge, et c&apos;est la plus coûteuse.
-        </p>
-        <OptinForm cta="Recevoir les 3 dates" />
+      <ExitPopup storageKey="lp" title="Vous fermez cette page. Les compteurs, eux, continuent.">
+        <div className="mb-4">
+          <UrgencyCountdown />
+        </div>
+        <div className="mb-4 space-y-2.5 text-[0.98rem]">
+          <p>
+            Deux dates avancent en ce moment même, et personne ne peut les décaler. Ni vous, ni
+            votre notaire, ni votre banque.
+          </p>
+          <p>
+            <strong>Le 31 décembre 2026</strong>, la fenêtre des 100 000 € exonérés se referme. Elle
+            n&apos;a pas été prolongée à ce jour.
+          </p>
+          <p>
+            <strong>Et une donation met quinze ans à s&apos;effacer fiscalement.</strong> Lancée ce
+            soir à 67 ans, le compteur arrive à terme à 82 ans. Lancée dans deux ans, à 84.
+          </p>
+          <p className="border-l-4 border-red bg-red-bg p-3 font-bold text-blue">
+            Deux ans d&apos;attente ne coûtent pas deux ans. Ils coûtent un abattement de 100 000 €.
+          </p>
+          <p>La vidéo dure 9 minutes. Elle est gratuite. Elle est disponible dans deux minutes.</p>
+        </div>
+        <OptinForm cta="Recevoir la vidéo maintenant" />
       </ExitPopup>
     </>
   );

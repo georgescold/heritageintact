@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header, Footer } from "@/components/Chrome";
-import { TrustBar } from "@/components/TrustBar";
 import { OptinForm } from "@/components/OptinForm";
 import { ExitPopup } from "@/components/ExitPopup";
 import { ModalTrigger } from "@/components/Modal";
@@ -45,8 +44,6 @@ export default function LpCourtePage() {
             décisions, parfaitement légales, qui divisent cette facture par trois.
           </p>
         </PhotoBanner>
-
-        <TrustBar />
 
         <Section>
           <ModalTrigger

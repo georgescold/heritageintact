@@ -183,9 +183,15 @@ export function TheNumber() {
   return (
     <Section tone="grey">
       <SectionTitle>D&apos;où sortent les 82 194 €</SectionTitle>
+      <p className="mb-4 text-[1.05rem]">
+        L&apos;enveloppe arrive quatre mois après l&apos;enterrement, au moment où la famille
+        commençait tout juste à respirer. Le calcul tient sur une page. Il est parfaitement légal,
+        il est parfaitement juste, et il n&apos;est plus discutable.
+      </p>
       <p className="mb-5 text-[1.05rem]">
-        Rien d&apos;exceptionnel dans cette famille. Une maison de ville moyenne, quarante ans de
-        remboursements, des économies laissées sur un contrat ouvert à la banque en 2003. Un enfant.
+        Pourtant il n&apos;y a rien d&apos;exceptionnel dans cette famille. Une maison de ville
+        moyenne, quarante ans de remboursements, des économies laissées sur un contrat ouvert à la
+        banque en 2003. Un enfant. Voici comment on arrive au chiffre.
       </p>
 
       <div className="overflow-hidden border border-grey-line bg-white">

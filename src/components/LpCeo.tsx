@@ -340,7 +340,12 @@ export function TheGuarantee() {
           </li>
         ))}
       </ul>
-      <p className="mt-5 border-l-4 border-green bg-green-bg p-4 text-[1.06rem]">
+      <p className="mt-5 text-[1.06rem]">
+        Autrement dit&nbsp;: le seul risque que vous prenez ce soir, c&apos;est celui de découvrir
+        un chiffre que vous auriez préféré ne pas connaître. C&apos;est aussi le seul moyen de le
+        faire baisser.
+      </p>
+      <p className="mt-4 border-l-4 border-green bg-green-bg p-4 text-[1.06rem]">
         Une question qui vaut le détour&nbsp;:{" "}
         <strong>
           avez-vous déjà vu une facture de notaire arriver avec une garantie de remboursement&nbsp;?
