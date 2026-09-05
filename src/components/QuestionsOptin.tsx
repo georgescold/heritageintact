@@ -13,25 +13,25 @@ import { OptinForm } from "./OptinForm";
  */
 const QUESTIONS = [
   {
-    q: "Souhaitez-vous que ce que vous avez construit revienne à vos enfants plutôt qu'à l'État ?",
-    answers: ["Oui, évidemment", "Non"],
+ q: "Souhaitez-vous que ce que vous avez construit revienne à vos enfants plutôt qu'à l'État ?",
+ answers: ["Oui, évidemment", "Non"],
   },
   {
-    q: "Accepteriez-vous d'y consacrer une soirée, si cela permettait de réduire la facture de plusieurs dizaines de milliers d'euros ?",
-    answers: ["Oui", "Non"],
+ q: "Accepteriez-vous d'y consacrer une soirée, si cela permettait de réduire la facture de plusieurs dizaines de milliers d'euros ?",
+ answers: ["Oui", "Non"],
   },
   {
-    q: "Avez-vous déjà chiffré, précisément, ce que votre succession coûtera à votre famille ?",
-    answers: ["Non, jamais", "Oui, je connais le montant"],
+ q: "Avez-vous déjà chiffré, précisément, ce que votre succession coûtera à votre famille ?",
+ answers: ["Non, jamais", "Oui, je connais le montant"],
   },
 ];
 
 export function QuestionsOptin() {
-  const [step, setStep] = useState(0);
-  const done = step >= QUESTIONS.length;
+ const [step, setStep] = useState(0);
+ const done = step >= QUESTIONS.length;
 
-  return (
-    <div className="rounded border border-grey-line bg-white">
+ return (
+    <div className="border border-grey-line bg-white">
       <div className="border-b border-grey-line bg-grey-bg px-4 py-2 text-[0.9rem] font-bold text-blue">
         {done ? "Dernière étape" : `Question ${step + 1} sur ${QUESTIONS.length}`}
       </div>
@@ -39,8 +39,8 @@ export function QuestionsOptin() {
       {/* Barre de progression */}
       <div className="h-2 w-full bg-grey-bg">
         <div
-          className="h-full bg-orange transition-none"
-          style={{ width: `${(Math.min(step, QUESTIONS.length) / QUESTIONS.length) * 100}%` }}
+ className="h-full bg-orange transition-none"
+ style={{ width: `${(Math.min(step, QUESTIONS.length) / QUESTIONS.length) * 100}%` }}
         />
       </div>
 
@@ -49,13 +49,13 @@ export function QuestionsOptin() {
           <>
             <p className="mb-4 text-[1.05rem]">
               Parfait. La vidéo de 9 minutes vous montre exactement ce que l&apos;État prendrait, et
-              les 3 décisions qui changent ce chiffre. Indiquez où vous souhaitez la recevoir.
+ les 3 décisions qui changent ce chiffre. Indiquez où vous souhaitez la recevoir.
             </p>
             <OptinForm cta="Recevoir la vidéo maintenant" />
             <button
-              type="button"
-              onClick={() => setStep(0)}
-              className="mt-3 w-full cursor-pointer text-center text-[0.85rem] text-text-soft underline"
+ type="button"
+ onClick={() => setStep(0)}
+ className="mt-3 w-full cursor-pointer text-center text-[0.85rem] text-text-soft underline"
             >
               Revoir les questions
             </button>
@@ -66,10 +66,10 @@ export function QuestionsOptin() {
             <div className="space-y-2">
               {QUESTIONS[step].answers.map((a) => (
                 <button
-                  key={a}
-                  type="button"
-                  onClick={() => setStep(step + 1)}
-                  className="block w-full cursor-pointer rounded border-2 border-grey-line bg-white px-4 py-3 text-left text-[1.05rem] font-bold text-blue hover:border-orange hover:bg-yellow-bg"
+ key={a}
+ type="button"
+ onClick={() => setStep(step + 1)}
+ className="block w-full cursor-pointer border-2 border-grey-line bg-white px-4 py-3 text-left text-[1.05rem] font-bold text-blue hover:border-orange hover:bg-yellow-bg"
                 >
                   {a}
                 </button>
@@ -77,9 +77,9 @@ export function QuestionsOptin() {
             </div>
             {step > 0 && (
               <button
-                type="button"
-                onClick={() => setStep(step - 1)}
-                className="mt-3 cursor-pointer text-[0.85rem] text-text-soft underline"
+ type="button"
+ onClick={() => setStep(step - 1)}
+ className="mt-3 cursor-pointer text-[0.85rem] text-text-soft underline"
               >
                 Question précédente
               </button>

@@ -16,13 +16,15 @@ import {
   TheDream,
   TheEnemy,
   TheFear,
+  TheGap,
   TheNumber,
+  TheyWillManage,
   ThreeDoors,
 } from "@/components/Lp";
 
 export const metadata: Metadata = {
-  title: "Combien l'État prendra-t-il sur ce que vous laisserez ?",
-  description:
+ title: "Combien l'État prendra-t-il sur ce que vous laisserez ?",
+ description:
     "Vous avez plus de 60 ans, une maison payée et des enfants ? Découvrez en 20 minutes ce que l'État prendra sur votre succession, et les trois décisions légales qui le réduisent.",
 };
 
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
  * contre /lp-courte (structure #1) et /lp-questions (structure #3).
  */
 export default function LandingPage() {
-  return (
+ return (
     <>
       <Header />
       <main className="flex-1">
@@ -48,11 +50,13 @@ export default function LandingPage() {
 
         <AuthorityBand />
         <TheNumber />
+        <TheGap />
         <TheEnemy />
-        <BeforeAfter />
         <ThreeDoors />
         <NotThis />
+        <TheyWillManage />
         <TheFear />
+        <BeforeAfter />
         <TheDream />
 
         {/* ── Promesse, garantie, disqualification, second formulaire ── */}
@@ -79,13 +83,13 @@ export default function LandingPage() {
             <Disqualification />
           </div>
 
-          <div className="rounded border border-grey-line bg-white p-4 sm:p-5">
+          <div className="border border-grey-line bg-white p-4 sm:p-5">
             <p className="mb-1 text-[1.2rem] font-bold text-blue">
               Votre chiffre, ce soir. Gratuitement.
             </p>
             <p className="mb-4 text-[0.95rem] text-text-soft">
               Vous recevez le lien immédiatement. Rien à installer, rien à payer, aucun appel
-              téléphonique.
+ téléphonique.
             </p>
             <OptinForm cta="Recevoir la vidéo de 9 minutes" />
           </div>
@@ -104,12 +108,12 @@ export default function LandingPage() {
       <StickyCta label="Voir la vidéo de 9 minutes — gratuit" />
 
       <ExitPopup
-        storageKey="lp"
-        title="Avant de partir : savez-vous laquelle de vos trois dates se ferme en premier ?"
+ storageKey="lp"
+ title="Avant de partir : savez-vous laquelle de vos trois dates se ferme en premier ?"
       >
         <p className="mb-3 text-[0.98rem]">
           Le compteur des 15 ans, votre 70e anniversaire, votre 71e. L&apos;une des trois est déjà
-          passée pour beaucoup de gens de votre âge, et c&apos;est la plus coûteuse.
+ passée pour beaucoup de gens de votre âge, et c&apos;est la plus coûteuse.
         </p>
         <OptinForm cta="Recevoir les 3 dates" />
       </ExitPopup>

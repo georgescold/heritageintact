@@ -7,9 +7,9 @@ import { NoSpamLine } from "./LpExtras";
 import { Button } from "./ui";
 
 export function OptinForm({ cta = "Accéder à la vidéo" }: { cta?: string }) {
-  const [state, action, pending] = useActionState<FormState, FormData>(optin, undefined);
+ const [state, action, pending] = useActionState<FormState, FormData>(optin, undefined);
 
-  return (
+ return (
     <form action={action} className="space-y-3" noValidate>
       <label className="block">
         <span className="mb-1 block font-bold">Votre prénom</span>
@@ -29,7 +29,7 @@ export function OptinForm({ cta = "Accéder à la vidéo" }: { cta?: string }) {
       </label>
 
       {state?.error && (
-        <p role="alert" className="rounded border border-red bg-red-bg px-3 py-2 text-[0.95rem] text-red">
+        <p role="alert" className="border border-red bg-red-bg px-3 py-2 text-[0.95rem] text-red">
           {state.error}
         </p>
       )}

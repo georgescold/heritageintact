@@ -24,6 +24,17 @@
   --color-red-bg: #fdecec;
 
   --font-sans: Arial, Helvetica, "Liberation Sans", sans-serif;
+
+  /* Registre administratif : aucun coin arrondi, nulle part.
+     C'est ce qui distingue le plus nettement un site de service d'un site
+     de vente, et c'est le signal de sérieux le moins cher à produire. */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
 }
 
 /* Dans @layer base pour que les utilitaires Tailwind (text-white, no-underline...) gardent la main. */
@@ -93,7 +104,6 @@
 @utility box {
   background: var(--color-white);
   border: 1px solid var(--color-grey-line);
-  border-radius: 4px;
 }
 
 /* Champ de formulaire */
@@ -104,7 +114,6 @@
   padding: 0.6rem 0.8rem;
   background: var(--color-white);
   border: 1px solid #7d8794;
-  border-radius: 4px;
   font-size: 1.05rem;
 }
 

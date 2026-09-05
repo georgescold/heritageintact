@@ -10,22 +10,22 @@ export const metadata: Metadata = { title: "Bienvenue" };
 
 /** Page de remerciement : elle vend aussi (le Générateur, produit backend n°1). */
 export default async function ThankYouPage({
-  searchParams,
+ searchParams,
 }: {
-  searchParams: Promise<{ o?: string }>;
+ searchParams: Promise<{ o?: string }>;
 }) {
-  const { o } = await searchParams;
-  const order = o ? await getOrder(o) : null;
-  if (!order) redirect("/commande");
-  const total = orderTotal(order);
+ const { o } = await searchParams;
+ const order = o ? await getOrder(o) : null;
+ if (!order) redirect("/commande");
+ const total = orderTotal(order);
 
-  return (
+ return (
     <>
       <PixelEvent name="Purchase" params={{ value: total, currency: "EUR" }} />
       <Header minimal />
       <main className="flex-1">
         <div className="wrap py-8 sm:py-12">
-          <div className="mb-5 rounded border border-green/40 bg-green-bg px-4 py-3 font-bold text-green">
+          <div className="mb-5 border border-green/40 bg-green-bg px-4 py-3 font-bold text-green">
             ✔ Votre commande est confirmée.
           </div>
           <h1 className="mb-5 text-[1.6rem] sm:text-[2rem]">
@@ -35,11 +35,11 @@ export default async function ThankYouPage({
           <ol className="space-y-4 text-[1.05rem]">
             <Step n={1}>
               Vos identifiants arrivent par email dans 2 minutes à <strong>{order.email}</strong>. Vérifiez
-              les indésirables et ajoutez {CONTACT_EMAIL} à vos contacts.
+ les indésirables et ajoutez {CONTACT_EMAIL} à vos contacts.
             </Step>
             <Step n={2}>
               Ce soir : <strong>Module 0, votre chiffre.</strong> Prévoyez 30 minutes, vos relevés, et un
-              café.
+ café.
             </Step>
             <Step n={3}>
               Notez vos 3 dates sur le Calendrier. C&apos;est la seule chose à faire aujourd&apos;hui.
@@ -78,11 +78,11 @@ export default async function ThankYouPage({
           <p className="mb-3">
             ...la question suivante sera : <em>« et si je donne la maison ? et si j&apos;attends 71 ans ? »</em>{" "}
             Le Générateur de Dossier Notaire répond en direct, et imprime votre dossier prêt pour le
-            notaire. Vos chiffres ne quittent pas votre ordinateur.
+ notaire. Vos chiffres ne quittent pas votre ordinateur.
           </p>
           <p className="text-text-soft">
             Vous le retrouverez dans votre espace, onglet « Outils et Kits », et dans un email dans
-            quelques jours, avec le prix membre.
+ quelques jours, avec le prix membre.
           </p>
         </div>
       </main>
@@ -92,7 +92,7 @@ export default async function ThankYouPage({
 }
 
 function Step({ n, children }: { n: number; children: React.ReactNode }) {
-  return (
+ return (
     <li className="flex gap-3">
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue text-[1.1rem] font-bold text-white">
         {n}
