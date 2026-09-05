@@ -23,6 +23,7 @@ export function UpsellPage({
   children,
   rows,
   declineText,
+  paymentFailed = false,
 }: {
   step: 2 | 3;
   orderId: string;
@@ -36,6 +37,8 @@ export function UpsellPage({
   children: ReactNode;
   rows: { label: string; value: string }[];
   declineText: string;
+  /** Le débit de l'offre précédente a échoué : on prévient sans inquiéter. */
+  paymentFailed?: boolean;
 }) {
   const product = PRODUCTS[sku];
   const totalValue = rows.reduce((s, r) => s + Number(r.value.replace(/[^\d]/g, "")), 0);
@@ -48,6 +51,16 @@ export function UpsellPage({
       <main className="flex-1">
         <Progress step={step} />
         <div className="wrap py-6 sm:py-8">
+          {paymentFailed && (
+            <p
+              role="alert"
+              className="mb-5 rounded border border-red bg-red-bg px-4 py-3 text-[0.95rem] text-red"
+            >
+              L&apos;offre précédente n&apos;a pas pu être ajoutée à votre commande : votre banque a
+              refusé le second paiement. <strong>Votre commande initiale reste bien enregistrée</strong>{" "}
+              et vos accès vous seront envoyés normalement.
+            </p>
+          )}
           <p className="mb-2 font-bold text-orange-dark">{kicker}</p>
           <h1 className="mb-3 text-[1.5rem] sm:text-[1.9rem]">{h1}</h1>
           <p className="mb-5 text-[1.05rem] text-text-soft">{h2}</p>

@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { BRAND, CONTACT_EMAIL } from "@/lib/config";
 import { MetaDisclaimer } from "./LpExtras";
+import { Logo } from "./Logo";
 
 export function Header({ minimal = false }: { minimal?: boolean }) {
   return (
     <header className="border-b-4 border-blue bg-white">
-      <div className="wrap-wide flex items-center justify-between gap-4 py-3">
-        <Link href="/" className="text-[1.3rem] font-bold text-blue no-underline sm:text-[1.5rem]">
-          {BRAND}
+      <div className="wrap-wide flex items-center justify-between gap-4 py-2.5">
+        <Link href="/" aria-label={BRAND} className="no-underline">
+          <Logo size={34} />
         </Link>
         {minimal ? (
           <span className="text-[0.85rem] text-text-soft">

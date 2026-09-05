@@ -7,8 +7,9 @@ import { OptinForm } from "./OptinForm";
  * Structure LP 3 : la LP questionnaire (règle des 3 oui).
  * Chaque réponse est un micro-engagement ; l'email devient la conclusion logique.
  *
- * ⚠️ Compliance Meta : aucune question ne doit affirmer ni impliquer un attribut personnel
- * (âge, santé, patrimoine). On interroge une INTENTION ou une ACTION, jamais une caractéristique.
+ * ⚠️ La règle Personal Attributes de Meta s'applique aux ANNONCES, pas à cette page :
+ * les questions peuvent donc interpeller directement. Ne jamais recopier une de ces
+ * formulations dans une créative — là, c'est 1re ou 3e personne (08-creatives-ads.md).
  */
 const QUESTIONS = [
   {
@@ -47,8 +48,8 @@ export function QuestionsOptin() {
         {done ? (
           <>
             <p className="mb-4 text-[1.05rem]">
-              Parfait. La vidéo de 9 minutes vous montre exactement ce que l&apos;État prendrait, et les
-              3 décisions qui changent ce chiffre. Indiquez où vous souhaitez la recevoir.
+              Parfait. La vidéo de 9 minutes vous montre exactement ce que l&apos;État prendrait, et
+              les 3 décisions qui changent ce chiffre. Indiquez où vous souhaitez la recevoir.
             </p>
             <OptinForm cta="Recevoir la vidéo maintenant" />
             <button

@@ -107,3 +107,51 @@
   border-radius: 4px;
   font-size: 1.05rem;
 }
+
+/* ─── Blocs de landing page ─────────────────────────────────────────
+   Ajouts du 5 septembre 2026 : la LP passe en structure MAX (Valère).
+   Le registre ne change pas — Arial, bleu marine, orange, gros
+   caractères — mais la page gagne de la photo et de la hiérarchie.   */
+
+/* Voile sombre posé sur une photo pour que le texte blanc reste lisible. */
+@utility scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 24, 42, 0.86) 0%,
+    rgba(8, 24, 42, 0.72) 45%,
+    rgba(8, 24, 42, 0.9) 100%
+  );
+}
+
+/* Le filet orange de la marque, sous un titre ou un bandeau. */
+@utility rule-orange {
+  display: block;
+  width: 3.5rem;
+  height: 5px;
+  background: var(--color-orange);
+}
+
+/* Le chiffre qui doit frapper. Chiffres alignés, pas de veuve. */
+@utility figure-xl {
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(2.6rem, 11vw, 4.6rem);
+}
+
+@utility figure-lg {
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(1.9rem, 7vw, 2.8rem);
+}
+
+/* Bandeau de section pleine largeur, fond bleu marine. */
+@utility band-blue {
+  background: var(--color-blue);
+  color: #ffffff;
+}
+

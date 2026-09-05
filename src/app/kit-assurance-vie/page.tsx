@@ -9,15 +9,16 @@ export const metadata: Metadata = { title: "Le Kit Assurance-Vie" };
 export default async function Upsell2Page({
   searchParams,
 }: {
-  searchParams: Promise<{ o?: string }>;
+  searchParams: Promise<{ o?: string; err?: string }>;
 }) {
-  const { o } = await searchParams;
+  const { o, err } = await searchParams;
   const order = o ? await getOrder(o) : null;
   if (!order) redirect("/commande");
 
   return (
     <UpsellPage
       step={3}
+      paymentFailed={err === "1"}
       orderId={order.id}
       sku="upsell2"
       next={`/merci?o=${order.id}`}

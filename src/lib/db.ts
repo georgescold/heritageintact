@@ -15,7 +15,12 @@ export type Lead = {
   createdAt: string;
 };
 
-export type OrderItem = { sku: ProductSku; price: number };
+export type OrderItem = {
+  sku: ProductSku;
+  price: number;
+  /** Identifiant du paiement Stripe correspondant. Absent en mode test simulé. */
+  paymentIntentId?: string;
+};
 
 export type Order = {
   id: string;
@@ -25,6 +30,11 @@ export type Order = {
   mode: "test" | "live";
   consentImmediateAccess: boolean;
   createdAt: string;
+  /** Statut du paiement principal. Une commande n'est "paid" qu'après confirmation Stripe. */
+  status: "pending" | "paid";
+  /** Nécessaires pour débiter les upsells en un clic, sans ressaisie de carte. */
+  stripeCustomerId?: string;
+  stripePaymentMethodId?: string;
 };
 
 type Db = { leads: Lead[]; orders: Order[] };
@@ -78,6 +88,7 @@ export async function createOrder(input: {
   withBump: boolean;
   consentImmediateAccess: boolean;
   mode: "test" | "live";
+  status?: "pending" | "paid";
 }): Promise<Order> {
   const db = await read();
   const items: OrderItem[] = [{ sku: "front", price: PRODUCTS.front.price }];
@@ -90,8 +101,29 @@ export async function createOrder(input: {
     mode: input.mode,
     consentImmediateAccess: input.consentImmediateAccess,
     createdAt: new Date().toISOString(),
+    status: input.status ?? "paid",
   };
   db.orders.push(order);
+  await write(db);
+  return order;
+}
+
+/** Appelé après confirmation du paiement : marque la commande payée et mémorise la carte. */
+export async function markOrderPaid(
+  orderId: string,
+  stripe: { customerId?: string; paymentMethodId?: string; paymentIntentId?: string },
+): Promise<Order | null> {
+  const db = await read();
+  const order = db.orders.find((o) => o.id === orderId);
+  if (!order) return null;
+  order.status = "paid";
+  if (stripe.customerId) order.stripeCustomerId = stripe.customerId;
+  if (stripe.paymentMethodId) order.stripePaymentMethodId = stripe.paymentMethodId;
+  if (stripe.paymentIntentId) {
+    for (const item of order.items) {
+      if (!item.paymentIntentId) item.paymentIntentId = stripe.paymentIntentId;
+    }
+  }
   await write(db);
   return order;
 }
@@ -101,23 +133,48 @@ export async function getOrder(orderId: string): Promise<Order | null> {
   return db.orders.find((o) => o.id === orderId) ?? null;
 }
 
-export async function addItem(orderId: string, sku: ProductSku): Promise<Order | null> {
+export async function addItem(
+  orderId: string,
+  sku: ProductSku,
+  paymentIntentId?: string,
+): Promise<Order | null> {
   const db = await read();
   const order = db.orders.find((o) => o.id === orderId);
   if (!order) return null;
   if (!order.items.some((i) => i.sku === sku)) {
-    order.items.push({ sku, price: PRODUCTS[sku].price });
+    order.items.push({ sku, price: PRODUCTS[sku].price, paymentIntentId });
     await write(db);
   }
   return order;
 }
 
-/** Nombre réel d'acheteurs du produit d'appel : alimente le compteur "membres fondateurs". */
+/**
+ * Nombre réel d'acheteurs du produit d'appel : alimente le compteur "membres fondateurs".
+ * Ne compte que les commandes réellement payées.
+ */
 export async function countFounders(): Promise<number> {
   const db = await read();
-  return db.orders.filter((o) => o.items.some((i) => i.sku === "front")).length;
+  return db.orders.filter(
+    (o) => o.status !== "pending" && o.items.some((i) => i.sku === "front"),
+  ).length;
 }
 
 export function orderTotal(order: Order): number {
   return order.items.reduce((sum, i) => sum + i.price, 0);
+}
+
+/**
+ * Rattache le client Stripe à la commande sans toucher au statut.
+ * Appelé à la création du PaymentIntent : à ce moment rien n'est encore encaissé,
+ * la commande doit rester « pending ».
+ */
+export async function attachStripeCustomer(
+  orderId: string,
+  customerId: string,
+): Promise<void> {
+  const db = await read();
+  const order = db.orders.find((o) => o.id === orderId);
+  if (!order) return;
+  order.stripeCustomerId = customerId;
+  await write(db);
 }
