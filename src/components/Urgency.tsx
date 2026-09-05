@@ -45,18 +45,22 @@ function useCompteur() {
 
 const deuxChiffres = (n: number) => String(n).padStart(2, "0");
 
-/** Une case du compteur : le nombre, et son unité dessous. */
-function Case({ n, u, large = false }: { n: string; u: string; large?: boolean }) {
+/**
+ * Une case du compteur.
+ *
+ * Largeur FIXE et identique pour les quatre : « 117 » prend une place et demie
+ * de plus que « 02 », et des cases dimensionnées par leur contenu donnent une
+ * rangée bancale, avec le nombre des jours collé à ses bordures. Elle est
+ * calibrée sur trois chiffres, donc rien ne bouge quand le compte passera
+ * sous les cent jours.
+ */
+function Case({ n, u }: { n: string; u: string }) {
   return (
-    <span className="flex min-w-[2.45rem] flex-col items-center border border-white/35 bg-black/25 px-1.5 py-0.5 leading-none sm:min-w-[2.7rem] sm:py-1">
-      <span
-        className={`font-bold tabular-nums ${
-          large ? "text-[1.2rem] sm:text-[1.6rem]" : "text-[1.05rem] sm:text-[1.35rem]"
-        }`}
-      >
-        {n}
+    <span className="flex w-[3.1rem] flex-col items-center justify-center border border-white/35 bg-black/25 py-1 leading-none sm:w-[3.6rem] sm:py-1.5">
+      <span className="text-[1.2rem] font-bold tabular-nums sm:text-[1.45rem]">{n}</span>
+      <span className="mt-1 text-[0.6rem] uppercase tracking-wide text-white/75 sm:text-[0.66rem]">
+        {u}
       </span>
-      <span className="mt-0.5 text-[0.62rem] uppercase tracking-wider text-white/75">{u}</span>
     </span>
   );
 }
@@ -65,7 +69,7 @@ function Case({ n, u, large = false }: { n: string; u: string; large?: boolean }
 function Cases({ c }: { c: ReturnType<typeof useCompteur> }) {
   return (
     <>
-      <Case n={c ? String(c.j) : "—"} u="jours" large />
+      <Case n={c ? String(c.j) : "—"} u="jours" />
       <Case n={c ? deuxChiffres(c.h) : "—"} u="h" />
       <Case n={c ? deuxChiffres(c.m) : "—"} u="min" />
       <Case n={c ? deuxChiffres(c.s) : "—"} u="sec" />
