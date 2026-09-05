@@ -154,39 +154,6 @@ export function Hero({ form }: { form: ReactNode }) {
 }
 
 /* ─────────────────────────────────────────────────────────────────
-   2. AUTORITÉ — la nôtre est empruntée, et c'est la plus forte.
-   ───────────────────────────────────────────────────────────── */
-export function AuthorityBand() {
- const sources = [
-    { art: "Art. 777 et 779", quoi: "Le barème et l'abattement de 100 000 € par enfant" },
-    { art: "Art. 990 I et 757 B", quoi: "L'assurance-vie, avant et après votre 70e anniversaire" },
-    { art: "Art. 669", quoi: "La valeur de votre maison selon votre âge, à l'année près" },
-  ];
- return (
-    <Section tone="blue">
-      <SectionTitle light>Ces chiffres ne sont pas les nôtres.</SectionTitle>
-      <p className="mb-6 max-w-[40rem] text-[1.05rem] text-white/85">
-        Ils sont dans le Code général des impôts. Vous pouvez tous les vérifier ce soir sur
- impots.gouv.fr, <strong className="text-white">avant même de nous donner votre email</strong>.
-        C&apos;est d&apos;ailleurs ce que nous vous conseillons de faire.
-      </p>
-      <div className="grid gap-3 sm:grid-cols-3">
-        {sources.map((s) => (
-          <div key={s.art} className="border border-white/25 bg-white/5 p-4">
-            <p className="mb-1 font-bold text-orange">{s.art}</p>
-            <p className="text-[0.95rem] text-white/85">{s.quoi}</p>
-          </div>
-        ))}
-      </div>
-      <p className="mt-5 text-[0.95rem] text-white/70">
-        Nous ne vendons ni contrat, ni placement, ni assurance. Nous n&apos;avons rien à vous faire
- signer. Nous expliquons ce que la loi permet déjà.
-      </p>
-    </Section>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────
    3. LE CALCUL — la preuve par la démonstration.
    ───────────────────────────────────────────────────────────── */
 export function TheNumber() {
@@ -245,27 +212,51 @@ export function TheNumber() {
    4. L'ENNEMI — le silence, pas la loi.
    ───────────────────────────────────────────────────────────── */
 export function TheEnemy() {
- return (
+  return (
     <Section>
-      <SectionTitle>Personne ne lui avait rien dit. Et personne n&apos;est payé pour ça.</SectionTitle>
-      <div className="space-y-4 text-[1.05rem]">
+      <SectionTitle>
+        Parce que personne, dans cette histoire, n&apos;est payé pour vous prévenir.
+      </SectionTitle>
+      <div className="space-y-4 text-[1.06rem]">
         <p>
-          Sa banque le voyait deux fois par an. Elle lui a vendu un contrat, jamais expliqué ce
- qu&apos;il fallait en faire avant 70 ans.
+          <strong>Sa banque</strong> le voyait deux fois par an. Elle lui a vendu un contrat en 2003
+          et n&apos;est jamais revenue dessus. Un conseiller est évalué sur ce qu&apos;il place,
+          jamais sur ce qu&apos;il vous fait économiser après votre mort. Vous ne trouverez jamais
+          « il a bien préparé la succession de ses clients » dans les objectifs d&apos;une agence
+          bancaire.
         </p>
         <p>
-          Son notaire l&apos;aurait très bien conseillé. Encore fallait-il aller le voir{" "}
-          <strong>avant</strong>. Un notaire applique ce que vous avez décidé. Il n&apos;est pas payé
- pour venir sonner chez vous pendant qu&apos;il est encore temps.
+          <strong>Son notaire</strong> l&apos;aurait très bien conseillé. Encore fallait-il aller le
+          voir <em>avant</em>. Un notaire applique ce que vous avez décidé ; il n&apos;est pas payé
+          pour venir sonner chez vous pendant qu&apos;il est encore temps. Et le jour où il vous
+          voit enfin, c&apos;est en général pour vous annoncer le montant.
         </p>
         <p>
-          L&apos;État, lui, n&apos;a aucune raison de vous prévenir. Les abattements, les donations, le
- démembrement, tout est public, écrit, légal, et gratuit à connaître. Simplement, personne ne
- vous l&apos;envoie par courrier.
+          <strong>L&apos;État</strong>, lui, n&apos;a évidemment aucune raison de vous prévenir. Les
+          abattements, les donations, le démembrement&nbsp;: tout est public, écrit, légal, et
+          gratuit à connaître. Il n&apos;y a aucun secret. Simplement, aucune administration
+          n&apos;a jamais envoyé de courrier pour dire « au fait, vous perdez 122 000 € le jour de
+          vos 70 ans ».
         </p>
-        <p className="border-l-4 border-blue bg-grey-bg p-4 text-[1.15rem] font-bold text-blue">
-          Ce n&apos;est pas la loi, le problème. C&apos;est le silence.
+        <p>
+          Aucun d&apos;eux n&apos;est malhonnête. C&apos;est presque pire&nbsp;:{" "}
+          <strong>ils sont simplement payés pour autre chose.</strong>
         </p>
+
+        <div className="border-2 border-blue bg-grey-bg p-4 sm:p-5">
+          <p className="mb-2 text-[1.2rem] font-bold text-blue">
+            Il y a deux sortes de familles en France.
+          </p>
+          <p className="text-[1.06rem]">
+            Celles à qui quelqu&apos;un a expliqué, un jour, ce qu&apos;il fallait faire avant. Et
+            toutes les autres. Ce n&apos;est pas une question de fortune&nbsp;: les premières ne
+            sont pas plus riches, elles ont juste été mises au courant à temps. Les secondes
+            découvrent le montant dans le bureau du notaire, quand plus rien n&apos;est possible.
+          </p>
+          <p className="mt-3 text-[1.1rem] font-bold text-blue">
+            Ce n&apos;est pas la loi, le problème. C&apos;est le silence.
+          </p>
+        </div>
       </div>
     </Section>
   );
@@ -541,48 +532,6 @@ export function TheFear() {
         </div>
       </div>
     </section>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────
-   9. LE RÊVE — les clés. On finit sur ce qu'on veut, pas sur la peur.
-   ───────────────────────────────────────────────────────────── */
-export function TheDream() {
- return (
-    <Section wide>
-      <div className="grid items-center gap-6 sm:grid-cols-2">
-        <div className="relative aspect-[4/3] overflow-hidden border border-grey-line">
-          <Image
- src="/img/mains-cles.jpg"
- alt="Des mains âgées qui transmettent un trousseau de clés au-dessus d'une table en bois."
- fill
- sizes="(min-width: 640px) 30rem, 100vw"
- className="object-cover"
-          />
-        </div>
-        <div>
-          <SectionTitle>Ou alors, il y a l&apos;autre version</SectionTitle>
-          <div className="space-y-3 text-[1.05rem]">
-            <p>
-              Celle où il n&apos;y a rien à décider dans l&apos;urgence, rien à vendre, rien à se
- disputer. Où la maison reste dans la famille parce que c&apos;était prévu.
-            </p>
-            <p>
-              Où vous voyez, de votre vivant, vos petits-enfants recevoir un coup de main pour
- démarrer — au lieu d&apos;imaginer ce qu&apos;ils en feront.
-            </p>
-            <p className="text-[1.15rem] font-bold text-blue">
-              Celle où l&apos;on dit, après&nbsp;: «&nbsp;il avait tout prévu, on n&apos;a eu à
- s&apos;occuper de rien.&nbsp;»
-            </p>
-            <p className="text-text-soft">
-              Cela ne peut se faire qu&apos;à un seul moment&nbsp;: un après-midi ordinaire, en bonne
- santé, pendant que tout est encore possible.
-            </p>
-          </div>
-        </div>
-      </div>
-    </Section>
   );
 }
 
