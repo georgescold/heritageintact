@@ -23,8 +23,19 @@ export function CheckoutForm({
   const total = PRODUCTS.front.price + (bump ? PRODUCTS.bump.price : 0);
 
   // Sans clé publique, on garde le parcours simulé : aucun appel à Stripe.
+  // Inner ne doit alors appeler AUCUN hook Stripe, d'où le passage par props.
   if (!stripePromise) {
-    return <Inner defaults={defaults} testMode={testMode} bump={bump} setBump={setBump} total={total} />;
+    return (
+      <Inner
+        defaults={defaults}
+        testMode={testMode}
+        bump={bump}
+        setBump={setBump}
+        total={total}
+        stripe={null}
+        elements={null}
+      />
+    );
   }
 
   return (
@@ -52,18 +63,18 @@ export function CheckoutForm({
         },
       }}
     >
-      <Inner defaults={defaults} testMode={testMode} bump={bump} setBump={setBump} total={total} />
+      <WithStripe defaults={defaults} testMode={testMode} bump={bump} setBump={setBump} total={total} />
     </Elements>
   );
 }
 
-function Inner({
-  defaults,
-  testMode,
-  bump,
-  setBump,
-  total,
-}: {
+/**
+ * useStripe et useElements lèvent une exception hors d'un <Elements>. Ce composant
+ * est le seul endroit où on les appelle, et il n'est rendu que sous le fournisseur.
+ * Sans lui, la page de commande renvoie une 500 dès que la clé publique manque au
+ * moment du build — c'est exactement ce qui est arrivé au premier déploiement.
+ */
+function WithStripe(props: {
   defaults: { firstName?: string; email?: string };
   testMode: boolean;
   bump: boolean;
@@ -72,6 +83,26 @@ function Inner({
 }) {
   const stripe = useStripe();
   const elements = useElements();
+  return <Inner {...props} stripe={stripe} elements={elements} />;
+}
+
+function Inner({
+  defaults,
+  testMode,
+  bump,
+  setBump,
+  total,
+  stripe,
+  elements,
+}: {
+  defaults: { firstName?: string; email?: string };
+  testMode: boolean;
+  bump: boolean;
+  setBump: (v: boolean) => void;
+  total: number;
+  stripe: ReturnType<typeof useStripe>;
+  elements: ReturnType<typeof useElements>;
+}) {
   const router = useRouter();
   const [firstName, setFirstName] = useState(defaults.firstName ?? "");
   const [email, setEmail] = useState(defaults.email ?? "");
