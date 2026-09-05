@@ -10,16 +10,16 @@ export const metadata: Metadata = { title: "Bienvenue" };
 
 /** Page de remerciement : elle vend aussi (le Générateur, produit backend n°1). */
 export default async function ThankYouPage({
- searchParams,
+  searchParams,
 }: {
- searchParams: Promise<{ o?: string }>;
+  searchParams: Promise<{ o?: string }>;
 }) {
- const { o } = await searchParams;
- const order = o ? await getOrder(o) : null;
- if (!order) redirect("/commande");
- const total = orderTotal(order);
+  const { o } = await searchParams;
+  const order = o ? await getOrder(o) : null;
+  if (!order) redirect("/commande");
+  const total = orderTotal(order);
 
- return (
+  return (
     <>
       <PixelEvent name="Purchase" params={{ value: total, currency: "EUR" }} />
       <Header minimal />
@@ -34,15 +34,16 @@ export default async function ThankYouPage({
 
           <ol className="space-y-4 text-[1.05rem]">
             <Step n={1}>
-              Vos identifiants arrivent par email dans 2 minutes à <strong>{order.email}</strong>. Vérifiez
- les indésirables et ajoutez {CONTACT_EMAIL} à vos contacts.
+              Vos identifiants arrivent par email dans 2 minutes à <strong>{order.email}</strong>.
+              Vérifiez les indésirables et ajoutez {CONTACT_EMAIL} à vos contacts.
             </Step>
             <Step n={2}>
-              Ce soir : <strong>Module 0, votre chiffre.</strong> Prévoyez 30 minutes, vos relevés, et un
- café.
+              Ce soir : <strong>Module 0, votre chiffre.</strong> Prévoyez 30 minutes, vos relevés,
+              et un café.
             </Step>
             <Step n={3}>
-              Notez vos 3 dates sur le Calendrier. C&apos;est la seule chose à faire aujourd&apos;hui.
+              Notez vos 3 dates sur le Calendrier. C&apos;est la seule chose à faire
+              aujourd&apos;hui.
             </Step>
           </ol>
 
@@ -56,7 +57,10 @@ export default async function ThankYouPage({
             <Panel title="Récapitulatif de votre commande">
               <ul>
                 {order.items.map((it) => (
-                  <li key={it.sku} className="flex justify-between gap-3 border-b border-grey-line-soft py-2">
+                  <li
+                    key={it.sku}
+                    className="flex justify-between gap-3 border-b border-grey-line-soft py-2"
+                  >
                     <span>{PRODUCTS[it.sku].name}</span>
                     <span className="whitespace-nowrap">{euros(it.price)}</span>
                   </li>
@@ -67,7 +71,8 @@ export default async function ThankYouPage({
                 <span>{euros(total)}</span>
               </p>
               <p className="mt-2 text-[0.9rem] text-text-soft">
-                Un reçu vous est envoyé par email. Libellé sur votre relevé bancaire : HERITAGE INTACT.
+                Un reçu vous est envoyé par email. Libellé sur votre relevé bancaire : HERITAGE
+                INTACT.
               </p>
             </Panel>
           </div>
@@ -76,13 +81,14 @@ export default async function ThankYouPage({
 
           <h2 className="mb-3 text-[1.4rem]">Et quand vous aurez votre chiffre...</h2>
           <p className="mb-3">
-            ...la question suivante sera : <em>« et si je donne la maison ? et si j&apos;attends 71 ans ? »</em>{" "}
-            Le Générateur de Dossier Notaire répond en direct, et imprime votre dossier prêt pour le
- notaire. Vos chiffres ne quittent pas votre ordinateur.
+            ...la question suivante sera :{" "}
+            <em>« et si je donne la maison ? et si j&apos;attends 71 ans ? »</em> Le Générateur de
+            Dossier Notaire répond en direct, et imprime votre dossier prêt pour le notaire. Vos
+            chiffres ne quittent pas votre ordinateur.
           </p>
           <p className="text-text-soft">
             Vous le retrouverez dans votre espace, onglet « Outils et Kits », et dans un email dans
- quelques jours, avec le prix membre.
+            quelques jours, avec le prix membre.
           </p>
         </div>
       </main>
@@ -92,7 +98,7 @@ export default async function ThankYouPage({
 }
 
 function Step({ n, children }: { n: number; children: React.ReactNode }) {
- return (
+  return (
     <li className="flex gap-3">
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue text-[1.1rem] font-bold text-white">
         {n}

@@ -21,7 +21,13 @@ export function Mark({ size = 40, className = "" }: { size?: number; className?:
     >
       <rect width="48" height="48" rx="5" fill="var(--color-blue)" />
       {/* Le toit */}
-      <path d="M10 22.5 24 11l14 11.5" fill="none" stroke="#ffffff" strokeWidth="3.4" strokeLinejoin="miter" />
+      <path
+        d="M10 22.5 24 11l14 11.5"
+        fill="none"
+        stroke="#ffffff"
+        strokeWidth="3.4"
+        strokeLinejoin="miter"
+      />
       {/* Les trois verrous */}
       <rect x="13" y="26" width="22" height="3.2" fill="#ffffff" />
       <rect x="13" y="31.4" width="22" height="3.2" fill="var(--color-orange)" />
@@ -65,7 +71,10 @@ export function LogoInverse({ size = 38 }: { size?: number }) {
         <rect x="13" y="36.8" width="22" height="3.2" fill="var(--color-blue)" />
       </svg>
       <span className="leading-none">
-        <span className="block font-bold tracking-[0.14em] text-white" style={{ fontSize: size * 0.42 }}>
+        <span
+          className="block font-bold tracking-[0.14em] text-white"
+          style={{ fontSize: size * 0.42 }}
+        >
           HÉRITAGE
         </span>
         <span

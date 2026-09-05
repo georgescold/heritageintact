@@ -23,6 +23,11 @@
   --color-red: #b02a2a;
   --color-red-bg: #fdecec;
 
+  /* Versions lisibles sur le bleu marine du hero. Le rouge et le vert foncés
+     passent au noir sur fond sombre : il faut deux teintes montées en clarté. */
+  --color-red-bright: #ff7a6b;
+  --color-green-bright: #5fd48d;
+
   --font-sans: Arial, Helvetica, "Liberation Sans", sans-serif;
 
   /* Registre administratif : aucun coin arrondi, nulle part.
@@ -163,4 +168,3 @@
   background: var(--color-blue);
   color: #ffffff;
 }
-

@@ -3,11 +3,11 @@ import { countFounders } from "@/lib/db";
 
 /** Compteur réel des membres fondateurs, lu en base à chaque affichage. */
 export async function FoundersCounter() {
- const count = await countFounders();
- const left = Math.max(0, FOUNDERS_CAP - count);
- const pct = Math.min(100, Math.round((count / FOUNDERS_CAP) * 100));
+  const count = await countFounders();
+  const left = Math.max(0, FOUNDERS_CAP - count);
+  const pct = Math.min(100, Math.round((count / FOUNDERS_CAP) * 100));
 
- return (
+  return (
     <div className="border border-yellow-line bg-yellow-bg p-3 text-center text-[0.95rem]">
       <p>
         Membres fondateurs : <strong>{count}</strong> sur {FOUNDERS_CAP}. Il reste{" "}

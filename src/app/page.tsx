@@ -5,6 +5,7 @@ import { OptinForm } from "@/components/OptinForm";
 import { ExitPopup } from "@/components/ExitPopup";
 import { ProofUnderButton } from "@/components/LpExtras";
 import { StickyCta } from "@/components/StickyCta";
+import { UrgencyBar, UrgencyUnderButton } from "@/components/Urgency";
 import {
   BeforeAfter,
   Disqualification,
@@ -24,6 +25,7 @@ import {
   TheDreamFirst,
   TheFailure,
   TheGuarantee,
+  TheLastWord,
   TheMechanism,
   TheStaircase,
 } from "@/components/LpCeo";
@@ -61,6 +63,7 @@ export const metadata: Metadata = {
 export default function LandingPage() {
   return (
     <>
+      <UrgencyBar />
       <Header />
       <main className="flex-1">
         <Hero form={<OptinForm cta="Voir la vidéo maintenant" />} />
@@ -99,6 +102,9 @@ export default function LandingPage() {
         {/* 10. GARANTIE */}
         <TheGuarantee />
 
+        {/* Le dernier argument, celui qui doit rester en tête au moment de cliquer */}
+        <TheLastWord />
+
         {/* 11. CTA */}
         <Section tone="grey" id="acces">
           <SectionTitle>Ce que vous recevez, dans les deux minutes</SectionTitle>
@@ -132,6 +138,9 @@ export default function LandingPage() {
               téléphonique.
             </p>
             <OptinForm cta="Recevoir la vidéo de 9 minutes" />
+            <div className="mt-3">
+              <UrgencyUnderButton />
+            </div>
           </div>
 
           <div className="mt-5">
@@ -139,7 +148,9 @@ export default function LandingPage() {
           </div>
 
           <p className="mt-6 text-center text-[0.9rem]">
-            <Link href="/lp-questions">Vous préférez répondre à 3 questions d&apos;abord&nbsp;?</Link>
+            <Link href="/lp-questions">
+              Vous préférez répondre à 3 questions d&apos;abord&nbsp;?
+            </Link>
           </p>
         </Section>
       </main>

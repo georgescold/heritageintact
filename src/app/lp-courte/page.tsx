@@ -5,6 +5,7 @@ import { ExitPopup } from "@/components/ExitPopup";
 import { ModalTrigger } from "@/components/Modal";
 import { PhotoBanner, Section } from "@/components/Lp";
 import { ProofUnderButton, UrgencyBand } from "@/components/LpExtras";
+import { UrgencyBar, UrgencyUnderButton } from "@/components/Urgency";
 
 export const metadata: Metadata = {
   title: "Cette facture, vos enfants la paieront-ils vraiment ?",
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
 export default function LpCourtePage() {
   return (
     <>
+      <UrgencyBar />
       <Header />
       <main className="flex-1">
         <PhotoBanner
@@ -31,16 +33,15 @@ export default function LpCourtePage() {
           kicker="Propriétaires de plus de 60 ans · France"
           title={
             <>
-              Vos enfants paieront-ils vraiment{" "}
-              <span className="text-orange">82 194 €</span> à l&apos;État sur ce que vous leur
-              laisserez&nbsp;?
+              Vos enfants paieront-ils vraiment <span className="text-orange">82 194 €</span> à
+              l&apos;État sur ce que vous leur laisserez&nbsp;?
             </>
           }
         >
           <p>
-            C&apos;est le montant qu&apos;une famille ordinaire a payé sur une maison de province
-            et les économies d&apos;une vie. Cliquez sur le bouton ci-dessous pour découvrir les
-            trois décisions, parfaitement légales, qui divisent cette facture par trois.
+            C&apos;est le montant qu&apos;une famille ordinaire a payé sur une maison de province et
+            les économies d&apos;une vie. Cliquez sur le bouton ci-dessous pour découvrir les trois
+            décisions, parfaitement légales, qui divisent cette facture par trois.
           </p>
         </PhotoBanner>
 
@@ -52,8 +53,13 @@ export default function LpCourtePage() {
             <OptinForm cta="Recevoir la vidéo de 9 minutes" />
           </ModalTrigger>
 
-          {/* Levier n°1 : la preuve juste sous le premier bouton */}
-          <div className="mt-5">
+          {/* Levier n°2 : l'urgence, datée, juste sous le bouton */}
+          <div className="mt-4">
+            <UrgencyUnderButton />
+          </div>
+
+          {/* Levier n°1 : la preuve */}
+          <div className="mt-4">
             <ProofUnderButton />
           </div>
 

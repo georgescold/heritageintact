@@ -18,7 +18,9 @@ import { Section, SectionTitle } from "./Lp";
    ═══════════════════════════════════════════════════════════════ */
 export function TheDreamFirst() {
   return (
-    <section className="relative isolate overflow-hidden">
+    // Filet orange en haut : sans lui, le fond sombre du hero et la photo sombre
+    // de ce bloc se confondent, et la page paraît ne jamais changer de section.
+    <section className="relative isolate overflow-hidden border-t-[6px] border-orange">
       <div className="relative aspect-[16/11] w-full sm:aspect-[16/7]">
         <Image
           src="/img/grand-pere-petits-enfants.jpg"
@@ -47,9 +49,9 @@ export function TheDreamFirst() {
             Mais imaginez-le vraiment.
           </p>
           <p>
-            <strong>La maison est encore là.</strong> Personne n&apos;a mis de panneau devant.
-            Vos enfants ne se sont pas assis à trois autour d&apos;une table pour décider laquelle
-            de vos affaires il fallait vendre en premier.
+            <strong>La maison est encore là.</strong> Personne n&apos;a mis de panneau devant. Vos
+            enfants ne se sont pas assis à trois autour d&apos;une table pour décider laquelle de
+            vos affaires il fallait vendre en premier.
           </p>
           <p>
             Votre petit-fils a eu son coup de pouce pour démarrer — l&apos;apport de son premier
@@ -68,12 +70,13 @@ export function TheDreamFirst() {
           <p>
             Ce n&apos;est pas une question d&apos;argent. Un homme qui a travaillé quarante ans,
             remboursé sa maison et élevé deux enfants n&apos;a pas besoin qu&apos;on lui explique la
-            valeur de l&apos;argent. <strong>C&apos;est la dernière chose que vous ferez pour eux,
-            et c&apos;est celle dont ils se souviendront.</strong>
+            valeur de l&apos;argent.{" "}
+            <strong>
+              C&apos;est la dernière chose que vous ferez pour eux, et c&apos;est celle dont ils se
+              souviendront.
+            </strong>
           </p>
-          <p className="text-text-soft">
-            Tout ce qui suit sert à ça. Rien d&apos;autre.
-          </p>
+          <p className="text-text-soft">Tout ce qui suit sert à ça. Rien d&apos;autre.</p>
         </div>
       </div>
     </section>
@@ -122,9 +125,9 @@ export function TheFailure() {
             <p>
               Il a fait <em>exactement</em> ce qu&apos;on lui a dit de faire. Il a ouvert une
               assurance-vie à sa banque en 2003, parce que le conseiller la lui a proposée. Il est
-              allé chez le notaire en 2015 faire un testament, parce que ça se fait. Il a mis
-              400 € de côté tous les mois pendant quarante ans, sans exception, y compris les
-              années où c&apos;était difficile.
+              allé chez le notaire en 2015 faire un testament, parce que ça se fait. Il a mis 400 €
+              de côté tous les mois pendant quarante ans, sans exception, y compris les années où
+              c&apos;était difficile.
             </p>
             <p>
               Il n&apos;a rien raté. Il n&apos;a rien dépensé bêtement. Il a fait ce qu&apos;un
@@ -145,8 +148,11 @@ export function TheFailure() {
             <p>
               Si vous vous reconnaissez là-dedans, vous n&apos;avez strictement rien à vous
               reprocher. Vous avez fait ce qu&apos;on vous a appris à faire, et vous l&apos;avez
-              bien fait. <strong>Le problème n&apos;est pas ce que vous avez fait. C&apos;est ce
-              qu&apos;on ne vous a jamais dit.</strong>
+              bien fait.{" "}
+              <strong>
+                Le problème n&apos;est pas ce que vous avez fait. C&apos;est ce qu&apos;on ne vous a
+                jamais dit.
+              </strong>
             </p>
             <p>Reste à savoir pourquoi personne ne vous l&apos;a dit.</p>
           </div>
@@ -250,8 +256,8 @@ export function TheMechanism() {
       <p className="mt-6 border-2 border-green bg-green-bg p-4 text-[1.1rem]">
         <strong className="text-green">Et voilà tout le secret&nbsp;:</strong> vous ne vous
         dépouillez de rien. Vous gardez votre maison, vos revenus et votre épargne. Vous décidez
-        simplement, de votre vivant, de ce qui se passera après — pendant que c&apos;est encore
-        vous qui décidez.
+        simplement, de votre vivant, de ce qui se passera après — pendant que c&apos;est encore vous
+        qui décidez.
       </p>
     </Section>
   );
@@ -263,12 +269,30 @@ export function TheMechanism() {
    ═══════════════════════════════════════════════════════════════ */
 export function TheStaircase() {
   const marches = [
-    ["Ce soir", "Vous connaissez votre chiffre. Le vrai, calculé sur votre situation, pas une moyenne."],
-    ["Demain matin", "Vous savez laquelle de vos trois dates est la plus proche, et combien elle coûte."],
-    ["Dans une semaine", "Vous avez pris rendez-vous chez le notaire, avec la liste écrite de ce qu'il faut lui demander."],
-    ["Dans trois semaines", "Les trois décisions sont signées. Le sujet que vous repoussiez depuis dix ans est réglé."],
-    ["Dans quinze ans", "Le compteur est reparti. L'abattement aura servi deux fois au lieu d'une."],
-    ["Le jour venu", "Vos enfants ouvrent un dossier d'une page. Tout est dedans, dans l'ordre. Ils n'ont rien à décider."],
+    [
+      "Ce soir",
+      "Vous connaissez votre chiffre. Le vrai, calculé sur votre situation, pas une moyenne.",
+    ],
+    [
+      "Demain matin",
+      "Vous savez laquelle de vos trois dates est la plus proche, et combien elle coûte.",
+    ],
+    [
+      "Dans une semaine",
+      "Vous avez pris rendez-vous chez le notaire, avec la liste écrite de ce qu'il faut lui demander.",
+    ],
+    [
+      "Dans trois semaines",
+      "Les trois décisions sont signées. Le sujet que vous repoussiez depuis dix ans est réglé.",
+    ],
+    [
+      "Dans quinze ans",
+      "Le compteur est reparti. L'abattement aura servi deux fois au lieu d'une.",
+    ],
+    [
+      "Le jour venu",
+      "Vos enfants ouvrent un dossier d'une page. Tout est dedans, dans l'ordre. Ils n'ont rien à décider.",
+    ],
   ];
   return (
     <Section tone="grey">
@@ -318,9 +342,58 @@ export function TheGuarantee() {
       </ul>
       <p className="mt-5 border-l-4 border-green bg-green-bg p-4 text-[1.06rem]">
         Une question qui vaut le détour&nbsp;:{" "}
-        <strong>avez-vous déjà vu une facture de notaire arriver avec une garantie de
-        remboursement&nbsp;?</strong>
+        <strong>
+          avez-vous déjà vu une facture de notaire arriver avec une garantie de remboursement&nbsp;?
+        </strong>
       </p>
     </Section>
+  );
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   LE DERNIER ARGUMENT.
+   Le benchmark le dit : la charge émotionnelle doit être le dernier
+   argument avant le bouton, pas un bonus perdu dans une liste
+   (16-benchmark-marches.md § 5).
+   ═══════════════════════════════════════════════════════════════ */
+export function TheLastWord() {
+  return (
+    <section className="relative isolate overflow-hidden border-t-[6px] border-orange">
+      <div className="relative aspect-[16/12] w-full sm:aspect-[21/8]">
+        <Image
+          src="/img/mains-cles.jpg"
+          alt="Des mains âgées transmettant un trousseau de clés au-dessus d'une table en bois."
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <span className="scrim" />
+        <div className="absolute inset-0 flex items-center">
+          <div className="wrap">
+            <p className="mb-2 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-orange">
+              Une dernière chose
+            </p>
+            <h2 className="mb-4 max-w-[32rem] text-[1.45rem] leading-tight text-white sm:text-[2rem]">
+              Un jour, quelqu&apos;un ouvrira un tiroir chez vous.
+            </h2>
+            <div className="max-w-[34rem] space-y-3 text-[1.02rem] text-white/90 sm:text-[1.1rem]">
+              <p>
+                Ce qu&apos;il y trouvera dira ce que vous aviez prévu pour lui. Une pile de
+                courriers qu&apos;il faudra six mois à démêler, ou une page écrite par vous, qui
+                commence par&nbsp;: «&nbsp;voilà ce que j&apos;ai décidé, et pourquoi&nbsp;».
+              </p>
+              <p className="font-bold text-white">
+                Ce ne sont pas des papiers que vous laissez. C&apos;est la preuve que vous y aviez
+                pensé.
+              </p>
+              <p className="text-white/75">
+                Et ça ne peut se faire qu&apos;à un seul moment&nbsp;: un après-midi ordinaire, en
+                bonne santé, pendant que tout est encore possible.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

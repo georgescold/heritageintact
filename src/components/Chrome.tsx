@@ -4,7 +4,7 @@ import { MetaDisclaimer } from "./LpExtras";
 import { Logo } from "./Logo";
 
 export function Header({ minimal = false }: { minimal?: boolean }) {
- return (
+  return (
     <header className="border-b-4 border-blue bg-white">
       <div className="wrap-wide flex items-center justify-between gap-4 py-2.5">
         <Link href="/" aria-label={BRAND} className="no-underline">
@@ -25,16 +25,17 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
 }
 
 export function Footer() {
- return (
+  return (
     <footer className="mt-auto border-t border-grey-line bg-grey-bg">
       <div className="wrap-wide py-7 text-[0.85rem] leading-relaxed text-text-soft">
         <p className="mb-4">
-          <strong className="text-text">{BRAND}</strong> est un programme pédagogique d&apos;information
- générale sur la transmission de patrimoine en France. Il ne constitue ni une consultation
- juridique, ni un conseil fiscal, financier ou en investissement personnalisé, et ne se substitue
- pas à l&apos;intervention d&apos;un notaire, d&apos;un avocat ou d&apos;un conseiller habilité. Les
- exemples chiffrés sont illustratifs. La législation évolue : vérifiez les montants en vigueur sur
- impots.gouv.fr avant toute décision.
+          <strong className="text-text">{BRAND}</strong> est un programme pédagogique
+          d&apos;information générale sur la transmission de patrimoine en France. Il ne constitue
+          ni une consultation juridique, ni un conseil fiscal, financier ou en investissement
+          personnalisé, et ne se substitue pas à l&apos;intervention d&apos;un notaire, d&apos;un
+          avocat ou d&apos;un conseiller habilité. Les exemples chiffrés sont illustratifs. La
+          législation évolue : vérifiez les montants en vigueur sur impots.gouv.fr avant toute
+          décision.
         </p>
         <div className="mb-4">
           <MetaDisclaimer />
@@ -54,7 +55,7 @@ export function Footer() {
 }
 
 export function TestModeBanner() {
- return (
+  return (
     <div className="border-b border-yellow-line bg-yellow-bg px-4 py-2 text-center text-[0.85rem] font-bold text-text">
       Mode test : aucun paiement réel n&apos;est effectué. Stripe sera branché avant le lancement.
     </div>
@@ -63,7 +64,7 @@ export function TestModeBanner() {
 
 /** Ligne de réassurance paiement, style e-commerce classique. */
 export function TrustRow() {
- return (
+  return (
     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.85rem] text-text-soft">
       <span>
         <span aria-hidden>🔒</span> Paiement sécurisé

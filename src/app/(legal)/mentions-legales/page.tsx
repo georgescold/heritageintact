@@ -25,17 +25,15 @@ export default function MentionsLegales() {
       </ul>
 
       <h2>Hébergement</h2>
-      <p>
-        Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. Site : vercel.com
-      </p>
+      <p>Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. Site : vercel.com</p>
 
       <h2>Nature du contenu</h2>
       <p>
         {BRAND} propose des contenus pédagogiques d&apos;information générale sur la transmission de
-        patrimoine en France. Ces contenus ne constituent ni une consultation juridique au sens de la
-        loi n°71-1130 du 31 décembre 1971, ni un conseil fiscal, financier ou en investissement
-        personnalisé, ni une activité d&apos;intermédiation en assurance. Ils ne se substituent pas à
-        l&apos;intervention d&apos;un notaire, d&apos;un avocat ou d&apos;un conseiller habilité.
+        patrimoine en France. Ces contenus ne constituent ni une consultation juridique au sens de
+        la loi n°71-1130 du 31 décembre 1971, ni un conseil fiscal, financier ou en investissement
+        personnalisé, ni une activité d&apos;intermédiation en assurance. Ils ne se substituent pas
+        à l&apos;intervention d&apos;un notaire, d&apos;un avocat ou d&apos;un conseiller habilité.
       </p>
 
       <h2>Propriété intellectuelle</h2>
@@ -67,8 +65,8 @@ export default function MentionsLegales() {
 
       <h2>Indépendance vis-à-vis des plateformes</h2>
       <p>
-        Ce site n&apos;est pas affilié à Facebook, Instagram ou Meta Platforms Inc., et n&apos;est en
-        aucune façon approuvé, administré ou sponsorisé par eux.
+        Ce site n&apos;est pas affilié à Facebook, Instagram ou Meta Platforms Inc., et n&apos;est
+        en aucune façon approuvé, administré ou sponsorisé par eux.
       </p>
     </>
   );

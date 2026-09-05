@@ -71,7 +71,10 @@ export default async function CheckoutPage() {
       </main>
       <Footer />
 
-      <ExitPopup storageKey="bdc" title="Vous hésitez ? C'est normal. Voici le module 1 en accès libre.">
+      <ExitPopup
+        storageKey="bdc"
+        title="Vous hésitez ? C'est normal. Voici le module 1 en accès libre."
+      >
         <p>Regardez « Je verrai ça plus tard », le compteur des 15 ans, puis décidez.</p>
         <ButtonLink href="/module-1" variant="blue">
           Voir le module 1

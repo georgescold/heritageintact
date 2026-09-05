@@ -28,7 +28,8 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   const cgv = formData.get("cgv") === "on";
 
   if (firstName.length < 2) return { error: "Indiquez votre prénom." };
-  if (!EMAIL_RE.test(email)) return { error: "Vérifiez votre adresse email : elle semble incomplète." };
+  if (!EMAIL_RE.test(email))
+    return { error: "Vérifiez votre adresse email : elle semble incomplète." };
   if (!cgv) {
     return { error: "Cochez la case pour accepter les conditions générales avant de continuer." };
   }
@@ -50,8 +51,7 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
 // ─────────────────────────────────────────────────────────────────────
 
 export type PrepareResult =
-  | { ok: true; clientSecret: string; orderId: string }
-  | { ok: false; error: string };
+  { ok: true; clientSecret: string; orderId: string } | { ok: false; error: string };
 
 /**
  * Étape 1 du paiement : on crée la commande (statut « pending »), le client Stripe,
@@ -168,8 +168,7 @@ export async function confirmCheckout(
 // ─────────────────────────────────────────────────────────────────────
 
 export type UpsellResult =
-  | { ok: true }
-  | { ok: false; error: string; needsAuthentication?: boolean };
+  { ok: true } | { ok: false; error: string; needsAuthentication?: boolean };
 
 /**
  * Débit hors session sur la carte déjà enregistrée : c'est ce qui rend l'upsell
@@ -230,11 +229,7 @@ export async function chargeUpsell(orderId: string, sku: ProductSku): Promise<Up
 }
 
 /** Acceptation d'un upsell : on débite, puis on avance dans le funnel. */
-export async function acceptUpsell(
-  orderId: string,
-  sku: ProductSku,
-  next: string,
-): Promise<void> {
+export async function acceptUpsell(orderId: string, sku: ProductSku, next: string): Promise<void> {
   const result = await chargeUpsell(orderId, sku);
   if (!result.ok) {
     redirect(`${next}${next.includes("?") ? "&" : "?"}err=1`);

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { UrgencyUnderButton } from "./Urgency";
 
 /**
  * Les blocs de la landing page, structure MAX (05-funnel/landing-pages.md, LP #6) :
@@ -22,22 +23,22 @@ import type { ReactNode } from "react";
    Une section de page, avec ses variantes de fond.
    ───────────────────────────────────────────────────────────── */
 export function Section({
- children,
- tone = "white",
- id,
- wide = false,
+  children,
+  tone = "white",
+  id,
+  wide = false,
 }: {
- children: ReactNode;
- tone?: "white" | "grey" | "blue";
- id?: string;
- wide?: boolean;
+  children: ReactNode;
+  tone?: "white" | "grey" | "blue";
+  id?: string;
+  wide?: boolean;
 }) {
- const bg = {
- white: "bg-white",
- grey: "bg-grey-bg border-y border-grey-line",
- blue: "band-blue",
+  const bg = {
+    white: "bg-white",
+    grey: "bg-grey-bg border-y border-grey-line",
+    blue: "band-blue",
   }[tone];
- return (
+  return (
     <section id={id} className={`${bg} py-9 sm:py-14`}>
       <div className={wide ? "wrap-wide" : "wrap"}>{children}</div>
     </section>
@@ -45,11 +46,19 @@ export function Section({
 }
 
 /** Titre de section : filet orange, puis le titre. */
-export function SectionTitle({ children, light = false }: { children: ReactNode; light?: boolean }) {
- return (
+export function SectionTitle({
+  children,
+  light = false,
+}: {
+  children: ReactNode;
+  light?: boolean;
+}) {
+  return (
     <>
       <span className="rule-orange mb-4" />
-      <h2 className={`mb-5 text-[1.5rem] leading-tight sm:text-[2rem] ${light ? "text-white" : ""}`}>
+      <h2
+        className={`mb-5 text-[1.5rem] leading-tight sm:text-[2rem] ${light ? "text-white" : ""}`}
+      >
         {children}
       </h2>
     </>
@@ -60,15 +69,15 @@ export function SectionTitle({ children, light = false }: { children: ReactNode;
    1. HERO — qualification, bénéfice, objection, mécanisme, chiffre.
    ───────────────────────────────────────────────────────────── */
 export function Hero({ form }: { form: ReactNode }) {
- return (
+  return (
     <section className="relative isolate overflow-hidden">
       <Image
- src="/img/lettre-notaire.jpg"
- alt=""
- fill
- priority
- sizes="100vw"
- className="object-cover object-center"
+        src="/img/lettre-notaire.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
       />
       <span className="scrim" />
 
@@ -82,17 +91,24 @@ export function Hero({ form }: { form: ReactNode }) {
 
         À partir de 64rem : deux colonnes, tout est visible d'un coup.
       */}
-      <div className="wrap-wide relative grid items-center gap-5 py-6 sm:py-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-x-12 lg:gap-y-6 lg:py-12">
+      <div className="wrap-wide relative grid items-center gap-4 py-5 sm:gap-5 sm:py-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-x-12 lg:gap-y-6 lg:py-12">
         <div className="order-1 lg:col-start-1 lg:row-start-1">
           {/* Qualification : l'appel direct à l'avatar, avant même le titre */}
-          <p className="mb-3 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-orange sm:text-[0.9rem]">
+          <p className="mb-2 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-orange sm:text-[0.9rem]">
             Propriétaires de plus de 60 ans · France
           </p>
 
-          <h1 className="mb-3 text-[1.6rem] leading-[1.12] text-white sm:text-[2.3rem] lg:text-[2.6rem]">
+          {/* « à votre mort » nomme l'enjeu, « si vous ne faites rien » chiffre le
+              coût de l'inaction. Les deux manquaient. La dernière ligne est
+              détachée : isolée, elle frappe plus fort qu'en fin de phrase. */}
+          <h1 className="mb-3 text-[1.5rem] leading-[1.14] text-white sm:text-[2.15rem] lg:text-[2.45rem]">
             Vous avez une maison payée et des enfants&nbsp;?
             <br />
-            <span className="text-orange">Voici ce que l&apos;État prendra dessus.</span>
+            <span className="text-orange">
+              Voici ce que l&apos;État prendra dessus à votre mort.
+            </span>
+            <br />
+            <span className="text-white/85">Si vous ne faites rien d&apos;ici là.</span>
           </h1>
 
           {/* L'objection levée, immédiatement */}
@@ -117,7 +133,7 @@ export function Hero({ form }: { form: ReactNode }) {
               <dt className="text-[0.98rem] text-white/85">
                 Ce que l&apos;État prend aujourd&apos;hui
               </dt>
-              <dd className="figure-lg whitespace-nowrap text-white">82 194 €</dd>
+              <dd className="figure-lg whitespace-nowrap text-red-bright">82 194 €</dd>
             </div>
             <div className="flex items-baseline justify-between gap-3 border-b border-white/15 py-2">
               <dt className="text-[0.98rem] text-white/85">
@@ -126,10 +142,8 @@ export function Hero({ form }: { form: ReactNode }) {
               <dd className="whitespace-nowrap text-[1.35rem] font-bold text-white/70">23 794 €</dd>
             </div>
             <div className="flex items-baseline justify-between gap-3 pt-2">
-              <dt className="text-[1.02rem] font-bold text-white">
-                Ce qui reste dans la famille
-              </dt>
-              <dd className="figure-lg whitespace-nowrap text-orange">+ 58 400 €</dd>
+              <dt className="text-[1.02rem] font-bold text-white">Ce qui reste dans la famille</dt>
+              <dd className="figure-lg whitespace-nowrap text-green-bright">+ 58 400 €</dd>
             </div>
           </dl>
           <p className="border-t border-white/20 px-4 py-2 text-[0.85rem] text-white/60">
@@ -143,10 +157,13 @@ export function Hero({ form }: { form: ReactNode }) {
           </p>
           {/* Le mécanisme, en une ligne : ici il dit ce que la vidéo contient. */}
           <p className="mb-3 text-[0.92rem] text-text-soft">
-            La Méthode des 3 Verrous : trois décisions écrites dans le Code général des impôts, que
- les familles averties prennent de leur vivant.
+            La Méthode des 3 Verrous : trois décisions écrites dans le Code général des impôts.
           </p>
           {form}
+          {/* Levier n°2 : l'urgence sous le bouton, prouvée et datée. */}
+          <div className="mt-3">
+            <UrgencyUnderButton />
+          </div>
         </div>
       </div>
     </section>
@@ -157,27 +174,34 @@ export function Hero({ form }: { form: ReactNode }) {
    3. LE CALCUL — la preuve par la démonstration.
    ───────────────────────────────────────────────────────────── */
 export function TheNumber() {
- const lignes = [
- ["Maison de province, payée", "380 000 €"],
- ["Assurance-vie et livrets", "140 000 €"],
- ["Abattement, un enfant", "− 100 000 €"],
- ["Reste à taxer", "420 000 €"],
+  const lignes = [
+    ["Maison de province, payée", "380 000 €"],
+    ["Assurance-vie et livrets", "140 000 €"],
+    ["Abattement, un enfant", "− 100 000 €"],
+    ["Reste à taxer", "420 000 €"],
   ];
- return (
+  return (
     <Section tone="grey">
       <SectionTitle>D&apos;où sortent les 82 194 €</SectionTitle>
       <p className="mb-5 text-[1.05rem]">
         Rien d&apos;exceptionnel dans cette famille. Une maison de ville moyenne, quarante ans de
- remboursements, des économies laissées sur un contrat ouvert à la banque en 2003. Un enfant.
+        remboursements, des économies laissées sur un contrat ouvert à la banque en 2003. Un enfant.
       </p>
 
       <div className="overflow-hidden border border-grey-line bg-white">
         <table className="w-full text-left">
           <tbody>
             {lignes.map(([l, v], i) => (
-              <tr key={l} className={i < 3 ? "border-b border-grey-line-soft" : "border-b border-blue bg-grey-bg"}>
+              <tr
+                key={l}
+                className={
+                  i < 3 ? "border-b border-grey-line-soft" : "border-b border-blue bg-grey-bg"
+                }
+              >
                 <td className="px-4 py-2.5">{l}</td>
-                <td className="whitespace-nowrap px-4 py-2.5 text-right font-bold tabular-nums">{v}</td>
+                <td className="whitespace-nowrap px-4 py-2.5 text-right font-bold tabular-nums">
+                  {v}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -192,8 +216,8 @@ export function TheNumber() {
 
       <p className="mt-5 text-[1.05rem]">
         Le barème monte vite : 5 %, puis 10 %, puis 15 %, et <strong>20 % sur tout le reste</strong>{" "}
- dès 15 932 € au-dessus de l&apos;abattement. Une maison de province et des économies suffisent
- pour y être.
+        dès 15 932 € au-dessus de l&apos;abattement. Une maison de province et des économies
+        suffisent pour y être.
       </p>
 
       <blockquote className="mt-6 border-l-4 border-orange bg-white p-4 text-[1.1rem] leading-snug text-blue sm:p-5 sm:text-[1.25rem]">
@@ -202,7 +226,7 @@ export function TheNumber() {
       </blockquote>
       <p className="mt-3 text-[0.9rem] text-text-soft">
         Cas type construit à partir du barème officiel, à titre d&apos;illustration. Votre chiffre
- dépend de votre situation — c&apos;est précisément ce que la vidéo vous apprend à calculer.
+        dépend de votre situation — c&apos;est précisément ce que la vidéo vous apprend à calculer.
       </p>
     </Section>
   );
@@ -221,8 +245,8 @@ export function TheEnemy() {
         <p>
           <strong>Sa banque</strong> le voyait deux fois par an. Elle lui a vendu un contrat en 2003
           et n&apos;est jamais revenue dessus. Un conseiller est évalué sur ce qu&apos;il place,
-          jamais sur ce qu&apos;il vous fait économiser après votre mort. Vous ne trouverez jamais
-          « il a bien préparé la succession de ses clients » dans les objectifs d&apos;une agence
+          jamais sur ce qu&apos;il vous fait économiser après votre mort. Vous ne trouverez jamais «
+          il a bien préparé la succession de ses clients » dans les objectifs d&apos;une agence
           bancaire.
         </p>
         <p>
@@ -266,7 +290,7 @@ export function TheEnemy() {
    5. AVANT / APRÈS — deux photos, deux états.
    ───────────────────────────────────────────────────────────── */
 export function BeforeAfter() {
- return (
+  return (
     <Section tone="grey" wide>
       <div className="wrap px-0">
         <SectionTitle>Ce que vos enfants trouveront sur la table</SectionTitle>
@@ -275,11 +299,11 @@ export function BeforeAfter() {
         <figure>
           <div className="relative aspect-[4/3] overflow-hidden border border-grey-line">
             <Image
- src="/img/avant-desordre.jpg"
- alt="Une table couverte de courriers, de relevés et de chemises cartonnées en désordre."
- fill
- sizes="(min-width: 640px) 30rem, 100vw"
- className="object-cover"
+              src="/img/avant-desordre.jpg"
+              alt="Une table couverte de courriers, de relevés et de chemises cartonnées en désordre."
+              fill
+              sizes="(min-width: 640px) 30rem, 100vw"
+              className="object-cover"
             />
             <span className="absolute left-0 top-0 bg-red px-3 py-1.5 text-[0.9rem] font-bold uppercase tracking-wider text-white">
               Sans plan
@@ -287,18 +311,18 @@ export function BeforeAfter() {
           </div>
           <figcaption className="mt-3 text-[1rem]">
             Onze mois de démarches. Vingt-deux organismes à prévenir. Des mots de passe que personne
- n&apos;a. Et une facture de 82 194 € qui tombe pendant qu&apos;ils font le tri.
+            n&apos;a. Et une facture de 82 194 € qui tombe pendant qu&apos;ils font le tri.
           </figcaption>
         </figure>
 
         <figure>
           <div className="relative aspect-[4/3] overflow-hidden border border-grey-line">
             <Image
- src="/img/apres-classeur.jpg"
- alt="Une table nette avec un classeur bleu marine fermé et une pile de feuilles rangée."
- fill
- sizes="(min-width: 640px) 30rem, 100vw"
- className="object-cover"
+              src="/img/apres-classeur.jpg"
+              alt="Une table nette avec un classeur bleu marine fermé et une pile de feuilles rangée."
+              fill
+              sizes="(min-width: 640px) 30rem, 100vw"
+              className="object-cover"
             />
             <span className="absolute left-0 top-0 bg-green px-3 py-1.5 text-[0.9rem] font-bold uppercase tracking-wider text-white">
               Avec un plan
@@ -306,7 +330,7 @@ export function BeforeAfter() {
           </div>
           <figcaption className="mt-3 text-[1rem]">
             Un document d&apos;une page. Les trois décisions déjà prises, datées, signées. Et une
- facture divisée par trois, parfois davantage.
+            facture divisée par trois, parfois davantage.
           </figcaption>
         </figure>
       </div>
@@ -367,7 +391,8 @@ export function BeforeAfter() {
 
       <p className="wrap mt-6 px-0 text-[1.05rem]">
         La différence entre ces deux colonnes ne tient ni à l&apos;argent, ni à l&apos;intelligence,
- ni à l&apos;amour qu&apos;on porte à ses enfants. <strong>Elle tient à un après-midi.</strong>
+        ni à l&apos;amour qu&apos;on porte à ses enfants.{" "}
+        <strong>Elle tient à un après-midi.</strong>
       </p>
     </Section>
   );
@@ -377,24 +402,24 @@ export function BeforeAfter() {
    6. L'URGENCE — vraie, datée, vérifiable. Règle n°1 d'une LP.
    ───────────────────────────────────────────────────────────── */
 export function ThreeDoors() {
- const portes = [
+  const portes = [
     {
- t: "Le compteur des 15 ans",
- d: "Une donation ne s'efface fiscalement qu'au bout de quinze ans. À 67 ans, il faut atteindre 82 ans pour recharger l'abattement. Chaque année d'attente est une année perdue, définitivement.",
- cout: "L'abattement de 100 000 € par enfant ne sert qu'une fois, au décès, au lieu d'avoir servi deux fois.",
+      t: "Le compteur des 15 ans",
+      d: "Une donation ne s'efface fiscalement qu'au bout de quinze ans. À 67 ans, il faut atteindre 82 ans pour recharger l'abattement. Chaque année d'attente est une année perdue, définitivement.",
+      cout: "L'abattement de 100 000 € par enfant ne sert qu'une fois, au décès, au lieu d'avoir servi deux fois.",
     },
     {
- t: "Votre 70e anniversaire",
- d: "Avant : 152 500 € transmis hors droits, pour chacun de vos bénéficiaires. Après : 30 500 € au total, tous bénéficiaires et tous vos contrats confondus. Le même argent, sur le même contrat.",
- cout: "122 000 € d'abattement en moins sur le même contrat, pour une date de versement.",
+      t: "Votre 70e anniversaire",
+      d: "Avant : 152 500 € transmis hors droits, pour chacun de vos bénéficiaires. Après : 30 500 € au total, tous bénéficiaires et tous vos contrats confondus. Le même argent, sur le même contrat.",
+      cout: "122 000 € d'abattement en moins sur le même contrat, pour une date de versement.",
     },
     {
- t: "Votre 71e anniversaire",
- d: "Tant que vous n'avez pas 71 ans, la valeur transmise de votre maison est calculée sur 60 %. Le jour de vos 71 ans, elle passe à 70 %. Dix points de patrimoine, pour un anniversaire.",
- cout: "Sur une maison à 380 000 € : 38 000 € de base taxable en plus, du jour au lendemain.",
+      t: "Votre 71e anniversaire",
+      d: "Tant que vous n'avez pas 71 ans, la valeur transmise de votre maison est calculée sur 60 %. Le jour de vos 71 ans, elle passe à 70 %. Dix points de patrimoine, pour un anniversaire.",
+      cout: "Sur une maison à 380 000 € : 38 000 € de base taxable en plus, du jour au lendemain.",
     },
   ];
- return (
+  return (
     <Section>
       <SectionTitle>Trois portes se ferment avec le temps. Aucune ne se rouvre.</SectionTitle>
       <div className="space-y-3">
@@ -422,11 +447,11 @@ export function ThreeDoors() {
         <div className="relative">
           <div className="relative aspect-[21/6]">
             <Image
- src="/img/calendrier.jpg"
- alt="Un calendrier mural avec une date entourée au stylo rouge."
- fill
- sizes="(min-width: 640px) 46rem, 100vw"
- className="object-cover object-center"
+              src="/img/calendrier.jpg"
+              alt="Un calendrier mural avec une date entourée au stylo rouge."
+              fill
+              sizes="(min-width: 640px) 46rem, 100vw"
+              className="object-cover object-center"
             />
             <span className="scrim" />
           </div>
@@ -440,10 +465,10 @@ export function ThreeDoors() {
         <div className="bg-yellow-bg p-4">
           <p className="text-[1rem]">
             Depuis février 2025, un dispositif temporaire permet de donner{" "}
-            <strong>jusqu&apos;à 100 000 € par parent</strong>, totalement exonérés, à un enfant ou un
- petit-enfant qui achète son logement ou fait des travaux de rénovation énergétique
+            <strong>jusqu&apos;à 100 000 € par parent</strong>, totalement exonérés, à un enfant ou
+            un petit-enfant qui achète son logement ou fait des travaux de rénovation énergétique
             (art. 790 A bis du CGI). <strong>Il s&apos;arrête le 31 décembre 2026</strong> et
- n&apos;a pas été prolongé à ce jour.
+            n&apos;a pas été prolongé à ce jour.
           </p>
           <p className="mt-2 text-[0.95rem] text-text-soft">
             Ce n&apos;est pas un compte à rebours de page de vente. C&apos;est une date votée au
@@ -459,25 +484,25 @@ export function ThreeDoors() {
    7. L'OBJECTION EN TITRE DE SECTION — repris du benchmark US.
    ───────────────────────────────────────────────────────────── */
 export function NotThis() {
- const items = [
+  const items = [
     {
- t: "Ce n'est pas un testament.",
- d: "Un testament dit qui reçoit quoi. Il ne fait pas baisser la facture d'un centime. C'est le malentendu le plus coûteux du sujet : des milliers de familles croient avoir tout réglé parce qu'elles en ont un.",
+      t: "Ce n'est pas un testament.",
+      d: "Un testament dit qui reçoit quoi. Il ne fait pas baisser la facture d'un centime. C'est le malentendu le plus coûteux du sujet : des milliers de familles croient avoir tout réglé parce qu'elles en ont un.",
     },
     {
- t: "Ce n'est pas un notaire.",
- d: "Vous irez chez le notaire, et c'est très bien. Vous irez simplement en sachant quoi lui demander, au lieu de découvrir vos options en face de lui, montre en main.",
+      t: "Ce n'est pas un notaire.",
+      d: "Vous irez chez le notaire, et c'est très bien. Vous irez simplement en sachant quoi lui demander, au lieu de découvrir vos options en face de lui, montre en main.",
     },
     {
- t: "Ce n'est pas un placement.",
- d: "Aucun contrat à souscrire, aucun produit à acheter, aucune commission. Nous ne sommes ni banque, ni assureur, ni courtier, et nous n'avons rien à vous vendre après.",
+      t: "Ce n'est pas un placement.",
+      d: "Aucun contrat à souscrire, aucun produit à acheter, aucune commission. Nous ne sommes ni banque, ni assureur, ni courtier, et nous n'avons rien à vous vendre après.",
     },
     {
- t: "Ce n'est pas une application.",
- d: "Pas de compte à créer, pas de mot de passe à retenir. Une vidéo, un simulateur qui tient dans un navigateur, et un plan qui s'imprime sur une page.",
+      t: "Ce n'est pas une application.",
+      d: "Pas de compte à créer, pas de mot de passe à retenir. Une vidéo, un simulateur qui tient dans un navigateur, et un plan qui s'imprime sur une page.",
     },
   ];
- return (
+  return (
     <Section tone="grey">
       <SectionTitle>
         Non, ce n&apos;est ni un testament, ni un notaire, ni un placement de plus.
@@ -492,8 +517,9 @@ export function NotThis() {
       </div>
       <p className="mt-5 border-l-4 border-green bg-green-bg p-4 text-[1.05rem]">
         Et une question qui vaut le détour&nbsp;:{" "}
-        <strong>avez-vous déjà vu une facture de notaire arriver avec une garantie de
- remboursement&nbsp;?</strong>{" "}
+        <strong>
+          avez-vous déjà vu une facture de notaire arriver avec une garantie de remboursement&nbsp;?
+        </strong>{" "}
         Nous, si. C&apos;est la nôtre, 30 jours, sans justification.
       </p>
     </Section>
@@ -504,15 +530,15 @@ export function NotThis() {
    8. LA PEUR — la maison. Le visuel n°1 du projet.
    ───────────────────────────────────────────────────────────── */
 export function TheFear() {
- return (
-    <section className="relative isolate overflow-hidden">
+  return (
+    <section className="relative isolate overflow-hidden border-t-[6px] border-orange">
       <div className="relative aspect-[16/10] w-full sm:aspect-[21/8]">
         <Image
- src="/img/maison-a-vendre.jpg"
- alt="Une maison de banlieue aux volets fermés, avec un panneau « À vendre » planté devant."
- fill
- sizes="100vw"
- className="object-cover object-center"
+          src="/img/maison-a-vendre.jpg"
+          alt="Une maison de banlieue aux volets fermés, avec un panneau « À vendre » planté devant."
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
         />
         <span className="scrim" />
         <div className="absolute inset-0 flex items-center">
@@ -524,9 +550,9 @@ export function TheFear() {
               Vos enfants paieront. La question, c&apos;est avec quel argent.
             </h2>
             <p className="max-w-[32rem] text-[1rem] text-white/85 sm:text-[1.1rem]">
-              Les droits de succession se règlent dans les six mois, en euros, pas en parts de maison.
-              Quand votre épargne ne suffit pas, il reste une seule solution. Vos enfants la
- connaissent déjà, longtemps avant d&apos;oser vous en parler.
+              Les droits de succession se règlent dans les six mois, en euros, pas en parts de
+              maison. Quand votre épargne ne suffit pas, il reste une seule solution. Vos enfants la
+              connaissent déjà, longtemps avant d&apos;oser vous en parler.
             </p>
           </div>
         </div>
@@ -540,12 +566,12 @@ export function TheFear() {
    Deux effets : des leads qualifiés, et Meta qui récompense la qualité.
    ───────────────────────────────────────────────────────────── */
 export function Disqualification() {
- const cas = [
+  const cas = [
     "Vous êtes locataire et sans épargne : vos héritiers ne paieront probablement rien. Gardez vos 20 minutes.",
     "Vous avez un enfant et moins de 100 000 € de patrimoine : l'abattement couvre déjà tout, cette vidéo ne vous apprendrait rien.",
     "Vous cherchez un moyen de ne pas déclarer quelque chose : ici tout est légal, déclaré, et vérifiable article par article. Vous perdriez votre temps.",
   ];
- return (
+  return (
     <div className="border-2 border-red bg-red-bg p-4 sm:p-5">
       <p className="mb-3 text-[1.1rem] font-bold text-red">
         <span aria-hidden>⚠</span> Ne remplissez pas ce formulaire si&nbsp;:
@@ -561,8 +587,8 @@ export function Disqualification() {
         ))}
       </ul>
       <p className="mt-3 text-[0.95rem] text-text-soft">
-        Nous préférons vous le dire avant. Une vidéo qui ne sert à rien fait perdre du temps à
- tout le monde.
+        Nous préférons vous le dire avant. Une vidéo qui ne sert à rien fait perdre du temps à tout
+        le monde.
       </p>
     </div>
   );
@@ -574,26 +600,37 @@ export function Disqualification() {
  la structure qu'on teste, pas le design.
    ───────────────────────────────────────────────────────────── */
 export function PhotoBanner({
- image,
- kicker,
- title,
- children,
+  image,
+  kicker,
+  title,
+  children,
 }: {
- image: string;
- kicker: string;
- title: ReactNode;
- children?: ReactNode;
+  image: string;
+  kicker: string;
+  title: ReactNode;
+  children?: ReactNode;
 }) {
- return (
+  return (
     <section className="relative isolate overflow-hidden">
-      <Image src={image} alt="" fill priority sizes="100vw" className="object-cover object-center" />
+      <Image
+        src={image}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
       <span className="scrim" />
       <div className="wrap relative py-8 sm:py-14">
         <p className="mb-3 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-orange sm:text-[0.9rem]">
           {kicker}
         </p>
         <h1 className="mb-4 text-[1.7rem] leading-[1.14] text-white sm:text-[2.3rem]">{title}</h1>
-        {children && <div className="max-w-[38rem] text-[1.05rem] text-white/90 sm:text-[1.15rem]">{children}</div>}
+        {children && (
+          <div className="max-w-[38rem] text-[1.05rem] text-white/90 sm:text-[1.15rem]">
+            {children}
+          </div>
+        )}
       </div>
     </section>
   );
@@ -605,29 +642,29 @@ export function PhotoBanner({
  myestatekit.co.uk, qui l'utilise comme bloc principal de sa page.
    ───────────────────────────────────────────────────────────── */
 export function TheGap() {
- const scenes = [
+  const scenes = [
     {
- t: "La lettre qui arrive",
- d: "Le notaire écrit. Le chiffre est en bas de la page, et il faut le régler dans les six mois. Personne ne l'avait jamais calculé, et il n'est plus négociable.",
- p: "le chiffre était connu depuis des années, et il a été divisé avant.",
+      t: "La lettre qui arrive",
+      d: "Le notaire écrit. Le chiffre est en bas de la page, et il faut le régler dans les six mois. Personne ne l'avait jamais calculé, et il n'est plus négociable.",
+      p: "le chiffre était connu depuis des années, et il a été divisé avant.",
     },
     {
- t: "L'argent qui n'est pas là",
- d: "Les droits se paient en euros, pas en parts de maison. L'épargne est immobilisée le temps du règlement, et un bien ne se vend pas toujours en six mois.",
- p: "de quoi payer était prévu, et la maison n'entre plus dans le calcul.",
+      t: "L'argent qui n'est pas là",
+      d: "Les droits se paient en euros, pas en parts de maison. L'épargne est immobilisée le temps du règlement, et un bien ne se vend pas toujours en six mois.",
+      p: "de quoi payer était prévu, et la maison n'entre plus dans le calcul.",
     },
     {
- t: "La conversation qu'on n'a jamais eue",
- d: "Ce qui divise les familles, ce n'est presque jamais l'argent. C'est de devoir décider à plusieurs, vite, sans savoir ce que le parent aurait voulu.",
- p: "les décisions sont écrites, datées, signées. Il n'y a plus rien à décider.",
+      t: "La conversation qu'on n'a jamais eue",
+      d: "Ce qui divise les familles, ce n'est presque jamais l'argent. C'est de devoir décider à plusieurs, vite, sans savoir ce que le parent aurait voulu.",
+      p: "les décisions sont écrites, datées, signées. Il n'y a plus rien à décider.",
     },
   ];
- return (
+  return (
     <Section tone="grey">
       <SectionTitle>L&apos;écart que personne ne montre</SectionTitle>
       <p className="mb-6 text-[1.05rem]">
         Entre le jour du décès et le jour où la succession est réglée, il y a six mois. Ce qui se
- passe pendant ces six mois-là ne dépend presque pas de la loi.{" "}
+        passe pendant ces six mois-là ne dépend presque pas de la loi.{" "}
         <strong>Ça dépend de ce qui a été fait avant.</strong> Voici à quoi ça ressemble.
       </p>
 
@@ -652,7 +689,9 @@ export function TheGap() {
         <p className="min-w-[14rem] flex-1 text-[1.05rem]">
           Le taux qui s&apos;applique dès <strong>15 932 €</strong> au-dessus de l&apos;abattement.
           Autrement dit&nbsp;: sur presque tout, dès qu&apos;il y a une maison.
-          <span className="block text-[0.9rem] text-text-soft">Article 777 du Code général des impôts.</span>
+          <span className="block text-[0.9rem] text-text-soft">
+            Article 777 du Code général des impôts.
+          </span>
         </p>
       </div>
     </Section>
@@ -663,18 +702,18 @@ export function TheGap() {
    13. L'OBJECTION LA PLUS FRÉQUENTE, EN TITRE DE SECTION.
    ───────────────────────────────────────────────────────────── */
 export function TheyWillManage() {
- return (
+  return (
     <Section tone="blue">
       <SectionTitle light>«&nbsp;Ils se débrouilleront bien.&nbsp;»</SectionTitle>
       <div className="max-w-[42rem] space-y-4 text-[1.08rem] text-white/90">
         <p>
           Oui, ils se débrouilleront. En six mois, avec des comptes bloqués, un notaire à régler, et
- une facture qu&apos;aucun d&apos;eux n&apos;avait vue venir.
+          une facture qu&apos;aucun d&apos;eux n&apos;avait vue venir.
         </p>
         <p>
           Il ne leur manquera ni l&apos;intelligence, ni la bonne volonté, ni l&apos;affection. Il
- leur manquera seulement les décisions que vous étiez le seul à pouvoir prendre — et
- qu&apos;on ne peut plus prendre après.
+          leur manquera seulement les décisions que vous étiez le seul à pouvoir prendre — et
+          qu&apos;on ne peut plus prendre après.
         </p>
         <p className="border-l-4 border-orange pl-4 text-[1.2rem] font-bold text-white">
           Ce ne sont pas des informations qu&apos;on leur laisse. Ce sont des décisions.

@@ -7,9 +7,9 @@ import { NoSpamLine } from "./LpExtras";
 import { Button } from "./ui";
 
 export function OptinForm({ cta = "Accéder à la vidéo" }: { cta?: string }) {
- const [state, action, pending] = useActionState<FormState, FormData>(optin, undefined);
+  const [state, action, pending] = useActionState<FormState, FormData>(optin, undefined);
 
- return (
+  return (
     <form action={action} className="space-y-3" noValidate>
       <label className="block">
         <span className="mb-1 block font-bold">Votre prénom</span>
@@ -17,7 +17,14 @@ export function OptinForm({ cta = "Accéder à la vidéo" }: { cta?: string }) {
       </label>
       <label className="block">
         <span className="mb-1 block font-bold">Votre adresse email</span>
-        <input name="email" type="email" autoComplete="email" inputMode="email" required className="field" />
+        <input
+          name="email"
+          type="email"
+          autoComplete="email"
+          inputMode="email"
+          required
+          className="field"
+        />
       </label>
       {/* Case CGV : exigée par Meta sur toute landing page recevant du trafic publicitaire. */}
       <label className="flex items-start gap-2 text-[0.85rem] text-text-soft">

@@ -13,8 +13,8 @@ export default function MemberAreaPlaceholder() {
         <div className="wrap py-12">
           <h1 className="mb-4 text-[1.6rem]">Votre espace membre</h1>
           <p className="mb-3">
-            L&apos;espace membre est en construction. Vos accès vous seront envoyés par email : un lien à
-            cliquer, aucun mot de passe à retenir.
+            L&apos;espace membre est en construction. Vos accès vous seront envoyés par email : un
+            lien à cliquer, aucun mot de passe à retenir.
           </p>
           <p className="text-text-soft">
             Une question ? <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>

@@ -5,6 +5,7 @@ import { OptinForm } from "@/components/OptinForm";
 import { ExitPopup } from "@/components/ExitPopup";
 import { PhotoBanner, Section } from "@/components/Lp";
 import { ProofUnderButton, UrgencyBand } from "@/components/LpExtras";
+import { UrgencyBar, UrgencyUnderButton } from "@/components/Urgency";
 
 export const metadata: Metadata = {
   title: "3 questions sur votre succession",
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
 export default function LpQuestionsPage() {
   return (
     <>
+      <UrgencyBar />
       <Header />
       <main className="flex-1">
         <PhotoBanner
@@ -43,7 +45,11 @@ export default function LpQuestionsPage() {
         <Section>
           <QuestionsOptin />
 
-          <div className="mt-5">
+          <div className="mt-4">
+            <UrgencyUnderButton />
+          </div>
+
+          <div className="mt-4">
             <ProofUnderButton />
           </div>
 

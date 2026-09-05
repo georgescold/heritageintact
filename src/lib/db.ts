@@ -154,9 +154,8 @@ export async function addItem(
  */
 export async function countFounders(): Promise<number> {
   const db = await read();
-  return db.orders.filter(
-    (o) => o.status !== "pending" && o.items.some((i) => i.sku === "front"),
-  ).length;
+  return db.orders.filter((o) => o.status !== "pending" && o.items.some((i) => i.sku === "front"))
+    .length;
 }
 
 export function orderTotal(order: Order): number {
@@ -168,10 +167,7 @@ export function orderTotal(order: Order): number {
  * Appelé à la création du PaymentIntent : à ce moment rien n'est encore encaissé,
  * la commande doit rester « pending ».
  */
-export async function attachStripeCustomer(
-  orderId: string,
-  customerId: string,
-): Promise<void> {
+export async function attachStripeCustomer(orderId: string, customerId: string): Promise<void> {
   const db = await read();
   const order = db.orders.find((o) => o.id === orderId);
   if (!order) return;
