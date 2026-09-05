@@ -48,10 +48,10 @@ const deuxChiffres = (n: number) => String(n).padStart(2, "0");
 /** Une case du compteur : le nombre, et son unité dessous. */
 function Case({ n, u, large = false }: { n: string; u: string; large?: boolean }) {
   return (
-    <span className="flex min-w-[2.7rem] flex-col items-center border border-white/35 bg-black/25 px-1.5 py-1 leading-none">
+    <span className="flex min-w-[2.45rem] flex-col items-center border border-white/35 bg-black/25 px-1.5 py-0.5 leading-none sm:min-w-[2.7rem] sm:py-1">
       <span
         className={`font-bold tabular-nums ${
-          large ? "text-[1.35rem] sm:text-[1.6rem]" : "text-[1.15rem] sm:text-[1.35rem]"
+          large ? "text-[1.2rem] sm:text-[1.6rem]" : "text-[1.05rem] sm:text-[1.35rem]"
         }`}
       >
         {n}
@@ -79,12 +79,20 @@ export function UrgencyBar() {
 
   return (
     <div className="border-b-2 border-[#8d1f1f] bg-red text-white">
-      <div className="wrap-wide flex flex-wrap items-center justify-center gap-x-5 gap-y-2 py-2">
-        <p className="text-center text-[0.9rem] font-bold leading-snug sm:text-left sm:text-[1rem]">
-          Le dispositif qui permet de donner{" "}
-          <span className="whitespace-nowrap">100 000 € exonérés</span> se termine
-          <span className="hidden sm:inline"> le 31 décembre 2026</span>
-          <span className="block text-[0.78rem] font-normal text-white/80 sm:text-[0.85rem]">
+      {/* Sur téléphone le bandeau tient sur deux lignes serrées : chaque pixel
+          pris ici repousse le formulaire sous la ligne de flottaison. La phrase
+          complète et la référence légale n'apparaissent qu'à partir de 40rem. */}
+      <div className="wrap-wide flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 py-1.5 sm:gap-x-5 sm:py-2">
+        <p className="text-center text-[0.88rem] font-bold leading-snug sm:text-left sm:text-[1rem]">
+          <span className="sm:hidden">
+            Fin du dispositif à <span className="whitespace-nowrap">100 000 € exonérés</span>
+          </span>
+          <span className="hidden sm:inline">
+            Le dispositif qui permet de donner{" "}
+            <span className="whitespace-nowrap">100 000 € exonérés</span> se termine le 31 décembre
+            2026
+          </span>
+          <span className="hidden text-[0.85rem] font-normal text-white/80 sm:block">
             Art. 790 A bis du CGI, date votée au Parlement. Non prorogé à ce jour.
           </span>
         </p>

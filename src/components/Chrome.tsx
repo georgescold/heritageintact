@@ -10,15 +10,28 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
         <Link href="/" aria-label={BRAND} className="no-underline">
           <Logo size={34} />
         </Link>
-        {minimal ? (
-          <span className="text-[0.85rem] text-text-soft">
-            <span aria-hidden>🔒</span> Site sécurisé
+        <div className="flex items-center gap-4">
+          {!minimal && (
+            <span className="hidden text-[0.9rem] text-text-soft lg:block">
+              La succession expliquée en français simple
+            </span>
+          )}
+          {/* Le cadenas est visible partout, y compris sur la landing page :
+              sur cet avatar, « est-ce que ce site est sérieux » se joue dans
+              les deux premières secondes, en haut à droite. */}
+          <span className="flex shrink-0 items-center gap-1.5 border border-green/50 bg-green-bg px-2.5 py-1 text-[0.82rem] font-bold text-green">
+            <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden focusable="false">
+              <path
+                d="M4.4 7V4.8a3.6 3.6 0 0 1 7.2 0V7"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+              />
+              <rect x="2.6" y="7" width="10.8" height="7.2" fill="currentColor" />
+            </svg>
+            Site sécurisé
           </span>
-        ) : (
-          <span className="hidden text-[0.9rem] text-text-soft md:block">
-            La succession expliquée en français simple
-          </span>
-        )}
+        </div>
       </div>
     </header>
   );
