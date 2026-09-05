@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Footer } from "@/components/Chrome";
+import { TrustBar } from "@/components/TrustBar";
 import { OptinForm } from "@/components/OptinForm";
 import { ExitPopup } from "@/components/ExitPopup";
 import { ProofUnderButton } from "@/components/LpExtras";
@@ -67,6 +68,8 @@ export default function LandingPage() {
       <Header />
       <main className="flex-1">
         <Hero form={<OptinForm cta="Voir la vidéo maintenant" />} />
+
+        <TrustBar />
 
         {/* 1. RÊVE — toujours en premier */}
         <TheDreamFirst />

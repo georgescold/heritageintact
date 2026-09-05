@@ -26,6 +26,8 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   const firstName = clean(formData.get("firstName"));
   const email = clean(formData.get("email"));
   const cgv = formData.get("cgv") === "on";
+  // D'où vient ce lead : c'est ce qui rend l'A/B test mesurable après l'opt-in.
+  const source = clean(formData.get("source")).slice(0, 60) || undefined;
 
   if (firstName.length < 2) return { error: "Indiquez votre prénom." };
   if (!EMAIL_RE.test(email))
@@ -34,7 +36,7 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
     return { error: "Cochez la case pour accepter les conditions générales avant de continuer." };
   }
 
-  const lead = await addLead({ email, firstName });
+  const lead = await addLead({ email, firstName, source });
   const jar = await cookies();
   jar.set("hi_lead", JSON.stringify({ email: lead.email, firstName: lead.firstName }), {
     httpOnly: true,

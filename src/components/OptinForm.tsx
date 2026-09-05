@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useActionState } from "react";
 import { optin, type FormState } from "@/app/actions";
 import { NoSpamLine } from "./LpExtras";
@@ -8,9 +9,12 @@ import { Button } from "./ui";
 
 export function OptinForm({ cta = "Accéder à la vidéo" }: { cta?: string }) {
   const [state, action, pending] = useActionState<FormState, FormData>(optin, undefined);
+  const pathname = usePathname();
 
   return (
     <form action={action} className="space-y-3" noValidate>
+      {/* La variante d'où vient le lead, pour pouvoir la suivre jusqu'à l'achat. */}
+      <input type="hidden" name="source" value={pathname} />
       <label className="block">
         <span className="mb-1 block font-bold">Votre prénom</span>
         <input name="firstName" type="text" autoComplete="given-name" required className="field" />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Header, Footer } from "@/components/Chrome";
+import { TrustBar } from "@/components/TrustBar";
 import { QuestionsOptin } from "@/components/QuestionsOptin";
 import { OptinForm } from "@/components/OptinForm";
 import { ExitPopup } from "@/components/ExitPopup";
@@ -41,6 +42,8 @@ export default function LpQuestionsPage() {
             montant dans le bureau du notaire, avec six mois pour le payer.
           </p>
         </PhotoBanner>
+
+        <TrustBar />
 
         <Section>
           <QuestionsOptin />

@@ -13,6 +13,8 @@ export type Lead = {
   email: string;
   firstName: string;
   createdAt: string;
+  /** Chemin de la landing page d'arrivée : c'est la mesure de l'A/B test. */
+  source?: string;
 };
 
 export type OrderItem = {
@@ -66,7 +68,11 @@ function id(prefix: string): string {
   return `${prefix}_${randomBytes(6).toString("hex")}`;
 }
 
-export async function addLead(input: { email: string; firstName: string }): Promise<Lead> {
+export async function addLead(input: {
+  email: string;
+  firstName: string;
+  source?: string;
+}): Promise<Lead> {
   const db = await read();
   const email = input.email.trim().toLowerCase();
   const existing = db.leads.find((l) => l.email === email);
@@ -76,6 +82,7 @@ export async function addLead(input: { email: string; firstName: string }): Prom
     email,
     firstName: input.firstName.trim(),
     createdAt: new Date().toISOString(),
+    source: input.source,
   };
   db.leads.push(lead);
   await write(db);
