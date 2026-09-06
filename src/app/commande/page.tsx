@@ -26,7 +26,7 @@ export default async function CheckoutPage() {
       <main className="flex-1">
         <div className="wrap-wide py-6 sm:py-8">
           <h1 className="mb-1 text-[1.5rem] sm:text-[1.9rem]">
-            Votre accès immédiat aux 7 Erreurs et à la Méthode des 3 Verrous
+            Votre accès immédiat aux 7 Erreurs et aux 3 décisions
           </h1>
           <p className="mb-6 text-text-soft">Deux minutes. Ce soir, vous avez votre chiffre.</p>
 

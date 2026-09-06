@@ -12,6 +12,7 @@ import {
 } from "@/lib/db";
 import { isTestMode, PRODUCTS, type ProductSku } from "@/lib/config";
 import { stripe, toCents } from "@/lib/stripe";
+import { envoyerLivraison } from "@/lib/email";
 
 export type FormState = { error?: string } | undefined;
 
@@ -37,6 +38,12 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   }
 
   const lead = await addLead({ email, firstName, source });
+
+  // L'email de livraison part tout de suite. On l'attend : sans ça, la fonction
+  // se termine avec la redirection et l'envoi peut être coupé net sur Vercel.
+  // Il ne lève jamais, un incident chez Resend ne doit pas bloquer l'inscription.
+  await envoyerLivraison(lead.firstName, lead.email);
+
   const jar = await cookies();
   jar.set("hi_lead", JSON.stringify({ email: lead.email, firstName: lead.firstName }), {
     httpOnly: true,

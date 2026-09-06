@@ -7,7 +7,7 @@ import { PixelEvent } from "@/components/MetaPixel";
 import { ButtonLink, Guarantee, FAQ, ValueStack, Check, Panel } from "@/components/ui";
 import { PRODUCTS, VIDEO, euros } from "@/lib/config";
 
-export const metadata: Metadata = { title: "La Méthode des 3 Verrous" };
+export const metadata: Metadata = { title: "Les 3 décisions" };
 
 const PACKAGING = [
   {
@@ -38,7 +38,7 @@ const PACKAGING = [
 
 /** VSL : headline, sous-titre, vidéo, bouton. Pas de prix ni de bouton au-dessus de la vidéo. */
 export default function VslPage() {
-  const cta = `Je veux mon chiffre et les 3 Verrous : ${euros(PRODUCTS.front.price)}`;
+  const cta = `Je veux mon chiffre et les 3 décisions : ${euros(PRODUCTS.front.price)}`;
 
   return (
     <>
@@ -51,12 +51,12 @@ export default function VslPage() {
             Sachez-le ce soir, et réduisez cette facture, légalement, en 3 semaines.
           </h1>
           <p className="mb-5 text-[1.05rem]">
-            Révélation : la Méthode des 3 Verrous, les trois décisions que les familles averties
-            prennent de leur vivant pour transmettre intact ce qu&apos;elles ont construit.{" "}
+            Révélation : les trois décisions que les familles averties prennent de leur vivant pour
+            transmettre intact ce qu&apos;elles ont construit.{" "}
             <strong>Regardez cette courte vidéo de 9 minutes.</strong>
           </p>
 
-          <VideoEmbed id={VIDEO.vsl} title="La Méthode des 3 Verrous" minutes={9} />
+          <VideoEmbed id={VIDEO.vsl} title="Les 3 décisions" minutes={9} />
 
           <div className="mt-5 space-y-3">
             <ButtonLink href="/commande">{cta}</ButtonLink>
@@ -86,7 +86,7 @@ export default function VslPage() {
               ans, le compteur des 15 ans) sur une page
             </Check>
             <Check>
-              <strong>Le Plan en 1 Page</strong> : la fiche qui résume vos 3 Verrous
+              <strong>Le Plan en 1 Page</strong> : la fiche qui résume vos 3 décisions
             </Check>
             <Check>
               <strong>Le guide imprimable de 40 pages</strong> et 5 bonus
