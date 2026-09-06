@@ -139,6 +139,49 @@
   );
 }
 
+/* Voile directionnel : sombre la ou se pose le texte, transparent sur le sujet.
+   Le voile uniforme ci-dessus reste utile sur les photos de nature morte, mais
+   sur une photo ou quelqu'un est visible il eteint tout — le bloc REVE etait
+   photographie a l'heure doree et arrivait a l'ecran comme une scene de nuit.
+   Ici le texte occupe la moitie gauche : on assombrit la gauche, on laisse la
+   droite respirer, et on pose une assise en bas pour la coupe de section. */
+@utility scrim-left {
+  position: absolute;
+  inset: 0;
+
+  /* Sur telephone, le titre occupe toute la largeur : un degrade lateral
+     laisserait la fin de chaque ligne sur la partie claire de la photo. On
+     assombrit donc partout, un peu moins qu'avant pour garder l'heure doree. */
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 24, 42, 0.82) 0%,
+    rgba(8, 24, 42, 0.66) 45%,
+    rgba(8, 24, 42, 0.86) 100%
+  );
+
+  /* A partir de la tablette, le texte tient dans la moitie gauche : on peut
+     rendre la droite a la photo. */
+  @variant sm {
+    background:
+      linear-gradient(to bottom, rgba(8, 24, 42, 0) 70%, rgba(8, 24, 42, 0.32) 100%),
+      linear-gradient(
+        to right,
+        rgba(8, 24, 42, 0.9) 0%,
+        rgba(8, 24, 42, 0.74) 44%,
+        rgba(8, 24, 42, 0.2) 76%,
+        rgba(8, 24, 42, 0.1) 100%
+      );
+  }
+}
+
+/* Une ombre portee sous un titre blanc pose sur une photo. Elle ne se voit pas,
+   elle garantit seulement que la phrase reste lisible si le sujet bouge d'un
+   recadrage a l'autre — le titre passe sur la chemise claire du grand-pere des
+   que la fenetre depasse 1400 px. */
+@utility text-on-photo {
+  text-shadow: 0 2px 14px rgba(8, 24, 42, 0.85);
+}
+
 /* Le filet orange de la marque, sous un titre ou un bandeau. */
 @utility rule-orange {
   display: block;

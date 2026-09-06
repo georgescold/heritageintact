@@ -24,18 +24,18 @@ export function TheDreamFirst() {
       <div className="relative aspect-[16/11] w-full sm:aspect-[16/7]">
         <Image
           src="/img/grand-pere-petits-enfants.jpg"
-          alt="Un homme âgé et un enfant marchant main dans la main vers une maison, vus de dos."
+          alt="Un couple âgé et leur petit-enfant, vus de dos, marchant main dans la main vers leur maison au soleil couchant."
           fill
           sizes="100vw"
           className="object-cover object-center"
         />
-        <span className="scrim" />
+        <span className="scrim-left" />
         <div className="absolute inset-0 flex items-center">
           <div className="wrap">
-            <p className="mb-2 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-orange">
+            <p className="text-on-photo mb-2 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-orange">
               Commençons par la fin
             </p>
-            <h2 className="max-w-[34rem] text-[1.5rem] leading-tight text-white sm:text-[2.1rem]">
+            <h2 className="text-on-photo max-w-[34rem] text-[1.5rem] leading-tight text-white sm:text-[2.1rem]">
               Il y a une phrase que vos enfants diront de vous. Vous pouvez encore choisir laquelle.
             </h2>
           </div>
