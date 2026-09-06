@@ -122,7 +122,7 @@ export default function LandingPage() {
         <TheLastWord />
 
         {/* 11. CTA */}
-        <Section tone="grey" id="acces">
+        <Section tone="grey">
           <SectionTitle>Il reste une décision à prendre ce soir. Elle est gratuite.</SectionTitle>
 
           <div className="mb-6 space-y-3 text-[1.06rem]">
@@ -161,13 +161,14 @@ export default function LandingPage() {
             <Disqualification />
           </div>
 
-          <div className="border-2 border-blue bg-white p-4 sm:p-5">
-            <p className="mb-1 text-[1.2rem] font-bold text-blue">
-              Le calcul en entier, ce soir. Gratuitement.
-            </p>
+          {/* L'ancre est ICI et non sur la section : les neuf boutons de la page
+              renvoyaient sur le titre, et il restait huit cents pixels de texte
+              avant d'apercevoir un champ. scroll-mt garde le titre visible. */}
+          <div id="acces" className="scroll-mt-3 border-2 border-blue bg-white p-4 sm:p-5">
+            <p className="mb-1 text-[1.2rem] font-bold text-blue">Votre vidéo, tout de suite.</p>
             <p className="mb-4 text-[0.95rem] text-text-soft">
-              Vous recevez le lien immédiatement. Rien à installer, rien à payer pour la regarder,
-              aucun appel téléphonique.
+              Votre prénom, votre email, et la vidéo s&apos;ouvre sur la page suivante. Il n&apos;y
+              a pas d&apos;email à attendre, rien à installer, aucun appel téléphonique.
             </p>
             <OptinForm cta="Recevoir la vidéo de 9 minutes" />
             <div className="mt-3">
@@ -188,7 +189,7 @@ export default function LandingPage() {
       </main>
       <Footer />
 
-      <StickyCta label="Voir la vidéo de 9 minutes — gratuit" />
+      <StickyCta label="Débloquer la vidéo — gratuit" />
 
       <ExitPopup storageKey="lp" title="Vous fermez cette page. Les compteurs, eux, continuent.">
         <div className="mb-4">

@@ -286,7 +286,7 @@ export function TheThreeDatesTease() {
         Vous devez connaître ces trois dates avant que la plus proche ne soit derrière vous. La
         vidéo de 9 minutes vous dit lesquelles, et où vous en êtes par rapport à chacune.
       </p>
-      <CtaButton label="Découvrir mes 3 dates — gratuit" sombre />
+      <CtaButton label="Découvrir les 3 dates — accès immédiat" sombre />
     </Section>
   );
 }
@@ -346,7 +346,7 @@ export function TheMechanismShape() {
         où vous en êtes par rapport à chacune, et l&apos;ordre dans lequel les prendre. Neuf
         minutes, chez vous, sans rendez-vous.
       </p>
-      <CtaButton label="Voir les 3 décisions — gratuit" />
+      <CtaButton label="Voir les 3 décisions — accès immédiat" />
     </Section>
   );
 }
@@ -440,7 +440,7 @@ export function TheGuarantee() {
           avez-vous déjà vu une facture de notaire arriver avec une garantie de remboursement&nbsp;?
         </strong>
       </p>
-      <CtaButton label="Regarder la vidéo — c'est gratuit" />
+      <CtaButton label="Regarder la vidéo — accès immédiat" />
     </Section>
   );
 }
@@ -625,7 +625,7 @@ function InlineCta({
         {label}
       </a>
       <p className="mt-2 text-center text-[0.85rem] text-text-soft">
-        Vidéo de 9 minutes · gratuite · aucun appel téléphonique
+        Votre prénom et votre email, et la vidéo s&apos;ouvre aussitôt · 9 minutes · gratuite
       </p>
     </div>
   );
@@ -638,13 +638,16 @@ export function CtaVerify() {
       <InlineCta
         kicker="Et chez vous, ça donne quoi ?"
         title="Ce calcul, vous pouvez le refaire sur votre propre situation ce soir."
-        label="Voir le calcul en entier — gratuit"
+        label="Débloquer la vidéo — accès immédiat"
       >
         <p>
           Vous n&apos;êtes pas du genre à croire un chiffre sur parole, sinon vous ne seriez pas
           encore en train de lire. Alors ne nous croyez pas&nbsp;: la vidéo reprend ce calcul à
           l&apos;écran, ligne par ligne, avec les articles en référence. Vous n&apos;avez plus
           qu&apos;à remplacer les montants par les vôtres — un stylo suffit.
+        </p>
+        <p className="mt-2 font-bold text-blue">
+          Elle se débloque avec un prénom et un email, et elle s&apos;ouvre tout de suite.
         </p>
       </InlineCta>
     </Section>
@@ -658,7 +661,7 @@ export function CtaDates() {
       <InlineCta
         kicker="La seule question qui compte maintenant"
         title="Laquelle de vos trois dates est la plus proche ?"
-        label="Connaître mes 3 dates — gratuit"
+        label="Savoir laquelle est la plus proche — accès immédiat"
       >
         <p>
           Martine avait dépassé la sienne de trois mois, et elle ne l&apos;a jamais su. Il y en a
@@ -680,7 +683,7 @@ export function CtaTwoChoices() {
       <InlineCta
         kicker="Vous avez deux options"
         title="Il n'y a pas de troisième colonne."
-        label="Voir comment on passe à droite"
+        label="Voir comment on passe à droite — accès immédiat"
       >
         <p>
           Soit vos enfants ouvrent un tiroir et tombent sur la colonne de gauche&nbsp;: la facture,
@@ -704,7 +707,7 @@ export function CtaFirstStep() {
       <InlineCta
         kicker="La première marche"
         title="Tout ça commence par neuf minutes, ce soir."
-        label="Commencer ce soir — gratuit"
+        label="Commencer ce soir — accès immédiat"
       >
         <p>
           Pas un rendez-vous à décrocher. Pas un dossier à monter. Pas un centime pour la regarder.
@@ -723,7 +726,7 @@ export function CtaDetached() {
       <InlineCta
         kicker="Ça ne changera rien pour nous"
         title="Que vous regardiez cette vidéo ou non, la loi ne bouge pas."
-        label="Savoir où j'en suis — gratuit"
+        label="Savoir où j'en suis — accès immédiat"
       >
         <p>
           Les trois dates avanceront exactement pareil. Le barème s&apos;appliquera exactement
@@ -758,7 +761,7 @@ export function CtaButton({ label, sombre = false }: { label: string; sombre?: b
       <p
         className={`mt-2 text-center text-[0.85rem] ${sombre ? "text-white/70" : "text-text-soft"}`}
       >
-        Vidéo de 9 minutes · gratuite · aucun appel téléphonique
+        Votre prénom et votre email, et la vidéo s&apos;ouvre aussitôt · 9 minutes · gratuite
       </p>
     </div>
   );
