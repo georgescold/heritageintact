@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\""
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\"",
+    "emails:verifier": "node scripts/verifier-emails.mjs"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^6.9.0",

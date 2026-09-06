@@ -16,7 +16,26 @@ const API = "https://api.resend.com/emails";
 /** Sans clé (développement local), on n'envoie rien et on ne casse rien. */
 const CLE = process.env.RESEND_API_KEY;
 
-export const EXPEDITEUR = process.env.EMAIL_FROM ?? "Héritage Intact <contact@heritageintact.fr>";
+/**
+ * L'expéditeur.
+ *
+ * Le nom affiché est « un prénom — une marque », comme tranché dans
+ * `09-emails.md` : les emails sont écrits à la première personne, un expéditeur
+ * impersonnel les contredirait, et l'expéditeur pèse autant que l'objet dans la
+ * décision d'ouvrir.
+ *
+ * Les réponses partent ailleurs : `reply_to` pointe sur CONTACT_EMAIL, la boîte
+ * réellement relevée (Zoho).
+ *
+ * ⚠️ L'adresse devrait être sur le **sous-domaine d'envoi**
+ * `info.heritageintact.fr` : une séquence qui prend des plaintes abîmerait alors
+ * la réputation de `info.` seulement, et le courrier humain de la racine
+ * continuerait d'arriver. Le DNS du sous-domaine est complet et vérifié, mais
+ * Resend refuse encore d'y envoyer (403). Le détail du diagnostic et la marche à
+ * suivre sont dans `.env.local`, et `pnpm emails:verifier` dit où on en est.
+ */
+export const EXPEDITEUR =
+  process.env.EMAIL_FROM ?? "Loys — Héritage Intact <loys@heritageintact.fr>";
 
 /** Lien de désinscription propre à chaque inscrit. L'identifiant suffit : il est aléatoire. */
 export const lienDesinscription = (leadId: string) => `${SITE_URL}/desinscription?id=${leadId}`;
