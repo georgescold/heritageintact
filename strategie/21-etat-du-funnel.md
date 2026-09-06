@@ -3,65 +3,55 @@
 > Le seul document à ouvrir pour savoir **où on en est**. Il répond à une seule
 > question : est-ce qu'on peut envoyer du trafic payant aujourd'hui ?
 >
-> **Réponse : non.** Un bloqueur, un seul, et il est décrit au § 1.
+> **Réponse : presque.** Le bloqueur technique est levé (§ 1) — la base est
+> branchée et vérifiée en production. Il manque **la VSL**, et c'est elle qui
+> vend : le funnel se parcourt entièrement sans elle mais ne convertira pas.
 
 ---
 
-# ═══ 1. LE BLOQUEUR — la base de données ═══
+# ═══ 1. LA BASE DE DONNÉES — ✅ RÉGLÉ LE 6 SEPTEMBRE 2026 ═══
 
-Les leads et les commandes vivent dans un fichier JSON (`src/lib/db.ts`). En
-local, c'est `./data/db.json` et tout fonctionne. **Sur Vercel, le disque est en
-lecture seule sauf `/tmp` — et `/tmp` est éphémère et propre à chaque instance.**
+C'était le seul bloqueur de mise en ligne. Il ne l'est plus.
 
-En production, sans base :
+**Le problème.** Les leads et les commandes vivaient dans un fichier JSON. Sur
+Vercel le disque est en lecture seule sauf `/tmp`, et `/tmp` est éphémère ET
+propre à chaque instance. En production : un inscrit écrit sur une instance
+n'existait pas pour la suivante, le cron ne voyait presque personne, et la
+commande n'étant pas retrouvée après le paiement, **la chaîne d'upsells
+cassait** — sans une seule erreur affichée.
 
-| Ce qui se passe | Conséquence |
+**Ce qui est en place.**
+
+| | |
 |---|---|
-| Un inscrit est écrit sur l'instance A | L'instance B ne le connaît pas |
-| Le cron des emails lit `/tmp` | Il ne voit presque personne |
-| Après paiement, la commande n'est pas retrouvée | `/plan-complet` redirige : **la chaîne d'upsells casse** |
+| Fournisseur | Supabase, organisation `HeritageIntact` |
+| Projet | `heritage-intact` — ref `ylmqybfcmexlpwatbzuw` |
+| Région | `eu-west-3` (Paris) — audience française, données dans l'UE |
+| Connexion | pooler **transaction**, port 6543 |
+| Tables | `leads`, `orders` — créées automatiquement à la première écriture |
 
-**Rien ne plante. Rien ne s'affiche en erreur. Les données disparaissent en
-silence.** C'est la pire catégorie de bug — d'où la bannière rouge posée le
-6 septembre sur toutes les pages, qui s'éteindra toute seule dès que
-`POSTGRES_URL` sera renseignée.
+Le code (`src/lib/db.ts`) garde **deux implémentations derrière les mêmes
+signatures** : Postgres si `POSTGRES_URL` est renseignée, fichier JSON sinon.
+C'est du SQL standard, pas des appels propres à Supabase — changer de
+fournisseur ne demanderait que de changer la chaîne de connexion.
 
-> **Tant que ce point n'est pas réglé, chaque euro de publicité est perdu.**
+**Comment ça a été vérifié.** Les huit fonctions exécutées une par une contre la
+vraie base : création d'inscrit, idempotence sur l'email en majuscules,
+marquage d'étape sans doublon, commande front+bump à 44 €, ajout d'upsell
+idempotent (total 341 €), passage en payé avec carte mémorisée, compteur de
+fondateurs, désinscription. Puis les lignes de test supprimées. Enfin, en
+production : `/methode` et `/commande` renvoient 200 et affichent « 500 places »
+— un chiffre qui vient d'une requête réelle sur Supabase depuis Vercel.
 
-## ✅ Le code est écrit (6 septembre, fin de journée)
-
-`db.ts` a désormais **deux implémentations derrière les mêmes signatures** :
-
-```
-POSTGRES_URL renseignée  →  Postgres      (production)
-sinon                    →  data/db.json  (développement local)
-```
-
-C'est du **SQL standard**, pas des appels propres à un hébergeur : la même
-couche marche avec le Postgres de Vercel, Supabase, Neon, Railway ou une base
-auto-hébergée. Les tables se créent toutes seules à la première écriture.
-
-Les huit fonctions ont été testées une par une : création d'inscrit,
-idempotence sur l'email, création de commande, ajout d'article idempotent,
-passage en payé avec mémorisation de la carte, compteur de fondateurs,
-désinscription. Le mode Postgres corrige au passage deux courses que le mode
-fichier avait : le get-or-create est atomique, et l'ajout d'un article ne peut
-plus doubler sur un double clic.
-
-## ⚠️ Ce qu'il reste — et ça ne prend que deux minutes
-
-**Créer la base.** Je ne peux pas le faire : le token Vercel fourni est
-restreint au projet (403 sur les intégrations), et le Postgres first-party de
-Vercel est retiré (`410 gone`) — le stockage passe maintenant par le
-Marketplace.
-
-1. Vercel → le projet `heritageintact` → onglet **Storage** → **Create Database**
-2. Choisir **Neon** (Postgres, offre gratuite) ou **Supabase**
-3. Le connecter au projet : `POSTGRES_URL` est injectée automatiquement
-4. Redéployer
-
-À la première inscription, les tables se créent seules et la bannière rouge
-s'éteint. **Aucun code à toucher.**
+> ### ⚠️ Le mot de passe de la base n'existe qu'à un seul endroit
+>
+> Supabase ne le réaffiche **jamais** après la création du projet. Il ne vit que
+> dans `site/.env.local`, à la ligne `POSTGRES_URL`, et dans les variables
+> d'environnement Vercel. Perdre ce fichier oblige à le régénérer depuis le
+> dashboard Supabase, puis à mettre à jour Vercel.
+>
+> **`.env.local` n'est sauvegardé nulle part** : il est ignoré par git, et c'est
+> voulu. En faire une copie hors du disque est une bonne idée.
 
 ---
 
@@ -108,9 +98,12 @@ ADS → /  (landing page, structure #2)          l'email
 
 ## Bloquant — rien ne peut être lancé avant
 
-- [ ] **Créer la base** (§ 1). Trois clics dans Vercel → Storage. Le code est prêt.
-- [ ] **Révoquer les cinq clés exposées** : Stripe live, Stripe test, fal.ai,
-      Resend, et le token Vercel. Elles ont toutes transité par une conversation.
+- [x] ~~Créer la base~~ — **fait le 6 septembre.** Supabase à Paris, testée de
+      bout en bout, lue depuis la production (§ 1).
+- [ ] **Révoquer les six clés exposées** : Stripe live, Stripe test, fal.ai,
+      Resend, le token Vercel et le token Supabase. Toutes ont transité par une
+      conversation. ⚠️ Ne PAS toucher au mot de passe de la base sans mettre à
+      jour `POSTGRES_URL` en local et sur Vercel dans la foulée.
 - [x] ~~Variables d'environnement Vercel~~ — **fait le 6 septembre.**
       `RESEND_API_KEY`, `EMAIL_FROM` et `CRON_SECRET` posées ; et
       `NEXT_PUBLIC_SITE_URL`, qui existait avec une valeur **vide**, corrigée.
@@ -188,12 +181,14 @@ python strategie/assets/generer-visuels.py martine   # refaire une image
 
 # ═══ 6. LA RÉPONSE COURTE ═══
 
-**Le funnel est complet et se parcourt de bout en bout. Il n'est pas ouvrable.**
+**Le funnel est complet, il tourne, et il conserve ce qu'on lui confie.**
 
-Il manque deux choses, et une seule est technique :
+Il manque **une** chose pour ouvrir : **la VSL**. C'est elle qui vend ; tout le
+reste ne fait que l'amener. Le script est prêt dans `05-vsl-front.md`.
 
-1. **La base de données.** Une demi-journée. Sans elle, les leads se perdent.
-2. **La VSL.** C'est elle qui vend ; tout le reste ne fait que l'amener.
+Puis, avant le premier euro de publicité : faire tourner les clés exposées, et
+poser les clés Stripe. Sans elles le paiement reste simulé — ce qui est l'état
+sûr tant que le site n'ouvre pas.
 
-Le jour où ces deux-là sont là, le reste de la liste devient de
-l'optimisation — c'est-à-dire du travail sans fin, mais du travail rentable.
+Le reste de la liste est de l'optimisation : du travail sans fin, mais du
+travail rentable.
