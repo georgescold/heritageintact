@@ -164,15 +164,16 @@ export const PRIX_APRES_FONDATEURS = 67;
  *
  * ⚠️ Passé de 500 à 50 le 6 septembre 2026, et c'est une décision de fond.
  * « Il reste 500 places » ne crée aucune urgence — personne ne se dépêche pour
- * une place sur cinq cents. « Il reste 50 places » en crée une, et la
+ * une place sur cinq cents. « Il reste 20 places » en crée une, et la
  * différence est qu'elle est **vraie** : le compteur descend pour de bon à
- * chaque vente, et le prix passera réellement à 67 € à la 50ᵉ.
+ * chaque vente, et le prix passera réellement à 67 € à la 20ᵉ.
  *
  * Une rareté réelle et petite est plus forte qu'une rareté large — et elle ne
  * se retourne pas contre la marque le jour où quelqu'un recharge la page.
- * 50 retours suffisent largement pour la version 2 du simulateur.
+ * 20 retours suffisent largement pour la version 2 du simulateur, et le prix
+ * monte d'autant plus vite.
  */
-export const FOUNDERS_CAP = 50;
+export const FOUNDERS_CAP = 20;
 
 const CLE_STRIPE = process.env.STRIPE_SECRET_KEY ?? "";
 

@@ -4,6 +4,7 @@ import { ExitPopup } from "@/components/ExitPopup";
 import { FoundersCounter } from "@/components/FoundersCounter";
 import { PixelEvent } from "@/components/MetaPixel";
 import { StickyCta } from "@/components/StickyCta";
+import { UrgencyCountdown } from "@/components/Urgency";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { ButtonLink, Check, FAQ, Panel, ValueStack } from "@/components/ui";
 import { BeforeAfter, TheDeadline, TheNumber } from "@/components/Lp";
@@ -75,11 +76,16 @@ const PACKAGING = [
  * récit.
  */
 export default function VslPage() {
-  // Un CTA se dit à la première personne, en trois mots, et nomme le DÉSIR —
-  // pas le contenu de la commande. « Je veux mon chiffre et les 3 décisions :
-  // 27 € » listait un bon de livraison. Le prix et la garantie vivent sur la
-  // ligne d'en dessous, où ils rassurent au lieu d'alourdir.
-  const cta = "Je veux mon chiffre";
+  // ⚠️ Un CTA est un VERBE D'ACTION, à l'impératif. C'est le seul exemple
+  // rédigé du repo — « Cliquez sur le bouton ci-dessous pour découvrir… »
+  // (`05-funnel/landing-pages.md`) — et « Agressivité du CTA » est un levier
+  // nommé de la checklist d'optimisation.
+  //
+  // Deux versions ont été écartées : « Je veux mon chiffre et les 3 décisions :
+  // 27 € » (un bordereau de livraison), puis « Je veux mon chiffre » (correct,
+  // mais au présent de l'indicatif : ça décrit une envie, ça n'ordonne pas un
+  // geste). Le prix et la garantie vivent sur la ligne d'en dessous.
+  const cta = "Calculez votre facture maintenant";
 
   return (
     <>
@@ -114,7 +120,13 @@ export default function VslPage() {
               <span className="line-through">{euros(PRODUCTS.front.anchor)}</span> · accès immédiat
               · garantie 30 jours, sans justification
             </p>
+            {/* Les deux raretés côte à côte, et les deux sont vraies : le
+                nombre de places lit la base et descend à chaque vente ; le
+                compte à rebours bat à la seconde vers une date votée au
+                Parlement. C'est ce qui donne du mouvement à l'écran sans
+                inventer un seul chiffre. */}
             <FoundersCounter />
+            <UrgencyCountdown />
           </div>
         </section>
 
