@@ -136,7 +136,7 @@ Livrables : Simulateur (Google Sheet + version Excel + version papier), Calendri
 
 ---
 
-# ═══ UPSELL 1 — 197 € ═══
+# ═══ UPSELL 1 — 297 € ═══
 # « Le Plan Transmission Complet — les 12 situations familiales »
 
 *Le nouveau problème du client après le front : "dans MA situation, quoi, dans quel ordre ?"*

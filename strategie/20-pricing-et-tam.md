@@ -179,6 +179,79 @@ est une bonne nouvelle — et en prime, moins de clients à gérer.
 
 ---
 
+## ═══ 5 bis. DÉCISIONS DU 6 SEPTEMBRE 2026 ═══
+
+### Upsell 1 : 197 € → **297 €**, en ligne
+
+Pas 397 € comme envisagé plus haut, et pour deux raisons qui n'étaient pas dans
+l'analyse initiale :
+
+1. La doctrine **nomme** ce prix : *« comment vendre du 297 € correctement : le
+   297 € en upsell 1 »* (`09-faq/arbitrages.md`).
+2. Le stack de valeur de `/plan-complet` est **calculé depuis ses lignes** et
+   totalise 497 €. À 397 € la page afficherait « 497 € → 397 € », soit 20 % de
+   remise : une offre qui paraît faible. À 297 €, c'est 40 %, et chaque euro
+   annoncé est justifié ligne par ligne devant un avatar méfiant.
+
+```
+197 € à 7,00 %  →  13,79 €   référence
+297 € à 4,64 %  →  13,78 €   le seuil
+297 € à 6,00 %  →  17,82 €   +29 %
+```
+
+Le prix monte de 51 %, le taux de prise peut chuter de **34 %** avant qu'on y
+perde.
+
+### Front 27 € et bump 17 € : deux réponses opposées
+
+La question « peut-on monter largement » n'a pas la même réponse pour les deux,
+et la différence n'est pas une question de prudence — c'est de l'arithmétique.
+
+| Prix | Hausse testée | Chute de conversion tolérée | Ce qu'on risque |
+|---|---|---|---|
+| Upsell 1 · 197 → 297 € | +51 % | **−34 %** | une transaction |
+| **Bump** · 17 → 27 € | +59 % | **−37 %** | une transaction |
+| **Front** · 27 → 47 € | +74 % | **−18 %** | **toute la LTV** |
+
+**Le bump : oui, à tester.** Refuser le bump ne fait pas sortir du tunnel — on
+reste acheteur, on entre quand même dans les upsells et dans les quatre
+backends. Le risque est donc borné à cette seule ligne, exactement comme pour
+l'upsell 1. Seuil : le bump à 27 € reste gagnant tant que la prise dépasse
+**22 %** (contre 35 % aujourd'hui).
+
+**Le front : non, pas maintenant.** C'est le seul prix du funnel dont une baisse
+de conversion ne coûte pas une transaction mais **un acheteur** — et un acheteur
+perdu, c'est le bump, les deux upsells, les quatre backends et un email en moins.
+Le calcul, sur 100 leads :
+
+```
+Front 27 €, LTV 90 €    →  5,20 % × 90 €  = 468 €
+Front 47 €, LTV 110 €   →  c × 110 € = 468 €  →  c = 4,25 %
+```
+
+Une hausse de **+74 %** n'est rentable que si la conversion chute de **moins de
+18 %**. C'est la tolérance la plus étroite du funnel, parce que les 20 € gagnés
+ne pèsent que +22 % de la LTV alors que le nombre d'acheteurs multiplie la LTV
+**entière**.
+
+> C'est le rôle du front qui l'interdit, pas son prix. Le funnel 1 est au
+> break-even : son seul travail est d'acheter des **acheteurs**. Tout ce qui
+> réduit leur nombre attaque le funnel 2, là où est le profit.
+
+### La règle qui décide de l'ordre
+
+> **On teste UNE variable à la fois.**
+
+Le test de l'upsell 1 tourne depuis aujourd'hui. Lancer en même temps un test
+sur le front rendrait les deux illisibles : une conversion qui bouge, deux
+causes possibles, aucune conclusion. L'ordre :
+
+1. Upsell 1 à 297 € — **en cours**
+2. Bump à 27 €, une fois le premier tranché
+3. Front à 37 ou 47 €, en dernier, et seulement avec du volume
+
+---
+
 ## ═══ 6. CE QUE VALÈRE AURAIT VU ET QU'ON A RATÉ ═══
 
 ### Le besoin de papier est réel — mais on ne vendra rien de physique

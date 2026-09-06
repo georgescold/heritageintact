@@ -81,7 +81,7 @@ DIY low ticket (27 €)  →  bump + 2 upsells DIY  →  4 produits backend DIY 
 |---|---|---|---|
 | Front | DIY | 27 € | Faire rentrer des **acheteurs** dans l'écosystème. Break-even. |
 | Bump | DIY | 17 € | No-brainer. Monte l'EPC. |
-| Upsell 1 | DIY | 197 € | La marge du funnel 1. Prix décroissant ensuite. |
+| Upsell 1 | DIY | **297 €** | La marge du funnel 1. Test de prix depuis le 6 sept. 2026 (197 → 297). Décroissant ensuite. |
 | Upsell 2 | DIY | 97 € | Marge additionnelle. |
 | Backend 1 (VSL 2) | DIY — outil web | 147 € | Le Générateur de Dossier Notaire. Le "gros" produit, sans délivrance. |
 | Backend 2 (VSL 3) | DIY | 97 € | Kit Dépendance. Problème voisin, même avatar. |
@@ -126,7 +126,7 @@ expert ». On dit « Héritage Intact a été créé pour… », « voici ce que
 NICHE      : Transmission de patrimoine / succession — France — 60-78 ans propriétaires
 CANAL      : Meta Ads Broad France, format 1:1, puis emailing
 AWARENESS  : Problem aware (froid) → Solution aware (acheteurs)
-FORMAT     : DIY 27 € + bump 17 € + upsells 197 € / 97 € → backend DIY 147 / 97 / 67 / 47 € par email
+FORMAT     : DIY 27 € + bump 17 € + upsells 297 € / 97 € → backend DIY 147 / 97 / 67 / 47 € par email
 NARRATEUR  : aucun. Marque éditoriale et documentaire, voix off mature, zéro visage
 ```
 

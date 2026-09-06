@@ -185,7 +185,7 @@ Reporté de B.0. ✅ Simple (3 verrous) · Rapide (3 semaines) · Clair (une phr
 |---|---|---|---|---|---|
 | **Front** | Les 7 Erreurs | DIY | **27 €** | ~~67 €~~ | Acquérir des acheteurs. Break-even. |
 | **Bump** | Le Dossier Notaire Prêt-à-Signer | DIY | **17 €** | ~~47 €~~ | Pré-coché. "Décision facile." |
-| **Upsell 1** | Le Plan Transmission Complet (12 situations) | DIY | **197 €** | ~~497 €~~ | La marge du funnel 1. |
+| **Upsell 1** | Le Plan Transmission Complet (12 situations) | DIY | **297 €** | ~~497 €~~ | La marge du funnel 1. Test de prix depuis le 6 sept. 2026 (197 → 297) — voir `20-pricing-et-tam.md` § 5 bis. |
 | **Upsell 2** | Le Kit Assurance-Vie | DIY | **97 €** | ~~197 €~~ | Décroissant. |
 | **Backend 1** (VSL 2, J+10) | Le Générateur de Dossier Notaire | DIY — outil web | **147 €** | ~~297 €~~ | Le "gros" produit. Zéro délivrance. |
 | **Backend 2** (VSL 3, J+31) | Le Kit Dépendance | DIY | **97 €** | ~~197 €~~ | Problème voisin, même avatar. |
@@ -199,12 +199,19 @@ Reporté de B.0. ✅ Simple (3 verrous) · Rapide (3 semaines) · Clair (une phr
 
 **Panier moyen cible (funnel 1) :**
 ```
-27 € (100 %) + 17 € × 35 % (bump) + 197 € × 12 % (U1) + 97 € × 10 % (U2)
-= 27 + 5,95 + 23,64 + 9,70 ≈ 66 € par acheteur
+27 € (100 %) + 17 € × 35 % (bump) + 297 € × 8 % (U1) + 97 € × 10 % (U2)
+= 27 + 5,95 + 23,76 + 9,70 ≈ 66 € par acheteur
 ```
 → Le CPA cible sur Meta est donc **≤ 60 €** pour être break-even en front. Cf. `10-technique-et-lancement.md`.
 
-**Split de paiement :** aucun (aucun produit > 197 €). Simplicité = confiance sur cet avatar.
+**Split de paiement :** aucun. Le produit le plus cher est l'upsell 1 à 297 €, et un
+paiement en plusieurs fois ajouterait une décision là où on en veut le moins. Simplicité =
+confiance sur cet avatar.
+
+> ⚠️ Le taux de prise de l'upsell 1 est passé de 12 % à **8 %** dans ce calcul : c'est
+> l'hypothèse prudente qui accompagne la hausse de 197 € à 297 €. À 8 % le panier moyen est
+> inchangé (66 €) ; le seuil réel de neutralité est **4,64 %**. Tout ce qui est au-dessus est
+> du gain. Voir `20-pricing-et-tam.md` § 5 bis.
 
 **LTV cible à 90 jours :**
 ```
@@ -232,7 +239,7 @@ Front 66 € + Générateur 147 × 10 % + Dépendance 97 × 8 % + Classeur 67 ×
 |---|---|---|---|---|
 | Entrée | Les 7 Erreurs | 27 € | *"OK j'ai mon chiffre et je connais les 3 verrous. Mais dans MA situation, lequel en premier, et comment ?"* | Module 7 (la grille des situations) + Plan en 1 page ("votre situation : voir le plan-type n°X") + thank you page |
 | Bump | Dossier Notaire | 17 € | — (complète le front) | Bon de commande |
-| Upsell 1 | Plan Transmission Complet | 197 € | *"J'ai mon plan-type. Mon assurance-vie de banque, elle, est-elle bien faite ?"* | Le plan-type renvoie systématiquement au Test des 3 Questions |
+| Upsell 1 | Plan Transmission Complet | 297 € | *"J'ai mon plan-type. Mon assurance-vie de banque, elle, est-elle bien faite ?"* | Le plan-type renvoie systématiquement au Test des 3 Questions |
 | Upsell 2 | Kit Assurance-Vie | 97 € | *"Je sais quoi faire. Maintenant il faut tout mettre au propre pour le notaire — et je n'ai pas envie de recalculer à la main."* | Dernier module de chaque produit + séquence acheteurs J+10 |
 | **Backend 1** | Le Générateur de Dossier Notaire | 147 € | *"C'est réglé pour la transmission. Et si je perds mon autonomie avant ?"* | Onglet "Outils" dans l'espace membre + thank you page + VSL 2 (J+10) |
 | **Backend 2** | Le Kit Dépendance | 97 € | *"J'ai tout sur mon ordinateur. Je voudrais l'avoir sous la main, sur papier, avec ma femme."* | VSL 3 (J+31) |

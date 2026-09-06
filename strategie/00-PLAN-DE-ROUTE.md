@@ -19,7 +19,7 @@ LANDING PAGE ── email ──► VSL FRONT (9 min)
                       + BUMP        17 €   "Le Dossier Notaire"  (pré-coché)
                               │
                               ▼
-                    UPSELL 1       197 €   "Le Plan Transmission Complet"
+                    UPSELL 1       297 €   "Le Plan Transmission Complet"
                               │
                               ▼
                     UPSELL 2        97 €   "Le Kit Assurance-Vie"

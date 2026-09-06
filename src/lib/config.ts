@@ -67,11 +67,39 @@ export const PRODUCTS: Record<ProductSku, Product> = {
     price: 17,
     anchor: 47,
   },
+  /**
+   * ⚠️ TEST DE PRIX EN COURS depuis le 6 septembre 2026 : 197 € → 297 €.
+   *
+   * C'est la ligne qui porte le plus de revenu par point de taux de prise, et
+   * la question de Valère s'y applique directement : *si je double le prix,
+   * est-ce que j'ai deux fois moins de conversions ?*
+   *
+   *   197 € à 7 %    → 13,79 € par acheteur   (référence)
+   *   297 € à 4,64 % → 13,78 €                (le seuil : neutre)
+   *   297 € à 6 %    → 17,82 €                (+29 %)
+   *
+   * Le prix monte de 51 %, donc le taux de prise peut chuter de 34 % avant
+   * qu'on y perde. Peu probable : l'acheteur vient de payer, il a 650 000 €
+   * en jeu, et 297 € représentent moins d'un mois de son épargne.
+   *
+   * ⚠️ Pourquoi 297 et pas 397. Deux raisons.
+   *   1. La doctrine nomme ce prix : « comment vendre du 297 € correctement :
+   *      le 297 € en upsell 1 » (`09-faq/arbitrages.md`).
+   *   2. Le stack de valeur de /plan-complet est CALCULÉ depuis ses lignes et
+   *      totalise 497 €. À 397 € la page afficherait « 497 € → 397 € », soit
+   *      20 % de remise : une offre qui paraît faible. À 297 €, c'est 40 %,
+   *      et chaque euro annoncé est justifié ligne par ligne.
+   *
+   * ⚠️ Se juger sur l'EPC, jamais sur le taux de prise. Un taux qui baisse
+   * pendant que l'EPC monte est une bonne nouvelle.
+   *
+   * Pour revenir en arrière : 197.
+   */
   upsell1: {
     sku: "upsell1",
     name: "Le Plan Transmission Complet : les 12 situations familiales",
     short: "Plan Transmission Complet",
-    price: 197,
+    price: 297,
     anchor: 497,
   },
   upsell2: {

@@ -250,7 +250,7 @@ Footer : CGV · mentions légales · confidentialité
 
 ---
 
-## 3. UPSELL 1 — Le Plan Transmission Complet (197 €)
+## 3. UPSELL 1 — Le Plan Transmission Complet (297 €)
 
 > Page OTO. **Pas d'exit pop-up.** Vidéo de 4-5 min + texte. Un bouton OUI, un lien NON discret en bas.
 > Ton : "vous venez de faire le premier pas — voici le raccourci."
@@ -290,9 +290,9 @@ CE QUE VOUS RECEVEZ                                             VALEUR
 • 3 modèles de clause bénéficiaire commentés                     47 €
 • Le tableau de bord familial                                    39 €
                                                      TOTAL      497 €
-                                          AUJOURD'HUI SEULEMENT 197 €
+                                          AUJOURD'HUI SEULEMENT 297 €
 
-[   OUI — J'AJOUTE LE PLAN TRANSMISSION COMPLET À MA COMMANDE (197 €)   ]
+[   OUI — J'AJOUTE LE PLAN TRANSMISSION COMPLET À MA COMMANDE (297 €)   ]
        Un seul clic. Garantie 30 jours.
 
 (en petit, en bas)  Non merci, je préfère trouver seul le bon ordre pour ma situation.
