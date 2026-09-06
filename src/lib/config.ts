@@ -92,6 +92,7 @@ export const VARIANTES: Record<string, string> = {
   "/": "A — LP MAX",
   "/lp-courte": "B — courte + pop-up",
   "/lp-questions": "C — questionnaire",
+  "/lp-classique": "D — classique (mécanisme)",
 };
 
 /** Nombre de places fondatrices au prix de 27 €. Le compteur est réel (cf. db). */

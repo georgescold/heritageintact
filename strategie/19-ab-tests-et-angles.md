@@ -47,6 +47,65 @@ donc on peut remonter du lead jusqu'à l'achat.
 
 ---
 
+# ═══ 1 bis. LA VARIANTE D — pourquoi elle existe (6 septembre 2026) ═══
+
+Le tableau de choix de `05-funnel/landing-pages.md` attribue la **LP MAX (#6) au high
+ticket**. Or `/` est une LP MAX et vend un produit à **27 €**. Les trois structures
+prévues pour le low ticket — #1 courte, #2 classique, #3 forms — ont un point commun
+que la MAX n'a pas : **elles prennent l'email en haut de page, avant tout contenu
+long, et aucune ne montre la VSL avant.**
+
+`/lp-classique` est la **structure #2, appliquée à la lettre** : headline (bénéfice en
+question) → sub-headline (objection levée) → sub-sub-headline (mécanisme en deux
+lignes) → formulaire → bouton. Plus les quatre améliorations, plus la disqualification
+empruntée à la MAX, plus le pop-up de sortie. Aucune photo : la structure #2 est du
+texte et un formulaire.
+
+## Les quatre variantes en piste
+
+| URL | Structure | Ce qu'elle parie |
+|---|---|---|
+| `/` | #6 MAX | La confiance avant l'email. Long, émotionnel, le formulaire après la preuve. |
+| `/lp-courte` | #1 courte + pop-up | Le volume. Un bouton, le formulaire seulement dans le pop-up. |
+| `/lp-questions` | #3 forms | La règle des 3 oui. Prévue pour le ciblage très large — c'est le nôtre. |
+| `/lp-classique` | #2 classique | Le mécanisme posé en deux lignes, puis l'email tout de suite. |
+
+## Le seuil qui décide, calculé à l'avance
+
+Ce n'est pas le taux d'opt-in. Avec 100 visiteurs :
+
+| | Opt-in | Leads | Lead → acheteur | Acheteurs |
+|---|---|---|---|---|
+| `/` (page longue) | 20 % | 20 | 5,2 % | **1,04** |
+| Page courte | 45 % | 45 | **X** | 45 × X |
+
+Égalité à **X = 2,31 %**. Autrement dit : **la page courte gagne tant que ses leads
+convertissent à plus de 2,31 %**, c'est-à-dire tant que la qualité ne chute pas de plus
+de 55 %. C'est le nombre à surveiller, et le champ `source` en base permet de le
+calculer lead par lead.
+
+## Le repère mobile, mesuré
+
+> *Si le bouton est atteignable sans scroller sur mobile, tu gagnes en conversion.*
+
+| Écran | Bas du bouton | Visible sans scroll |
+|---|---|---|
+| 375 × 812 (iPhone 11 Pro, 12 mini) | 885 px | non — manque 73 px |
+| 390 × 844 (iPhone 14, 15) | 885 px | non — manque 41 px |
+| 412 × 915 (Android courant) | 853 px | **oui** |
+
+Les deux champs et la case CGV sont au-dessus de la ligne de flottaison sur les trois.
+Sous un bandeau d'urgence de 92 px et un en-tête de 61 px, deux champs à gros
+caractères, une case CGV et un bouton font **309 px irréductibles** : aller plus loin
+reviendrait à réduire le corps du texte pour un lecteur de 67 ans, ce qui est le
+mauvais échange.
+
+**C'est précisément le compromis que la structure #1 résout autrement** : bouton sur la
+page, formulaire dans le pop-up. D'où l'intérêt de faire tourner `/lp-courte` contre
+`/lp-classique` — le test met un prix sur ce compromis.
+
+---
+
 # ═══ 2. LES HEADLINES À TESTER ═══
 
 > Toutes sont écrites pour la page, pas pour l'annonce. Sur une **créative Meta**,
