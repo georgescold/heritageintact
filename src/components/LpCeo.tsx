@@ -43,40 +43,43 @@ export function TheDreamFirst() {
       </div>
 
       <div className="bg-white py-8 sm:py-12">
+        {/*
+          Le jour est NOMMÉ dès la première ligne : « imaginez le jour » sans
+          dire lequel laissait le lecteur chercher de quoi on parle.
+          Aucun prénom d'enfant non plus — ils venaient du dossier avatar, et
+          le lecteur ne les connaît évidemment pas.
+          Un seul temps : une scène au présent, qu'on regarde.
+        */}
         <div className="wrap space-y-4 text-[1.08rem]">
           <p>
-            Imaginez le jour. Il arrivera, et ce n&apos;est pas la peine d&apos;en faire un drame.
-            Mais imaginez-le vraiment.
+            Un jour, vos enfants se retrouveront dans cette maison sans vous. C&apos;est le seul
+            rendez-vous que personne ne manque, et il n&apos;y a pas de quoi en faire un drame. Mais
+            prenez une minute pour l&apos;imaginer vraiment.
           </p>
           <p>
-            <strong>La maison est encore là.</strong> Personne n&apos;a mis de panneau devant. Vos
-            enfants ne se sont pas assis à trois autour d&apos;une table pour décider laquelle de
-            vos affaires il fallait vendre en premier.
+            <strong>La maison est encore là.</strong> Personne n&apos;a planté de panneau devant.
+            Personne n&apos;a fait le tour des pièces en calculant ce qu&apos;il faudrait vendre
+            pour payer l&apos;État.
           </p>
           <p>
-            Votre petit-fils a eu son coup de pouce pour démarrer — l&apos;apport de son premier
-            appartement, ou ses deux dernières années d&apos;études. Et vous étiez là pour le voir.
-            Vous avez vu ce que ça faisait. C&apos;est la seule chose qu&apos;on ne peut pas
-            transmettre après.
-          </p>
-          <p>
-            Sophie et Thomas ne se sont pas fâchés. Il n&apos;y avait rien à trancher : tout était
-            écrit, daté, signé, et ils le savaient depuis des années.
+            <strong>Personne ne se fâche.</strong> Il n&apos;y a rien à trancher&nbsp;: ce que vous
+            vouliez est écrit, daté, signé, et ils le savent depuis des années.
           </p>
           <p className="border-l-4 border-orange bg-grey-bg p-4 text-[1.2rem] font-bold text-blue">
-            Et à un moment, quelqu&apos;un dit&nbsp;: «&nbsp;il avait tout prévu. On n&apos;a eu à
-            s&apos;occuper de rien.&nbsp;»
+            Et l&apos;un d&apos;eux finit par dire&nbsp;: «&nbsp;il avait tout prévu. On n&apos;a eu
+            à s&apos;occuper de rien.&nbsp;»
           </p>
           <p>
-            Ce n&apos;est pas une question d&apos;argent. Un homme qui a travaillé quarante ans,
-            remboursé sa maison et élevé deux enfants n&apos;a pas besoin qu&apos;on lui explique la
-            valeur de l&apos;argent.{" "}
-            <strong>
-              C&apos;est la dernière chose que vous ferez pour eux, et c&apos;est celle dont ils se
-              souviendront.
-            </strong>
+            C&apos;est la seule phrase que vous ne pourrez jamais prononcer vous-même. Elle se
+            prépare de votre vivant, ou elle ne sera pas dite.
           </p>
-          <p className="text-text-soft">Tout ce qui suit sert à ça. Rien d&apos;autre.</p>
+          <p>
+            Et il y a mieux&nbsp;: il y a ce que vous, vous pouvez voir. Un de vos petits-enfants
+            qui démarre dans la vie avec un coup de main venu de vous — l&apos;apport de son premier
+            appartement, ou ses deux dernières années d&apos;études. Vous étiez là. Vous avez vu sa
+            tête. <strong>Ça, aucune succession ne le fera jamais à votre place.</strong>
+          </p>
+          <p className="text-text-soft">Tout ce qui suit sert à ça, et à rien d&apos;autre.</p>
         </div>
       </div>
     </section>
