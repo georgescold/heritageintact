@@ -415,7 +415,8 @@ export function TheGuarantee() {
       <SectionTitle>Ce que vous risquez&nbsp;: rien</SectionTitle>
       <ul className="space-y-2 text-[1.06rem]">
         {[
-          "La vidéo est gratuite. Il n'y a rien à payer pour la voir, ni maintenant, ni après.",
+          "La vidéo est gratuite, et elle le reste. Rien à payer pour la regarder, aucune carte à donner.",
+          "À la fin, un programme complet est proposé, à un prix volontairement bas. Vous n'êtes pas obligé d'en vouloir : la vidéo garde toute sa valeur si vous en restez là.",
           "Personne ne vous appellera. Nous ne demandons pas votre numéro, et nous ne le demanderons jamais.",
           "Votre adresse n'est ni vendue, ni transmise, ni louée à qui que ce soit. Un lien de désinscription est en bas de chaque message.",
           "Et si vous décidez un jour d'aller plus loin, la garantie est de 30 jours, sans justification à fournir.",
@@ -439,7 +440,7 @@ export function TheGuarantee() {
           avez-vous déjà vu une facture de notaire arriver avec une garantie de remboursement&nbsp;?
         </strong>
       </p>
-      <CtaButton label="Recevoir la vidéo — sans risque" />
+      <CtaButton label="Regarder la vidéo — c'est gratuit" />
     </Section>
   );
 }
@@ -637,12 +638,13 @@ export function CtaVerify() {
       <InlineCta
         kicker="Et chez vous, ça donne quoi ?"
         title="Ce calcul, vous pouvez le refaire sur votre propre situation ce soir."
-        label="Calculer mon chiffre — gratuit"
+        label="Voir le calcul en entier — gratuit"
       >
         <p>
           Vous n&apos;êtes pas du genre à croire un chiffre sur parole, sinon vous ne seriez pas
-          encore en train de lire. Alors ne nous croyez pas&nbsp;: refaites le calcul avec vos
-          montants à vous. Mêmes articles, mêmes tranches, votre maison et votre épargne.
+          encore en train de lire. Alors ne nous croyez pas&nbsp;: la vidéo reprend ce calcul à
+          l&apos;écran, ligne par ligne, avec les articles en référence. Vous n&apos;avez plus
+          qu&apos;à remplacer les montants par les vôtres — un stylo suffit.
         </p>
       </InlineCta>
     </Section>
@@ -705,8 +707,8 @@ export function CtaFirstStep() {
         label="Commencer ce soir — gratuit"
       >
         <p>
-          Pas un rendez-vous à décrocher. Pas un dossier à monter. Pas un centime à sortir. Une
-          vidéo, et votre chiffre. <strong>Le reste se décide après, à tête reposée</strong>, et
+          Pas un rendez-vous à décrocher. Pas un dossier à monter. Pas un centime pour la regarder.
+          Une vidéo, et votre chiffre. <strong>Le reste se décide après, à tête reposée</strong>, et
           c&apos;est vous qui décidez.
         </p>
       </InlineCta>

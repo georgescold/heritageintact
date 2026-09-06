@@ -40,7 +40,7 @@ import {
 export const metadata: Metadata = {
   title: "Combien l'État prendra-t-il sur ce que vous laisserez ?",
   description:
-    "Vous avez plus de 60 ans, une maison payée et des enfants ? Découvrez en 20 minutes ce que l'État prendra sur votre succession, et les trois décisions légales qui le réduisent.",
+    "Vous avez plus de 60 ans, une maison payée et des enfants ? Une vidéo de 9 minutes vous montre ce que l'État prendra sur votre succession, et les trois décisions légales qui le réduisent.",
 };
 
 /**
@@ -145,7 +145,7 @@ export default function LandingPage() {
             {[
               "La vidéo de 9 minutes : les trois décisions, expliquées en français, sans un mot de jargon.",
               "Le calcul complet du cas, à l'écran, ligne par ligne, avec les articles du Code en référence.",
-              "Les 3 dates de votre situation, celles qui se ferment, avec votre âge d'aujourd'hui.",
+              "Les 3 dates qui se ferment, et comment situer votre âge sur chacune.",
               "De quoi arriver chez le notaire en sachant exactement quoi demander.",
             ].map((t) => (
               <li key={t} className="flex gap-2">
@@ -163,11 +163,11 @@ export default function LandingPage() {
 
           <div className="border-2 border-blue bg-white p-4 sm:p-5">
             <p className="mb-1 text-[1.2rem] font-bold text-blue">
-              Votre chiffre, ce soir. Gratuitement.
+              Le calcul en entier, ce soir. Gratuitement.
             </p>
             <p className="mb-4 text-[0.95rem] text-text-soft">
-              Vous recevez le lien immédiatement. Rien à installer, rien à payer, aucun appel
-              téléphonique.
+              Vous recevez le lien immédiatement. Rien à installer, rien à payer pour la regarder,
+              aucun appel téléphonique.
             </p>
             <OptinForm cta="Recevoir la vidéo de 9 minutes" />
             <div className="mt-3">

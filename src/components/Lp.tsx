@@ -479,7 +479,7 @@ export function NotThis() {
     },
     {
       t: "Ce n'est pas un placement.",
-      d: "Aucun contrat à souscrire, aucun produit à acheter, aucune commission. Nous ne sommes ni banque, ni assureur, ni courtier, et nous n'avons rien à vous vendre après.",
+      d: "Aucun contrat à souscrire, aucun placement à ouvrir, aucune commission sur quoi que ce soit. Nous ne sommes ni banque, ni assureur, ni courtier : rien de ce que vous lirez ici ne nous rapporte un pourcentage.",
     },
     {
       t: "Ce n'est pas une application.",
@@ -551,7 +551,7 @@ export function TheFear() {
    ───────────────────────────────────────────────────────────── */
 export function Disqualification() {
   const cas = [
-    "Vous êtes locataire et sans épargne : vos héritiers ne paieront probablement rien. Gardez vos 20 minutes.",
+    "Vous êtes locataire et sans épargne : vos héritiers ne paieront probablement rien. Gardez vos neuf minutes.",
     "Vous avez un enfant et moins de 100 000 € de patrimoine : l'abattement couvre déjà tout, cette vidéo ne vous apprendrait rien.",
     "Vous cherchez un moyen de ne pas déclarer quelque chose : ici tout est légal, déclaré, et vérifiable article par article. Vous perdriez votre temps.",
   ];
