@@ -379,7 +379,7 @@ export function BeforeAfter() {
               "De quoi la payer, prévu à l'avance",
               "La maison qui reste dans la famille",
               "Les décisions déjà prises, datées, signées",
-              "La clause bénéficiaire relue et corrigée à temps",
+              "Le contrat de la banque relu et corrigé à temps",
               "Un document d'une page qui dit quoi faire, dans l'ordre",
               "Personne à blâmer, personne à convaincre",
               "De la place pour faire son deuil",

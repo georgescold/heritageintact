@@ -210,142 +210,137 @@ export function TheDoubt() {
 }
 
 /* ═════════════════════════════════════════════════════════════════
-   L'ORIENTATION. Placée tôt exprès.
+   LE TEASER DES TROIS DATES. Placé tôt, exprès.
 
-   Toute la page parlait des « 3 décisions » et des « 3 dates » comme de
-   deux choses distinctes, alors que c'est le même trio : chaque décision
-   a une date après laquelle elle coûte plus cher. Et le lecteur ne les
-   découvrait qu'au douzième écran, après en avoir lu le nom dix fois.
+   ⚠️ Règle de ce bloc : on ne dit JAMAIS quelles sont les trois dates,
+   ni ce qu'il faut faire. La page est là pour créer le manque, la vidéo
+   pour le combler. Une landing page qui livre la méthode n'a plus rien
+   à échanger contre une adresse email.
 
-   Ce bloc les nomme d'entrée. Il ne les explique pas — c'est le rôle du
-   bloc MÉCANISME plus bas — il donne la carte.
+   Ce qui est permis ici : dire qu'elles existent, qu'elles sont
+   personnelles, qu'aucun courrier ne les annonce, et ce que coûte
+   précisément le fait d'en laisser passer une. La preuve de
+   l'importance, jamais le mode d'emploi.
    ═══════════════════════════════════════════════════════════════ */
-const TROIS = [
+const CE_QUE_CA_EMPORTE = [
   {
-    n: "1",
-    quoi: "Faire partir le compteur des donations",
-    date: "Il court sur 15 ans, et il n'a pas encore commencé",
+    q: "La première",
+    r: "Un abattement de 100 000 € par enfant qui ne servira qu'une seule fois, au lieu de deux.",
   },
   {
-    n: "2",
-    quoi: "Régler l'assurance-vie ouverte à la banque",
-    date: "Votre 70e anniversaire",
+    q: "La deuxième",
+    r: "122 000 € d'abattement en moins, sur un contrat que vous avez déjà, pour un versement fait trop tard.",
   },
   {
-    n: "3",
-    quoi: "Transmettre les murs en gardant l'usage à vie",
-    date: "Votre 71e anniversaire",
+    q: "La troisième",
+    r: "38 000 € de base taxable en plus sur une maison à 380 000 €, du jour au lendemain.",
   },
 ];
 
-export function TheThreeAtAGlance() {
+export function TheThreeDatesTease() {
   return (
     <Section tone="blue">
-      <SectionTitle light>Tout tient en trois décisions. Chacune a sa date limite.</SectionTitle>
-      <p className="mb-6 max-w-[42rem] text-[1.06rem] text-white/85">
-        Vous les verrez détaillées plus bas, avec ce que chacune rapporte. Voici déjà de quoi on
-        parle, pour que le reste de cette page soit clair.
-      </p>
+      <SectionTitle light>Il y a trois dates. Elles sont déjà dans votre état civil.</SectionTitle>
 
+      <div className="max-w-[42rem] space-y-4 text-[1.06rem] text-white/90">
+        <p>
+          Deux d&apos;entre elles sont des anniversaires&nbsp;: les vôtres. La troisième n&apos;est
+          même pas une date — c&apos;est un délai de quinze ans qui ne démarre que le jour où vous
+          signez quelque chose, et qui n&apos;a donc pas encore commencé.
+        </p>
+        <p>
+          Les règles sont les mêmes pour tout le monde. Les dates, elles, sont les vôtres. Et selon
+          votre âge,{" "}
+          <strong className="text-white">
+            il y en a toujours une beaucoup plus proche que les deux autres.
+          </strong>
+        </p>
+        <p>
+          Personne ne vous préviendra. Il n&apos;existe aucun courrier, aucun rappel, aucune alerte.
+          Aucune administration ne vous écrira pour vous dire «&nbsp;attention, dans huit mois vous
+          perdez 122 000 € d&apos;abattement&nbsp;».
+        </p>
+      </div>
+
+      <p className="mb-3 mt-6 text-[0.8rem] font-bold uppercase tracking-[0.14em] text-orange">
+        Ce qu&apos;emporte chaque date qu&apos;on laisse passer
+      </p>
       <div className="overflow-hidden border border-white/25">
-        {TROIS.map((t, i) => (
+        {CE_QUE_CA_EMPORTE.map((c, i) => (
           <div
-            key={t.n}
-            className={`flex flex-col gap-1 bg-white/5 px-4 py-3 sm:flex-row sm:items-center sm:gap-5 ${
+            key={c.q}
+            className={`flex flex-col gap-1 bg-white/5 px-4 py-3 sm:flex-row sm:gap-5 ${
               i > 0 ? "border-t border-white/20" : ""
             }`}
           >
-            <span
-              aria-hidden
-              className="shrink-0 text-[1.5rem] font-bold leading-none text-orange sm:w-8"
-            >
-              {t.n}
-            </span>
-            <span className="flex-1 text-[1.08rem] font-bold text-white">{t.quoi}</span>
-            <span className="shrink-0 border-l-0 text-[0.98rem] text-orange sm:border-l sm:border-white/25 sm:pl-5">
-              <span className="text-white/60 sm:hidden">Sa date&nbsp;: </span>
-              {t.date}
-            </span>
+            <span className="shrink-0 font-bold text-orange sm:w-28">{c.q}</span>
+            <span className="flex-1 text-[1.02rem] text-white/90">{c.r}</span>
           </div>
         ))}
       </div>
 
-      <p className="mt-5 max-w-[42rem] text-[1.1rem] font-bold text-white">
-        Trois décisions, trois dates. Une fois la date passée, la décision ne se rattrape pas.
-        C&apos;est tout le sujet de cette page.
+      <p className="mt-6 max-w-[42rem] border-l-4 border-orange pl-4 text-[1.15rem] font-bold text-white">
+        Vous devez connaître ces trois dates avant que la plus proche ne soit derrière vous. La
+        vidéo de 9 minutes vous dit lesquelles, et où vous en êtes par rapport à chacune.
       </p>
     </Section>
   );
 }
 
 /* ═════════════════════════════════════════════════════════════════
-   BLOC 7 — LE MÉCANISME, avec ses dates et ses coûts.
+   BLOC 7 — LE MÉCANISME : sa FORME, jamais son contenu.
 
-   Fusion de deux sections qui disaient la même chose à 3 000 px d'écart :
-   « les 3 décisions » d'un côté, « les 3 portes qui se ferment » de
-   l'autre. Chaque décision porte maintenant sa date et le prix de
-   l'attente, dans le même encadré.
+   Valère : le mécanisme doit être simple, rapide, facile, clair. Il doit
+   être NOMMÉ, pas enseigné. Ce bloc dit combien il y a de décisions, en
+   combien de temps elles se prennent, et ce qu'on garde. Il ne dit pas
+   lesquelles — c'est ce qu'on échange contre une adresse email.
    ═══════════════════════════════════════════════════════════════ */
-export function TheThreeDecisions() {
-  const decisions = [
-    {
-      n: "Décision 1",
-      t: "Faire partir le compteur",
-      d: "Une donation ne s'efface fiscalement qu'au bout de quinze ans. Passé ce délai, l'abattement de 100 000 € par enfant se recharge, et vous pouvez donner une deuxième fois sans droits. Le compteur ne démarre pas tout seul : il démarre le jour où vous signez.",
-      date: "Le compteur des 15 ans, à partir du jour de la signature",
-      cout: "Une donation faite à 67 ans est effacée à 82 ans. Faite à 72, elle l'est à 87. Chaque année d'attente est une année perdue, et l'abattement ne sert qu'une fois au lieu de deux.",
-    },
-    {
-      n: "Décision 2",
-      t: "Reprendre le contrat de la banque",
-      d: "Ressortir l'assurance-vie ouverte il y a vingt ans et regarder deux choses : la clause bénéficiaire, et la date des versements. Trois questions, cinq minutes. C'est là que se trouvent les 152 500 € par bénéficiaire que presque personne n'utilise correctement.",
-      date: "Votre 70e anniversaire",
-      cout: "Avant : 152 500 € hors droits pour chaque bénéficiaire. Après : 30 500 € au total, tous bénéficiaires et tous contrats confondus. Soit 122 000 € d'abattement en moins, sur le même contrat, pour une date de versement.",
-    },
-    {
-      n: "Décision 3",
-      t: "Transmettre les murs sans quitter la maison",
-      d: "Donner la nue-propriété de la maison en gardant l'usage à vie. Vous restez chez vous, vous pouvez même la louer, et au décès l'usufruit s'éteint sans un euro de droits. La valeur transmise dépend de votre âge le jour de la signature.",
-      date: "Votre 71e anniversaire",
-      cout: "Avant 71 ans, la valeur transmise est calculée sur 60 % du bien. À partir de 71 ans, sur 70 %. Sur une maison à 380 000 € : 38 000 € de base taxable en plus, du jour au lendemain.",
-    },
+export function TheMechanismShape() {
+  const garde = [
+    "Vous gardez votre maison, et vous y restez jusqu'au bout.",
+    "Vous gardez vos revenus, vos loyers, votre épargne disponible.",
+    "Vous ne souscrivez aucun produit, aucun contrat, aucune assurance.",
+    "Rien ne sort de vos mains de votre vivant. Rien n'est irréversible avant que vous ne signiez.",
   ];
-
   return (
     <Section>
-      <SectionTitle>Les 3 décisions, et les 3 dates qui les ferment</SectionTitle>
-      <p className="mb-6 text-[1.06rem]">
-        Trois. Pas douze. Elles se prennent dans cet ordre, elles sont toutes les trois écrites dans
-        le Code général des impôts, et elles tiennent en un après-midi chez le notaire. Chacune a
-        une date après laquelle elle coûte beaucoup plus cher.
-      </p>
+      <SectionTitle>Trois décisions. Un après-midi. Vous ne vous séparez de rien.</SectionTitle>
 
-      <div className="space-y-5">
-        {decisions.map((v) => (
-          <div key={v.n} className="border border-grey-line bg-white">
-            <div className="border-l-4 border-blue bg-grey-bg p-4">
-              <p className="text-[0.8rem] font-bold uppercase tracking-[0.14em] text-orange">
-                {v.n}
-              </p>
-              <p className="mb-1 text-[1.2rem] font-bold text-blue">{v.t}</p>
-              <p className="text-[1.02rem]">{v.d}</p>
-            </div>
-            <p className="border-t border-grey-line bg-white px-4 py-2.5 text-[1rem]">
-              <strong className="text-blue">Sa date limite&nbsp;:</strong> {v.date}
-            </p>
-            <p className="border-t-2 border-red bg-red-bg px-4 py-2.5 text-[1rem]">
-              <strong className="text-red">Ce que ça coûte de la laisser passer&nbsp;:</strong>{" "}
-              {v.cout}
-            </p>
-          </div>
-        ))}
+      <div className="space-y-4 text-[1.06rem]">
+        <p>
+          À chacune de ces trois dates correspond une décision. Trois en tout, pas douze. Elles sont
+          écrites noir sur blanc dans le Code général des impôts&nbsp;: il n&apos;y a aucun montage
+          à construire, aucune zone grise, rien à optimiser au sens où l&apos;entendent les
+          publicités.
+        </p>
+        <p>
+          Vous en avez déjà vu une&nbsp;: celle que Martine a manquée de trois mois.{" "}
+          <strong>Il y en a deux autres</strong>, et l&apos;une des deux est presque toujours celle
+          qui rapporte le plus.
+        </p>
+        <p className="border-l-4 border-orange bg-grey-bg p-4 text-[1.1rem] font-bold text-blue">
+          Et elles se prennent dans un ordre précis. C&apos;est là que presque tout le monde se
+          trompe&nbsp;: la bonne décision, prise dans le mauvais ordre, coûte plus cher que pas de
+          décision du tout.
+        </p>
       </div>
 
-      <p className="mt-6 border-2 border-green bg-green-bg p-4 text-[1.1rem]">
-        <strong className="text-green">Et voilà tout le secret&nbsp;:</strong> vous ne vous
-        dépouillez de rien. Vous gardez votre maison, vos revenus et votre épargne. Vous décidez
-        simplement, de votre vivant, de ce qui se passera après — pendant que c&apos;est encore vous
-        qui décidez.
+      <h3 className="mb-3 mt-7 text-[1.2rem]">Ce que vous gardez, dans tous les cas</h3>
+      <ul className="space-y-2 text-[1.04rem]">
+        {garde.map((g) => (
+          <li key={g} className="flex gap-2">
+            <span aria-hidden className="shrink-0 font-bold text-green">
+              ✔
+            </span>
+            <span>{g}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-6 border-2 border-green bg-green-bg p-4 text-[1.08rem]">
+        <strong className="text-green">Ce que la vidéo vous donne&nbsp;:</strong> les trois dates,
+        où vous en êtes par rapport à chacune, et l&apos;ordre dans lequel les prendre. Neuf
+        minutes, chez vous, sans rendez-vous.
       </p>
     </Section>
   );

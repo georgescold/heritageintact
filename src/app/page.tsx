@@ -33,8 +33,8 @@ import {
   TheGuarantee,
   TheLastWord,
   TheStaircase,
-  TheThreeAtAGlance,
-  TheThreeDecisions,
+  TheMechanismShape,
+  TheThreeDatesTease,
 } from "@/components/LpCeo";
 
 export const metadata: Metadata = {
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
  *   4. ENNEMI              TheEnemy
  *   5. DOUTE               TheDoubt + NotThis + TheyWillManage
  *   6. PREUVE / BIG IDEA   TheGap + BeforeAfter
- *   7. MÉCANISME           TheThreeDecisions — les 3 décisions et leurs dates
+ *   7. MÉCANISME           TheMechanismShape — la forme, jamais le contenu
  *   8. BÉNÉFICE + RÊVE     TheStaircase — l'escalier de l'imagination
  *   9. URGENCE             TheDeadline — le 31 décembre 2026
  *  10. GARANTIE            TheGuarantee
@@ -78,8 +78,8 @@ export default function LandingPage() {
         {/* 1. RÊVE — toujours en premier */}
         <TheDreamFirst />
 
-        {/* La carte du sujet, avant d'entrer dans le détail */}
-        <TheThreeAtAGlance />
+        {/* Le teaser des 3 dates : leur importance, jamais leur contenu */}
+        <TheThreeDatesTease />
 
         {/* 2. ÉCHEC — « ce n'est pas votre faute », et l'ennemi s'annonce */}
         <TheFailure />
@@ -106,7 +106,7 @@ export default function LandingPage() {
         <CtaTwoChoices />
 
         {/* 7. MÉCANISME */}
-        <TheThreeDecisions />
+        <TheMechanismShape />
 
         {/* 8. BÉNÉFICE + RÊVE FINAL */}
         <TheStaircase />

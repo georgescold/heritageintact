@@ -26,7 +26,7 @@ export function ProofUnderButton() {
           <span aria-hidden className="mr-1 text-green">
             ✔
           </span>
-          Valeur de la nue-propriété selon l&apos;âge : article 669
+          La valeur d&apos;un bien transmis selon l&apos;âge : article 669
         </li>
       </ul>
       <p className="mt-2 text-text-soft">
