@@ -18,6 +18,34 @@ import { useSyncExternalStore } from "react";
 const FIN = new Date("2026-12-31T23:59:59+01:00");
 
 /**
+ * Le jour où le dispositif est né : loi de finances n° 2025-127 du 14 février
+ * 2025, article 71 (`12-chiffres-succession.md`).
+ *
+ * Il sert à remplir la barre de progression **avec un chiffre vrai**. Au
+ * 6 septembre 2026, plus de 80 % de la fenêtre est déjà consommée — une barre
+ * presque pleine, sans qu'on ait eu à inventer quoi que ce soit. Une barre
+ * pré-remplie « pour faire joli » serait une fausse indication ; celle-ci est
+ * une date de Journal officiel divisée par une autre.
+ */
+const DEBUT = new Date("2025-02-15T00:00:00+01:00");
+
+/** Durée totale de la fenêtre, en secondes. Constante, calculée une fois. */
+const FENETRE_SECONDES = Math.round((FIN.getTime() - DEBUT.getTime()) / 1000);
+
+/**
+ * Part de la fenêtre déjà écoulée, de 0 à 100, **déduite du temps restant**.
+ *
+ * ⚠️ Surtout pas de `Date.now()` ici : appelé pendant le rendu, il rend le
+ * composant impur — deux rendus successifs donneraient deux résultats, et la
+ * règle `react-hooks/purity` le refuse à juste titre. Le temps restant vient
+ * déjà du compteur, qui est la seule source d'horloge du composant.
+ */
+function partEcoulee(secondesRestantes: number): number {
+  const ecoule = FENETRE_SECONDES - secondesRestantes;
+  return Math.min(100, Math.max(0, Math.round((ecoule / FENETRE_SECONDES) * 100)));
+}
+
+/**
  * Le compteur bat à la seconde. On renvoie un entier de secondes : la valeur
  * est stable à l'intérieur d'une seconde, donc React ne re-rend pas en boucle.
  */
@@ -40,6 +68,8 @@ function useCompteur() {
     h: Math.floor((s % 86400) / 3600),
     m: Math.floor((s % 3600) / 60),
     s: s % 60,
+    /** Part du délai légal déjà écoulée, pour la barre du bandeau. */
+    part: partEcoulee(s),
   };
 }
 
@@ -80,29 +110,42 @@ function Cases({ c }: { c: ReturnType<typeof useCompteur> }) {
 /** Bandeau haut de page, au-dessus de l'en-tête. Visible dès la première seconde. */
 export function UrgencyBar() {
   const c = useCompteur();
+  // Avant l'hydratation on ne sait rien du temps : on affiche la barre à sa
+  // valeur du jour de l'écriture plutôt qu'à zéro, pour éviter qu'elle saute
+  // de vide à pleine sous les yeux du lecteur.
+  const part = c ? c.part : 83;
 
   return (
-    <div className="border-b-2 border-[#8d1f1f] bg-red text-white">
-      {/* Sur téléphone le bandeau tient sur deux lignes serrées : chaque pixel
-          pris ici repousse le formulaire sous la ligne de flottaison. La phrase
-          complète et la référence légale n'apparaissent qu'à partir de 40rem. */}
-      <div className="wrap-wide flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 py-1.5 sm:gap-x-5 sm:py-2">
-        <p className="text-center text-[0.88rem] font-bold leading-snug sm:text-left sm:text-[1rem]">
-          <span className="sm:hidden">
-            Fin du dispositif à <span className="whitespace-nowrap">100 000 € exonérés</span>
+    <div className="pulse-urgence border-b-[3px] border-[#8d1f1f] bg-red text-white">
+      <div className="wrap-wide py-2 sm:py-2.5">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-x-6">
+          <p className="text-center text-[0.95rem] font-bold leading-snug sm:text-left sm:text-[1.08rem]">
+            <span aria-hidden className="point-live mr-2 align-middle" />
+            <span className="sm:hidden">
+              Fin du dispositif à <span className="whitespace-nowrap">100 000 € exonérés</span>
+            </span>
+            <span className="hidden sm:inline">
+              Le dispositif qui permet de donner{" "}
+              <span className="whitespace-nowrap">100 000 € exonérés</span> se termine le 31
+              décembre 2026
+            </span>
+          </p>
+          <span className="flex items-center gap-1.5">
+            <Cases c={c} />
           </span>
-          <span className="hidden sm:inline">
-            Le dispositif qui permet de donner{" "}
-            <span className="whitespace-nowrap">100 000 € exonérés</span> se termine le 31 décembre
-            2026
+        </div>
+
+        {/* La barre : la part de la fenêtre déjà écoulée depuis la loi du
+            14 février 2025. Elle arrive donc pleine à plus de 80 %, et c'est
+            un fait, pas un effet. */}
+        <div className="mx-auto mt-2 flex max-w-[46rem] items-center gap-2">
+          <div className="h-2.5 flex-1 overflow-hidden rounded-sm bg-white/25">
+            <div className="h-full bg-white" style={{ width: `${part}%` }} />
+          </div>
+          <span className="shrink-0 text-[0.82rem] font-bold text-white/90">
+            {part} % du délai écoulé
           </span>
-          <span className="hidden text-[0.85rem] font-normal text-white/80 sm:block">
-            Art. 790 A bis du CGI, date votée au Parlement. Non prorogé à ce jour.
-          </span>
-        </p>
-        <span className="flex items-center gap-1.5">
-          <Cases c={c} />
-        </span>
+        </div>
       </div>
     </div>
   );

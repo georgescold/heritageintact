@@ -185,6 +185,57 @@
   text-shadow: 0 2px 14px rgba(8, 24, 42, 0.85);
 }
 
+/* Pulsation d'urgence.
+   Lente et de faible amplitude : sur une cible de 65-75 ans, un clignotement
+   rapide fatigue et fait fuir au lieu d'alerter. Deux secondes, et l'opacité ne
+   descend qu'à 0,82 — assez pour attirer l'œil au coin du champ de vision, pas
+   assez pour gêner la lecture.
+
+   ⚠️ Coupée si le système demande moins d'animation. Ce réglage est très
+   présent chez les personnes sujettes au vertige, et c'est exactement notre
+   public. */
+@keyframes battement-urgence {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.82;
+  }
+}
+
+@utility pulse-urgence {
+  animation: battement-urgence 2s ease-in-out infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+/* Le point rouge qui bat, façon « en direct ». */
+@keyframes battement-point {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.55;
+  }
+}
+
+@utility point-live {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 9999px;
+  background: currentColor;
+  animation: battement-point 1.4s ease-in-out infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
 /* Le filet orange de la marque, sous un titre ou un bandeau. */
 @utility rule-orange {
   display: block;

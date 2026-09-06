@@ -2,51 +2,70 @@ import { FOUNDERS_CAP, PRIX_APRES_FONDATEURS, PRODUCTS, euros } from "@/lib/conf
 import { countFounders } from "@/lib/db";
 
 /**
- * Le compteur des places fondatrices.
+ * Le compteur de places.
  *
- * ⚠️ **Il lit la base à chaque affichage. Il n'invente rien, et il ne doit
- * jamais inventer.** Un compteur qui descend tout seul pendant que le visiteur
- * lit est une fausse rareté : l'article L121-4 du code de la consommation la
- * cite nommément parmi les pratiques réputées trompeuses, et un rechargement de
- * page suffit à la démasquer devant un avatar qui se méfie déjà d'internet.
+ * ═══ Écrit pour un lecteur de 67 ans ═══
  *
- * La rareté est rendue vraie autrement : le plafond est passé de 500 à 50
- * places (`FOUNDERS_CAP`). « Il reste 47 places » se lit comme une urgence,
- * « il reste 500 places » comme une invitation à revenir plus tard — et cette
- * fois le compteur descend pour de bon.
+ * Le chiffre est énorme et seul sur sa ligne : il doit se lire à un mètre de
+ * l'écran, sans lunettes, en une fraction de seconde. Le mot « membres
+ * fondateurs » a sauté — c'est du vocabulaire de lancement de startup, il ne
+ * dit rien à quelqu'un qui vient de lire une page sur sa succession. Ce qui
+ * compte tient en cinq mots : combien il reste, et à quel prix.
+ *
+ * Le bloc pulse, lentement (deux secondes, opacité 0,82). Un clignotement
+ * rapide fatigue et fait fuir cette tranche d'âge, et la pulsation se coupe
+ * toute seule si le système demande moins d'animation.
+ *
+ * ═══ Sur la barre ═══
+ *
+ * Elle montre les places **prises**, et elle lit la base. Tant qu'il n'y a pas
+ * de vente elle est presque vide, et c'est normal : c'est la seule chose
+ * honnête qu'elle puisse afficher. La barre « déjà bien remplie » est celle du
+ * bandeau du haut — elle mesure la part du délai légal déjà écoulée depuis la
+ * loi du 14 février 2025, et celle-là est pleine à plus de 80 % pour de vrai.
  */
 export async function FoundersCounter() {
   const count = await countFounders();
   const left = Math.max(0, FOUNDERS_CAP - count);
-  const pct = Math.min(100, Math.round((count / FOUNDERS_CAP) * 100));
-
-  // Sous dix places, le bloc passe au rouge : c'est le moment où il faut que ça
-  // se voie sans lire.
+  const pris = Math.min(100, Math.round((count / FOUNDERS_CAP) * 100));
   const critique = left <= 10;
 
   return (
     <div
-      className={`border-2 p-3 text-center ${
-        critique ? "border-red bg-red-bg" : "border-yellow-line bg-yellow-bg"
+      className={`pulse-urgence border-[3px] p-4 text-center ${
+        critique ? "border-red bg-red-bg" : "border-orange bg-yellow-bg"
       }`}
     >
-      <p className="text-[1.05rem] leading-tight">
+      <p className="text-[1.15rem] leading-tight">
         Il reste{" "}
-        <strong className={`text-[1.5rem] ${critique ? "text-red" : "text-orange-dark"}`}>
+        <strong
+          className={`text-[2.6rem] leading-none ${critique ? "text-red" : "text-orange-dark"}`}
+        >
           {left}
         </strong>{" "}
-        {left > 1 ? "places" : "place"} à {euros(PRODUCTS.front.price)}.
+        <strong className="text-[1.3rem]">{left > 1 ? "places" : "place"}</strong>
+        <br />
+        <span className="text-[1.05rem]">
+          à <strong>{euros(PRODUCTS.front.price)}</strong> au lieu de{" "}
+          <strong>{euros(PRIX_APRES_FONDATEURS)}</strong>
+        </span>
       </p>
-      <div className="mx-auto mt-2 h-3 w-full max-w-[26rem] overflow-hidden border border-grey-line bg-white">
+
+      <div className="mx-auto mt-3 h-4 w-full max-w-[26rem] overflow-hidden border border-grey-line bg-white">
         <div
           className={critique ? "h-full bg-red" : "h-full bg-orange"}
-          style={{ width: `${Math.max(pct, 2)}%` }}
+          style={{ width: `${Math.max(pris, 3)}%` }}
         />
       </div>
-      <p className="mt-2 text-[0.9rem] text-text-soft">
-        {count} {count > 1 ? "membres fondateurs" : "membre fondateur"} sur {FOUNDERS_CAP}. À la{" "}
-        {FOUNDERS_CAP}
-        <sup>e</sup>, le prix passe à {euros(PRIX_APRES_FONDATEURS)} — définitivement.
+
+      <p className="mt-2 text-[0.95rem] text-text">
+        {count > 0 ? (
+          <>
+            {count} {count > 1 ? "places déjà prises" : "place déjà prise"} sur {FOUNDERS_CAP}.{" "}
+          </>
+        ) : null}
+        Ensuite, le prix passe à <strong>{euros(PRIX_APRES_FONDATEURS)}</strong> et n&apos;en
+        redescend plus.
       </p>
     </div>
   );

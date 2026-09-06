@@ -4,7 +4,7 @@ import { ExitPopup } from "@/components/ExitPopup";
 import { FoundersCounter } from "@/components/FoundersCounter";
 import { PixelEvent } from "@/components/MetaPixel";
 import { StickyCta } from "@/components/StickyCta";
-import { UrgencyCountdown } from "@/components/Urgency";
+import { UrgencyBar, UrgencyCountdown } from "@/components/Urgency";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { ButtonLink, Check, FAQ, Panel, ValueStack } from "@/components/ui";
 import { BeforeAfter, TheDeadline, TheNumber } from "@/components/Lp";
@@ -90,6 +90,10 @@ export default function VslPage() {
   return (
     <>
       <PixelEvent name="Lead" />
+      {/* Le bandeau était absent de la page de vente — c'est-à-dire de la seule
+          page où l'on demande de l'argent. Il est tout en haut, au-dessus de
+          l'en-tête, comme sur les landing pages. */}
+      <UrgencyBar />
       <Header minimal />
       <main className="flex-1">
         {/* ═══ H1 → H2 → VIDÉO → BOUTON ════════════════════════════════
