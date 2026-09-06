@@ -567,7 +567,7 @@ export function TheCostOfWaiting() {
           <div className="relative aspect-[4/3] overflow-hidden border border-grey-line">
             <Image
               src="/img/martine.jpg"
-              alt="Une femme âgée assise seule à une table couverte de dossiers, vue de dos, une chaise vide en face d'elle."
+              alt="Une femme âgée vue de dos, assise droite à la table de sa salle à manger, la main posée sur un dossier de succession ouvert devant elle."
               fill
               sizes="(min-width: 1024px) 28rem, 100vw"
               className="object-cover"
