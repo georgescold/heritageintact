@@ -140,8 +140,25 @@ export const VARIANTES: Record<string, string> = {
 /** Nombre de places fondatrices au prix de 27 €. Le compteur est réel (cf. db). */
 export const FOUNDERS_CAP = 500;
 
-/** Tant que Stripe n'est pas branché, le paiement est simulé (aucun débit). */
-export const isTestMode = !process.env.STRIPE_SECRET_KEY;
+const CLE_STRIPE = process.env.STRIPE_SECRET_KEY ?? "";
+
+/**
+ * Aucune clé Stripe : le paiement est entièrement **simulé**. Stripe n'est
+ * jamais appelé, la commande est marquée payée d'office, aucun formulaire de
+ * carte n'est affiché.
+ */
+export const isTestMode = !CLE_STRIPE;
+
+/**
+ * Clé de test (`sk_test_…`) : Stripe est **réellement** appelé, le vrai
+ * formulaire de carte s'affiche, la 3-D Secure se déclenche — et aucun euro ne
+ * peut bouger. C'est l'état pour parcourir le funnel comme un client.
+ *
+ * ⚠️ Cette distinction existe parce que sans elle le site aurait eu l'air en
+ * production tout en tournant sur des clés de test : pas de bandeau, aucun
+ * signal. Une vraie carte serait refusée sans qu'on comprenne pourquoi.
+ */
+export const stripeEnModeTest = CLE_STRIPE.startsWith("sk_test_");
 
 /**
  * ⚠️ LE BLOQUEUR DE MISE EN LIGNE.

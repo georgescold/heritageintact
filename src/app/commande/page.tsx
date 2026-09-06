@@ -7,7 +7,7 @@ import { PixelEvent } from "@/components/MetaPixel";
 import { ButtonLink, Guarantee, FAQ, Panel } from "@/components/ui";
 import { FoundersCounter } from "@/components/FoundersCounter";
 import { UrgencyUnderButton } from "@/components/Urgency";
-import { isTestMode } from "@/lib/config";
+import { isTestMode, stripeEnModeTest } from "@/lib/config";
 
 export const metadata: Metadata = { title: "Votre accès immédiat" };
 
@@ -22,7 +22,7 @@ export default async function CheckoutPage() {
   return (
     <>
       <PixelEvent name="InitiateCheckout" params={{ value: 27, currency: "EUR" }} />
-      {isTestMode && <TestModeBanner />}
+      {(isTestMode || stripeEnModeTest) && <TestModeBanner stripeReel={stripeEnModeTest} />}
       <Header minimal />
       <main className="flex-1">
         <div className="wrap-wide py-6 sm:py-8">

@@ -67,10 +67,20 @@ export function Footer() {
   );
 }
 
-export function TestModeBanner() {
+export function TestModeBanner({ stripeReel = false }: { stripeReel?: boolean }) {
   return (
     <div className="border-b border-yellow-line bg-yellow-bg px-4 py-2 text-center text-[0.85rem] font-bold text-text">
-      Mode test : aucun paiement réel n&apos;est effectué. Stripe sera branché avant le lancement.
+      {stripeReel ? (
+        <>
+          Mode test Stripe : le paiement fonctionne vraiment, mais aucun euro ne peut être débité.
+          Carte de test&nbsp;: 4242 4242 4242 4242, n&apos;importe quelle date future,
+          n&apos;importe quel CVC.
+        </>
+      ) : (
+        <>
+          Mode simulé : aucun paiement n&apos;est effectué. Stripe sera branché avant le lancement.
+        </>
+      )}
     </div>
   );
 }
