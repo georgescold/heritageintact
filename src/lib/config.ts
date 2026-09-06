@@ -156,6 +156,38 @@ export const VARIANTES: Record<string, string> = {
  * À ne pas confondre avec l'ancrage : 429 € est ce que vaut le programme,
  * 67 € est ce qu'il coûtera demain.
  */
+/**
+ * LES DEUX SEULS APPELS À L'ACTION DU SITE.
+ *
+ * Il y en avait dix, tous différents. Trois problèmes : le lecteur ne retient
+ * aucune formule, chaque bouton repart de zéro au lieu de marteler la même
+ * promesse, et surtout **rien n'est testable** — la règle est d'A/B tester une
+ * variable à la fois, or dix libellés font dix variables.
+ *
+ * Deux suffisent, et ils se répartissent par position sur la page :
+ *
+ *   BÉNÉFICE  en haut, tant que la tension monte et qu'on doit donner envie
+ *   URGENCE   en bas, après l'échéance, quand il ne reste qu'à décider
+ *
+ * Les deux sont à l'**impératif** — un CTA est un verbe d'action, pas une
+ * envie décrite à la première personne (« Agressivité du CTA », checklist
+ * d'optimisation § 4).
+ *
+ * Pour tester une variante : changer une de ces deux lignes, et rien d'autre.
+ */
+export const CTA = {
+  /** Page de vente, haut : on donne envie. */
+  benefice: "Calculez votre facture maintenant",
+  /** Page de vente, bas : après l'échéance, il ne reste qu'à décider. */
+  urgence: `Réservez votre place à ${euros(PRODUCTS.front.price)}`,
+  /**
+   * Landing page : l'action n'est pas la même — on ne vend rien, on débloque.
+   * Un seul libellé, partout, y compris dans le pop-up de sortie. Il y en avait
+   * trois, dont un qui annonçait une durée de vidéo qu'on ne connaît pas encore.
+   */
+  optin: "Découvrez les 3 décisions",
+} as const;
+
 export const PRIX_APRES_FONDATEURS = 67;
 
 /**

@@ -9,7 +9,7 @@ import { VideoEmbed } from "@/components/VideoEmbed";
 import { ButtonLink, Check, FAQ, Panel, ValueStack } from "@/components/ui";
 import { BeforeAfter, TheDeadline, TheNumber } from "@/components/Lp";
 import { TheCostOfInaction, TheGuarantee, TheLastWord } from "@/components/LpCeo";
-import { FOUNDERS_CAP, PRIX_APRES_FONDATEURS, PRODUCTS, VIDEO, euros } from "@/lib/config";
+import { CTA, FOUNDERS_CAP, PRIX_APRES_FONDATEURS, PRODUCTS, VIDEO, euros } from "@/lib/config";
 
 export const metadata: Metadata = { title: "Les 3 décisions" };
 
@@ -85,7 +85,7 @@ export default function VslPage() {
   // 27 € » (un bordereau de livraison), puis « Je veux mon chiffre » (correct,
   // mais au présent de l'indicatif : ça décrit une envie, ça n'ordonne pas un
   // geste). Le prix et la garantie vivent sur la ligne d'en dessous.
-  const cta = "Calculez votre facture maintenant";
+  const cta = CTA.benefice;
 
   return (
     <>
@@ -256,7 +256,7 @@ export default function VslPage() {
       </main>
       <Footer />
 
-      <StickyCta href="/commande" label={`Accéder au programme — ${euros(PRODUCTS.front.price)}`} />
+      <StickyCta href="/commande" label={CTA.urgence} />
 
       <ExitPopup
         storageKey="vsl"

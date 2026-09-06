@@ -5,12 +5,13 @@ import { ExitPopup } from "@/components/ExitPopup";
 import { Disqualification } from "@/components/Lp";
 import { MetaDisclaimer, ProofUnderButton } from "@/components/LpExtras";
 import { OptinForm } from "@/components/OptinForm";
+import { CTA } from "@/lib/config";
 import { UrgencyBar, UrgencyCountdown, UrgencyUnderButton } from "@/components/Urgency";
 
 export const metadata: Metadata = {
   title: "Et si vos enfants héritaient de 58 400 € de plus ?",
   description:
-    "Vous avez plus de 60 ans, une maison payée et des enfants ? Trois dates du Code général des impôts changent le prix de votre succession. Une vidéo de 9 minutes vous dit lesquelles.",
+    "Vous avez plus de 60 ans, une maison payée et des enfants ? Trois dates du Code général des impôts changent le prix de votre succession. Une vidéo vous dit lesquelles.",
 };
 
 /**
@@ -105,7 +106,7 @@ export default function LandingPage() {
                 gabarit n'en prévoit aucun, et ils coûtaient 143 px. La mention
                 anti-spam et la case CGV sont dans le composant. */}
             <div className="mt-3 border-2 border-blue bg-white p-3 sm:mt-5 sm:p-5">
-              <OptinForm cta="Voir la vidéo de 9 minutes" />
+              <OptinForm cta={CTA.optin} />
             </div>
 
             {/* Amélioration n°2 : l'urgence, datée, juste sous le bouton. */}
@@ -124,7 +125,7 @@ export default function LandingPage() {
                 premier reste à une hauteur de pouce, et le rendre deux fois
                 donnait une page qui répète au lieu d'avancer. La règle du
                 second appel garde tout son sens sur une page longue — c'est le
-                cas de /methode, qui en porte douze. */}
+                cas de /methode. */}
             <div className="mt-6">
               <ProofUnderButton />
             </div>
@@ -174,7 +175,7 @@ export default function LandingPage() {
           </p>
           <p>La vidéo dure 9 minutes. Elle est gratuite. Elle est disponible dans deux minutes.</p>
         </div>
-        <OptinForm cta="Recevoir la vidéo maintenant" />
+        <OptinForm cta={CTA.optin} />
       </ExitPopup>
     </>
   );

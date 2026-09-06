@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header, Footer } from "@/components/Chrome";
 import { QuestionsOptin } from "@/components/QuestionsOptin";
 import { OptinForm } from "@/components/OptinForm";
+import { CTA } from "@/lib/config";
 import { ExitPopup } from "@/components/ExitPopup";
 import { PhotoBanner, Section } from "@/components/Lp";
 import { ProofUnderButton, UrgencyBand } from "@/components/LpExtras";
@@ -64,7 +65,7 @@ export default function LpQuestionsPage() {
         storageKey="lp-questions"
         title="Avant de partir : savez-vous laquelle de vos trois dates se ferme en premier ?"
       >
-        <OptinForm cta="Recevoir les 3 dates" />
+        <OptinForm cta={CTA.optin} />
       </ExitPopup>
     </>
   );

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Section, SectionTitle } from "./Lp";
-import { PRODUCTS, euros } from "@/lib/config";
+import { CTA, PRODUCTS, euros } from "@/lib/config";
 
 /**
  * Les blocs de la structure CEO (Blair Warren) qui manquaient à la page.
@@ -287,7 +287,7 @@ export function TheThreeDatesTease() {
         Vous devez connaître ces trois dates avant que la plus proche ne soit derrière vous. La
         vidéo de 9 minutes vous dit lesquelles, et où vous en êtes par rapport à chacune.
       </p>
-      <CtaButton label="Découvrez vos 3 dates" sombre />
+      <CtaButton label={CTA.benefice} sombre />
     </Section>
   );
 }
@@ -347,7 +347,7 @@ export function TheMechanismShape() {
         où vous en êtes par rapport à chacune, et l&apos;ordre dans lequel les prendre. Neuf
         minutes, chez vous, sans rendez-vous.
       </p>
-      <CtaButton label="Débloquez les 3 décisions" />
+      <CtaButton label={CTA.benefice} />
     </Section>
   );
 }
@@ -473,7 +473,7 @@ export function TheCostOfInaction() {
         remboursé sans avoir à vous justifier.
       </p>
 
-      <CtaButton label="Faites baisser cette facture" />
+      <CtaButton label={CTA.urgence} />
     </Section>
   );
 }
@@ -555,7 +555,7 @@ export function TheLastWord() {
           {/* Le bouton vit DANS la section : le dernier argument et l'action
               ne doivent pas être séparés par une découpe de fond. */}
           <div className="mt-7 max-w-[34rem]">
-            <CtaButton label="Prenez votre place fondatrice" sombre />
+            <CtaButton label={CTA.urgence} sombre />
           </div>
         </div>
       </div>
@@ -708,7 +708,7 @@ export function CtaVerify() {
       <InlineCta
         kicker="Et chez vous, ça donne quoi ?"
         title="Ce calcul, vous pouvez le refaire sur votre propre situation dès maintenant."
-        label="Calculez votre facture"
+        label={CTA.benefice}
       >
         <p>
           Vous n&apos;êtes pas du genre à croire un chiffre sur parole, sinon vous ne seriez pas
@@ -731,7 +731,7 @@ export function CtaDates() {
       <InlineCta
         kicker="La seule question qui compte maintenant"
         title="Laquelle de vos trois dates est la plus proche ?"
-        label="Trouvez votre date la plus proche"
+        label={CTA.benefice}
       >
         <p>
           Martine avait dépassé la sienne de trois mois, et elle ne l&apos;a jamais su. Il y en a
@@ -753,7 +753,7 @@ export function CtaTwoChoices() {
       <InlineCta
         kicker="Vous avez deux options"
         title="Il n'y a pas de troisième colonne."
-        label="Passez dans la colonne de droite"
+        label={CTA.urgence}
       >
         <p>
           Soit vos enfants ouvrent un tiroir et tombent sur la colonne de gauche&nbsp;: la facture,
@@ -777,7 +777,7 @@ export function CtaFirstStep() {
       <InlineCta
         kicker="La première marche"
         title="Tout ça commence par neuf minutes, maintenant."
-        label="Commencez par la première décision"
+        label={CTA.urgence}
       >
         <p>
           Pas un rendez-vous à décrocher. Pas un dossier à monter. Pas un centime pour la regarder.
@@ -796,7 +796,7 @@ export function CtaDetached() {
       <InlineCta
         kicker="Ça ne changera rien pour nous"
         title="Que vous regardiez cette vidéo ou non, la loi ne bouge pas."
-        label="Faites le point maintenant"
+        label={CTA.benefice}
       >
         <p>
           Les trois dates avanceront exactement pareil. Le barème s&apos;appliquera exactement
