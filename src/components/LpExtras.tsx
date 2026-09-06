@@ -30,7 +30,7 @@ export function ProofUnderButton() {
         </li>
       </ul>
       <p className="mt-2 text-text-soft">
-        Tout est vérifiable ce soir sur impots.gouv.fr. Ce ne sont pas des opinions.
+        Tout est vérifiable en cinq minutes sur impots.gouv.fr. Ce ne sont pas des opinions.
       </p>
     </div>
   );

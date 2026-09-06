@@ -116,7 +116,9 @@ export function UrgencyUnderButton() {
   const c = useCompteur();
   return (
     <p className="border-l-4 border-orange bg-yellow-bg px-3 py-2 text-[0.92rem]">
-      <strong className="text-orange-dark">Pourquoi ce soir plutôt que dans six mois&nbsp;:</strong>{" "}
+      <strong className="text-orange-dark">
+        Pourquoi maintenant plutôt que dans six mois&nbsp;:
+      </strong>{" "}
       la fenêtre des 100 000 € exonérés ferme le 31 décembre 2026
       {c && <> — il reste {c.j} jours</>}, et une donation met quinze ans à s&apos;effacer
       fiscalement. Ces deux compteurs tournent déjà.

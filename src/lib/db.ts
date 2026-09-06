@@ -15,6 +15,10 @@ export type Lead = {
   createdAt: string;
   /** Chemin de la landing page d'arrivée : c'est la mesure de l'A/B test. */
   source?: string;
+  /** Désinscrit : plus aucun email ne part, jamais. */
+  desabonne?: boolean;
+  /** Étapes déjà envoyées : "j0", "j1"… Empêche tout doublon si le cron rejoue. */
+  envoyes?: string[];
 };
 
 export type OrderItem = {
@@ -133,6 +137,40 @@ export async function markOrderPaid(
   }
   await write(db);
   return order;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   La séquence email
+   ───────────────────────────────────────────────────────────── */
+
+export async function getLead(id: string): Promise<Lead | null> {
+  const db = await read();
+  return db.leads.find((l) => l.id === id) ?? null;
+}
+
+/** Désinscription. Idempotent : cliquer deux fois ne casse rien. */
+export async function desabonner(id: string): Promise<Lead | null> {
+  const db = await read();
+  const lead = db.leads.find((l) => l.id === id);
+  if (!lead) return null;
+  lead.desabonne = true;
+  await write(db);
+  return lead;
+}
+
+/** Trace l'étape envoyée, pour qu'elle ne reparte jamais deux fois. */
+export async function marquerEnvoye(id: string, etape: string): Promise<void> {
+  const db = await read();
+  const lead = db.leads.find((l) => l.id === id);
+  if (!lead) return;
+  lead.envoyes = [...(lead.envoyes ?? []), etape];
+  await write(db);
+}
+
+/** Tous les inscrits encore abonnés, pour le passage quotidien du cron. */
+export async function leadsActifs(): Promise<Lead[]> {
+  const db = await read();
+  return db.leads.filter((l) => !l.desabonne);
 }
 
 export async function getOrder(orderId: string): Promise<Order | null> {

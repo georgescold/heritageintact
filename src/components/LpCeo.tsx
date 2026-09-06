@@ -430,9 +430,9 @@ export function TheGuarantee() {
         ))}
       </ul>
       <p className="mt-5 text-[1.06rem]">
-        Autrement dit&nbsp;: le seul risque que vous prenez ce soir, c&apos;est celui de découvrir
-        un chiffre que vous auriez préféré ne pas connaître. C&apos;est aussi le seul moyen de le
-        faire baisser.
+        Autrement dit&nbsp;: le seul risque que vous prenez aujourd&apos;hui, c&apos;est celui de
+        découvrir un chiffre que vous auriez préféré ne pas connaître. C&apos;est aussi le seul
+        moyen de le faire baisser.
       </p>
       <p className="mt-4 border-l-4 border-green bg-green-bg p-4 text-[1.06rem]">
         Une question qui vaut le détour&nbsp;:{" "}
@@ -637,7 +637,7 @@ export function CtaVerify() {
     <Section tone="white">
       <InlineCta
         kicker="Et chez vous, ça donne quoi ?"
-        title="Ce calcul, vous pouvez le refaire sur votre propre situation ce soir."
+        title="Ce calcul, vous pouvez le refaire sur votre propre situation dès maintenant."
         label="Débloquer la vidéo — accès immédiat"
       >
         <p>
@@ -706,8 +706,8 @@ export function CtaFirstStep() {
     <Section tone="white">
       <InlineCta
         kicker="La première marche"
-        title="Tout ça commence par neuf minutes, ce soir."
-        label="Commencer ce soir — accès immédiat"
+        title="Tout ça commence par neuf minutes, maintenant."
+        label="Commencer maintenant — accès immédiat"
       >
         <p>
           Pas un rendez-vous à décrocher. Pas un dossier à monter. Pas un centime pour la regarder.

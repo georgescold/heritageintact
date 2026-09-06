@@ -123,7 +123,9 @@ export default function LandingPage() {
 
         {/* 11. CTA */}
         <Section tone="grey">
-          <SectionTitle>Il reste une décision à prendre ce soir. Elle est gratuite.</SectionTitle>
+          <SectionTitle>
+            Il reste une décision à prendre maintenant. Elle est gratuite.
+          </SectionTitle>
 
           <div className="mb-6 space-y-3 text-[1.06rem]">
             <p>

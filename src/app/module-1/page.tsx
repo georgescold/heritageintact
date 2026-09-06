@@ -30,7 +30,7 @@ export default function FreeModulePage() {
           <div className="mt-6 space-y-4">
             <p>
               Si ce module vous a parlé, les six autres erreurs sont dans le programme complet, avec
-              le Simulateur pour connaître <strong>votre</strong> chiffre ce soir.
+              le Simulateur pour connaître <strong>votre</strong> chiffre aujourd&apos;hui.
             </p>
             <ButtonLink href="/commande">
               Accéder au programme complet : {euros(PRODUCTS.front.price)}

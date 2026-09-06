@@ -48,7 +48,7 @@ export default function VslPage() {
         <section className="wrap pt-6 sm:pt-10">
           <h1 className="mb-3 text-[1.5rem] sm:text-[2rem]">
             Combien l&apos;État prendra-t-il sur ce que vous laisserez à vos enfants&nbsp;?
-            Sachez-le ce soir, et réduisez cette facture, légalement, en 3 semaines.
+            Sachez-le aujourd&apos;hui, et réduisez cette facture, légalement, en 3 semaines.
           </h1>
           <p className="mb-5 text-[1.05rem]">
             Révélation : les trois décisions que les familles averties prennent de leur vivant pour

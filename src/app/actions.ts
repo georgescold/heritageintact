@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import {
   addItem,
   addLead,
+  marquerEnvoye,
   attachStripeCustomer,
   createOrder,
   getOrder,
@@ -42,7 +43,8 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   // L'email de livraison part tout de suite. On l'attend : sans ça, la fonction
   // se termine avec la redirection et l'envoi peut être coupé net sur Vercel.
   // Il ne lève jamais, un incident chez Resend ne doit pas bloquer l'inscription.
-  await envoyerLivraison(lead.firstName, lead.email);
+  const envoi = await envoyerLivraison(lead);
+  if (envoi.ok) await marquerEnvoye(lead.id, "j0");
 
   const jar = await cookies();
   jar.set("hi_lead", JSON.stringify({ email: lead.email, firstName: lead.firstName }), {

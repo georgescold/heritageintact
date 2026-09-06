@@ -1,4 +1,6 @@
 import { CONTACT_EMAIL, SITE_URL } from "./config";
+import type { Lead } from "./db";
+import { SEQUENCE, lien, type Etape } from "./sequence";
 
 /**
  * Envoi d'emails via Resend.
@@ -14,31 +16,34 @@ const API = "https://api.resend.com/emails";
 /** Sans clé (développement local), on n'envoie rien et on ne casse rien. */
 const CLE = process.env.RESEND_API_KEY;
 
-export const EXPEDITEUR = process.env.EMAIL_FROM ?? `Héritage Intact <contact@heritageintact.fr>`;
+export const EXPEDITEUR = process.env.EMAIL_FROM ?? "Héritage Intact <contact@heritageintact.fr>";
+
+/** Lien de désinscription propre à chaque inscrit. L'identifiant suffit : il est aléatoire. */
+export const lienDesinscription = (leadId: string) => `${SITE_URL}/desinscription?id=${leadId}`;
 
 type Envoi = {
   to: string;
   subject: string;
   html: string;
   text: string;
+  /** Sert au lien de désinscription en un clic. */
+  leadId: string;
 };
 
 /**
  * Envoie un email. Ne lève jamais : un incident chez Resend ne doit pas faire
- * échouer une inscription. On journalise et on continue.
+ * échouer une inscription ni interrompre le passage du cron.
  */
 export async function envoyer(e: Envoi): Promise<{ ok: boolean; id?: string }> {
   if (!CLE) {
     console.log(`[email] pas de clé, envoi simulé vers ${e.to} — « ${e.subject} »`);
     return { ok: true };
   }
+  const url = lienDesinscription(e.leadId);
   try {
     const r = await fetch(API, {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${CLE}`,
-        "Content-Type": "application/json",
-      },
+      headers: { Authorization: `Bearer ${CLE}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         from: EXPEDITEUR,
         to: [e.to],
@@ -47,10 +52,13 @@ export async function envoyer(e: Envoi): Promise<{ ok: boolean; id?: string }> {
         html: e.html,
         text: e.text,
         headers: {
-          // Exigé par Gmail et Yahoo dès 5 000 envois par jour, et bon pour la
-          // réputation bien avant ce seuil : un lien de désinscription lisible
-          // par la messagerie elle-même vaut mieux qu'un signalement en spam.
-          "List-Unsubscribe": `<mailto:${CONTACT_EMAIL}?subject=Desinscription>`,
+          // Désinscription en un clic. Les deux en-têtes vont ensemble : sans
+          // le -Post, Gmail affiche un lien ordinaire ; avec, il affiche son
+          // propre bouton « Se désabonner » à côté de l'expéditeur. C'est le
+          // meilleur rempart contre le bouton « Spam », qui lui coûte cher.
+          // Exigé par Gmail et Yahoo dès 5 000 envois par jour.
+          "List-Unsubscribe": `<${url}>, <mailto:${CONTACT_EMAIL}?subject=Desinscription>`,
+          "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
         },
       }),
     });
@@ -75,15 +83,20 @@ export async function envoyer(e: Envoi): Promise<{ ok: boolean; id?: string }> {
    ───────────────────────────────────────────────────────────── */
 function gabarit({
   titre,
-  corps,
+  paragraphes,
   bouton,
   ps,
+  leadId,
 }: {
   titre: string;
-  corps: string;
+  paragraphes: string[];
   bouton: { texte: string; lien: string };
   ps?: string;
+  leadId: string;
 }): string {
+  const corps = paragraphes.map((t) => `      <p style="margin:0 0 16px;">${t}</p>`).join("\n");
+  const desinscription = lienDesinscription(leadId);
+
   return `<!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
 <title>${titre}</title></head>
@@ -102,12 +115,11 @@ ${corps}
           <a href="${bouton.lien}" style="display:block;padding:16px 28px;font:bold 17px Arial,Helvetica,sans-serif;color:#ffffff;text-decoration:none;">${bouton.texte}</a>
         </td>
       </tr></table>
-${ps ? `<p style="margin:22px 0 0;padding-top:16px;border-top:1px solid #e1e6ec;font:15px/1.6 Arial,Helvetica,sans-serif;color:#555555;">${ps}</p>` : ""}
+${ps ? `      <p style="margin:22px 0 0;padding-top:16px;border-top:1px solid #e1e6ec;font:15px/1.6 Arial,Helvetica,sans-serif;color:#555555;">${ps}</p>` : ""}
     </td></tr>
     <tr><td style="padding:16px 24px;background:#f0f3f6;font:13px/1.6 Arial,Helvetica,sans-serif;color:#555555;">
       Vous recevez ce message parce que vous avez demandé la vidéo sur heritageintact.fr.<br>
-      Pour ne plus rien recevoir, répondez simplement « stop » à cet email&nbsp;:
-      <a href="mailto:${CONTACT_EMAIL}?subject=Desinscription" style="color:#0b5aa8;">${CONTACT_EMAIL}</a>.<br><br>
+      <a href="${desinscription}" style="color:#0b5aa8;">Me désinscrire en un clic</a> — c'est immédiat et définitif.<br><br>
       Héritage Intact est un programme pédagogique d'information générale. Il ne constitue ni une
       consultation juridique, ni un conseil fiscal personnalisé.
     </td></tr>
@@ -116,47 +128,80 @@ ${ps ? `<p style="margin:22px 0 0;padding-top:16px;border-top:1px solid #e1e6ec;
 </body></html>`;
 }
 
+/** Même contenu, en texte brut. Un email sans partie texte part plus souvent en indésirable. */
+function versionTexte(
+  paragraphes: string[],
+  bouton: { texte: string; lien: string },
+  ps: string | undefined,
+  leadId: string,
+) {
+  const nettoyer = (t: string) => t.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ");
+  return [
+    ...paragraphes.map(nettoyer),
+    `${bouton.texte} :\n${bouton.lien}`,
+    ...(ps ? [nettoyer(ps)] : []),
+    "--",
+    "Vous recevez ce message parce que vous avez demandé la vidéo sur heritageintact.fr.",
+    `Me désinscrire : ${lienDesinscription(leadId)}`,
+  ].join("\n\n");
+}
+
 /* ─────────────────────────────────────────────────────────────────
-   J0 — la livraison. Part à la seconde où le lead s'inscrit.
-   Texte repris de `09-emails.md` § J0, signé au nom de la marque et
-   non d'une personne (décision éditoriale, cf. 15-identite-visuelle.md).
+   J0 — la livraison. Part à la seconde où l'inscription est faite.
    ───────────────────────────────────────────────────────────── */
-export async function envoyerLivraison(prenom: string, email: string) {
-  const lien = `${SITE_URL}/methode`;
-  const p = prenom.trim() || "Bonjour";
-
-  const corps = `
-      <p style="margin:0 0 16px;">Bonjour ${p},</p>
-      <p style="margin:0 0 16px;">Voici votre lien vers la présentation de 9 minutes. Elle est accessible tout de suite, et elle le restera.</p>
-      <p style="margin:0 0 16px;">Elle montre les trois décisions que les familles averties prennent de leur vivant pour transmettre intact ce qu'elles ont construit — et pourquoi personne ne vous les a jamais expliquées.</p>
-      <p style="margin:0 0 16px;">Un conseil&nbsp;: regardez-la ce soir, avec votre conjoint si possible. Elle contient un chiffre, <strong>82&nbsp;194&nbsp;€</strong>, et trois dates. L'une des trois vous concerne plus que les deux autres. Vous saurez laquelle à la fin.</p>`;
-
-  const ps = `<strong>P.-S.</strong> Ajoutez cette adresse à vos contacts. Les prochains messages contiennent les trois dates, et sans ça ils finissent parfois dans les indésirables.`;
-
-  const text = `Bonjour ${p},
-
-Voici votre lien vers la présentation de 9 minutes :
-${lien}
-
-Elle montre les trois décisions que les familles averties prennent de leur vivant pour transmettre intact ce qu'elles ont construit — et pourquoi personne ne vous les a jamais expliquées.
-
-Un conseil : regardez-la ce soir, avec votre conjoint si possible. Elle contient un chiffre, 82 194 €, et trois dates. L'une des trois vous concerne plus que les deux autres. Vous saurez laquelle à la fin.
-
-P.-S. Ajoutez cette adresse à vos contacts. Les prochains messages contiennent les trois dates, et sans ça ils finissent parfois dans les indésirables.
-
---
-Vous recevez ce message parce que vous avez demandé la vidéo sur heritageintact.fr.
-Pour ne plus rien recevoir, répondez « stop » à cet email : ${CONTACT_EMAIL}`;
+export async function envoyerLivraison(lead: Lead) {
+  const p = lead.firstName.trim() || "Bonjour";
+  const bouton = { texte: "Regarder la vidéo de 9 minutes", lien: lien("/methode") };
+  const paragraphes = [
+    `Bonjour ${p},`,
+    "Voici votre lien vers la présentation de 9 minutes. Elle est accessible tout de suite, et elle le restera.",
+    "Elle montre les trois décisions que les familles averties prennent de leur vivant pour transmettre intact ce qu'elles ont construit — et pourquoi personne ne vous les a jamais expliquées.",
+    "Un conseil&nbsp;: regardez-la au calme, avec votre conjoint si possible. Elle contient un chiffre, <strong>82&nbsp;194&nbsp;€</strong>, et trois dates. L'une des trois vous concerne plus que les deux autres. Vous saurez laquelle à la fin.",
+  ];
+  const ps =
+    "<strong>P.-S.</strong> Ajoutez cette adresse à vos contacts. Les prochains messages contiennent les trois dates, et sans ça ils finissent parfois dans les indésirables.";
 
   return envoyer({
-    to: email,
+    to: lead.email,
+    leadId: lead.id,
     subject: `Votre accès à la vidéo, ${p}`,
-    html: gabarit({
-      titre: "Votre accès à la vidéo",
-      corps,
-      bouton: { texte: "Regarder la vidéo de 9 minutes", lien },
-      ps,
-    }),
-    text,
+    html: gabarit({ titre: "Votre accès à la vidéo", paragraphes, bouton, ps, leadId: lead.id }),
+    text: versionTexte(paragraphes, bouton, ps, lead.id),
   });
 }
+
+/* ─────────────────────────────────────────────────────────────────
+   J1 à J7 — une étape de la séquence.
+   ───────────────────────────────────────────────────────────── */
+export async function envoyerEtape(lead: Lead, etape: Etape) {
+  const p = lead.firstName.trim() || "Bonjour";
+  const bouton = { texte: etape.bouton.texte, lien: lien(etape.bouton.chemin) };
+  const paragraphes = etape.corps(p);
+
+  return envoyer({
+    to: lead.email,
+    leadId: lead.id,
+    subject: etape.objet(p),
+    html: gabarit({
+      titre: etape.objet(p),
+      paragraphes,
+      bouton,
+      ps: etape.ps,
+      leadId: lead.id,
+    }),
+    text: versionTexte(paragraphes, bouton, etape.ps, lead.id),
+  });
+}
+
+/**
+ * L'étape due pour cet inscrit aujourd'hui, s'il y en a une.
+ * On n'en renvoie qu'UNE par passage : deux emails le même jour sur un
+ * domaine jeune, c'est le meilleur moyen de finir en indésirable.
+ */
+export function etapeDue(lead: Lead, maintenant = Date.now()): Etape | null {
+  const jours = Math.floor((maintenant - new Date(lead.createdAt).getTime()) / 86_400_000);
+  const faites = new Set(lead.envoyes ?? []);
+  return SEQUENCE.find((e) => e.jour <= jours && !faites.has(e.cle)) ?? null;
+}
+
+export const _SITE_URL = SITE_URL;
