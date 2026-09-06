@@ -5,7 +5,13 @@
 
 export const BRAND = "Héritage Intact";
 export const CONTACT_EMAIL = "contact@heritageintact.fr";
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+/**
+ * ⚠️ `||` et non `??`. La variable existait sur Vercel avec une valeur VIDE :
+ * `??` ne rattrape que `undefined`, donc SITE_URL valait "" en production et
+ * tous les liens des emails partaient en relatif, inutilisables dans une boîte
+ * de réception. Une chaîne vide doit être traitée comme une absence.
+ */
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 /**
  * Identité légale de l'éditeur (LCEN, CGV, RGPD).
@@ -153,11 +159,11 @@ export const isTestMode = !process.env.STRIPE_SECRET_KEY;
  * Rien ne plante, rien ne s'affiche en erreur : les données disparaissent en
  * silence. C'est la pire catégorie de bug, d'où la bannière.
  *
- * Le jour où Supabase est branché, `NEXT_PUBLIC_SUPABASE_URL` devient non vide
- * et la bannière s'éteint toute seule.
+ * Le jour où une base est branchée, `POSTGRES_URL` devient non vide et la
+ * bannière s'éteint toute seule — il n'y a aucun code à retoucher.
  */
 export const stockageEphemere =
-  Boolean(process.env.VERCEL) && !process.env.NEXT_PUBLIC_SUPABASE_URL;
+  Boolean(process.env.VERCEL) && !(process.env.POSTGRES_URL || process.env.DATABASE_URL);
 
 export const VIDEO = {
   provider: (process.env.NEXT_PUBLIC_VIDEO_PROVIDER as "vimeo" | "wistia" | undefined) ?? "vimeo",

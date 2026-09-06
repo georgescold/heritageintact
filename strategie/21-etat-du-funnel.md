@@ -28,9 +28,40 @@ silence.** C'est la pire catégorie de bug — d'où la bannière rouge posée l
 
 > **Tant que ce point n'est pas réglé, chaque euro de publicité est perdu.**
 
-**À faire :** créer un projet Supabase, renseigner les trois variables, et
-remplacer les lectures/écritures de `db.ts`. C'est la seule tâche qui sépare le
-site d'une vraie ouverture.
+## ✅ Le code est écrit (6 septembre, fin de journée)
+
+`db.ts` a désormais **deux implémentations derrière les mêmes signatures** :
+
+```
+POSTGRES_URL renseignée  →  Postgres      (production)
+sinon                    →  data/db.json  (développement local)
+```
+
+C'est du **SQL standard**, pas des appels propres à un hébergeur : la même
+couche marche avec le Postgres de Vercel, Supabase, Neon, Railway ou une base
+auto-hébergée. Les tables se créent toutes seules à la première écriture.
+
+Les huit fonctions ont été testées une par une : création d'inscrit,
+idempotence sur l'email, création de commande, ajout d'article idempotent,
+passage en payé avec mémorisation de la carte, compteur de fondateurs,
+désinscription. Le mode Postgres corrige au passage deux courses que le mode
+fichier avait : le get-or-create est atomique, et l'ajout d'un article ne peut
+plus doubler sur un double clic.
+
+## ⚠️ Ce qu'il reste — et ça ne prend que deux minutes
+
+**Créer la base.** Je ne peux pas le faire : le token Vercel fourni est
+restreint au projet (403 sur les intégrations), et le Postgres first-party de
+Vercel est retiré (`410 gone`) — le stockage passe maintenant par le
+Marketplace.
+
+1. Vercel → le projet `heritageintact` → onglet **Storage** → **Create Database**
+2. Choisir **Neon** (Postgres, offre gratuite) ou **Supabase**
+3. Le connecter au projet : `POSTGRES_URL` est injectée automatiquement
+4. Redéployer
+
+À la première inscription, les tables se créent seules et la bannière rouge
+s'éteint. **Aucun code à toucher.**
 
 ---
 
@@ -77,12 +108,18 @@ ADS → /  (landing page, structure #2)          l'email
 
 ## Bloquant — rien ne peut être lancé avant
 
-- [ ] **La base de données** (§ 1). Supabase, trois variables, réécrire `db.ts`.
-- [ ] **Révoquer les quatre clés exposées** : Stripe live, Stripe test, fal.ai,
-      Resend. Elles ont transité par une conversation.
-- [ ] **Variables d'environnement Vercel.** Surtout `NEXT_PUBLIC_SITE_URL` :
-      sans elle, **tous les liens des emails pointent sur localhost**. Puis
-      `RESEND_API_KEY`, `EMAIL_FROM`, `CRON_SECRET`, et les clés Stripe.
+- [ ] **Créer la base** (§ 1). Trois clics dans Vercel → Storage. Le code est prêt.
+- [ ] **Révoquer les cinq clés exposées** : Stripe live, Stripe test, fal.ai,
+      Resend, et le token Vercel. Elles ont toutes transité par une conversation.
+- [x] ~~Variables d'environnement Vercel~~ — **fait le 6 septembre.**
+      `RESEND_API_KEY`, `EMAIL_FROM` et `CRON_SECRET` posées ; et
+      `NEXT_PUBLIC_SITE_URL`, qui existait avec une valeur **vide**, corrigée.
+      Elle méritait mieux qu'une case à cocher : `??` ne rattrape que
+      `undefined`, donc `SITE_URL` valait `""` en production et **tous les
+      liens des emails partaient en relatif**, inutilisables dans une boîte de
+      réception. Le code utilise maintenant `||`.
+- [ ] Les clés **Stripe** restent à poser, après rotation. Sans elles le site
+      reste en paiement simulé — ce qui est l'état sûr tant qu'il n'ouvre pas.
 - [ ] **Le webhook Stripe** : créer l'endpoint et coller `STRIPE_WEBHOOK_SECRET`.
 
 ## Le contenu qui manque
