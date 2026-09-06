@@ -286,6 +286,7 @@ export function TheThreeDatesTease() {
         Vous devez connaître ces trois dates avant que la plus proche ne soit derrière vous. La
         vidéo de 9 minutes vous dit lesquelles, et où vous en êtes par rapport à chacune.
       </p>
+      <CtaButton label="Découvrir mes 3 dates — gratuit" sombre />
     </Section>
   );
 }
@@ -345,6 +346,7 @@ export function TheMechanismShape() {
         où vous en êtes par rapport à chacune, et l&apos;ordre dans lequel les prendre. Neuf
         minutes, chez vous, sans rendez-vous.
       </p>
+      <CtaButton label="Voir les 3 décisions — gratuit" />
     </Section>
   );
 }
@@ -437,6 +439,7 @@ export function TheGuarantee() {
           avez-vous déjà vu une facture de notaire arriver avec une garantie de remboursement&nbsp;?
         </strong>
       </p>
+      <CtaButton label="Recevoir la vidéo — sans risque" />
     </Section>
   );
 }
@@ -730,5 +733,31 @@ export function CtaDetached() {
         </p>
       </InlineCta>
     </Section>
+  );
+}
+
+/**
+ * Bouton seul, sans encadré.
+ *
+ * Règle du projet : chaque fois que la page promet la vidéo, un bouton
+ * doit suivre. Les cinq relances encadrées suffisent aux pics
+ * émotionnels ; partout ailleurs, cette version légère évite de
+ * transformer la page en mur de blocs orange.
+ */
+export function CtaButton({ label, sombre = false }: { label: string; sombre?: boolean }) {
+  return (
+    <div className="mt-5">
+      <a
+        href="#acces"
+        className="flex min-h-[58px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-4 text-center text-[1.08rem] font-bold leading-tight text-white no-underline hover:bg-orange-dark sm:text-[1.15rem]"
+      >
+        {label}
+      </a>
+      <p
+        className={`mt-2 text-center text-[0.85rem] ${sombre ? "text-white/70" : "text-text-soft"}`}
+      >
+        Vidéo de 9 minutes · gratuite · aucun appel téléphonique
+      </p>
+    </div>
   );
 }
