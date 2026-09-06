@@ -45,6 +45,35 @@
 > **Rien n'a été jeté.** Le copywriting émotionnel est intégralement conservé,
 > déplacé là où il vend.
 >
+> ### Correction du même jour : la page de vente était un doublon de la vidéo
+>
+> Les onze blocs CEO avaient été déplacés de la landing page vers `/methode`.
+> C'était le bon sens du mouvement, mais pas la bonne destination pour tout :
+> `05-vsl-front.md` organise le script de la VSL en `LEAD (20 %)` → `BODY (65 %)
+> — structure CEO` → `CLOSING (15 %)`. **La structure CEO est le travail de la
+> vidéo.** La page racontait la même histoire juste en dessous, sur 38 écrans.
+>
+> Le gabarit d'une page de vente tient en une ligne dans `anatomie-funnel.md` :
+> `[H1][H2][VIDÉO][BOUTON][+ preuves / bonus / garantie / FAQ][CGV]`.
+>
+> `/methode` s'y conforme désormais — **38,6 écrans → 12,9**, 12 boutons → 5 :
+>
+> | Case du gabarit | Ce qui l'occupe |
+> |---|---|
+> | preuves | `TheNumber` (le calcul ligne par ligne), `BeforeAfter` |
+> | bonus | le packaging et la pile de valeur |
+> | urgence | `TheDeadline`, avant le dernier appel |
+> | garantie | `TheGuarantee` |
+> | FAQ | les six objections |
+>
+> **Rien n'est perdu.** Le récit retiré EST le script de la VSL, il vit dans
+> `05-vsl-front.md`, et les composants restent dans `LpCeo.tsx` — de quoi tester
+> une variante longue le jour où le volume le permettra.
+>
+> La H1 reprend la ligne qui portait l'ancienne page — qualification puis coût
+> de l'inaction dans la proposition principale — et la H2 tient le format du
+> gabarit : bénéfice, sans douleur, délai, puis l'appel à regarder la vidéo.
+>
 > ### Ce qui reste à faire
 >
 > - [ ] **Vendre sur la page de merci.** *« Il y a du trafic, donc il y a de la

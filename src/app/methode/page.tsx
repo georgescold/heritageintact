@@ -6,32 +6,8 @@ import { PixelEvent } from "@/components/MetaPixel";
 import { StickyCta } from "@/components/StickyCta";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { ButtonLink, Check, FAQ, Panel, ValueStack } from "@/components/ui";
-import {
-  BeforeAfter,
-  NotThis,
-  TheDeadline,
-  TheEnemy,
-  TheFear,
-  TheGap,
-  TheNumber,
-  TheyWillManage,
-} from "@/components/Lp";
-import {
-  CtaDates,
-  CtaDetached,
-  CtaFirstStep,
-  CtaTwoChoices,
-  CtaVerify,
-  TheCostOfWaiting,
-  TheDoubt,
-  TheDreamFirst,
-  TheFailure,
-  TheGuarantee,
-  TheLastWord,
-  TheMechanismShape,
-  TheStaircase,
-  TheThreeDatesTease,
-} from "@/components/LpCeo";
+import { BeforeAfter, TheDeadline, TheNumber } from "@/components/Lp";
+import { TheGuarantee, TheLastWord } from "@/components/LpCeo";
 import { PRODUCTS, VIDEO, euros } from "@/lib/config";
 
 export const metadata: Metadata = { title: "Les 3 décisions" };
@@ -64,43 +40,39 @@ const PACKAGING = [
 ];
 
 /**
- * LA PAGE DE VENTE — c'est ici qu'on vend, et nulle part avant.
+ * LA PAGE DE VENTE.
  *
- * ═══ Ce qui a changé le 6 septembre 2026 ═══
+ * ═══ Pourquoi elle a été raccourcie le 6 septembre 2026 ═══
  *
- * Les onze blocs de la structure CEO étaient sur la landing page, c'est-à-dire
- * devant un visiteur qui n'avait encore rien demandé. Ils sont ici désormais,
- * sous la vidéo, devant quelqu'un qui a donné son email et regardé neuf
- * minutes. C'est le même texte, au bon endroit : la landing page prend
- * l'email, la page de vente vend (`05-funnel/anatomie-funnel.md`).
+ * Elle portait les onze blocs de la structure CEO, en texte, sous la vidéo :
+ * 38 écrans sur téléphone. C'était un doublon, et pas une question de goût —
+ * `05-vsl-front.md` organise le script de la VSL exactement comme ça :
  *
- * Conséquence directe : tous les boutons de ces blocs pointaient sur le
- * formulaire d'opt-in. Ils pointent maintenant sur `/commande`.
+ *     LEAD (20 %)     le récit : Jean-Pierre, le notaire, 82 194 €
+ *     BODY (65 %)     la structure CEO
+ *     CLOSING (15 %)  trois outils de closing
  *
- * ═══ L'ordre, et pourquoi il ne bouge pas ═══
+ * **La structure CEO est le travail de la VIDÉO.** La page racontait la même
+ * histoire juste en dessous. Rien n'est perdu : ce texte EST le script, il vit
+ * dans `05-vsl-front.md`, et les composants restent dans `LpCeo.tsx` si on veut
+ * un jour tester une variante longue.
  *
- * Le gabarit d'une page de vente (`anatomie-funnel.md`) :
- *   H1 → H2 → VIDÉO → BOUTON → preuves / bonus / garantie / FAQ
+ * ═══ Le gabarit, tel qu'il est écrit ═══
+ *
+ *     [H1][H2][VIDÉO][BOUTON][+ preuves / bonus / garantie / FAQ][CGV]
+ *
  * ⚠️ Jamais de prix ni de bouton AU-DESSUS de la vidéo.
  *
- * Puis la structure CEO (`03-marketing-copy/structure-ceo.md`), dans l'ordre :
- *   1. RÊVE              TheDreamFirst
- *   2. ÉCHEC             TheFailure — « ce n'est pas votre faute »
- *   3. PEUR              TheNumber + TheFear + TheCostOfWaiting (Martine)
- *   4. ENNEMI            TheEnemy
- *   5. DOUTE             TheDoubt + NotThis + TheyWillManage
- *   6. PREUVE / BIG IDEA TheGap + BeforeAfter
- *   7. MÉCANISME         TheMechanismShape — la forme, jamais le contenu
- *   8. BÉNÉFICE + RÊVE   TheStaircase — l'escalier de projection
- *   9. URGENCE           TheDeadline
- *  10. GARANTIE          TheGuarantee
- *  11. CTA               le dernier mot, puis le bouton
+ * Ce qui reste sous la vidéo entre dans les cases prévues, et rien d'autre :
+ *   — preuve    TheNumber (d'où sortent les 82 194 €) et BeforeAfter
+ *   — bonus     le packaging et sa pile de valeur
+ *   — urgence   TheDeadline, avant le dernier appel
+ *   — garantie  TheGuarantee
+ *   — FAQ       les six objections
  *
- * Ce qui ne bouge jamais : le rêve en premier, l'ennemi avant le mécanisme,
- * l'urgence avant le CTA.
- *
- * ⚠️ Un seul bloc « garantie » sur la page. `TheGuarantee` (CEO) remplace
- * l'ancien encart `<Guarantee />` : le dire deux fois l'affaiblissait.
+ * La checklist d'optimisation le confirme de son côté : « ajouter des preuves
+ * sous la vidéo » est un levier du CTR de la VSL. Des preuves — pas un second
+ * récit.
  */
 export default function VslPage() {
   const cta = `Je veux mon chiffre et les 3 décisions : ${euros(PRODUCTS.front.price)}`;
@@ -110,16 +82,23 @@ export default function VslPage() {
       <PixelEvent name="Lead" />
       <Header minimal />
       <main className="flex-1">
-        {/* ═══ LE GABARIT : H1 → H2 → VIDÉO → BOUTON ═══════════════════ */}
+        {/* ═══ H1 → H2 → VIDÉO → BOUTON ════════════════════════════════
+            La H1 reprend la ligne qui portait l'ancienne page : qualification
+            puis coût de l'inaction, dans la proposition principale. La H2 tient
+            le format du gabarit — bénéfice, sans douleur, délai, puis l'appel à
+            regarder la vidéo. */}
         <section className="wrap pt-6 sm:pt-10">
-          <h1 className="mb-3 text-[1.5rem] sm:text-[2rem]">
-            Combien l&apos;État prendra-t-il sur ce que vous laisserez à vos enfants&nbsp;?
-            Sachez-le aujourd&apos;hui, et réduisez cette facture, légalement, en 3 semaines.
+          <h1 className="mb-3 text-[1.5rem] leading-[1.14] sm:text-[2.1rem]">
+            Vous avez une maison payée et des enfants&nbsp;?
+            <br />
+            <span className="text-orange">
+              Si vous ne faites rien, l&apos;État en prendra une part à votre mort.
+            </span>
           </h1>
           <p className="mb-5 text-[1.05rem]">
-            Révélation : les trois décisions que les familles averties prennent de leur vivant pour
-            transmettre intact ce qu&apos;elles ont construit.{" "}
-            <strong>Regardez cette courte vidéo de 9 minutes.</strong>
+            Voici les trois décisions qui divisent cette part par trois —{" "}
+            <strong>légalement, de votre vivant, en trois semaines</strong>, sans rien vendre et
+            sans quitter votre maison. <strong>Regardez cette vidéo de 9 minutes.</strong>
           </p>
 
           <VideoEmbed id={VIDEO.vsl} title="Les 3 décisions" minutes={9} />
@@ -134,42 +113,13 @@ export default function VslPage() {
           </div>
         </section>
 
-        {/* ═══ LA STRUCTURE CEO — le rêve toujours en premier ══════════ */}
-        <TheDreamFirst />
-        <TheThreeDatesTease />
-
-        {/* 2. ÉCHEC — « ce n'est pas votre faute », et l'ennemi s'annonce */}
-        <TheFailure />
-
-        {/* 3. PEUR — le calcul, la maison, puis le prix du mauvais moment */}
+        {/* ═══ PREUVE — le chiffre, ligne par ligne ════════════════════ */}
         <TheNumber />
-        <CtaVerify />
-        <TheFear />
-        <TheCostOfWaiting />
-        <CtaDates />
 
-        {/* 4. ENNEMI */}
-        <TheEnemy />
-
-        {/* 5. DOUTE */}
-        <TheDoubt />
-        <NotThis />
-        <TheyWillManage />
-        <CtaDetached />
-
-        {/* 6. PREUVE + BIG IDEA */}
-        <TheGap />
+        {/* ═══ PREUVE — l'écart, rendu visible ════════════════════════ */}
         <BeforeAfter />
-        <CtaTwoChoices />
 
-        {/* 7. MÉCANISME — sa forme, jamais son contenu */}
-        <TheMechanismShape />
-
-        {/* 8. BÉNÉFICE + RÊVE FINAL */}
-        <TheStaircase />
-        <CtaFirstStep />
-
-        {/* ═══ L'OFFRE — ce qu'il y a dans la boîte ════════════════════ */}
+        {/* ═══ L'OFFRE — ce qu'il y a dans la boîte ═══════════════════ */}
         <section className="wrap py-10">
           <h2 className="mb-4 text-[1.4rem]">
             Ce que vous recevez dans les deux minutes qui suivent
@@ -208,13 +158,13 @@ export default function VslPage() {
           </div>
         </section>
 
-        {/* 9. URGENCE — elle précède toujours le CTA final */}
+        {/* ═══ URGENCE — elle précède toujours le dernier appel ═══════ */}
         <TheDeadline />
 
-        {/* 10. GARANTIE */}
+        {/* ═══ GARANTIE ══════════════════════════════════════════════ */}
         <TheGuarantee />
 
-        {/* ═══ LA FAQ — les objections, en titres de section ═══════════ */}
+        {/* ═══ FAQ — les objections, en titres de section ════════════ */}
         <section className="wrap py-10">
           <h2 className="mb-3 text-[1.4rem]">Questions fréquentes</h2>
           <FAQ
@@ -247,7 +197,7 @@ export default function VslPage() {
           />
         </section>
 
-        {/* 11. LE DERNIER MOT, puis le bouton */}
+        {/* ═══ LE DERNIER MOT, puis le bouton ════════════════════════ */}
         <TheLastWord />
 
         <section className="wrap pb-12">
@@ -259,8 +209,6 @@ export default function VslPage() {
       </main>
       <Footer />
 
-      {/* La barre fixe : sur une page longue, le bouton doit rester à portée
-          de pouce à tout moment. */}
       <StickyCta href="/commande" label={`Accéder au programme — ${euros(PRODUCTS.front.price)}`} />
 
       <ExitPopup
