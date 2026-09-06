@@ -268,6 +268,24 @@ export function TheEnemy() {
           n&apos;a jamais envoyé de courrier pour dire « au fait, vous perdez 122 000 € le jour de
           vos 70 ans ».
         </p>
+        {/* Le déclencheur : la boîte aux lettres qui n'apporte jamais
+            l'avertissement. C'est l'objet le plus banal de la vie de
+            l'avatar, et c'est exactement là que le courrier n'arrive pas. */}
+        <figure>
+          <div className="relative aspect-[21/9] overflow-hidden border border-grey-line">
+            <Image
+              src="/img/boite-aux-lettres.jpg"
+              alt="Une vieille boîte aux lettres en métal débordant de prospectus publicitaires."
+              fill
+              sizes="(min-width: 640px) 46rem, 100vw"
+              className="object-cover object-center"
+            />
+          </div>
+          <figcaption className="mt-2 text-[0.95rem] text-text-soft">
+            Quarante ans de prospectus. Pas une ligne pour dire qu&apos;une date approchait.
+          </figcaption>
+        </figure>
+
         <p>
           Aucun d&apos;eux n&apos;est malhonnête. C&apos;est presque pire&nbsp;:{" "}
           <strong>ils sont simplement payés pour autre chose.</strong>
@@ -652,6 +670,18 @@ export function TheGap() {
         <strong>Ça dépend de ce qui a été fait avant.</strong> Voici à quoi ça ressemble.
       </p>
 
+      <figure className="mb-6">
+        <div className="relative aspect-[21/9] overflow-hidden border border-grey-line">
+          <Image
+            src="/img/chaise-vide.jpg"
+            alt="Une chaise vide au bout d'une table de famille, dans une pièce éclairée par la fenêtre."
+            fill
+            sizes="(min-width: 640px) 46rem, 100vw"
+            className="object-cover object-center"
+          />
+        </div>
+      </figure>
+
       <div className="space-y-4">
         {scenes.map((sc) => (
           <div key={sc.t} className="border border-grey-line bg-white">
@@ -689,6 +719,25 @@ export function TheyWillManage() {
   return (
     <Section tone="blue">
       <SectionTitle light>«&nbsp;Ils se débrouilleront bien.&nbsp;»</SectionTitle>
+
+      {/* Le retournement de point de vue : on quitte celui du parent pour
+          celui de l'enfant, seul, un soir, devant la pile. C'est le seul
+          endroit de la page où le lecteur voit la scène depuis l'autre côté. */}
+      <figure className="mb-6">
+        <div className="relative aspect-[21/9] overflow-hidden border border-white/25">
+          <Image
+            src="/img/enfant-qui-gere.jpg"
+            alt="Une personne vue de dos, au téléphone, la nuit, devant une haute pile de documents."
+            fill
+            sizes="(min-width: 640px) 46rem, 100vw"
+            className="object-cover object-center"
+          />
+        </div>
+        <figcaption className="mt-2 text-[0.95rem] text-white/70">
+          Onze mois de soirées comme celle-ci. C&apos;est ça, «&nbsp;se débrouiller&nbsp;».
+        </figcaption>
+      </figure>
+
       <div className="max-w-[42rem] space-y-4 text-[1.08rem] text-white/90">
         <p>
           Oui, ils se débrouilleront. En six mois, avec des comptes bloqués, un notaire à régler, et
