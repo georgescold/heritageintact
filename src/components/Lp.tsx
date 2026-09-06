@@ -95,26 +95,26 @@ export function Hero({ form }: { form: ReactNode }) {
         <div className="order-1 lg:col-start-1 lg:row-start-1">
           {/* Qualification : l'appel direct à l'avatar, avant même le titre */}
           <p className="mb-2 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-orange sm:text-[0.9rem]">
-            Propriétaires de plus de 60 ans · France
+            Propriétaires de plus de 60 ans
           </p>
 
-          {/* « à votre mort » nomme l'enjeu, « si vous ne faites rien » chiffre le
-              coût de l'inaction. Les deux manquaient. La dernière ligne est
-              détachée : isolée, elle frappe plus fort qu'en fin de phrase. */}
-          <h1 className="mb-3 text-[1.5rem] leading-[1.14] text-white sm:text-[2.15rem] lg:text-[2.45rem]">
+          {/* Une seule phrase, deux temps. Le coût de l'inaction est dans la
+              proposition principale — « si vous ne faites rien » — et non ajouté
+              après coup. C'est ce qu'on vend. */}
+          <h1 className="mb-3 text-[1.5rem] leading-[1.14] text-white sm:text-[2.15rem] lg:text-[2.4rem]">
             Vous avez une maison payée et des enfants&nbsp;?
             <br />
             <span className="text-orange">
-              Voici ce que l&apos;État prendra dessus à votre mort.
+              Si vous ne faites rien, l&apos;État en prendra une part à votre mort.
             </span>
-            <br />
-            <span className="text-white/85">Si vous ne faites rien d&apos;ici là.</span>
           </h1>
 
           {/* L'objection levée, immédiatement */}
-          <p className="max-w-[36rem] text-[1.05rem] text-white/90 sm:text-[1.15rem]">
-            Ce soir, en 20 minutes, chez vous. Sans rendez-vous et{" "}
-            <strong className="text-white">sans donner un centime de votre vivant.</strong>
+          <p className="max-w-[37rem] text-[1.02rem] text-white/90 sm:text-[1.12rem]">
+            Sur une maison de province et les économies d&apos;une vie, cette part est de{" "}
+            <strong className="text-white">82 194 €</strong>. Trois décisions prises de votre vivant
+            la ramènent à <strong className="text-white">23 794 €</strong> — sans que vous vous
+            sépariez de quoi que ce soit.
           </p>
         </div>
 
@@ -130,20 +130,20 @@ export function Hero({ form }: { form: ReactNode }) {
           </p>
           <dl className="px-4 py-3">
             <div className="flex items-baseline justify-between gap-3 border-b border-white/15 pb-2">
-              <dt className="text-[0.98rem] text-white/85">
-                Ce que l&apos;État prend aujourd&apos;hui
-              </dt>
+              <dt className="text-[0.98rem] text-white/85">Si vous ne faites rien</dt>
               <dd className="figure-lg whitespace-nowrap text-red-bright">82 194 €</dd>
             </div>
             <div className="flex items-baseline justify-between gap-3 border-b border-white/15 py-2">
-              <dt className="text-[0.98rem] text-white/85">
-                Ce qu&apos;il prendrait après les 3 décisions
-              </dt>
-              <dd className="whitespace-nowrap text-[1.35rem] font-bold text-white/70">23 794 €</dd>
+              <dt className="text-[0.98rem] text-white/85">Si vous prenez les 3 décisions</dt>
+              <dd className="whitespace-nowrap text-[1.35rem] font-bold text-green-bright">
+                23 794 €
+              </dd>
             </div>
             <div className="flex items-baseline justify-between gap-3 pt-2">
-              <dt className="text-[1.02rem] font-bold text-white">Ce qui reste dans la famille</dt>
-              <dd className="figure-lg whitespace-nowrap text-green-bright">+ 58 400 €</dd>
+              <dt className="text-[1.02rem] font-bold text-white">
+                Ce que vous coûte le fait d&apos;attendre
+              </dt>
+              <dd className="figure-lg whitespace-nowrap text-red-bright">58 400 €</dd>
             </div>
           </dl>
           <p className="border-t border-white/20 px-4 py-2 text-[0.85rem] text-white/60">
@@ -155,9 +155,10 @@ export function Hero({ form }: { form: ReactNode }) {
           <p className="mb-1 text-[1.15rem] font-bold text-blue">
             Recevez la vidéo de 9 minutes, gratuitement
           </p>
-          {/* Le mécanisme, en une ligne : ici il dit ce que la vidéo contient. */}
+          {/* Ce que la vidéo contient, en une ligne. Aucun nom de méthode :
+              « les 3 Verrous » ne dit rien à quelqu'un qui découvre le sujet. */}
           <p className="mb-3 text-[0.92rem] text-text-soft">
-            La Méthode des 3 Verrous : trois décisions écrites dans le Code général des impôts.
+            Les trois décisions, expliquées en français, sans un mot de jargon.
           </p>
           {form}
           {/* Levier n°2 : l'urgence sous le bouton, prouvée et datée. */}
@@ -184,14 +185,13 @@ export function TheNumber() {
     <Section tone="grey">
       <SectionTitle>D&apos;où sortent les 82 194 €</SectionTitle>
       <p className="mb-4 text-[1.05rem]">
-        L&apos;enveloppe arrive quatre mois après l&apos;enterrement, au moment où la famille
-        commençait tout juste à respirer. Le calcul tient sur une page. Il est parfaitement légal,
-        il est parfaitement juste, et il n&apos;est plus discutable.
+        Il n&apos;y a aucune astuce dans ce calcul, et c&apos;est bien le problème. Une maison de
+        ville moyenne, quarante ans de remboursements, des économies laissées sur un contrat ouvert
+        à la banque en 2003. Un enfant. Rien d&apos;exceptionnel.
       </p>
       <p className="mb-5 text-[1.05rem]">
-        Pourtant il n&apos;y a rien d&apos;exceptionnel dans cette famille. Une maison de ville
-        moyenne, quarante ans de remboursements, des économies laissées sur un contrat ouvert à la
-        banque en 2003. Un enfant. Voici comment on arrive au chiffre.
+        Le barème s&apos;applique tout seul, sans que personne n&apos;ait à décider quoi que ce
+        soit. Voici comment on arrive au chiffre.
       </p>
 
       <div className="overflow-hidden border border-grey-line bg-white">
@@ -427,7 +427,12 @@ export function ThreeDoors() {
   ];
   return (
     <Section>
-      <SectionTitle>Trois portes se ferment avec le temps. Aucune ne se rouvre.</SectionTitle>
+      <SectionTitle>Ce que chaque année d&apos;attente vous coûte</SectionTitle>
+      <p className="mb-5 text-[1.06rem]">
+        Trois portes se ferment avec le temps, et aucune ne se rouvre. Ce ne sont pas des occasions
+        manquées&nbsp;: ce sont des sommes précises, qui sortent de la poche de vos enfants le jour
+        venu.
+      </p>
       <div className="space-y-3">
         {portes.map((p, i) => (
           <div key={p.t} className="border border-grey-line bg-white">
@@ -441,8 +446,9 @@ export function ThreeDoors() {
               </div>
             </div>
             {/* Le prix de l'inaction, chiffré, sous chaque porte. */}
-            <p className="border-t border-red/30 bg-red-bg px-4 py-2 text-[0.95rem]">
-              <strong className="text-red">⚠ Si la porte se ferme&nbsp;:</strong> {p.cout}
+            <p className="border-t-2 border-red bg-red-bg px-4 py-2.5 text-[1rem]">
+              <strong className="text-red">Ce que ça coûte de laisser passer&nbsp;:</strong>{" "}
+              {p.cout}
             </p>
           </div>
         ))}

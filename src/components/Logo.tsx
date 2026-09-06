@@ -4,8 +4,8 @@
  * Dessiné en SVG, pas généré : un logo doit rester net à 24 px dans un onglet
  * comme à 400 px sur une couverture, et les modèles d'images écrivent mal.
  *
- * Le symbole : un toit posé sur trois barres — les 3 Verrous qui protègent la
- * maison. La barre du milieu est orange, c'est le seul accent de la marque.
+ * Le symbole : un toit posé sur trois barres — les trois décisions qui protègent
+ * la maison. La barre du milieu est orange, c'est le seul accent de la marque.
  * Aucun visage, aucune photo : la marque est éditoriale (cf. 15-identite-visuelle.md).
  */
 export function Mark({ size = 40, className = "" }: { size?: number; className?: string }) {

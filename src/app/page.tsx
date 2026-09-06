@@ -21,6 +21,7 @@ import {
   ThreeDoors,
 } from "@/components/Lp";
 import {
+  TheCostOfWaiting,
   TheDoubt,
   TheDreamFirst,
   TheFailure,
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
  *
  *   1. RÊVE                TheDreamFirst
  *   2. ÉCHEC               TheFailure — « ce n'est pas votre faute »
- *   3. PEUR                TheNumber + TheFear
+ *   3. PEUR                TheNumber + TheFear + TheCostOfWaiting (Martine)
  *   4. ENNEMI              TheEnemy
  *   5. DOUTE               TheDoubt + NotThis + TheyWillManage
  *   6. PREUVE / BIG IDEA   TheGap + BeforeAfter
@@ -74,9 +75,10 @@ export default function LandingPage() {
         {/* 2. ÉCHEC — « ce n'est pas votre faute », et l'ennemi s'annonce */}
         <TheFailure />
 
-        {/* 3. PEUR */}
+        {/* 3. PEUR — le calcul, la maison, puis le prix du mauvais moment */}
         <TheNumber />
         <TheFear />
+        <TheCostOfWaiting />
 
         {/* 4. ENNEMI */}
         <TheEnemy />
@@ -127,7 +129,7 @@ export default function LandingPage() {
           </p>
           <ul className="mb-6 space-y-2 text-[1.05rem]">
             {[
-              "La vidéo de 9 minutes : les 3 Verrous, expliqués en français, sans un mot de jargon.",
+              "La vidéo de 9 minutes : les trois décisions, expliquées en français, sans un mot de jargon.",
               "Le calcul complet du cas, à l'écran, ligne par ligne, avec les articles du Code en référence.",
               "Les 3 dates de votre situation, celles qui se ferment, avec votre âge d'aujourd'hui.",
               "De quoi arriver chez le notaire en sachant exactement quoi demander.",

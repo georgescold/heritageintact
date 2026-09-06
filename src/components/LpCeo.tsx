@@ -216,27 +216,27 @@ export function TheDoubt() {
 export function TheMechanism() {
   const verrous = [
     {
-      n: "Verrou 1",
-      t: "Le compteur",
+      n: "Décision 1",
+      t: "Faire partir le compteur",
       d: "Faire partir le délai de quinze ans. Aujourd'hui, pas dans deux ans. C'est la seule décision qui ne coûte rien et qui vaut le plus cher, parce que c'est du temps, et que le temps ne se rattrape pas.",
     },
     {
-      n: "Verrou 2",
-      t: "Le contrat",
+      n: "Décision 2",
+      t: "Reprendre le contrat de la banque",
       d: "Reprendre l'assurance-vie ouverte à la banque : la clause bénéficiaire, et la date des versements. Trois questions, cinq minutes. C'est là que se trouvent les 152 500 € par bénéficiaire que presque personne n'utilise correctement.",
     },
     {
-      n: "Verrou 3",
-      t: "Les murs",
+      n: "Décision 3",
+      t: "Transmettre les murs sans quitter la maison",
       d: "Transmettre la nue-propriété de la maison en gardant l'usage à vie. Vous restez chez vous, vous pouvez même la louer, et au décès l'usufruit s'éteint sans un euro de droits.",
     },
   ];
   return (
     <Section>
-      <SectionTitle>La Méthode des 3 Verrous</SectionTitle>
+      <SectionTitle>Les 3 décisions qui divisent la facture par trois</SectionTitle>
       <p className="mb-6 text-[1.06rem]">
-        Trois décisions. Pas douze. Elles se prennent dans cet ordre, et elles tiennent en un
-        après-midi chez le notaire.
+        Trois. Pas douze. Elles se prennent dans cet ordre, elles sont toutes les trois écrites dans
+        le Code général des impôts, et elles tiennent en un après-midi chez le notaire.
       </p>
 
       <div className="space-y-3">
@@ -400,5 +400,97 @@ export function TheLastWord() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   LE COÛT DE L'INACTION, INCARNÉ.
+   Deuxième persona (`02-avatar.md`, avatar secondaire) : Martine, 71 ans,
+   veuve. Elle a déjà vécu une succession, donc elle sait. Et elle vient
+   quand même de perdre 11 900 € — pour une date.
+   C'est la démonstration que ce n'est pas l'ignorance qui coûte cher,
+   c'est le moment où l'on agit.
+   ═══════════════════════════════════════════════════════════════ */
+export function TheCostOfWaiting() {
+  return (
+    <Section tone="grey" wide>
+      <div className="grid items-start gap-6 lg:grid-cols-[1.15fr_1fr] lg:gap-10">
+        <div>
+          <SectionTitle>Martine a fait la bonne chose. Trois mois trop tard.</SectionTitle>
+
+          <div className="space-y-4 text-[1.06rem]">
+            <p>
+              Martine a 71 ans, un appartement à Montpellier et la maison de vacances où ses cinq
+              petits-enfants ont appris à nager. Elle est veuve depuis deux ans.
+            </p>
+            <p>
+              Elle a enterré son mari un jeudi de novembre, et elle a passé les onze mois suivants
+              dans les papiers. Les comptes bloqués. Les organismes à prévenir un par un, en
+              réexpliquant à chaque fois. Les actes de décès qu&apos;il faut recommander parce
+              qu&apos;on n&apos;en avait pas demandé assez.
+            </p>
+            <p>
+              Alors elle s&apos;est juré une chose&nbsp;:{" "}
+              <strong>ses trois enfants ne vivraient pas ça.</strong>
+            </p>
+            <p>
+              Elle a rangé, classé, regroupé. Et pour faire simple, elle a viré{" "}
+              <strong>90 000 €</strong> — ce qui restait de l&apos;épargne du ménage — sur son
+              assurance-vie. «&nbsp;Comme ça, tout est au même endroit.&nbsp;»
+            </p>
+            <p className="text-[1.1rem] font-bold text-blue">Elle avait 70 ans et trois mois.</p>
+
+            <div className="border-l-4 border-red bg-red-bg p-4">
+              <p className="mb-2">
+                Personne ne lui avait dit qu&apos;il y avait une date. Versés <strong>avant</strong>{" "}
+                son soixante-dixième anniversaire, ces 90 000 € seraient sortis de la succession
+                sans un centime de droits. Versés <strong>après</strong>, l&apos;abattement tombe de
+                152 500 € par enfant à 30 500 € pour tout le monde et tous les contrats confondus.
+              </p>
+              <p>
+                Les 59 500 € qui dépassent retombent dans la succession. À 20 %, cela fera{" "}
+                <strong>11 900 € à payer par ses enfants</strong> — sur de l&apos;argent qui était
+                déjà le leur.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-1 border-2 border-red bg-white p-4">
+              <span className="figure-xl text-red">11 900 €</span>
+              <p className="min-w-[12rem] flex-1 text-[1.06rem] font-bold text-blue">
+                Pour un virement fait trois mois trop tard.
+              </p>
+            </div>
+
+            <p>
+              Martine n&apos;a rien fait de mal. Elle a même fait exactement ce qu&apos;il fallait
+              faire — dans le mauvais ordre, et après la mauvaise date. Elle avait déjà vécu une
+              succession&nbsp;: elle savait mieux que la plupart des gens. Ça n&apos;a rien changé.
+            </p>
+            <p className="border-l-4 border-blue bg-white p-4 text-[1.15rem] font-bold text-blue">
+              Sur une succession, ce n&apos;est presque jamais la décision qui coûte cher.
+              C&apos;est le moment où on la prend.
+            </p>
+          </div>
+        </div>
+
+        <figure className="lg:sticky lg:top-4">
+          <div className="relative aspect-[4/3] overflow-hidden border border-grey-line">
+            <Image
+              src="/img/martine.jpg"
+              alt="Une femme âgée assise seule à une table couverte de dossiers, vue de dos, une chaise vide en face d'elle."
+              fill
+              sizes="(min-width: 1024px) 28rem, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <figcaption className="mt-2 border-l-4 border-blue bg-white px-3 py-2 text-[0.9rem]">
+            <strong className="block text-blue">Martine, 71 ans — Montpellier</strong>
+            <span className="text-text-soft">
+              Cas type, reconstitué à partir du barème officiel et de situations courantes.
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </Section>
   );
 }
