@@ -112,9 +112,9 @@ export function Hero({ form }: { form: ReactNode }) {
           {/* L'objection levée, immédiatement */}
           <p className="max-w-[37rem] text-[1.02rem] text-white/90 sm:text-[1.12rem]">
             Sur une maison de province et les économies d&apos;une vie, cette part est de{" "}
-            <strong className="text-white">82 194 €</strong>. Trois décisions prises de votre vivant
-            la ramènent à <strong className="text-white">23 794 €</strong> — sans que vous vous
-            sépariez de quoi que ce soit.
+            <strong className="text-white">82 194 €</strong>. Trois décisions, prises dès maintenant
+            et de votre vivant, la ramènent à <strong className="text-white">23 794 €</strong> —
+            sans que vous vous sépariez de quoi que ce soit.
           </p>
         </div>
 
