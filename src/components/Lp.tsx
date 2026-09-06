@@ -313,6 +313,59 @@ export function TheEnemy() {
 /* ─────────────────────────────────────────────────────────────────
    5. AVANT / APRÈS — deux photos, deux états.
    ───────────────────────────────────────────────────────────── */
+/**
+ * LES TROIS CHIFFRES, CÔTE À CÔTE.
+ *
+ * Ce tableau existait dans le `Hero` de l'ancienne landing page, sur fond
+ * sombre. La page de vente promettait « 82 194 € ramenés à 23 794 € » dans sa
+ * sous-headline, puis prouvait le premier chiffre… et ne montrait jamais le
+ * second. Le lecteur devait croire sur parole la moitié de la promesse.
+ *
+ * Il vient donc juste après le calcul, et il ferme la boucle : voici ce que ça
+ * coûte, voici ce que ça coûterait, voici la différence. Le troisième chiffre
+ * — l'écart — est celui qui fait acheter : c'est le prix de l'attente.
+ *
+ * Chaque ligne est étiquetée. Une version antérieure affichait « 82 194 € »
+ * barré au-dessus de « 23 794 € » sans dire de quoi il s'agissait, et on
+ * pouvait comprendre qu'il s'agissait d'une remise sur la formation.
+ */
+export function TheComparison() {
+  return (
+    <Section>
+      <SectionTitle>Ce que ces trois décisions changent, en euros</SectionTitle>
+      <div className="max-w-[38rem] border-2 border-blue bg-white">
+        <p className="border-b border-grey-line bg-grey-bg px-4 py-2 text-[0.88rem] uppercase tracking-[0.08em] text-text-soft">
+          Cas type · Maison 380 000 € · Épargne 140 000 € · Un enfant
+        </p>
+        <dl className="px-4 py-3">
+          <div className="flex items-baseline justify-between gap-3 border-b border-grey-line pb-3">
+            <dt className="text-[1.02rem]">Si vous ne faites rien</dt>
+            <dd className="whitespace-nowrap text-[1.7rem] font-bold text-red">82 194 €</dd>
+          </div>
+          <div className="flex items-baseline justify-between gap-3 border-b border-grey-line py-3">
+            <dt className="text-[1.02rem]">Si vous prenez les 3 décisions</dt>
+            <dd className="whitespace-nowrap text-[1.7rem] font-bold text-green">23 794 €</dd>
+          </div>
+          <div className="flex items-baseline justify-between gap-3 pt-3">
+            <dt className="text-[1.06rem] font-bold text-blue">
+              Ce que vous coûte le fait d&apos;attendre
+            </dt>
+            <dd className="whitespace-nowrap text-[2rem] font-bold text-red">58 400 €</dd>
+          </div>
+        </dl>
+        <p className="border-t border-grey-line bg-grey-bg px-4 py-2 text-[0.88rem] text-text-soft">
+          Barème officiel, article 777 du Code général des impôts.
+        </p>
+      </div>
+      <p className="mt-5 max-w-[38rem] text-[1.06rem]">
+        Ces <strong>58 400 €</strong> ne sont pas une économie qu&apos;on vous promet. C&apos;est la
+        somme que vos enfants verseront en plus, uniquement parce que rien n&apos;aura été décidé à
+        temps.
+      </p>
+    </Section>
+  );
+}
+
 export function BeforeAfter() {
   return (
     <Section tone="grey" wide>

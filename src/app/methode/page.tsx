@@ -7,7 +7,7 @@ import { StickyCta } from "@/components/StickyCta";
 import { UrgencyBar } from "@/components/Urgency";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { ButtonLink, Check, FAQ, Panel, ValueStack } from "@/components/ui";
-import { BeforeAfter, TheDeadline, TheNumber } from "@/components/Lp";
+import { BeforeAfter, TheComparison, TheDeadline, TheNumber } from "@/components/Lp";
 import { TheCostOfInaction, TheGuarantee, TheLastWord } from "@/components/LpCeo";
 import { CTA, FOUNDERS_CAP, PRIX_APRES_FONDATEURS, PRODUCTS, VIDEO, euros } from "@/lib/config";
 
@@ -109,10 +109,19 @@ export default function VslPage() {
               Si vous ne faites rien, l&apos;État en prendra une part à votre mort.
             </span>
           </h1>
+          {/* ⚠️ La sous-headline ANNONCE les deux chiffres.
+              Sans ça, la première section sous la vidéo — « D'où sortent les
+              82 194 € » — tombait sur un chiffre dont la page n'avait jamais
+              parlé. Elle répondait à une question que personne ne s'était
+              posée. Le raisonnement se tient maintenant de bout en bout :
+              l'État prend une part → cette part vaut 82 194 € → trois
+              décisions la ramènent à 23 794 € → et voici le calcul. */}
           <p className="mb-5 text-[1.12rem] leading-snug">
-            <strong>Trois décisions divisent cette part par trois.</strong> Elles sont écrites dans
-            le Code général des impôts, elles se prennent de votre vivant, et elles ne vous
-            demandent ni de vendre, ni de quitter votre maison.
+            Sur une maison de province et les économies d&apos;une vie, cette part est de{" "}
+            <strong className="whitespace-nowrap text-orange">82 194 €</strong>. Trois décisions,
+            prises de votre vivant, la ramènent à{" "}
+            <strong className="whitespace-nowrap text-green">23 794 €</strong> — sans rien vendre et
+            sans quitter votre maison.
           </p>
 
           <VideoEmbed id={VIDEO.vsl} title="Les 3 décisions" minutes={9} />
@@ -134,7 +143,14 @@ export default function VslPage() {
         {/* ═══ PREUVE — le chiffre, ligne par ligne ════════════════════ */}
         <TheNumber />
 
-        {/* ═══ PREUVE — l'écart, rendu visible ════════════════════════ */}
+        {/* ═══ PREUVE — le second chiffre, celui qu'on promettait ═════
+            La sous-headline annonce 82 194 € ramenés à 23 794 €. Le bloc
+            précédent prouve le premier ; celui-ci montre le second et l'écart
+            entre les deux. Sans lui, la moitié de la promesse restait à
+            croire sur parole. */}
+        <TheComparison />
+
+        {/* ═══ Ce que ça donne concrètement, le jour venu ═════════════ */}
         <BeforeAfter />
 
         {/* ═══ L'OFFRE — ce qu'il y a dans la boîte ═══════════════════ */}
