@@ -160,8 +160,11 @@
   );
 
   /* A partir de la tablette, le texte tient dans la moitie gauche : on peut
-     rendre la droite a la photo. */
-  @variant sm {
+     rendre la droite a la photo.
+     `@media` et non `@variant sm` : imbrique dans un `@utility`, `@variant` est
+     avale silencieusement par Tailwind — la regle ne sortait pas du build et le
+     bureau gardait le voile uniforme. 40rem est la valeur de `sm`. */
+  @media (width >= 40rem) {
     background:
       linear-gradient(to bottom, rgba(8, 24, 42, 0) 70%, rgba(8, 24, 42, 0.32) 100%),
       linear-gradient(
