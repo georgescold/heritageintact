@@ -494,3 +494,155 @@ export function TheCostOfWaiting() {
     </Section>
   );
 }
+
+/* ═════════════════════════════════════════════════════════════════
+   LES RELANCES.
+
+   « Un seul CTA » figure dans l'anatomie d'une MAUVAISE page
+   (03-marketing-copy/vsl.md). Le closing commence après le premier appel
+   à l'action, et il faut un CTA entre chaque outil de closing — parce
+   que ceux qui lisent encore sont les sceptiques, et qu'ils décident
+   chacun à un moment différent.
+
+   Quatre relances, placées chacune juste après un pic émotionnel, et
+   portant chacune un outil de closing différent : étiquetage, rappel de
+   la douleur présente, Choice 1 / Choice 2, urgence finale.
+   ═══════════════════════════════════════════════════════════════ */
+function InlineCta({
+  kicker,
+  title,
+  children,
+  label,
+}: {
+  kicker: string;
+  title: string;
+  children: React.ReactNode;
+  label: string;
+}) {
+  return (
+    <div className="border-[3px] border-orange bg-white p-4 sm:p-5">
+      <p className="mb-1.5 text-[0.78rem] font-bold uppercase tracking-[0.14em] text-orange-dark">
+        {kicker}
+      </p>
+      <p className="mb-2 text-[1.25rem] font-bold leading-tight text-blue sm:text-[1.4rem]">
+        {title}
+      </p>
+      <div className="mb-4 text-[1.02rem]">{children}</div>
+      <a
+        href="#acces"
+        className="flex min-h-[58px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-4 text-center text-[1.08rem] font-bold leading-tight text-white no-underline hover:bg-orange-dark sm:text-[1.15rem]"
+      >
+        {label}
+      </a>
+      <p className="mt-2 text-center text-[0.85rem] text-text-soft">
+        Vidéo de 9 minutes · gratuite · aucun appel téléphonique
+      </p>
+    </div>
+  );
+}
+
+/** Relance 1 — après le calcul. Outil : l'étiquetage. « Vérifiez vous-même. » */
+export function CtaVerify() {
+  return (
+    <Section tone="white">
+      <InlineCta
+        kicker="Et chez vous, ça donne quoi ?"
+        title="Ce calcul, vous pouvez le refaire sur votre propre situation ce soir."
+        label="Calculer mon chiffre — gratuit"
+      >
+        <p>
+          Vous n&apos;êtes pas du genre à croire un chiffre sur parole, sinon vous ne seriez pas
+          encore en train de lire. Alors ne nous croyez pas&nbsp;: refaites le calcul avec vos
+          montants à vous. Mêmes articles, mêmes tranches, votre maison et votre épargne.
+        </p>
+      </InlineCta>
+    </Section>
+  );
+}
+
+/** Relance 2 — après Martine. Outil : le rappel de la douleur présente. */
+export function CtaDates() {
+  return (
+    <Section tone="white">
+      <InlineCta
+        kicker="La seule question qui compte maintenant"
+        title="Laquelle de vos trois dates est la plus proche ?"
+        label="Connaître mes 3 dates — gratuit"
+      >
+        <p>
+          Martine avait dépassé la sienne de trois mois, et elle ne l&apos;a jamais su. Il y en a
+          trois. Elles dépendent de votre âge et de la date de vos versements, et il y en a toujours
+          une qui arrive plus vite que les deux autres.
+        </p>
+        <p className="mt-2 font-bold text-blue">
+          Neuf minutes suffisent pour savoir laquelle est la vôtre.
+        </p>
+      </InlineCta>
+    </Section>
+  );
+}
+
+/** Relance 3 — après les deux colonnes. Outil : Choice 1 / Choice 2. */
+export function CtaTwoChoices() {
+  return (
+    <Section tone="white">
+      <InlineCta
+        kicker="Vous avez deux options"
+        title="Il n'y a pas de troisième colonne."
+        label="Voir comment on passe à droite"
+      >
+        <p>
+          Soit vos enfants ouvrent un tiroir et tombent sur la colonne de gauche&nbsp;: la facture,
+          les comptes bloqués, la maison à vendre, et l&apos;un d&apos;eux qui porte tout pendant
+          que les autres commentent.
+        </p>
+        <p className="mt-2">
+          Soit ils tombent sur celle de droite. Et ce qui décide, ce n&apos;est ni votre patrimoine,
+          ni votre chance&nbsp;:{" "}
+          <strong>c&apos;est un après-midi que vous prenez, ou que vous ne prenez pas.</strong>
+        </p>
+      </InlineCta>
+    </Section>
+  );
+}
+
+/** Relance 4 — après l'escalier. Outil : l'urgence finale, ramenée à la première marche. */
+export function CtaFirstStep() {
+  return (
+    <Section tone="white">
+      <InlineCta
+        kicker="La première marche"
+        title="Tout ça commence par neuf minutes, ce soir."
+        label="Commencer ce soir — gratuit"
+      >
+        <p>
+          Pas un rendez-vous à décrocher. Pas un dossier à monter. Pas un centime à sortir. Une
+          vidéo, et votre chiffre. <strong>Le reste se décide après, à tête reposée</strong>, et
+          c&apos;est vous qui décidez.
+        </p>
+      </InlineCta>
+    </Section>
+  );
+}
+
+/** Relance 5 — après « Ils se débrouilleront bien ». Outil : Always Be Leaving. */
+export function CtaDetached() {
+  return (
+    <Section tone="white">
+      <InlineCta
+        kicker="Ça ne changera rien pour nous"
+        title="Que vous regardiez cette vidéo ou non, la loi ne bouge pas."
+        label="Savoir où j'en suis — gratuit"
+      >
+        <p>
+          Les trois dates avanceront exactement pareil. Le barème s&apos;appliquera exactement
+          pareil. Personne ne vous rappellera, personne n&apos;insistera&nbsp;: dans trois jours
+          cette page ne sera plus dans votre historique, et voilà tout.
+        </p>
+        <p className="mt-2 font-bold text-blue">
+          La seule chose qui change, c&apos;est que vous saurez. Ou pas.
+        </p>
+      </InlineCta>
+    </Section>
+  );
+}

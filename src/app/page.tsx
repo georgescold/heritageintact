@@ -21,6 +21,11 @@ import {
   ThreeDoors,
 } from "@/components/Lp";
 import {
+  CtaDates,
+  CtaDetached,
+  CtaFirstStep,
+  CtaTwoChoices,
+  CtaVerify,
   TheCostOfWaiting,
   TheDoubt,
   TheDreamFirst,
@@ -77,8 +82,10 @@ export default function LandingPage() {
 
         {/* 3. PEUR — le calcul, la maison, puis le prix du mauvais moment */}
         <TheNumber />
+        <CtaVerify />
         <TheFear />
         <TheCostOfWaiting />
+        <CtaDates />
 
         {/* 4. ENNEMI */}
         <TheEnemy />
@@ -87,16 +94,19 @@ export default function LandingPage() {
         <TheDoubt />
         <NotThis />
         <TheyWillManage />
+        <CtaDetached />
 
         {/* 6. PREUVE + BIG IDEA */}
         <TheGap />
         <BeforeAfter />
+        <CtaTwoChoices />
 
         {/* 7. MÉCANISME */}
         <TheMechanism />
 
         {/* 8. BÉNÉFICE + RÊVE FINAL */}
         <TheStaircase />
+        <CtaFirstStep />
 
         {/* 9. URGENCE */}
         <ThreeDoors />
