@@ -210,45 +210,133 @@ export function TheDoubt() {
 }
 
 /* ═════════════════════════════════════════════════════════════════
-   BLOC 7 — LE MÉCANISME. Simple, rapide, facile, clair.
-   Trois étapes, pas quatre. C'est le pont du point A au point B.
+   L'ORIENTATION. Placée tôt exprès.
+
+   Toute la page parlait des « 3 décisions » et des « 3 dates » comme de
+   deux choses distinctes, alors que c'est le même trio : chaque décision
+   a une date après laquelle elle coûte plus cher. Et le lecteur ne les
+   découvrait qu'au douzième écran, après en avoir lu le nom dix fois.
+
+   Ce bloc les nomme d'entrée. Il ne les explique pas — c'est le rôle du
+   bloc MÉCANISME plus bas — il donne la carte.
    ═══════════════════════════════════════════════════════════════ */
-export function TheMechanism() {
-  const verrous = [
+const TROIS = [
+  {
+    n: "1",
+    quoi: "Faire partir le compteur des donations",
+    date: "Il court sur 15 ans, et il n'a pas encore commencé",
+  },
+  {
+    n: "2",
+    quoi: "Régler l'assurance-vie ouverte à la banque",
+    date: "Votre 70e anniversaire",
+  },
+  {
+    n: "3",
+    quoi: "Transmettre les murs en gardant l'usage à vie",
+    date: "Votre 71e anniversaire",
+  },
+];
+
+export function TheThreeAtAGlance() {
+  return (
+    <Section tone="blue">
+      <SectionTitle light>Tout tient en trois décisions. Chacune a sa date limite.</SectionTitle>
+      <p className="mb-6 max-w-[42rem] text-[1.06rem] text-white/85">
+        Vous les verrez détaillées plus bas, avec ce que chacune rapporte. Voici déjà de quoi on
+        parle, pour que le reste de cette page soit clair.
+      </p>
+
+      <div className="overflow-hidden border border-white/25">
+        {TROIS.map((t, i) => (
+          <div
+            key={t.n}
+            className={`flex flex-col gap-1 bg-white/5 px-4 py-3 sm:flex-row sm:items-center sm:gap-5 ${
+              i > 0 ? "border-t border-white/20" : ""
+            }`}
+          >
+            <span
+              aria-hidden
+              className="shrink-0 text-[1.5rem] font-bold leading-none text-orange sm:w-8"
+            >
+              {t.n}
+            </span>
+            <span className="flex-1 text-[1.08rem] font-bold text-white">{t.quoi}</span>
+            <span className="shrink-0 border-l-0 text-[0.98rem] text-orange sm:border-l sm:border-white/25 sm:pl-5">
+              <span className="text-white/60 sm:hidden">Sa date&nbsp;: </span>
+              {t.date}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-5 max-w-[42rem] text-[1.1rem] font-bold text-white">
+        Trois décisions, trois dates. Une fois la date passée, la décision ne se rattrape pas.
+        C&apos;est tout le sujet de cette page.
+      </p>
+    </Section>
+  );
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   BLOC 7 — LE MÉCANISME, avec ses dates et ses coûts.
+
+   Fusion de deux sections qui disaient la même chose à 3 000 px d'écart :
+   « les 3 décisions » d'un côté, « les 3 portes qui se ferment » de
+   l'autre. Chaque décision porte maintenant sa date et le prix de
+   l'attente, dans le même encadré.
+   ═══════════════════════════════════════════════════════════════ */
+export function TheThreeDecisions() {
+  const decisions = [
     {
       n: "Décision 1",
       t: "Faire partir le compteur",
-      d: "Faire partir le délai de quinze ans. Aujourd'hui, pas dans deux ans. C'est la seule décision qui ne coûte rien et qui vaut le plus cher, parce que c'est du temps, et que le temps ne se rattrape pas.",
+      d: "Une donation ne s'efface fiscalement qu'au bout de quinze ans. Passé ce délai, l'abattement de 100 000 € par enfant se recharge, et vous pouvez donner une deuxième fois sans droits. Le compteur ne démarre pas tout seul : il démarre le jour où vous signez.",
+      date: "Le compteur des 15 ans, à partir du jour de la signature",
+      cout: "Une donation faite à 67 ans est effacée à 82 ans. Faite à 72, elle l'est à 87. Chaque année d'attente est une année perdue, et l'abattement ne sert qu'une fois au lieu de deux.",
     },
     {
       n: "Décision 2",
       t: "Reprendre le contrat de la banque",
-      d: "Reprendre l'assurance-vie ouverte à la banque : la clause bénéficiaire, et la date des versements. Trois questions, cinq minutes. C'est là que se trouvent les 152 500 € par bénéficiaire que presque personne n'utilise correctement.",
+      d: "Ressortir l'assurance-vie ouverte il y a vingt ans et regarder deux choses : la clause bénéficiaire, et la date des versements. Trois questions, cinq minutes. C'est là que se trouvent les 152 500 € par bénéficiaire que presque personne n'utilise correctement.",
+      date: "Votre 70e anniversaire",
+      cout: "Avant : 152 500 € hors droits pour chaque bénéficiaire. Après : 30 500 € au total, tous bénéficiaires et tous contrats confondus. Soit 122 000 € d'abattement en moins, sur le même contrat, pour une date de versement.",
     },
     {
       n: "Décision 3",
       t: "Transmettre les murs sans quitter la maison",
-      d: "Transmettre la nue-propriété de la maison en gardant l'usage à vie. Vous restez chez vous, vous pouvez même la louer, et au décès l'usufruit s'éteint sans un euro de droits.",
+      d: "Donner la nue-propriété de la maison en gardant l'usage à vie. Vous restez chez vous, vous pouvez même la louer, et au décès l'usufruit s'éteint sans un euro de droits. La valeur transmise dépend de votre âge le jour de la signature.",
+      date: "Votre 71e anniversaire",
+      cout: "Avant 71 ans, la valeur transmise est calculée sur 60 % du bien. À partir de 71 ans, sur 70 %. Sur une maison à 380 000 € : 38 000 € de base taxable en plus, du jour au lendemain.",
     },
   ];
+
   return (
     <Section>
-      <SectionTitle>Les 3 décisions qui divisent la facture par trois</SectionTitle>
+      <SectionTitle>Les 3 décisions, et les 3 dates qui les ferment</SectionTitle>
       <p className="mb-6 text-[1.06rem]">
         Trois. Pas douze. Elles se prennent dans cet ordre, elles sont toutes les trois écrites dans
-        le Code général des impôts, et elles tiennent en un après-midi chez le notaire.
+        le Code général des impôts, et elles tiennent en un après-midi chez le notaire. Chacune a
+        une date après laquelle elle coûte beaucoup plus cher.
       </p>
 
-      <div className="space-y-3">
-        {verrous.map((v) => (
-          <div key={v.n} className="flex gap-4 border-l-4 border-blue bg-grey-bg p-4">
-            <div>
+      <div className="space-y-5">
+        {decisions.map((v) => (
+          <div key={v.n} className="border border-grey-line bg-white">
+            <div className="border-l-4 border-blue bg-grey-bg p-4">
               <p className="text-[0.8rem] font-bold uppercase tracking-[0.14em] text-orange">
                 {v.n}
               </p>
               <p className="mb-1 text-[1.2rem] font-bold text-blue">{v.t}</p>
               <p className="text-[1.02rem]">{v.d}</p>
             </div>
+            <p className="border-t border-grey-line bg-white px-4 py-2.5 text-[1rem]">
+              <strong className="text-blue">Sa date limite&nbsp;:</strong> {v.date}
+            </p>
+            <p className="border-t-2 border-red bg-red-bg px-4 py-2.5 text-[1rem]">
+              <strong className="text-red">Ce que ça coûte de la laisser passer&nbsp;:</strong>{" "}
+              {v.cout}
+            </p>
           </div>
         ))}
       </div>

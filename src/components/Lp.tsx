@@ -405,57 +405,24 @@ export function BeforeAfter() {
 }
 
 /* ─────────────────────────────────────────────────────────────────
-   6. L'URGENCE — vraie, datée, vérifiable. Règle n°1 d'une LP.
+   6. L'URGENCE COLLECTIVE — la quatrième date.
+   Les trois premières sont personnelles : elles dépendent de l'âge de
+   chacun. Celle-ci est la même pour tout le monde, et c'est la seule
+   qu'on puisse afficher en compte à rebours.
    ───────────────────────────────────────────────────────────── */
-export function ThreeDoors() {
-  const portes = [
-    {
-      t: "Le compteur des 15 ans",
-      d: "Une donation ne s'efface fiscalement qu'au bout de quinze ans. À 67 ans, il faut atteindre 82 ans pour recharger l'abattement. Chaque année d'attente est une année perdue, définitivement.",
-      cout: "L'abattement de 100 000 € par enfant ne sert qu'une fois, au décès, au lieu d'avoir servi deux fois.",
-    },
-    {
-      t: "Votre 70e anniversaire",
-      d: "Avant : 152 500 € transmis hors droits, pour chacun de vos bénéficiaires. Après : 30 500 € au total, tous bénéficiaires et tous vos contrats confondus. Le même argent, sur le même contrat.",
-      cout: "122 000 € d'abattement en moins sur le même contrat, pour une date de versement.",
-    },
-    {
-      t: "Votre 71e anniversaire",
-      d: "Tant que vous n'avez pas 71 ans, la valeur transmise de votre maison est calculée sur 60 %. Le jour de vos 71 ans, elle passe à 70 %. Dix points de patrimoine, pour un anniversaire.",
-      cout: "Sur une maison à 380 000 € : 38 000 € de base taxable en plus, du jour au lendemain.",
-    },
-  ];
+export function TheDeadline() {
   return (
     <Section>
-      <SectionTitle>Ce que chaque année d&apos;attente vous coûte</SectionTitle>
+      <SectionTitle>
+        Et il y a une quatrième date. Celle-là est la même pour tout le monde.
+      </SectionTitle>
       <p className="mb-5 text-[1.06rem]">
-        Trois portes se ferment avec le temps, et aucune ne se rouvre. Ce ne sont pas des occasions
-        manquées&nbsp;: ce sont des sommes précises, qui sortent de la poche de vos enfants le jour
-        venu.
+        Les trois premières dépendent de votre âge, donc elles ne tombent pas le même jour pour vous
+        et pour votre voisin. La quatrième est écrite au calendrier, et elle est identique pour
+        toutes les familles de France.
       </p>
-      <div className="space-y-3">
-        {portes.map((p, i) => (
-          <div key={p.t} className="border border-grey-line bg-white">
-            <div className="flex gap-4 p-4">
-              <span className="figure-lg shrink-0 text-grey-line" aria-hidden>
-                {i + 1}
-              </span>
-              <div>
-                <p className="mb-1 text-[1.1rem] font-bold text-blue">{p.t}</p>
-                <p className="text-[1rem]">{p.d}</p>
-              </div>
-            </div>
-            {/* Le prix de l'inaction, chiffré, sous chaque porte. */}
-            <p className="border-t-2 border-red bg-red-bg px-4 py-2.5 text-[1rem]">
-              <strong className="text-red">Ce que ça coûte de laisser passer&nbsp;:</strong>{" "}
-              {p.cout}
-            </p>
-          </div>
-        ))}
-      </div>
 
-      {/* La quatrième, celle qui a une date au calendrier */}
-      <div className="mt-5 overflow-hidden border-2 border-orange">
+      <div className="overflow-hidden border-2 border-orange">
         <div className="relative">
           <div className="relative aspect-[21/6]">
             <Image
@@ -469,7 +436,7 @@ export function ThreeDoors() {
           </div>
           <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-6">
             <p className="text-[0.8rem] font-bold uppercase tracking-[0.16em] text-orange">
-              Et il y en a une quatrième
+              La quatrième date
             </p>
             <p className="figure-lg text-white">31 décembre 2026</p>
           </div>
@@ -478,9 +445,14 @@ export function ThreeDoors() {
           <p className="text-[1rem]">
             Depuis février 2025, un dispositif temporaire permet de donner{" "}
             <strong>jusqu&apos;à 100 000 € par parent</strong>, totalement exonérés, à un enfant ou
-            un petit-enfant qui achète son logement ou fait des travaux de rénovation énergétique
-            (art. 790 A bis du CGI). <strong>Il s&apos;arrête le 31 décembre 2026</strong> et
-            n&apos;a pas été prolongé à ce jour.
+            un petit-enfant qui achète un logement neuf ou fait des travaux de rénovation
+            énergétique (art. 790 A bis du CGI). Cette somme <strong>s&apos;ajoute</strong> aux 100
+            000 € d&apos;abattement habituels&nbsp;: pour un couple, cela fait 463 730 €
+            transmissibles à un même enfant sans un euro de droits.
+          </p>
+          <p className="mt-2 text-[1rem]">
+            <strong>Le dispositif s&apos;arrête le 31 décembre 2026</strong> et n&apos;a pas été
+            prolongé à ce jour.
           </p>
           <p className="mt-2 text-[0.95rem] text-text-soft">
             Ce n&apos;est pas un compte à rebours de page de vente. C&apos;est une date votée au

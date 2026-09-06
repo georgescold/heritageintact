@@ -14,11 +14,11 @@ import {
   Section,
   SectionTitle,
   TheEnemy,
+  TheDeadline,
   TheFear,
   TheGap,
   TheNumber,
   TheyWillManage,
-  ThreeDoors,
 } from "@/components/Lp";
 import {
   CtaDates,
@@ -32,8 +32,9 @@ import {
   TheFailure,
   TheGuarantee,
   TheLastWord,
-  TheMechanism,
   TheStaircase,
+  TheThreeAtAGlance,
+  TheThreeDecisions,
 } from "@/components/LpCeo";
 
 export const metadata: Metadata = {
@@ -56,9 +57,9 @@ export const metadata: Metadata = {
  *   4. ENNEMI              TheEnemy
  *   5. DOUTE               TheDoubt + NotThis + TheyWillManage
  *   6. PREUVE / BIG IDEA   TheGap + BeforeAfter
- *   7. MÉCANISME           TheMechanism — les 3 Verrous
+ *   7. MÉCANISME           TheThreeDecisions — les 3 décisions et leurs dates
  *   8. BÉNÉFICE + RÊVE     TheStaircase — l'escalier de l'imagination
- *   9. URGENCE             ThreeDoors
+ *   9. URGENCE             TheDeadline — le 31 décembre 2026
  *  10. GARANTIE            TheGuarantee
  *  11. CTA                 disqualification + formulaire
  *
@@ -76,6 +77,9 @@ export default function LandingPage() {
 
         {/* 1. RÊVE — toujours en premier */}
         <TheDreamFirst />
+
+        {/* La carte du sujet, avant d'entrer dans le détail */}
+        <TheThreeAtAGlance />
 
         {/* 2. ÉCHEC — « ce n'est pas votre faute », et l'ennemi s'annonce */}
         <TheFailure />
@@ -102,14 +106,14 @@ export default function LandingPage() {
         <CtaTwoChoices />
 
         {/* 7. MÉCANISME */}
-        <TheMechanism />
+        <TheThreeDecisions />
 
         {/* 8. BÉNÉFICE + RÊVE FINAL */}
         <TheStaircase />
         <CtaFirstStep />
 
         {/* 9. URGENCE */}
-        <ThreeDoors />
+        <TheDeadline />
 
         {/* 10. GARANTIE */}
         <TheGuarantee />
