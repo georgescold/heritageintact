@@ -118,18 +118,15 @@ export default function LandingPage() {
               <Disqualification />
             </div>
 
-            {/* Amélioration n°1 : la preuve sous le premier bouton… */}
+            {/* Amélioration n°1 : la preuve sous le premier bouton.
+                Le gabarit prévoit un SECOND formulaire juste derrière. Il a été
+                retiré le 6 septembre 2026 : sur une page de 4,5 écrans, le
+                premier reste à une hauteur de pouce, et le rendre deux fois
+                donnait une page qui répète au lieu d'avancer. La règle du
+                second appel garde tout son sens sur une page longue — c'est le
+                cas de /methode, qui en porte douze. */}
             <div className="mt-6">
               <ProofUnderButton />
-            </div>
-
-            {/* …puis le second appel à l'action, juste derrière. */}
-            <div className="mt-6 border-2 border-blue bg-white p-4 sm:p-5">
-              <p className="mb-3 text-[1.15rem] font-bold text-blue">
-                Vous savez d&apos;où viennent ces chiffres. Reste à savoir ce qu&apos;ils valent
-                chez vous.
-              </p>
-              <OptinForm cta="Voir la vidéo de 9 minutes" />
             </div>
 
             {/* Règle 3 : toujours être en A/B test. La variante questionnaire
