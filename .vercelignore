@@ -1,0 +1,4 @@
+# La base de connaissance n'a rien a faire dans un build.
+# Une vingtaine de documents et ~18 Mo de visuels sources : ils sont
+# versionnes pour etre sauvegardes, pas pour etre deployes.
+strategie/

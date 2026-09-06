@@ -45,3 +45,7 @@ next-env.d.ts
 
 # on garde le modele de configuration, il ne contient aucune valeur sensible
 !.env.example
+
+# cache Python du script de generation des visuels
+__pycache__/
+*.pyc
