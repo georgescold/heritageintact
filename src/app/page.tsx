@@ -1,198 +1,160 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header, Footer } from "@/components/Chrome";
-import { OptinForm } from "@/components/OptinForm";
+import { Footer, Header } from "@/components/Chrome";
 import { ExitPopup } from "@/components/ExitPopup";
-import { ProofUnderButton } from "@/components/LpExtras";
-import { StickyCta } from "@/components/StickyCta";
+import { Disqualification } from "@/components/Lp";
+import { MetaDisclaimer, ProofUnderButton } from "@/components/LpExtras";
+import { OptinForm } from "@/components/OptinForm";
 import { UrgencyBar, UrgencyCountdown, UrgencyUnderButton } from "@/components/Urgency";
-import {
-  BeforeAfter,
-  Disqualification,
-  Hero,
-  NotThis,
-  Section,
-  SectionTitle,
-  TheEnemy,
-  TheDeadline,
-  TheFear,
-  TheGap,
-  TheNumber,
-  TheyWillManage,
-} from "@/components/Lp";
-import {
-  CtaDates,
-  CtaDetached,
-  CtaFirstStep,
-  CtaTwoChoices,
-  CtaVerify,
-  TheCostOfWaiting,
-  TheDoubt,
-  TheDreamFirst,
-  TheFailure,
-  TheGuarantee,
-  TheLastWord,
-  TheStaircase,
-  TheMechanismShape,
-  TheThreeDatesTease,
-} from "@/components/LpCeo";
 
 export const metadata: Metadata = {
-  title: "Combien l'État prendra-t-il sur ce que vous laisserez ?",
+  title: "Et si vos enfants héritaient de 58 400 € de plus ?",
   description:
-    "Vous avez plus de 60 ans, une maison payée et des enfants ? Une vidéo de 9 minutes vous montre ce que l'État prendra sur votre succession, et les trois décisions légales qui le réduisent.",
+    "Vous avez plus de 60 ans, une maison payée et des enfants ? Trois dates du Code général des impôts changent le prix de votre succession. Une vidéo de 9 minutes vous dit lesquelles.",
 };
 
 /**
- * VARIANTE A — LP MAX (structure #6) montée sur la structure CEO.
+ * LA LANDING PAGE — structure #2 de `05-funnel/landing-pages.md`.
  *
- * Le squelette vient de `03-marketing-copy/structure-ceo.md`, les onze blocs,
- * dans l'ordre. Ce qui ne bouge jamais : le rêve est en premier, l'ennemi
- * précède le mécanisme, le mécanisme précède le rêve final, l'urgence précède
- * le CTA.
+ * ═══ Pourquoi cette page a été raccourcie le 6 septembre 2026 ═══
  *
- *   1. RÊVE                TheDreamFirst
- *   2. ÉCHEC               TheFailure — « ce n'est pas votre faute »
- *   3. PEUR                TheNumber + TheFear + TheCostOfWaiting (Martine)
- *   4. ENNEMI              TheEnemy
- *   5. DOUTE               TheDoubt + NotThis + TheyWillManage
- *   6. PREUVE / BIG IDEA   TheGap + BeforeAfter
- *   7. MÉCANISME           TheMechanismShape — la forme, jamais le contenu
- *   8. BÉNÉFICE + RÊVE     TheStaircase — l'escalier de l'imagination
- *   9. URGENCE             TheDeadline — le 31 décembre 2026
- *  10. GARANTIE            TheGuarantee
- *  11. CTA                 disqualification + formulaire
+ * Elle faisait 22 blocs et 9 appels à l'action. C'était une très bonne page
+ * de vente — et c'est précisément le problème. Dans l'anatomie du funnel
+ * (`05-funnel/anatomie-funnel.md`), une landing page n'a qu'un seul travail :
  *
- * Les cinq blocs de la LP MAX restent tenus : qualification (hero), autorité
- * chiffrée (TheDoubt), promesse et garantie (TheGuarantee), deux appels à
- * l'action, disqualification. A/B test contre /lp-courte et /lp-questions.
+ *     ADS → LANDING PAGE → VSL → BON DE COMMANDE → UPSELLS → MERCI
+ *             (l'email)    (la vente)
+ *
+ * Le récit, les personnages, l'escalier de projection, la garantie : tout ça
+ * vend. Donc tout ça appartient à la **page de vente**, pas à la page qui
+ * demande un email. Rien n'a été jeté — les onze blocs CEO sont sur
+ * `/methode`, sous la vidéo, où ils font enfin leur travail.
+ *
+ * Deux règles du repo tranchaient déjà, on ne les avait pas appliquées :
+ *   — le tableau de choix des six structures attribue la **LP MAX (#6) au
+ *     high ticket**, or on vend un produit à 27 € ;
+ *   — le repère de conversion d'une landing page est **~50 %**, hors
+ *     d'atteinte pour une page de 3 000 mots.
+ *
+ * ═══ La structure, à la lettre ═══
+ *
+ *     HEADLINE          → bénéfice (curiosité par la forme interrogative)
+ *     SUB-HEADLINE      → objection levée
+ *     SUB-SUB-HEADLINE  → mécanisme, développé très rapidement
+ *     [ FORM : prénom + email ]
+ *     [ BOUTON ]
+ *
+ * Puis les quatre améliorations valables sur toutes les LP : la preuve sous
+ * le premier bouton, l'urgence sous le bouton, la mention anti-spam (dans
+ * `OptinForm`), la conformité Meta. Plus les trois règles universelles :
+ * urgence, pop-up de sortie, A/B test. Plus la disqualification, seul
+ * élément de la LP MAX qui vaille d'être gardé ici : elle filtre, et Meta
+ * récompense sur le CPA quand il voit des conversions de qualité.
+ *
+ * ═══ Ce qu'on n'a PAS mis, et c'est délibéré ═══
+ *
+ * Aucune photo. La structure #2 est du texte et un formulaire. Chaque
+ * élément au-dessus du champ repousse le bouton sous la ligne de flottaison,
+ * et le repère est explicite : *si le bouton est atteignable sans scroller
+ * sur mobile, tu gagnes en conversion.*
  */
 export default function LandingPage() {
   return (
     <>
       <UrgencyBar />
       <Header />
+
+      {/*
+        Padding vertical réduit sur téléphone : chaque pixel gagné au-dessus du
+        premier champ est un pixel de moins entre le lecteur et le formulaire.
+        Mesuré, pas estimé — le bas du bouton est passé de 1209 px à 885.
+      */}
       <main className="flex-1">
-        <Hero form={<OptinForm cta="Voir la vidéo maintenant" />} />
-
-        {/* 1. RÊVE — toujours en premier */}
-        <TheDreamFirst />
-
-        {/* Le teaser des 3 dates : leur importance, jamais leur contenu */}
-        <TheThreeDatesTease />
-
-        {/* 2. ÉCHEC — « ce n'est pas votre faute », et l'ennemi s'annonce */}
-        <TheFailure />
-
-        {/* 3. PEUR — le calcul, la maison, puis le prix du mauvais moment */}
-        <TheNumber />
-        <CtaVerify />
-        <TheFear />
-        <TheCostOfWaiting />
-        <CtaDates />
-
-        {/* 4. ENNEMI */}
-        <TheEnemy />
-
-        {/* 5. DOUTE */}
-        <TheDoubt />
-        <NotThis />
-        <TheyWillManage />
-        <CtaDetached />
-
-        {/* 6. PREUVE + BIG IDEA */}
-        <TheGap />
-        <BeforeAfter />
-        <CtaTwoChoices />
-
-        {/* 7. MÉCANISME */}
-        <TheMechanismShape />
-
-        {/* 8. BÉNÉFICE + RÊVE FINAL */}
-        <TheStaircase />
-        <CtaFirstStep />
-
-        {/* 9. URGENCE */}
-        <TheDeadline />
-
-        {/* 10. GARANTIE */}
-        <TheGuarantee />
-
-        {/* Le dernier argument, celui qui doit rester en tête au moment de cliquer */}
-        <TheLastWord />
-
-        {/* 11. CTA */}
-        <Section tone="grey">
-          <SectionTitle>
-            Il reste une décision à prendre maintenant. Elle est gratuite.
-          </SectionTitle>
-
-          <div className="mb-6 space-y-3 text-[1.06rem]">
-            <p>
-              Vous avez lu jusqu&apos;ici. Donc quelque chose, dans cette page, vous a parlé.
-              Peut-être la maison. Peut-être la phrase que vos enfants diront de vous.
+        <section className="bg-white pb-9 pt-5 sm:py-14">
+          <div className="wrap">
+            {/* La qualification, en surtitre : elle appelle l'avatar sans
+                manger une ligne de titre, et elle rend la disqualification
+                cohérente plus bas. */}
+            <p className="mb-1.5 text-[0.78rem] font-bold uppercase tracking-[0.14em] text-orange">
+              Propriétaires de plus de 60 ans · France
             </p>
-            <p>
-              Ce que vous ferez dans les trente prochaines secondes ne changera pas votre
-              patrimoine. Ça changera seulement ce que vous saurez ce soir, en vous couchant.{" "}
-              <strong>Et à partir de là, c&apos;est vous qui décidez</strong> — au lieu que ce soit
-              décidé pour vous, dans quinze ans, par un barème.
+
+            {/* ══ HEADLINE — le bénéfice, en question ══════════════════ */}
+            <h1 className="text-[1.6rem] leading-[1.12] sm:text-[2.5rem]">
+              Et si vos enfants héritaient de{" "}
+              <span className="whitespace-nowrap text-orange">58 400 €</span> de plus&nbsp;?
+            </h1>
+
+            {/* ══ SUB-HEADLINE — l'objection levée ═════════════════════ */}
+            <p className="mt-2.5 text-[1.08rem] font-bold text-blue sm:text-[1.3rem]">
+              Sans rien vendre, sans quitter votre maison, et sans confier un centime à qui que ce
+              soit.
             </p>
-          </div>
 
-          <p className="mb-3 text-[1.05rem] font-bold text-blue">
-            Ce que vous recevez, dans les deux minutes&nbsp;:
-          </p>
-          <ul className="mb-6 space-y-2 text-[1.05rem]">
-            {[
-              "La vidéo de 9 minutes : les trois décisions, expliquées en français, sans un mot de jargon.",
-              "Le calcul complet du cas, à l'écran, ligne par ligne, avec les articles du Code en référence.",
-              "Les 3 dates qui se ferment, et comment situer votre âge sur chacune.",
-              "De quoi arriver chez le notaire en sachant exactement quoi demander.",
-            ].map((t) => (
-              <li key={t} className="flex gap-2">
-                <span aria-hidden className="shrink-0 font-bold text-green">
-                  ✔
-                </span>
-                <span>{t}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mb-6">
-            <Disqualification />
-          </div>
-
-          {/* L'ancre est ICI et non sur la section : les neuf boutons de la page
-              renvoyaient sur le titre, et il restait huit cents pixels de texte
-              avant d'apercevoir un champ. scroll-mt garde le titre visible. */}
-          <div id="acces" className="scroll-mt-3 border-2 border-blue bg-white p-4 sm:p-5">
-            <p className="mb-1 text-[1.2rem] font-bold text-blue">Votre vidéo, tout de suite.</p>
-            <p className="mb-4 text-[0.95rem] text-text-soft">
-              Votre prénom, votre email, et la vidéo s&apos;ouvre sur la page suivante. Il n&apos;y
-              a pas d&apos;email à attendre, rien à installer, aucun appel téléphonique.
+            {/* ══ SUB-SUB-HEADLINE — le mécanisme ══════════════════════
+                « Le mécanisme se développe en une ligne ou deux, pas plus. »
+                Teasé, jamais expliqué : ce que sont les trois dates est
+                exactement ce que la vidéo apporte. */}
+            <p className="mt-2.5 text-[1.02rem] leading-snug">
+              Trois dates du Code général des impôts changent le prix de votre succession.{" "}
+              <strong>L&apos;une des trois est bien plus proche que les autres.</strong>
             </p>
-            <OptinForm cta="Recevoir la vidéo de 9 minutes" />
-            <div className="mt-3">
+
+            {/* ══ LE FORMULAIRE ═══════════════════════════════════════
+                Ni titre ni texte d'introduction au-dessus des champs : le
+                gabarit n'en prévoit aucun, et ils coûtaient 143 px. La mention
+                anti-spam et la case CGV sont dans le composant. */}
+            <div className="mt-3 border-2 border-blue bg-white p-3 sm:mt-5 sm:p-5">
+              <OptinForm cta="Voir la vidéo de 9 minutes" />
+            </div>
+
+            {/* Amélioration n°2 : l'urgence, datée, juste sous le bouton. */}
+            <div className="mt-4">
               <UrgencyUnderButton />
             </div>
-          </div>
 
-          <div className="mt-5">
-            <ProofUnderButton />
-          </div>
+            {/* La disqualification : elle filtre, et Meta récompense sur le CPA. */}
+            <div className="mt-4">
+              <Disqualification />
+            </div>
 
-          <p className="mt-6 text-center text-[0.9rem]">
-            <Link href="/lp-questions">
-              Vous préférez répondre à 3 questions d&apos;abord&nbsp;?
-            </Link>
-          </p>
-        </Section>
+            {/* Amélioration n°1 : la preuve sous le premier bouton… */}
+            <div className="mt-6">
+              <ProofUnderButton />
+            </div>
+
+            {/* …puis le second appel à l'action, juste derrière. */}
+            <div className="mt-6 border-2 border-blue bg-white p-4 sm:p-5">
+              <p className="mb-3 text-[1.15rem] font-bold text-blue">
+                Vous savez d&apos;où viennent ces chiffres. Reste à savoir ce qu&apos;ils valent
+                chez vous.
+              </p>
+              <OptinForm cta="Voir la vidéo de 9 minutes" />
+            </div>
+
+            {/* Règle 3 : toujours être en A/B test. La variante questionnaire
+                est la seule challenger conservée — c'est celle que le tableau
+                de choix prescrit pour un ciblage très large, qui est le nôtre. */}
+            <p className="mt-6 text-center text-[0.9rem]">
+              <Link href="/lp-questions">
+                Vous préférez répondre à 3 questions d&apos;abord&nbsp;?
+              </Link>
+            </p>
+
+            {/* Amélioration n°4 : la conformité Meta. Son absence est une
+                cause fréquente de bannissement de compte publicitaire. */}
+            <div className="mt-8 border-t border-grey-line pt-4">
+              <MetaDisclaimer />
+            </div>
+          </div>
+        </section>
       </main>
+
       <Footer />
 
-      <StickyCta label="Débloquer la vidéo — gratuit" />
-
+      {/* Règle 2 : toujours un pop-up de sortie. Il porte l'argument le plus
+          fort de la page — les deux compteurs qui tournent — parce que c'est
+          le dernier moment où on peut encore parler à ce visiteur. */}
       <ExitPopup storageKey="lp" title="Vous fermez cette page. Les compteurs, eux, continuent.">
         <div className="mb-4">
           <UrgencyCountdown />

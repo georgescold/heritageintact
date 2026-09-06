@@ -84,15 +84,23 @@ export const PRODUCTS: Record<ProductSku, Product> = {
 };
 
 /**
- * Les trois structures de landing page en test (05-funnel/landing-pages.md).
+ * Les landing pages en piste (05-funnel/landing-pages.md).
+ *
+ * Elles étaient quatre au 6 septembre 2026, toutes maintenues en parallèle et
+ * toutes en train de diverger. Deux ont été retirées : la LP MAX (#6), qui est
+ * une structure high ticket montée sur un produit à 27 €, et la LP courte (#1),
+ * qui faisait doublon avec la classique. Ce qu'elles portaient de bon n'est pas
+ * perdu — le récit CEO est passé sur /methode, où il vend.
+ *
+ * Il en reste deux, et c'est le bon nombre : le repo demande ~100 conversions
+ * par variante pour départager, soit ~300 € de budget chacune.
+ *
  * Le chemin d'arrivée est enregistré sur chaque lead : sans ça, on ne peut
  * comparer que les taux d'opt-in, jamais ce qui se passe après.
  */
 export const VARIANTES: Record<string, string> = {
-  "/": "A — LP MAX",
-  "/lp-courte": "B — courte + pop-up",
-  "/lp-questions": "C — questionnaire",
-  "/lp-classique": "D — classique (mécanisme)",
+  "/": "A — classique (structure #2)",
+  "/lp-questions": "B — questionnaire (structure #3)",
 };
 
 /** Nombre de places fondatrices au prix de 27 €. Le compteur est réel (cf. db). */

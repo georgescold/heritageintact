@@ -1,4 +1,58 @@
-# 06 — Les pages du funnel (Phase 2.6) — copy prêt à coller
+# 06 — Les pages du funnel
+
+> ## ⚠️ RÉORGANISATION DU 6 SEPTEMBRE 2026 — à lire avant le reste
+>
+> Le funnel était monté à l'envers. La **landing page** portait onze blocs de
+> structure CEO et neuf appels à l'action ; la **page de vente**, elle, n'avait
+> ni récit, ni personnage, ni escalier de projection.
+>
+> L'anatomie du funnel (`05-funnel/anatomie-funnel.md`) ne laisse pourtant aucune
+> ambiguïté sur qui fait quoi :
+>
+> ```
+> ADS → LANDING PAGE → PAGE DE VENTE → BON DE COMMANDE → UPSELLS → MERCI
+>         (l'email)      (la vente)       (+ bump)         (OTO)
+>              │                                              │
+>              └────────── EMAIL CAPTURÉ ─────────────────────┘
+>                                │
+>                                ↓
+>                    SÉQUENCE 7 JOURS + 4 BACKENDS
+>                       (là où est le profit)
+> ```
+>
+> ### Ce qui a bougé
+>
+> | | Avant | Après |
+> |---|---|---|
+> | Landing pages | **4** (`/`, `/lp-courte`, `/lp-questions`, `/lp-classique`) | **2** (`/`, `/lp-questions`) |
+> | `/` | LP MAX, structure #6, 38 écrans mobile | structure #2, **4,5 écrans** |
+> | Récit CEO | sur la landing page | sur `/methode`, sous la vidéo |
+> | Boutons du récit | vers le formulaire d'opt-in | vers `/commande` |
+> | Urgence du bon de commande | sous le formulaire | **au-dessus** |
+>
+> ### Pourquoi deux LP ont été retirées
+>
+> Le tableau de choix des six structures attribue la **LP MAX (#6) au high
+> ticket**. On vend un produit à **27 €**. Les trois structures prévues pour le
+> low ticket — #1 courte, #2 classique, #3 forms — prennent toutes l'email en
+> haut de page, avant tout contenu long. Et le repère de conversion d'une
+> landing page, **~50 %**, est hors d'atteinte pour une page de 3 000 mots.
+>
+> `/lp-courte` (#1) faisait doublon avec la classique. Il en reste deux, et
+> c'est le bon nombre : départager deux variantes demande ~100 conversions
+> chacune, soit ~300 € de budget par variante.
+>
+> **Rien n'a été jeté.** Le copywriting émotionnel est intégralement conservé,
+> déplacé là où il vend.
+>
+> ### Ce qui reste à faire
+>
+> - [ ] **Vendre sur la page de merci.** *« Il y a du trafic, donc il y a de la
+>       vente. »* Elle ne propose rien aujourd'hui — mais le premier produit
+>       backend (le Générateur, 147 €) n'a pas encore de page. À faire ensemble.
+> - [ ] Les quatre pages backend : `/generateur`, `/dependance`, `/classeur`,
+>       `/testament`.
+ (Phase 2.6) — copy prêt à coller
 
 > Ordre : Landing page → VSL (cf. `05`) → Bon de commande + bump → Upsell 1 → Upsell 2 → Thank you page.
 > Exit pop-up : LP ✅ · VSL ✅ · Bon de commande ✅ · OTO ❌.

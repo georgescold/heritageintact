@@ -286,7 +286,7 @@ export function TheThreeDatesTease() {
         Vous devez connaître ces trois dates avant que la plus proche ne soit derrière vous. La
         vidéo de 9 minutes vous dit lesquelles, et où vous en êtes par rapport à chacune.
       </p>
-      <CtaButton label="Découvrir les 3 dates — accès immédiat" sombre />
+      <CtaButton label="Connaître mes 3 dates" sombre />
     </Section>
   );
 }
@@ -346,7 +346,7 @@ export function TheMechanismShape() {
         où vous en êtes par rapport à chacune, et l&apos;ordre dans lequel les prendre. Neuf
         minutes, chez vous, sans rendez-vous.
       </p>
-      <CtaButton label="Voir les 3 décisions — accès immédiat" />
+      <CtaButton label="Accéder aux 3 décisions" />
     </Section>
   );
 }
@@ -440,7 +440,7 @@ export function TheGuarantee() {
           avez-vous déjà vu une facture de notaire arriver avec une garantie de remboursement&nbsp;?
         </strong>
       </p>
-      <CtaButton label="Regarder la vidéo — accès immédiat" />
+      <CtaButton label="Commencer maintenant" />
     </Section>
   );
 }
@@ -619,13 +619,13 @@ function InlineCta({
       </p>
       <div className="mb-4 text-[1.02rem]">{children}</div>
       <a
-        href="#acces"
+        href="/commande"
         className="flex min-h-[58px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-4 text-center text-[1.08rem] font-bold leading-tight text-white no-underline hover:bg-orange-dark sm:text-[1.15rem]"
       >
         {label}
       </a>
       <p className="mt-2 text-center text-[0.85rem] text-text-soft">
-        Votre prénom et votre email, et la vidéo s&apos;ouvre aussitôt · 9 minutes · gratuite
+        Accès immédiat · garantie 30 jours, sans justification · paiement sécurisé
       </p>
     </div>
   );
@@ -638,7 +638,7 @@ export function CtaVerify() {
       <InlineCta
         kicker="Et chez vous, ça donne quoi ?"
         title="Ce calcul, vous pouvez le refaire sur votre propre situation dès maintenant."
-        label="Débloquer la vidéo — accès immédiat"
+        label="Faire le calcul pour ma maison"
       >
         <p>
           Vous n&apos;êtes pas du genre à croire un chiffre sur parole, sinon vous ne seriez pas
@@ -661,7 +661,7 @@ export function CtaDates() {
       <InlineCta
         kicker="La seule question qui compte maintenant"
         title="Laquelle de vos trois dates est la plus proche ?"
-        label="Savoir laquelle est la plus proche — accès immédiat"
+        label="Savoir laquelle me concerne en premier"
       >
         <p>
           Martine avait dépassé la sienne de trois mois, et elle ne l&apos;a jamais su. Il y en a
@@ -683,7 +683,7 @@ export function CtaTwoChoices() {
       <InlineCta
         kicker="Vous avez deux options"
         title="Il n'y a pas de troisième colonne."
-        label="Voir comment on passe à droite — accès immédiat"
+        label="Passer dans la colonne de droite"
       >
         <p>
           Soit vos enfants ouvrent un tiroir et tombent sur la colonne de gauche&nbsp;: la facture,
@@ -707,7 +707,7 @@ export function CtaFirstStep() {
       <InlineCta
         kicker="La première marche"
         title="Tout ça commence par neuf minutes, maintenant."
-        label="Commencer maintenant — accès immédiat"
+        label="Commencer par la première décision"
       >
         <p>
           Pas un rendez-vous à décrocher. Pas un dossier à monter. Pas un centime pour la regarder.
@@ -726,7 +726,7 @@ export function CtaDetached() {
       <InlineCta
         kicker="Ça ne changera rien pour nous"
         title="Que vous regardiez cette vidéo ou non, la loi ne bouge pas."
-        label="Savoir où j'en suis — accès immédiat"
+        label="Savoir où j'en suis exactement"
       >
         <p>
           Les trois dates avanceront exactement pareil. Le barème s&apos;appliquera exactement
@@ -753,7 +753,7 @@ export function CtaButton({ label, sombre = false }: { label: string; sombre?: b
   return (
     <div className="mt-5">
       <a
-        href="#acces"
+        href="/commande"
         className="flex min-h-[58px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-4 text-center text-[1.08rem] font-bold leading-tight text-white no-underline hover:bg-orange-dark sm:text-[1.15rem]"
       >
         {label}
@@ -761,7 +761,7 @@ export function CtaButton({ label, sombre = false }: { label: string; sombre?: b
       <p
         className={`mt-2 text-center text-[0.85rem] ${sombre ? "text-white/70" : "text-text-soft"}`}
       >
-        Votre prénom et votre email, et la vidéo s&apos;ouvre aussitôt · 9 minutes · gratuite
+        Accès immédiat · garantie 30 jours, sans justification · paiement sécurisé
       </p>
     </div>
   );

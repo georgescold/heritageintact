@@ -6,6 +6,7 @@ import { ExitPopup } from "@/components/ExitPopup";
 import { PixelEvent } from "@/components/MetaPixel";
 import { ButtonLink, Guarantee, FAQ, Panel } from "@/components/ui";
 import { FoundersCounter } from "@/components/FoundersCounter";
+import { UrgencyUnderButton } from "@/components/Urgency";
 import { isTestMode } from "@/lib/config";
 
 export const metadata: Metadata = { title: "Votre accès immédiat" };
@@ -28,14 +29,27 @@ export default async function CheckoutPage() {
           <h1 className="mb-1 text-[1.5rem] sm:text-[1.9rem]">
             Votre accès immédiat aux 7 Erreurs et aux 3 décisions
           </h1>
-          <p className="mb-6 text-text-soft">Deux minutes. Ce soir, vous avez votre chiffre.</p>
+          <p className="mb-4 text-text-soft">Deux minutes. Ce soir, vous avez votre chiffre.</p>
+
+          {/*
+            L'urgence AVANT le formulaire, pas après.
+            La checklist du bon de commande (`05-funnel/optimisation-checklist.md`
+            § 5) demande « urgence / rareté ». Les deux existaient sur cette page
+            mais vivaient sous le formulaire, dans la colonne secondaire : à cet
+            endroit elles ne pèsent sur aucune décision, puisque la décision est
+            déjà prise ou déjà perdue. Les deux compteurs sont réels — les 500
+            places sont en base, le 31 décembre est voté.
+          */}
+          <div className="mb-5 space-y-3">
+            <FoundersCounter />
+            <UrgencyUnderButton />
+          </div>
 
           <CheckoutForm defaults={defaults} testMode={isTestMode} />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[3fr_2fr] lg:gap-8">
             <div className="space-y-6">
               <Guarantee />
-              <FoundersCounter />
               <div>
                 <h2 className="mb-3 text-[1.3rem]">Questions fréquentes</h2>
                 <FAQ

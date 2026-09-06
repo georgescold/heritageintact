@@ -1,10 +1,37 @@
 import type { Metadata } from "next";
-import { Header, Footer, TrustRow } from "@/components/Chrome";
-import { VideoEmbed } from "@/components/VideoEmbed";
-import { FoundersCounter } from "@/components/FoundersCounter";
+import { Footer, Header, TrustRow } from "@/components/Chrome";
 import { ExitPopup } from "@/components/ExitPopup";
+import { FoundersCounter } from "@/components/FoundersCounter";
 import { PixelEvent } from "@/components/MetaPixel";
-import { ButtonLink, Guarantee, FAQ, ValueStack, Check, Panel } from "@/components/ui";
+import { StickyCta } from "@/components/StickyCta";
+import { VideoEmbed } from "@/components/VideoEmbed";
+import { ButtonLink, Check, FAQ, Panel, ValueStack } from "@/components/ui";
+import {
+  BeforeAfter,
+  NotThis,
+  TheDeadline,
+  TheEnemy,
+  TheFear,
+  TheGap,
+  TheNumber,
+  TheyWillManage,
+} from "@/components/Lp";
+import {
+  CtaDates,
+  CtaDetached,
+  CtaFirstStep,
+  CtaTwoChoices,
+  CtaVerify,
+  TheCostOfWaiting,
+  TheDoubt,
+  TheDreamFirst,
+  TheFailure,
+  TheGuarantee,
+  TheLastWord,
+  TheMechanismShape,
+  TheStaircase,
+  TheThreeDatesTease,
+} from "@/components/LpCeo";
 import { PRODUCTS, VIDEO, euros } from "@/lib/config";
 
 export const metadata: Metadata = { title: "Les 3 décisions" };
@@ -36,7 +63,45 @@ const PACKAGING = [
   },
 ];
 
-/** VSL : headline, sous-titre, vidéo, bouton. Pas de prix ni de bouton au-dessus de la vidéo. */
+/**
+ * LA PAGE DE VENTE — c'est ici qu'on vend, et nulle part avant.
+ *
+ * ═══ Ce qui a changé le 6 septembre 2026 ═══
+ *
+ * Les onze blocs de la structure CEO étaient sur la landing page, c'est-à-dire
+ * devant un visiteur qui n'avait encore rien demandé. Ils sont ici désormais,
+ * sous la vidéo, devant quelqu'un qui a donné son email et regardé neuf
+ * minutes. C'est le même texte, au bon endroit : la landing page prend
+ * l'email, la page de vente vend (`05-funnel/anatomie-funnel.md`).
+ *
+ * Conséquence directe : tous les boutons de ces blocs pointaient sur le
+ * formulaire d'opt-in. Ils pointent maintenant sur `/commande`.
+ *
+ * ═══ L'ordre, et pourquoi il ne bouge pas ═══
+ *
+ * Le gabarit d'une page de vente (`anatomie-funnel.md`) :
+ *   H1 → H2 → VIDÉO → BOUTON → preuves / bonus / garantie / FAQ
+ * ⚠️ Jamais de prix ni de bouton AU-DESSUS de la vidéo.
+ *
+ * Puis la structure CEO (`03-marketing-copy/structure-ceo.md`), dans l'ordre :
+ *   1. RÊVE              TheDreamFirst
+ *   2. ÉCHEC             TheFailure — « ce n'est pas votre faute »
+ *   3. PEUR              TheNumber + TheFear + TheCostOfWaiting (Martine)
+ *   4. ENNEMI            TheEnemy
+ *   5. DOUTE             TheDoubt + NotThis + TheyWillManage
+ *   6. PREUVE / BIG IDEA TheGap + BeforeAfter
+ *   7. MÉCANISME         TheMechanismShape — la forme, jamais le contenu
+ *   8. BÉNÉFICE + RÊVE   TheStaircase — l'escalier de projection
+ *   9. URGENCE           TheDeadline
+ *  10. GARANTIE          TheGuarantee
+ *  11. CTA               le dernier mot, puis le bouton
+ *
+ * Ce qui ne bouge jamais : le rêve en premier, l'ennemi avant le mécanisme,
+ * l'urgence avant le CTA.
+ *
+ * ⚠️ Un seul bloc « garantie » sur la page. `TheGuarantee` (CEO) remplace
+ * l'ancien encart `<Guarantee />` : le dire deux fois l'affaiblissait.
+ */
 export default function VslPage() {
   const cta = `Je veux mon chiffre et les 3 décisions : ${euros(PRODUCTS.front.price)}`;
 
@@ -45,6 +110,7 @@ export default function VslPage() {
       <PixelEvent name="Lead" />
       <Header minimal />
       <main className="flex-1">
+        {/* ═══ LE GABARIT : H1 → H2 → VIDÉO → BOUTON ═══════════════════ */}
         <section className="wrap pt-6 sm:pt-10">
           <h1 className="mb-3 text-[1.5rem] sm:text-[2rem]">
             Combien l&apos;État prendra-t-il sur ce que vous laisserez à vos enfants&nbsp;?
@@ -68,6 +134,42 @@ export default function VslPage() {
           </div>
         </section>
 
+        {/* ═══ LA STRUCTURE CEO — le rêve toujours en premier ══════════ */}
+        <TheDreamFirst />
+        <TheThreeDatesTease />
+
+        {/* 2. ÉCHEC — « ce n'est pas votre faute », et l'ennemi s'annonce */}
+        <TheFailure />
+
+        {/* 3. PEUR — le calcul, la maison, puis le prix du mauvais moment */}
+        <TheNumber />
+        <CtaVerify />
+        <TheFear />
+        <TheCostOfWaiting />
+        <CtaDates />
+
+        {/* 4. ENNEMI */}
+        <TheEnemy />
+
+        {/* 5. DOUTE */}
+        <TheDoubt />
+        <NotThis />
+        <TheyWillManage />
+        <CtaDetached />
+
+        {/* 6. PREUVE + BIG IDEA */}
+        <TheGap />
+        <BeforeAfter />
+        <CtaTwoChoices />
+
+        {/* 7. MÉCANISME — sa forme, jamais son contenu */}
+        <TheMechanismShape />
+
+        {/* 8. BÉNÉFICE + RÊVE FINAL */}
+        <TheStaircase />
+        <CtaFirstStep />
+
+        {/* ═══ L'OFFRE — ce qu'il y a dans la boîte ════════════════════ */}
         <section className="wrap py-10">
           <h2 className="mb-4 text-[1.4rem]">
             Ce que vous recevez dans les deux minutes qui suivent
@@ -106,11 +208,14 @@ export default function VslPage() {
           </div>
         </section>
 
-        <section className="wrap pb-10">
-          <Guarantee />
-        </section>
+        {/* 9. URGENCE — elle précède toujours le CTA final */}
+        <TheDeadline />
 
-        <section className="wrap pb-12">
+        {/* 10. GARANTIE */}
+        <TheGuarantee />
+
+        {/* ═══ LA FAQ — les objections, en titres de section ═══════════ */}
+        <section className="wrap py-10">
           <h2 className="mb-3 text-[1.4rem]">Questions fréquentes</h2>
           <FAQ
             items={[
@@ -140,12 +245,23 @@ export default function VslPage() {
               },
             ]}
           />
-          <div className="mt-6">
-            <ButtonLink href="/commande">{cta}</ButtonLink>
-          </div>
+        </section>
+
+        {/* 11. LE DERNIER MOT, puis le bouton */}
+        <TheLastWord />
+
+        <section className="wrap pb-12">
+          <ButtonLink href="/commande">{cta}</ButtonLink>
+          <p className="mt-3 text-center text-[0.95rem] text-text-soft">
+            Garantie 30 jours, sans justification à fournir. Vous gardez le simulateur.
+          </p>
         </section>
       </main>
       <Footer />
+
+      {/* La barre fixe : sur une page longue, le bouton doit rester à portée
+          de pouce à tout moment. */}
+      <StickyCta href="/commande" label={`Accéder au programme — ${euros(PRODUCTS.front.price)}`} />
 
       <ExitPopup
         storageKey="vsl"
