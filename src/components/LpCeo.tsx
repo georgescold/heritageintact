@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Section, SectionTitle } from "./Lp";
+import { PRODUCTS, euros } from "@/lib/config";
 
 /**
  * Les blocs de la structure CEO (Blair Warren) qui manquaient à la page.
@@ -409,38 +410,97 @@ export function TheStaircase() {
    BLOC 10 — LA GARANTIE. Renversement du risque.
    Sur une page d'opt-in, le risque n'est pas l'argent : c'est l'email.
    ═══════════════════════════════════════════════════════════════ */
-export function TheGuarantee() {
+/**
+ * LE COÛT DE L'INACTION.
+ *
+ * ⚠️ Cette section s'appelait « Ce que vous risquez : rien » et listait des
+ * réassurances. Elle a été retournée le 6 septembre 2026, et c'est la
+ * correction la plus importante de la page.
+ *
+ * « Vous ne risquez rien » est une phrase qui endort. Elle enlève la tension
+ * juste avant le bouton, au moment précis où il en faut. Et elle contredit la
+ * ligne du projet : *on vend le coût de l'inaction*.
+ *
+ * Le vrai risque n'est pas d'acheter. Le vrai risque est de fermer la page.
+ * C'est ça qu'on met devant. La réassurance vient après, en deux lignes, à sa
+ * place — sous le bouton, pas à la place de l'argument.
+ */
+export function TheCostOfInaction() {
   return (
-    <Section>
-      <SectionTitle>Ce que vous risquez&nbsp;: rien</SectionTitle>
-      <ul className="space-y-2 text-[1.06rem]">
+    <Section tone="grey">
+      <SectionTitle>Ce que vous risquez en fermant cette page</SectionTitle>
+
+      <p className="mb-5 text-[1.1rem]">
+        Rien ne se passera demain. Ni le mois prochain. C&apos;est exactement ce qui rend cette
+        décision si facile à repousser — et si chère.
+      </p>
+
+      <ul className="space-y-3 text-[1.06rem]">
         {[
-          "La vidéo est gratuite, et elle le reste. Rien à payer pour la regarder, aucune carte à donner.",
-          "À la fin, un programme complet est proposé, à un prix volontairement bas. Vous n'êtes pas obligé d'en vouloir : la vidéo garde toute sa valeur si vous en restez là.",
-          "Personne ne vous appellera. Nous ne demandons pas votre numéro, et nous ne le demanderons jamais.",
-          "Votre adresse n'est ni vendue, ni transmise, ni louée à qui que ce soit. Un lien de désinscription est en bas de chaque message.",
-          "Et si vous décidez un jour d'aller plus loin, la garantie est de 30 jours, sans justification à fournir.",
-        ].map((t) => (
-          <li key={t} className="flex gap-2">
-            <span aria-hidden className="shrink-0 font-bold text-green">
-              ✔
-            </span>
-            <span>{t}</span>
+          [
+            "Vos enfants recevront une facture, pas un héritage.",
+            "82 194 € sur une maison de province et les économies d'une vie. Payables en six mois. En euros, pas en parts de maison.",
+          ],
+          [
+            "Ils devront trouver cette somme. Ils ne l'auront pas.",
+            "Une infirmière de 41 ans et un commercial de 38 ans ne sortent pas 41 000 € chacun en six mois. Alors on vend. Et un bien vendu dans l'urgence se vend au prix qu'on en donne.",
+          ],
+          [
+            "Chaque année qui passe ferme une porte, définitivement.",
+            "Le compteur des quinze ans ne se rattrape pas. Vos 70 ans et vos 71 ans n'arrivent qu'une fois. Attendre deux ans ne coûte pas deux ans : ça coûte un abattement entier.",
+          ],
+          [
+            "Vous ne serez pas là pour arbitrer.",
+            "Ce que vous n'aurez pas écrit, ils devront le deviner. À trois, en six mois, en deuil. C'est comme ça que des frères et sœurs cessent de se parler.",
+          ],
+        ].map(([titre, corps]) => (
+          <li key={titre} className="border-l-4 border-red bg-white p-4">
+            <strong className="block text-[1.08rem] text-red">{titre}</strong>
+            <span className="mt-1 block">{corps}</span>
           </li>
         ))}
       </ul>
+
+      <p className="mt-6 border-l-4 border-blue bg-white p-4 text-[1.15rem] font-bold text-blue">
+        Ne rien faire n&apos;est pas une position neutre. C&apos;est un choix, et il a déjà un prix
+        affiché&nbsp;: 82 194 €.
+      </p>
+
       <p className="mt-5 text-[1.06rem]">
-        Autrement dit&nbsp;: le seul risque que vous prenez aujourd&apos;hui, c&apos;est celui de
-        découvrir un chiffre que vous auriez préféré ne pas connaître. C&apos;est aussi le seul
-        moyen de le faire baisser.
+        En face, il y a <strong>{euros(PRODUCTS.front.price)}</strong> et une soirée. Vous
+        n&apos;avez pas besoin d&apos;y croire&nbsp;: vous avez trente jours pour vérifier, et si
+        vous ne trouvez pas au moins une erreur que vous étiez en train de commettre, vous êtes
+        remboursé sans avoir à vous justifier.
       </p>
-      <p className="mt-4 border-l-4 border-green bg-green-bg p-4 text-[1.06rem]">
-        Une question qui vaut le détour&nbsp;:{" "}
-        <strong>
-          avez-vous déjà vu une facture de notaire arriver avec une garantie de remboursement&nbsp;?
-        </strong>
-      </p>
-      <CtaButton label="Commencer maintenant" />
+
+      <CtaButton label="Je veux mon chiffre" />
+    </Section>
+  );
+}
+
+/**
+ * LA GARANTIE, compacte.
+ *
+ * Le renversement du risque est un levier de la checklist — mais il tient en
+ * trois lignes. Étalé sur une section entière, il devient le sujet de la page
+ * alors qu'il n'est qu'une objection levée.
+ */
+export function TheGuarantee() {
+  return (
+    <Section>
+      <div className="border-2 border-green bg-green-bg p-5">
+        <p className="mb-2 text-[1.25rem] font-bold text-blue">
+          Trente jours pour changer d&apos;avis. Sans avoir à vous expliquer.
+        </p>
+        <p className="text-[1.06rem]">
+          Faites votre simulation. Si vous n&apos;avez pas trouvé au moins{" "}
+          <strong>une erreur que vous étiez en train de commettre</strong>, un email suffit et vous
+          êtes remboursé. <strong>Vous gardez le simulateur.</strong>
+        </p>
+        <p className="mt-3 text-[1.06rem] font-bold text-blue">
+          Avez-vous déjà vu une facture de notaire arriver avec une garantie de remboursement&nbsp;?
+        </p>
+      </div>
     </Section>
   );
 }
@@ -454,38 +514,48 @@ export function TheGuarantee() {
 export function TheLastWord() {
   return (
     <section className="relative isolate overflow-hidden border-t-[6px] border-orange">
-      <div className="relative aspect-[16/12] w-full sm:aspect-[21/8]">
-        <Image
-          src="/img/mains-cles.jpg"
-          alt="Des mains âgées transmettant un trousseau de clés au-dessus d'une table en bois."
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <span className="scrim" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="wrap">
-            <p className="mb-2 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-orange">
-              Une dernière chose
+      {/* La hauteur suit le texte au lieu d'être imposée par un ratio.
+          Avec `aspect-[21/8]`, le bloc gardait une hauteur fixe pendant que le
+          texte, lui, occupait le tiers haut : une grande zone sombre et vide
+          sous la dernière ligne, et le bouton qui venait se coller à la
+          découpe. Un padding fait le travail et ne se décale jamais. */}
+      <Image
+        src="/img/mains-cles.jpg"
+        alt="Des mains âgées transmettant un trousseau de clés au-dessus d'une table en bois."
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <span className="scrim-left" />
+
+      <div className="relative py-12 sm:py-16">
+        <div className="wrap">
+          <p className="mb-2 text-[0.8rem] font-bold uppercase tracking-[0.16em] text-orange">
+            Une dernière chose
+          </p>
+          <h2 className="text-on-photo mb-4 max-w-[32rem] text-[1.45rem] leading-tight text-white sm:text-[2rem]">
+            Un jour, quelqu&apos;un ouvrira un tiroir chez vous.
+          </h2>
+          <div className="max-w-[34rem] space-y-3 text-[1.02rem] text-white/90 sm:text-[1.1rem]">
+            <p>
+              Ce qu&apos;il y trouvera dira ce que vous aviez prévu pour lui. Une pile de courriers
+              qu&apos;il faudra six mois à démêler, ou une page écrite par vous, qui commence
+              par&nbsp;: «&nbsp;voilà ce que j&apos;ai décidé, et pourquoi&nbsp;».
             </p>
-            <h2 className="mb-4 max-w-[32rem] text-[1.45rem] leading-tight text-white sm:text-[2rem]">
-              Un jour, quelqu&apos;un ouvrira un tiroir chez vous.
-            </h2>
-            <div className="max-w-[34rem] space-y-3 text-[1.02rem] text-white/90 sm:text-[1.1rem]">
-              <p>
-                Ce qu&apos;il y trouvera dira ce que vous aviez prévu pour lui. Une pile de
-                courriers qu&apos;il faudra six mois à démêler, ou une page écrite par vous, qui
-                commence par&nbsp;: «&nbsp;voilà ce que j&apos;ai décidé, et pourquoi&nbsp;».
-              </p>
-              <p className="font-bold text-white">
-                Ce ne sont pas des papiers que vous laissez. C&apos;est la preuve que vous y aviez
-                pensé.
-              </p>
-              <p className="text-white/75">
-                Et ça ne peut se faire qu&apos;à un seul moment&nbsp;: un après-midi ordinaire, en
-                bonne santé, pendant que tout est encore possible.
-              </p>
-            </div>
+            <p className="font-bold text-white">
+              Ce ne sont pas des papiers que vous laissez. C&apos;est la preuve que vous y aviez
+              pensé.
+            </p>
+            <p className="text-white/75">
+              Et ça ne peut se faire qu&apos;à un seul moment&nbsp;: un après-midi ordinaire, en
+              bonne santé, pendant que tout est encore possible.
+            </p>
+          </div>
+
+          {/* Le bouton vit DANS la section : le dernier argument et l'action
+              ne doivent pas être séparés par une découpe de fond. */}
+          <div className="mt-7 max-w-[34rem]">
+            <CtaButton label="Je veux mon chiffre" sombre />
           </div>
         </div>
       </div>

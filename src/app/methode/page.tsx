@@ -7,8 +7,8 @@ import { StickyCta } from "@/components/StickyCta";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { ButtonLink, Check, FAQ, Panel, ValueStack } from "@/components/ui";
 import { BeforeAfter, TheDeadline, TheNumber } from "@/components/Lp";
-import { TheGuarantee, TheLastWord } from "@/components/LpCeo";
-import { PRODUCTS, VIDEO, euros } from "@/lib/config";
+import { TheCostOfInaction, TheGuarantee, TheLastWord } from "@/components/LpCeo";
+import { FOUNDERS_CAP, PRIX_APRES_FONDATEURS, PRODUCTS, VIDEO, euros } from "@/lib/config";
 
 export const metadata: Metadata = { title: "Les 3 décisions" };
 
@@ -75,7 +75,11 @@ const PACKAGING = [
  * récit.
  */
 export default function VslPage() {
-  const cta = `Je veux mon chiffre et les 3 décisions : ${euros(PRODUCTS.front.price)}`;
+  // Un CTA se dit à la première personne, en trois mots, et nomme le DÉSIR —
+  // pas le contenu de la commande. « Je veux mon chiffre et les 3 décisions :
+  // 27 € » listait un bon de livraison. Le prix et la garantie vivent sur la
+  // ligne d'en dessous, où ils rassurent au lieu d'alourdir.
+  const cta = "Je veux mon chiffre";
 
   return (
     <>
@@ -95,10 +99,10 @@ export default function VslPage() {
               Si vous ne faites rien, l&apos;État en prendra une part à votre mort.
             </span>
           </h1>
-          <p className="mb-5 text-[1.05rem]">
-            Voici les trois décisions qui divisent cette part par trois —{" "}
-            <strong>légalement, de votre vivant, en trois semaines</strong>, sans rien vendre et
-            sans quitter votre maison. <strong>Regardez cette vidéo de 9 minutes.</strong>
+          <p className="mb-5 text-[1.12rem] leading-snug">
+            <strong>Trois décisions divisent cette part par trois.</strong> Elles sont écrites dans
+            le Code général des impôts, elles se prennent de votre vivant, et elles ne vous
+            demandent ni de vendre, ni de quitter votre maison.
           </p>
 
           <VideoEmbed id={VIDEO.vsl} title="Les 3 décisions" minutes={9} />
@@ -106,8 +110,9 @@ export default function VslPage() {
           <div className="mt-5 space-y-3">
             <ButtonLink href="/commande">{cta}</ButtonLink>
             <p className="text-center text-[0.95rem] text-text-soft">
-              au lieu de <span className="line-through">{euros(PRODUCTS.front.anchor)}</span>.
-              Garantie 30 jours, satisfait ou remboursé.
+              {euros(PRODUCTS.front.price)} au lieu de{" "}
+              <span className="line-through">{euros(PRODUCTS.front.anchor)}</span> · accès immédiat
+              · garantie 30 jours, sans justification
             </p>
             <FoundersCounter />
           </div>
@@ -121,34 +126,48 @@ export default function VslPage() {
 
         {/* ═══ L'OFFRE — ce qu'il y a dans la boîte ═══════════════════ */}
         <section className="wrap py-10">
-          <h2 className="mb-4 text-[1.4rem]">
-            Ce que vous recevez dans les deux minutes qui suivent
-          </h2>
-          <ul className="mb-5 space-y-2 text-[1.05rem]">
+          {/* Des BÉNÉFICES, pas des fonctionnalités. « 8 modules de 8 à 12
+              minutes » ne déclenche rien : c'est un bordereau de livraison. Ce
+              qui déclenche, c'est ce que le lecteur pourra faire ce soir-là, et
+              ce qu'il cessera de craindre. Le nom du livrable passe derrière. */}
+          <h2 className="mb-4 text-[1.4rem]">Ce que vous saurez ce soir</h2>
+          <ul className="mb-5 space-y-3 text-[1.05rem]">
             <Check>
-              <strong>Le programme « Les 7 Erreurs »</strong> : 8 modules de 8 à 12 minutes,
-              regardables sur télé, tablette ou téléphone, accès à vie
+              <strong>Votre chiffre. Le vrai, pas une fourchette.</strong> Ce que l&apos;État
+              prendrait si ça arrivait cette année — calculé sur votre maison, votre épargne, votre
+              famille. <span className="text-text-soft">(le Simulateur de Facture Invisible)</span>
             </Check>
             <Check>
-              <strong>Le Simulateur de Facture Invisible</strong> : votre chiffre en 20 minutes,
-              version tableur et version papier
+              <strong>Laquelle de vos trois portes se ferme en premier.</strong> Elles dépendent de
+              votre âge, et il y en a toujours une beaucoup plus proche que les deux autres.{" "}
+              <span className="text-text-soft">(le Calendrier des 3 Dates)</span>
             </Check>
             <Check>
-              <strong>Le Calendrier des 3 Dates</strong> : vos échéances personnelles (70 ans, 71
-              ans, le compteur des 15 ans) sur une page
+              <strong>Les erreurs que vous êtes en train de commettre.</strong> Il y en a toujours
+              au moins deux. Souvent quatre. Et celle de l&apos;assurance-vie de votre banque coûte
+              à elle seule des dizaines de milliers d&apos;euros.{" "}
+              <span className="text-text-soft">(le programme, 8 modules)</span>
             </Check>
             <Check>
-              <strong>Le Plan en 1 Page</strong> : la fiche qui résume vos 3 décisions
+              <strong>Comment en parler à votre conjoint sans l&apos;inquiéter.</strong> Une feuille
+              qu&apos;il comprend en deux minutes, et qu&apos;il pourra sortir le jour où vous ne
+              serez plus là pour l&apos;expliquer.{" "}
+              <span className="text-text-soft">(le Plan en 1 Page, la lettre aux enfants)</span>
             </Check>
             <Check>
-              <strong>Le guide imprimable de 40 pages</strong> et 5 bonus
+              <strong>Quoi demander au notaire — et quoi ne surtout pas lui demander.</strong> Pour
+              ressortir avec un acte, pas avec « revenez quand vous saurez ».{" "}
+              <span className="text-text-soft">(les 12 questions, le guide de 40 pages)</span>
             </Check>
           </ul>
           <ValueStack rows={PACKAGING} total="429 €" today={euros(PRODUCTS.front.price)} />
           <p className="mt-3 text-[0.95rem] text-text-soft">
-            Pourquoi {euros(PRODUCTS.front.price)} ? Prix fondateur pour les 500 premiers membres :
-            nous collectons vos retours pour la version 2 du simulateur. Au 500<sup>e</sup>, le prix
-            passe à {euros(PRODUCTS.front.anchor)}.
+            Pourquoi {euros(PRODUCTS.front.price)} pour {euros(PRODUCTS.front.anchor)} de contenu ?
+            Parce que les {FOUNDERS_CAP} premiers membres nous donnent leurs retours pour la version
+            2 du simulateur. En échange, ils ont le prix fondateur à vie, mises à jour comprises. À
+            la {FOUNDERS_CAP}
+            <sup>e</sup> place, le prix passe à {euros(PRIX_APRES_FONDATEURS)} et n&apos;en
+            redescend plus.
           </p>
           <div className="mt-5 space-y-3">
             <ButtonLink href="/commande">{cta}</ButtonLink>
@@ -161,51 +180,67 @@ export default function VslPage() {
         {/* ═══ URGENCE — elle précède toujours le dernier appel ═══════ */}
         <TheDeadline />
 
-        {/* ═══ GARANTIE ══════════════════════════════════════════════ */}
+        {/* ═══ LE COÛT DE L'INACTION — le vrai risque n'est pas d'acheter ══ */}
+        <TheCostOfInaction />
+
+        {/* ═══ GARANTIE — trois lignes, à sa place ═══════════════════ */}
         <TheGuarantee />
 
-        {/* ═══ FAQ — les objections, en titres de section ════════════ */}
+        {/* ═══ FAQ — les objections réelles de `02-avatar.md` ═══════
+            Les six questions d'avant étaient polies et théoriques. Celles-ci
+            sont copiées de la liste des douze objections de l'avatar, dans ses
+            mots à lui, et les réponses ne s'excusent pas : chacune retourne
+            l'objection en raison d'agir. */}
         <section className="wrap py-10">
-          <h2 className="mb-3 text-[1.4rem]">Questions fréquentes</h2>
+          <h2 className="mb-3 text-[1.4rem]">
+            Ce que vous êtes en train de vous dire — et la réponse
+          </h2>
           <FAQ
             items={[
               {
-                q: "Est-ce que ça remplace le notaire ?",
-                a: "Non. Ça vous permet d'y aller avec un dossier et des décisions, au lieu des mains vides. Le notaire acte ; vous décidez.",
+                q: "« J'ai le temps, je suis en forme. »",
+                a: "C'est exactement ce que pensait tout le monde, la veille. Mais ce n'est même pas le sujet : les portes ne se ferment pas à votre mort, elles se ferment à vos anniversaires. Le compteur des quinze ans court à partir du jour de la signature, pas du jour du décès. À 67 ans, une donation faite ce soir arrive à terme à 82 ans. Faite dans deux ans, à 84. Vous n'attendez pas la mort, vous perdez des années d'avance.",
               },
               {
-                q: "Ma situation est particulière.",
-                a: "Elle l'est, comme presque toutes. La méthode commence par votre chiffre et vos dates, pas par une théorie. Le module 7 vous oriente selon votre situation familiale.",
+                q: "« Il faut de toute façon aller chez le notaire, alors autant y aller directement. »",
+                a: "Allez-y. Mais un notaire est payé à l'acte : il enregistre ce que vous demandez, il ne fait pas votre stratégie. Arrivez les mains vides, vous ressortez avec « revenez quand vous saurez ce que vous voulez » — et un rendez-vous à deux mois. Arrivez avec votre chiffre, vos trois dates et douze questions écrites, vous ressortez avec un acte. C'est la même consultation, ce n'est pas le même résultat.",
               },
               {
-                q: "Je ne veux pas me déposséder de mon vivant.",
-                a: "Personne ne vous le demande. Le troisième levier transmet la maison en vous gardant chez vous, à vie. Et on ne donne jamais ce dont on n'est pas sûr de pouvoir se passer.",
+                q: "« Je ne veux pas me déposséder de mon vivant. Et si j'en ai besoin pour l'EHPAD ? »",
+                a: "La bonne objection, et personne ne vous demande ça. Le troisième levier transmet les murs de la maison en vous gardant l'usage à vie : vous y habitez, vous la louez si vous voulez, vous en encaissez les loyers. Elle ne sort de votre patrimoine fiscal qu'à votre décès. Et la règle vaut pour le reste : on ne donne jamais ce dont on n'est pas certain de pouvoir se passer. Le module 4 chiffre précisément ce que vous devez garder.",
               },
               {
-                q: "Et si la loi change ?",
-                a: "La Règle de Mise à Jour est incluse, et les mises à jour du programme sont à vie.",
+                q: "« Mon assurance-vie est déjà faite, c'est réglé. »",
+                a: "C'est l'erreur la plus chère des sept, et la plus répandue. Deux questions : vos versements ont-ils été faits avant ou après vos 70 ans ? Et qu'y a-t-il exactement écrit dans votre clause bénéficiaire ? Neuf personnes sur dix ne savent pas répondre. Avant 70 ans, 152 500 € par bénéficiaire passent sans droits. Après, c'est 30 500 € au total, tous contrats et tous bénéficiaires confondus. Même somme, même contrat, cinq fois moins transmis.",
               },
               {
-                q: "Je trouve ça gratuitement sur YouTube.",
-                a: "Gratuit, contradictoire, et sans votre chiffre. Ici : votre chiffre, votre plan, dans l'ordre.",
+                q: "« 27 € pour un truc que je peux trouver gratuitement sur YouTube. »",
+                a: "Vous trouverez tout, gratuitement, et contradictoire. Ce que vous ne trouverez nulle part, c'est VOTRE chiffre, VOS trois dates et l'ordre dans lequel agir sur VOTRE situation. Le prix n'est pas la question : la question est de savoir ce que coûte une soirée de vidéos YouTube qui vous laisse exactement là où vous étiez. Vos enfants, eux, ont 82 194 € en jeu.",
               },
               {
-                q: "Je ne suis pas à l'aise avec le paiement en ligne.",
-                a: "Le paiement passe par Stripe, le même système que des milliers de sites marchands. Nous ne voyons jamais votre numéro de carte. Et il y a une adresse email de contact avec une vraie personne derrière.",
+                q: "« Sur internet, c'est des arnaques. Qui êtes-vous pour parler de ça ? »",
+                a: "Personne, et c'est volontaire. Héritage Intact n'est pas un gourou : rien ici n'est une opinion. Chaque chiffre est un article du Code général des impôts, affiché à l'écran, vérifiable sur impots.gouv.fr en cinq minutes. Ne nous croyez pas : vérifiez. Et le paiement passe par Stripe, comme sur des milliers de sites marchands — nous ne voyons jamais votre numéro de carte.",
+              },
+              {
+                q: "« C'est compliqué, je ne vais rien comprendre. »",
+                a: "Le sujet a été rendu illisible, et pas par hasard : usufruit, nue-propriété, clause démembrée, rapport à succession. Personne ne parle comme ça à table. Ici, zéro jargon : vous remplissez un tableau avec ce que vous possédez, il vous rend un chiffre et trois dates. Si vous savez remplir une feuille d'impôts, vous saurez faire ça.",
+              },
+              {
+                q: "« Ma situation est particulière. »",
+                a: "Elle l'est. Je n'en ai jamais vu qui ne le soit pas — famille recomposée, enfant en concubinage, studio locatif, donation de la main à la main jamais déclarée. C'est pour ça que la méthode ne commence pas par une théorie mais par VOTRE chiffre, et que le module 7 vous oriente parmi douze situations familiales. Trouvez la vôtre, suivez le plan.",
+              },
+              {
+                q: "« Et si la loi change ? »",
+                a: "Elle change. La loi de finances 2026 vient de modifier deux dispositifs. C'est précisément pourquoi les mises à jour sont incluses à vie, et pourquoi une des trois portes — la fenêtre des 100 000 € exonérés — ferme le 31 décembre 2026 et n'a pas été prolongée à ce jour.",
               },
             ]}
           />
         </section>
 
         {/* ═══ LE DERNIER MOT, puis le bouton ════════════════════════ */}
+        {/* Le dernier mot porte son propre bouton : plus de section CTA
+            orpheline collée sous la découpe du bloc sombre. */}
         <TheLastWord />
-
-        <section className="wrap pb-12">
-          <ButtonLink href="/commande">{cta}</ButtonLink>
-          <p className="mt-3 text-center text-[0.95rem] text-text-soft">
-            Garantie 30 jours, sans justification à fournir. Vous gardez le simulateur.
-          </p>
-        </section>
       </main>
       <Footer />
 

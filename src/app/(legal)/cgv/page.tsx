@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
-import { BRAND, CONTACT_EMAIL, LEGAL, PRODUCTS, euros } from "@/lib/config";
+import {
+  BRAND,
+  CONTACT_EMAIL,
+  FOUNDERS_CAP,
+  LEGAL,
+  PRIX_APRES_FONDATEURS,
+  PRODUCTS,
+  euros,
+} from "@/lib/config";
 
 export const metadata: Metadata = { title: "Conditions générales de vente" };
 
@@ -21,8 +29,13 @@ export default function CGV() {
       <h2>2. Produits et prix</h2>
       <ul>
         <li>
-          {PRODUCTS.front.name} : {euros(PRODUCTS.front.price)} TTC (prix fondateur, limité aux 500
-          premiers membres ; prix ultérieur : {euros(PRODUCTS.front.anchor)} TTC)
+          {/* ⚠️ Le prix ultérieur est PRIX_APRES_FONDATEURS, jamais l'ancrage.
+              L'ancrage (429 €) est la valeur du contenu ; le prix ultérieur
+              (67 €) est ce qui sera réellement facturé après les places
+              fondatrices. Les confondre dans un document contractuel serait
+              une information tarifaire fausse. */}
+          {PRODUCTS.front.name} : {euros(PRODUCTS.front.price)} TTC (prix fondateur, limité aux{" "}
+          {FOUNDERS_CAP} premiers membres ; prix ultérieur : {euros(PRIX_APRES_FONDATEURS)} TTC)
         </li>
         <li>
           {PRODUCTS.bump.name} : {euros(PRODUCTS.bump.price)} TTC

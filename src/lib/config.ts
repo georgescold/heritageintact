@@ -59,12 +59,26 @@ export type Product = {
 };
 
 export const PRODUCTS: Record<ProductSku, Product> = {
+  /**
+   * ⚠️ L'ancrage est passé de 67 € à 429 € le 6 septembre 2026.
+   *
+   * La page affichait « 27 € au lieu de 67 € » sous le bouton, et deux écrans
+   * plus bas une pile de valeur totalisant 429 €. Deux ancrages contradictoires
+   * sur la même page : le lecteur ne sait plus ce que vaut le produit, et
+   * l'offre paraît trois fois moins forte qu'elle ne l'est.
+   *
+   * 429 € est le total des lignes du packaging, à l'euro près. C'est le seul
+   * ancrage défendable : chaque euro est justifié par une ligne à l'écran.
+   *
+   * Les 67 € restent — mais à leur vraie place : le prix APRÈS les places
+   * fondatrices (`PRIX_APRES_FONDATEURS`), pas la valeur du produit.
+   */
   front: {
     sku: "front",
     name: "Les 7 Erreurs qui Offrent Votre Héritage à l'État",
     short: "Les 7 Erreurs",
     price: 27,
-    anchor: 67,
+    anchor: 429,
   },
   bump: {
     sku: "bump",
@@ -137,8 +151,28 @@ export const VARIANTES: Record<string, string> = {
   "/lp-questions": "B — questionnaire (structure #3)",
 };
 
-/** Nombre de places fondatrices au prix de 27 €. Le compteur est réel (cf. db). */
-export const FOUNDERS_CAP = 500;
+/**
+ * Le prix une fois les places fondatrices épuisées.
+ * À ne pas confondre avec l'ancrage : 429 € est ce que vaut le programme,
+ * 67 € est ce qu'il coûtera demain.
+ */
+export const PRIX_APRES_FONDATEURS = 67;
+
+/**
+ * Places au prix fondateur. **Le compteur est réel** : il lit le nombre de
+ * commandes payées en base (`countFounders`).
+ *
+ * ⚠️ Passé de 500 à 50 le 6 septembre 2026, et c'est une décision de fond.
+ * « Il reste 500 places » ne crée aucune urgence — personne ne se dépêche pour
+ * une place sur cinq cents. « Il reste 50 places » en crée une, et la
+ * différence est qu'elle est **vraie** : le compteur descend pour de bon à
+ * chaque vente, et le prix passera réellement à 67 € à la 50ᵉ.
+ *
+ * Une rareté réelle et petite est plus forte qu'une rareté large — et elle ne
+ * se retourne pas contre la marque le jour où quelqu'un recharge la page.
+ * 50 retours suffisent largement pour la version 2 du simulateur.
+ */
+export const FOUNDERS_CAP = 50;
 
 const CLE_STRIPE = process.env.STRIPE_SECRET_KEY ?? "";
 

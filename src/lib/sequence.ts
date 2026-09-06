@@ -1,4 +1,4 @@
-import { PRODUCTS, SITE_URL, euros } from "./config";
+import { FOUNDERS_CAP, PRIX_APRES_FONDATEURS, PRODUCTS, SITE_URL, euros } from "./config";
 
 /**
  * La séquence de sept jours, un levier CEO par jour (`09-emails.md`).
@@ -13,7 +13,7 @@ import { PRODUCTS, SITE_URL, euros } from "./config";
  * qu'un destinataire vérifie en revenant sur la page le lendemain.
  *
  * Les deux urgences utilisées ici sont réelles et vérifiables :
- *   — les 500 places au prix fondateur, dont le compteur est branché en base ;
+ *   — les places au prix fondateur (FOUNDERS_CAP), compteur branché en base ;
  *   — le 31 décembre 2026, date votée au Parlement (art. 790 A bis du CGI).
  */
 
@@ -120,7 +120,7 @@ export const SEQUENCE: Etape[] = [
     corps: (p) => [
       `${p},`,
       "Je serai bref.",
-      `Le programme complet est à ${euros(PRODUCTS.front.price)} pour les 500 premiers membres, au lieu de ${euros(PRODUCTS.front.anchor)}. Le compteur est réel, il est affiché sur la page de commande, et il ne se réinitialise pas.`,
+      `Le programme complet vaut ${euros(PRODUCTS.front.anchor)}. Il est à ${euros(PRODUCTS.front.price)} pour les ${FOUNDERS_CAP} premiers membres, puis à ${euros(PRIX_APRES_FONDATEURS)}. Le compteur est réel, il est affiché sur la page de commande, et il ne se réinitialise pas.`,
       "La raison est simple et je préfère la dire : j'ai besoin des retours des premiers membres pour améliorer le simulateur. En échange, ils ont le prix fondateur à vie, mises à jour comprises.",
       "Ce que vous recevez : les 7 erreurs et leurs corrections, le Simulateur de Facture Invisible, le Calendrier de vos 3 dates, le Plan en 1 page, les 12 questions au notaire, et la lettre pour en parler à vos enfants. Garantie 30 jours, et vous gardez le simulateur.",
       "Mais la vraie urgence n'est pas le prix. C'est la porte qui se referme le plus vite pour vous — et à ce stade, vous ne savez toujours pas laquelle c'est.",
