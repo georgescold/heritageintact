@@ -4,7 +4,7 @@ import { ExitPopup } from "@/components/ExitPopup";
 import { FoundersCounter } from "@/components/FoundersCounter";
 import { PixelEvent } from "@/components/MetaPixel";
 import { StickyCta } from "@/components/StickyCta";
-import { UrgencyBar, UrgencyCountdown } from "@/components/Urgency";
+import { UrgencyBar } from "@/components/Urgency";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { ButtonLink, Check, FAQ, Panel, ValueStack } from "@/components/ui";
 import { BeforeAfter, TheDeadline, TheNumber } from "@/components/Lp";
@@ -124,13 +124,10 @@ export default function VslPage() {
               <span className="line-through">{euros(PRODUCTS.front.anchor)}</span> · accès immédiat
               · garantie 30 jours, sans justification
             </p>
-            {/* Les deux raretés côte à côte, et les deux sont vraies : le
-                nombre de places lit la base et descend à chaque vente ; le
-                compte à rebours bat à la seconde vers une date votée au
-                Parlement. C'est ce qui donne du mouvement à l'écran sans
-                inventer un seul chiffre. */}
+            {/* Le compte à rebours vit dans le bandeau, tout en haut de la
+                page. Le remettre ici affichait deux fois la même horloge sur
+                le même écran : le compteur de places suffit. */}
             <FoundersCounter />
-            <UrgencyCountdown />
           </div>
         </section>
 

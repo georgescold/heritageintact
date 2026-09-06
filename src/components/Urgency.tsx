@@ -120,7 +120,6 @@ export function UrgencyBar() {
       <div className="wrap-wide py-2 sm:py-2.5">
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-x-6">
           <p className="text-center text-[0.95rem] font-bold leading-snug sm:text-left sm:text-[1.08rem]">
-            <span aria-hidden className="point-live mr-2 align-middle" />
             <span className="sm:hidden">
               Fin du dispositif à <span className="whitespace-nowrap">100 000 € exonérés</span>
             </span>

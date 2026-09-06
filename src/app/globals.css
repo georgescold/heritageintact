@@ -211,31 +211,6 @@
   }
 }
 
-/* Le point rouge qui bat, façon « en direct ». */
-@keyframes battement-point {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.35);
-    opacity: 0.55;
-  }
-}
-
-@utility point-live {
-  display: inline-block;
-  width: 0.6rem;
-  height: 0.6rem;
-  border-radius: 9999px;
-  background: currentColor;
-  animation: battement-point 1.4s ease-in-out infinite;
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-  }
-}
-
 /* Le filet orange de la marque, sous un titre ou un bandeau. */
 @utility rule-orange {
   display: block;
