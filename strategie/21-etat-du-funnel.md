@@ -24,7 +24,7 @@ En production, sans base :
 **Rien ne plante. Rien ne s'affiche en erreur. Les données disparaissent en
 silence.** C'est la pire catégorie de bug — d'où la bannière rouge posée le
 6 septembre sur toutes les pages, qui s'éteindra toute seule dès que
-`NEXT_PUBLIC_SUPABASE_URL` sera renseignée.
+`POSTGRES_URL` sera renseignée.
 
 > **Tant que ce point n'est pas réglé, chaque euro de publicité est perdu.**
 
