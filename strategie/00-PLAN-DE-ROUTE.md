@@ -66,7 +66,8 @@ LANDING PAGE ── email ──► VSL FRONT (9 min)
 | 16 | `16-benchmark-marches.md` | Référence | Ce qui scale aux US, au UK et en France sur la même cible, décortiqué. **Le format d'annonce à tester en priorité.** |
 | 17 | `17-swipe-my-estate-kit.md` | Référence | Le swipe file du concurrent le plus proche : ses 14 hooks + son annonce phare décortiquée bloc par bloc. |
 | 19 | `19-ab-tests-et-angles.md` | Stock | Headlines et sous-titres à tester, 3 angles de LP complets, journal des versions et formulations écartées |
-| 20 | `20-pricing-et-tam.md` | Arbitrage | Le TAM chiffré, l'équation du CPA, le prix de chaque produit et le test à 397 € |
+| 20 | `20-pricing-et-tam.md` | Arbitrage | Le TAM chiffré, l'équation du CPA, le prix de chaque produit, le test de l'upsell 1 |
+| 21 | `21-etat-du-funnel.md` | **État** | **Le document à ouvrir en premier** : ce qui tourne, ce qui bloque, le journal des décisions |
 | — | `site/` | Phase 3 | **Le site complet** (Next.js). Landing pages, VSL, commande, upsells, pages légales. |
 
 ---

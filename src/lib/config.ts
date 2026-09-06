@@ -137,6 +137,28 @@ export const FOUNDERS_CAP = 500;
 /** Tant que Stripe n'est pas branché, le paiement est simulé (aucun débit). */
 export const isTestMode = !process.env.STRIPE_SECRET_KEY;
 
+/**
+ * ⚠️ LE BLOQUEUR DE MISE EN LIGNE.
+ *
+ * Les leads et les commandes vivent dans un fichier JSON (`src/lib/db.ts`). En
+ * local c'est `./data/db.json` et tout va bien. Sur Vercel, le disque est en
+ * lecture seule sauf `/tmp` — et `/tmp` est **éphémère et propre à chaque
+ * instance**. Concrètement, en production et sans base :
+ *
+ *   — un inscrit écrit sur l'instance A n'existe pas pour l'instance B ;
+ *   — le cron des emails ne voit presque personne ;
+ *   — la commande n'est pas retrouvée après le paiement, donc `/plan-complet`
+ *     redirige au lieu de proposer l'upsell : **la chaîne d'upsells casse.**
+ *
+ * Rien ne plante, rien ne s'affiche en erreur : les données disparaissent en
+ * silence. C'est la pire catégorie de bug, d'où la bannière.
+ *
+ * Le jour où Supabase est branché, `NEXT_PUBLIC_SUPABASE_URL` devient non vide
+ * et la bannière s'éteint toute seule.
+ */
+export const stockageEphemere =
+  Boolean(process.env.VERCEL) && !process.env.NEXT_PUBLIC_SUPABASE_URL;
+
 export const VIDEO = {
   provider: (process.env.NEXT_PUBLIC_VIDEO_PROVIDER as "vimeo" | "wistia" | undefined) ?? "vimeo",
   vsl: process.env.NEXT_PUBLIC_VSL_VIDEO_ID,

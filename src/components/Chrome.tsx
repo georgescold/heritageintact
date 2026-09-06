@@ -75,6 +75,23 @@ export function TestModeBanner() {
   );
 }
 
+/**
+ * Bannière de non-mise-en-ligne.
+ *
+ * Elle s'affiche sur TOUTES les pages tant que le site tourne sur Vercel sans
+ * base de données. Son but n'est pas d'informer le visiteur — il n'y en a pas
+ * encore — mais d'empêcher d'envoyer du trafic payant dans un funnel qui perd
+ * ses leads en silence. Elle s'éteint seule dès que Supabase est branché.
+ */
+export function EphemeralStorageBanner() {
+  return (
+    <div className="border-b-2 border-[#8d1f1f] bg-red px-4 py-2 text-center text-[0.85rem] font-bold text-white">
+      Site non ouvert au public — les inscriptions ne sont pas encore conservées. Ne pas envoyer de
+      trafic publicitaire tant que la base de données n&apos;est pas branchée.
+    </div>
+  );
+}
+
 /** Ligne de réassurance paiement, style e-commerce classique. */
 export function TrustRow() {
   return (

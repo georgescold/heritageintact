@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { MetaPixel } from "@/components/MetaPixel";
-import { BRAND } from "@/lib/config";
+import { EphemeralStorageBanner } from "@/components/Chrome";
+import { BRAND, stockageEphemere } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: {
@@ -23,6 +24,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="fr" className="h-full">
       <body className="min-h-full flex flex-col">
         <MetaPixel />
+        {/* Garde-fou : voir `stockageEphemere` dans lib/config.ts. */}
+        {stockageEphemere && <EphemeralStorageBanner />}
         {children}
       </body>
     </html>
