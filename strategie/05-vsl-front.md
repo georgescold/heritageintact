@@ -30,26 +30,40 @@ le budget d'attention passe dans les 60 premières secondes du lead.
 
 ## LA PAGE
 
-```
-H1 :  Combien l'État prendra-t-il sur ce que vous laisserez à vos enfants ?
-      Sachez-le ce soir — et réduisez cette facture, légalement, en 3 semaines.
+> **Mise à jour du 6 septembre 2026.** Ce bloc décrit la page telle qu'elle est
+> réellement en ligne sur `/methode`. Elle a été raccourcie de 38,6 à 12,9 écrans
+> le même jour : la structure CEO est le travail de **cette vidéo**, pas de la
+> page qui la porte. Voir `06-pages-funnel.md`.
 
-H2 :  Révélation : la Méthode des 3 Verrous — les trois décisions que les familles
-      averties prennent de leur vivant pour transmettre intact ce qu'elles ont construit.
-      Regardez cette courte vidéo de 9 minutes.
+```
+H1 :  Vous avez une maison payée et des enfants ?
+      Si vous ne faites rien, l'État en prendra une part à votre mort.
+
+H2 :  Voici les trois décisions qui divisent cette part par trois — légalement,
+      de votre vivant, en trois semaines, sans rien vendre et sans quitter votre
+      maison. Regardez cette vidéo de 9 minutes.
 
 [VIDÉO]
 
-[BOUTON]  → Je veux mon chiffre et les 3 Verrous — 27 €  (au lieu de 67 €)
+[BOUTON]  → Je veux mon chiffre et les 3 décisions — 27 €  (au lieu de 67 €)
            Garantie 30 jours — satisfait ou remboursé
 
-[Bandeau] Compteur : "Membres fondateurs : 143 / 500 — le prix passe à 67 € au 500e."
-[Bloc]    Ce que vous recevez (packaging + bonus, valeur 429 €)
-[Bloc]    La garantie, en gros
-[Bloc]    3 témoignages (dès qu'ils existent — pas avant)
-[Bloc]    Questions fréquentes (objections 3, 6, 9, 11, 12)
-[Footer]  Mentions légales · CGV · "Contenu pédagogique — ne constitue pas un conseil personnalisé" · contact
+[Compteur] Membres fondateurs : X / 500 — lu en base, jamais inventé
+[Preuve]   D'où sortent les 82 194 € : le calcul ligne par ligne
+[Preuve]   L'avant / après
+[Bloc]     Ce que vous recevez (packaging + bonus, valeur 429 €)
+[Urgence]  Le 31 décembre 2026
+[Bloc]     La garantie, en gros
+[Bloc]     Questions fréquentes (objections 3, 6, 9, 11, 12)
+[Bloc]     Le dernier mot, puis le bouton
+[Footer]   Mentions légales · CGV · « Contenu pédagogique — ne constitue pas un
+           conseil personnalisé » · contact
 ```
+
+⚠️ **Le compteur ne s'invente pas.** Il lit le nombre réel d'acheteurs en base.
+Une version antérieure de ce document affichait « 143 / 500 » en exemple : c'est
+exactement le genre de chiffre qui devient une pratique commerciale trompeuse
+s'il finit en ligne sans être vrai (`11-legal-et-compliance.md`).
 
 ⚠️ Pas de prix, pas de bouton au-dessus de la vidéo. Fond blanc, texte noir, police grande.
 
@@ -198,15 +212,24 @@ Ce n'est pas mon opinion. Ce sont des articles de loi que je vous montre à l'é
 
 Voilà la révélation, en une phrase : **l'héritier n°1 de votre famille, c'est l'État — sauf si vous prenez ces trois décisions de votre vivant, dans le bon ordre, avant que les portes se ferment.**
 
-#### 7. MÉCANISME — la Méthode des 3 Verrous
+#### 7. MÉCANISME — l'ordre des trois décisions
 
-Ces trois décisions, je les ai organisées en une méthode simple. Trois verrous.
+> ⚠️ **Le nom « Méthode des 3 Verrous » a été abandonné le 6 septembre 2026.**
+> Décision de Loys, et elle est juste : *« ça ne veut rien dire pour le lecteur,
+> il ne comprendra pas de quoi on parle. »* Le mécanisme garde ses trois étapes —
+> ce sont elles qui font le travail — mais il ne porte plus de nom de marque. On
+> dit « les trois décisions », et on les nomme par ce qu'elles font.
+>
+> Le nom a été retiré du site le même jour. Il ne doit réapparaître nulle part.
 
-**Verrou 1 — Diagnostiquer.** Une soirée. Vous remplissez le Simulateur de Facture Invisible : votre patrimoine, votre famille. Il vous donne **votre chiffre** — ce que l'État prendrait aujourd'hui. Et il vous donne **vos trois dates** : votre compteur des 15 ans, vos 70 ans, vos 71 ans.
+Ces trois décisions ne se prennent pas dans le désordre. Elles se prennent dans
+celui-ci, et c'est l'ordre qui fait la différence.
 
-**Verrou 2 — Réorganiser.** Deux semaines. Vous prenez les trois leviers — la donation qui recharge le compteur, l'assurance-vie qui sort de la succession, le démembrement qui transmet la maison sans la quitter — et vous choisissez ceux qui s'appliquent à **votre** situation, avec le plan qui correspond.
+**Étape 1 — Diagnostiquer.** Une soirée. Vous remplissez le Simulateur de Facture Invisible : votre patrimoine, votre famille. Il vous donne **votre chiffre** — ce que l'État prendrait aujourd'hui. Et il vous donne **vos trois dates** : votre compteur des 15 ans, vos 70 ans, vos 71 ans.
 
-**Verrou 3 — Verrouiller.** Un rendez-vous. Vous allez chez votre notaire avec le dossier prêt, vos choix, et les douze questions à lui poser. Il acte. Vous ne repartez pas avec « on verra ».
+**Étape 2 — Réorganiser.** Deux semaines. Vous prenez les trois leviers — la donation qui recharge le compteur, l'assurance-vie qui sort de la succession, le démembrement qui transmet la maison sans la quitter — et vous choisissez ceux qui s'appliquent à **votre** situation, avec le plan qui correspond.
+
+**Étape 3 — Verrouiller.** Un rendez-vous. Vous allez chez votre notaire avec le dossier prêt, vos choix, et les douze questions à lui poser. Il acte. Vous ne repartez pas avec « on verra ».
 
 Trois semaines. Vous ne vendez rien, vous ne quittez rien, vous ne signez rien que vous n'ayez compris. Ce que vous avez à faire, vous : un simulateur, une lecture, un rendez-vous.
 
@@ -287,6 +310,45 @@ Cliquez sur le bouton, maintenant. Votre chiffre vous attend ce soir.
 > Si vous en avez assez de remettre ça à plus tard, écoutez attentivement ce qui suit.
 
 *(puis enchaîner sur le body à partir du bloc 1.)*
+
+---
+
+## ⚠️ LA DURÉE — à trancher avant de tourner
+
+Le script fait **2 387 mots de prose à dire**. Aux débits recommandés plus bas
+(voix posée, pas d'accélération sur cet avatar) :
+
+| Débit | Durée |
+|---|---|
+| 130 mots/min — le débit prescrit | **18 min** |
+| 150 mots/min — déjà rapide pour un lecteur de 67 ans | 16 min |
+
+**Or le site promet « une vidéo de 9 minutes », à quinze endroits** (les deux
+landing pages, la page de vente, les emails de la séquence, les créatives).
+
+Promettre 9 et en livrer 18 est une incohérence que le spectateur découvre à la
+seconde où il lance la vidéo — et sur un avatar méfiant, c'est cher payé.
+
+### Les deux options, et ce qu'elles coûtent
+
+**A — Garder le script, aligner la promesse.** La doctrine est explicite :
+*« il n'y a pas de règle sur la longueur d'une VSL. Ce qui compte : le watch
+time, pas la durée »* (`03-marketing-copy/vsl.md`). Une VSL de 18 minutes est
+parfaitement légitime. Coût : changer un nombre à quinze endroits — dix minutes
+de travail — et une promesse d'engagement plus lourde sur du trafic froid.
+
+**B — Couper le script à 9 minutes.** Il faut descendre à ~1 170 mots, soit
+**retirer la moitié**. Le lead narratif (Jean-Pierre chez le notaire) et le
+calcul ligne par ligne sont les deux blocs qui portent la preuve : ils ne se
+coupent pas. Ce qui sauterait, c'est l'escalier de projection et une partie du
+closing — les blocs qui font acheter.
+
+**Recommandation : A.** On ne coupe pas ce qui vend pour tenir un nombre qu'on a
+choisi avant d'avoir écrit le script.
+
+> Le vrai chiffre se connaîtra **au montage**. Tourner d'abord, mesurer, puis
+> mettre la durée réelle partout. Ne pas laisser « 9 minutes » en ligne si la
+> vidéo en fait 17.
 
 ---
 
