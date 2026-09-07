@@ -48,7 +48,7 @@ H2 :  Voici les trois décisions qui divisent cette part par trois — légaleme
 [BOUTON]  → Je veux mon chiffre et les 3 décisions — 27 €  (au lieu de 67 €)
            Garantie 30 jours — satisfait ou remboursé
 
-[Compteur] Membres fondateurs : X / 500 — lu en base, jamais inventé
+[Compteur] Il ne reste que X places — lu en base, jamais inventé (plafond : 20)
 [Preuve]   D'où sortent les 82 194 € : le calcul ligne par ligne
 [Preuve]   L'avant / après
 [Bloc]     Ce que vous recevez (packaging + bonus, valeur 429 €)
@@ -104,7 +104,7 @@ C'est qu'en sortant, sur le trottoir, le notaire a ajouté — presque en s'excu
 
 Personne ne lui avait dit. Pas sa banque. Pas son notaire. Pas l'État. Personne n'est payé pour ça.
 
-Dans les neuf prochaines minutes, je vais vous révéler exactement ce que le père de Jean-Pierre aurait pu faire — trois décisions, simples, légales, écrites noir sur blanc dans le Code général des impôts — et je vais vous montrer comment savoir **ce soir** ce que l'État prendra sur ce que vous laisserez.
+Dans les minutes qui viennent, je vais vous révéler exactement ce que le père de Jean-Pierre aurait pu faire — trois décisions, simples, légales, écrites noir sur blanc dans le Code général des impôts — et je vais vous montrer comment savoir **ce soir** ce que l'État prendra sur ce que vous laisserez.
 
 Mais avant, il faut que vous compreniez pourquoi cette histoire arrive à des familles ordinaires. Chaque jour.
 
@@ -271,7 +271,7 @@ Voilà ce que je vous propose.
 
 Le programme complet — les sept erreurs et leurs corrections, le Simulateur, le Calendrier des 3 Dates, le Plan en 1 Page, les douze questions au notaire, la lettre pour en parler à vos enfants, le lexique, la règle de mise à jour si la loi change — tout ça vaut, séparément, 429 euros. Une seule consultation pour obtenir votre chiffre en coûterait une centaine.
 
-Pour les **500 premiers membres**, c'est **27 euros**. Pas 67. Parce que j'ai besoin de vos retours pour améliorer le simulateur — et qu'en échange, vous avez le prix fondateur, à vie, mises à jour comprises. Le compteur est sous cette vidéo. Au 500e, le prix passe à 67.
+Pour les **20 premiers membres**, c'est **27 euros**. Pas 67. Parce que j'ai besoin de vos retours pour améliorer le simulateur — et qu'en échange, vous avez le prix fondateur, à vie, mises à jour comprises. Le compteur est sous cette vidéo, il est réel. À la 20e place, le prix passe à 67, et il n'en redescend plus.
 
 Mais l'urgence, la vraie, n'est pas là. Elle est dans les trois portes. Celle qui se ferme le plus vite pour vous, vous ne la connaissez pas encore. Dans une soirée, si.
 
@@ -305,7 +305,7 @@ Je sais que vous êtes quelqu'un de méthodique. Vous n'avez pas construit tout 
 
 #### Outil 3 — Always Be Leaving + CTA final
 
-Que vous le fassiez ou non, les 500 places fondatrices partiront — d'autres familles les prendront. Ça ne changera rien pour moi.
+Que vous le fassiez ou non, les 20 places fondatrices partiront — d'autres familles les prendront. Ça ne changera rien pour moi.
 
 Ça changera tout pour vous.
 
