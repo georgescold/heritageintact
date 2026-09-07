@@ -118,7 +118,7 @@ export default function VslPage() {
               décisions la ramènent à 23 794 € → et voici le calcul. */}
           <p className="mb-5 text-[1.12rem] leading-snug">
             Sur une maison de province et les économies d&apos;une vie, cette part est de{" "}
-            <strong className="whitespace-nowrap text-orange">82 194 €</strong>. Trois décisions,
+            <strong className="whitespace-nowrap text-red">82 194 €</strong>. Trois décisions,
             prises de votre vivant, la ramènent à{" "}
             <strong className="whitespace-nowrap text-green">23 794 €</strong> — sans rien vendre et
             sans quitter votre maison.
