@@ -104,17 +104,25 @@ C'est qu'en sortant, sur le trottoir, le notaire a ajouté — presque en s'excu
 
 Personne ne lui avait dit. Pas sa banque. Pas son notaire. Pas l'État. Personne n'est payé pour ça.
 
-Dans les minutes qui viennent, vous allez découvrir exactement ce que le père de Jean-Pierre aurait pu faire — trois décisions, simples, légales, écrites noir sur blanc dans le Code général des impôts. Et vous saurez comment connaître **ce soir** ce que l'État prendra sur ce que vous laisserez.
+Dans les minutes qui viennent, vous allez découvrir ce que le père de Jean-Pierre aurait pu faire.
 
-Mais avant, il faut que vous compreniez pourquoi cette histoire arrive à des familles ordinaires. Chaque jour.
+Trois décisions. Simples. Légales. Écrites noir sur blanc dans le Code général des impôts.
+
+Et vous saurez comment connaître, **ce soir**, ce que l'État prendra sur ce que vous laisserez.
+
+Cette histoire arrive à des familles ordinaires. Chaque jour.
+
+Et pourtant, rien n'était inévitable. Tout aurait pu se passer autrement.
+
+**Voici comment.**
 
 ### ═══ BODY (65 %) — structure CEO ═══
 
 #### 1. RÊVE
 
-Imaginez un instant la scène inverse.
+Imaginez un dimanche, chez vous, dans quelques années.
 
-Vous êtes à table, un dimanche. Vos petits-enfants sont là. Votre fille vous annonce qu'elle a signé pour son appartement — et que l'apport, c'est vous. De votre vivant. Vous l'avez vu.
+Vous êtes à table. Vos petits-enfants sont là. Votre fille vous annonce qu'elle a signé pour son appartement — et que l'apport, c'est vous. De votre vivant. Vous l'avez vu.
 
 La maison ? Elle restera dans la famille. C'est réglé. Vos enfants le savent. Ils n'auront pas à la vendre, ni à se disputer.
 
@@ -162,7 +170,9 @@ Et ce n'est pas tout. Il y a **trois portes qui se ferment avec le temps** — l
 
 **Deuxième porte : 70 ans.** Ce que vous versez sur une assurance-vie **avant** votre 70e anniversaire peut être transmis jusqu'à 152 500 euros par bénéficiaire sans un centime de droits. **Après** 70 ans, l'avantage tombe à 30 500 euros — pour tous les bénéficiaires réunis. La même somme. Pas le même traitement.
 
-**Troisième porte : 71 ans.** Transmettre votre maison en gardant le droit d'y vivre toute votre vie, c'est possible — et à 61-70 ans, la valeur transmise est calculée à 60 %. À 71 ans, elle passe à 70 %. Dix points de plus, parce que vous avez attendu un anniversaire.
+**Troisième porte : 71 ans.** Vous pouvez transmettre votre maison tout en gardant le droit d'y vivre. Toute votre vie.
+
+Entre 61 et 70 ans, la valeur transmise est calculée sur 60 %. À 71 ans, elle passe à 70 %. Dix points de plus, parce que vous avez attendu un anniversaire.
 
 Aucune de ces portes ne se rouvre.
 
@@ -210,7 +220,9 @@ Vous avez raison de le penser — c'est exactement ce que le jargon veut vous fa
 
 *« Je ne veux pas me déposséder de mon vivant — et si j'en ai besoin ? »* Personne ne vous demande ça. Le troisième levier, justement, transmet la maison **en vous gardant chez vous, à vie**. Et on ne donne jamais ce dont on n'est pas sûr de pouvoir se passer.
 
-*« Il faudra de toute façon aller chez le notaire. »* Oui. Et c'est le point : y aller **avec un dossier et des décisions**, plutôt que les mains vides, change tout — le notaire acte ce que vous demandez.
+*« Il faudra de toute façon aller chez le notaire. »* Oui. Et c'est justement le point.
+
+Y aller les mains vides, ou y aller **avec un dossier et des décisions** : ce n'est pas le même rendez-vous. Le notaire acte ce que vous lui demandez.
 
 Alors, est-il vraiment possible, pour une famille ordinaire, de diviser cette facture par deux, par trois — sans montage, sans risque, sans se déposséder ?
 
@@ -228,7 +240,11 @@ Résultat : **82 194 euros… contre 23 794.** Cinquante-huit mille quatre cents
 
 Ce ne sont pas des opinions. Ce sont des articles de loi, affichés à l'écran, que vous pourrez vérifier sur impots.gouv.fr ce soir.
 
-Voilà la révélation, en une phrase : **l'héritier n°1 de votre famille, c'est l'État — sauf si vous prenez ces trois décisions de votre vivant, dans le bon ordre, avant que les portes se ferment.**
+Voilà la révélation, en une phrase.
+
+**L'héritier numéro un de votre famille, c'est l'État.**
+
+Sauf si vous prenez ces trois décisions. De votre vivant. Dans le bon ordre. **Avant que les portes se ferment.**
 
 #### 7. MÉCANISME — l'ordre des trois décisions
 
@@ -245,7 +261,11 @@ celui-ci, et c'est l'ordre qui fait la différence.
 
 **Étape 1 — Diagnostiquer.** Une soirée. Vous remplissez le Simulateur de Facture Invisible : votre patrimoine, votre famille. Il vous donne **votre chiffre** — ce que l'État prendrait aujourd'hui. Et il vous donne **vos trois dates** : votre compteur des 15 ans, vos 70 ans, vos 71 ans.
 
-**Étape 2 — Réorganiser.** Deux semaines. Vous prenez les trois leviers — la donation qui recharge le compteur, l'assurance-vie qui sort de la succession, le démembrement qui transmet la maison sans la quitter — et vous choisissez ceux qui s'appliquent à **votre** situation, avec le plan qui correspond.
+**Étape 2 — Réorganiser.** Deux semaines.
+
+Vous avez trois leviers. La donation, qui recharge le compteur. L'assurance-vie, qui sort de la succession. Et le démembrement, qui transmet la maison sans que vous la quittiez.
+
+Vous choisissez ceux qui s'appliquent à **votre** situation. Le plan qui correspond est fourni avec.
 
 **Étape 3 — Verrouiller.** Un rendez-vous. Vous allez chez votre notaire avec le dossier prêt, vos choix, et les douze questions à lui poser. Il acte. Vous ne repartez pas avec « on verra ».
 
@@ -299,7 +319,7 @@ Vous avez deux options.
 
 #### Outil 2 — Rappel de la douleur présente + étiquetage
 
-Vous avez travaillé quarante ans pour construire ce que vous avez. Vous avez payé vos impôts chaque année, sans exception. Il ne s'agit pas d'échapper à quoi que ce soit — il s'agit d'utiliser, enfin, ce que la loi vous accorde et que personne ne vous a expliqué.
+Vous avez travaillé quarante ans pour construire ce que vous avez. Vous avez payé vos impôts chaque année, sans exception. Il ne s'agit pas d'échapper à quoi que ce soit. Il s'agit d'utiliser ce que la loi vous accorde déjà. Et que personne ne vous a expliqué.
 
 Vous êtes quelqu'un de méthodique. Vous n'avez pas construit tout ça au hasard. Vous ne le transmettrez pas au hasard non plus.
 
