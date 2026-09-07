@@ -108,7 +108,9 @@ Dans les minutes qui viennent, vous allez découvrir ce que le père de Jean-Pie
 
 Trois décisions. Simples. Légales. Écrites noir sur blanc dans le Code général des impôts.
 
-Et vous saurez comment connaître, **ce soir**, ce que l'État prendra sur ce que vous laisserez.
+Et surtout, vous verrez comment faire **baisser** la facture qui attend vos enfants.
+
+Ce soir, vous connaîtrez votre chiffre. Dans trois semaines, il aura baissé.
 
 Cette histoire arrive à des familles ordinaires. Chaque jour.
 
