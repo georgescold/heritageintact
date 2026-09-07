@@ -47,7 +47,7 @@ export const SEQUENCE: Etape[] = [
       "Imaginez un dimanche : votre fille vous annonce qu'elle a signé pour son appartement. L'apport, c'était vous. Vous l'avez vu. La maison ? Elle restera. C'est réglé. Vos petits-enfants ? Vous savez déjà ce que chacun recevra, et quand.",
       "Ce n'est pas réservé aux familles « qui ont des montages ». C'est écrit dans le Code général des impôts, pour tout le monde. Il faut simplement le savoir, et agir avant que les portes se ferment.",
     ],
-    bouton: { texte: "Revoir la présentation de 9 minutes", chemin: VIDEO },
+    bouton: { texte: "Revoir la présentation", chemin: VIDEO },
   },
   {
     cle: "j2",

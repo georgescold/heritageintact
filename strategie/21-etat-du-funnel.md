@@ -117,10 +117,21 @@ ADS → /  (landing page, structure #2)          l'email
 
 ## Le contenu qui manque
 
-- [ ] **La VSL.** Un cadre de remplacement s'affiche à sa place (bouton lecture,
-      titre, durée, mention « vidéo à intégrer »). Le funnel se parcourt
-      entièrement sans elle, mais **il ne vendra pas** : c'est elle qui vend.
-      Script prêt dans `05-vsl-front.md`.
+- [ ] **La VSL — à tourner.** Le script est prêt et arrêté : `05-vsl-front.md`,
+      **897 mots dits, 6 min 54** à 130 mots/min. Un cadre de remplacement
+      s'affiche à sa place sur `/methode` ; le funnel se parcourt entièrement
+      sans elle, mais **il ne vendra pas** : c'est elle qui vend.
+
+      > *Réécrite le 7 septembre 2026, de 18 minutes à 7.* La référence est la
+      > VSL de Valère, dont il donne la durée dans son teardown — **6 min 30**
+      > pour un funnel à ~300 k€/mois. Ce qui a changé, ce n'est pas seulement
+      > la longueur mais la **forme** : la preuve à 10 secondes, le résultat
+      > désiré juste après, le CTA à 3 minutes, une disqualification dans la
+      > vidéo. La version longue est archivée dans le même fichier.
+
+      Le site **n'annonce plus aucune durée** — « 9 minutes » a été retiré des
+      six endroits où le nombre figurait. À décider après le montage : annoncer
+      la vraie durée, ou n'en annoncer aucune.
 - [ ] Les 4 VSL backend (`07-vsl-backend.md`), et leurs pages `/generateur`,
       `/dependance`, `/classeur`, `/testament`.
 - [ ] Le produit lui-même : 8 modules, simulateur, calendrier

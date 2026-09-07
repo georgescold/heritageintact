@@ -41,9 +41,8 @@ export default async function DesinscriptionPage({
                   sur la liste.
                 </p>
                 <p className="border-l-4 border-blue bg-white p-4">
-                  La vidéo de 9 minutes, elle, reste accessible. Vous n&apos;avez pas besoin
-                  d&apos;être inscrit pour la revoir&nbsp;:{" "}
-                  <Link href="/methode">la revoir maintenant</Link>.
+                  La vidéo, elle, reste accessible. Vous n&apos;avez pas besoin d&apos;être inscrit
+                  pour la revoir&nbsp;: <Link href="/methode">la revoir maintenant</Link>.
                 </p>
               </div>
             </>

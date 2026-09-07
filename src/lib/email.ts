@@ -170,10 +170,10 @@ function versionTexte(
    ───────────────────────────────────────────────────────────── */
 export async function envoyerLivraison(lead: Lead) {
   const p = lead.firstName.trim() || "Bonjour";
-  const bouton = { texte: "Regarder la vidéo de 9 minutes", lien: lien("/methode") };
+  const bouton = { texte: "Regarder la vidéo", lien: lien("/methode") };
   const paragraphes = [
     `Bonjour ${p},`,
-    "Voici votre lien vers la présentation de 9 minutes. Elle est accessible tout de suite, et elle le restera.",
+    "Voici votre lien vers la présentation. Elle est accessible tout de suite, et elle le restera.",
     "Elle montre les trois décisions que les familles averties prennent de leur vivant pour transmettre intact ce qu'elles ont construit — et pourquoi personne ne vous les a jamais expliquées.",
     "Un conseil&nbsp;: regardez-la au calme, avec votre conjoint si possible. Elle contient un chiffre, <strong>82&nbsp;194&nbsp;€</strong>, et trois dates. L'une des trois vous concerne plus que les deux autres. Vous saurez laquelle à la fin.",
   ];

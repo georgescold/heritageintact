@@ -285,7 +285,7 @@ export function TheThreeDatesTease() {
 
       <p className="mt-6 max-w-[42rem] border-l-4 border-orange pl-4 text-[1.15rem] font-bold text-white">
         Vous devez connaître ces trois dates avant que la plus proche ne soit derrière vous. La
-        vidéo de 9 minutes vous dit lesquelles, et où vous en êtes par rapport à chacune.
+        vidéo vous dit lesquelles, et où vous en êtes par rapport à chacune.
       </p>
       <CtaButton label={CTA.benefice} sombre />
     </Section>
@@ -776,7 +776,7 @@ export function CtaFirstStep() {
     <Section tone="white">
       <InlineCta
         kicker="La première marche"
-        title="Tout ça commence par neuf minutes, maintenant."
+        title="Tout ça commence par une vidéo, maintenant."
         label={CTA.urgence}
       >
         <p>

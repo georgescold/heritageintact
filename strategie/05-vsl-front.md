@@ -1,6 +1,7 @@
 # 05 — VSL Front (27 €) — Headline + script complet
 
-> Phase 2.2 / 2.3. Durée cible : **9-10 minutes** (~1 400 mots à voix posée). Sous-titrée. Hébergée Wistia/Vimeo.
+> Phase 2.2 / 2.3. Durée cible : **7 minutes** (~900 mots à voix posée). Sous-titrée. Hébergée Wistia/Vimeo.
+> Référence : la VSL de Valère qui tourne à ~300 k€/mois dure **6 minutes 30**. La nôtre en faisait 18 — réécrite le 7 septembre 2026.
 > Lead choisi : **Narrative Lead** (3e personne, cas Jean-Pierre) — légalement sûr, chiffré, et le plus adapté à un avatar problem-aware. Variante Problem-Solution en fin de fichier pour l'A/B test.
 > Audit vocabulaire fait : zéro "apprendre / découvrir / formation / produit". On **révèle**, on parle de **méthode** et de **système**.
 
@@ -41,7 +42,7 @@ H1 :  Vous avez une maison payée et des enfants ?
 
 H2 :  Voici les trois décisions qui divisent cette part par trois — légalement,
       de votre vivant, en trois semaines, sans rien vendre et sans quitter votre
-      maison. Regardez cette vidéo de 9 minutes.
+      maison. Regardez cette vidéo.
 
 [VIDÉO]
 
@@ -75,6 +76,181 @@ s'il finit en ligne sans être vrai (`11-legal-et-compliance.md`).
 ---
 
 ## LE SCRIPT
+
+> ### ⚠️ Réécrit le 7 septembre 2026 — de 18 minutes à 7
+>
+> La première version faisait **2 387 mots, soit 18 minutes** au débit prescrit.
+> C'était trop, et pas d'un peu. La référence est celle de Valère lui-même,
+> dans le teardown de la VSL qui tourne à ~300 k€/mois : *« cette VSL par
+> exemple dure 6 minutes 30 »*.
+>
+> Et sa **forme** n'était pas la nôtre :
+>
+> | Ce qu'il fait | Ce qu'on faisait |
+> |---|---|
+> | La **preuve à 10 secondes** — *« avant qu'on démarre, laisse-moi te montrer quelque chose »* | deux minutes de récit avant le premier chiffre |
+> | Le **résultat désiré tout de suite**, avant toute explication | le rêve arrivait après le lead |
+> | Un **CTA très tôt**, avant même d'avoir fini le mécanisme | un seul CTA, tout à la fin |
+> | **Qualification ET disqualification** dans la vidéo | la disqualification n'était que sur la page |
+> | Le bénéfice **répété plusieurs fois**, exprès, pour tenir le watch time | dit une fois |
+>
+> Sur le CTA précoce : *« au plus tôt tu as ton CTA, au plus tu auras de
+> calls. »* Sur la répétition : *« on a déjà dit plusieurs fois la même chose,
+> mais c'est parce qu'on veut que la personne reste avec nous longtemps. »*
+>
+> ⚠️ Cette répétition-là est **volontaire, et propre à la vidéo**. Elle ne
+> contredit pas la règle « ne jamais se répéter » qui vaut pour les pages :
+> sur une page on relit, dans une vidéo on ne revient pas en arrière.
+>
+> L'ancienne version est conservée en bas de fichier. Elle contient des
+> passages que la version courte a dû sacrifier — l'escalier de projection,
+> les doutes traités un par un. Matière d'une variante longue à tester le
+> jour où le volume le permettra. Jamais avant.
+
+> **Ce qui n'a pas bougé** : format faceless (aucun « je » de narrateur — les
+> seuls « je » sont ceux du notaire et des doutes que le prospect se dit à
+> lui-même), aucun montant annoncé dans la vidéo, et l'État qui **ne saisit
+> rien** : ce sont les héritiers qui vendent pour payer.
+
+---
+### ═══ 0:00 · HOOK — la preuve avant tout le reste ═══
+
+Avant qu'on commence, regardez ce chiffre.
+
+**Quatre-vingt-deux mille cent quatre-vingt-quatorze euros.**
+
+C'est ce que l'État a prélevé sur la succession d'une famille française ordinaire. Une maison de province. Les économies d'une vie. Un enfant.
+
+Et voilà l'article du Code général des impôts qui le calcule. Vous pouvez le vérifier ce soir, sur impots.gouv.fr.
+
+> *Écran : le calcul ligne par ligne, l'article 777 en incrustation.*
+> *Ce hook peut être monté en ×1,2 — mais lui seul. L'avatar a 67 ans, le reste reste posé.*
+
+### ═══ 0:25 · LE RÉSULTAT DÉSIRÉ ═══
+
+Maintenant, voilà ce que veulent les familles qui découvrent ce chiffre.
+
+Que la maison reste. Que les enfants n'aient pas à la vendre. Qu'ils ne se déchirent pas.
+
+Et qu'un jour, quelqu'un dise : *« il avait tout prévu. On n'a eu à s'occuper de rien. »*
+
+### ═══ 0:50 · LA PROMESSE ═══
+
+Dans cette vidéo, vous allez découvrir comment faire **baisser** cette facture. Légalement. Sans rien vendre, et sans quitter votre maison.
+
+Ce soir, vous connaîtrez votre chiffre. Dans trois semaines, il aura baissé.
+
+### ═══ 1:10 · L'HISTOIRE, EN QUARANTE SECONDES ═══
+
+Ce chiffre, c'est celui de Jean-Pierre.
+
+Un mardi de mars, il est assis dans le bureau du notaire, avec sa sœur. Ils viennent d'enterrer leur père.
+
+Le notaire pose son doigt sur une ligne. *« Les droits s'élèvent à 82 194 euros. Vous avez six mois. »*
+
+Ils ne les ont pas. Six mois plus tard, la maison est vendue.
+
+Et sur le trottoir, en sortant, le notaire ajoute — presque en s'excusant : *« si votre père était venu me voir il y a dix ans, on aurait pu diviser ça par trois. »*
+
+**Par trois.**
+
+> *Écran : le bureau, la lettre, la date. Rien de spectaculaire. Le silence après « par trois » vaut deux secondes.*
+
+### ═══ 1:50 · L'ENNEMI ═══
+
+Personne ne lui avait dit. Ni sa banque. Ni son notaire. Ni l'État.
+
+Son banquier est payé sur les frais du contrat — pas sur ce que ses enfants paieront. Le notaire est payé à l'acte : il intervient quand on l'appelle, c'est-à-dire **après**. L'État, lui, encaisse.
+
+Aucun n'est malhonnête. Simplement, **personne n'est payé pour vous prévenir**.
+
+Et puis soyons honnêtes. Personne ne va passer ses soirées à lire le Code général des impôts. Des articles numérotés, des renvois d'un texte à l'autre, des lignes écrites en tout petit. **Ce n'est pas fait pour être lu. C'est fait pour être appliqué.**
+
+### ═══ 2:30 · QUALIFICATION, PUIS DISQUALIFICATION ═══
+
+Alors cette vidéo est faite pour vous si vous avez passé soixante ans, si vous avez une maison payée, et des enfants à qui la laisser.
+
+Elle n'est **pas** faite pour vous si vous êtes locataire et sans épargne : vos héritiers ne paieront probablement rien. Ni si vous cherchez un moyen de ne pas déclarer quelque chose. Ici, tout est légal, et tout est déclaré.
+
+> *Valère : « la disqualification, c'est même aussi important que la qualification. »*
+> *Elle protège la marge : les curieux partent avant le bouton.*
+
+### ═══ 3:00 · PREMIER APPEL À L'ACTION ═══
+
+Si vous vous reconnaissez, le bouton est juste sous cette vidéo.
+
+Vous pouvez cliquer maintenant, ou continuer à regarder. Les deux marchent.
+
+> *CTA volontairement précoce, à 43 % de la vidéo. La qualification qui précède compense.*
+
+### ═══ 3:15 · LE MÉCANISME — les trois portes ═══
+
+Parce que ce qui a coûté 82 194 euros à la famille de Jean-Pierre, ce n'est pas la loi. **C'est le calendrier.**
+
+Il y a trois portes qui se ferment avec votre âge. Et aucune ne se rouvre.
+
+**Première porte : le compteur des quinze ans.** Chaque parent peut donner 100 000 euros à chaque enfant sans droits. Et ce compteur se recharge tous les quinze ans — mais seulement si vous l'avez utilisé une première fois. Chaque année sans rien faire est une année perdue.
+
+**Deuxième porte : soixante-dix ans.** Ce que vous versez sur une assurance-vie avant cet anniversaire se transmet jusqu'à 152 500 euros par bénéficiaire, sans droits. Après cet anniversaire, ce n'est plus que 30 500 euros. Et pas chacun : 30 500 euros en tout, pour tout le monde.
+
+**Troisième porte : soixante et onze ans.** Vous pouvez donner les murs de votre maison en gardant le droit d'y vivre. Toute votre vie. Entre 61 et 70 ans, on ne compte que 60 % de sa valeur. À partir de 71 ans, on en compte 70 %. Dix points de plus, pour un anniversaire.
+
+> *Écran : les trois portes, une par une, avec l'article en bas — 784, 990 I, 669.*
+
+### ═══ 4:45 · LA PREUVE ═══
+
+Rejouons l'histoire de Jean-Pierre. Avec ces trois décisions, prises à 65 ans.
+
+L'assurance-vie, versée avant 70 ans. Droits : **zéro**.
+
+La maison, donnée en gardant l'usage à vie. Droits calculés sur 128 000 euros, au lieu de 420 000.
+
+Et un rendez-vous chez le notaire, avec le dossier déjà prêt. Un après-midi.
+
+Résultat : **82 194 euros… contre 23 794.**
+
+Cinquante-huit mille quatre cents euros d'écart. Pour une famille ordinaire. Zéro montage. Tout est écrit dans le Code.
+
+> *Écran : les deux colonnes côte à côte, l'écart en gros. C'est l'image qu'on retient.*
+
+### ═══ 5:30 · URGENCE ET GARANTIE ═══
+
+Vous avez maintenant les trois portes. Ce que vous n'avez pas, c'est **celle qui se ferme le plus vite pour vous**.
+
+Ça dépend de votre âge, et de la date de vos versements. Et ça se calcule en une soirée.
+
+C'est exactement ce que fait le programme. Le tarif est indiqué sous cette vidéo, avec le nombre de places encore ouvertes. Le compteur est réel, et il ne se réinitialise pas.
+
+Et si, dans les trente jours, vous n'avez pas trouvé au moins **une** erreur que vous étiez en train de commettre — un email suffit. Vous êtes remboursé. Et vous gardez le simulateur.
+
+### ═══ 6:05 · CLOSING — les deux scènes ═══
+
+Une dernière chose.
+
+Au fond, la question n'est pas de savoir combien l'État prendra.
+
+La vraie question, la voici. **Le jour où vous ne serez plus là, qu'est-ce que vos enfants diront de vous ?**
+
+Diront-ils : *« il avait tout prévu, on n'a eu à s'occuper de rien »* ? Ou passeront-ils six mois dans des bureaux, avec des papiers qu'ils ne comprennent pas ?
+
+Garderont-ils la maison de leur enfance ? Ou devront-ils la vendre pour payer l'État ?
+
+Ces deux scènes existent. **Une seule aura lieu.**
+
+Et laquelle des deux, **ça se décide maintenant**. Pas dans dix ans.
+
+Le bouton est juste sous cette vidéo.
+
+> *Image : deux chemins qui se séparent — l'un vers la maison vendue, l'autre vers la table du dimanche.*
+> *Puis, sur la dernière phrase, la table du dimanche qui revient, tenue longtemps.*
+> *C'est le soulagement qu'on laisse, pas la peur.*
+
+---
+
+## 🗄️ ARCHIVE — la version longue (18 min)
+
+> Conservée telle quelle, pour ne rien perdre. Matière d'une variante longue,
+> le jour où le volume permettra de la tester contre la courte.
 
 ### ═══ LEAD (20 %) — Narrative lead ═══
 
@@ -375,45 +551,43 @@ Cliquez sur le bouton, maintenant. Votre chiffre vous attend ce soir.
 
 ---
 
-## ⚠️ LA DURÉE — à trancher avant de tourner
+## ✅ LA DURÉE — tranchée le 7 septembre 2026
 
-Le script fait **2 387 mots de prose à dire**. Aux débits recommandés plus bas
-(voix posée, pas d'accélération sur cet avatar) :
+**897 mots dits → 6 min 54 à 130 mots/min.** L'ancienne version en faisait
+2 387, soit 18 minutes.
 
 | Débit | Durée |
 |---|---|
-| 130 mots/min — le débit prescrit | **18 min** |
-| 150 mots/min — déjà rapide pour un lecteur de 67 ans | 16 min |
+| 120 mots/min — très posé, si le comédien ralentit | 7 min 30 |
+| **130 mots/min — le débit prescrit** | **6 min 54** |
+| 150 mots/min — déjà rapide pour un auditeur de 67 ans | 6 min |
 
-**Or le site promet « une vidéo de 9 minutes », à quinze endroits** (les deux
-landing pages, la page de vente, les emails de la séquence, les créatives).
+La référence est celle de Valère, qui donne la durée de sa propre VSL dans
+son teardown : **6 minutes 30**, pour un funnel à ~300 k€/mois.
 
-Promettre 9 et en livrer 18 est une incohérence que le spectateur découvre à la
-seconde où il lance la vidéo — et sur un avatar méfiant, c'est cher payé.
+### Ce qu'on n'a pas fait pour y arriver
 
-### Les deux options, et ce qu'elles coûtent
+On n'a pas coupé la moitié du script en gardant la même structure — c'est
+l'option qui avait été écartée ici même, à raison : le lead narratif et le
+calcul ligne par ligne portent toute la preuve, ils ne se coupent pas.
 
-**A — Garder le script, aligner la promesse.** La doctrine est explicite :
-*« il n'y a pas de règle sur la longueur d'une VSL. Ce qui compte : le watch
-time, pas la durée »* (`03-marketing-copy/vsl.md`). Une VSL de 18 minutes est
-parfaitement légitime. Coût : changer un nombre à quinze endroits — dix minutes
-de travail — et une promesse d'engagement plus lourde sur du trafic froid.
+**On a changé de forme.** La preuve passe à 10 secondes, le résultat désiré
+juste après, le CTA à 3 minutes. Ce qui a sauté, ce sont les blocs que cette
+nouvelle forme rend redondants : l'escalier de projection, les doutes traités
+un par un, les trois outils de closing empilés. Ils sont archivés, pas perdus.
 
-**B — Couper le script à 9 minutes.** Il faut descendre à ~1 170 mots, soit
-**retirer la moitié**. Le lead narratif (Jean-Pierre chez le notaire) et le
-calcul ligne par ligne sont les deux blocs qui portent la preuve : ils ne se
-coupent pas. Ce qui sauterait, c'est l'escalier de projection et une partie du
-closing — les blocs qui font acheter.
+### La durée annoncée : aucune
 
-**Recommandation : A.** On ne coupe pas ce qui vend pour tenir un nombre qu'on a
-choisi avant d'avoir écrit le script.
+Le site ne promet plus « 9 minutes » nulle part — le nombre a été retiré des
+six endroits où il figurait (page de désinscription, `LpCeo`, `QuestionsOptin`,
+`email.ts`, `sequence.ts`). Annoncer une durée avant le montage, c'est se
+condamner à la corriger après.
 
-> Le vrai chiffre se connaîtra **au montage**. Tourner d'abord, mesurer, puis
-> mettre la durée réelle partout. Ne pas laisser « 9 minutes » en ligne si la
-> vidéo en fait 17.
+⚠️ **Restent à mettre à jour après le tournage**, s'il est décidé d'annoncer
+une durée : `08-creatives-ads.md` (6 occurrences), `09-emails.md` (4),
+`00-PLAN-DE-ROUTE.md`, `01-strategie.md`.
 
 ---
-
 ## ⚠️ DEUX REGLES ABSOLUES (6 septembre 2026)
 
 ### Aucun « je » de narrateur — le format est faceless

@@ -48,8 +48,8 @@ export function QuestionsOptin() {
         {done ? (
           <>
             <p className="mb-4 text-[1.05rem]">
-              Parfait. La vidéo de 9 minutes vous montre exactement ce que l&apos;État prendrait, et
-              les 3 décisions qui changent ce chiffre. Indiquez où vous souhaitez la recevoir.
+              Parfait. La vidéo vous montre exactement ce que l&apos;État prendrait, et les 3
+              décisions qui changent ce chiffre. Indiquez où vous souhaitez la recevoir.
             </p>
             <OptinForm cta="Recevoir la vidéo maintenant" />
             <button
