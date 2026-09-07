@@ -104,7 +104,7 @@ C'est qu'en sortant, sur le trottoir, le notaire a ajouté — presque en s'excu
 
 Personne ne lui avait dit. Pas sa banque. Pas son notaire. Pas l'État. Personne n'est payé pour ça.
 
-Dans les minutes qui viennent, je vais vous révéler exactement ce que le père de Jean-Pierre aurait pu faire — trois décisions, simples, légales, écrites noir sur blanc dans le Code général des impôts — et je vais vous montrer comment savoir **ce soir** ce que l'État prendra sur ce que vous laisserez.
+Dans les minutes qui viennent, vous allez découvrir exactement ce que le père de Jean-Pierre aurait pu faire — trois décisions, simples, légales, écrites noir sur blanc dans le Code général des impôts. Et vous saurez comment connaître **ce soir** ce que l'État prendra sur ce que vous laisserez.
 
 Mais avant, il faut que vous compreniez pourquoi cette histoire arrive à des familles ordinaires. Chaque jour.
 
@@ -126,7 +126,7 @@ Un jour, quelqu'un dira de vous : *« Il avait tout prévu. On n'a eu à s'occup
 
 C'est ça, transmettre. Pas un chiffre. Une tranquillité.
 
-Et je vais être direct : c'est à votre portée. Pas parce que vous êtes riche. Parce que la loi française contient déjà tous les outils — encore faut-il les connaître, et agir avant que les portes se ferment.
+Et disons-le simplement : c'est à votre portée. Pas parce que vous êtes riche. Parce que la loi française contient déjà tous les outils — encore faut-il les connaître, et agir avant que les portes se ferment.
 
 #### 2. ÉCHEC — ce n'est pas votre faute
 
@@ -156,7 +156,7 @@ Maintenant, imaginez vos enfants dans ce bureau. Six mois pour trouver la somme.
 
 Et la dispute qui vient avec : *« Papa t'avait déjà donné pour ta voiture… »* Des familles se sont brouillées pour moins que ça.
 
-Et ce n'est pas tout. Il y a **trois portes qui se ferment avec le temps** — et je vais vous les donner, parce que personne ne le fait :
+Et ce n'est pas tout. Il y a **trois portes qui se ferment avec le temps** — les voici, parce que personne ne les donne :
 
 **Première porte : le compteur des 15 ans.** L'abattement de 100 000 euros par enfant se recharge tous les 15 ans — mais seulement si vous l'avez **utilisé**. Chaque année sans donation est une année perdue. Elle ne revient pas.
 
@@ -226,7 +226,7 @@ Reprenons Jean-Pierre. Et rejouons l'histoire, avec les trois décisions que son
 
 Résultat : **82 194 euros… contre 23 794.** Cinquante-huit mille quatre cents euros de différence. Pour une famille ordinaire. Avec trois décisions. Zéro montage. Tout est dans le Code.
 
-Ce n'est pas mon opinion. Ce sont des articles de loi que je vous montre à l'écran, et que vous pourrez vérifier sur impots.gouv.fr ce soir.
+Ce ne sont pas des opinions. Ce sont des articles de loi, affichés à l'écran, que vous pourrez vérifier sur impots.gouv.fr ce soir.
 
 Voilà la révélation, en une phrase : **l'héritier n°1 de votre famille, c'est l'État — sauf si vous prenez ces trois décisions de votre vivant, dans le bon ordre, avant que les portes se ferment.**
 
@@ -267,19 +267,19 @@ Dans un an, vous aurez peut-être vu votre petit-fils signer son premier apparte
 
 #### 9. URGENCE
 
-Voilà ce que je vous propose.
+Voilà ce que contient le programme.
 
-Le programme complet — les sept erreurs et leurs corrections, le Simulateur, le Calendrier des 3 Dates, le Plan en 1 Page, les douze questions au notaire, la lettre pour en parler à vos enfants, le lexique, la règle de mise à jour si la loi change — tout ça vaut, séparément, 429 euros. Une seule consultation pour obtenir votre chiffre en coûterait une centaine.
+Les sept erreurs et leurs corrections. Le Simulateur. Le Calendrier des 3 Dates. Le Plan en 1 Page. Les douze questions au notaire. La lettre pour en parler à vos enfants. Le lexique. Et la règle de mise à jour, si la loi change.
 
-Pour les **20 premiers membres**, c'est **27 euros**. Pas 67. Parce que j'ai besoin de vos retours pour améliorer le simulateur — et qu'en échange, vous avez le prix fondateur, à vie, mises à jour comprises. Le compteur est sous cette vidéo, il est réel. À la 20e place, le prix passe à 67, et il n'en redescend plus.
+Le tarif est indiqué sous cette vidéo, avec le nombre de places encore ouvertes. Ce tarif fondateur existe pour une raison simple : les premiers membres donnent leurs retours, et le simulateur s'améliore avec. En échange, ils le gardent à vie, mises à jour comprises. Le compteur est réel, et il ne se réinitialise pas.
 
 Mais l'urgence, la vraie, n'est pas là. Elle est dans les trois portes. Celle qui se ferme le plus vite pour vous, vous ne la connaissez pas encore. Dans une soirée, si.
 
 #### 10. GARANTIE
 
-Et voici ma part du risque.
+Et le risque n'est pas de votre côté.
 
-Regardez le programme. Faites votre simulation. Si, dans les 30 jours, vous n'avez pas identifié au moins **une** erreur que vous étiez en train de commettre — écrivez-moi, un email suffit, sans justification. Je vous rembourse les 27 euros. Et vous gardez le simulateur.
+Regardez le programme. Faites votre simulation. Si, dans les trente jours, vous n'avez pas identifié au moins **une** erreur que vous étiez en train de commettre — un email suffit, sans justification. Vous êtes remboursé intégralement. Et vous gardez le simulateur.
 
 Vous ne pouvez pas perdre. Soit vous trouvez une erreur qui vaut des milliers d'euros, soit vous gardez l'outil et votre argent.
 
@@ -295,19 +295,19 @@ Vous avez deux options.
 
 **La première** : fermer cette page. Se dire « je verrai ça plus tard ». C'est ce que le père de Jean-Pierre a fait pendant dix ans. Le compteur continue de tourner. Un anniversaire passe, une porte se ferme. Et un mardi de mars, ce sont vos enfants qui sont assis dans le bureau, à regarder un chiffre.
 
-**La seconde** : prendre 27 euros et une soirée. Savoir. Décider. Et, dans trois semaines, être celui — ou celle — qui avait tout prévu.
+**La seconde** : y consacrer une soirée. Savoir. Décider. Et, dans trois semaines, être celui — ou celle — qui avait tout prévu.
 
 #### Outil 2 — Rappel de la douleur présente + étiquetage
 
-Vous avez travaillé quarante ans pour construire ce que vous avez. Vous avez payé vos impôts chaque année, sans exception. Ce que je vous propose, ce n'est pas d'échapper à quoi que ce soit — c'est d'utiliser, enfin, ce que la loi vous accorde et que personne ne vous a expliqué.
+Vous avez travaillé quarante ans pour construire ce que vous avez. Vous avez payé vos impôts chaque année, sans exception. Il ne s'agit pas d'échapper à quoi que ce soit — il s'agit d'utiliser, enfin, ce que la loi vous accorde et que personne ne vous a expliqué.
 
-Je sais que vous êtes quelqu'un de méthodique. Vous n'avez pas construit tout ça au hasard. Vous ne le transmettrez pas au hasard non plus.
+Vous êtes quelqu'un de méthodique. Vous n'avez pas construit tout ça au hasard. Vous ne le transmettrez pas au hasard non plus.
 
 #### Outil 3 — Always Be Leaving + CTA final
 
-Que vous le fassiez ou non, les 20 places fondatrices partiront — d'autres familles les prendront. Ça ne changera rien pour moi.
+Que vous le fassiez ou non, les places fondatrices partiront — d'autres familles les prendront.
 
-Ça changera tout pour vous.
+La seule question, c'est de savoir si vous serez parmi elles.
 
 Cliquez sur le bouton, maintenant. Votre chiffre vous attend ce soir.
 
@@ -367,6 +367,42 @@ choisi avant d'avoir écrit le script.
 > Le vrai chiffre se connaîtra **au montage**. Tourner d'abord, mesurer, puis
 > mettre la durée réelle partout. Ne pas laisser « 9 minutes » en ligne si la
 > vidéo en fait 17.
+
+---
+
+## ⚠️ DEUX REGLES ABSOLUES (6 septembre 2026)
+
+### Aucun « je » de narrateur — le format est faceless
+
+Personne n'incarne Héritage Intact : ni visage, ni nom, ni expertise revendiquée.
+Le positionnement « marque éditoriale, pas de gourou » (`01-strategie.md`) le
+disait déjà ; il est ici renforcé : **le narrateur ne dit jamais « je »**.
+
+Les trois « je » qui restent dans le script sont des **citations**, et ils
+doivent rester :
+
+| Où | Qui parle |
+|---|---|
+| *« si votre père était venu me voir »* | le notaire |
+| *« je ne veux pas me déposséder de mon vivant »* | le doute du lecteur |
+| *« je verrai ça plus tard »* | la voix intérieure du lecteur |
+
+Tout le reste a été retourné : « je vous rembourse » → « vous êtes remboursé »,
+« voici ma part du risque » → « le risque n'est pas de votre côté », « ce n'est
+pas mon opinion » → « ce ne sont pas des opinions ».
+
+### Aucun prix dans la vidéo
+
+Le tarif, le nombre de places et le montant de la garantie vivent **sur la
+page**, sous le lecteur. La vidéo amène au bouton ; elle ne vend pas un montant.
+
+Deux raisons. La première est de conversion : un chiffre annoncé trop tôt donne
+au spectateur de quoi arbitrer avant d'avoir compris ce qu'il achète. La
+seconde est pratique : les prix bougent — le plafond est déjà passé de 500 à 20
+places et l'ancrage de 67 à 429 € — et une vidéo, elle, ne se réécrit pas.
+
+Le bloc 9 dit donc ce que contient le programme, puis renvoie au tarif affiché
+sous la vidéo. Le bloc 10 garantit trente jours sans nommer de somme.
 
 ---
 
