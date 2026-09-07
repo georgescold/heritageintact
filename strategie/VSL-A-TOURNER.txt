@@ -1,263 +1,215 @@
 HERITAGE INTACT - VSL FRONT - SCRIPT DE TOURNAGE
 Version du 7 septembre 2026
 
-Awareness : le prospect arrive PROBLEM AWARE. Il sait qu'il a un
-probleme de succession ; il ne croit pas encore qu'une solution existe.
-C'est cette video qui le fait passer problem aware vers solution aware.
-Le repo l'impose : a ce niveau on traite Q5 (qui est responsable) PUIS
-Q1 (en quoi c'est different), avec un lead Proclamation.
+Awareness : le prospect arrive PROBLEM AWARE (c'est l'ad qui le decide). Le lead
+est narratif — c'est le format que Loys veut — mais il atterrit sur Q5 (« personne
+n'est paye pour ca »), ce que le repo exige a ce niveau. Le corps enchaine sur Q1.
 
-Format faceless : aucun "je" de narrateur. Le seul "je" du script est
-celui que le prospect se dit a lui-meme.
-Aucun montant n'est prononce : la page chiffre, pas la video.
-Debit : voix posee, 130 mots par minute. Sous-titres obligatoires.
+Format faceless : aucun « je » de narrateur. Le seul « je » est celui que le
+prospect se dit a lui-meme (« j'y penserai »).
+Aucun montant : la page chiffre, pas la video.
+Julien = le fils. Il est SEUL chez le notaire : le calcul 82 194 -> 23 794 repose
+sur un heritier unique (12-chiffres-succession.md). Une soeur casserait le chiffre.
+Bannis : « les trois portes », « les trois verrous », « saisir ».
 
-
-=================================================================
-LEAD - PROCLAMATION (Q5 puis Q1)
-=================================================================
-
-Dans la plupart des familles francaises, l'heritier numero un, ce ne
-sont pas les enfants. C'est l'Etat.
-
-Et ce n'est pas une fatalite. C'est un silence.
-
-Votre banquier est paye sur les frais de vos contrats. Pas sur ce que
-vos enfants paieront apres vous.
-
-Votre notaire est paye a l'acte : il intervient quand on l'appelle,
-c'est-a-dire apres.
-
-Et l'Etat, lui, encaisse.
-
-Aucun des trois n'est malhonnete. Simplement, dans tout votre parcours,
-personne n'a jamais ete paye pour vous prevenir.
-
-On vous a dit d'epargner. On vous a dit de placer. Personne ne vous a
-dit qu'il y avait trois dates dans votre vie, apres lesquelles il est
-trop tard.
-
-Ces trois dates ne sont pas un secret. Elles sont ecrites noir sur blanc
-dans le Code general des impots, verifiables ce soir sur impots.gouv.fr.
-
-La difference entre une famille qui paie plein tarif et une famille qui
-paie trois fois moins, ce n'est pas l'argent. C'est que la deuxieme les
-a lues a temps.
-
-Dans les minutes qui viennent, vous allez les avoir.
+Le texte seul, sans annotation, est dans VSL-TEXTE-SEUL.txt.
 
 
 =================================================================
-BODY 1 - CE QUE COUTE LE SILENCE
+LEAD - NARRATIVE (Julien, seul : le calcul repose sur UN enfant)
 =================================================================
 
-Regardez ce chiffre.
+Il est 9 h 40, un mardi de mars.
+
+Julien est assis dans le bureau du notaire. Il vient d'enterrer son père.
+
+Le notaire tourne une feuille vers lui, pose son doigt sur un chiffre, et dit calmement :
+
+« Les droits s'élèvent à 82 194 euros. Vous avez six mois. »
 
 Quatre-vingt-deux mille cent quatre-vingt-quatorze euros.
 
-C'est ce que l'Etat a preleve sur la succession d'une famille ordinaire.
-
 (A l'ecran : le calcul ligne par ligne, l'article 777 en incrustation.)
 
-Le notaire l'a annonce a Jean-Pierre un mardi de mars, au retour de
-l'enterrement de son pere. Vous avez six mois pour payer.
+Sur une maison de 380 000 euros que son père avait mis vingt-cinq ans à payer. Et 140 000 euros d'économies qu'il avait mis une vie entière à mettre de côté.
 
-Ils ne les avaient pas. La maison a ete vendue.
+Julien relit la ligne. Il pense à une seule chose : il n'a pas 82 000 euros.
 
-Et sur le trottoir, le notaire a ajoute, presque en s'excusant : si
-votre pere etait venu me voir il y a dix ans, on aurait pu diviser ca
-par trois.
+Six mois plus tard, la maison de son enfance est vendue. Pour payer.
+
+Ce qui rend cette histoire insupportable, ce n'est pas le chiffre.
+
+C'est qu'en sortant, sur le trottoir, le notaire a ajouté — presque en s'excusant :
+
+« Vous savez… si votre père était venu me voir il y a dix ans, on aurait pu diviser ça par trois. »
 
 Par trois.
 
-(Silence. Deux secondes pleines.)
+(Silence. Deux secondes pleines. Ne se coupe pas au montage.)
 
-Son pere n'avait rien fait de mal. Il avait laisse passer trois dates.
+Mais ça, personne ne le lui avait dit. Ni sa banque. Ni son notaire. Et encore moins l'État.
 
+Car vous vous en doutez : personne n'est payé pour ça.
 
-=================================================================
-BODY 2 - A QUI CA S'ADRESSE
-=================================================================
+Dans les minutes qui viennent, vous allez découvrir exactement ce que le père de Julien aurait pu faire. Trois décisions. Simples. Légales. Écrites noir sur blanc dans le Code général des impôts.
 
-Ce qui suit vous concerne si vous avez passe soixante ans, une maison
-payee, et des enfants. Pas si vous etes locataire sans epargne : vos
-heritiers ne paieront rien.
+Et vous saurez comment faire baisser, dès ce soir, ce que l'État prendra sur ce que vous laisserez.
 
-
-=================================================================
-BODY 3 - PREMIER APPEL A L'ACTION
-=================================================================
-
-Si vous vous reconnaissez, le bouton est sous cette video. Vous pouvez
-cliquer maintenant, ou continuer a regarder. Les deux marchent.
+Mais avant, il faut que vous compreniez pourquoi cette histoire arrive à des familles ordinaires. Chaque jour.
 
 
 =================================================================
-BODY 4 - LES TROIS DATES
+BODY 1 - L'ENNEMI : le silence, puis l'illisibilite (Q5)
 =================================================================
 
-Voici donc ces trois dates.
+Ce n'est pas une fatalité. C'est un silence.
 
+Votre banquier est payé sur les frais de vos contrats. Pas sur ce que vos enfants paieront après vous.
 
-La premiere n'est pas un age. C'est un compteur de quinze ans.
+Votre notaire est payé à l'acte. Il intervient quand on l'appelle, c'est-à-dire après. Il enregistre, il ne prévient pas.
 
-Chaque parent peut donner cent mille euros a chaque enfant, sans un euro
-de droits. Et ce compteur repart a zero tous les quinze ans — mais
-seulement s'il a demarre. Si vous n'avez jamais rien donne, il ne tourne
-pas. Il attend.
+Et l'État, lui, encaisse.
 
+Et puis soyons honnêtes. Personne ne va passer ses soirées à lire le Code général des impôts. Des articles numérotés, des renvois d'un texte à l'autre, des lignes imprimées en tout petit. Ce n'est pas fait pour être lu par vous. C'est fait pour être appliqué à vous.
 
-La deuxieme, c'est votre soixante-dixieme anniversaire.
-
-Ce que vous versez sur une assurance-vie avant ce jour-la se transmet
-jusqu'a cent cinquante-deux mille cinq cents euros par beneficiaire,
-sans droits. Apres, ce n'est plus que trente mille cinq cents. Et pas
-chacun : en tout, pour tout le monde.
-
-Meme argent. Meme contrat. Un jour d'ecart.
-
-
-La troisieme, c'est votre soixante et onzieme anniversaire.
-
-Vous pouvez transmettre les murs de votre maison en gardant le droit d'y
-vivre jusqu'au bout. Avant soixante et onze ans, l'Etat ne compte que
-soixante pour cent de sa valeur. Apres, soixante-dix. Dix points, pour
-un anniversaire.
-
-
-Ces trois dates avancent toutes seules, que vous soyez au courant ou
-non. Aucune ne revient en arriere.
+(A l'ecran : un article du Code en plan serre, illisible.)
 
 
 =================================================================
-BODY 5 - LA PREUVE
+BODY 2 - EN QUOI C'EST DIFFERENT : public, gratuit, le moment (Q1)
 =================================================================
 
-Rejouons l'histoire de Jean-Pierre avec ces trois dates respectees, a
-soixante-cinq ans.
+Pourtant, ces trois décisions ne sont pas un secret. Elles sont publiques, gratuites, vérifiables ce soir sur impots.gouv.fr.
 
-L'assurance-vie alimentee avant soixante-dix ans : zero droit. Article
-990 I.
+La différence entre une famille qui paie plein tarif et une famille qui paie trois fois moins, ce n'est pas l'argent. C'est le moment où elle s'en occupe.
 
-La maison transmise en gardant l'usage a vie : les droits portent sur
-cent vingt-huit mille euros au lieu de quatre cent vingt mille. Article
-669.
 
-Resultat. Quatre-vingt-deux mille cent quatre-vingt-quatorze d'un cote.
-Vingt-trois mille sept cent quatre-vingt-quatorze de l'autre.
+=================================================================
+BODY 3 - QUALIFICATION, PUIS PREMIER APPEL A L'ACTION
+=================================================================
+
+Ce qui suit vous concerne si vous avez passé soixante ans, une maison payée, et des enfants. Pas si vous êtes locataire sans épargne : vos héritiers ne paieront rien.
+
+Si vous vous reconnaissez, le bouton est sous cette vidéo. Vous pouvez cliquer maintenant, ou continuer à regarder. Les deux marchent.
+
+
+=================================================================
+BODY 4 - LES TROIS DATES, CHACUNE AVEC SA DECISION (une seule triade)
+=================================================================
+
+Voici les trois décisions. Chacune est liée à une date. Et chaque date, une fois passée, ne revient jamais.
+
+La première date n'est pas un âge. C'est un compteur de quinze ans.
+
+Chaque parent peut donner cent mille euros à chaque enfant, sans un euro de droits. Et ce compteur repart à zéro tous les quinze ans. Mais seulement s'il a démarré. Si vous n'avez jamais rien donné, il ne tourne pas. Il attend.
+
+La décision, c'est de le lancer. Une première donation, même modeste.
+
+La deuxième date, c'est votre soixante-dixième anniversaire.
+
+Ce que vous versez sur une assurance-vie avant ce jour-là se transmet jusqu'à cent cinquante-deux mille cinq cents euros par bénéficiaire, sans droits. Après, ce n'est plus que trente mille cinq cents. Et pas chacun : en tout, pour tout le monde.
+
+Même argent. Même contrat. Un jour d'écart.
+
+La décision, c'est de verser avant. Pas après.
+
+La troisième date, c'est votre soixante et onzième anniversaire.
+
+Vous pouvez transmettre les murs de votre maison à vos enfants en gardant le droit d'y vivre jusqu'au bout. Avant soixante et onze ans, l'État ne compte que soixante pour cent de sa valeur. Après, soixante-dix. Dix points de plus, pour un anniversaire.
+
+La décision, c'est de transmettre les murs avant cette date. Sans bouger de chez vous.
+
+Trois décisions. Aucune ne vous demande de vendre, de partir, ou de confier votre argent à qui que ce soit. Vous restez chez vous jusqu'au dernier jour. Ce qui change, c'est le nom sur un papier. Pas votre vie dans la maison.
+
+
+=================================================================
+BODY 5 - LA PREUVE : le rejeu chiffre (Q3)
+=================================================================
+
+Maintenant, rejouons l'histoire du père de Julien. Avec ces trois décisions, prises à soixante-cinq ans.
+
+L'assurance-vie alimentée avant soixante-dix ans : zéro droit. Article 990 I.
+
+La maison transmise en gardant l'usage à vie : les droits ne portent plus que sur cent vingt-huit mille euros, au lieu de quatre cent vingt mille. Article 669.
+
+Résultat. Quatre-vingt-deux mille cent quatre-vingt-quatorze d'un côté. Vingt-trois mille sept cent quatre-vingt-quatorze de l'autre.
+
+Cinquante-huit mille quatre cents euros d'écart. Même famille, même patrimoine, même loi. Ne croyez personne sur parole : les articles sont à l'écran.
 
 (Silence. Les deux colonnes a l'ecran, l'ecart en gros.)
 
-Cinquante-huit mille quatre cents euros d'ecart. Meme famille, meme
-patrimoine, meme loi. Ne croyez personne sur parole : les articles sont
-a l'ecran.
+
+=================================================================
+BODY 6 - LE PRODUIT COMME SOLUTION (Q8, Q9) — nomme, et la 4e fenetre du 31 decembre
+=================================================================
+
+Seulement voilà. Savoir que ces trois dates existent ne suffit pas.
+
+Il faut savoir lesquelles vous concernent, vous. Dans quel ordre. Et combien chacune vous coûte si vous la laissez passer.
+
+C'est exactement pour ça que le programme sous cette vidéo existe. Il s'appelle Les 7 Erreurs qui Offrent Votre Héritage à l'État.
+
+Les trois dates que vous venez de voir sont trois de ces sept erreurs. Les quatre autres, ce sont celles qu'on commet entre les dates. Le contrat de la banque jamais relu. Le don de la main à la main. Les petits-enfants oubliés. Et le rendez-vous chez le notaire, les mains vides.
+
+Vous entrez votre situation, et vous ressortez avec trois choses.
+
+Votre chiffre : ce que l'État prendrait aujourd'hui, si rien ne changeait.
+
+Votre calendrier : vos trois dates à vous, et celle qui arrive en premier.
+
+Et votre plan, sur une page, avec le dossier à poser sur le bureau du notaire. L'inventaire, vos décisions, et les douze questions à lui poser.
+
+Une soirée pour savoir. Trois semaines pour que ce soit signé.
+
+Il y a même une quatrième fenêtre, qui ne dépend pas de votre âge mais du calendrier. Elle se ferme le 31 décembre 2026. Elle est dans le programme.
 
 
 =================================================================
-BODY 6 - CE QUE VOUS AVEZ A FAIRE
-=================================================================
-
-Concretement, ca vous demande trois semaines.
-
-D'abord, vous calculez. Une soiree, et vous ressortez avec deux
-chiffres : ce que l'Etat prendrait aujourd'hui, et laquelle de vos trois
-dates arrive en premier.
-
-Ensuite, vous choisissez ce qui correspond a votre situation, avec le
-plan qui va avec.
-
-Enfin, vous signez chez le notaire, avec le dossier deja pret. Il acte.
-Vous ne repartez pas avec un on verra.
-
-Calculer, choisir, signer.
-
-
-=================================================================
-BODY 7 - LE DOUTE PRINCIPAL
-=================================================================
-
-Une chose, parce que c'est la peur numero un. Non, vous ne vous
-depossedez pas. Tout se fait en gardant l'usage de ce que vous
-transmettez. Vous restez chez vous jusqu'au dernier jour. Ce qui change,
-c'est le nom sur un papier. Pas votre vie dans la maison.
-
-
-=================================================================
-BODY 8 - L'URGENCE, LA GARANTIE, LE BOUTON
+BODY 7 - URGENCE, GARANTIE, BOUTON (Q6, Q10)
 =================================================================
 
 Reste une question : quand.
 
-Et il n'y a pas de bonne reponse plus tard. Ce qui coute cher, ce n'est
-pas une erreur. C'est le temps qui passe pendant que vous ne faites
-rien. Le pere de Jean-Pierre a attendu dix ans. Ces dix ans ont coute
-cinquante-huit mille euros a ses enfants.
+Ce qui coûte cher, ce n'est pas une erreur. C'est le temps qui passe pendant que vous ne faites rien.
 
-Tout est sous cette video, avec le nombre de places encore ouvertes.
+Tout est sous cette vidéo, avec le nombre de places encore ouvertes.
 
-Et si dans les trente jours vous n'avez pas trouve au moins une erreur
-que vous etiez en train de commettre, un email suffit. Vous etes
-rembourse, et vous gardez le simulateur.
+Et si dans les trente jours vous n'avez pas trouvé au moins une erreur que vous étiez en train de commettre, un email suffit. Vous êtes remboursé, et vous gardez le simulateur.
 
 
 =================================================================
-CLOSING - LES DEUX SCENES, PUIS VOUS ETES LIBRE
+CLOSING - LES DEUX SCENES, PUIS VOUS ETES LIBRE (2 outils)
 =================================================================
 
-La vraie question n'est pas de savoir combien l'Etat prendra.
+Au fond, la vraie question, la voici.
 
-Le jour ou vous ne serez plus la, qu'est-ce que vos enfants diront de
-vous ?
+Le jour où vous ne serez plus là, qu'est-ce que vos enfants diront de vous ?
 
-Diront-ils : il avait tout prevu, on n'a eu a s'occuper de rien ? Ou
-passeront-ils six mois dans des bureaux, avec des papiers qu'ils ne
-comprennent pas ?
+Diront-ils : il avait tout prévu, on n'a eu à s'occuper de rien ? Ou passeront-ils six mois dans des bureaux, avec des papiers qu'ils ne comprennent pas ?
 
-Garderont-ils la maison de leur enfance ? Ou devront-ils la vendre pour
-payer l'Etat ?
+Garderont-ils la maison de leur enfance ? Ou devront-ils la vendre pour payer l'État ?
 
-Ces deux scenes existent toutes les deux. Une seule aura lieu.
+Ces deux scènes existent toutes les deux. Une seule aura lieu.
 
-(Image : deux chemins qui se separent. L'un vers la maison vendue,
-l'autre vers la table du dimanche.)
+(Image : deux chemins qui se separent — la maison vendue, la table du dimanche.)
 
-Et vous etes parfaitement libre de ne rien faire. Le pere de Jean-Pierre
-s'est dit j'y penserai, pendant dix ans. La seule difference entre lui
-et vous, c'est que vous, maintenant, vous savez.
+Et vous êtes parfaitement libre de ne rien faire. Le père de Julien s'est dit j'y penserai, pendant dix ans. La seule différence entre lui et vous, c'est que vous, maintenant, vous savez.
 
-Ce soir, vous pouvez connaitre votre chiffre. Dans trois semaines, il
-aura baisse.
+Ce soir, vous pouvez connaître votre chiffre. Dans trois semaines, il aura baissé.
 
-Le bouton est juste sous cette video.
+Le bouton est juste sous cette vidéo.
 
-(Image : la table du dimanche, tenue longtemps. C'est le soulagement
-qu'on laisse, pas la peur.)
+(Image : la table du dimanche, tenue longtemps. Le soulagement, pas la peur.)
 
 
 =================================================================
 NOTES DE TOURNAGE
 =================================================================
 
-Les silences se tiennent deux secondes pleines, et ils ne se coupent pas
-au montage : apres "par trois", apres "vingt-trois mille sept cent
-quatre-vingt-quatorze", apres "une seule aura lieu".
+Debit : voix posee, 130 mots par minute. Sous-titres obligatoires, gros, en bas.
+Les chiffres se disent lentement et s'affichent en meme temps qu'ils se prononcent.
+Le seul passage qu'on peut accelerer au montage : les trois premieres phrases.
 
-Les chiffres se disent lentement, et s'affichent a l'ecran en meme temps
-qu'ils se prononcent. Ils sont ecrits ici en toutes lettres pour cette
-raison.
-
-Le seul passage qu'on peut accelerer au montage, c'est l'ouverture,
-jusqu'a "personne n'a jamais ete paye pour vous prevenir". Le reste
-reste pose : l'auditeur a soixante-sept ans.
-
-Trois choses ne se disent jamais dans cette video. Le mot "je" employe
-par le narrateur, parce que le format est faceless. Un montant, quel
-qu'il soit, parce que le prix vit sur la page, ou il se change en une
-ligne. Et le mot "saisir" a propos de l'Etat, parce que c'est faux :
-l'Etat ne saisit rien, ce sont les heritiers qui vendent pour payer les
-droits en six mois.
-
-Deux expressions ont ete bannies le 7 septembre : "les trois portes" et
-"les trois verrous". Personne ne comprend ce que c'est en l'entendant.
-On dit "les trois dates" — les mots que la page email emploie deja — et
-la methode se nomme par ses verbes : calculer, choisir, signer.
+⚠ Art. 790 A bis (la fenetre du 31 decembre 2026) : verifie sur Legifrance, en
+vigueur, non proroge. Un rapport au Parlement est attendu avant le 30 septembre
+2026 : re-verifier avant de tourner cette phrase, et la retourner si la loi bouge.
