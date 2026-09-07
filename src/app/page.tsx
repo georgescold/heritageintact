@@ -11,7 +11,7 @@ import { UrgencyBar, UrgencyCountdown, UrgencyUnderButton } from "@/components/U
 export const metadata: Metadata = {
   title: "Et si vos enfants héritaient de 58 400 € de plus ?",
   description:
-    "Vous avez plus de 60 ans, une maison payée et des enfants ? Découvrez les 3 dates butoirs que personne n'est payé pour vous dire, et qu'il faut connaître pour faire baisser la facture que l'État présentera à vos enfants.",
+    "Vous avez plus de 60 ans, une maison payée et des enfants ? Découvrez les 3 dates butoirs que personne n'est payé pour vous dire, et qu'il faut connaître pour faire baisser la facture de l'État sur votre succession.",
 };
 
 /**
@@ -107,10 +107,10 @@ export default function LandingPage() {
             <p className="mt-2.5 text-[1.02rem] leading-snug">
               Découvrez les <strong>3 dates butoirs</strong> que personne n&apos;est payé pour vous
               dire, et qu&apos;il faut absolument connaître pour faire baisser{" "}
-              <strong>la facture que l&apos;État présentera à vos enfants</strong> —{" "}
+              <strong>la facture de l&apos;État sur votre succession</strong> —{" "}
               <strong>
-                avant qu&apos;il ne soit trop tard et que vous leur laissiez un chiffre que vous
-                auriez pu diviser par trois&nbsp;:
+                avant qu&apos;il ne soit trop tard et que vous laissiez à vos enfants un chiffre que
+                vous auriez pu diviser par trois&nbsp;:
               </strong>
             </p>
 
