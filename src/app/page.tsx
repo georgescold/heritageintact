@@ -11,7 +11,7 @@ import { UrgencyBar, UrgencyCountdown, UrgencyUnderButton } from "@/components/U
 export const metadata: Metadata = {
   title: "Et si vos enfants héritaient de 58 400 € de plus ?",
   description:
-    "Vous avez plus de 60 ans, une maison payée et des enfants ? Trois dates du Code général des impôts changent le prix de votre succession. Une vidéo vous dit lesquelles.",
+    "Vous avez plus de 60 ans, une maison payée et des enfants ? Trois portes se ferment avec votre âge, et aucune ne se rouvre. L'une des trois est déjà plus proche que les deux autres.",
 };
 
 /**
@@ -92,13 +92,22 @@ export default function LandingPage() {
               soit.
             </p>
 
-            {/* ══ SUB-SUB-HEADLINE — le mécanisme ══════════════════════
+            {/* ══ SUB-SUB-HEADLINE — le mécanisme, et l'urgence ════════
                 « Le mécanisme se développe en une ligne ou deux, pas plus. »
-                Teasé, jamais expliqué : ce que sont les trois dates est
-                exactement ce que la vidéo apporte. */}
+
+                ⚠️ La version précédente disait « trois dates du Code général
+                des impôts changent le prix de votre succession ». Exact, et
+                sans aucune tension : une phrase d'administration ne fait pas
+                cliquer. Trois choses manquaient, et ce sont elles qui créent
+                l'envie — une porte qui SE FERME, le fait qu'elle ne se rouvre
+                JAMAIS, et un inconnu qui concerne le lecteur personnellement.
+
+                Le mécanisme reste teasé, jamais expliqué : ce que sont les
+                trois dates est exactement ce que la vidéo apporte. */}
             <p className="mt-2.5 text-[1.02rem] leading-snug">
-              Trois dates du Code général des impôts changent le prix de votre succession.{" "}
-              <strong>L&apos;une des trois est bien plus proche que les autres.</strong>
+              <strong>Trois portes se ferment avec votre âge, et aucune ne se rouvre.</strong>{" "}
+              L&apos;une des trois est déjà bien plus proche que les deux autres — et vous ne savez
+              pas laquelle.
             </p>
 
             {/* ══ LE FORMULAIRE ═══════════════════════════════════════

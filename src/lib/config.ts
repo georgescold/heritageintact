@@ -182,10 +182,17 @@ export const CTA = {
   urgence: `Réservez votre place à ${euros(PRODUCTS.front.price)}`,
   /**
    * Landing page : l'action n'est pas la même — on ne vend rien, on débloque.
-   * Un seul libellé, partout, y compris dans le pop-up de sortie. Il y en avait
-   * trois, dont un qui annonçait une durée de vidéo qu'on ne connaît pas encore.
+   * Un seul libellé, partout, y compris dans le pop-up de sortie.
+   *
+   * ⚠️ « Découvrez les 3 décisions » a été écarté : correct, à l'impératif, et
+   * sans aucune tension. Il décrit un contenu. Celui-ci désigne une **échéance
+   * inconnue qui concerne le lecteur** — c'est la question qu'il se pose depuis
+   * la sous-headline, et le bouton est le seul endroit où il peut y répondre.
+   *
+   * Et il reste tenable : la vidéo donne bien les trois dates et de quoi situer
+   * son âge sur chacune. On ne promet rien que le clic ne livre.
    */
-  optin: "Découvrez les 3 décisions",
+  optin: "Voir laquelle se ferme en premier",
 } as const;
 
 export const PRIX_APRES_FONDATEURS = 67;
