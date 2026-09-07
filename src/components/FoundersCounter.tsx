@@ -1,71 +1,96 @@
 import { FOUNDERS_CAP, PRIX_APRES_FONDATEURS, PRODUCTS, euros } from "@/lib/config";
 import { countFounders } from "@/lib/db";
 
+/** Le triangle d'avertissement, tracé au trait. Décoratif : le texte dit tout. */
+function TriangleAvertissement({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="26"
+      height="26"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      className={className}
+    >
+      <path d="M12 3 1.8 20.5h20.4L12 3Z" />
+      <path d="M12 9.5v5" />
+      <path d="M12 17.6h.01" />
+    </svg>
+  );
+}
+
 /**
- * Le compteur de places.
+ * Le compteur de places, en encadré d'avertissement.
+ *
+ * ═══ La forme ═══
+ *
+ * Filet épais à gauche, fond crème, triangle au trait, titre en gras, corps en
+ * dessous. C'est le registre des encadrés « Attention » de l'administration
+ * française — celui que l'avatar a déjà lu cent fois sur impots.gouv.fr, et
+ * qu'il associe à une information qui l'engage.
+ *
+ * ⚠️ On emprunte le **registre**, jamais l'identité : ni Marianne, ni logo, ni
+ * signature institutionnelle. Ces éléments sont réservés aux acteurs de l'État
+ * (`15-identite-visuelle.md`). Un encadré jaune à filet gauche avec un triangle
+ * est un motif d'interface universel ; ce qui serait interdit, c'est de laisser
+ * croire qu'on émane d'un service public.
  *
  * ═══ Écrit pour un lecteur de 67 ans ═══
  *
- * Le chiffre est énorme et seul sur sa ligne : il doit se lire à un mètre de
- * l'écran, sans lunettes, en une fraction de seconde. Le mot « membres
- * fondateurs » a sauté — c'est du vocabulaire de lancement de startup, il ne
- * dit rien à quelqu'un qui vient de lire une page sur sa succession. Ce qui
- * compte tient en cinq mots : combien il reste, et à quel prix.
+ * Le nombre est énorme et seul dans sa phrase : il doit se lire à un mètre de
+ * l'écran, sans lunettes. « Membres fondateurs » a sauté — c'est du vocabulaire
+ * de lancement de startup, ça ne dit rien à quelqu'un qui vient de lire une
+ * page sur sa succession. Ne reste que ce qui engage : combien il reste, à quel
+ * prix, et ce que ça devient ensuite.
  *
- * Le bloc pulse, lentement (deux secondes, opacité 0,82). Un clignotement
- * rapide fatigue et fait fuir cette tranche d'âge, et la pulsation se coupe
- * toute seule si le système demande moins d'animation.
+ * La pulsation est lente et de faible amplitude, et elle se coupe si le système
+ * demande moins d'animation — réglage fréquent chez les personnes sujettes au
+ * vertige, c'est-à-dire exactement notre public.
  *
- * ═══ Sur la barre ═══
+ * ═══ Le nombre est vrai ═══
  *
- * Elle montre les places **prises**, et elle lit la base. Tant qu'il n'y a pas
- * de vente elle est presque vide, et c'est normal : c'est la seule chose
- * honnête qu'elle puisse afficher. La barre « déjà bien remplie » est celle du
- * bandeau du haut — elle mesure la part du délai légal déjà écoulée depuis la
- * loi du 14 février 2025, et celle-là est pleine à plus de 80 % pour de vrai.
+ * Il lit la base à chaque affichage et descend à chaque vente. Un compteur qui
+ * descendrait tout seul sur un minuteur serait une fausse rareté, que l'article
+ * L121-4 du code de la consommation range parmi les pratiques réputées
+ * trompeuses — et qu'un simple rechargement de page démasque.
  */
 export async function FoundersCounter() {
   const count = await countFounders();
   const left = Math.max(0, FOUNDERS_CAP - count);
-  const pris = Math.min(100, Math.round((count / FOUNDERS_CAP) * 100));
   const critique = left <= 10;
 
   return (
     <div
-      className={`pulse-urgence border-[3px] p-4 text-center ${
+      className={`pulse-urgence border-l-[6px] p-4 sm:p-5 ${
         critique ? "border-red bg-red-bg" : "border-orange bg-yellow-bg"
       }`}
     >
-      <p className="text-[1.15rem] leading-tight">
-        Il reste{" "}
-        <strong
-          className={`text-[2.6rem] leading-none ${critique ? "text-red" : "text-orange-dark"}`}
-        >
-          {left}
-        </strong>{" "}
-        <strong className="text-[1.3rem]">{left > 1 ? "places" : "place"}</strong>
-        <br />
-        <span className="text-[1.05rem]">
-          à <strong>{euros(PRODUCTS.front.price)}</strong> au lieu de{" "}
-          <strong>{euros(PRIX_APRES_FONDATEURS)}</strong>
-        </span>
+      <TriangleAvertissement className={critique ? "text-red" : "text-orange-dark"} />
+
+      <p className="mt-2 text-[1.3rem] font-bold leading-tight text-blue sm:text-[1.5rem]">
+        Il ne reste que{" "}
+        <span className={critique ? "text-red" : "text-orange-dark"}>
+          {left} {left > 1 ? "places" : "place"}
+        </span>{" "}
+        à {euros(PRODUCTS.front.price)}
       </p>
 
-      <div className="mx-auto mt-3 h-4 w-full max-w-[26rem] overflow-hidden border border-grey-line bg-white">
-        <div
-          className={critique ? "h-full bg-red" : "h-full bg-orange"}
-          style={{ width: `${Math.max(pris, 3)}%` }}
-        />
-      </div>
-
-      <p className="mt-2 text-[0.95rem] text-text">
+      <p className="mt-1.5 text-[1.02rem] leading-snug">
+        Ensuite, le prix passe à <strong>{euros(PRIX_APRES_FONDATEURS)}</strong> et n&apos;en
+        redescend plus. Les places déjà prises ne se rouvrent pas.
         {count > 0 ? (
           <>
-            {count} {count > 1 ? "places déjà prises" : "place déjà prise"} sur {FOUNDERS_CAP}.{" "}
+            {" "}
+            <strong>
+              {count} sur {FOUNDERS_CAP}
+            </strong>{" "}
+            {count > 1 ? "sont déjà parties" : "est déjà partie"}.
           </>
         ) : null}
-        Ensuite, le prix passe à <strong>{euros(PRIX_APRES_FONDATEURS)}</strong> et n&apos;en
-        redescend plus.
       </p>
     </div>
   );
