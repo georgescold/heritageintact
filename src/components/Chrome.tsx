@@ -13,7 +13,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
         <div className="flex items-center gap-4">
           {!minimal && (
             <span className="hidden text-[0.9rem] text-text-soft lg:block">
-              La succession expliquée en français simple
+              La succession enfin expliquée clairement
             </span>
           )}
           {/* Le cadenas est visible partout, y compris sur la landing page :

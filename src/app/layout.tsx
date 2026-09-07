@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: `%s | ${BRAND}`,
   },
   description:
-    "Transmettre intact ce que vous avez construit. La succession expliquée en français simple.",
+    "Transmettre intact ce que vous avez construit. La succession enfin expliquée clairement.",
   robots: { index: false, follow: false },
 };
 
