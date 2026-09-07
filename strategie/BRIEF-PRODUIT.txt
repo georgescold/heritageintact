@@ -265,8 +265,14 @@ ANGLE A - L'ARGENT, LA FACTURE INVISIBLE
 ANGLE B - LA FAMILLE, LA MAISON, LES PETITS-ENFANTS
   Avatar : Jean-Pierre
   Lead : Story ou Proclamation
-  L'idee : la maison de l'enfance vendue pour payer l'Etat, et les
-  enfants qui se dechirent faute d'instructions.
+  L'idee : la maison de l'enfance qui part pour payer l'Etat quand
+  l'epargne n'y est pas, et les enfants qui se dechirent faute
+  d'instructions.
+  ATTENTION (coherence du cas) : dans le cas Julien, les 140 000 €
+  d'epargne PAIENT les droits. La maison n'est pas vendue. On dit :
+  « plus de la moitie des economies d'une vie, parties a l'Etat en un
+  seul cheque ». La maison vendue est une projection (« si les economies
+  n'y sont pas »), jamais le recit du cas. Voir 12-chiffres-succession.md.
   Pour qui ca marche : le cote patriarche. C'est l'angle qui touche le
   desir profond, donc le plus fort a terme, mais le plus difficile a
   ecrire sans tomber dans le pathos.

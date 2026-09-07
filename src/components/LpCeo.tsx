@@ -442,8 +442,8 @@ export function TheCostOfInaction() {
             "82 194 € sur une maison de province et les économies d'une vie. Payables en six mois. En euros, pas en parts de maison.",
           ],
           [
-            "Ils devront trouver cette somme. Ils ne l'auront pas.",
-            "Une infirmière de 41 ans et un commercial de 38 ans ne sortent pas 41 000 € chacun en six mois. Alors on vend. Et un bien vendu dans l'urgence se vend au prix qu'on en donne.",
+            "Ils paieront avec ce que vous avez mis de côté.",
+            "Sur 140 000 € d'économies, 82 194 € partent à l'État en un seul chèque. Et si les économies n'y sont pas, c'est la maison qui part — vendue dans l'urgence, au prix qu'on en donne.",
           ],
           [
             "Chaque année qui passe ferme une porte, définitivement.",

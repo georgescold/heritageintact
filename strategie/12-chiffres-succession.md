@@ -196,6 +196,15 @@ Sur le cas Jean-Pierre : l'assiette est **380 000 €**, pas 228 000 €. L'anci
 
 **Situation :** père veuf, 1 enfant. Maison 380 000 € + épargne 140 000 € (livrets, comptes). Total 520 000 €.
 
+> ⚠️ **Cohérence du récit (7 septembre 2026, relevé par Loys).** Les 140 000 € d'épargne sont
+> **liquides** et l'héritier en hérite aussi. Les droits (82 194 €) sont donc **payables avec
+> l'épargne** : dans ce cas, **la maison n'a aucune raison d'être vendue**. La conséquence
+> exacte, à raconter partout (VSL, page de vente, produit, brief) : *« Julien paie avec les
+> économies de son père — plus de la moitié de ce qu'il avait mis de côté en 40 ans, parti à
+> l'État en un seul chèque. »* La maison vendue reste une **projection** légitime pour les
+> familles dont le patrimoine est surtout la maison : *« et si les économies n'y sont pas,
+> c'est la maison qui part. »* Ne jamais écrire que la maison de ce cas a été vendue.
+
 **AVANT (rien n'a été fait) :**
 ```
 Part taxable = 520 000 − 100 000 (abattement) = 420 000 €
