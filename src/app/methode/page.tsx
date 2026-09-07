@@ -49,7 +49,7 @@ const PACKAGING = [
  * 38 écrans sur téléphone. C'était un doublon, et pas une question de goût —
  * `05-vsl-front.md` organise le script de la VSL exactement comme ça :
  *
- *     LEAD (20 %)     le récit : Jean-Pierre, le notaire, 82 194 €
+ *     LEAD (20 %)     le récit : Jean-Pierre, le notaire, 38 389 €
  *     BODY (65 %)     la structure CEO
  *     CLOSING (15 %)  trois outils de closing
  *
@@ -65,7 +65,7 @@ const PACKAGING = [
  * ⚠️ Jamais de prix ni de bouton AU-DESSUS de la vidéo.
  *
  * Ce qui reste sous la vidéo entre dans les cases prévues, et rien d'autre :
- *   — preuve    TheNumber (d'où sortent les 82 194 €) et BeforeAfter
+ *   — preuve    TheNumber (d'où sortent les 38 389 €) et BeforeAfter
  *   — bonus     le packaging et sa pile de valeur
  *   — urgence   TheDeadline, avant le dernier appel
  *   — garantie  TheGuarantee
@@ -111,20 +111,20 @@ export default function VslPage() {
           </h1>
           {/* ⚠️ La sous-headline ANNONCE les deux chiffres.
               Sans ça, la première section sous la vidéo — « D'où sortent les
-              82 194 € » — tombait sur un chiffre dont la page n'avait jamais
+              38 389 € » — tombait sur un chiffre dont la page n'avait jamais
               parlé. Elle répondait à une question que personne ne s'était
               posée. Le raisonnement se tient maintenant de bout en bout :
-              l'État prend une part → cette part vaut 82 194 € → trois
-              décisions la ramènent à 23 794 € → et voici le calcul. */}
+              l'État prend une part → cette part vaut 38 389 € → trois
+              décisions la ramènent à 0 € → et voici le calcul. */}
           <p className="mb-5 text-[1.12rem] leading-snug">
             Sur une maison de province et les économies d&apos;une vie, cette part est de{" "}
-            <strong className="whitespace-nowrap text-red">82 194 €</strong>. Trois décisions,
+            <strong className="whitespace-nowrap text-red">38 389 €</strong>. Trois décisions,
             prises de votre vivant, la ramènent à{" "}
-            <strong className="whitespace-nowrap text-green">23 794 €</strong> — sans rien vendre et
-            sans quitter votre maison.
+            <strong className="whitespace-nowrap text-green">0 €</strong> — sans rien vendre et sans
+            quitter votre maison.
           </p>
 
-          <VideoEmbed id={VIDEO.vsl} title="Les 3 décisions" minutes={9} />
+          <VideoEmbed id={VIDEO.vsl} title="Les 3 décisions" />
 
           <div className="mt-5 space-y-3">
             <ButtonLink href="/commande">{cta}</ButtonLink>
@@ -144,7 +144,7 @@ export default function VslPage() {
         <TheNumber />
 
         {/* ═══ PREUVE — le second chiffre, celui qu'on promettait ═════
-            La sous-headline annonce 82 194 € ramenés à 23 794 €. Le bloc
+            La sous-headline annonce 38 389 € ramenés à 0 €. Le bloc
             précédent prouve le premier ; celui-ci montre le second et l'écart
             entre les deux. Sans lui, la moitié de la promesse restait à
             croire sur parole. */}
@@ -244,7 +244,7 @@ export default function VslPage() {
               },
               {
                 q: "« 27 € pour un truc que je peux trouver gratuitement sur YouTube. »",
-                a: "Vous trouverez tout, gratuitement, et contradictoire. Ce que vous ne trouverez nulle part, c'est VOTRE chiffre, VOS trois dates et l'ordre dans lequel agir sur VOTRE situation. Le prix n'est pas la question : la question est de savoir ce que coûte une soirée de vidéos YouTube qui vous laisse exactement là où vous étiez. Vos enfants, eux, ont 82 194 € en jeu.",
+                a: "Vous trouverez tout, gratuitement, et contradictoire. Ce que vous ne trouverez nulle part, c'est VOTRE chiffre, VOS trois dates et l'ordre dans lequel agir sur VOTRE situation. Le prix n'est pas la question : la question est de savoir ce que coûte une soirée de vidéos YouTube qui vous laisse exactement là où vous étiez. Vos enfants, eux, ont 38 389 € en jeu.",
               },
               {
                 q: "« Sur internet, c'est des arnaques. Qui êtes-vous pour parler de ça ? »",

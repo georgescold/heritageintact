@@ -25,7 +25,7 @@ Chaque hook existe en version **texte à l'écran** (gros, 3 lignes max) + **voi
 
 | # | Angle | Hook |
 |---|---|---|
-| H1 | A | **« 82 194 euros. »** *(silence 1 s)* « C'est ce que le notaire a demandé à Jean-Pierre le jour où il a enterré son père. » |
+| H1 | A | **« 38 389 euros. »** *(silence 1 s)* « C'est ce que le notaire a demandé à Julien et sa sœur le jour où ils ont enterré leur mère. » |
 | H2 | A | « Dans la plupart des familles françaises, l'héritier numéro un… c'est l'État. Et personne n'est payé pour vous prévenir. » |
 | H3 | A | « Il y a trois anniversaires qui coûtent des dizaines de milliers d'euros à une famille. Personne ne fête le troisième. » |
 | H4 | A | « Ce que le notaire a dit sur le trottoir, après la signature, vaut plus que tout ce qu'il a dit dans le bureau. » |
@@ -36,7 +36,7 @@ Chaque hook existe en version **texte à l'écran** (gros, 3 lignes max) + **voi
 | H9 | C | « Il y a une phrase que toutes les veuves entendent chez le notaire. Et une question que personne ne leur pose avant. » |
 | H10 | A/C | « Sortez votre contrat d'assurance-vie. Regardez la date de vos derniers versements. Si c'est après un certain anniversaire, regardez cette vidéo jusqu'au bout. » |
 
-**Déclinaisons rapides d'un hook qui marche** (règle du repo) : H1 → « 82 194 euros, six mois pour payer. » / « 82 194 euros. Sur une maison de province. » / « 82 194 euros — évitables. »
+**Déclinaisons rapides d'un hook qui marche** (règle du repo) : H1 → « 38 389 euros, six mois pour payer. » / « 38 389 euros. Sur une maison de province. » / « 38 389 euros — évitables. »
 
 ---
 
@@ -44,11 +44,11 @@ Chaque hook existe en version **texte à l'écran** (gros, 3 lignes max) + **voi
 
 | # | Body |
 |---|---|
-| B1 | **Le cas Jean-Pierre.** « Une maison de 380 000 euros, 140 000 d'économies, un enfant. L'abattement : 100 000. Le reste taxé par tranches — jusqu'à 20 %. Résultat : 82 194 euros. Le notaire a ajouté : "si votre père était venu dix ans plus tôt, on divisait ça par trois." Personne ne lui avait dit. » |
+| B1 | **Le cas Jean-Pierre.** « Un couple marié, tout au survivant. Une maison de 380 000 euros, 30 000 d'économies, deux enfants. Au second décès : 205 000 par enfant, 100 000 d'abattement, le reste taxé par tranches — jusqu'à 20 %. Résultat : 38 389 euros, et 30 000 pour les payer. Le notaire a ajouté : "si votre père était venu dix ans plus tôt, on divisait ça par trois." Personne ne lui avait dit. » |
 | B2 | **Les trois portes.** « Il y a trois portes qui se ferment avec le temps sur une succession. Le compteur des 15 ans — l'abattement de 100 000 euros par enfant se recharge, mais seulement si on l'a utilisé. Les 70 ans — ce qu'on verse sur une assurance-vie avant ou après ne subit pas le même traitement. Et les 71 ans — transmettre sa maison en y restant coûte dix points de plus. Aucune ne se rouvre. » |
 | B3 | **Le silence.** « Le banquier est payé sur les frais du contrat, pas sur ce que les enfants paieront. Le notaire est payé à l'acte — il intervient après. L'État encaisse. Personne n'est malhonnête. Personne n'est payé pour prévenir. Alors on ne prévient pas. » |
 | B4 | **Les 3 Verrous.** « Il existe une méthode simple, en trois étapes. Diagnostiquer : votre chiffre, ce soir, avec un simulateur. Réorganiser : trois leviers légaux — la donation, l'assurance-vie, le démembrement — dans l'ordre qui correspond à votre famille. Verrouiller : le notaire, avec un dossier prêt et les bonnes questions. Trois semaines. » |
-| B5 | **Avant/après.** « Même famille, mêmes chiffres. Avec trois décisions prises à 65 ans : l'épargne sur une assurance-vie avant 70 ans — zéro droit. Les murs de la maison donnés, l'usage gardé à vie — la base taxable tombe de 40 %. Un rendez-vous notaire avec le dossier. 82 194 euros… contre 23 794. » |
+| B5 | **Avant/après.** « Même famille, mêmes chiffres. Avec trois décisions prises à 65 ans : l'épargne sur une assurance-vie avant 70 ans — zéro droit. Les murs de la maison donnés, l'usage gardé à vie — la base taxable tombe de 40 %. Un rendez-vous notaire avec le dossier. 38 389 euros… contre 0. » |
 | B6 | **La maison (famille).** « On peut donner les murs et rester chez soi jusqu'au dernier jour. C'est dans le Code des impôts — article 669. À 65 ans, la valeur transmise est calculée à 60 %. La maison reste dans la famille. Personne ne la vend en urgence. Et on l'a décidé soi-même, à table, pas dans un bureau. » |
 | B7 | **Les petits-enfants (famille).** « Chaque grand-parent peut donner à chaque petit-enfant 31 865 euros tous les 15 ans, sans droits. Plus un don d'argent du même montant. C'est le premier appartement. Les études. Et c'est de son vivant — on le voit. La plupart ne le savent pas, et transmettent en deux fois ce qui aurait pu passer en une. » |
 | B8 | **Martine — l'assurance-vie.** « Le contrat de la banque, ouvert il y a vingt ans. La clause : "mon conjoint, à défaut mes enfants" — jamais relue. Des versements faits après 70 ans, qui divisent l'avantage par cinq. Et 3 % de frais, une année d'épargne offerte. Trois questions, cinq minutes, et 9 contrats sur 10 échouent. » |
@@ -109,7 +109,7 @@ Chaque hook existe en version **texte à l'écran** (gros, 3 lignes max) + **voi
 >
 > Et maintenant, je sais exactement ce que l'État prendrait — et ce qu'il ne prendra pas.
 >
-> Je sais que ça semble trop simple. Mais regardez : *(écran : 82 194 € → 23 794 €, avec les trois lignes)*.
+> Je sais que ça semble trop simple. Mais regardez : *(écran : 38 389 € → 0 €, avec les trois lignes)*.
 >
 > Et le plus incroyable, c'est qu'il n'y a rien à vendre, rien à quitter. Trois décisions, un rendez-vous chez le notaire avec un dossier prêt.
 >
@@ -165,7 +165,7 @@ Chaque hook existe en version **texte à l'écran** (gros, 3 lignes max) + **voi
 
 ### 5 textes primaires
 
-1. **82 194 €.** C'est ce qu'une famille ordinaire a payé sur une maison de province et des économies d'une vie. Le notaire a dit, sur le trottoir : « si votre père était venu dix ans plus tôt, on divisait ça par trois. » Personne ne lui avait dit. Personne n'est payé pour ça. Cette courte vidéo révèle les 3 décisions — légales, écrites dans le Code des impôts — que les familles averties prennent de leur vivant. Et le simulateur pour connaître son chiffre ce soir. 👉 [lien]
+1. **38 389 €.** C'est ce qu'une famille ordinaire a payé sur une maison de province et des économies d'une vie. Le notaire a dit, sur le trottoir : « si vos parents étaient venus dix ans plus tôt, on divisait ça par trois. » Personne ne lui avait dit. Personne n'est payé pour ça. Cette courte vidéo révèle les 3 décisions — légales, écrites dans le Code des impôts — que les familles averties prennent de leur vivant. Et le simulateur pour connaître son chiffre ce soir. 👉 [lien]
 
 2. Dans la plupart des familles françaises, l'héritier n°1, c'est l'État. Pas par fatalité : par silence. Le banquier est payé sur les frais. Le notaire, à l'acte. Personne n'est payé pour prévenir. Trois portes se ferment avec le temps — le compteur des 15 ans, les 70 ans, les 71 ans — et aucune ne se rouvre. Regardez la vidéo de 9 minutes. [lien]
 
@@ -178,7 +178,7 @@ Chaque hook existe en version **texte à l'écran** (gros, 3 lignes max) + **voi
 ### 5 headlines
 1. Combien l'État prendra-t-il sur votre succession ?
 2. Les 3 décisions que les familles averties prennent de leur vivant
-3. 82 194 € — évitables. Voici comment.
+3. 38 389 € — évitables. Voici comment.
 4. Trois portes se ferment avec l'âge sur une succession
 5. La Méthode des 3 Verrous — présentation de 9 minutes
 

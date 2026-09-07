@@ -18,7 +18,7 @@ Meta refuse toute pub qui **affirme ou implique** connaître un attribut personn
 | « Vous avez plus de 60 ans » | « Il y a trois anniversaires qui coûtent cher à une famille » |
 | « Vous êtes propriétaire » | « Une maison de 380 000 € » (cas) |
 | « Vous êtes veuve » | « Quand mon mari est mort, j'ai découvert… » (1re personne, récit reconstitué) |
-| « Votre patrimoine de 500 000 € » | « Une famille avec 520 000 € de patrimoine » |
+| « Votre patrimoine de 500 000 € » | « Une famille avec 410 000 € de patrimoine » |
 | « Vous allez mourir » / « votre fin approche » | « Le jour où il a enterré son père » |
 | « Vous êtes riche / vous avez de l'épargne » | « Ce que vous laisserez » (action/objet, pas attribut) |
 | « Si vous avez un enfant handicapé » | « Un enfant vulnérable : la situation n°10 » (en page produit, pas en pub) |
@@ -34,7 +34,7 @@ Meta refuse toute pub qui **affirme ou implique** connaître un attribut personn
 
 ### 1.2 Allégations trompeuses / résultats
 
-- ❌ « Économisez 40 % » / « Divisez par 3 » en promesse → ✅ « jusqu'à 60 % » (taux légal réel non-parents) ou un **cas chiffré** présenté comme tel (« sur ce cas, 82 194 → 23 794 »)
+- ❌ « Économisez 40 % » / « Divisez par 3 » en promesse → ✅ « jusqu'à 60 % » (taux légal réel non-parents) ou un **cas chiffré** présenté comme tel (« sur ce cas, 38 389 → 0 »)
 - ❌ « Zéro impôt sur votre succession » → ✅ « transmettre intact ce que vous avez construit »
 - ❌ Faux compteur, fausse deadline, faux témoignage → refus + risque pénal (voir § 2)
 - ✅ Chaque chiffre cité renvoie à un article de loi (à l'écran dans la VSL, en note sur les pages)

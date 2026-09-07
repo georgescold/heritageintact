@@ -53,7 +53,7 @@ L'avatar sait vaguement que "l'héritage est taxé" et que "le notaire coûte ch
 - que le temps joue contre lui (compteur 15 ans, seuil des 70 ans en assurance-vie, seuil des 71 ans en démembrement).
 
 **Conséquence sur le copy :**
-- Le lead doit **rendre le problème concret et chiffré** avant de parler de solution. → Narrative lead (cas Jean-Pierre, 82 194 €).
+- Le lead doit **rendre le problème concret et chiffré** avant de parler de solution. → Narrative lead (cas Jean-Pierre, 38 389 €).
 - Ne jamais commencer par "démembrement" ou "clause bénéficiaire" : mots inconnus = confusion = départ.
 - Le mécanisme se nomme en français simple : *3 Verrous*.
 

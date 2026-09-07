@@ -178,7 +178,7 @@ Ordre des sections, tel quel :
 | L'ennemi | Le tribunal, les avocats | Le fisc, et le silence de ceux qui devraient prévenir |
 
 **Conséquence stratégique :** l'angle américain est un angle de *friction administrative*. Le nôtre
-est un angle de *perte financière chiffrée*. Le nôtre est plus fort — 82 194 €, c'est plus violent
+est un angle de *perte financière chiffrée*. Le nôtre est plus fort — 38 389 €, c'est plus violent
 qu'« un an de procédure » — et il est beaucoup moins exploité.
 
 ⚠️ Corollaire : **ne recopie jamais leurs chiffres ni leurs mécanismes.** Probate, revocable trust,
@@ -196,7 +196,7 @@ living trust n'ont aucun équivalent direct en droit français. Ce qu'on prend, 
 | **L'annonce longue en fil d'actualité** | À tester en priorité contre nos 12 créatives vidéo. Coût de production : zéro. |
 | **Le hook contrariant + secret des riches** | *« Ne mettez jamais la maison dans votre testament. Les familles qui ont du patrimoine ne le font jamais. »* |
 | **Le récit daté et banal** | On l'a déjà : *« Il est 9 h 40, un mardi de mars. »* Ajouter un âge précis. |
-| **Le contraste en unités concrètes** | Remplacer « jusqu'à 60 % » par **« 82 194 € contre 23 794 € »**. Deux chiffres, pas un pourcentage. |
+| **Le contraste en unités concrètes** | Remplacer « jusqu'à 60 % » par **« 38 389 € contre 0 € »**. Deux chiffres, pas un pourcentage. |
 | **Définir le produit par ce qu'il n'est pas** | *« Ce n'est ni un testament, ni un notaire, ni un placement. »* |
 | **La charge émotionnelle finale** | La lettre aux enfants (bonus B3) doit devenir le **dernier argument**, pas un bonus perdu dans la liste. |
 | **L'anti-technologie** | *« Pas d'application, pas de mot de passe. Votre famille ouvre le classeur, tout est dedans. »* Argument en or, inutilisé en France. |

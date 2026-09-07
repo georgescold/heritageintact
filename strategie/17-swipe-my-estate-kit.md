@@ -85,7 +85,7 @@ on ne perd presque rien en force.
 # ═══ CE QU'ON PREND, CONCRÈTEMENT ═══
 
 1. **Un chiffre précis partout.** Jamais « plusieurs mois », toujours « onze mois ». Jamais
-   « quelques documents », toujours « 26 documents ». Notre 82 194 € est déjà de cette famille.
+   « quelques documents », toujours « 26 documents ». Notre 38 389 € est déjà de cette famille.
 2. **Le mécanisme reformulé en une phrase qui retourne le problème.** Le leur : *« ce n'est pas un
    problème de paperasse, c'est un problème d'ordre »*. Le nôtre existe : *« ce n'est pas la loi le
    problème, c'est le silence »* — à mettre plus en avant.

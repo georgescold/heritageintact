@@ -29,7 +29,7 @@ Les cinq scènes qui portent tout le projet :
 |---|---|---|
 | **Une maison de famille avec un panneau À VENDRE** | La peur centrale : les enfants obligés de vendre | Le visuel n°1 du projet |
 | **Des mains âgées tenant des clés** | La transmission, la main qui passe le relais | Le rêve, les donations |
-| **Une lettre officielle et des lunettes sur une table** | Le courrier du notaire, la facture qui tombe | Les 82 194 €, l'ouverture |
+| **Une lettre officielle et des lunettes sur une table** | Le courrier du notaire, la facture qui tombe | Les 38 389 €, l'ouverture |
 | **Une chaise vide à une table de famille** | L'absence, ce qui reste après | La succession, l'urgence |
 | **Un calendrier avec une date entourée** | Le compte à rebours, les 3 dates | Le compteur des 15 ans, les 70 ans |
 

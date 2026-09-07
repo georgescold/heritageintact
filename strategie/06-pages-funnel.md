@@ -99,7 +99,7 @@
 > | URL | Structure | Quand elle gagne |
 > |---|---|---|
 > | `/` | **LP 6 MAX** ⭐ : qualification → autorité chiffrée → promesse + garantie → CTA → **disqualification** | La structure la plus complète, testée et approuvée. C'est la variante principale depuis le 5 septembre 2026. |
-> | `/lp-courte` | **LP 1 courte + pop-up** : question + CTA, formulaire dans le pop-up | Quand la promesse chiffrée (82 194 €) porte à elle seule. Friction perçue minimale. |
+> | `/lp-courte` | **LP 1 courte + pop-up** : question + CTA, formulaire dans le pop-up | Quand la promesse chiffrée (38 389 €) porte à elle seule. Friction perçue minimale. |
 > | `/lp-questions` | **LP 3 questionnaire** : 3 questions (règle des 3 oui) → opt-in | Engagement maximal. C'est la structure qui performe le mieux aux États-Unis. |
 >
 > Les 4 leviers sont appliqués aux trois : preuve sous le bouton (les articles du CGI, faute de
@@ -147,7 +147,7 @@ HERO          Qualification + le chiffre étiqueté + FORMULAIRE
 
 1. RÊVE       « Il y a une phrase que vos enfants diront de vous »   [photo]
 2. ÉCHEC      Jean-Pierre, 67 ans : ce n'est pas votre faute         [photo]
-3. PEUR       D'où sortent les 82 194 € · La facture tombe           [photo]
+3. PEUR       D'où sortent les 38 389 € · La facture tombe           [photo]
 4. ENNEMI     Personne n'est payé pour vous prévenir
               « Il y a deux sortes de familles en France »
 5. DOUTE      « Tout ça a l'air un peu trop beau » · Ni testament,
@@ -194,7 +194,7 @@ Un rappel est posé en tête de `site/src/components/Lp.tsx` et de `QuestionsOpt
 
 | 2e personne (en ligne) | 3e personne (en réserve) |
 |---|---|
-| « Vous avez une maison payée et des enfants ? Voici ce que l'État prendra dessus. » | « Une maison de province. Les économies d'une vie. L'État en a pris 82 194 €. » |
+| « Vous avez une maison payée et des enfants ? Voici ce que l'État prendra dessus. » | « Une maison de province. Les économies d'une vie. L'État en a pris 38 389 €. » |
 | « Propriétaires de plus de 60 ans » | « Droits de succession · Le calcul que personne ne fait à temps » |
 | « Vos enfants paieront. La question, c'est avec quel argent. » | « La facture tombe. La question, c'est avec quel argent. » |
 | « Ne remplissez pas ce formulaire si… » | « Cette vidéo ne sert à rien dans trois cas… » |
@@ -208,7 +208,7 @@ la version 2e personne interpelle. Rien ne dit d'avance laquelle convertit le mi
 **Headlines à A/B tester ensuite :**
 - *« L'héritier n°1 de la plupart des familles françaises, c'est l'État. Voici ce qui change ça. »* (déjà en ligne sur `/lp-courte`)
 - *« Trois portes se ferment avec le temps sur une succession. Aucune ne se rouvre. »*
-- *« 82 194 € ou 23 794 €. Le même patrimoine, deux décisions d'écart. »*
+- *« 38 389 € ou 0 €. Le même patrimoine, deux décisions d'écart. »*
 
 ---
 

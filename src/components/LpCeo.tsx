@@ -138,7 +138,7 @@ export function TheFailure() {
               homme prévoyant fait.
             </p>
             <p className="border-l-4 border-red bg-red-bg p-4 text-[1.15rem] font-bold text-blue">
-              Et le jour venu, ses enfants recevront quand même une facture de 82 194 €.
+              Et le jour venu, ses enfants recevront quand même une facture de 38 389 €.
             </p>
             <p>
               Ce n&apos;est pas parce qu&apos;il a mal géré. Ce n&apos;est pas parce qu&apos;il
@@ -439,11 +439,11 @@ export function TheCostOfInaction() {
         {[
           [
             "Vos enfants recevront une facture, pas un héritage.",
-            "82 194 € sur une maison de province et les économies d'une vie. Payables en six mois. En euros, pas en parts de maison.",
+            "38 389 € sur une maison de province et 30 000 € d'économies. Payables en six mois. En euros, pas en parts de maison.",
           ],
           [
-            "Ils paieront avec ce que vous avez mis de côté.",
-            "Sur 140 000 € d'économies, 82 194 € partent à l'État en un seul chèque. Et si les économies n'y sont pas, c'est la maison qui part — vendue dans l'urgence, au prix qu'on en donne.",
+            "Ils devront trouver cette somme. Ils ne l'auront pas.",
+            "Deux enfants qui ont 30 000 € à eux deux ne sortent pas 38 389 € en six mois. Alors on vend la maison — dans l'urgence, au prix qu'on en donne.",
           ],
           [
             "Chaque année qui passe ferme une porte, définitivement.",
@@ -463,7 +463,7 @@ export function TheCostOfInaction() {
 
       <p className="mt-6 border-l-4 border-blue bg-white p-4 text-[1.15rem] font-bold text-blue">
         Ne rien faire n&apos;est pas une position neutre. C&apos;est un choix, et il a déjà un prix
-        affiché&nbsp;: 82 194 €.
+        affiché&nbsp;: 38 389 €.
       </p>
 
       <p className="mt-5 text-[1.06rem]">
