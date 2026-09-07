@@ -178,9 +178,27 @@ Les familles qui transmettent intact — celles dont on dit « ils ont des monta
 
 C'est ça, la seule différence entre eux et Jean-Pierre. Pas l'argent. L'information, et le moment.
 
-Et c'est en constatant cet écart, cas après cas, qu'Héritage Intact a été créé. Pas pour donner un conseil sur mesure — ça, c'est le métier de votre notaire. Pour mettre à plat, en français simple, ce que la loi permet déjà, et le remettre entre les mains des familles pendant qu'il est encore temps.
+Et c'est pour ça qu'Héritage Intact a été créé. Pas pour donner un conseil sur mesure — ça, c'est le métier de votre notaire. Pour mettre à plat, en français simple, ce que la loi permet déjà, et le remettre entre les mains des familles pendant qu'il est encore temps.
 
 ⚠️ *Note de production : cette VSL est une narration documentaire, à la troisième personne. Le narrateur ne revendique aucune histoire personnelle, aucune expertise, aucun titre. C'est ce qui permet de la faire lire par une voix off sans mentir sur qui parle. Cf. `11-legal-et-compliance.md`.*
+
+> ⚠️ **Une phrase a été retirée ici le 6 septembre 2026** : « c'est en constatant
+> cet écart, **cas après cas**, qu'Héritage Intact a été créé ». « Cas après
+> cas » sous-entend une pratique, des dossiers traités, une expérience. Il n'y en
+> a aucun — zéro client à ce jour. C'est exactement le piège de la question Q7
+> de `03-marketing-copy/10-questions.md` : une légitimité affirmée qu'on ne peut
+> pas produire si on la demande. Sur une page dont toute la crédibilité repose
+> sur des articles de loi vérifiables, une seule affirmation invérifiable
+> contamine le reste.
+>
+> **Q7 reste le trou du texte, et c'est le plus grave.** La grille est explicite :
+> *« Q3 prouve que la méthode marche. Q7 prouve que TOI tu es crédible. Un texte
+> qui ne traite que Q3 laisse le prospect convaincu… et il achète chez un
+> concurrent. »* Aujourd'hui on ne traite que Q3 — le Code général des impôts.
+> Les deux seules réponses possibles sont dans `13-checklist-production.md` :
+> les 10 testeurs bêta avec accord écrit, et un notaire ou juriste retraité,
+> nommé, qui accepte de cautionner. Tant qu'aucun des deux n'existe, ne rien
+> inventer pour boucher le trou.
 
 #### 5. DOUTES — confirmés, puis levés
 
