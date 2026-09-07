@@ -222,8 +222,8 @@ Part taxable = 520 000 − 100 000 (abattement) = 420 000 €
    (420 000 − 15 932) × 20 %   = 80 813,60 €
 DROITS                         = 82 194,35 €  → « 82 194 € »
 ```
-Julien dispose de 40 000 € (l'épargne héritée). **Il manque 42 194 € en 6 mois. La maison est
-vendue.** C'est la scène de la VSL, et elle est exacte.
+Julien n'a pas 10 000 € d'économies à lui ; il dispose des 40 000 € hérités. **Il manque 42 194 €
+en 6 mois — pas de quoi vendre une voiture. La maison est vendue.** C'est la scène de la VSL, et elle est exacte.
 
 **APRÈS (3 décisions, les deux parents vivants, à 65 ans) :**
 ```

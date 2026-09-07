@@ -443,7 +443,7 @@ export function TheCostOfInaction() {
           ],
           [
             "Ils devront trouver cette somme. Ils ne l'auront pas.",
-            "Un enfant qui a 40 000 € ne sort pas 82 194 € en six mois. Alors on vend la maison — dans l'urgence, au prix qu'on en donne.",
+            "Un enfant qui n'a pas 10 000 € d'économies ne sort pas 82 194 € en six mois — même avec les 40 000 € que ses parents ont laissés. Alors on vend la maison — dans l'urgence, au prix qu'on en donne.",
           ],
           [
             "Chaque année qui passe ferme une porte, définitivement.",
