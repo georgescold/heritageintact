@@ -1,279 +1,118 @@
 HERITAGE INTACT - VSL FRONT - SCRIPT DE TOURNAGE
 Version du 7 septembre 2026
 
-Structure CEO complete, blocs fusionnes ou l'oral le demande. Le prospect arrive
-PROBLEM AWARE (c'est l'ad qui le decide) ; le lead narratif atterrit sur Q5.
-Chiffres ecrits en chiffres, pour la lecture au prompteur.
+7 minutes. Une seule chaine causale : le pere de Julien est l'avatar, et chaque
+paragraphe est provoque par le precedent. Les reperes ci-dessous ne sont pas
+des sections — ils disent seulement quel levier de la structure CEO travaille.
 
-Format faceless : aucun « je » de narrateur — le seul « je » est celui que le
-prospect se dit a lui-meme. Aucun montant. Julien = le fils, SEUL chez le notaire
-(le calcul 82 194 -> 23 794 repose sur un heritier unique).
-Bannis : « les 3 portes », « les 3 verrous », « saisir ».
+Format faceless : aucun « je » de narrateur. Aucun montant. Julien = le fils,
+SEUL chez le notaire (un heritier : c'est le calcul 82 194 -> 23 794).
+Bannis : « les 3 portes », « les 3 verrous », « saisir ». Chiffres en chiffres.
 
 Le texte seul, sans annotation : VSL-TEXTE-SEUL.txt
 
 
-=================================================================
-LEAD - NARRATIVE (Julien, seul)
-=================================================================
+— LEAD — hook, curiosite, benefice —
 
 Il est 9 h 40, un mardi de mars.
 
 Julien est assis dans le bureau du notaire. Il vient d'enterrer son père.
 
-Le notaire tourne une feuille vers lui, pose son doigt sur un chiffre, et dit calmement :
+Le notaire tourne une feuille vers lui, pose son doigt sur un chiffre, et dit calmement : « Les droits s'élèvent à 82 194 €. Vous avez 6 mois. »
 
-« Les droits s'élèvent à 82 194 €. Vous avez 6 mois. »
+82 194 €. Sur une maison de 380 000 € et 140 000 € d'économies. Une vie de travail.
 
-82 194 €.
+Julien n'a pas 82 000 €. 6 mois plus tard, la maison de son enfance est vendue. Pour payer.
 
-(A l'ecran : le calcul ligne par ligne, l'article 777 en incrustation.)
-
-Sur une maison de 380 000 € que son père avait mis 25 ans à payer. Et 140 000 € d'économies qu'il avait mis une vie à mettre de côté.
-
-Julien relit la ligne. Il ne pense qu'à une chose : il n'a pas 82 000 €.
-
-6 mois plus tard, la maison de son enfance est vendue. Pour payer.
-
-Ce qui rend cette histoire insupportable, ce n'est pas le chiffre.
-
-C'est qu'en sortant, sur le trottoir, le notaire a ajouté — presque en s'excusant :
-
-« Vous savez… si votre père était venu me voir il y a 10 ans, on aurait pu diviser ça par 3. »
+Et sur le trottoir, le notaire a ajouté, presque en s'excusant : « Vous savez… si votre père était venu me voir il y a 10 ans, on aurait pu diviser ça par 3. »
 
 Par 3.
 
-(Silence. 2 secondes pleines. Ne se coupe pas au montage.)
+(Silence. 2 secondes pleines.)
 
-Mais ça, personne ne le lui avait dit. Ni sa banque. Ni son notaire. Et encore moins l'État.
+Mais ça, personne ne le lui avait dit. Ni sa banque, ni son notaire, ni l'État. Parce que personne n'est payé pour ça.
 
-Car vous vous en doutez : personne n'est payé pour ça.
+Vous allez voir les 3 décisions, simples et légales, que le père de Julien aurait pu prendre. Et vous saurez comment faire baisser, dès ce soir, ce que l'État prendra sur ce que vous laisserez.
 
-Dans les minutes qui viennent, vous allez découvrir exactement ce que le père de Julien aurait pu faire. 3 décisions, simples et légales, écrites noir sur blanc dans le Code général des impôts.
 
-Et vous saurez comment faire baisser, dès ce soir, ce que l'État prendra sur ce que vous laisserez.
+— REVE puis ECHEC — relies par le pere de Julien —
 
-Mais avant, il faut que vous compreniez pourquoi cette histoire arrive à des familles ordinaires. Chaque jour.
+Parce que le père de Julien voulait exactement ce que vous voulez.
 
+Un dimanche, toute la famille à table, et sa petite-fille qui annonce qu'elle a signé pour son premier appartement — de son vivant. La maison où ses enfants ont grandi qui reste dans la famille. Et un jour, qu'on dise de lui : « Il avait tout prévu. »
 
-=================================================================
-BODY 1 - LE REVE (visualiser, amplifier : on vend le desir profond)
-=================================================================
+40 ans de travail, la maison payée, les impôts payés. Ce n'est pas lui qui a raté. C'est ce qu'on ne lui a jamais dit.
 
-Parce qu'au fond, ce que vous voulez, ce n'est pas un cours de fiscalité.
 
-Ce que vous voulez, c'est un dimanche.
+— PEUR — douleur presente, couteau plante puis remue —
 
-Un dimanche chez vous, dans quelques années. Toute la famille est à table. Et votre petite-fille vous annonce qu'elle vient de signer pour son premier appartement. L'apport, c'est vous. De votre vivant.
+Et ce qu'on ne lui a jamais dit, on ne vous l'a pas dit non plus.
 
-Ce que vous voulez, c'est que cette maison, celle où vos enfants ont grandi, reste dans la famille. Pas chez un inconnu, pour payer une facture.
+Parce que là, ce soir, il y a un chiffre qui existe. Ce que vos enfants devront sortir, en 6 mois, le jour où vous ne serez plus là. Vous ne le connaissez pas. Eux non plus. Et à chaque anniversaire qui passe, il monte. Jusqu'au jour où quelqu'un tournera une feuille vers vos enfants et dira calmement : « Vous avez 6 mois. »
 
-Et ce que vous voulez, un jour, très loin d'ici, c'est qu'on dise de vous une seule phrase : « Il avait tout prévu. On n'a eu à s'occuper de rien. »
 
-Voilà ce qu'on va chercher. Pas un pourcentage. Ça.
+— DOUTE puis ENNEMI — le doute ouvre la porte a l'ennemi —
 
+Alors vous vous dites : si c'était si simple, quelqu'un me l'aurait dit.
 
-=================================================================
-BODY 2 - L'ECHEC (ce n'est pas votre faute)
-=================================================================
+Justement, non. Votre banquier est payé sur les frais de vos contrats, pas sur ce que vos enfants paieront après vous. Votre notaire est payé à l'acte : il intervient après. Et l'État, lui, encaisse. Et le Code général des impôts n'est pas fait pour être lu par vous. Il est fait pour être appliqué à vous.
 
-Et si vous n'avez encore rien fait pour ça, écoutez bien : ce n'est pas votre faute.
 
-Vous avez travaillé 40 ans. Vous avez payé votre maison, élevé vos enfants, payé vos impôts chaque année sans en manquer un seul. Et personne, dans tout ce parcours, ne vous a jamais expliqué ce qui se passerait après.
+— MECANISME — s'introduit tout seul, rapide —
 
-Vous avez fait exactement ce qu'on vous a demandé. Le problème, c'est ce qu'on a oublié de vous dire.
+(A l'ecran : une date a la fois, l'article en bas de cadre — 784, 990 I, 669.)
 
+Pourtant, ce qu'il y a dedans tient sur une feuille : 3 dates, et à chacune, une seule décision.
 
-=================================================================
-BODY 3 - LA PEUR (douleur presente + cout de l'inaction)
-=================================================================
+La première n'est pas un âge, c'est un compteur de 15 ans. Chaque parent peut donner 100 000 € à chaque enfant sans un euro de droits, et ce compteur repart à zéro tous les 15 ans. Mais seulement s'il a démarré : si vous n'avez jamais rien donné, il attend. La décision : une première donation, même modeste.
 
-Parce que pendant ce temps, il y a un chiffre qui existe.
+La deuxième, c'est votre 70e anniversaire. Ce que vous versez sur une assurance-vie avant ce jour se transmet jusqu'à 152 500 € par bénéficiaire, sans droits. Après, ce n'est plus que 30 500 €, pour tout le monde. La décision : verser avant.
 
-Là, ce soir, pendant que vous regardez cette vidéo. Le montant exact que vos enfants devront sortir, en 6 mois, le jour où vous ne serez plus là. Vous ne le connaissez pas. Eux non plus.
+La troisième, c'est votre 71e anniversaire. Vous pouvez transmettre les murs de votre maison en gardant le droit d'y vivre — vous restez chez vous. Avant 71 ans, la loi ne compte que 60 % de la maison. À partir de 71 ans, 70 %. La décision : transmettre les murs avant cette date.
 
-Et à chaque anniversaire qui passe, il monte. Pas parce que vous faites une erreur. Parce que vous ne faites rien.
 
-Un jour, quelqu'un tournera une feuille vers vos enfants, posera son doigt sur une ligne, et dira calmement : « Vous avez 6 mois. »
+— PREUVE — le rejeu chiffre —
 
+(A l'ecran : les 2 colonnes, l'ecart en gros. Silence apres « 58 400 € d'ecart ».)
 
-=================================================================
-BODY 4 - L'ENNEMI COMMUN (le silence, puis l'illisibilite)
-=================================================================
+Rejouez maintenant l'histoire du père de Julien avec ces 3 décisions. L'assurance-vie alimentée avant 70 ans : 0 € de droits, article 990 I. La maison transmise en gardant l'usage : les droits ne portent plus sur 420 000 € mais sur 128 000 €, article 669. 82 194 € avant. 23 794 € après. 58 400 € d'écart.
 
-Alors pourquoi personne ne dit rien ?
 
-Votre banquier est payé sur les frais de vos contrats. Pas sur ce que vos enfants paieront après vous.
+— REVE FINAL — l'escalier, 4 marches —
 
-Votre notaire est payé à l'acte. Il intervient quand on l'appelle, c'est-à-dire après. Il enregistre. Il ne prévient pas.
+Imaginez que vous commenciez ce soir : ce soir, vous avez votre chiffre. Dans 3 semaines, vous sortez de chez le notaire, les papiers signés. Dans 1 an, votre petite-fille signe pour son appartement. Et un jour, vos enfants ouvrent un dossier, et l'un dit à l'autre : « Il avait tout prévu. »
 
-Et l'État, lui, encaisse.
 
-Aucun des 3 n'est malhonnête. Simplement, dans tout le système, il n'y a personne dont le métier est de vous prévenir.
+— PRODUIT — la solution nommee, la 4e fenetre —
 
-Et soyons honnêtes : vous n'allez pas passer vos soirées à lire le Code général des impôts. Ce n'est pas fait pour être lu par vous. C'est fait pour être appliqué à vous.
+C'est ce que fait le programme sous cette vidéo. Il s'appelle « Les 7 Erreurs qui Offrent Votre Héritage à l'État », et les 3 dates en sont 3. Vous entrez votre situation, vous ressortez avec votre chiffre, vos 3 dates, votre plan — et le jour du notaire, vos décisions sont déjà prises. La 4e fenêtre, celle qui se ferme le 31 décembre 2026, est dedans.
 
-Voilà le vrai adversaire : le silence. Et le silence, ça se paie à la fin.
 
+— QUALIFICATION, URGENCE, GARANTIE, CTA n°1 —
 
-=================================================================
-BODY 5 - LES DOUTES (confirmer, puis lever : legal / depossession / complique)
-=================================================================
+Si vous avez passé 60 ans, une maison payée et des enfants, le bouton est juste sous cette vidéo, avec le nombre de places encore ouvertes. Et si dans les 30 jours vous n'avez pas trouvé une erreur que vous commettez, un email suffit : vous êtes remboursé, et vous gardez le simulateur. Vous ne pouvez pas perdre. Vous pouvez seulement savoir.
 
-À ce stade, vous vous dites peut-être 3 choses.
 
-La première : « C'est vraiment légal ? » Oui. Entièrement. Ce ne sont pas des astuces, ce sont des articles du Code, et ils seront à l'écran avec leur numéro.
+— CLOSING — choix 1 / choix 2, puis Always Be Leaving —
 
-La deuxième : « Je ne veux pas me déposséder de mon vivant. » Rassurez-vous. Tout se fait en gardant l'usage de ce que vous transmettez. Vous restez chez vous jusqu'au dernier jour. Ce qui change, c'est un nom sur un papier. Pas votre vie dans la maison.
+(Image : 2 chemins qui se separent. Sur la derniere phrase, la table du dimanche, tenue longtemps.)
 
-La troisième : « C'est sûrement trop compliqué pour moi. » Non. Il y a 3 dates à connaître, et elles tiennent sur une feuille.
+Vous avez 2 options.
 
+La première : fermer cette vidéo. Vous dire « j'y penserai », comme le père de Julien pendant 10 ans. Et un mardi de mars, quelqu'un tourne une feuille vers vos enfants.
 
-=================================================================
-BODY 6 - LA BIG IDEA (l'heritier n°1 c'est l'Etat, par silence)
-=================================================================
+La seconde : une soirée. Votre chiffre. Et dans 3 semaines, être celui qui avait tout prévu.
 
-Parce qu'au fond, voilà la vérité que personne ne dit à voix haute.
-
-Dans la plupart des familles françaises, l'héritier numéro un, ce ne sont pas les enfants. C'est l'État.
-
-Pas parce que la loi serait injuste. La loi contient déjà tout ce qu'il faut pour transmettre intact ce que vous avez construit. Les outils sont publics, et ils sont gratuits.
-
-La différence entre une famille qui paie plein tarif et une famille qui paie 3 fois moins, ce n'est pas l'argent. C'est le moment où elle s'en occupe.
-
-
-=================================================================
-BODY 7 - QUALIFICATION, PUIS PREMIER APPEL A L'ACTION
-=================================================================
-
-Ce qui suit vous concerne si vous avez passé 60 ans, une maison payée, et des enfants à qui la laisser. Si vous êtes locataire sans épargne, vos héritiers ne paieront probablement rien, et cette vidéo n'est pas pour vous.
-
-Si vous vous reconnaissez, le bouton est juste sous cette vidéo. Vous pouvez cliquer maintenant, ou continuer à regarder. Les 2 marchent.
-
-
-=================================================================
-BODY 8 - LE MECANISME : 3 dates, chacune avec sa decision (une seule triade)
-=================================================================
-
-Voici donc les 3 dates. Et pour chacune, la décision qui va avec.
-
-La première n'est pas un âge. C'est un compteur, et il dure 15 ans.
-
-Chaque parent peut donner 100 000 € à chaque enfant, sans un euro de droits. Et ce compteur repart à zéro tous les 15 ans. Mais si vous n'avez jamais rien donné, il ne tourne pas. Il attend.
-
-La décision, c'est de le lancer. Une première donation, même modeste, et le compteur tourne pour vous.
-
-La deuxième date, c'est votre 70e anniversaire.
-
-Ce que vous versez sur une assurance-vie avant ce jour-là se transmet jusqu'à 152 500 € par bénéficiaire, sans droits. Après ce jour-là, ce n'est plus que 30 500 €. Et pas chacun : 30 500 € en tout, pour tout le monde.
-
-Même argent. Même contrat. Un jour d'écart.
-
-La décision, c'est de verser avant. Pas après.
-
-La troisième date, c'est votre 71e anniversaire.
-
-Vous pouvez transmettre les murs de votre maison à vos enfants en gardant le droit d'y vivre jusqu'au bout. Et la loi ne compte pas la maison à sa valeur entière : avant 71 ans, elle n'en compte que 60 %. À partir de 71 ans, 70 %. 10 points de plus, pour un anniversaire.
-
-La décision, c'est de transmettre les murs avant cette date. Sans bouger de chez vous.
-
-
-=================================================================
-BODY 9 - LA PREUVE (le rejeu chiffre, Q3)
-=================================================================
-
-Maintenant, regardez ce que ça change. Rejouons l'histoire du père de Julien, avec ces 3 décisions prises à 65 ans.
-
-L'assurance-vie, alimentée avant 70 ans : 0 € de droits. Article 990 I.
-
-La maison, transmise en gardant l'usage à vie : les droits ne portent plus sur 420 000 € mais sur 128 000 €. Article 669.
-
-Résultat : 82 194 € d'un côté. 23 794 € de l'autre.
-
-58 400 € d'écart. Même famille. Même maison. Même loi. Seule la date des décisions a changé.
-
-(Silence avant cette ligne. Les 2 colonnes a l'ecran, l'ecart en gros.)
-
-
-=================================================================
-BODY 10 - L'ESCALIER DE PROJECTION (1 h, 8 jours, 3 semaines, 1 an, un jour)
-=================================================================
-
-Alors imaginez que vous commenciez ce soir.
-
-Ce soir, dans 1 heure, vous avez votre chiffre. Pour la première fois, vous savez.
-
-Dans 8 jours, vous savez laquelle de vos 3 dates arrive en premier, et ce que ça vous coûte de la laisser passer.
-
-Dans 3 semaines, vous sortez de chez le notaire, les papiers signés. Vous rentrez chez vous, et vous le dites à votre femme.
-
-Dans 1 an, votre petite-fille signe pour son appartement. Et l'apport, c'est vous.
-
-Et un jour, très loin d'ici, vos enfants ouvrent un dossier au lieu d'ouvrir une facture. Et l'un dit à l'autre : « Il avait tout prévu. »
-
-
-=================================================================
-BODY 11 - LE PRODUIT COMME SOLUTION (des changements, pas des fichiers ; Q8, Q9)
-=================================================================
-
-Seulement voilà. Savoir que ces 3 dates existent ne suffit pas. Il faut savoir lesquelles vous concernent, dans quel ordre, et quoi dire au notaire.
-
-C'est pour ça que le programme sous cette vidéo existe. Il s'appelle « Les 7 Erreurs qui Offrent Votre Héritage à l'État ».
-
-Les 3 dates que vous venez de voir sont 3 de ces 7 erreurs. Les 4 autres, ce sont celles qu'on commet entre les dates. Le contrat de la banque jamais relu. Le don de la main à la main qui ressort 15 ans plus tard. Les petits-enfants qu'on oublie. Et le rendez-vous chez le notaire, les mains vides.
-
-Vous entrez votre situation, et vous ressortez avec votre chiffre, vos 3 dates, et votre plan sur une page. Et le jour du notaire, vos décisions sont déjà prises, avec les 12 questions à lui poser.
-
-Il y a même une quatrième fenêtre, qui ne dépend pas de votre âge mais du calendrier. Elle se ferme le 31 décembre 2026. Elle est dans le programme.
-
-
-=================================================================
-BODY 12 - URGENCE, GARANTIE, APPEL A L'ACTION (Q6, Q10)
-=================================================================
-
-Reste une question, la seule qui compte : quand.
-
-Ce qui coûte cher, ce n'est pas une erreur que vous feriez. C'est le temps qui passe pendant que vous ne faites rien. Le père de Julien a attendu 10 ans. Ces 10 ans ont coûté 58 400 € à son fils. Et aucune de ces dates ne revient en arrière.
-
-Le programme est sous cette vidéo, avec le nombre de places encore ouvertes.
-
-Et le risque n'est pas de votre côté. Si dans les 30 jours vous n'avez pas trouvé au moins une erreur que vous étiez en train de commettre, un simple email suffit. Vous êtes remboursé, sans justification. Et vous gardez le simulateur.
-
-Autrement dit : vous ne pouvez pas perdre. Vous pouvez seulement savoir.
+Que vous choisissiez l'une ou l'autre, les 3 dates passeront. Pour elles, ça ne change rien. Pour vos enfants, ça change tout.
 
 Le bouton est juste sous cette vidéo.
 
 
-=================================================================
-CLOSING - LES DEUX SCENES, PUIS VOUS ETES LIBRE (2 outils)
-=================================================================
-
-La vraie question, c'est : le jour où vous ne serez plus là, qu'est-ce que vos enfants diront de vous ?
-
-Est-ce qu'ils diront « il avait tout prévu, on n'a eu à s'occuper de rien » ? Ou est-ce qu'ils passeront 6 mois dans des bureaux, avec des papiers qu'ils ne comprennent pas ?
-
-Est-ce qu'ils garderont la maison de leur enfance ? Ou est-ce qu'ils devront la vendre, comme Julien, pour payer ?
-
-Ces 2 scènes existent. Une seule aura lieu. Et laquelle des 2, ça se décide maintenant.
-
-Vous êtes parfaitement libre de ne rien faire. Le père de Julien, lui aussi, s'est dit « j'y penserai ». Pendant 10 ans. La seule différence entre lui et vous, c'est que vous, maintenant, vous savez.
-
-Ce soir, vous pouvez connaître votre chiffre. Dans 3 semaines, il aura baissé.
-
-Le bouton est juste sous cette vidéo.
-
-(Image : la table du dimanche, tenue longtemps. Le soulagement, pas la peur.)
-
-
-=================================================================
-NOTES DE TOURNAGE
-=================================================================
+— NOTES DE TOURNAGE —
 
 Debit : voix posee, 130 mots par minute. Sous-titres obligatoires, gros, en bas.
 Les chiffres s'affichent a l'ecran au moment ou ils se prononcent.
 Le seul passage qu'on peut accelerer au montage : les 3 premieres phrases.
-Les silences se tiennent 2 secondes pleines : apres « par 3 », avant « 58 400 € »,
-apres « une seule aura lieu ».
 
 Art. 790 A bis (la fenetre du 31 decembre 2026) : verifie sur Legifrance, en
 vigueur, non proroge. Rapport au Parlement attendu avant le 30 septembre 2026 :
