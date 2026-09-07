@@ -152,9 +152,7 @@ export function Hero({ form }: { form: ReactNode }) {
         </div>
 
         <div className="order-2 border-2 border-blue bg-white p-4 sm:p-5 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
-          <p className="mb-1 text-[1.15rem] font-bold text-blue">
-            Recevez la vidéo de 9 minutes, gratuitement
-          </p>
+          <p className="mb-1 text-[1.15rem] font-bold text-blue">Recevez la vidéo, gratuitement</p>
           {/* Ce que la vidéo contient, en une ligne. Aucun nom de méthode :
               « les 3 Verrous » ne dit rien à quelqu'un qui découvre le sujet. */}
           <p className="mb-3 text-[0.92rem] text-text-soft">
@@ -621,10 +619,26 @@ export function TheFear() {
    Deux effets : des leads qualifiés, et Meta qui récompense la qualité.
    ───────────────────────────────────────────────────────────── */
 export function Disqualification() {
+  /*
+   * ⚠️ Trois répétitions corrigées le 6 septembre 2026. Sur une page de vente,
+   * un mot qui a déjà servi ailleurs ne travaille plus : il confirme.
+   *
+   *   « Gardez vos NEUF MINUTES » — la durée de la vidéo a été retirée partout
+   *     ailleurs, faute de la connaître avant le montage. Elle survivait ici, et
+   *     contredisait le reste du site.
+   *
+   *   « vérifiable ARTICLE PAR ARTICLE » — le bloc juste au-dessus dit déjà
+   *     « basé sur le Code général des impôts, vérifiable sur impots.gouv.fr ».
+   *     Le rôle de ce bloc-ci est de FILTRER, pas de re-prouver.
+   *
+   *   « l'ABATTEMENT couvre déjà tout » — un des trois mécanismes qu'on est
+   *     censé teaser, expliqué dans une note de bas de page. Le seuil reste,
+   *     parce que le lecteur doit pouvoir se situer ; l'explication part.
+   */
   const cas = [
-    "Vous êtes locataire et sans épargne : vos héritiers ne paieront probablement rien. Gardez vos neuf minutes.",
-    "Vous avez un enfant et moins de 100 000 € de patrimoine : l'abattement couvre déjà tout, cette vidéo ne vous apprendrait rien.",
-    "Vous cherchez un moyen de ne pas déclarer quelque chose : ici tout est légal, déclaré, et vérifiable article par article. Vous perdriez votre temps.",
+    "Vous êtes locataire et sans épargne : vos héritiers ne paieront probablement rien. Gardez votre temps.",
+    "Vous avez un enfant et moins de 100 000 € de patrimoine : la loi vous exonère déjà, cette vidéo ne vous apprendrait rien.",
+    "Vous cherchez un moyen de ne pas déclarer quelque chose : ici tout est légal et déclaré. Vous perdriez votre temps.",
   ];
   return (
     <div className="border-2 border-red bg-red-bg p-4 sm:p-5">

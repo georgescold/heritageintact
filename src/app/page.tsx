@@ -196,7 +196,9 @@ export default function LandingPage() {
           <p className="border-l-4 border-red bg-red-bg p-3 font-bold text-blue">
             Deux ans d&apos;attente ne coûtent pas deux ans. Ils coûtent un abattement de 100 000 €.
           </p>
-          <p>La vidéo dure 9 minutes. Elle est gratuite. Elle est disponible dans deux minutes.</p>
+          {/* Ni durée, ni délai. La durée n'est pas connue avant le montage, et
+              la vidéo s'ouvre sur la page suivante — pas « dans deux minutes ». */}
+          <p>La vidéo est gratuite, et elle s&apos;ouvre sur la page suivante.</p>
         </div>
         <OptinForm cta={CTA.optin} />
       </ExitPopup>

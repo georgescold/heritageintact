@@ -44,29 +44,33 @@ export function ProofUnderButton() {
   ];
 
   return (
-    <div className="border border-grey-line bg-grey-bg p-4">
-      <p className="mb-3 text-[1.05rem] font-bold text-blue">
+    /* Bloc secondaire : il se lit APRÈS le titre, le formulaire et le compteur.
+       Sa typographie descend donc d'un cran — 0,92 rem, soit ~15 px, le plancher
+       qu'on s'autorise sur un lecteur de 67 ans. Ce qui rétrécit ici laisse de
+       la place à ce qui doit frapper au-dessus. */
+    <div className="border border-grey-line bg-grey-bg px-3.5 py-3">
+      <p className="mb-2 text-[0.98rem] font-bold text-blue">
         Ce que vous vous apprêtez à découvrir, et que la plupart des gens ignorent&nbsp;:
       </p>
-      <ul className="space-y-2.5">
+      <ul className="space-y-1.5">
         {lignes.map(([texte, article]) => (
-          <li key={article} className="flex gap-2 text-[0.98rem]">
+          <li key={article} className="flex gap-2 text-[0.92rem] leading-snug">
             <span aria-hidden className="mt-0.5 shrink-0 font-bold text-green">
               ✔
             </span>
             <span>
               {texte}{" "}
-              <span className="whitespace-nowrap text-[0.86rem] text-text-soft">— {article}</span>
+              <span className="whitespace-nowrap text-[0.8rem] text-text-soft">— {article}</span>
             </span>
           </li>
         ))}
       </ul>
-      <p className="mt-3 border-t border-grey-line pt-3 text-[0.92rem] text-text-soft">
-        Ce ne sont pas des opinions : ce sont des articles du Code général des impôts, vérifiables
-        en cinq minutes sur impots.gouv.fr.{" "}
-        <strong className="text-text">
-          Simplement, personne n&apos;est payé pour vous les dire.
-        </strong>
+      {/* Une ligne de réassurance, factuelle, sans plaidoyer. La version
+          précédente argumentait — « ce ne sont pas des opinions… personne n'est
+          payé pour vous les dire ». Bon argument, mais il double celui de la
+          page et transformait une mention de bas de bloc en paragraphe. */}
+      <p className="mt-2.5 border-t border-grey-line pt-2 text-[0.85rem] text-text-soft">
+        Basé sur le Code général des impôts. Vérifiable sur impots.gouv.fr.
       </p>
     </div>
   );
