@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Footer, Header } from "@/components/Chrome";
 import { ExitPopup } from "@/components/ExitPopup";
 import { Disqualification } from "@/components/Lp";
-import { MetaDisclaimer, ProofUnderButton } from "@/components/LpExtras";
+import { ProofUnderButton } from "@/components/LpExtras";
 import { OptinForm } from "@/components/OptinForm";
 import { CTA } from "@/lib/config";
 import { UrgencyBar, UrgencyCountdown } from "@/components/Urgency";
@@ -162,11 +162,11 @@ export default function LandingPage() {
                    deux échantillons ne sont plus comparables.
                 ═══════════════════════════════════════════════════════ */}
 
-            {/* Amélioration n°4 : la conformité Meta. Son absence est une
-                cause fréquente de bannissement de compte publicitaire. */}
-            <div className="mt-8 border-t border-grey-line pt-4">
-              <MetaDisclaimer />
-            </div>
+            {/* La conformité Meta est bien exigée — son absence est une cause
+                fréquente de bannissement — mais elle vit dans le `Footer`, donc
+                sur toutes les pages. La répéter ici l'affichait deux fois sur
+                le même écran, à trois centimètres d'intervalle. Le levier reste
+                tenu, une seule fois. */}
           </div>
         </section>
       </main>

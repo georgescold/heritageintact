@@ -64,7 +64,11 @@ export default async function CheckoutPage() {
                     },
                     {
                       q: "Je ne suis pas à l'aise avec le paiement en ligne.",
-                      a: "Le paiement passe par Stripe, le même système que des milliers de sites marchands. Nous ne voyons jamais votre numéro de carte. Et l'adresse email ci-dessus a une vraie personne derrière.",
+                      // La mention Stripe vit deja sous les champs de carte, au moment ou
+                      // on la saisit — c'est la qu'elle rassure. La repeter ici ne fait
+                      // que consommer de la place. Cette reponse traite donc ce que la
+                      // mention ne traite pas : la peur elle-meme.
+                      a: "Vous n'avez pas à nous croire sur parole. Vous avez trente jours pour demander le remboursement, sans avoir à vous justifier, par un simple email. Et l'adresse de contact a une vraie personne derrière : écrivez-lui avant d'acheter si vous voulez vous en assurer.",
                     },
                     {
                       q: "Et si la loi change ?",
