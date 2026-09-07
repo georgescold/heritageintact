@@ -140,7 +140,7 @@ Et disons-le simplement : c'est à votre portée. Pas parce que vous êtes riche
 
 Si vous n'avez encore rien réglé, ce n'est pas par négligence.
 
-C'est parce que le sujet a été rendu **illisible**. Usufruit. Nue-propriété. Clause bénéficiaire démembrée. Rapport à succession. Personne ne parle comme ça à table. Alors on remet à plus tard.
+C'est parce qu'on a rendu ce sujet **illisible**. Usufruit. Nue-propriété. Clause bénéficiaire démembrée. Rapport à succession. Personne ne parle comme ça à table. Alors on remet à plus tard.
 
 Et c'est parce que tout le monde autour de vous avait une bonne raison de **ne pas** vous en parler.
 
@@ -168,11 +168,11 @@ Et ce n'est pas tout. Il y a **trois portes qui se ferment avec le temps** — l
 
 **Première porte : le compteur des 15 ans.** L'abattement de 100 000 euros par enfant se recharge tous les 15 ans — mais seulement si vous l'avez **utilisé**. Chaque année sans donation est une année perdue. Elle ne revient pas.
 
-**Deuxième porte : 70 ans.** Ce que vous versez sur une assurance-vie **avant** votre 70e anniversaire peut être transmis jusqu'à 152 500 euros par bénéficiaire sans un centime de droits. **Après** 70 ans, l'avantage tombe à 30 500 euros — pour tous les bénéficiaires réunis. La même somme. Pas le même traitement.
+**Deuxième porte : 70 ans.** Ce que vous versez sur une assurance-vie **avant** votre 70e anniversaire peut être transmis jusqu'à 152 500 euros par bénéficiaire sans un centime de droits. **Après** 70 ans, ce n'est plus que 30 500 euros. Et pas chacun : 30 500 euros en tout, pour tout le monde. La même somme d'argent. Pas du tout le même résultat.
 
 **Troisième porte : 71 ans.** Vous pouvez transmettre votre maison tout en gardant le droit d'y vivre. Toute votre vie.
 
-Entre 61 et 70 ans, la valeur transmise est calculée sur 60 %. À 71 ans, elle passe à 70 %. Dix points de plus, parce que vous avez attendu un anniversaire.
+Entre 61 et 70 ans, on ne compte que 60 % de la valeur de la maison. À partir de 71 ans, on en compte 70 %. Dix points de plus, parce que vous avez attendu un anniversaire.
 
 Aucune de ces portes ne se rouvre.
 
@@ -182,7 +182,9 @@ Vous voyez le problème.
 
 Ce n'est pas la loi. La loi est même plutôt généreuse — à condition de la connaître.
 
-Le problème, c'est **le silence**. Un système où chacun est payé pour autre chose que vous prévenir. Et pendant ce temps, le compteur tourne.
+Le problème, c'est **le silence**. Chacun, autour de vous, est payé pour autre chose que pour vous prévenir. Et pendant ce temps, le compteur tourne.
+
+Et puis soyons honnêtes. Personne ne va passer ses soirées à lire le Code général des impôts. Des articles numérotés, des renvois d'un texte à l'autre, des lignes écrites en tout petit. **Ce n'est pas fait pour être lu. C'est fait pour être appliqué.**
 
 Les familles qui transmettent intact — celles dont on dit « ils ont des montages » — n'ont pas des montages. Elles ont quelqu'un qui leur a expliqué **les mêmes articles du Code des impôts que les vôtres**, dix ans avant, dans l'ordre.
 
@@ -309,17 +311,37 @@ Cliquez sur le bouton sous cette vidéo. Vous arrivez sur une page sécurisée �
 
 ### ═══ CLOSING (15 %) — 3 outils max ═══
 
-#### Outil 1 — Choix 1 / Choix 2
+#### Outil 1 — Les deux scènes
 
-Vous avez deux options.
+> Idée de Loys, 6 septembre 2026. Elle remplace le « vous avez deux options »,
+> qui posait un choix commercial. Celle-ci pose un choix de **mémoire** — ce que
+> les enfants diront de vous — et c'est le désir profond de l'avatar
+> (`02-avatar.md` § A.2), pas son désir de surface.
+>
+> ⚠️ Ne jamais dire que l'État « saisit » la maison. Il ne saisit rien : ce sont
+> les héritiers qui doivent payer les droits en six mois, et qui vendent pour y
+> arriver. Le mot serait faux, et c'est exactement celui qu'on opposerait à la
+> marque. On dit « devoir la vendre pour payer ».
 
-**La première** : fermer cette page. Se dire « je verrai ça plus tard ». C'est ce que le père de Jean-Pierre a fait pendant dix ans. Le compteur continue de tourner. Un anniversaire passe, une porte se ferme. Et un mardi de mars, ce sont vos enfants qui sont assis dans le bureau, à regarder un chiffre.
+Au fond, la question n'est pas de savoir combien l'État prendra.
 
-**La seconde** : y consacrer une soirée. Savoir. Décider. Et, dans trois semaines, être celui — ou celle — qui avait tout prévu.
+La vraie question, la voici. **Le jour où vous ne serez plus là, qu'est-ce que vos enfants diront de vous ?**
+
+Est-ce qu'ils diront : *« il avait tout prévu, on n'a eu à s'occuper de rien »* ? Ou est-ce qu'ils passeront six mois débordés, dans des bureaux, avec des papiers qu'ils ne comprennent pas ?
+
+Est-ce qu'ils garderont la maison de leur enfance ? Ou est-ce qu'ils devront la vendre pour payer l'État — sans rien pouvoir y faire ?
+
+Et surtout. Est-ce qu'ils se souviendront de vous pour tout ce que vous avez partagé ? Ou est-ce qu'il restera, par-dessus tout ça, **une décision que vous n'avez pas prise** ?
+
+Ces deux scènes existent. Une seule aura lieu.
+
+Et laquelle des deux, **ça se décide maintenant**. Pas dans dix ans.
+
+*(Image : deux chemins qui se séparent — l'un vers la maison vendue, l'autre vers la table du dimanche. Puis la scène du dimanche qui revient, tenue longtemps. C'est le soulagement qu'on laisse, pas la peur.)*
 
 #### Outil 2 — Rappel de la douleur présente + étiquetage
 
-Vous avez travaillé quarante ans pour construire ce que vous avez. Vous avez payé vos impôts chaque année, sans exception. Il ne s'agit pas d'échapper à quoi que ce soit. Il s'agit d'utiliser ce que la loi vous accorde déjà. Et que personne ne vous a expliqué.
+Vous avez travaillé quarante ans pour construire ce que vous avez. Vous avez payé vos impôts chaque année, sans exception. Il ne s'agit pas d'échapper à l'impôt. Il s'agit d'utiliser ce que la loi vous donne déjà. Et que personne ne vous a expliqué.
 
 Vous êtes quelqu'un de méthodique. Vous n'avez pas construit tout ça au hasard. Vous ne le transmettrez pas au hasard non plus.
 
