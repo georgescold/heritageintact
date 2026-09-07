@@ -1,7 +1,7 @@
 # 05 — VSL Front (27 €) — Headline + script complet
 
-> Phase 2.2 / 2.3. Durée cible : **7 minutes** (~900 mots à voix posée). Sous-titrée. Hébergée Wistia/Vimeo.
-> Référence : la VSL de Valère qui tourne à ~300 k€/mois dure **6 minutes 30**. La nôtre en faisait 18 — réécrite le 7 septembre 2026.
+> Phase 2.2 / 2.3. **Aucune durée cible** — la règle du repo est « il n'y a pas de règle, ce qui compte c'est le watch time » (`03-marketing-copy/vsl.md`). Version 1 : **897 mots, 6 min 54** à voix posée. Sous-titrée. Hébergée Wistia/Vimeo.
+> Réécrite le 7 septembre 2026, de 18 minutes à 7. ⚠️ Lire l'encadré « LA DURÉE » plus bas avant de se servir du chiffre de 6 min 30 qui traînait ici : c'est une VSL **B2B à appel**, pas une cible pour nous.
 > Lead choisi : **Narrative Lead** (3e personne, cas Jean-Pierre) — légalement sûr, chiffré, et le plus adapté à un avatar problem-aware. Variante Problem-Solution en fin de fichier pour l'A/B test.
 > Audit vocabulaire fait : zéro "apprendre / découvrir / formation / produit". On **révèle**, on parle de **méthode** et de **système**.
 
@@ -80,23 +80,40 @@ s'il finit en ligne sans être vrai (`11-legal-et-compliance.md`).
 > ### ⚠️ Réécrit le 7 septembre 2026 — de 18 minutes à 7
 >
 > La première version faisait **2 387 mots, soit 18 minutes** au débit prescrit.
-> C'était trop, et pas d'un peu. La référence est celle de Valère lui-même,
-> dans le teardown de la VSL qui tourne à ~300 k€/mois : *« cette VSL par
-> exemple dure 6 minutes 30 »*.
+> C'était trop, et pas d'un peu — ce jugement tient tout seul, il n'a besoin
+> d'aucune référence extérieure.
 >
-> Et sa **forme** n'était pas la nôtre :
+> ⚠️ **Ce qu'on ne prend PAS chez Valère : sa durée.** Une version antérieure de
+> ce document justifiait les 7 minutes par sa phrase *« cette VSL par exemple
+> dure 6 minutes 30 »* (teardown, 3:09). La citation est exacte. Mais c'est
+> une **VSL B2B qui vend un appel**, et il le dit lui-même à 17:25 :
+> *« l'objectif numéro 1 ici, c'est d'avoir un coût par call faible. »* Chez
+> lui la vidéo ne vend pas — elle décroche un rendez-vous, et c'est le closer
+> qui vend. Chez nous il n'y a pas d'appel : la vidéo doit faire tout ce
+> travail-là toute seule. **Sa durée ne se transporte pas dans notre funnel.**
+> Voir l'encadré « LA DURÉE » plus bas.
+>
+> Ce qu'on prend chez lui, en revanche, c'est sa **forme** :
 >
 > | Ce qu'il fait | Ce qu'on faisait |
 > |---|---|
 > | La **preuve à 10 secondes** — *« avant qu'on démarre, laisse-moi te montrer quelque chose »* | deux minutes de récit avant le premier chiffre |
 > | Le **résultat désiré tout de suite**, avant toute explication | le rêve arrivait après le lead |
-> | Un **CTA très tôt**, avant même d'avoir fini le mécanisme | un seul CTA, tout à la fin |
+> | Un CTA **avant que le mécanisme soit développé** — *« on a même pas fait les trois piliers qu'on a déjà fait un CTA »* (18:12) | un seul CTA, tout à la fin |
 > | **Qualification ET disqualification** dans la vidéo | la disqualification n'était que sur la page |
 > | Le bénéfice **répété plusieurs fois**, exprès, pour tenir le watch time | dit une fois |
 >
-> Sur le CTA précoce : *« au plus tôt tu as ton CTA, au plus tu auras de
-> calls. »* Sur la répétition : *« on a déjà dit plusieurs fois la même chose,
-> mais c'est parce qu'on veut que la personne reste avec nous longtemps. »*
+> Sur le CTA précoce : *« moi je suis un peu fan des CTA assez tôt »* (17:08).
+> ⚠️ Mais chez lui « tôt » veut dire **avant le mécanisme**, pas tôt à la
+> montre : au moment de son CTA, sa barre de progression (truquée) affiche
+> *« il reste 33-35 % »* (17:47) — le CTA tombe donc aux **deux tiers** de sa
+> vidéo. Et son arbitrage est celui d'un funnel à appel : *« au plus tôt tu as
+> ton CTA, au plus tu auras de calls. Mais au plus tôt tu as ton CTA, au moins
+> qualifié tu auras. »* Chez nous, un clic peu qualifié coûte un remboursement,
+> pas un créneau de closer — l'arbitrage n'est pas le même.
+>
+> Sur la répétition : *« on a déjà dit plusieurs fois la même chose, mais c'est
+> parce qu'on veut que la personne reste avec nous longtemps. »*
 >
 > ⚠️ Cette répétition-là est **volontaire, et propre à la vidéo**. Elle ne
 > contredit pas la règle « ne jamais se répéter » qui vaut pour les pages :
@@ -551,7 +568,7 @@ Cliquez sur le bouton, maintenant. Votre chiffre vous attend ce soir.
 
 ---
 
-## ✅ LA DURÉE — tranchée le 7 septembre 2026
+## LA DURÉE — et pourquoi il n'y en a pas de cible
 
 **897 mots dits → 6 min 54 à 130 mots/min.** L'ancienne version en faisait
 2 387, soit 18 minutes.
@@ -562,10 +579,48 @@ Cliquez sur le bouton, maintenant. Votre chiffre vous attend ce soir.
 | **130 mots/min — le débit prescrit** | **6 min 54** |
 | 150 mots/min — déjà rapide pour un auditeur de 67 ans | 6 min |
 
-La référence est celle de Valère, qui donne la durée de sa propre VSL dans
-son teardown : **6 minutes 30**, pour un funnel à ~300 k€/mois.
+### ⚠️ Correction du 7 septembre 2026 — le chiffre de 6 min 30 ne nous sert pas de cible
 
-### Ce qu'on n'a pas fait pour y arriver
+Une première version de cette section justifiait les 7 minutes par la VSL de
+Valère : *« cette VSL par exemple dure 6 minutes 30 »* (teardown, 3:09). La
+citation est exacte, elle a été vérifiée dans le transcript. **Mais elle ne
+s'applique pas à notre funnel**, et l'utiliser comme cible était une erreur.
+
+| | Sa VSL | La nôtre |
+|---|---|---|
+| Marché | **B2B** — coachs, high ticket | B2C, particuliers 60-75 ans |
+| Ce que la vidéo vend | **un appel** (« candidate en remplissant le formulaire ») | l'achat lui-même, 27 €, paiement direct |
+| Qui vend réellement | le **closer**, au téléphone, après | la vidéo. Il n'y a personne après |
+| Sa métrique | *« l'objectif numéro 1 ici, c'est d'avoir un coût par call faible »* (17:25) | LTV / CPA sur un achat immédiat |
+| Coût d'un clic peu qualifié | un créneau de closer brûlé | un remboursement |
+
+Chez lui, la vidéo n'a qu'à **décrocher un rendez-vous** — d'où la brièveté,
+et d'où son arbitrage assumé : *« au plus tôt tu as ton CTA, au plus tu auras
+de calls. Mais au plus tôt tu as ton CTA, au moins qualifié tu auras. »* Chez
+nous, il n'y a pas de deuxième étape humaine : **la vidéo doit faire tout le
+travail que son closer fait au téléphone**. C'est un cahier des charges plus
+lourd, pas plus léger.
+
+**La règle qui s'applique reste celle du repo** (`03-marketing-copy/vsl.md`) :
+
+> *« Il n'y a pas de règle. Des VSL de 5 minutes marchent. Des VSL de 45-57
+> minutes marchent. Ce qui compte : le watch time, pas la durée. »*
+
+### Alors pourquoi garder la version courte ?
+
+Pas parce que 6 min 30 serait la bonne longueur. Parce que **18 minutes était
+trop long, et ce jugement tient tout seul** — il ne dépend d'aucune référence
+extérieure. La version courte est la **version 1 qu'on mesure**, pas une cible
+atteinte.
+
+Ce qui la départagera de la longue, c'est la **courbe de rétention**, pas un
+chiffre décidé d'avance. Protocole : tourner la courte, la mettre en ligne,
+lire le watch time. Si ça décroche avant le CTA de 3:00, le problème est le
+hook. Si ça tient jusqu'au bout mais que ça n'achète pas, **c'est là qu'on
+réinjecte les blocs archivés** (les doutes, l'escalier de projection) — les
+blocs qui, sans closer, doivent lever les objections tout seuls.
+
+### Ce qu'on n'a pas fait pour raccourcir
 
 On n'a pas coupé la moitié du script en gardant la même structure — c'est
 l'option qui avait été écartée ici même, à raison : le lead narratif et le
@@ -573,8 +628,14 @@ calcul ligne par ligne portent toute la preuve, ils ne se coupent pas.
 
 **On a changé de forme.** La preuve passe à 10 secondes, le résultat désiré
 juste après, le CTA à 3 minutes. Ce qui a sauté, ce sont les blocs que cette
-nouvelle forme rend redondants : l'escalier de projection, les doutes traités
-un par un, les trois outils de closing empilés. Ils sont archivés, pas perdus.
+nouvelle forme rend redondants. Ils sont archivés, pas perdus.
+
+⚠️ **Sur le CTA à 3:00** : c'est notre choix, pas le sien. Chez lui, au moment
+du CTA, la barre de progression affiche « il reste 33-35 % » (17:47) — son CTA
+est aux **deux tiers**. Ce qui est « tôt » chez lui, c'est qu'il tombe *avant
+que le mécanisme soit développé* (« on a même pas fait les trois piliers qu'on
+a déjà fait un CTA », 18:12). Notre 3:00 respecte ça — il tombe avant les trois
+portes — et il peut se déplacer sans rien casser si la rétention le demande.
 
 ### La durée annoncée : aucune
 

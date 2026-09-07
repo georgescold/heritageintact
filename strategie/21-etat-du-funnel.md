@@ -122,12 +122,18 @@ ADS → /  (landing page, structure #2)          l'email
       s'affiche à sa place sur `/methode` ; le funnel se parcourt entièrement
       sans elle, mais **il ne vendra pas** : c'est elle qui vend.
 
-      > *Réécrite le 7 septembre 2026, de 18 minutes à 7.* La référence est la
-      > VSL de Valère, dont il donne la durée dans son teardown — **6 min 30**
-      > pour un funnel à ~300 k€/mois. Ce qui a changé, ce n'est pas seulement
-      > la longueur mais la **forme** : la preuve à 10 secondes, le résultat
-      > désiré juste après, le CTA à 3 minutes, une disqualification dans la
-      > vidéo. La version longue est archivée dans le même fichier.
+      > *Réécrite le 7 septembre 2026, de 18 minutes à 7.* Ce qui a changé, ce
+      > n'est pas seulement la longueur mais la **forme** : la preuve à 10
+      > secondes, le résultat désiré juste après, le CTA avant le mécanisme,
+      > une disqualification dans la vidéo. La version longue est archivée
+      > dans le même fichier.
+      >
+      > ⚠️ **6 min 54 n'est pas une cible, c'est une version 1 à mesurer.** Les
+      > 6 min 30 de la VSL de Valère viennent d'un funnel **B2B qui vend un
+      > appel** — sa vidéo décroche un rendez-vous, son closer vend. Ici il n'y
+      > a personne après la vidéo. La règle applicable reste celle du repo :
+      > *« ce qui compte, c'est le watch time, pas la durée »*. Si la rétention
+      > tient mais que ça n'achète pas, on réinjecte les blocs archivés.
 
       Le site **n'annonce plus aucune durée** — « 9 minutes » a été retiré des
       six endroits où le nombre figurait. À décider après le montage : annoncer
