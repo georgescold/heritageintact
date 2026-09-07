@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Footer, Header } from "@/components/Chrome";
 import { ExitPopup } from "@/components/ExitPopup";
 import { Disqualification } from "@/components/Lp";
-import { MetaDisclaimer } from "@/components/LpExtras";
+import { MetaDisclaimer, ProofUnderButton } from "@/components/LpExtras";
 import { OptinForm } from "@/components/OptinForm";
 import { CTA } from "@/lib/config";
-import { UrgencyBar, UrgencyCountdown, UrgencyUnderButton } from "@/components/Urgency";
+import { UrgencyBar, UrgencyCountdown } from "@/components/Urgency";
 
 export const metadata: Metadata = {
   title: "Et si vos enfants héritaient de 58 400 € de plus ?",
@@ -121,9 +121,17 @@ export default function LandingPage() {
               <OptinForm cta={CTA.optin} />
             </div>
 
-            {/* Amélioration n°2 : l'urgence, datée, juste sous le bouton. */}
-            <div className="mt-4">
-              <UrgencyUnderButton />
+            {/* L'urgence sous le bouton — « Pourquoi maintenant plutôt que dans
+                six mois » — a été retirée le 6 septembre 2026 : elle répétait
+                mot pour mot le bandeau rouge qui surplombe la page, compte à
+                rebours compris. Dire deux fois la même échéance à deux écrans
+                d'intervalle ne double pas l'urgence, ça la banalise. Le levier
+                reste tenu, en haut. */}
+
+            {/* Ce que le lecteur va découvrir : des boucles de curiosité, et
+                l'article de loi qui va avec sur chaque ligne. */}
+            <div className="mt-5">
+              <ProofUnderButton />
             </div>
 
             {/* La disqualification : elle filtre, et Meta récompense sur le CPA. */}

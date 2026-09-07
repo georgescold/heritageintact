@@ -5,8 +5,8 @@ import { OptinForm } from "@/components/OptinForm";
 import { CTA } from "@/lib/config";
 import { ExitPopup } from "@/components/ExitPopup";
 import { PhotoBanner, Section } from "@/components/Lp";
-import { UrgencyBand } from "@/components/LpExtras";
-import { UrgencyBar, UrgencyUnderButton } from "@/components/Urgency";
+import { ProofUnderButton, UrgencyBand } from "@/components/LpExtras";
+import { UrgencyBar } from "@/components/Urgency";
 
 export const metadata: Metadata = {
   title: "3 questions sur votre succession",
@@ -46,16 +46,13 @@ export default function LpQuestionsPage() {
         <Section>
           <QuestionsOptin />
 
-          <div className="mt-4">
-            <UrgencyUnderButton />
+          {/* L'urgence sous le bouton faisait doublon avec le bandeau rouge du
+              haut de page, compte à rebours compris. Retirée. */}
+
+          <div className="mt-5">
+            <ProofUnderButton />
           </div>
 
-          {/* « D'où viennent ces chiffres ? » retiré le 6 septembre 2026, pour
-              la même raison que sur `/` : le bloc cite cinq articles du Code
-              pour justifier un calcul que cette page ne montre nulle part. Il
-              répondait à une question que le lecteur ne s'était pas posée, et
-              lui apprenait au passage qu'il lui manquait quelque chose. Sa
-              place est sur /methode, sous le calcul détaillé. */}
           <div className="mt-4">
             <UrgencyBand />
           </div>
