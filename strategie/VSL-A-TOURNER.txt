@@ -6,7 +6,7 @@ paragraphe est provoque par le precedent. Les reperes ci-dessous ne sont pas
 des sections — ils disent seulement quel levier de la structure CEO travaille.
 
 Format faceless : aucun « je » de narrateur. Aucun montant. Julien = le fils,
-avec sa soeur : 2 enfants d'un couple marie « tout au survivant » (38 389 -> 0).
+enfant unique d'un couple marie « tout au survivant » (82 194 -> 13 989, maison vendue).
 Bannis : « les 3 portes », « les 3 verrous », « saisir ». Chiffres en chiffres.
 
 Le texte seul, sans annotation : VSL-TEXTE-SEUL.txt
@@ -16,19 +16,19 @@ Le texte seul, sans annotation : VSL-TEXTE-SEUL.txt
 
 Il est 9 h 40, un mardi de mars.
 
-Julien est assis dans le bureau du notaire, avec sa sœur. Ils viennent d'enterrer leur mère. Leur père était parti avant — ça n'avait rien coûté.
+Julien est assis dans le bureau du notaire. Il vient d'enterrer sa mère. Son père était parti avant — ça n'avait rien coûté.
 
-Le notaire tourne une feuille vers eux, pose son doigt sur un chiffre, et dit calmement : « Les droits s'élèvent à 38 389 €. Vous avez 6 mois. »
+Le notaire tourne une feuille vers lui, pose son doigt sur un chiffre, et dit calmement : « Les droits s'élèvent à 82 194 €. Vous avez 6 mois. »
 
-38 389 €. Sur une maison de 380 000 € et 30 000 € d'économies.
+82 194 €. Sur la maison de ses parents, 480 000 €, et 40 000 € d'économies.
 
-Julien et sa sœur ont 30 000 € à eux deux. 6 mois plus tard, un panneau « À vendre » est planté devant la maison où ils ont grandi.
+Julien a 40 000 €. Il en manque 42 000. 6 mois plus tard, un panneau « À vendre » est planté devant la maison où il a grandi.
 
-Et sur le trottoir, le notaire a ajouté, presque en s'excusant : « Vous savez… si vos parents étaient venus me voir il y a 10 ans, vous n'auriez rien payé. Et vous auriez gardé la maison. »
+Et sur le trottoir, le notaire a ajouté, presque en s'excusant : « Vous savez… si vos parents étaient venus me voir il y a 10 ans, vous auriez payé 14 000 € au lieu de 82 000. Et vous auriez gardé la maison. »
 
 (Silence. 2 secondes pleines.)
 
-Rien payé.
+14 000 au lieu de 82 000.
 
 (Silence. 2 secondes pleines.)
 
@@ -41,9 +41,9 @@ Vous allez voir les 3 décisions, simples et légales, que les parents de Julien
 
 Parce que les parents de Julien voulaient exactement ce que vous voulez.
 
-Donner un coup de pouce à leur petite-fille pour son premier appartement, et être là pour le voir. Garder dans la famille la maison où leurs enfants ont grandi. Et qu'un jour, on dise d'eux : « Ils avaient tout prévu. »
+Donner un coup de pouce à leur petite-fille pour son premier appartement, et être là pour le voir. Garder dans la famille la maison où leur fils a grandi. Et qu'un jour, on dise d'eux : « Ils avaient tout prévu. »
 
-Ils avaient tout fait comme il faut : 40 ans de travail, la maison payée, les impôts payés. S'ils ont laissé 38 389 € à l'État, ce n'est pas qu'ils s'y sont mal pris. C'est que personne ne leur a jamais dit qu'ils pouvaient faire autrement.
+Ils avaient tout fait comme il faut : 40 ans de travail, la maison payée, les impôts payés. S'ils ont laissé 82 194 € à l'État, ce n'est pas qu'ils s'y sont mal pris. C'est que personne ne leur a jamais dit qu'ils pouvaient faire autrement.
 
 
 — PEUR — douleur presente, couteau plante puis remue —
@@ -77,7 +77,7 @@ La troisième, c'est votre 71e anniversaire. Vous pouvez transmettre les murs de
 
 (A l'ecran : les 2 colonnes, l'ecart en gros. Silence apres « 58 400 € d'ecart ».)
 
-Rejouez maintenant l'histoire des parents de Julien avec ces 3 décisions, prises à 65 ans. Les murs transmis par les deux parents : 57 000 € par enfant et par parent, sous l'abattement — 0 €, article 669. L'épargne en assurance-vie avant 70 ans : 0 €, article 990 I. 38 389 € avant. 0 € après. Et la maison reste.
+Rejouez maintenant l'histoire des parents de Julien avec ces 3 décisions, prises à 65 ans. Les murs transmis par les deux parents, chacun avec son abattement : 6 994 € de chaque côté, article 669. L'épargne en assurance-vie avant 70 ans : 0 €, article 990 I. 82 194 € avant. 13 989 € après. Divisé par 6. Et la maison reste.
 
 
 — REVE FINAL — l'escalier, 4 marches —

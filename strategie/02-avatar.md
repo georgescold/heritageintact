@@ -167,7 +167,7 @@ Téléphone : Samsung Galaxy, Facebook et WhatsApp famille, YouTube sur la tél�
 
 ### PREUVES DISPONIBLES
 - **Les chiffres officiels** (barème, abattements, art. 669 CGI) — la preuve la plus forte : *"ce n'est pas mon avis, c'est le Code général des impôts."* Cf. `12-chiffres-succession.md`.
-- **La démonstration chiffrée** avant/après sur le cas Jean-Pierre : 38 389 € → 0 €.
+- **La démonstration chiffrée** avant/après sur le cas Jean-Pierre : 82 194 € → 0 €.
 - **Le simulateur** : le prospect voit *son* chiffre. Preuve par la démonstration ("regarde, ça marche").
 - **Témoignages** : programme des 10 testeurs avant le lancement, puis collecte auprès des premiers clients (`03` § 4 bis). Aucun avis qui ne vienne d'une vraie personne (`18` § 1).
 - **Autorité empruntée** : citations de rapports publics (Cour des comptes, CAE, Conseil des prélèvements obligatoires) sur la sous-utilisation des dispositifs.

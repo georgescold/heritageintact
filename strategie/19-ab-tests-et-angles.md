@@ -123,7 +123,7 @@ C'est le témoin, on mesure tout contre lui.
 
 | # | Headline | Angle | Hypothèse |
 |---|---|---|---|
-| **H1** | *Une maison de province. Les économies d'une vie. L'État en a pris 38 389 €.* | Le fait divers | Le chiffre en premier, sans « vous ». Attaque de brève. Devrait gagner sur trafic froid, où l'interpellation directe met sur la défensive. |
+| **H1** | *Une maison de province. Les économies d'une vie. L'État en a pris 82 194 €.* | Le fait divers | Le chiffre en premier, sans « vous ». Attaque de brève. Devrait gagner sur trafic froid, où l'interpellation directe met sur la défensive. |
 | **H2** | *Votre banque le sait. Votre notaire le sait. Personne ne vous écrira pour vous le dire.* | L'ennemi | Attaque l'ennemi dès la première ligne, au lieu du septième écran. Devrait gagner sur un avatar méfiant de l'institution. |
 | **H3** | *Il y a trois dates dans votre vie où votre succession change de prix. Deux sont des anniversaires.* | La curiosité pure | Aucune peur, que du manque. Devrait gagner sur les gens déjà conscients du problème (retargeting). |
 | **H4** | *Ce n'est pas l'argent qui fâche les familles. C'est de devoir décider à trois, en six mois, sans savoir ce que vous vouliez.* | Le conflit familial | La peur n°1 de l'avatar féminin (`02-avatar.md`, Martine). Devrait gagner sur audience femmes 65+. |
@@ -144,7 +144,7 @@ en retargeting et perdra en froid. Noter l'audience à côté du résultat, touj
 
 ## En ligne aujourd'hui
 
-> Sur une maison de province et les économies d'une vie, cette part est de **38 389 €**.
+> Sur une maison de province et les économies d'une vie, cette part est de **82 194 €**.
 > Trois décisions, **prises dès maintenant et de votre vivant**, la ramènent à
 > **0 €** — sans que vous vous sépariez de quoi que ce soit.
 
@@ -154,7 +154,7 @@ Structure : le chiffre, le contre-chiffre, l'objection majeure levée.
 
 | # | Sous-titre | Ce qu'il privilégie |
 |---|---|---|
-| **S1** | *38 389 € ou 0 €. Le même patrimoine, la même famille, la même loi. La seule différence tient à trois décisions, et au moment où on les prend.* | Le contraste pur. Plus court, plus frappant, mais ne lève aucune objection. |
+| **S1** | *82 194 € ou 0 €. Le même patrimoine, la même famille, la même loi. La seule différence tient à trois décisions, et au moment où on les prend.* | Le contraste pur. Plus court, plus frappant, mais ne lève aucune objection. |
 | **S2** | *Vous ne donnez rien, vous ne vendez rien, vous ne quittez pas votre maison. Vous décidez simplement, de votre vivant, de ce qui se passera après.* | L'objection d'abord. Pour une audience qui décroche sur « donation = je me dépouille ». |
 | **S3** | *Trois décisions, écrites dans le Code général des impôts, que les familles averties prennent de leur vivant. Une vidéo de 9 minutes vous dit lesquelles.* | L'autorité et la promesse. Le plus sobre, le plus « service public ». |
 | **S4** | *Ce n'est pas la loi qui coûte cher. C'est de la découvrir six mois après le décès, quand plus rien n'est possible.* | Le coût du moment. Reprend la thèse de la page en une ligne. |
@@ -316,7 +316,7 @@ le perdre.
 | Date | Ce qui a changé | Pourquoi |
 |---|---|---|
 | 5 sept. | LP 2 classique → **LP 6 MAX** | La structure la plus complète, avec disqualification. |
-| 5 sept. | *« Une maison de province. Les économies d'une vie. L'État en a pris 38 389 € »* → **version 2e personne** | Conservée comme **H1** dans le § 2 : c'est le meilleur challenger. La règle Personal Attributes ne concerne que les annonces, pas la page (décision de Loys). |
+| 5 sept. | *« Une maison de province. Les économies d'une vie. L'État en a pris 82 194 € »* → **version 2e personne** | Conservée comme **H1** dans le § 2 : c'est le meilleur challenger. La règle Personal Attributes ne concerne que les annonces, pas la page (décision de Loys). |
 | 5 sept. | Page remontée sur les **11 blocs CEO** | Le rêve n'était pas en premier et « ce n'est pas votre faute » était totalement absent. |
 | 5 sept. | Palette : **une couleur, un rôle** | L'orange servait d'accent ET de bouton, ce qui diluait l'appel à l'action. |
 | 6 sept. | **« Méthode des 3 Verrous » retirée de la page** | Un verrou ne veut rien dire sur une succession. ⚠️ Le nom vit encore dans la VSL, les modules, l'offre et les créatives : décision à prendre. |

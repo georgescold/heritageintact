@@ -49,7 +49,7 @@ Regardez.
 
 **Étape 1 — vous entrez votre famille et votre patrimoine, une seule fois.** Votre âge. Marié, veuf, en couple. Vos enfants, un par un, et leur situation. Vos petits-enfants. Puis chaque bien : la maison, le studio, les livrets, les contrats d'assurance-vie — avec la date des versements, parce que vous savez maintenant que ça change tout. Vingt minutes, avec vos relevés à côté.
 
-**Étape 2 — il calcule. Héritier par héritier, tranche par tranche.** *(écran : la Facture Invisible, 38 389 €, avec chaque ligne et l'article du Code en face)* Ce n'est pas une estimation : c'est le barème, appliqué à votre cas, avec la source à côté de chaque ligne. Et vos trois dates, en clair, avec le nombre de mois restants.
+**Étape 2 — il calcule. Héritier par héritier, tranche par tranche.** *(écran : la Facture Invisible, 82 194 €, avec chaque ligne et l'article du Code en face)* Ce n'est pas une estimation : c'est le barème, appliqué à votre cas, avec la source à côté de chaque ligne. Et vos trois dates, en clair, avec le nombre de mois restants.
 
 **Étape 3 — vous testez les Verrous, en direct.** *(écran : on coche « donner la nue-propriété de la maison » → le chiffre tombe. On coche « épargne en assurance-vie avant 70 ans » → il tombe encore. 0 €.)* Vous voyez, immédiatement, ce que chaque décision change. Vous décochez, vous recochez. Vous essayez « et si j'attends 71 ans ». Vous **voyez** le prix de l'attente.
 

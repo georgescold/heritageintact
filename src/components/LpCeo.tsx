@@ -138,7 +138,7 @@ export function TheFailure() {
               homme prévoyant fait.
             </p>
             <p className="border-l-4 border-red bg-red-bg p-4 text-[1.15rem] font-bold text-blue">
-              Et le jour venu, ses enfants recevront quand même une facture de 38 389 €.
+              Et le jour venu, ses enfants recevront quand même une facture de 82 194 €.
             </p>
             <p>
               Ce n&apos;est pas parce qu&apos;il a mal géré. Ce n&apos;est pas parce qu&apos;il
@@ -237,7 +237,7 @@ const CE_QUE_CA_EMPORTE = [
   },
   {
     q: "La troisième",
-    r: "38 000 € de base taxable en plus sur une maison à 380 000 €, du jour au lendemain.",
+    r: "48 000 € de base taxable en plus sur une maison à 480 000 €, du jour au lendemain.",
   },
 ];
 
@@ -439,11 +439,11 @@ export function TheCostOfInaction() {
         {[
           [
             "Vos enfants recevront une facture, pas un héritage.",
-            "38 389 € sur une maison de province et 30 000 € d'économies. Payables en six mois. En euros, pas en parts de maison.",
+            "82 194 € sur une maison de province et 40 000 € d'économies. Payables en six mois. En euros, pas en parts de maison.",
           ],
           [
             "Ils devront trouver cette somme. Ils ne l'auront pas.",
-            "Deux enfants qui ont 30 000 € à eux deux ne sortent pas 38 389 € en six mois. Alors on vend la maison — dans l'urgence, au prix qu'on en donne.",
+            "Un enfant qui a 40 000 € ne sort pas 82 194 € en six mois. Alors on vend la maison — dans l'urgence, au prix qu'on en donne.",
           ],
           [
             "Chaque année qui passe ferme une porte, définitivement.",
@@ -463,7 +463,7 @@ export function TheCostOfInaction() {
 
       <p className="mt-6 border-l-4 border-blue bg-white p-4 text-[1.15rem] font-bold text-blue">
         Ne rien faire n&apos;est pas une position neutre. C&apos;est un choix, et il a déjà un prix
-        affiché&nbsp;: 38 389 €.
+        affiché&nbsp;: 82 194 €.
       </p>
 
       <p className="mt-5 text-[1.06rem]">

@@ -97,7 +97,7 @@ Par ordre de puissance :
      Code general des impots, verifiable sur impots.gouv.fr
   2. la demonstration - le simulateur calcule SON chiffre a lui, sous
      ses yeux. Il ne nous croit pas : il constate
-  3. le mecanisme - le calcul 38 389 vers 0, ligne par ligne,
+  3. le mecanisme - le calcul 82 194 vers 500, ligne par ligne,
      refaisable a la main sur une feuille
   4. la garantie - le risque est integralement de notre cote
   5. la transparence - montrer l'interieur du produit, pas le promettre
@@ -267,11 +267,11 @@ ANGLE B - LA FAMILLE, LA MAISON, LES PETITS-ENFANTS
   Lead : Story ou Proclamation
   L'idee : la maison de l'enfance vendue pour payer l'Etat, et les
   enfants qui se dechirent faute d'instructions.
-  LE CAS (7 septembre 2026) : couple marie « tout au survivant », 2
-  enfants, maison 380 000 € + epargne 30 000 €. Au second deces :
-  38 389 € en 6 mois, 30 000 € pour les payer -> la maison est vendue.
-  Avec les 3 decisions a 65 ans : 0 €, la maison reste. Ce sont les seuls
-  chiffres autorises. Voir 12-chiffres-succession.md.
+  LE CAS (7 septembre 2026) : couple marie « tout au survivant », 1
+  enfant, maison 480 000 € + epargne 40 000 €. Au second deces :
+  82 194 € en 6 mois, 40 000 € pour les payer -> la maison est vendue.
+  Avec les 3 decisions a 65 ans : 13 989 €, la maison reste. Ce sont les
+  seuls chiffres autorises. Voir 12-chiffres-succession.md.
   Pour qui ca marche : le cote patriarche. C'est l'angle qui touche le
   desir profond, donc le plus fort a terme, mais le plus difficile a
   ecrire sans tomber dans le pathos.
@@ -293,7 +293,7 @@ creatives. On n'en lance un que quand le precedent a un cout par achat
 connu.
 
 ANGLE EN LIGNE AUJOURD'HUI - LE CHIFFRE
-  38 389 euros contre 0. Le meme patrimoine, la meme famille, la
+  82 194 euros contre 0. Le meme patrimoine, la meme famille, la
   meme loi. Structure : le chiffre, le contre-chiffre, l'objection
   majeure levee.
 

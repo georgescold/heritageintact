@@ -19,7 +19,7 @@
 >
 > Elle révèle les trois décisions que les familles averties prennent de leur vivant pour transmettre intact ce qu'elles ont construit — et pourquoi personne ne vous les a jamais expliquées.
 >
-> Un conseil : regardez-la ce soir, avec votre conjoint si possible. Elle contient un chiffre — 38 389 € — et trois dates. L'une des trois vous concerne plus que les autres. Vous saurez laquelle à la fin.
+> Un conseil : regardez-la ce soir, avec votre conjoint si possible. Elle contient un chiffre — 82 194 € — et trois dates. L'une des trois vous concerne plus que les autres. Vous saurez laquelle à la fin.
 >
 > À tout de suite,
 > [Prénom]
@@ -301,7 +301,7 @@
 
 **J12 — Objet :** Ce que ça donne à l'écran
 
-> Capture d'écran : la Facture Invisible de Jean-Pierre (38 389 €), puis la même avec deux cases cochées (0 €). Deux phrases. → [BOUTON — Voir la démonstration]
+> Capture d'écran : la Facture Invisible de Jean-Pierre (82 194 €), puis la même avec deux cases cochées (0 €). Deux phrases. → [BOUTON — Voir la démonstration]
 
 **J14 — Objet :** « Je ne suis pas à l'aise avec les logiciels »
 
@@ -339,7 +339,7 @@
 | Bénéfice | Votre chiffre ce soir · La maison reste dans la famille |
 | Émotion | « Il avait tout prévu » · Le dimanche d'après |
 | Éducation | Avant ou après 70 ans : ce qui change · Le compteur des 15 ans, expliqué |
-| Preuve | 38 389 € → 0 € : le détail · Ce que ça donne à l'écran |
+| Preuve | 82 194 € → 0 € : le détail · Ce que ça donne à l'écran |
 | Secret | Personne n'est payé pour vous prévenir · Ce que le banquier ne dit pas |
 | Stat | 9 contrats sur 10 échouent · Abattements figés depuis 2012 |
 

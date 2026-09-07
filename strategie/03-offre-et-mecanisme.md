@@ -99,7 +99,7 @@ Conditions CGV : demande par email dans les 30 jours calendaires suivant l'achat
 |---|---|---|---|
 | 1 | **Par la source officielle** ⭐ | Chaque chiffre affiché à l'écran avec son article : *« Article 669 du Code général des impôts »*. Un lien vers impots.gouv sous chaque affirmation. | **Aujourd'hui** |
 | 2 | **Par la démonstration** ⭐ | Le simulateur calcule **son** chiffre à lui, sous ses yeux, dans le module 0. Il ne nous croit pas : il constate. | **Aujourd'hui** |
-| 3 | **Par le mécanisme** | Le calcul 38 389 € → 0 €, ligne par ligne, tranche par tranche, refaisable à la main sur une feuille. | **Aujourd'hui** |
+| 3 | **Par le mécanisme** | Le calcul 82 194 € → 0 €, ligne par ligne, tranche par tranche, refaisable à la main sur une feuille. | **Aujourd'hui** |
 | 4 | **Par la garantie** | 30 jours, sans justification, et il garde le simulateur. Le risque est intégralement de notre côté. | **Aujourd'hui** |
 | 5 | **Par la transparence** | Montrer l'intérieur du produit : les vraies pages, le vrai sommaire, la vraie fiche. Pas une promesse, un aperçu. | **Aujourd'hui** |
 | 6 | **Par l'autorité empruntée** | Citer les institutions : Cour des comptes, Conseil des prélèvements obligatoires, France Stratégie, publications des notaires. Citer une source avec son lien n'est pas voler une preuve, c'est en fabriquer une. | **Aujourd'hui** |

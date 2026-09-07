@@ -192,76 +192,75 @@ Sur le cas Jean-Pierre : l'assiette est **380 000 €**, pas 228 000 €. L'anci
 ---
 
 ## Le cas Jean-Pierre — calcul détaillé (à mettre à l'écran)
-> ✅ **Cas refondu le 7 septembre 2026, à la demande de Loys : « le cas le plus typique de
-> l'avatar ».** L'ancien cas (père veuf, 1 enfant, 140 000 € d'épargne liquide) avait deux
-> défauts : il n'était pas l'avatar, et l'épargne suffisait à payer — la maison n'avait aucune
-> raison d'être vendue. Celui-ci est l'avatar de `02-avatar.md`, et la vente est forcée.
+> ✅ **Cas arrêté le 7 septembre 2026 avec Loys (« ok go »).** Critères : les enfants comme
+> héritiers (ligne directe), un chiffre qui fait mal, **aucune possibilité de payer** — la vente
+> est forcée — et une maison que l'avatar reconnaît. Un enfant, parce qu'avec deux l'abattement
+> double ; le spectateur à deux enfants s'identifie quand même, il sait que l'abattement est par
+> enfant et le simulateur lui donne le sien.
 
 **Situation :** couple marié sous **communauté universelle avec clause d'attribution intégrale au
 survivant** — le contrat que les notaires conseillaient à cette génération « pour se protéger
-l'un l'autre ». 2 enfants. Maison 380 000 € + épargne 30 000 € (livrets, comptes). Total 410 000 €.
+l'un l'autre ». 1 enfant. Maison 480 000 € (pavillon de périphérie — Nantes, Lyon, Bordeaux) +
+épargne 40 000 € (livrets, comptes). Total 520 000 €.
 
 **Pourquoi la facture tombe au second décès.** Au premier décès, tout passe au survivant sans
-droits (conjoint exonéré, art. 796-0 bis) — et, avec l'attribution intégrale, **sans que les
-enfants n'utilisent leur abattement**. Au second décès, les 410 000 € sont sur une seule tête, et
-chaque enfant n'a qu'un abattement de 100 000 €.
+droits (conjoint exonéré, art. 796-0 bis) et, avec l'attribution intégrale, **sans que l'enfant
+n'utilise son abattement**. Au second décès, les 520 000 € sont sur une seule tête, avec un seul
+abattement de 100 000 €.
 
-> ⚠️ Sans ce contrat (régime légal, conjoint en usufruit), les enfants auraient utilisé leur
-> abattement une première fois au premier décès, et la facture finale serait faible. C'est
-> précisément l'**erreur n°2** du produit (« ne pas être marié, ou l'être mal »). Le cas la met
-> en scène sans la nommer dans la VSL.
+> ⚠️ Sous le régime légal (conjoint en usufruit), l'enfant aurait utilisé son abattement au
+> premier décès, et la facture finale serait d'environ 25 000 €. C'est l'**erreur n°2** du
+> produit (« ne pas être marié, ou l'être mal »). Le cas la met en scène sans la nommer dans la
+> VSL ; le produit la nomme.
 
 **AVANT (rien n'a été fait) — au second décès :**
 ```
-Part de chaque enfant      = 410 000 / 2 = 205 000 €
-Part taxable, par enfant   = 205 000 − 100 000 (abattement) = 105 000 €
+Part taxable = 520 000 − 100 000 (abattement) = 420 000 €
    8 072 × 5 %                 =    403,60 €
    (12 109 − 8 072) × 10 %     =    403,70 €
    (15 932 − 12 109) × 15 %    =    573,45 €
-   (105 000 − 15 932) × 20 %   = 17 813,60 €
-DROITS PAR ENFANT              = 19 194,35 €
-DROITS POUR LES DEUX           = 38 388,70 €  → « 38 389 € »
+   (420 000 − 15 932) × 20 %   = 80 813,60 €
+DROITS                         = 82 194,35 €  → « 82 194 € »
 ```
-Les enfants disposent de 30 000 € (l'épargne héritée). **Il manque 8 389 € en 6 mois. La maison
-est vendue.** C'est la scène de la VSL, et elle est exacte.
+Julien dispose de 40 000 € (l'épargne héritée). **Il manque 42 194 € en 6 mois. La maison est
+vendue.** C'est la scène de la VSL, et elle est exacte.
 
 **APRÈS (3 décisions, les deux parents vivants, à 65 ans) :**
 ```
-Décision — donation de la nue-propriété de la maison aux 2 enfants, par les 2 parents
+Décision — donation de la nue-propriété de la maison à l'enfant, par les 2 parents
    Usufruitiers de 65 ans → « moins de 71 ans » → usufruit 40 %, nue-propriété 60 % (art. 669)
-   Nue-propriété totale = 380 000 × 60 %          = 228 000 €
-   Par parent (bien commun)                        = 114 000 €
-   Par enfant et par parent = 114 000 / 2          =  57 000 €  < 100 000 € d'abattement
-   DROITS DE DONATION                              =       0 €
+   Nue-propriété totale = 480 000 × 60 %          = 288 000 €
+   Par parent (bien commun)                        = 144 000 €
+   Part taxable, par parent = 144 000 − 100 000    =  44 000 €
+   403,60 + 403,70 + 573,45 + (44 000 − 15 932) × 20 % = 6 994,35 € par parent
+   DROITS DE DONATION (les deux parents)           = 13 988,70 €  → « 13 989 € »
    Aux décès : extinction de l'usufruit, art. 1133 =       0 €
 
-Décision — 30 000 € versés sur une assurance-vie avant 70 ans, bénéficiaires : les enfants
-   → art. 990 I, sous 152 500 € par bénéficiaire     =       0 €
+Décision — 40 000 € versés sur une assurance-vie avant 70 ans, bénéficiaire : l'enfant
+   → art. 990 I, sous 152 500 €                     =       0 €
 
 Décision — acte notarié, dossier prêt
-   Émoluments sur la pleine propriété (380 000 €) ≈ 5 000 à 6 500 € TTC — hors calcul,
+   Émoluments sur la pleine propriété (480 000 €) ≈ 6 000 à 7 500 € TTC — hors calcul,
    à ne pas chiffrer en pub
 
-TOTAL DES DROITS APRÈS         = 0 €
-DIFFÉRENCE                     = 38 389 €
+TOTAL DES DROITS APRÈS         = 13 989 €
+DIFFÉRENCE                     = 68 205 €   (divisé par 6)
 ```
-**Les enfants gardent la maison, et ne signent aucun chèque.** Les parents y vivent jusqu'au
-bout. C'est le module 4 du produit (« droits quasi nuls »), ici exactement nuls.
+**Julien garde la maison, et la famille paie 13 989 € au lieu de 82 194 — réglés par les parents,
+de leur vivant, à 65 ans.** Les droits de donation sont payés à l'acte ; le compteur des 15 ans
+(art. 784) repart alors, ce qui permet une seconde donation exonérée à 80 ans.
 
 **Ce que dit le notaire, sur le trottoir :** *« si vos parents étaient venus me voir il y a
-10 ans, vous n'auriez rien payé. Et vous auriez gardé la maison. »*
+10 ans, vous auriez payé 14 000 € au lieu de 82 000. Et vous auriez gardé la maison. »*
 
 **Hypothèses simplificatrices à mentionner dans le module (pas dans la pub) :** valeurs
 constantes ; pas d'abattement résidence principale au second décès (survivant seul — BOFiP,
 § 8) ; épargne disponible pour l'assurance-vie ; pas d'autre donation dans les 15 ans ; frais de
-notaire non déduits ; le compteur des 15 ans (art. 784) n'intervient pas dans ce cas, il reste
-la première des 3 dates parce qu'il décide de tout pour les familles qui ont déjà donné. Un cas
-**illustratif**, pas une promesse.
+notaire non déduits. Un cas **illustratif**, pas une promesse.
 
-**Chiffres à employer partout, et nulle part d'autres :** 380 000 € · 30 000 € · 2 enfants ·
-**38 389 €** (19 194 € par enfant) · **0 €** · **38 389 € d'écart**. Les anciens (82 194 €,
-23 794 €, 58 400 €, 140 000 €, 420 000 €, 128 000 €, « un enfant ») sont retirés du site, de la
-VSL, des emails, des créatives, du brief et des modules.
+**Chiffres à employer partout, et nulle part d'autres :** 480 000 € · 40 000 € · 1 enfant ·
+**82 194 €** · **13 989 €** · **68 205 € d'écart** · « divisé par 6 ». Tout autre chiffre de cas
+(38 389, 54 194, 23 794, 58 400, 500, 0…) est périmé.
 
 **Nouvelle variante à écrire — famille recomposée :** avec l'abattement beaux-enfants du § 2, un bel-enfant élevé par le défunt paie 60 % au-delà de 15 932 €, là où l'enfant biologique paie 20 % au-delà de 100 000 €. Sur une part de 100 000 € : environ **50 440 €** de droits pour le bel-enfant, **0 €** pour l'enfant biologique. C'est le contraste le plus fort du projet après les 60 % du concubin. À chiffrer proprement une fois l'article 788 III bis confirmé sur source officielle.
 

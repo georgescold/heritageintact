@@ -346,7 +346,7 @@ c'est le meilleur entraînement pour la caméra.
 
 **Le test bonus, le plus dur :** reprends le cas Jean-Pierre de
 `12-chiffres-succession.md` et refais le calcul complet **à la main, sur une feuille**, sans regarder
-le fichier. Si tu retrouves 38 389 € puis 0 €, tu maîtrises. Sinon, tu relis le concept 1.
+le fichier. Si tu retrouves 82 194 € puis 0 €, tu maîtrises. Sinon, tu relis le concept 1.
 
 ---
 

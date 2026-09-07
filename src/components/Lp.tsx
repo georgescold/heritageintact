@@ -112,9 +112,9 @@ export function Hero({ form }: { form: ReactNode }) {
           {/* L'objection levée, immédiatement */}
           <p className="max-w-[37rem] text-[1.02rem] text-white/90 sm:text-[1.12rem]">
             Sur une maison de province et les économies d&apos;une vie, cette part est de{" "}
-            <strong className="text-white">38 389 €</strong>. Trois décisions, prises dès maintenant
-            et de votre vivant, la ramènent à <strong className="text-white">0 €</strong> — sans que
-            vous vous sépariez de quoi que ce soit.
+            <strong className="text-white">82 194 €</strong>. Trois décisions, prises dès maintenant
+            et de votre vivant, la ramènent à <strong className="text-white">13 989 €</strong> —
+            sans que vous vous sépariez de quoi que ce soit.
           </p>
         </div>
 
@@ -126,22 +126,24 @@ export function Hero({ form }: { form: ReactNode }) {
         */}
         <div className="order-3 max-w-[34rem] border-l-4 border-orange bg-black/50 lg:col-start-1 lg:row-start-2">
           <p className="border-b border-white/20 px-4 py-2 text-[0.8rem] uppercase tracking-[0.1em] text-white/70">
-            Cas type · Couple marié · 2 enfants · Maison 380 000 € · Épargne 30 000 €
+            Cas type · Couple marié · 1 enfant · Maison 480 000 € · Épargne 40 000 €
           </p>
           <dl className="px-4 py-3">
             <div className="flex items-baseline justify-between gap-3 border-b border-white/15 pb-2">
               <dt className="text-[0.98rem] text-white/85">Si vous ne faites rien</dt>
-              <dd className="figure-lg whitespace-nowrap text-red-bright">38 389 €</dd>
+              <dd className="figure-lg whitespace-nowrap text-red-bright">82 194 €</dd>
             </div>
             <div className="flex items-baseline justify-between gap-3 border-b border-white/15 py-2">
               <dt className="text-[0.98rem] text-white/85">Si vous prenez les 3 décisions</dt>
-              <dd className="whitespace-nowrap text-[1.35rem] font-bold text-green-bright">0 €</dd>
+              <dd className="whitespace-nowrap text-[1.35rem] font-bold text-green-bright">
+                13 989 €
+              </dd>
             </div>
             <div className="flex items-baseline justify-between gap-3 pt-2">
               <dt className="text-[1.02rem] font-bold text-white">
                 Ce que vous coûte le fait d&apos;attendre
               </dt>
-              <dd className="figure-lg whitespace-nowrap text-red-bright">38 389 €</dd>
+              <dd className="figure-lg whitespace-nowrap text-red-bright">68 205 €</dd>
             </div>
           </dl>
           <p className="border-t border-white/20 px-4 py-2 text-[0.85rem] text-white/60">
@@ -172,20 +174,19 @@ export function Hero({ form }: { form: ReactNode }) {
    ───────────────────────────────────────────────────────────── */
 export function TheNumber() {
   const lignes = [
-    ["Maison de province, payée", "380 000 €"],
-    ["Livrets et comptes", "30 000 €"],
-    ["Part de chaque enfant (sur 2)", "205 000 €"],
-    ["Abattement, par enfant", "− 100 000 €"],
-    ["Reste à taxer, par enfant", "105 000 €"],
+    ["Maison de province, payée", "480 000 €"],
+    ["Livrets et comptes", "40 000 €"],
+    ["Abattement, un enfant", "− 100 000 €"],
+    ["Reste à taxer", "420 000 €"],
   ];
   return (
     <Section tone="grey">
-      <SectionTitle>D&apos;où sortent les 38 389 €</SectionTitle>
+      <SectionTitle>D&apos;où sortent les 82 194 €</SectionTitle>
       <p className="mb-4 text-[1.05rem]">
         Il n&apos;y a aucune astuce dans ce calcul, et c&apos;est bien le problème. Un couple marié
         « tout au survivant », comme le notaire le conseillait pour se protéger l&apos;un
-        l&apos;autre. Une maison de ville moyenne, quarante ans de remboursements, 30 000 € de côté.
-        Deux enfants. Au premier décès, rien. Au second, tout d&apos;un coup.
+        l&apos;autre. Un pavillon de périphérie, quarante ans de remboursements, 40 000 € de côté.
+        Un enfant. Au premier décès, rien. Au second, tout d&apos;un coup.
       </p>
       <p className="mb-5 text-[1.05rem]">
         Le barème s&apos;applique tout seul, sans que personne n&apos;ait à décider quoi que ce
@@ -214,9 +215,9 @@ export function TheNumber() {
         </table>
         <div className="flex flex-wrap items-baseline justify-between gap-2 px-4 py-4">
           <span className="text-[1.05rem] font-bold text-blue">
-            Droits de succession à payer, sous six mois — 19 194 € par enfant
+            Droits de succession à payer, sous six mois
           </span>
-          <span className="figure-xl text-red">38 389 €</span>
+          <span className="figure-xl text-red">82 194 €</span>
         </div>
       </div>
 
@@ -229,8 +230,8 @@ export function TheNumber() {
       <blockquote className="mt-6 border-l-4 border-orange bg-white p-4 text-[1.1rem] leading-snug text-blue sm:p-5 sm:text-[1.25rem]">
         Sur le trottoir, en sortant de l&apos;étude, le notaire a dit&nbsp;: «&nbsp;
         <em>
-          si vos parents étaient venus me voir dix ans plus tôt, vous n&apos;auriez rien payé. Et
-          vous auriez gardé la maison.
+          si vos parents étaient venus me voir dix ans plus tôt, vous auriez payé 14 000 € au lieu
+          de 82 000. Et vous auriez gardé la maison.
         </em>
         &nbsp;»
       </blockquote>
@@ -339,22 +340,22 @@ export function TheComparison() {
       <SectionTitle>Ce que ces trois décisions changent, en euros</SectionTitle>
       <div className="max-w-[38rem] border-2 border-blue bg-white">
         <p className="border-b border-grey-line bg-grey-bg px-4 py-2 text-[0.88rem] uppercase tracking-[0.08em] text-text-soft">
-          Cas type · Couple marié · 2 enfants · Maison 380 000 € · Épargne 30 000 €
+          Cas type · Couple marié · 1 enfant · Maison 480 000 € · Épargne 40 000 €
         </p>
         <dl className="px-4 py-3">
           <div className="flex items-baseline justify-between gap-3 border-b border-grey-line pb-3">
             <dt className="text-[1.02rem]">Si vous ne faites rien</dt>
-            <dd className="whitespace-nowrap text-[1.7rem] font-bold text-red">38 389 €</dd>
+            <dd className="whitespace-nowrap text-[1.7rem] font-bold text-red">82 194 €</dd>
           </div>
           <div className="flex items-baseline justify-between gap-3 border-b border-grey-line py-3">
             <dt className="text-[1.02rem]">Si vous prenez les 3 décisions</dt>
-            <dd className="whitespace-nowrap text-[1.7rem] font-bold text-green">0 €</dd>
+            <dd className="whitespace-nowrap text-[1.7rem] font-bold text-green">13 989 €</dd>
           </div>
           <div className="flex items-baseline justify-between gap-3 pt-3">
             <dt className="text-[1.06rem] font-bold text-blue">
               Ce que vous coûte le fait d&apos;attendre
             </dt>
-            <dd className="whitespace-nowrap text-[2rem] font-bold text-red">38 389 €</dd>
+            <dd className="whitespace-nowrap text-[2rem] font-bold text-red">68 205 €</dd>
           </div>
         </dl>
         <p className="border-t border-grey-line bg-grey-bg px-4 py-2 text-[0.88rem] text-text-soft">
@@ -362,7 +363,7 @@ export function TheComparison() {
         </p>
       </div>
       <p className="mt-5 max-w-[38rem] text-[1.06rem]">
-        Ces <strong>38 389 €</strong> ne sont pas une économie qu&apos;on vous promet. C&apos;est la
+        Ces <strong>68 205 €</strong> ne sont pas une économie qu&apos;on vous promet. C&apos;est la
         somme que vos enfants verseront, uniquement parce que rien n&apos;aura été décidé à temps —
         et, s&apos;ils ne l&apos;ont pas, c&apos;est la maison qui part.
       </p>
@@ -392,7 +393,7 @@ export function BeforeAfter() {
           </div>
           <figcaption className="mt-3 text-[1rem]">
             Onze mois de démarches. Vingt-deux organismes à prévenir. Des mots de passe que personne
-            n&apos;a. Et une facture de 38 389 € qui tombe pendant qu&apos;ils font le tri.
+            n&apos;a. Et une facture de 82 194 € qui tombe pendant qu&apos;ils font le tri.
           </figcaption>
         </figure>
 
@@ -411,7 +412,7 @@ export function BeforeAfter() {
           </div>
           <figcaption className="mt-3 text-[1rem]">
             Un document d&apos;une page. Les trois décisions déjà prises, datées, signées. Et une
-            facture ramenée à zéro.
+            facture divisée par six.
           </figcaption>
         </figure>
       </div>
@@ -425,7 +426,7 @@ export function BeforeAfter() {
           </p>
           <ul className="space-y-2 p-4 text-[1rem]">
             {[
-              "Une facture de 38 389 €, à régler sous six mois",
+              "Une facture de 82 194 €, à régler sous six mois",
               "L'épargne bloquée pendant tout le règlement",
               "La maison mise en vente pour payer l'État",
               "Des décisions prises à plusieurs, dans l'urgence",
@@ -450,7 +451,7 @@ export function BeforeAfter() {
           </p>
           <ul className="space-y-2 p-4 text-[1rem]">
             {[
-              "Une facture à 0 €, réglée des années plus tôt, de leur vivant",
+              "Une facture de 13 989 €, réglée des années plus tôt, de leur vivant",
               "De quoi la payer, prévu à l'avance",
               "La maison qui reste dans la famille",
               "Les décisions déjà prises, datées, signées",

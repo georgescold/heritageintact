@@ -109,10 +109,10 @@ avec la séquence de 7 jours.
 | Critère | Notre cas |
 |---|---|
 | 1. Le format | Tout DIY → tire les prix vers le bas |
-| 2. Le **besoin** du client, pas ton coût | 38 389 € en jeu → tire violemment vers le haut |
+| 2. Le **besoin** du client, pas ton coût | 82 194 € en jeu → tire violemment vers le haut |
 | 3. Le **revenu** du client | 650 000 € de patrimoine, 400-600 €/mois d'épargne → peut payer |
 | 4. Les concurrents (± 10 %) | 29-76 £ au Royaume-Uni → tire vers le bas |
-| 5. Le **ROI** du client | 38 389 € / 197 € = **195×** → tire vers le haut |
+| 5. Le **ROI** du client | 82 194 € / 197 € = **417×** → tire vers le haut |
 
 Trois critères sur cinq disent « monte ». Deux disent « reste bas ». **Et ce ne sont pas les mêmes
 produits qui sont concernés** — c'est tout l'objet de la section suivante.
@@ -165,7 +165,7 @@ Valère :
 de penser qu'il ne le fera pas :
 
 - L'acheteur vient de payer. C'est le moment de sa plus faible résistance au prix.
-- Il a **650 000 €** en jeu et **38 389 €** de facture à éviter.
+- Il a **650 000 €** en jeu et **82 194 €** de facture à éviter.
 - Il épargne 400-600 €/mois : 397 € est **moins d'un mois d'épargne**.
 - La doctrine le dit elle-même : *« tu t'adresses à quelqu'un prêt à payer 300 € — donc prêt à
   payer 500 ou 800. »*

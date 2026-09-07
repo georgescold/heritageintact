@@ -121,7 +121,7 @@ jetable.
 ### Le Simulateur de Facture Invisible *(je peux te le construire)*
 - [ ] Feuille de calcul : onglet Saisie, onglet Calcul (abattements, barème par tranches,
       assurance-vie avant/après 70 ans), onglet Résultat (facture par héritier + les 3 dates)
-- [ ] Test de validation : avec le cas Jean-Pierre, tu dois retrouver **38 389 €** exactement
+- [ ] Test de validation : avec le cas Jean-Pierre, tu dois retrouver **82 194 €** exactement
 - [ ] Décliner en version Excel + version papier (PDF une page, à remplir à la main)
 
 ### Les slides des 8 modules *(2 jours)*
@@ -146,7 +146,7 @@ jetable.
 
 - [ ] Relire le script de `05-vsl-front.md` à voix haute, chrono en main. Cible : 9-10 min
 - [ ] Personnaliser le bloc 4 avec **ton histoire** (vraie, ou présentée comme illustrative)
-- [ ] Préparer les incrustations : le calcul 38 389 → 0 ligne par ligne, les articles du CGI
+- [ ] Préparer les incrustations : le calcul 82 194 → 500 ligne par ligne, les articles du CGI
 - [ ] Enregistrer au prompteur, débit lent. Monter, sous-titrer, uploader
 - [ ] Vidéos upsell 1 (4 min) et upsell 2 (3 min) — scripts dans `06-pages-funnel.md`
 - [ ] Écrire les **4 premiers plans-types** de l'upsell 1 (situations 1, 2, 4, 5)

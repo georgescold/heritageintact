@@ -39,9 +39,9 @@ Contenu :
 1. Qui parle, pourquoi (le narrateur, 45 s — pas plus).
 2. Comment marche une succession en France en 3 phrases : *actif − passif = masse ; on partage selon la loi ou le testament ; chaque héritier paie des droits sur SA part après SON abattement.*
 3. **Le Simulateur de Facture Invisible** — démonstration à l'écran avec le cas Jean-Pierre :
-   - Couple marié « tout au survivant », 2 enfants. Au second décès : maison 380 k€ + épargne 30 k€ = 410 000 €.
-   - Part de chaque enfant : 205 000 €. Part taxable : 205 000 − 100 000 = 105 000 € chacun.
-   - Barème par tranches → **19 194 € par enfant, 38 389 € en tout**. Ils ont 30 000 € : la maison est vendue. Détail des tranches à l'écran.
+   - Couple marié « tout au survivant », 1 enfant. Au second décès : maison 480 k€ + épargne 40 k€ = 520 000 €.
+   - Part taxable : 520 000 − 100 000 = 420 000 €.
+   - Barème par tranches → **82 194 €**. Julien a 40 000 € : la maison est vendue. Détail des tranches à l'écran.
 4. Le client fait le sien (20 min, fichier fourni : patrimoine, situation matrimoniale, nombre d'enfants, contrats d'assurance-vie avec date des versements).
 5. **Le Calendrier des 3 Dates** : le client note ses trois échéances (âge 70, âge 71, date de la dernière donation + 15 ans).
 6. Open loop : *"Dans le module suivant, la première erreur — celle qui coûte le plus et qui ne coûte rien à corriger."*
@@ -79,8 +79,8 @@ Livrables : Simulateur (Google Sheet + version Excel + version papier), Calendri
 
 - **Le démembrement** en français : vous donnez les murs (nue-propriété), vous gardez l'usage à vie (usufruit). Vous restez chez vous. Vous pouvez même la louer.
 - Le barème de l'art. 669 CGI : la loi raisonne en « moins de X ans révolus », donc **la bascule tombe le jour de l'anniversaire**. Tant qu'on n'a pas 71 ans, la nue-propriété vaut **60 %** ; à partir de 71 ans, **70 %**. → *"Tant que vous n'avez pas 71 ans, on transmet sur 60 %. Le jour de vos 71 ans, c'est 70 %. Dix points de patrimoine, pour un anniversaire."*
-- Cas Jean-Pierre : donation de la nue-propriété de la maison (380 k€) à 67 ans, aux 2 enfants → base 228 000 €, soit 114 000 € par enfant, sous l'abattement à 14 000 € près → droits quasi nuls. Au décès, l'usufruit s'éteint **sans droits**.
-- Avant/après complet sur le cas : **38 389 € → 0 €**. Les deux parents donnent la nue-propriété à 65 ans : 228 000 € de nue-propriété, 57 000 € par enfant et par parent, sous l'abattement des deux côtés → 0 €. L'épargne en assurance-vie (module 3) → 0 €. Les enfants gardent la maison. Le détail à l'écran.
+- Cas Jean-Pierre : donation de la nue-propriété de la maison (480 k€) à 65 ans, par les deux parents, à l'enfant → base 288 000 €, soit 144 000 € par parent, 44 000 € taxables de chaque côté → 6 994 € × 2 = 13 989 €. Au décès, l'usufruit s'éteint **sans droits**.
+- Avant/après complet sur le cas : **82 194 € → 13 989 €**. Les deux parents donnent la nue-propriété à 65 ans : 288 000 € de nue-propriété, 144 000 € par parent → 44 000 € taxables de chaque côté → 6 994 € × 2 = 13 989 €. L'épargne en assurance-vie (module 3) → 0 €. Julien garde la maison. Le détail à l'écran.
 - Objection EHPAD : l'usufruitier peut louer ; on peut garder l'épargne en pleine propriété ; on peut prévoir une **clause de retour** et une **interdiction d'aliéner**.
 - Action : noter la valeur de sa maison et son âge → lire sa ligne du barème.
 
