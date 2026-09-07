@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Footer, Header } from "@/components/Chrome";
 import { ExitPopup } from "@/components/ExitPopup";
 import { Disqualification } from "@/components/Lp";
-import { MetaDisclaimer, ProofUnderButton } from "@/components/LpExtras";
+import { MetaDisclaimer } from "@/components/LpExtras";
 import { OptinForm } from "@/components/OptinForm";
 import { CTA } from "@/lib/config";
 import { UrgencyBar, UrgencyCountdown, UrgencyUnderButton } from "@/components/Urgency";
@@ -132,25 +131,28 @@ export default function LandingPage() {
               <Disqualification />
             </div>
 
-            {/* Amélioration n°1 : la preuve sous le premier bouton.
-                Le gabarit prévoit un SECOND formulaire juste derrière. Il a été
-                retiré le 6 septembre 2026 : sur une page de 4,5 écrans, le
-                premier reste à une hauteur de pouce, et le rendre deux fois
-                donnait une page qui répète au lieu d'avancer. La règle du
-                second appel garde tout son sens sur une page longue — c'est le
-                cas de /methode. */}
-            <div className="mt-6">
-              <ProofUnderButton />
-            </div>
+            {/* ═══ DEUX BLOCS RETIRÉS LE 6 SEPTEMBRE 2026 ═════════════
+                Cette page n'a qu'un travail : l'email. Tout ce qui n'y mène
+                pas en sort.
 
-            {/* Règle 3 : toujours être en A/B test. La variante questionnaire
-                est la seule challenger conservée — c'est celle que le tableau
-                de choix prescrit pour un ciblage très large, qui est le nôtre. */}
-            <p className="mt-6 text-center text-[0.9rem]">
-              <Link href="/lp-questions">
-                Vous préférez répondre à 3 questions d&apos;abord&nbsp;?
-              </Link>
-            </p>
+                1. « D'où viennent ces chiffres ? » — la preuve sous le premier
+                   bouton est bien un levier du gabarit, mais elle citait les
+                   articles 777, 779, 990 I, 757 B et 669 pour justifier un
+                   CALCUL que la page ne montre nulle part. Elle répondait à
+                   une question que le lecteur ne s'était pas posée, et pire :
+                   elle lui apprenait qu'il manquait quelque chose. Sa place
+                   est sur /methode, où le calcul est affiché ligne par ligne
+                   juste au-dessus.
+
+                2. « Vous préférez répondre à 3 questions d'abord ? » — un
+                   lien vers la variante questionnaire. Deux défauts, et le
+                   second est le plus grave : c'est une porte de sortie sur une
+                   page qui ne doit en avoir aucune, ET ça casse l'A/B test.
+                   Un test se pilote en découpant le trafic dans Ads Manager →
+                   Expériences, pas en laissant le visiteur choisir sa
+                   variante : quelqu'un qui clique s'auto-sélectionne, et les
+                   deux échantillons ne sont plus comparables.
+                ═══════════════════════════════════════════════════════ */}
 
             {/* Amélioration n°4 : la conformité Meta. Son absence est une
                 cause fréquente de bannissement de compte publicitaire. */}

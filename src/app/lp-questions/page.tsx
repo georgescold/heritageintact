@@ -5,7 +5,7 @@ import { OptinForm } from "@/components/OptinForm";
 import { CTA } from "@/lib/config";
 import { ExitPopup } from "@/components/ExitPopup";
 import { PhotoBanner, Section } from "@/components/Lp";
-import { ProofUnderButton, UrgencyBand } from "@/components/LpExtras";
+import { UrgencyBand } from "@/components/LpExtras";
 import { UrgencyBar, UrgencyUnderButton } from "@/components/Urgency";
 
 export const metadata: Metadata = {
@@ -50,10 +50,12 @@ export default function LpQuestionsPage() {
             <UrgencyUnderButton />
           </div>
 
-          <div className="mt-4">
-            <ProofUnderButton />
-          </div>
-
+          {/* « D'où viennent ces chiffres ? » retiré le 6 septembre 2026, pour
+              la même raison que sur `/` : le bloc cite cinq articles du Code
+              pour justifier un calcul que cette page ne montre nulle part. Il
+              répondait à une question que le lecteur ne s'était pas posée, et
+              lui apprenait au passage qu'il lui manquait quelque chose. Sa
+              place est sur /methode, sous le calcul détaillé. */}
           <div className="mt-4">
             <UrgencyBand />
           </div>
