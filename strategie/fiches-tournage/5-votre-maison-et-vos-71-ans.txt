@@ -1,0 +1,946 @@
+============================================================
+VIDEO 5 — VOTRE MAISON, ET VOS 71 ANS
+Duree cible : 14 minutes | faceless, voix + ecran
+============================================================
+
+Etape 4 de La Methode Heritage Intact.
+Source : scripts-videos/04-etape-4-la-maison.txt (fond conserve, forme refaite).
+Le spectateur a paye. Il n'a pas a etre convaincu. On livre, et on rassure.
+
+
+------------------------------------------------------------
+1. CE QUE JE DOIS SAVOIR AVANT DE TOURNER
+------------------------------------------------------------
+
+1.1 — CE QUE CETTE ETAPE FAIT, EN UNE LIGNE
+
+Elle apprend a donner les murs de son logement tout en gardant l'usage a vie,
+et elle fait ecrire la troisieme des 3 dates : le 71e anniversaire.
+A la fin, le Calendrier des 3 dates est complet.
+
+1.2 — LES DEUX CHOSES QU'ON POSSEDE
+
+Etre proprietaire, c'est posseder deux choses en meme temps :
+  - L'USAGE : habiter, avoir la cle, louer, encaisser les loyers.
+  - LE TITRE : son nom sur le papier, et le droit de vendre.
+Les deux reunis portent un nom : la PLEINE PROPRIETE. C'est la situation de
+tout le monde aujourd'hui, et elle se transmet sur la valeur entiere du bien.
+
+La loi permet de separer les deux :
+  - l'usage a vie = l'USUFRUIT (art. 578 code civil). Il reste au parent.
+  - le titre = la NUE-PROPRIETE. Il part chez l'enfant.
+
+C'est le seul mot difficile de la Methode. Il s'explique une fois, avec les
+deux colonnes a l'ecran, et il ne se reemploie plus jamais sans etre explique.
+
+1.3 — CE QUE CELA CHANGE CONCRETEMENT (c'est ici que se logent les erreurs)
+
+L'enfant devient proprietaire sur le papier. Il ne peut PAS :
+  - entrer dans le logement,
+  - demander au parent de partir.
+    Ces deux points ne viennent pas de l'article 621 : ils viennent de
+    l'usufruit lui-meme. L'usufruitier jouit du bien comme le proprietaire
+    (art. 578 code civil), et le nu-proprietaire « ne peut, par son fait, ni de
+    quelque maniere que ce soit, nuire aux droits de l'usufruitier »
+    (art. 599 al. 1 code civil). C'est l'article 599 qu'on affiche ici.
+  - vendre la maison libre de la presence du parent. Il peut ceder son papier
+    — la loi envisage expressement la vente du bien greve d'usufruit sans
+    l'accord de l'usufruitier — mais cette vente ne modifie pas le droit de
+    l'usufruitier : celui qui achete attend exactement comme lui
+    (art. 621 al. 2 code civil).
+
+ERREUR A NE PAS COMMETTRE : ne jamais afficher « art. 621 » sous « il ne peut
+pas entrer » ni sous « il ne peut pas vous faire partir ». L'autorite du
+narrateur ne vient que des articles affiches ; un article affiche sous une
+ligne qu'il ne couvre pas se retourne contre nous le jour ou le spectateur
+ouvre le texte, ou son notaire le lui lit.
+
+Le parent, lui, ne demenage pas, n'a de permission a demander a personne pour
+habiter, pour rester, ou pour donner son logement a bail (art. 578 et 595 code
+civil), et la taxe fonciere continue d'etre etablie a son nom (art. 1400 II
+CGI) : elle etait deja a sa charge, rien ne change sur ce point.
+Nuance a garder en tete, non dite a l'ecran : l'usufruitier doit conserver la
+substance du bien (art. 578) et il ne peut pas donner seul a bail un immeuble
+commercial, industriel, artisanal ou rural (art. 595 al. 4). Pour un logement
+d'habitation, il loue seul.
+
+Repartition des charges apres la donation :
+  - entretien courant a la charge de l'usufruitier (art. 605 code civil) ;
+  - charges annuelles, dont la taxe fonciere, a la charge de l'usufruitier
+    (art. 608 code civil), la taxe etant etablie a son nom (art. 1400 II CGI) ;
+  - grosses reparations a la charge du nu-proprietaire : la loi les definit
+    comme « les gros murs et les voutes, le retablissement des poutres et des
+    couvertures entieres » (art. 606 code civil) — donc une refection
+    complete, pas une reparation partielle de toit, qui reste de l'entretien.
+Reserve posee par la loi elle-meme (art. 605) : si la grosse reparation est
+devenue necessaire faute d'entretien courant, l'usufruitier en est AUSSI tenu
+— la charge est partagee, elle n'est pas transferee.
+Ce tableau s'imprime, il ne se recite pas ; a l'oral il n'en reste qu'une
+phrase.
+
+1.4 — CE QUI SE PASSE AU DECES
+
+L'usufruit s'eteint seul. Le nu-proprietaire devient plein proprietaire SANS
+AUCUN DROIT A PAYER sur cette extinction : art. 1133 CGI. Ce n'est pas une
+faille, c'est le texte. Ne pas dire qu'il « redevient » plein proprietaire :
+il ne l'a jamais ete auparavant.
+
+Une seule chose a savoir sur le delai, et il faut la dire pour ce qu'elle est :
+la donation doit avoir ete faite chez le notaire et plus de 3 mois avant le
+deces — art. 751 CGI. Attention a ne pas presenter ce texte comme une
+protection. L'art. 751 est une presomption fiscale de propriete : le bien
+demembre au profit d'un presomptif heritier est repute, jusqu'a preuve
+contraire, faire partie de la succession de l'usufruitier ; la preuve contraire
+peut notamment resulter d'une donation reguliere consentie plus de 3 mois avant
+le deces. En deca de ce delai, le bien est reintegre dans la succession et
+l'article 1133 ne s'applique pas.
+
+Forme obligatoire : une donation immobiliere n'existe que par acte notarie —
+art. 931 code civil. Rien ne peut se faire par courrier ni par telephone.
+
+1.5 — LA TROISIEME DATE : LE BAREME DE L'ARTICLE 669 CGI
+
+Ce qui est transmis n'est pas compte pour la valeur entiere du bien, mais pour
+une fraction qui depend de l'age du donateur AU JOUR DE LA DONATION.
+
+  Moins de 71 ans revolus ............. nue-propriete comptee a 60 %
+  Moins de 81 ans revolus (71 a 80) ... 70 %
+  Moins de 91 ans revolus (81 a 90) ... 80 %
+
+La ligne 81-90 n'est pas une curiosite : une partie de l'audience va jusqu'a
+85 ans, c'est SA ligne. Elle reste a l'ecran.
+(Pour information du tourneur, jamais a l'ecran : au-dela de 91 ans revolus,
+c'est 90 %. Les tranches en dessous de 61 ans ne concernent personne ici et ne
+s'affichent pas.)
+
+LE BAREME S'APPLIQUE A CHAQUE USUFRUITIER SEPAREMENT, selon son propre age.
+Un couple de 70 et 72 ans n'est pas sur la meme ligne : le premier est a 60 %,
+le second a 70 %. C'est le point qui fait rater le calcul a domicile, et il
+doit etre dit au moment ou le spectateur calcule.
+
+Le mot exact de la loi est « revolus », c'est-a-dire accomplis. La bascule ne
+tombe pas au 1er janvier ni a la fin de l'annee : elle tombe le matin du 71e
+anniversaire. C'est tout l'objet de la date a ecrire aujourd'hui.
+
+1.6 — LE CAS CHIFFRE, QUI SERT DE MODELE DE CALCUL
+
+C'est un cas type. L'annoncer comme tel avant les chiffres. Les hypotheses se
+disent a voix haute AVANT le calcul : 1 enfant, valeurs constantes, aucune
+autre donation dans les 15 annees precedentes, frais de l'acte non deduits, et
+l'hypothese de succession du § 1.6 bis.
+
+Donnees : maison 480 000 EUR, epargne 40 000 EUR, 1 enfant, 2 parents de
+65 ans, proprietaires a parts egales et du meme age.
+
+  480 000 x 60 %                     = 288 000 EUR de nue-propriete
+  divise par 2 (chaque parent donne
+  sa moitie)                         = 144 000 EUR par parent
+  moins l'abattement de 100 000 EUR
+  par parent et par enfant (art. 779) =  44 000 EUR taxables par parent
+  bareme de l'art. 777 sur 44 000     =   6 994,35 EUR par parent
+  x 2                                 =  13 988,70 EUR, arrondi 13 989 EUR
+
+REGLE D'ARRONDI, imperative : ne jamais dire ni afficher « 6 994 » sans ses
+decimales des lors que la multiplication par 2 est montree (6 994 x 2 = 13 988,
+et le chiffre canonique est 13 989). L'arrondi se fait a la fin, une seule fois.
+
+L'abattement de 100 000 EUR se compte PAR PARENT ET PAR ENFANT (art. 779). Ici,
+2 parents et 1 enfant : 2 abattements. Un spectateur qui a 3 enfants n'est pas
+dans ce cas de figure, et il faut le lui dire — sinon il surestime ses droits.
+
+Rappel du compteur des 15 ans : l'abattement de 100 000 EUR n'est pas acquis
+une fois pour la vie, il se recharge tous les 15 ans et tout ce qui a deja ete
+donne a cet enfant dans les 15 dernieres annees s'impute dessus (art. 784).
+C'est la premiere ligne du Calendrier. Une phrase suffit ; le mecanisme a ete
+traite a l'etape 1 et ne se redeploie pas ici.
+
+L'epargne : 40 000 EUR placee avant 70 ans dans le cadre de l'article 990 I du
+CGI, l'enfant designe beneficiaire. Hors succession civile (art. L132-12 code
+des assurances), sous l'abattement de 152 500 EUR par beneficiaire, tous
+contrats du meme assure confondus (art. 990 I) : 0 EUR de droits. Une phrase,
+sans reexpliquer le mecanisme, traite a l'etape 3. Ne nommer ni assureur, ni
+banque, ni produit : on nomme le regime et son article, rien d'autre.
+
+Sans decision : 82 194 EUR de droits. La declaration de succession est a
+deposer dans les 6 mois d'un deces survenu en France metropolitaine
+(art. 641 CGI), et les droits sont payes au depot de cette declaration
+(art. 1701 CGI). L'epargne heritee etant de 40 000 EUR, 42 194 EUR restent a
+trouver ailleurs. La loi prevoit que les droits puissent etre payes de facon
+fractionnee ou differee (art. 1717 CGI et art. 396 et suivants de l'annexe III)
+— c'est une question a poser au notaire. Avec les decisions prises a 65 ans :
+13 989 EUR, regles par les parents de leur vivant. Ecart : 68 205 EUR.
+
+NE JAMAIS DIRE « et c'est la maison qui part ». C'est une prediction, elle
+n'est adossee a aucun texte, et elle ignore le paiement fractionne ou differe.
+On enonce le montant qui reste a trouver, et on enonce le dispositif prevu par
+la loi pour ce cas. Rien de plus.
+
+POINT DE CONFORMITE, non negociable : les 68 205 EUR ne s'attribuent JAMAIS a
+la seule decision de cette etape. Ils resultent des decisions de l'etape 3
+(l'epargne) ET de celle-ci (les murs). Le dire dans la meme phrase que le
+chiffre.
+
+FRAIS DE L'ACTE : leur existence doit etre signalee, sans quoi l'ecart est
+presente comme un gain net — omission trompeuse. Aucun montant, pas meme un
+ordre de grandeur : statut. Ne rien affirmer non plus sur l'assiette de ces
+frais : nous n'avons pas la reference tarifaire sous la main, et donner
+l'assiette revient a donner la moitie du montant. Ne pas dire que le devis est
+gratuit : c'est une affirmation sur la pratique commerciale d'un tiers, sans
+texte. Ce qui se dit : les tarifs des notaires sont reglementes (art. L444-1 et
+suivants du code de commerce), et c'est le notaire qui chiffre l'acte sur le
+bien reel, avant toute signature.
+
+1.6 bis — L'HYPOTHESE DE SUCCESSION DU CAS « SANS DECISION », A DIRE A VOIX
+HAUTE AVANT LE CHIFFRE
+
+Les 82 194 EUR ne se reproduisent pas sans cette hypothese, et elle doit donc
+etre dite :
+  au premier deces, tout revient au conjoint survivant, qui ne paie aucun
+  droit (art. 796-0 bis CGI). L'enfant recoit donc la totalite en une seule
+  fois, au second deces, avec UN SEUL abattement de 100 000 EUR.
+    520 000 - 100 000 = 420 000 EUR taxables
+    bareme de l'art. 777 sur 420 000 = 82 194,35 EUR, arrondi 82 194 EUR.
+
+Sans cette phrase, le spectateur qui refait le calcul compte deux abattements
+de 100 000 EUR, trouve environ 60 389 EUR, ne retombe pas sur 82 194, et c'est
+la branche « avec decision » qu'il soupconnera. La fiche s'impose deja ce
+standard pour les frais d'acte ; elle se l'applique ici.
+
+1.7 — LE MEME CAS, DONATION FAITE A 71 ANS
+
+Meme maison, meme famille, donation faite a 71 ans au lieu de 65 :
+  480 000 x 70 % = 336 000 EUR au lieu de 288 000 EUR
+  soit 48 000 EUR de plus a transmettre POUR LE COUPLE
+  cette tranche est entierement a 20 % (art. 777, tranche 15 932 -> 552 324)
+  48 000 x 20 % = 9 600 EUR de droits en plus.
+Dire « pour le couple » : tout le calcul precedent etait mene par parent, et
+c'est cette mention qui evite le decrochage de celui qui suit avec un stylo.
+N'enoncer QUE l'ecart, 9 600 EUR. Ne jamais enoncer le total alternatif : un
+second chiffre de cas concurrent de 13 989 EUR n'a pas a circuler.
+
+CE N'EST PAS UN COUT PROPORTIONNEL AU TEMPS. C'est une marche unique, franchie
+le matin du 71e anniversaire : attendre 2 ans ou attendre 6 ans coute
+exactement la meme chose. Ne jamais formuler « le prix de 6 ans d'attente »,
+ni a l'oral ni a l'ecran — un spectateur de 69 ans ferait la division et
+conclurait que sa marche a lui vaut 3 200 EUR, ce qui est faux. Le carton
+enonce le fait : donation signee apres le 71e anniversaire, 9 600 EUR de plus.
+
+1.8 — L'INQUIETUDE CENTRALE : SE DEMUNIR
+
+Cette etape touche l'inquietude la plus frequente du sujet : celle de se
+demunir. Elle se traite de face, dans cet ordre : d'abord ce qu'on perd,
+ensuite ce qu'on garde. Jamais l'inverse.
+
+CE QU'ON PERD, et il faut le dire clairement : a partir du jour ou le papier
+est parti, on ne peut plus vendre la maison seul. Pour vendre la maison
+entiere, il faut vendre l'usufruit et la nue-propriete ensemble : la signature
+du parent et celle de l'enfant — art. 578 et 621 al. 1 code civil. C'est le
+prix reel de la decision.
+Attention a l'attribution : l'art. 621 al. 1 organise la repartition du prix en
+cas de vente simultanee de l'usufruit et de la nue-propriete ; il presuppose
+l'accord des deux, il ne l'« impose » pas. La regle vient d'abord de ce que nul
+ne peut ceder plus de droits qu'il n'en a (art. 544 et 578). Ne jamais
+presenter l'art. 621 comme le texte qui obligerait l'enfant a signer.
+
+CE QU'ON GARDE : l'usage, la cle, les loyers, a vie. Ce n'est pas « tout
+donner » : on donne le papier, pas le logement.
+
+TROIS PHRASES PEUVENT ETRE AJOUTEES A L'ACTE. Leurs conditions s'impriment ;
+a l'oral, les titres, sauf la troisieme.
+  a) Le droit de retour (art. 951 code civil) : la maison revient au parent si
+     l'enfant meurt avant lui. Il en existe 2 versions, l'une ecarte les
+     petits-enfants, l'autre les protege. Ce n'est pas au spectateur de
+     trancher seul : question a poser au notaire, a voix haute.
+  b) L'interdiction de ceder (art. 900-1 code civil) : possible, mais encadree
+     — elle doit etre temporaire et justifiee par un INTERET serieux et
+     legitime (c'est le mot de la loi, pas « motif »), et un juge peut
+     autoriser l'enfant a disposer du bien si cet interet a disparu ou si un
+     interet plus important l'exige. Ce n'est donc pas une protection
+     eternelle, et c'est au notaire de la rediger.
+  c) LA REVERSION D'USUFRUIT AU SURVIVANT, si l'on est 2 a signer. C'est la
+     seule des 3 qui se dit en entier, parce qu'elle a une consequence directe
+     pour celui qui reste : sans elle, au premier deces, l'enfant devient plein
+     proprietaire de la moitie de la maison.
+     Elle n'existe que si elle est ecrite dans l'acte : ce n'est pas une regle
+     automatique, et c'est precisement pour cela qu'on la demande au notaire.
+     Entre epoux ou partenaires de PACS, elle ne coute aucun droit — art.
+     796-0 quater et 796-0 bis CGI. Si les 2 signataires ne sont ni maries ni
+     pacses (concubins, frere et soeur coproprietaires), l'exoneration ne
+     s'applique pas et le cout n'est pas le meme : question au notaire.
+     Ce que garde exactement le survivant sur la moitie concernee ne s'affirme
+     pas ici : le conjoint survivant dispose d'un droit viager au logement
+     (art. 764 code civil), et son articulation avec une nue-propriete deja
+     donnee est une question de notaire.
+
+1.9 — LA PEUR JUMELLE : LA MAISON DE RETRAITE
+
+Celui qui a l'usufruit a le droit de donner le bien a bail — art. 595 code
+civil — et les loyers lui reviennent parce que ce sont des fruits civils :
+art. 582 et 584 code civil. Ne pas rattacher les loyers au seul art. 595.
+Concretement : en cas d'entree en etablissement, le logement peut etre mis en
+location et les loyers sont pour l'usufruitier, pas pour l'enfant. Ils aident
+a payer.
+
+Deuxieme protection, decidee en amont : on ne donne jamais son epargne en meme
+temps que les murs. L'epargne reste entiere, disponible. C'est la regle des 3
+poches, posee a l'etape 1 : de quoi vivre, de quoi faire face a un imprevu, et
+seulement ensuite de quoi transmettre. Dans cet ordre.
+
+Distinction a tenir : placer son epargne (etape 3) n'est pas la donner — elle
+reste disponible. Donner les murs, c'est autre chose, et c'est definitif.
+
+LIMITE A NE PAS FRANCHIR : on n'affirme rien sur l'aide sociale, sur l'ASH,
+sur une quelconque recuperation par les departements, ni sur le calcul des
+frais d'etablissement. Ce n'est pas verifie dans nos sources, et cela ne se
+dit pas. On s'en tient aux art. 595, 582 et 584.
+
+1.10 — L'APAISEMENT DE FIN, QUI EST AUSSI UNE INFORMATION JURIDIQUE
+
+Ecrire une date sur une feuille n'est pas signer un acte. Une donation de
+logement n'existe que devant notaire (art. 931 code civil) : personne ne peut
+faire donner un logement par erreur, par courrier ou par telephone. Rien de ce
+qui se fait aujourd'hui n'engage a quoi que ce soit, et rien ne peut se casser.
+Le spectateur peut s'arreter a la fin de cette video et reprendre plus tard :
+ce qu'il a ecrit reste valable, et son Calendrier est complet.
+
+Il peut aussi mettre la video sur pause pour ecrire. Cela se dit, une fois,
+au moment ou on lui demande d'ecrire : c'est la reassurance la plus utile pour
+quelqu'un qui ecrit lentement.
+
+1.11 — CE QUE LE TOURNEUR FAIT S'IL NE SAIT PAS REPONDRE
+
+Trois questions reviennent et n'ont pas de reponse generale : la valeur exacte
+du bien, le montant des frais d'acte, et le choix entre les 2 versions du droit
+de retour. La reponse est la meme dans les 3 cas et se dit sans embarras :
+c'est une question pour le notaire, ses tarifs sont reglementes (art. L444-1 et
+suivants du code de commerce), il chiffre l'acte avant la signature, et la
+question figure sur la feuille imprimee pour etre posee a voix haute le jour du
+rendez-vous. Ne pas dire que le devis est gratuit.
+
+1.12 — LA VALEUR DU LOGEMENT, LE SEUL CHIFFRE QUE LE SPECTATEUR FABRIQUE
+
+Ce n'est PAS le montant qui figure sur l'avis de taxe fonciere : celui-la est
+calcule sur la valeur locative cadastrale et ne dit rien du prix de vente.
+Trois sources acceptables, dans cet ordre : un prix de vente recent dans la
+rue, une estimation d'agence, ou le prix qu'il demanderait s'il vendait demain.
+Une estimation suffit : elle se corrige d'un trait de stylo sur la meme ligne
+le jour ou il en a une meilleure. Aucune case ne doit rester vide pour cause de
+chiffre imparfait — c'est a dire tel quel.
+
+1.13 — POUR QUI CETTE ETAPE EST FAITE, ET POUR QUI ELLE NE L'EST PAS
+
+Elle vaut pour un bien immobilier possede : le logement habite, ou un bien mis
+en location. Le spectateur qui n'est proprietaire d'aucun bien n'a rien a
+ecrire ici et passe a la video 6 sans rien manquer. Cela se dit au tout debut,
+pas a la fin : sinon il subit 14 minutes avec une feuille qu'il ne peut pas
+remplir.
+
+Le cas type est celui d'un enfant unique. Donner la nue-propriete du logement
+a un seul enfant quand il y en a plusieurs ouvre les questions du rapport et de
+la reserve hereditaire (art. 843 et 913 code civil). On ne les traite pas ici :
+elles figurent dans les questions a poser au notaire.
+
+
+------------------------------------------------------------
+2. CE QUE JE MONTRE A L'ECRAN
+------------------------------------------------------------
+
+Police >= 28 pt, fond clair, 1 seul chiffre en grand par carton — sauf les
+cartons 7, 9 et 11, qui sont des tableaux et n'ont pas d'autre texte a l'ecran.
+Les numeros d'articles vont en petit, en bas de carton. Bandeau de mention
+legale permanent, retire sur les cartons 7, 9 et 11 pour la lisibilite : la
+mention y est de toute facon dite et affichee en entier au carton 20.
+
+ 1. Carton titre : « ETAPE 4 — Votre maison, et vos 71 ans ». Aucun chiffre.
+ 2. TROIS IMAGES FIXES DU MEME CARTON, aucune animation necessaire :
+    - etat 1 : deux colonnes cote a cote, « L'USAGE » et « LE TITRE », vides ;
+    - etat 2 : les deux colonnes remplies ligne a ligne au rythme de la voix
+      (usage : habiter · la cle · louer · encaisser les loyers — titre : mon
+      nom sur le papier · le droit de vendre) ;
+    - etat 3 : les deux colonnes inchangees, reunies par une accolade, et sous
+      l'accolade, en grand : « PLEINE PROPRIETE ».
+ 3. Carton « L'usufruit = l'usage a vie · La nue-propriete = le titre ».
+    Mention : art. 578 code civil.
+ 4. Carton en 3 lignes qui apparaissent une par une, avec une mention alignee
+    sur chaque ligne :
+      « il ne peut pas entrer »            — art. 578 et 599 code civil
+      « il ne peut pas vous faire partir » — art. 578 et 599 code civil
+      « il ne peut pas vendre votre maison libre : s'il cede son papier,
+        l'acheteur attend comme lui »      — art. 621 al. 2 code civil
+ 5. Carton « Taxe fonciere : etablie a votre nom ». Mention : art. 1400 II CGI.
+ 6. Carton « Au deces, l'usufruit s'eteint : 0 EUR de droits ».
+    Mentions : art. 1133 CGI · art. 751 CGI — donation faite chez le notaire,
+    plus de 3 mois avant le deces.
+ 7. TABLEAU DU BAREME art. 669 CGI, 3 lignes, dans la redaction exacte de la loi :
+      « Moins de 71 ans revolus -> nue-propriete 60 % »
+      « Moins de 81 ans revolus (71 a 80 ans) -> 70 % »
+      « Moins de 91 ans revolus (81 a 90 ans) -> 80 % »
+    Ne pas afficher les tranches en dessous de 61 ans. La ligne 81-90 reste a
+    l'ecran : c'est la ligne d'une partie de l'audience.
+ 8. Incrustation sur le meme tableau : « revolus = accomplis. La bascule tombe
+    le matin de votre 71e anniversaire. » Puis, en second temps : « si vous
+    etes deux, chacun a son age, donc sa propre ligne. »
+ 9. LE CALCUL, anime ligne par ligne, une ligne par phrase dite :
+      480 000 x 60 % = 288 000 · / 2 = 144 000 par parent
+      · - 100 000 par parent et par enfant (art. 779) = 44 000
+      · bareme art. 777 = 6 994,35 EUR par parent
+      · x 2 = 13 988,70 EUR -> arrondi 13 989 EUR
+    Les centimes s'affichent sur cette ligne, et sur elle seule.
+    UN SEUL bandeau bas, affiche AVANT la premiere ligne et tenu jusqu'au bout :
+    « cas type · 1 enfant · valeurs constantes · aucune autre donation depuis
+    15 ans · au deces, tout passe d'abord au conjoint survivant, exonere ·
+    frais de l'acte non deduits · art. 669 · 779 · 784 · 777 CGI ».
+    Pas de second bandeau, pas de mention legale sur ce carton.
+10. Carton « Epargne placee avant 70 ans : 0 EUR de droits ».
+    Mentions : art. L132-12 code des assurances · art. 990 I CGI, abattement de
+    152 500 EUR par beneficiaire, tous contrats du meme assure confondus.
+11. Carton avant/apres : « 82 194 EUR -> 13 989 EUR », fleche, « ecart :
+    68 205 EUR ». Sous-titre imprime sur le carton : « resultat de 2 decisions :
+    l'epargne (etape 3) et les murs (etape 4) ».
+    Mentions : art. 641 CGI — declaration de succession a deposer dans les
+    6 mois d'un deces en France metropolitaine · art. 1701 CGI — droits payes
+    au depot · art. 1717 CGI — paiement fractionne ou differe possible.
+    Ce carton arrive ICI, apres le calcul, jamais en ouverture.
+12. Carton « Donation signee apres votre 71e anniversaire : 9 600 EUR de droits
+    en plus, pour le couple ».
+    Mentions : art. 669 CGI (60 % -> 70 %) · art. 777 CGI, tranche a 20 %.
+13. Carton « Ce que vous perdez : la vente seul. Pour vendre la maison entiere,
+    votre signature et la sienne. » Mention : art. 578 et 621 al. 1 code civil.
+14. Carton « Les 3 phrases a demander a mon notaire », 3 lignes :
+      « droit de retour, 2 versions — art. 951 c. civ. »
+      « interdiction de ceder, temporaire et justifiee par un interet serieux
+        et legitime — art. 900-1 c. civ. »
+      « reversion d'usufruit au survivant (maries ou pacses) — art. 796-0
+        quater et 796-0 bis CGI »
+15. Carton « Maison de retraite : l'usufruitier loue et encaisse les loyers ».
+    Mentions : art. 595 code civil · art. 582 et 584 code civil.
+16. Carton charges, 3 lignes, chacune avec sa mention :
+      « entretien courant -> vous »        — art. 605 c. civ.
+      « taxe fonciere -> vous »            — art. 608 c. civ. et art. 1400 II CGI
+      « grosses reparations -> votre enfant » — art. 605 et 606 c. civ.
+    Sous-titre plus petit : « si la grosse reparation vient d'un defaut
+    d'entretien, l'usufruitier en est aussi tenu — art. 605 c. civ. »
+17. Carton « A faire maintenant », 3 lignes numerotees : la date · la valeur ·
+    la multiplication.
+17 bis. CARTON DE PAUSE, tenu 45 secondes, minuterie visible ou non :
+    « PAUSE — prenez le temps d'ecrire. Rien ne presse. »
+18. Carton « Ecrire une date n'est pas signer un acte ».
+    Mention : art. 931 code civil.
+19. Le Calendrier des 3 dates a l'ecran, ses 3 lignes cochees une par une :
+    compteur des 15 ans · 70e anniversaire · 71e anniversaire.
+20. Carton de mention legale, tenu 6 secondes, lisible sans pause.
+21. Carton de renvoi : « Video 6 — l'argent deja donne de la main a la main ».
+
+L'ORDRE 20 PUIS 21 EST IMPERATIF : la mention legale ferme la video, le renvoi
+vient apres. C'est cette liste qui sert de conducteur au montage.
+
+A FABRIQUER AVANT LE TOURNAGE — hors cartons :
+ - LA FICHE « LES MURS DE MON LOGEMENT ». Elle n'existe pas encore : sans elle,
+   le bareme, le calcul-modele, les charges et les 3 phrases au notaire
+   retombent a l'oral et la video repasse a 20 minutes. Voir section 8. Elle
+   doit etre publiee sous la video, en telechargement, avant la mise en ligne.
+ - LE CALENDRIER DES 3 DATES : la ligne « Date n° 3 — mon 71e anniversaire »
+   existe deja dans le document livre, dans cet ordre (15 ans en 1, 70e en 2,
+   71e en 3). C'est l'ordre a dire a l'oral. En revanche, le document ne porte
+   aujourd'hui que 60 % et 70 % : la ligne 80 % (81 a 90 ans) doit y etre
+   ajoutee avant tournage, sinon une partie de l'audience cherche a l'ecrit une
+   ligne qu'elle vient d'entendre.
+   Republier le Calendrier corrige AU MEME ENDROIT que la version d'origine, et
+   prevoir la phrase orale du point 5 pour ceux qui ont deja imprime l'ancienne.
+
+
+------------------------------------------------------------
+3. CE QUE JE DIS, DANS L'ORDRE
+------------------------------------------------------------
+
+10 points. Ce sont des reperes, a dire avec ses mots — pas un texte a lire.
+Le minutage tient les 14 minutes a 125 mots par minute, pause d'ecriture de
+45 s comprise au point 10.
+
+1) CE QUE TRAITE CETTE ETAPE, POUR QUI ELLE EST, ET CE QU'IL FAUT SOUS LA
+   MAIN. (~55 s)
+   Les murs du logement, et la troisieme des 3 dates.
+   > Dire tout de suite pour qui c'est : « Cette etape vaut pour un bien que
+     vous possedez : le logement que vous habitez, ou un bien que vous mettez
+     en location. Si vous n'etes proprietaire d'aucun bien immobilier, il n'y a
+     rien a ecrire ici : vous pouvez passer directement a la video 6, et vous
+     n'aurez rien manque. »
+   A avoir devant soi : le Calendrier des 3 dates rempli aux etapes 1 et 3, la
+   fiche « Les murs de mon logement », une feuille, un stylo, une calculatrice,
+   sa date de naissance, et une idee de la valeur du logement.
+   > Dire ou se trouve la feuille et quoi faire sans elle : « La fiche "Les
+     murs de mon logement" est sous cette video, a imprimer, une seule page
+     recto-verso. Si vous ne pouvez pas l'imprimer, une feuille blanche suffit :
+     nous vous dirons ligne par ligne quoi y ecrire. » (Verifier que la
+     formulation correspond a l'endroit reel ou le document est livre.)
+   > Preciser que la valeur du logement n'est pas le chiffre de l'avis de taxe
+     fonciere, qui porte la valeur locative cadastrale et ne dit rien du prix
+     de vente. Une estimation suffit, elle se corrigera au stylo. Le fond est
+     au § 1.12.
+
+2) ETRE PROPRIETAIRE, C'EST POSSEDER DEUX CHOSES : L'USAGE ET LE TITRE. (~50 s)
+   L'usage : la cle, habiter, louer, encaisser les loyers. Le titre : le nom
+   sur le papier, et le droit de vendre. Les deux reunis = la pleine propriete,
+   la situation de tout le monde : elle se transmet sur 100 % de la valeur. La
+   loi permet de separer les deux : on garde l'usage, on donne le titre.
+   > Les deux colonnes se remplissent a l'ecran pendant qu'on parle. Le mot
+     « pleine propriete » n'arrive qu'au troisieme etat du carton 2.
+
+3) LES DEUX MOTS, ET CE QU'ILS CHANGENT DANS LA VRAIE VIE. (~1 min 15)
+   L'usage a vie s'appelle l'usufruit ; le titre s'appelle la nue-propriete.
+   L'enfant devient proprietaire sur le papier : il ne peut pas entrer, il ne
+   peut pas faire partir — la loi dit qu'il ne peut en rien nuire au droit de
+   l'usufruitier (art. 578 et 599) — et il ne peut pas vendre la maison libre :
+   s'il cede son papier, l'acheteur attend comme lui (art. 621 al. 2). Au
+   quotidien, l'usage ne change pas : on habite, on garde la cle, la taxe
+   fonciere reste etablie a son nom (art. 1400 II CGI). Ce qui change est
+   ailleurs, et on le dit dans un instant.
+   > C'est ici que tout le monde se trompe : prendre le temps, et ne pas
+     enchainer avant que les 3 lignes du carton 4 soient affichees.
+   > Ne pas dire « rien ne change » ni « vous ne demandez la permission a
+     personne » sans borne : c'est l'usage qui ne change pas.
+
+4) AU DECES, L'USAGE S'ETEINT SEUL, ET SANS DROITS. (~40 s)
+   L'enfant, qui avait deja le titre, devient plein proprietaire sans un euro
+   de droits sur cette extinction (art. 1133). Il faut simplement que la
+   donation ait ete faite chez le notaire plus de 3 mois avant le deces : en
+   deca, l'administration presume que la maison entiere fait partie de la
+   succession (art. 751).
+   > Ne pas dire « redevient » : il ne l'a jamais ete.
+   > Ne pas presenter cela comme une astuce ni comme une faille, et ne pas
+     dire que l'art. 751 « protege ». C'est le texte. Enoncer la condition et
+     le delai, puis passer au point suivant.
+
+5) LA TROISIEME DATE : VOTRE LIGNE DU BAREME, ET LE MOT « REVOLUS ». (~1 min 30)
+   Ce qui est transmis n'est pas compte pour la valeur entiere, mais pour une
+   fraction qui depend de l'age au jour de la donation : 60 % avant 71 ans,
+   70 % de 71 a 80 ans, 80 % a partir de 81 ans (art. 669). Une seule ligne a
+   retenir, la sienne. « Revolus » veut dire accomplis : la bascule tombe le
+   matin du 71e anniversaire, pas au 1er janvier.
+   > Le tableau reste a l'ecran pendant tout le point. Dire les 3 lignes, pas
+     seulement la premiere : une partie de l'audience a plus de 81 ans.
+   > Faire entourer la ligne, tout de suite : « Sur votre fiche, entourez
+     maintenant votre ligne — 60, 70 ou 80 %. Une seule. »
+   > Pour ceux qui ont imprime leur Calendrier avant la mise a jour : « Si
+     votre Calendrier ne porte que 60 % et 70 %, ajoutez la troisieme ligne a
+     la main : 81 ans et plus, 80 %. »
+   > Dire que le bareme s'applique a chaque proprietaire selon son propre age :
+     « si vous etes deux, chacun a son age, donc sa propre ligne. »
+
+6) LE CAS CHIFFRE, QUI SERT DE MODELE POUR REFAIRE LE CALCUL CHEZ SOI.
+   (~2 min 20)
+   Annoncer le cas type et les hypotheses AVANT les chiffres, y compris
+   l'hypothese de succession : au premier deces tout revient au conjoint
+   survivant, qui ne paie aucun droit (art. 796-0 bis), et l'enfant recoit la
+   totalite en une seule fois au second deces, avec un seul abattement de
+   100 000 EUR. Preciser que le cas est celui d'un enfant unique, et que
+   l'abattement de 100 000 EUR se compte par parent ET par enfant (art. 779) —
+   ici, 2 parents et 1 enfant ; s'il y a plusieurs enfants, la repartition est
+   une question pour le notaire.
+   Puis derouler le calcul en suivant l'animation : 480 000 x 60 %, la division
+   par 2, l'abattement, les 44 000 EUR taxables, le bareme de l'art. 777, et le
+   total de 13 989 EUR. Rappeler en une phrase que l'abattement se recharge
+   tous les 15 ans et que ce qui a deja ete donne s'impute dessus (art. 784).
+   Puis l'epargne : 40 000 EUR places avant 70 ans, enfant beneficiaire, 0 EUR
+   (art. L132-12 et 990 I, 152 500 EUR par beneficiaire, tous contrats
+   confondus). Enfin les deux chiffres cote a cote : 82 194 EUR sans decision —
+   declaration deposee dans les 6 mois (art. 641), droits payes au depot
+   (art. 1701), paiement fractionne ou differe possible (art. 1717) — contre
+   13 989 EUR regles du vivant. Ecart : 68 205 EUR, resultat de 2 decisions,
+   celle de l'etape 3 et celle-ci. Signaler les frais de l'acte : ils existent,
+   ils s'ajoutent aux droits, aucun montant n'est donne ici, et c'est le notaire
+   qui les chiffre sur le bien reel avant la signature.
+   > Dire les decimales 6 994,35 quand la multiplication par 2 est a l'ecran.
+   > Ne jamais attribuer les 68 205 EUR a la seule decision de cette etape.
+   > Ne pas dire « c'est la maison qui part ». Dire ce qui reste a trouver, et
+     dire l'art. 1717.
+   > Ne rien affirmer sur l'assiette des frais d'acte, et ne pas dire que le
+     devis est gratuit.
+
+7) LE MEME CAS A 71 ANS, PUIS CE QU'ON PERD — DIT EN FACE. (~1 min 20)
+   Meme maison, donation a 71 ans : on transmet sur 336 000 EUR au lieu de
+   288 000 EUR, soit 48 000 EUR de plus pour le couple, taxes a 20 % : 9 600 EUR
+   de droits en plus. Puis, sans transition emphatique : ce que la decision
+   coute vraiment. Une fois le papier parti, on ne vend plus seul — pour vendre
+   la maison entiere, il faut vendre l'usufruit et la nue-propriete ensemble,
+   donc les deux signatures (art. 578 et 621 al. 1). On garde l'usage, la cle,
+   les loyers. Ce n'est pas tout donner : on donne le papier, pas le logement.
+   > Dire « pour le couple » sur les 48 000 EUR, le calcul precedent etait mene
+     par parent. N'enoncer que l'ecart de 9 600 EUR, jamais un total alternatif.
+   > Ne pas laisser entendre que chaque annee d'attente coute. C'est une marche
+     unique : attendre 2 ans ou attendre 6 ans coute exactement la meme chose,
+     et elle se franchit le matin du 71e anniversaire.
+
+8) LES 3 PHRASES QUI PEUVENT ETRE AJOUTEES A L'ACTE. (~1 min 25)
+   Le droit de retour : la maison revient au parent si l'enfant meurt avant lui
+   — 2 versions, la question se pose au notaire (art. 951). L'interdiction de
+   ceder : possible, mais temporaire et justifiee par un interet serieux et
+   legitime, et un juge peut lever la clause si cet interet a disparu ou si un
+   interet plus important l'exige (art. 900-1). Et, si l'on est 2 a signer, la
+   reversion d'usufruit au survivant, qui se dit en entier. Leurs conditions
+   sont sur la feuille.
+   > Ne dire en entier que la troisieme.
+   > Faire cocher : « Sur la feuille, cochez celles de ces 3 phrases qui vous
+     concernent. C'est ce que vous demanderez a votre notaire. »
+
+9) LA MAISON DE RETRAITE, ET L'ORDRE DES 3 POCHES. (~1 min 10)
+   L'usufruitier peut donner le logement a bail (art. 595) et les loyers lui
+   reviennent, ce sont des fruits (art. 582 et 584) : en cas d'entree en
+   etablissement, ils aident a payer. Et la regle d'ordre : on ne donne jamais
+   son epargne en meme temps que les murs — de quoi vivre, de quoi faire face,
+   et seulement ensuite de quoi transmettre. En une ligne, les charges :
+   entretien courant et taxe fonciere au parent (art. 605 et 608 c. civ.,
+   art. 1400 II CGI), grosses reparations a l'enfant (art. 605 et 606 c. civ.),
+   le detail est sur la feuille.
+   > Ne rien affirmer sur l'aide sociale, l'ASH ou une recuperation par le
+     departement. Rien n'est verifie sur ce point, et la question se renvoie au
+     notaire.
+
+10) TROIS GESTES, MAINTENANT — ET CE QUI NE PEUT PAS MAL TOURNER.
+    (~2 min 35, dont 45 s de pause silencieuse)
+    > Dire avant les 3 gestes : « Mettez la video sur pause si vous en avez
+      besoin, et reprenez quand vous avez fini d'ecrire. Elle vous attendra. »
+    Sur le Calendrier des 3 dates, ligne 3, ecrire la date exacte du 71e
+    anniversaire : le jour, le mois, l'annee. Pas l'age, la date. Sur la fiche,
+    ecrire la valeur du logement aujourd'hui, puis multiplier par sa ligne du
+    bareme — 60 %, 70 % ou 80 % selon l'age d'aujourd'hui, pas celui du prochain
+    anniversaire.
+    > Deux proprietaires : « si vous etes deux, chacun a son age et donc sa
+      propre ligne : partagez d'abord la valeur en deux, puis appliquez a
+      chaque moitie la ligne de son proprietaire — article 669 du code general
+      des impots. » Et : « si vos parts ne sont pas egales, ou si la maison
+      n'est qu'a l'un de vous deux, ecrivez votre part a vous. »
+    > Dire, sans dramatiser : « Reportez sur la fiche la date que vous venez
+      d'ecrire sur le Calendrier. Ce chiffre est valable jusqu'a ce matin-la.
+      Apres, c'est la ligne du dessous qui s'applique. » (Ne concerne que ceux
+      qui n'ont pas encore 71 ans ; le dire ainsi.)
+    Laisser tourner le carton de pause, 45 secondes, sans parler.
+    Puis l'apaisement : ecrire une date n'est pas signer un acte, une donation
+    de logement n'existe que devant notaire (art. 931), rien ne peut se casser.
+    Le Calendrier est maintenant complet, ses 3 lignes sont ecrites ; on peut
+    s'arreter ici et reprendre plus tard sans rien perdre.
+    Mention legale, puis le renvoi. Dans cet ordre.
+    > Une estimation de valeur suffit. Celui qui n'a ni prix de voisin ni
+      estimation d'agence ecrit le prix qu'il demanderait s'il vendait demain.
+      Aucune case ne doit rester vide pour cause de chiffre imparfait.
+
+
+------------------------------------------------------------
+4. LES PHRASES A DIRE MOT POUR MOT
+------------------------------------------------------------
+
+8 phrases. Tout le reste se dit librement.
+
+1. « Tant que vous n'avez pas 71 ans, on transmet sur 60 % de la valeur. De 71
+   a 80 ans, c'est 70 %. A partir de 81 ans, c'est 80 %. C'est le bareme de
+   l'article 669 du code general des impots. La loi dit "moins de 71 ans
+   revolus" : revolus, c'est-a-dire accomplis. La bascule tombe le matin de
+   votre 71e anniversaire. »
+
+2. « Le jour de votre deces, l'usage s'eteint tout seul, et votre enfant
+   devient proprietaire de tout, sans un euro de droits : c'est l'article 1133
+   du code general des impots. Il faut simplement que la donation ait ete faite
+   chez le notaire, plus de 3 mois avant le deces : en deca de ce delai,
+   l'administration presume que la maison entiere fait partie de la succession
+   — article 751 du meme code. »
+
+3. « Votre enfant devient proprietaire sur le papier, mais il ne peut pas
+   entrer chez vous et il ne peut pas vous demander de partir : la loi dit
+   qu'il ne peut en rien nuire a votre droit — articles 578 et 599 du code
+   civil. Et il ne peut pas vendre la maison libre de votre presence : s'il
+   cedait son papier, celui qui l'achete attendrait exactement comme lui, parce
+   que votre usage a vie reste intact — article 621, deuxieme alinea, du meme
+   code. En echange, a partir du jour ou le papier est parti, vous ne pouvez
+   plus vendre cette maison tout seul : pour la vendre entiere, il faut vendre
+   l'usufruit et la nue-propriete ensemble, votre signature et la sienne —
+   articles 578 et 621, premier alinea. »
+
+4. « Le cas que nous chiffrons est un cas type ; les chiffres sortent du bareme
+   et de rien d'autre. Nous prenons des valeurs qui ne bougent pas, aucune autre
+   donation dans les 15 annees precedentes, et les frais de l'acte non deduits.
+   Ces frais existent, ils s'ajoutent aux droits, et nous ne vous en donnerons
+   aucun montant : c'est votre notaire qui vous les chiffrera, sur votre bien,
+   avant la signature. Nous supposons aussi un seul enfant, et qu'au premier
+   deces tout revient au conjoint survivant, qui ne paie aucun droit : l'enfant
+   herite alors en une seule fois, avec un seul abattement de 100 000 EUR.
+   C'est ce qui donne les 82 194 EUR. »
+
+5. « Sans aucune decision, les droits s'elevent a 82 194 EUR. La declaration de
+   succession doit etre deposee dans les 6 mois — article 641 — et les droits
+   sont payes a ce moment-la — article 1701. La loi prevoit qu'ils puissent
+   etre payes de facon fractionnee ou differee : article 1717. Avec les 2
+   decisions prises a 65 ans, celle de l'etape 3 sur l'epargne et celle de
+   cette etape sur les murs, ils s'elevent a 13 989 EUR, regles du vivant.
+   L'ecart est de 68 205 EUR, et il vient de ces 2 decisions ensemble, pas
+   d'une seule. »
+
+6. « Si vous etes 2 a signer, l'acte peut prevoir que l'usufruit du premier qui
+   s'en va revienne au survivant. Cela s'appelle la reversion d'usufruit, et
+   elle n'existe que si elle est ecrite dans l'acte. Si vous etes maries ou
+   pacses, elle ne coute aucun droit — articles 796-0 quater et 796-0 bis du
+   code general des impots. Si vous n'etes ni maries ni pacses, le cout n'est
+   pas le meme : c'est une question a poser a votre notaire. Sans cette phrase,
+   au premier deces, votre enfant devient plein proprietaire de la moitie de la
+   maison ; ce que garde exactement le survivant sur cette moitie est aussi une
+   question pour votre notaire — article 764 du code civil. »
+
+7. « Celui qui a l'usage a le droit de donner le logement a bail — article 595
+   du code civil — et les loyers lui reviennent, parce que ce sont des fruits :
+   articles 582 et 584 du meme code. »
+
+8. « Ecrire une date sur une feuille n'est pas signer un acte. Une donation de
+   logement ne peut exister que devant un notaire, article 931 du code civil. »
+   — puis, en cloture : « Ce contenu est pedagogique et general. Il ne
+   constitue pas un conseil personnalise. Chaque situation doit etre validee
+   par votre notaire. »
+
+
+------------------------------------------------------------
+5. LES PIEGES — CE QU'IL NE FAUT SURTOUT PAS DIRE
+------------------------------------------------------------
+
+1. NE PAS DIRE : « la donation protege votre maison des frais de maison de
+   retraite » ou « le departement ne pourra rien reprendre ».
+   DIRE : « l'usufruitier peut donner a bail — article 595 — et les loyers lui
+   reviennent, ce sont des fruits — articles 582 et 584 », et rien de plus.
+   L'aide sociale et la recuperation ne sont pas traitees dans cette methode ;
+   la question se pose au notaire.
+
+2. NE PAS DIRE : « 6 994 EUR par parent » quand la multiplication par 2 est a
+   l'ecran (6 994 x 2 = 13 988, faux).
+   DIRE : « 6 994,35 EUR par parent, soit 13 988,70 EUR, arrondi a 13 989 EUR ».
+   L'arrondi ne se fait qu'a la fin.
+
+3. NE PAS DIRE : « cette decision fait economiser 68 205 EUR ».
+   DIRE : « 68 205 EUR d'ecart, resultat de 2 decisions : l'epargne a l'etape 3
+   et les murs a cette etape ».
+
+4. NE PAS DIRE : « 68 205 EUR de gagnes », sans plus.
+   DIRE que les frais de l'acte s'ajoutent aux 13 989 EUR, sans jamais en
+   chiffrer le montant ni l'ordre de grandeur, et sans rien affirmer sur leur
+   assiette de calcul.
+
+5. NE PAS DIRE : « la bascule tombe l'annee de vos 71 ans » ni « au
+   1er janvier ».
+   DIRE : « le matin de votre 71e anniversaire — la loi dit revolus,
+   c'est-a-dire accomplis ».
+
+6. NE PAS DIRE : « prenez le chiffre de votre taxe fonciere ».
+   DIRE : « ce chiffre est la valeur locative cadastrale, il ne dit rien du
+   prix de vente ; prenez un prix de vente recent dans votre rue, une
+   estimation d'agence, ou le prix que vous demanderiez ».
+
+7. NE PAS DIRE : « votre enfant pourrait vous mettre dehors » ni « il pourrait
+   vendre la maison ».
+   DIRE : « il ne peut ni entrer, ni vous faire partir — articles 578 et 599 —
+   ni vendre la maison libre de votre presence — article 621, deuxieme
+   alinea ».
+   NE JAMAIS afficher l'article 621 sous « il ne peut pas entrer » ni sous « il
+   ne peut pas vous faire partir » : cet article ne traite que de la vente.
+
+8. NE PAS DIRE : « l'interdiction de ceder protege definitivement », ni « un
+   motif serieux et legitime ».
+   DIRE : « elle doit etre temporaire et justifiee par un interet serieux et
+   legitime, et un juge peut autoriser votre enfant a disposer du bien si cet
+   interet a disparu ou si un interet plus important l'exige — article 900-1 du
+   code civil ».
+
+9. NE PAS DIRE : « le droit de retour protege vos petits-enfants ».
+   DIRE : « il en existe 2 versions, l'une les ecarte, l'autre les protege ;
+   c'est une question a poser a votre notaire ».
+
+10. NE PAS DIRE : « votre notaire ne vous en parlera pas si vous ne demandez
+    rien » ni aucune affirmation sur ce que ferait un notaire. Ne pas dire non
+    plus « la loi lui impose un devoir de conseil » : nous n'avons pas d'article
+    a afficher sous cette phrase.
+    DIRE, au besoin : « votre notaire est tenu de vous conseiller sur l'acte
+    qu'il recoit ; c'est le sens de son intervention, et c'est pour cela que ces
+    questions se posent a voix haute le jour du rendez-vous. » Ne jamais ecrire
+    ni faire dire que « le notaire acte ce que vous demandez ».
+
+11. NE PAS DIRE : « c'est une astuce », « une faille », « une optimisation »,
+    ni « ce texte protege ceux qui s'y prennent a temps ».
+    DIRE : « c'est le texte », en affichant l'article.
+
+12. NE PAS DIRE : « les 3 portes », « les 3 verrous », « le guide », « le
+    programme », « module ». DIRE : « les 3 dates », « La Methode Heritage
+    Intact », « etape ».
+
+13. NE PAS DIRE « je », « moi », « mon » dans la bouche du narrateur, ni
+    revendiquer un titre. On parle en « nous ». Les « je » du texte sont
+    uniquement ceux que le spectateur se dit a lui-meme.
+
+14. NE PAS CITER un assureur, une banque, un produit ou un contrat commercial,
+    et ne recommander aucun placement. On nomme le regime et son article
+    (990 I CGI, L132-12 code des assurances), jamais le produit. Aucun
+    temoignage, aucun avis. Aucun montant d'emoluments de notaire.
+
+15. NE PAS DIRE « donner les murs, on peut revenir en arriere ».
+    DIRE : « c'est definitif », puis enchainer sur ce qui est garde et sur les
+    3 phrases de l'acte.
+
+16. NE PAS DIRE que le devis du notaire est gratuit : c'est une affirmation
+    sur la pratique commerciale d'un tiers, sans texte a l'appui.
+    DIRE : « les tarifs des notaires sont reglementes — articles L444-1 et
+    suivants du code de commerce — et c'est lui qui chiffrera l'acte sur votre
+    bien, avant que vous ne signiez quoi que ce soit ».
+
+17. NE PAS DIRE : « le prix de 6 ans d'attente », ni laisser entendre qu'une
+    annee d'attente coute quelque chose.
+    DIRE : « une donation signee apres votre 71e anniversaire coute 9 600 EUR
+    de droits en plus pour le couple. C'est une marche unique : attendre 2 ans
+    ou 6 ans coute exactement la meme chose. »
+
+
+------------------------------------------------------------
+6. CE QUE LE SPECTATEUR FAIT
+------------------------------------------------------------
+
+PENDANT LA VIDEO
+ - Point 5 : il entoure sa ligne du bareme sur la fiche « Les murs de mon
+   logement » — 60 %, 70 % ou 80 % — parce qu'on le lui demande a voix haute.
+   S'il a un Calendrier imprime avant la mise a jour, il y ajoute a la main la
+   ligne « 81 ans et plus, 80 % ».
+ - Point 8 : il coche, sur la fiche, celles des 3 phrases a poser au notaire
+   qui le concernent (droit de retour, interdiction de ceder, reversion
+   d'usufruit s'ils sont 2) — la consigne est dite au point 8.
+ - Point 10, carton de pause de 45 s : il ecrit la date exacte de son 71e
+   anniversaire sur la ligne 3 du Calendrier des 3 dates. On lui a dit qu'il
+   peut mettre la video sur pause.
+ - Point 10 : il ecrit la valeur estimee de son logement, applique a sa part la
+   ligne du bareme correspondant a SON age, et fait de meme pour l'autre
+   proprietaire s'il y en a un, avec l'age et la ligne de celui-ci.
+ - Point 10 : il reporte sur la fiche la date de son 71e anniversaire comme
+   date de validite de son chiffre (seulement s'il n'a pas encore 71 ans).
+ - Le spectateur non proprietaire ne remplit ni la fiche, ni la ligne 3 du
+   Calendrier : il le sait des le point 1.
+
+APRES LA VIDEO
+ - Il corrige, s'il le souhaite, sa valeur estimee quand il obtient une
+   estimation plus precise : un trait de stylo sur la meme ligne.
+ - Il range la fiche avec son Calendrier. Rien d'autre. Aucun courrier, aucun
+   appel, aucune signature ne sont demandes a ce stade.
+
+DOCUMENTS UTILISES
+ - Le Calendrier des 3 dates (remis a l'etape 0, complete ici, version portant
+   les 3 lignes 60 / 70 / 80 %).
+ - La fiche « Les murs de mon logement » — telechargeable sous cette video,
+   1 page recto-verso (a produire, voir section 8). A defaut, une feuille
+   blanche : les lignes du recto se dictent a l'oral au point 10.
+ - Une feuille libre, un stylo, une calculatrice.
+
+
+------------------------------------------------------------
+7. LE RENVOI DE FIN
+------------------------------------------------------------
+
+Vers la VIDEO 6 — l'argent deja donne de la main a la main. Apres la
+conclusion, apres la mention legale a l'ecran, jamais avant. C'est l'ordre de
+la liste des cartons : 20 = mention legale, 21 = renvoi.
+
+Idee a dire, factuellement : les 3 dates sont posees et la video suivante n'en
+ajoute aucune ; elle porte sur les sommes deja donnees a un enfant de la main
+a la main, et sur ce qu'elles deviennent au moment du partage. Pour la
+regarder, avoir sous la main le Calendrier des 3 dates et une feuille pour y
+faire une liste.
+
+Aucun prix, aucune urgence, aucun renvoi vers un autre produit : cette etape
+n'a pas de frontiere sincere a signaler, et les 3 clauses de l'acte renvoient
+au notaire, jamais a un document payant.
+
+
+------------------------------------------------------------
+8. LE LIVRABLE
+------------------------------------------------------------
+
+Deux feuilles A4, police 14 pt minimum.
+
+1. LE CALENDRIER DES 3 DATES, COMPLET.
+   Sa troisieme ligne est renseignee a la fin de cette video :
+   « Mon 71e anniversaire : ____ / ____ / ________ », une case a cocher a
+   3 options — « je n'ai pas encore 71 ans » / « j'ai entre 71 et 80 ans » /
+   « j'ai 81 ans ou plus » — et la consequence ecrite en face : 60 % / 70 % /
+   80 % (art. 669 CGI).
+   A l'issue de cette etape, les 3 lignes sont ecrites : le compteur des 15 ans
+   (etape 1), le 70e anniversaire (etape 3), le 71e (etape 4).
+   A CORRIGER AVANT TOURNAGE : le document livre ne porte aujourd'hui que 60 %
+   et 70 %. La ligne 80 % doit y figurer, et le document corrige doit etre
+   republie au meme endroit que la version d'origine.
+
+2. LA FICHE « LES MURS DE MON LOGEMENT » — a creer, elle n'existe pas.
+   Une page recto-verso, publiee en telechargement sous la video.
+   RECTO :
+     Nombre de mes enfants ................................ _____
+     (imprime : l'abattement de 100 000 EUR se compte par parent ET par
+      enfant — art. 779 CGI)
+
+     1.  valeur estimee de mon logement aujourd'hui ....... __________ EUR
+         (rappel imprime : ce n'est PAS le chiffre de l'avis de taxe fonciere)
+
+     MOI
+     2a. mon age le jour ou j'ecris ceci .................. _____ ans
+     3a. ma ligne du bareme (entourer) ..... 60 %  /  70 %  /  80 %
+     4a. ma part de la valeur x ma ligne ................. __________ EUR
+
+     L'AUTRE PROPRIETAIRE, s'il y en a un
+     2b. son age ......................................... _____ ans
+     3b. sa ligne du bareme (entourer) ..... 60 %  /  70 %  /  80 %
+     4b. sa part de la valeur x sa ligne ................. __________ EUR
+
+     (imprime : le bareme s'applique a chaque proprietaire selon SON age —
+      art. 669 CGI. A parts egales, chaque part = la ligne 1 divisee par 2.
+      Si les parts ne sont pas egales, ecrire sa part reelle. Si le bien
+      n'appartient qu'a une seule personne, ne remplir que 2a, 3a et 4a.)
+
+     5.  ce chiffre vaut jusqu'au ____ / ____ / ________
+         (mon 71e anniversaire) ; apres cette date, ma ligne du bareme
+         devient 70 %.
+
+   VERSO, ce qui sort de l'oral :
+     - le bareme de l'art. 669 en 3 lignes, dans la redaction exacte de la loi,
+       avec la mention imprimee : « chaque proprietaire a sa propre ligne,
+       selon son age » ;
+     - le calcul-modele complet (480 000 x 60 % ... 13 989 EUR), presente comme
+       un modele a refaire avec ses propres chiffres, avec sous la ligne
+       d'abattement la mention imprimee « 100 000 EUR par parent et par
+       enfant — art. 779 CGI », et les hypotheses imprimees en entete :
+       « cas type · 1 enfant · 2 parents de 65 ans, a parts egales · valeurs
+       constantes · aucune autre donation depuis 15 ans · au premier deces,
+       tout revient au conjoint survivant, exonere (art. 796-0 bis CGI), et
+       l'enfant recoit la totalite au second deces avec un seul abattement de
+       100 000 EUR · frais de l'acte non deduits » ;
+     - les 4 phrases a retenir, en gros caracteres : « je garde la cle et les
+       loyers (art. 595, 582 et 584) » · « mon enfant a le titre : il ne peut
+       ni entrer, ni me faire partir (art. 578 et 599), et il ne peut pas
+       vendre la maison libre de ma presence (art. 621 al. 2) » · « je ne
+       pourrai plus vendre seul : pour vendre la maison entiere, il faut sa
+       signature a cote de la mienne (art. 578 et 621 al. 1) » · « au deces, il
+       devient proprietaire sans droits — donation faite plus de 3 mois avant,
+       art. 1133 et 751 CGI » ;
+     - le tableau des charges en 3 lignes : entretien courant -> moi
+       (art. 605 c. civ.) · taxe fonciere -> moi (art. 608 c. civ. et
+       art. 1400 II CGI) · grosses reparations -> mon enfant, la loi visant
+       « les gros murs et les voutes, le retablissement des poutres et des
+       couvertures entieres » (art. 606 c. civ.), avec la reserve du defaut
+       d'entretien : dans ce cas, l'usufruitier en est aussi tenu
+       (art. 605 c. civ.) ;
+     - l'encadre « les 4 questions a poser a mon notaire » : le droit de retour
+       (art. 951, ses 2 versions — celle qui ecarte mes petits-enfants et celle
+       qui les protege), l'interdiction de ceder (art. 900-1, temporaire et
+       justifiee par un interet serieux et legitime, levable par un juge si cet
+       interet a disparu ou si un interet plus important l'exige), — si nous
+       sommes 2 a signer — la reversion d'usufruit au survivant (art. 796-0
+       quater et 796-0 bis CGI, sans droits entre epoux ou partenaires de
+       PACS ; si nous ne sommes ni maries ni pacses, le cout n'est pas le meme),
+       et — si j'ai plusieurs enfants — comment repartir sans leser personne :
+       rapport et reserve (art. 843 et 913 du code civil) ;
+     - en bas de page, la mention obligatoire : contenu pedagogique, ne
+       constitue pas un conseil personnalise ; tout modele d'acte est a faire
+       relire par votre notaire.
+
+CE QUE LE SPECTATEUR A EN MAIN A LA FIN
+Son Calendrier des 3 dates complet, la date exacte de son 71e anniversaire
+ecrite dessus, sa ligne du bareme entouree, la date jusqu'a laquelle son
+chiffre est valable, et le montant qu'il pourrait transmettre aujourd'hui sur
+son propre logement — calcule par lui, sur sa maison, avec ses chiffres. Rien
+n'a ete signe, rien n'a ete envoye.

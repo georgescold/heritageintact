@@ -138,7 +138,7 @@ jetable.
 
 ### Le bump *(demi-journée)*
 - [ ] Dossier Notaire : inventaire, fiche famille, liste des 12 pièces, mail-type de prise de RDV,
-      compte-rendu à trous, + une vidéo de 6 min
+      compte-rendu à trous, + une vidéo de 9 min
 
 ---
 

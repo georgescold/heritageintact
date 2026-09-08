@@ -233,7 +233,8 @@ Décision — donation de la nue-propriété de la maison à l'enfant, par les 2
    Par parent (bien commun)                        = 144 000 €
    Part taxable, par parent = 144 000 − 100 000    =  44 000 €
    403,60 + 403,70 + 573,45 + (44 000 − 15 932) × 20 % = 6 994,35 € par parent
-   DROITS DE DONATION (les deux parents)           = 13 988,70 €  → « 13 989 € »
+   Arrondi à l'euro, DONATION PAR DONATION (art. 1724) =  6 994 € par parent
+   DROITS DE DONATION (les deux parents) = 6 994 × 2   = 13 988 €
    Aux décès : extinction de l'usufruit, art. 1133 =       0 €
 
 Décision — 40 000 € versés sur une assurance-vie avant 70 ans, bénéficiaire : l'enfant
@@ -243,10 +244,10 @@ Décision — acte notarié, dossier prêt
    Émoluments sur la pleine propriété (480 000 €) ≈ 6 000 à 7 500 € TTC — hors calcul,
    à ne pas chiffrer en pub
 
-TOTAL DES DROITS APRÈS         = 13 989 €
-DIFFÉRENCE                     = 68 205 €   (divisé par 6)
+TOTAL DES DROITS APRÈS         = 13 988 €
+DIFFÉRENCE                     = 68 206 €   (82 194 / 13 988 = 5,88 → « près de six fois moins »)
 ```
-**Julien garde la maison, et la famille paie 13 989 € au lieu de 82 194 — réglés par les parents,
+**Julien garde la maison, et la famille paie 13 988 € au lieu de 82 194 — réglés par les parents,
 de leur vivant, à 65 ans.** Les droits de donation sont payés à l'acte ; le compteur des 15 ans
 (art. 784) repart alors, ce qui permet une seconde donation exonérée à 80 ans.
 
@@ -259,7 +260,8 @@ constantes ; pas d'abattement résidence principale au second décès (survivant
 notaire non déduits. Un cas **illustratif**, pas une promesse.
 
 **Chiffres à employer partout, et nulle part d'autres :** 480 000 € · 40 000 € · 1 enfant ·
-**82 194 €** · **13 989 €** · **68 205 € d'écart** · « divisé par 6 ». Tout autre chiffre de cas
+**82 194 €** · **13 988 €** · **68 206 € d'écart** · « près de six fois moins » (le rapport exact
+est 5,88 : « divisé par 6 » est un arrondi en notre faveur, à ne pas imprimer). Tout autre chiffre de cas
 (38 389, 54 194, 23 794, 58 400, 500, 0…) est périmé.
 
 ### La seule exception autorisée — le cas Jean-Pierre (bloc « l'échec » de la page de vente)
@@ -294,6 +296,36 @@ Jean-Pierre existe dans le récit (ouvert en 2003, clause bénéficiaire jamais 
 c'est l'erreur n° 3), mais **aucun montant ne lui est jamais attribué**.
 
 **Nouvelle variante à écrire — famille recomposée :** avec l'abattement beaux-enfants du § 2, un bel-enfant élevé par le défunt paie 60 % au-delà de 15 932 €, là où l'enfant biologique paie 20 % au-delà de 100 000 €. Sur une part de 100 000 € : environ **50 440 €** de droits pour le bel-enfant, **0 €** pour l'enfant biologique. C'est le contraste le plus fort du projet après les 60 % du concubin. À chiffrer proprement une fois l'article 788 III bis confirmé sur source officielle.
+
+---
+
+## Le cas civil illustratif — le don manuel entre 2 enfants
+> ⚪ **Cas CIVIL illustratif, valeurs rondes, sans prénom.** Ajouté le 8 septembre 2026 pour couvrir l'étape 5 (script `scripts-videos/05-etape-5-le-don-manuel.txt`), qui l'employait sans qu'il figure dans cette fiche.
+>
+> **Distinct des cas Julien et Jean-Pierre**, qui n'ont qu'un enfant et ne peuvent donc pas porter une démonstration de fratrie. **Aucun droit de succession n'y est calculé** : la démonstration est civile (le rapport des donations), pas fiscale. Le barème de l'art. 777 n'y est pas mobilisé.
+
+**Situation :** un parent **veuf** — donc **une seule succession**, un seul décès. Avec 2 parents il y aurait 2 successions ouvertes à 2 dates différentes, et le don se rapporterait pour moitié dans chacune : l'addition unique ci-dessous ne correspondrait alors à aucune séquence réelle. Le donateur unique laisse l'arithmétique strictement inchangée.
+
+2 enfants. Il y a 20 ans, **60 000 €** à chacun, le même jour. L'enfant 1 achète un appartement avec cette somme ; l'enfant 2 la dépense.
+
+| Ligne | Montant |
+|---|---|
+| Don initial, identique aux 2 enfants | **60 000 €** |
+| Valeur de l'appartement de l'enfant 1 au jour du partage | **180 000 €** |
+| Biens laissés par le parent au décès | **200 000 €** |
+| Masse à partager = 200 000 + 180 000 + 60 000 | **440 000 €** |
+| Part théorique de chaque enfant = 440 000 / 2 | **220 000 €** |
+| Enfant 1 reçoit = 220 000 − 180 000 | **40 000 €** |
+| Enfant 2 reçoit = 220 000 − 60 000 | **160 000 €** |
+| **ÉCART** = 160 000 − 40 000 | **120 000 €** |
+
+**Contrôle de bouclage :** 40 000 + 160 000 = 200 000 €, soit exactement les biens existants. Le partage boucle, rien n'est inventé.
+
+**Le mécanisme :** art. **860-1** code civil — le rapport d'une somme d'argent est égal à son montant, *sauf* si elle a servi à acquérir un bien, auquel cas le rapport est dû dans les conditions de l'art. 860 (valeur du bien à l'époque du partage, d'après son état à l'époque de la donation). C'est cet article, et lui seul, qui produit les 120 000 €. **Ne jamais afficher l'art. 860 seul** pour un don de somme d'argent.
+
+**Précision obligatoire à l'oral et à l'écran :** les 120 000 € sont l'écart sur ce que les 2 enfants **touchent au partage**, pas sur ce qu'ils ont au total — chacun repart avec 220 000 € de valeur. C'est même le but du rapport. Sans cette précision, le chiffre est cassable en une phrase par n'importe quel contradicteur.
+
+**Formule à employer partout :** *« l'écart entre ce que touchent 2 enfants qui avaient reçu la même somme »*, accompagnée de la mention discrète « exemple chiffré ».
 
 ---
 

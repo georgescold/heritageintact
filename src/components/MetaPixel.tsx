@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
@@ -11,9 +12,26 @@ declare global {
   }
 }
 
-/** Pixel Meta : ne charge rien tant que NEXT_PUBLIC_META_PIXEL_ID n'est pas défini. */
+/**
+ * Pixel Meta : ne charge rien tant que NEXT_PUBLIC_META_PIXEL_ID n'est pas défini.
+ *
+ * ⚠️ ET RIEN DU TOUT SOUS /espace, QUELLE QUE SOIT LA CONFIGURATION.
+ *
+ * Le pixel est monté dans le layout racine, donc sur toutes les pages. Or il
+ * envoie à Meta l'URL COMPLÈTE de la page consultée : sur l'espace membre, cette
+ * URL contient le jeton, c'est-à-dire la clé unique d'un compte sans mot de
+ * passe. Ce serait donner à un tiers publicitaire de quoi entrer chez chacun de
+ * nos acheteurs. Et la mesure n'y perd rien : il n'y a aucune conversion à
+ * suivre derrière le paiement.
+ *
+ * ⚠️ `usePathname()` est appelé AVANT le garde sur PIXEL_ID : un hook React
+ * doit s'exécuter à chaque rendu, sans condition. L'inverse casserait le
+ * composant le jour où la variable d'environnement apparaît en cours de route.
+ */
 export function MetaPixel() {
+  const chemin = usePathname();
   if (!PIXEL_ID) return null;
+  if (chemin.startsWith("/espace")) return null;
   return (
     <Script id="meta-pixel" strategy="afterInteractive">
       {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?

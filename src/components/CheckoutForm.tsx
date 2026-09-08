@@ -5,8 +5,11 @@ import { useRouter } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { confirmCheckout, prepareCheckout } from "@/app/actions";
-import { CONTACT_EMAIL, PRODUCTS, SITE_URL, euros, type Product } from "@/lib/config";
+import { enregistrerReponses } from "@/app/profil";
+import { CONTACT_EMAIL, PRODUCTS, SITE_URL, euros } from "@/lib/config";
+import { QUALIFICATION_ACTIVE, type Reponses } from "@/lib/qualification";
 import { TrustRow } from "./Chrome";
+import { QualificationBloc } from "./QualificationBloc";
 import { Button, Panel } from "./ui";
 
 const PK = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
@@ -41,6 +44,7 @@ export function CheckoutForm({
         bump={bump}
         setBump={setBump}
         total={total}
+        prixFront={prixFront}
         stripe={null}
         elements={null}
       />
@@ -78,6 +82,7 @@ export function CheckoutForm({
         bump={bump}
         setBump={setBump}
         total={total}
+        prixFront={prixFront}
       />
     </Elements>
   );
@@ -95,6 +100,7 @@ function WithStripe(props: {
   bump: boolean;
   setBump: (v: boolean) => void;
   total: number;
+  prixFront: number;
 }) {
   const stripe = useStripe();
   const elements = useElements();
@@ -107,6 +113,7 @@ function Inner({
   bump,
   setBump,
   total,
+  prixFront,
   stripe,
   elements,
 }: {
@@ -115,6 +122,7 @@ function Inner({
   bump: boolean;
   setBump: (v: boolean) => void;
   total: number;
+  prixFront: number;
   stripe: ReturnType<typeof useStripe>;
   elements: ReturnType<typeof useElements>;
 }) {
@@ -125,6 +133,14 @@ function Inner({
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
+  /**
+   * Les quatre réponses facultatives. Elles ne participent NI au montant, NI à
+   * la validation du formulaire : `total` ne les regarde pas et rien ici ne
+   * conditionne l'activation du bouton. Elles ne servent qu'à choisir l'écran
+   * de vente montré après le paiement.
+   */
+  const [reponses, setReponses] = useState<Reponses>({});
+
   // Le montant du PaymentIntent suit la case du bump, en direct.
   useEffect(() => {
     if (elements) elements.update({ amount: Math.round(total * 100) });
@@ -134,6 +150,43 @@ function Inner({
     () => (pending ? "Validation en cours..." : `Valider ma commande : ${euros(total)}`),
     [pending, total],
   );
+
+  /**
+   * ÉCRIT LES QUATRE RÉPONSES DANS `profils`. Un seul appelant possible : le
+   * point du parcours situé juste APRÈS `prepareCheckout` et AVANT
+   * `stripe.confirmPayment`.
+   *
+   * ⚠️ CET INSTANT-LÀ, ET AUCUN AUTRE. C'est le premier où l'identifiant de
+   * commande existe, et le dernier où l'état React est encore vivant :
+   *   · écrire APRÈS `confirmPayment` perdrait les réponses de tous les
+   *     paiements authentifiés par 3-D Secure — la banque redirige le
+   *     navigateur, et au retour ce composant a été remonté à vide ;
+   *   · écrire au moment de la redirection les perdrait aussi : la fonction est
+   *     coupée dès qu'elle répond une redirection ;
+   *   · passer par la chaîne de requête est exclu — une URL finit dans les
+   *     journaux, dans l'en-tête `Referer` et dans l'historique d'un ordinateur
+   *     familial, celui-là même où les enfants dont il est question dans les
+   *     questions viennent lire leurs mails. C'est aussi pourquoi les trois
+   *     lignes qui écrivent `/plan-complet?o=` en dur restent intactes : le
+   *     routage se fait à l'arrivée, à partir de la base.
+   *
+   * Elle n'échoue jamais visiblement. Une information de confort ne fait pas
+   * perdre un paiement : sans ligne écrite, l'acheteur suit le tunnel par
+   * défaut, c'est-à-dire exactement celui d'aujourd'hui.
+   */
+  async function memoriserReponses(orderId: string) {
+    // Deux gardes qui évitent un aller-retour serveur inutile sur le chemin
+    // critique du paiement : drapeau fermé (le bloc n'est pas affiché, il n'y a
+    // rien à écrire) ou aucune case cochée (la server action n'écrirait aucune
+    // ligne de toute façon).
+    if (!QUALIFICATION_ACTIVE) return;
+    if (!reponses.vie && !reponses.enfants && !reponses.av && !reponses.age) return;
+    try {
+      await enregistrerReponses(orderId, email, reponses);
+    } catch {
+      // Silence volontaire. Voir ci-dessus : le paiement prime.
+    }
+  }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -148,6 +201,7 @@ function Inner({
           setError(prep.error);
           return;
         }
+        await memoriserReponses(prep.orderId);
         router.push(`/plan-complet?o=${prep.orderId}`);
         return;
       }
@@ -165,6 +219,11 @@ function Inner({
         setError(prep.error);
         return;
       }
+
+      // 2 bis. Les réponses, tant que l'état React existe encore : la
+      // confirmation qui suit peut partir chez la banque et ne jamais revenir
+      // dans ce composant.
+      await memoriserReponses(prep.orderId);
 
       // 3. Confirmation. `if_required` évite une redirection quand la banque
       // ne demande pas d'authentification forte.
@@ -231,6 +290,26 @@ function Inner({
           </div>
         </Panel>
 
+        {/*
+          LES QUATRE QUESTIONS, ENTRE LES COORDONNÉES ET LA CARTE.
+          Ici et pas ailleurs : après le paiement, l'acheteur a déjà la tête au
+          « c'est fait », et un écran de questions posé à cet instant se lit
+          comme un péage supplémentaire. Avant les coordonnées, il se lirait
+          comme un formulaire d'accès. Entre les deux, il est ce qu'il est :
+          quatre cases facultatives au milieu d'un bon de commande.
+
+          ⚠️ Le bloc n'est PAS numéroté « 1 bis » ni « 2 » : les deux étapes
+          numérotées du bon de commande sont celles qui conditionnent le
+          paiement. Numéroter ce bloc en ferait une étape obligatoire à l'œil,
+          ce que le chapeau passe trois lignes à démentir.
+
+          À `QUALIFICATION_ACTIVE = false`, la page est strictement identique à
+          celle d'aujourd'hui : rien n'est rendu, aucune réponse n'existe, donc
+          aucun routage ne change. C'est ce qui rend le retour en arrière
+          gratuit — il n'y a rien à défaire.
+        */}
+        {QUALIFICATION_ACTIVE && <QualificationBloc valeurs={reponses} onChange={setReponses} />}
+
         <Panel title="2. Paiement sécurisé">
           {stripe ? (
             <PaymentElement options={{ layout: "tabs" }} />
@@ -260,9 +339,12 @@ function Inner({
               className="mt-1 h-6 w-6 shrink-0 accent-orange"
             />
             <span>
+              {/* Le nom se lit dans PRODUCTS, jamais en dur : « Dossier Notaire
+                  Prêt-à-Signer » traînait encore ici alors que le produit a été
+                  renommé, et deux noms pour une seule chose sur le bon de
+                  commande, c'est un acheteur qui doute au moment de payer. */}
               <span className="block text-[1.05rem] font-bold text-blue">
-                OUI, ajoutez le Dossier Notaire Prêt-à-Signer pour {euros(PRODUCTS.bump.price)}{" "}
-                seulement{" "}
+                OUI, ajoutez {PRODUCTS.bump.name} pour {euros(PRODUCTS.bump.price)} seulement{" "}
                 <span className="font-normal text-text-soft line-through">
                   (au lieu de {euros(PRODUCTS.bump.anchor)})
                 </span>
@@ -308,15 +390,31 @@ function Inner({
       {/* Colonne droite : récapitulatif */}
       <div className="lg:sticky lg:top-4 lg:self-start">
         <Panel title="Votre commande">
-          <Line product={PRODUCTS.front} />
-          {bump && <Line product={PRODUCTS.bump} />}
+          {/* ⚠️ LE PRIX EFFECTIF, JAMAIS `PRODUCTS.front.price`. La ligne
+              affichait « 429 € barré → 27 € » pendant que le total juste en
+              dessous annonçait 89 € : deux nombres contradictoires dans le même
+              encadré, et aucune ligne pour expliquer les 62 € d'écart. Le bump,
+              lui, ne varie pas. */}
+          <Line label={PRODUCTS.front.short} anchor={PRODUCTS.front.anchor} price={prixFront} />
+          {bump && (
+            <Line
+              label={PRODUCTS.bump.short}
+              anchor={PRODUCTS.bump.anchor}
+              price={PRODUCTS.bump.price}
+            />
+          )}
           <div className="mt-2 flex items-baseline justify-between border-t-2 border-blue pt-2">
             <span className="font-bold">Total à payer</span>
             <span className="text-[1.5rem] font-bold text-blue">{euros(total)}</span>
           </div>
           <ul className="mt-4 space-y-1 text-[0.95rem]">
             {[
-              "8 modules vidéo, accès immédiat et à vie",
+              // « Module » est interdit sur les PAGES DE VENTE : ici on vend une
+              // méthode, et une méthode se suit par étapes. Le mot est en revanche
+              // parfaitement admis à l'intérieur du produit, où le client sait déjà
+              // ce qu'il a acheté. Le mot
+              // change ce que l'acheteur croit avoir acheté.
+              "8 étapes vidéo, accès immédiat et à vie",
               "Le Simulateur de Facture Invisible",
               "Le Calendrier de vos 3 Dates",
               "Le Plan en 1 Page",
@@ -341,15 +439,20 @@ function Inner({
   );
 }
 
-function Line({ product }: { product: Product }) {
+/**
+ * Une ligne du récapitulatif. Elle reçoit un PRIX, jamais un `Product` : le
+ * prix du produit d'appel dépend du visiteur (compteur, rattrapage), et une
+ * ligne qui irait le relire dans le catalogue recommencerait à mentir.
+ */
+function Line({ label, anchor, price }: { label: string; anchor: number; price: number }) {
   return (
     <div className="flex items-baseline justify-between gap-3 border-b border-grey-line-soft py-2">
-      <span>{product.short}</span>
+      <span>{label}</span>
       <span className="whitespace-nowrap">
-        <span className="mr-2 text-[0.85rem] text-text-soft line-through">
-          {euros(product.anchor)}
-        </span>
-        <strong>{euros(product.price)}</strong>
+        {anchor > price && (
+          <span className="mr-2 text-[0.85rem] text-text-soft line-through">{euros(anchor)}</span>
+        )}
+        <strong>{euros(price)}</strong>
       </span>
     </div>
   );

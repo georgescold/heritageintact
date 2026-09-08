@@ -1,0 +1,891 @@
+============================================================
+VIDÉO 3 — VOTRE SITUATION DE FAMILLE
+Durée cible : 12 minutes | faceless, voix + écran
+============================================================
+
+Vidéo 3 du parcours = ÉTAPE 2 de la Méthode. À l'oral on ne dit jamais un
+numéro de vidéo : on dit « étape 2 », et celle d'après est « l'étape 3 ».
+
+⚠ La durée annoncée au spectateur est `e2.minutes` dans src/lib/methode.ts, et
+elle vaut 9. La somme des points de la section 3 fait environ 12 minutes.
+Passer `e2.minutes` à 12 avant le tournage : le commentaire du fichier dit
+lui-même qu'une étape annoncée courte et longue à l'écran est une trahison de
+plus. La ligne 3 ci-dessus doit toujours égaler `e2.minutes`.
+
+Source : strategie/scripts-videos/02-etape-2-le-mariage.txt (étape 2 de la
+Méthode Héritage Intact). Le fond de ce script est conservé intégralement.
+Ce qui a été retiré : les scènes, les figures de style, le bloc « pourquoi
+personne ne vous l'a dit », le rappel du cas Julien, et les listes de droit qui
+partent sur le document imprimé.
+
+Ce que le spectateur sait faire à la fin :
+  — nommer son régime matrimonial exact, ou savoir quelle question poser et à qui ;
+  — dire s'il a ou non un contrat de mariage, et s'il a ou non une donation au
+    dernier vivant ;
+  — dire pourquoi un conjoint survivant et un partenaire de PACS survivant ne
+    paient rien, pourquoi un concubin paie 60 % au-delà de 1 594 €, et pourquoi
+    un partenaire de PACS ne reçoit rien sans testament ;
+  — demander gratuitement une copie intégrale de son acte de mariage.
+
+Ce qu'il lui faut sous la main pendant la vidéo : une feuille et un stylo, rien
+d'autre — ou la fiche Ma situation matrimoniale imprimée. Les 3 documents
+(livret de famille, contrat de mariage, donation entre époux) se cherchent
+après, la vidéo finie. C'est la vidéo qui lui apprend lesquels chercher et à
+quoi ils ressemblent : lui demander de les sortir avant, c'est lui demander de
+trouver ce qu'il ne sait pas encore identifier.
+
+
+------------------------------------------------------------
+1. CE QUE JE DOIS SAVOIR AVANT DE TOURNER
+------------------------------------------------------------
+
+L'étape traite 2 choses qui n'ont pas le même poids, et il faut les garder
+distinctes en tête pendant tout le tournage.
+
+  A. Le lien juridique entre les 2 personnes du couple : marié, pacsé, ou ni
+     l'un ni l'autre. C'est ce qui décide de l'impôt et de qui hérite.
+  B. Le régime matrimonial de ceux qui sont mariés : ce qui appartient à qui, et
+     ce qui se transmet à quel moment. C'est ce qui décide du montant.
+
+Le nom exact du régime est ce que beaucoup de gens mariés depuis 40 ans n'ont
+pas en tête. C'est le seul vrai livrable de la vidéo : qu'ils l'aient noté en la
+quittant. Aucune proportion n'est avancée ici, et aucune ne se dit à l'oral :
+rien ne la documente.
+
+
+A — LE LIEN : 0 %, 0 %, OU 60 %
+
+Le conjoint survivant ne paie aucun droit de succession. Le partenaire de PACS
+survivant non plus. C'est l'article 796-0 bis du Code général des impôts, et
+l'exonération est totale : il n'y a pas de plafond, pas de condition de durée,
+pas de barème.
+
+Le concubin — 2 personnes qui vivent ensemble sans être ni mariées ni pacsées —
+est traité par la loi fiscale comme une personne non parente. Il a droit à un
+abattement de 1 594 € (article 788, IV du CGI), et au-delà le taux est de 60 %
+(article 777 du CGI). Rappel de vocabulaire, à redonner à l'oral : un abattement,
+c'est la part qu'on ne taxe pas, les premiers euros que l'État laisse avant de
+commencer à compter.
+
+Le calcul de référence, sur une part de 100 000 € laissée par testament :
+
+      part reçue ............................  100 000,00 €
+      abattement, art. 788, IV CGI ..........  −  1 594,00 €
+      base taxable ..........................    98 406,00 €
+      taux, art. 777 CGI (non-parents) ......         60 %
+      droits ................................    59 043,60 €  →  59 044 €
+      reste au concubin .....................    40 956,40 €  →  40 956 €
+      contrôle : 59 044 + 40 956 = 100 000 €
+
+Les montants sont arrondis à l'euro. Aucun article n'est affiché sur cette
+ligne : l'arrondi n'est pas ce que la vidéo démontre, et un article qui ne le
+fonde pas affaiblirait tous les autres. L'article 1657 du CGI, qui figurait ici,
+vise les impôts directs — les droits de mutation à titre gratuit sont des droits
+d'enregistrement, il ne les couvre pas. Le calcul lui-même a été fait à partir
+des seuls textes : il est à revérifier sur Legifrance avant incrustation.
+
+Point à ne pas simplifier : le PACS et le testament ne règlent pas la même
+chose.
+
+  — Le PACS seul ne fait pas hériter. La loi ne fait pas du partenaire de PACS
+    un héritier : la succession est dévolue aux parents et au conjoint —
+    article 731 du Code civil, l'ordre des héritiers étant fixé aux articles 734
+    et suivants. Le PACS supprime l'impôt. Il ne donne pas le droit de recevoir.
+    Sans testament, le partenaire ne reçoit rien.
+  — Le testament seul fait recevoir la personne désignée, mais sans mariage ni
+    PACS elle est une personne non parente, et elle paie 60 % — article 777 du
+    CGI. Ce taux vaut entre personnes non parentes : un testament en faveur d'un
+    enfant ne fait pas payer 60 %.
+  — Les 2 ensemble : elle reçoit, et elle ne paie rien.
+
+Et la phrase qui accompagne obligatoirement les 3 lignes ci-dessus : nous ne
+disons de faire ni l'un ni l'autre, nous disons ce que la loi fait dans chaque
+cas.
+
+2 limites à connaître pour ne pas dire une phrase fausse.
+
+D'abord, un testament ne peut pas tout donner. L'article 913 du Code civil ne
+donne pas la part des enfants : il donne CE QU'ON PEUT DONNER LIBREMENT quand on
+a des enfants — la moitié avec 1 enfant, le tiers avec 2 enfants, le quart avec
+3 enfants et plus. Le reste revient aux enfants. C'est l'inverse de ce qu'on lit
+spontanément : avec 2 enfants, la part réservée aux enfants est de 2/3 et ce
+qu'on peut donner librement est de 1/3. Ces 3 fractions ne s'affichent et ne se
+disent jamais sans leur titre.
+
+Ensuite, le testament écrit à la main n'est valable qu'à 3 conditions
+cumulatives : écrit en entier de la main du testateur, daté, signé de sa main.
+Article 970 du Code civil. Et un testament écrit à la main doit encore pouvoir
+être retrouvé au décès : il peut être déposé chez un notaire, qui l'inscrit au
+fichier central des dispositions de dernières volontés. C'est ce qui fait qu'on
+le retrouve. Le dépôt a un coût : la seule phrase autorisée est « demandez-lui
+son coût avant de vous engager ». Un testament gardé dans un tiroir et jamais
+inscrit produit exactement le résultat que l'étape cherche à éviter.
+
+Le PACS se déclare à la mairie de la résidence commune, article 515-3 du Code
+civil, et cela ne coûte rien.
+
+
+B — LE RÉGIME : TROIS RÉGIMES, ET UNE DATE QUI TRANCHE
+
+Le régime se détermine en 2 questions, dans cet ordre : y a-t-il un contrat de
+mariage ? Et si non, à quelle date le mariage a-t-il été célébré ?
+
+  1. Communauté réduite aux acquêts — article 1400 du Code civil. C'est le
+     régime légal, donc celui des mariages célébrés en France à partir du
+     1er février 1966 sans contrat. Ce qui a été acheté pendant le mariage est
+     aux 2, quel que soit celui qui a payé. Reste propre à chacun ce qu'il
+     possédait avant le mariage, et — c'est ce qu'on ignore le plus souvent —
+     tout ce qu'il a reçu par héritage, donation ou legs pendant le mariage :
+     article 1405 du Code civil.
+
+  2. Communauté de meubles et acquêts — l'ancien régime légal. Un mariage
+     célébré avant le 1er février 1966, sans contrat, n'est pas sous le régime
+     n° 1. La loi du 13 juillet 1965 (n° 65-570), entrée en vigueur le
+     1er février 1966, n'a pas modifié la composition des biens des couples
+     déjà mariés sans contrat : ceux-là sont restés sous la communauté de
+     meubles et acquêts. Elle s'est en revanche appliquée immédiatement aux
+     pouvoirs des époux — dire « elle n'a rien changé » serait faux. Les
+     mariages célébrés avant 1966 sont concernés, et une partie de l'audience
+     l'est donc aussi. C'est la raison pour laquelle la date se dit sans se
+     presser et s'affiche en entier : sans elle, un spectateur marié en 1963
+     écrit un régime qui n'est pas le sien sur un papier qu'il apportera chez
+     son notaire.
+
+     ⚠ La règle de la date a 3 réserves, et elles sont la raison pour laquelle
+     la fiche fait recopier la date et fait confirmer le régime par le notaire :
+     un couple a pu changer de régime depuis (article 1397 du Code civil) ; les
+     époux mariés avant 1966 ont pu opter pour le nouveau régime légal ; et un
+     mariage célébré à l'étranger, ou avec un conjoint étranger, relève des
+     règles de conflit de lois et n'est pas nécessairement sous un régime
+     français. La phrase 5 de la section 4 porte cette réserve à l'oral, et
+     elle ne s'en sépare pas.
+
+  3. Séparation de biens — article 1536 du Code civil. Chacun garde ce qui est à
+     son nom. Il faut un contrat pour l'avoir.
+
+  4. Communauté universelle — article 1526 du Code civil — avec clause
+     d'attribution intégrale au survivant — article 1524. Attention à ne pas
+     confondre les 2 : la communauté universelle est le régime, l'attribution
+     intégrale est une clause du contrat. Tout est aux 2, et au premier décès
+     tout passe à celui qui reste.
+
+Si le régime porte un autre nom que ces 4-là, la consigne est de le recopier tel
+quel : c'est la première question à poser au notaire.
+
+
+L'ARBITRAGE DE LA COMMUNAUTÉ UNIVERSELLE — le contenu neuf de l'étape
+
+La communauté universelle avec clause d'attribution intégrale se rencontre chez
+des couples mariés dans les années 1970 et 1980. Aucune proportion n'est avancée
+ici : rien ne la documente, et un chiffre non sourcé n'a pas sa place dans une
+vidéo dont toute l'autorité vient des articles affichés.
+
+Elle protège le conjoint, mais pas fiscalement : le conjoint survivant ne paie
+déjà rien, article 796-0 bis du CGI, avec ou sans ce régime. Ce que la clause
+change, c'est qu'il devient seul propriétaire de tout, sans rien partager avec
+les enfants au premier décès. C'est de là que vient la contrepartie, et elle est
+mécanique.
+
+La loi accorde à chaque enfant un abattement de 100 000 € sur chacun de ses
+2 parents — article 779, I du CGI. Ce n'est pas le même objet que l'abattement du
+concubin vu plus haut : celui-ci, personne ne le reçoit, c'est ce que la loi
+efface avant de calculer.
+
+Avec la clause d'attribution intégrale, au premier décès, il ne se transmet en
+principe rien à l'enfant : tout est déjà au survivant. Il n'utilise donc pas son
+abattement sur ce parent-là. Et cet abattement ne se reporte pas : il disparaît.
+Au second décès, tout se transmet d'un seul coup, et il ne reste qu'un abattement
+de 100 000 € au lieu des 2 que la loi prévoyait.
+
+  Note pour celui qui tourne, à ne pas dire à l'oral : l'article 1526 du Code
+  civil, affiché au carton 9, réserve les biens que l'article 1404 déclare
+  propres par leur nature. Une succession peut donc en comporter. C'est pourquoi
+  la formule est « il ne se transmet en principe rien », et jamais « l'enfant
+  n'hérite de rien » : l'article affiché dirait le contraire de la voix.
+
+Ce régime n'est ni bon ni mauvais : c'est un arbitrage, le conjoint d'un côté,
+l'abattement de l'enfant de l'autre. La vidéo le nomme, elle ne le tranche pas.
+Aucune recommandation de changer de régime, dans aucune formulation.
+
+
+LA DONATION AU DERNIER VIVANT — à traiter en une phrase à l'oral
+
+La donation au dernier vivant élargit le choix du conjoint survivant, et ce
+choix se fait au moment du décès — article 1094-1 du Code civil. À la différence
+de la clause d'attribution intégrale, elle laisse l'enfant recevoir quelque
+chose dès le premier décès. Si le conjoint prend l'usufruit de la totalité,
+l'enfant ne reçoit que la nue-propriété, et son abattement ne joue que sur cette
+valeur — article 669 du Code général des impôts. Ne jamais dire qu'elle
+« préserve l'abattement de l'enfant » : ce serait faux, et ce serait une
+recommandation. Nous ne disons pas d'en faire une. Après la vidéo, la seule
+question est : est-ce que cet acte existe chez vous, oui ou non.
+
+Ce qui se passe SANS donation au dernier vivant dépend de la famille, et
+l'article 757 du Code civil dit exactement ceci — les 3 cas se disent, aucun ne
+se supprime :
+
+  — Quand tous les enfants sont les enfants des 2 époux : le conjoint survivant
+    choisit entre l'usufruit de la totalité et le quart en pleine propriété.
+  — Quand il existe un enfant qui n'est pas l'enfant des 2 : il n'y a pas de
+    choix, c'est le quart en pleine propriété.
+  — Quand il n'y a pas d'enfant : l'article 757 ne s'applique pas. Ce sont les
+    articles 757-1 et 757-2 du Code civil — la moitié si les 2 parents du
+    défunt sont vivants, les trois quarts si un seul l'est, la totalité s'il
+    n'y en a plus.
+
+Le détail des options part sur le document imprimé.
+
+⚠ L'article 757 cité ici est celui du CODE CIVIL. L'étape suivante cite
+l'article 757 B du CGI (assurance-vie alimentée après 70 ans). Toujours dire et
+afficher « article 757 du Code civil » en toutes lettres.
+
+
+LA RÉSERVE DE L'ENFANT NON COMMUN
+
+S'il existe dans la famille un enfant qui n'est pas l'enfant des 2 époux, la loi
+lui donne un recours. Il y en a 2, ils ne visent pas la même chose, et ils ne se
+disent pas dans la même phrase :
+
+  — Contre l'avantage donné par le régime matrimonial : cet enfant peut demander
+    que l'avantage matrimonial soit retranché pour ce qui dépasse ce que la loi
+    permet de laisser au conjoint — article 1527, alinéa 2 du Code civil, qui
+    renvoie à l'article 1094-1. L'action ne fait pas tomber tout l'avantage :
+    elle ne porte que sur l'excédent.
+  — Contre une donation faite au conjoint : l'article 1098 du Code civil ouvre
+    une autre faculté à l'enfant d'un premier lit — demander à recevoir en
+    usufruit, et non en pleine propriété, ce qui dépasse. Ce n'est pas une
+    réduction, c'est une conversion.
+
+À l'oral, une phrase et un seul article : celui de l'avantage matrimonial,
+1527, alinéa 2. L'article 1098 part au dos de la fiche, avec sa phrase propre.
+Ne jamais écrire ni dire « articles 1527 et 1098 » ensemble : cela fait dire à
+1098 ce qu'il ne dit pas.
+
+C'est cette frontière qui commande la ligne du point 9 sur Le Plan adapté à
+votre famille.
+
+
+LES 3 DOCUMENTS, À QUOI ILS RESSEMBLENT
+
+À dire au point 9, et à reprendre en légende des dessins du carton 13.
+
+  — Le livret de famille : petit carnet cartonné remis à la mairie le jour du
+    mariage, souvent bleu ou bordeaux, une page par personne. La date et la
+    commune du mariage y figurent.
+  — Le contrat de mariage : chemise cartonnée, le nom d'un notaire imprimé
+    dessus, une date antérieure au mariage.
+  — La donation entre époux, aussi appelée donation au dernier vivant : une ou
+    2 feuilles à l'en-tête d'un notaire, portant les 2 noms, signée après le
+    mariage.
+
+
+LA SORTIE DE SECOURS QUAND PLUS AUCUN PAPIER NE SE RETROUVE
+
+La copie intégrale de l'acte de mariage est gratuite. Ce sont ces 2 mots qui
+comptent : copie intégrale, pas un extrait — l'extrait ne porte pas le nom du
+notaire. L'acte de mariage porte la mention du contrat, sa date, et le notaire
+qui l'a reçu : article 76 du Code civil. L'obligation elle-même vient de
+l'article 1394 du Code civil, qui met à la charge du notaire la délivrance d'un
+certificat destiné à l'officier de l'état civil : les 2 articles s'affichent
+ensemble, c'est le point de la vidéo le plus susceptible d'être relu par un
+notaire.
+
+Où la demander :
+
+  — Mariage célébré en France : à la mairie du lieu de mariage, au guichet avec
+    une carte d'identité, ou par lettre.
+  — Mariage célébré à l'étranger et transcrit sur les registres consulaires : au
+    Service central d'état civil, à Nantes, et non auprès d'une mairie. La copie
+    intégrale y est gratuite également. Une partie de l'audience est dans ce cas,
+    et sans cette ligne elle reste bloquée devant un guichet qui ne peut rien
+    pour elle.
+
+Le modèle de lettre est sur le document imprimé, il ne se dicte pas à l'oral.
+
+
+CE QUI RESTE INTERDIT DANS CETTE VIDÉO
+
+Aucun tarif ni montant d'émoluments de notaire. La gratuité affirmée ne porte
+que sur 3 choses, et sur rien d'autre : le PACS déclaré en mairie, le fait
+d'écrire soi-même un testament à la main, et la copie intégrale de l'acte de
+mariage. Elle ne porte PAS sur le dépôt d'un testament chez un notaire. Aucun
+prix prononcé pour un produit Héritage Intact. Aucun visage : personnes de dos
+uniquement. Le narrateur ne revendique aucun titre, son autorité vient des
+articles affichés.
+
+
+------------------------------------------------------------
+2. CE QUE JE MONTRE À L'ÉCRAN
+------------------------------------------------------------
+
+Bandeau permanent, sur toute la durée, en bas de cadre :
+« Contenu pédagogique — ne constitue pas un conseil personnalisé ».
+Fond clair. Hauteur des capitales ≥ 60 px sur un cadre de 1920 × 1080, soit
+≥ 5,5 % de la hauteur de l'image. Test de validation : le carton doit rester
+lisible sur un téléphone tenu à bout de bras.
+
+1.  Carton titre, une ligne : « Votre situation de famille ».
+
+2.  Écran coupé en 2, tenu du début du point 2 jusqu'à l'apparition du slide de
+    calcul.
+    À gauche : « 0 % » — sous-titre « conjoint survivant ou partenaire de PACS »
+    — incrustation art. 796-0 bis CGI.
+    À droite : « 60 % au-delà de 1 594 € » — sous-titre « concubin » —
+    incrustation art. 788, IV et 777 CGI.
+    Les 2 colonnes portent la même unité : un pourcentage face à un pourcentage.
+    Un « 0 € » face à un « 60 % » fabriquerait un contraste que le droit ne dit
+    pas, et un « 60 % » sans son seuil serait faux.
+
+3.  Slide de calcul, une ligne apparaissant après l'autre :
+        si un testament lui laisse ..........  100 000 €
+        − 1 594 € d'abattement ............... art. 788, IV CGI
+        = 98 406 €
+        × 60 % ............................... art. 777 CGI
+        = 59 044 € de droits
+        il lui reste 40 956 €
+    Aucun article sur la ligne des 59 044 € : l'arrondi ne se source pas.
+
+4.  Slide 3 lignes, apparition successive, chaque ligne avec son article :
+        PACS seul ......... exonéré, mais n'est pas héritier ... art. 731 c. civ.
+        Testament seul .... reçoit, et paie 60 % .............. art. 777 CGI
+        PACS + testament .. reçoit, et paie 0 € ............... art. 796-0 bis CGI
+    Incrustations basses, à faire apparaître au moment où la voix les dit :
+    art. 515-3 code civil sous le mot PACS · art. 970 code civil sous le mot
+    testament.
+    Puis, en incrustation séparée et TITRÉE, jamais nue :
+        « ce que l'on peut donner librement par testament quand on a des
+          enfants — art. 913 du Code civil »
+        1 enfant : la moitié · 2 enfants : le tiers · 3 enfants et plus : le quart
+        le reste revient aux enfants
+    Sans son titre et sans sa dernière ligne, ce bloc se lit comme la part de
+    l'enfant, et il dit alors l'inverse du droit.
+
+5.  Carton de transition : « Marié : avec un contrat, ou sans ».
+
+6.  Slide régime 1 : communauté réduite aux acquêts — art. 1400 code civil —
+    mention « régime par défaut des mariages célébrés en France à partir du
+    1er février 1966, sans contrat ». Incrustation basse : art. 1405 code civil
+    — héritages et donations reçus pendant le mariage : biens propres.
+    Ligne de bas de carton : « sauf si vous avez changé de régime depuis —
+    art. 1397 code civil. Votre notaire le confirme. »
+
+7.  Slide « avant 1966 » : mariage antérieur au 1er février 1966, sans contrat
+    → communauté de meubles et acquêts (ancien régime légal). Incrustation :
+    loi du 13 juillet 1965, entrée en vigueur au 1er février 1966. La date est
+    écrite en entier, en gros.
+    Même ligne de bas de carton qu'à l'écran 6 : « sauf si vous avez changé de
+    régime depuis — art. 1397 code civil. Votre notaire le confirme. »
+
+8.  Slide régime 2 : séparation de biens — art. 1536 code civil — mention
+    « contrat obligatoire ».
+
+9.  Slide régime 3 : communauté universelle — art. 1526 code civil — et en
+    dessous, en incrustation séparée, clause d'attribution intégrale au
+    survivant — art. 1524 code civil. Les 2 articles visibles en même temps,
+    chacun en face de ce qu'il fonde.
+
+10. Slide abattement, titre en clair « ce que la loi efface avant de calculer » :
+    100 000 €, art. 779, I CGI, sous-titre « par parent et par enfant ».
+    Animation en 2 temps : 2 abattements de 100 000 € côte à côte, puis l'un des
+    2 s'efface. Rien d'autre à l'écran. C'est l'image centrale de la vidéo.
+
+11. Slide donation au dernier vivant, 2 colonnes.
+    « Sans », sur 3 lignes :
+        tous les enfants sont ceux des 2 → usufruit de la totalité OU quart en
+        pleine propriété
+        un enfant qui n'est pas celui des 2 → quart en pleine propriété, sans
+        choix
+        pas d'enfant → art. 757-1 et 757-2 du Code civil
+    « Avec » : choix élargi, exercé au moment du décès — art. 1094-1 code civil.
+    Incrustation : « art. 757, 757-1 et 757-2 du Code civil », en toutes lettres.
+    Mention basse : « le détail est sur votre feuille ».
+
+12. Slide réserve, une seule ligne :
+        enfant non commun → l'avantage matrimonial peut être retranché pour ce
+        qui dépasse — art. 1527, al. 2 du Code civil
+    L'article 1098 ne figure pas sur ce carton : il vise autre chose, et il part
+    au dos de la fiche.
+
+13. Slide action : 3 documents · 1 fiche · 0 signature. Les 3 documents dessinés,
+    avec leur légende reprise du bloc « LES 3 DOCUMENTS, À QUOI ILS RESSEMBLENT »
+    de la section 1 : livret de famille, contrat de mariage, donation entre
+    époux.
+
+14. Plan fixe de la fiche Ma situation matrimoniale posée à plat, avec un stylo.
+    Les blocs s'entourent au fur et à mesure que la voix les nomme.
+    Au moment où la voix nomme le bloc 4, incrustation basse d'une ligne :
+    « Le Plan adapté à votre famille — le lien est sous cette vidéo ».
+    Aucun prix, et aucune mention de menu, d'onglet ou de ligne « Outils et
+    Kits » : cet onglet n'existe pas dans l'espace membre.
+
+15. Slide mairie : « copie intégrale de l'acte de mariage — gratuite », sous-titre
+    « pas un extrait ». Incrustation sur 2 lignes :
+        art. 76 du Code civil — l'acte de mariage porte la mention du contrat,
+        sa date et le notaire qui l'a reçu
+        art. 1394 du Code civil
+    Ligne basse : « mariage célébré à l'étranger : Service central d'état civil,
+    Nantes — pas une mairie ».
+
+16. Slide renvoi, une seule ligne :
+        Étape suivante : le 70e anniversaire — avoir sous la main ses contrats
+        d'assurance-vie et la date des versements
+    Aucun prix à l'écran, aucun second chemin.
+
+17. Carton de fin, muet, lu par-dessus : « Contenu pédagogique. Ne constitue pas
+    un conseil personnalisé. Tout modèle d'acte est à faire relire par votre
+    notaire. »
+
+À FABRIQUER EN PLUS DES CARTONS
+
+  — Le document imprimé « Ma situation matrimoniale » (clé
+    `situation-matrimoniale`), qui n'existe pas encore. Sans lui la vidéo n'a pas
+    de livrable et la moitié du droit retombe à l'oral. Il porte : les 3 régimes
+    avec leurs articles et l'art. 1405 · le calcul du concubin en colonne · le
+    tableau PACS seul / testament seul / les 2 · les 3 fractions de l'art. 913
+    avec leur titre · la donation au dernier vivant, sans (art. 757, 757-1 et
+    757-2 c. civ.) et avec (art. 1094-1) · la réserve de l'enfant non commun
+    (art. 1527, al. 2, puis l'art. 1098 avec sa phrase propre) · le modèle de
+    lettre à la mairie et la mention du Service central d'état civil de Nantes ·
+    les 4 blocs à remplir.
+  — Déclarer la clé `situation-matrimoniale` dans `DOCUMENTS` et l'ajouter à
+    `e2.documents` dans src/lib/methode.ts, où `e2.documents` vaut aujourd'hui
+    `[]`. Sans cette déclaration, AUCUN lien n'apparaît sous la vidéo, et la
+    voix décrirait une interface qui n'existe pas.
+  — Sous la vidéo il n'y a pas de bouton d'impression : la page d'étape affiche
+    un LIEN portant le titre du document. Le bouton d'impression est sur la page
+    du document, et son libellé canonique est « Imprimer ce document »
+    (src/components/espace/BoutonImprimer.tsx). La voix dit donc : « cliquez sur
+    Ma situation matrimoniale, juste sous cette vidéo ; sur la page qui s'ouvre,
+    le bouton orange dit Imprimer ce document. »
+  — La ligne du point 9 sur Le Plan adapté à votre famille suppose un lien
+    réellement cliquable sous la vidéo. Aujourd'hui les feuilles-plans
+    (plan-concubins-pacs, plan-famille-recomposee, plan-sans-enfant) existent en
+    contenu mais ne sont pas déclarées dans `DOCUMENTS`, et
+    `PRODUCTS.upsell1.disponible` vaut `false`. Si ce lien n'existe pas au
+    moment du tournage, la ligne se retire du point 9 et l'incrustation de
+    l'écran 14 aussi : on ne renvoie pas vers ce qui n'est pas cliquable.
+
+
+------------------------------------------------------------
+3. CE QUE JE DIS, DANS L'ORDRE
+------------------------------------------------------------
+
+10 points. Durées indicatives, débit 115 mots/minute, temps d'arrêt sur chaque
+chiffre compris.
+
+1. Ce que traite cette étape, et ce qu'elle demande. (30 s — écran 1)
+   2 choses : le lien entre les 2 personnes du couple, et pour les gens mariés,
+   le régime. Il ne faut rien aller chercher maintenant : une feuille et un
+   stylo suffisent. La recherche des papiers se fait après, elle prend
+   20 minutes. On peut mettre en pause à tout moment et reprendre plus tard :
+   rien ne se perd.
+
+2. Conjoint survivant 0 %, partenaire de PACS survivant 0 %, concubin 60 %
+   au-delà de 1 594 €. (1 min — écrans 2 et 3)
+   Redonner la définition du mot abattement en une ligne. Le calcul se montre
+   ligne à ligne, la voix suit l'écran sans le commenter au-delà du résultat.
+   Ne pas conclure sur le chiffre, ne pas le répéter.
+
+3. Le PACS et le testament ne règlent pas la même chose. (1 min 30 — écran 4)
+   2 faits distincts, énoncés l'un après l'autre, sans insister : le PACS efface
+   l'impôt et ne fait pas hériter ; le testament fait recevoir et n'efface pas
+   l'impôt. Le taux de 60 % vaut entre personnes non parentes, le dire dans la
+   même phrase. Conclusion : la phrase 3 de la section 4, dite une seule fois,
+   sans la reprendre ensuite — elle se termine par le fait qu'on ne demande à
+   personne de se pacser ni de faire un testament, et qu'on dit ce que la loi
+   fait dans chaque cas.
+   Enchaîner sur les 3 conditions du testament écrit à la main, sur le fait
+   qu'il peut être déposé chez un notaire qui l'inscrit au fichier central des
+   dispositions de dernières volontés — c'est ce qui fait qu'on le retrouve, et
+   son coût se demande avant de s'engager — et sur le fait qu'un testament ne
+   peut pas tout donner (art. 913 : ce qu'on peut donner librement, le reste
+   revient aux enfants ; le carton porte le titre, la voix aussi).
+
+4. Les gens mariés sont tous sous un régime matrimonial, et ce régime porte un
+   nom. (30 s — écran 5)
+   C'est ce nom qu'il s'agit de retrouver : c'est la seule chose que le
+   spectateur doit trouver après la vidéo.
+
+5. Sans contrat, c'est la date du mariage qui tranche. Le 1er février 1966.
+   (1 min 30 — écrans 6 et 7)
+   Dire la date sans se presser et la laisser affichée. La phrase 5 de la
+   section 4 la contient déjà 2 fois, une dans chaque branche : ne pas la
+   répéter au-delà. À partir du 1er février 1966 : communauté réduite aux
+   acquêts. Avant : communauté de meubles et acquêts. Puis la réserve, qui ne se
+   sépare jamais de la règle : dans les 2 cas, sauf si vous avez changé de
+   régime depuis, et c'est votre notaire qui le confirme. Ajouter l'art. 1405 :
+   ce qui a été reçu par héritage ou donation pendant le mariage reste propre.
+
+6. Avec contrat : séparation de biens, ou communauté universelle.
+   (45 s — écrans 8 et 9)
+   Nommer, ne pas développer : le détail est sur la feuille. Bien séparer le
+   régime (1526) de la clause d'attribution intégrale (1524).
+
+7. Ce que coûte la clause d'attribution intégrale : un abattement de 100 000 €
+   qui n'est pas utilisé et ne se reporte pas. (1 min 45 — écran 10)
+   Le morceau de contenu neuf. Commencer par lever le contresens : le conjoint
+   survivant ne paie déjà rien, avec ou sans ce régime ; ce que la clause change,
+   c'est qu'il devient seul propriétaire au premier décès. Puis laisser
+   l'animation faire le travail : 2 abattements, l'un s'efface. Dire « il ne se
+   transmet en principe rien à l'enfant », jamais « l'enfant n'hérite de rien ».
+   Dire que c'est un arbitrage, et dire dans la même respiration qu'on ne demande
+   à personne de changer de régime, que la décision se prend à 2 avec un notaire,
+   et qu'elle fait partie des 12 questions de l'étape 7.
+
+8. La donation au dernier vivant, et la réserve de l'enfant non commun.
+   (1 min 15 — écrans 11 et 12)
+   Ce qu'elle fait : elle élargit le choix du survivant, et ce choix se fait au
+   moment du décès. Ne pas dire qu'elle préserve l'abattement de l'enfant.
+   Puis les 3 cas de l'article 757 du Code civil, dans l'ordre du carton :
+   tous les enfants sont ceux des 2 → usufruit de la totalité ou quart en pleine
+   propriété ; un enfant qui n'est pas celui des 2 → quart en pleine propriété,
+   sans choix ; pas d'enfant → articles 757-1 et 757-2, la moitié, les trois
+   quarts, ou la totalité. Le détail est imprimé.
+   Après la vidéo : est-ce que cet acte existe, oui ou non.
+   Puis la réserve de l'enfant non commun, une phrase et un seul article :
+   l'avantage matrimonial peut être retranché pour ce qui dépasse, art. 1527,
+   alinéa 2. L'article 1098 ne se dit pas à l'oral, il est au dos de la fiche.
+
+9. Ce qui se fait après la vidéo : 3 documents, 1 fiche, 0 signature — et la
+   copie intégrale si rien ne se retrouve. (2 min 15 — écrans 13, 14, 15)
+   Les 3 documents et à quoi ils ressemblent, avec les descriptions de la
+   section 1. Puis la fiche, bloc par bloc : la date et la commune du mariage en
+   haut, la question du contrat, le nom du régime recopié en toutes lettres, la
+   donation au dernier vivant, et la case du bas.
+   Au moment du bloc 4, une ligne factuelle et une seule : si vous avez coché
+   l'une des 3 premières cases — vivre en couple sans être ni marié ni pacsé, un
+   enfant qui n'est pas l'enfant des 2, ou ne pas avoir d'enfant — un plan écrit
+   pour votre situation existe, et le lien est sous cette vidéo.
+   Insister sur la case « je ne retrouve pas mon contrat » : ne pas deviner,
+   cocher cette case, et demander la copie intégrale — à la mairie du lieu de
+   mariage, ou au Service central d'état civil de Nantes si le mariage a été
+   célébré à l'étranger.
+   Terminer sur ce qui ne peut pas mal tourner : on ne modifie rien, on ne signe
+   rien, on ne prévient personne, on lit 3 papiers et on remplit 1 feuille. Rien
+   n'oblige à le faire le jour même. Et si on s'arrête ici, la feuille remplie
+   reste valable.
+
+10. Le renvoi, puis le carton de fin avec la mention légale.
+    (1 min 20 — écrans 16 et 17)
+    Le renvoi est en section 7. Il vient après la conclusion, pas avant.
+
+Total : environ 12 min 20, changements d'écran respirés compris. Cible annoncée :
+12 minutes, qui doit égaler `e2.minutes` dans src/lib/methode.ts. Si la vidéo
+déborde, la seule coupe autorisée est la réduction du point 6 à une phrase par
+régime. Ne jamais couper : la date du 1er février 1966 et sa réserve, les
+3 conditions du testament, la phrase 3 de la section 4, les 3 cas de l'article
+757, l'animation des 2 abattements, la démarche de copie intégrale, ni la
+consigne de fin.
+
+
+------------------------------------------------------------
+4. LES PHRASES À DIRE MOT POUR MOT
+------------------------------------------------------------
+
+1. « Le conjoint survivant, c'est-à-dire la personne mariée qui reste, ne paie
+   aucun droit de succession. Le partenaire de PACS survivant non plus. Article
+   796-0 bis du Code général des impôts. »
+
+2. « Le concubin, celui avec qui on vit sans être ni marié ni pacsé, a droit à un
+   abattement de 1 594 €. Au-delà, le taux est de 60 %. Articles 788, IV et 777
+   du Code général des impôts. »
+
+3. « Le PACS seul ne fait pas hériter : la loi ne fait pas du partenaire de PACS
+   un héritier — article 731 du Code civil. Le testament seul fait recevoir
+   votre partenaire, mais il lui fait payer 60 % — article 777 du Code général
+   des impôts. Pour qu'il reçoive quelque chose et qu'il ne paie rien, il faut
+   les 2. Nous ne vous disons de faire ni l'un ni l'autre : nous vous disons ce
+   que la loi fait dans chaque cas. »
+
+4. « Un testament écrit à la main doit être écrit en entier de votre main, daté,
+   et signé de votre main. Les 3 conditions doivent être réunies. Article 970 du
+   Code civil. »
+
+5. « À partir du 1er février 1966, un mariage célébré en France sans contrat est
+   sous le régime de la communauté réduite aux acquêts. Avant le 1er février
+   1966, il est sous la communauté de meubles et acquêts. Dans les 2 cas, sauf
+   si vous avez changé de régime depuis. C'est votre notaire qui le confirme. »
+
+6. « La loi accorde à chaque enfant un abattement de 100 000 € sur chacun de ses
+   2 parents. Article 779, I du Code général des impôts. Avec la clause
+   d'attribution intégrale, il ne se transmet en principe rien à l'enfant au
+   premier décès : cet abattement-là n'est pas utilisé, et il ne se reporte
+   pas. »
+
+7. « Demandez une copie intégrale de votre acte de mariage. Pas un extrait : une
+   copie intégrale. C'est gratuit, et l'acte porte la date du contrat et le nom
+   du notaire qui l'a reçu. Articles 76 et 1394 du Code civil. »
+
+8. « Ce que vous venez d'entendre est un contenu pédagogique. Il ne constitue pas
+   un conseil personnalisé. Tout modèle d'acte est à faire relire par votre
+   notaire. »
+
+
+------------------------------------------------------------
+5. LES PIÈGES — CE QU'IL NE FAUT SURTOUT PAS DIRE
+------------------------------------------------------------
+
+— Ne pas dire : « avec un PACS, votre partenaire hérite sans payer ».
+  Faux : le PACS n'ouvre aucun droit à hériter.
+  Dire : « le PACS supprime l'impôt sur ce qu'il recevrait ; pour qu'il reçoive
+  quelque chose, il faut un testament. »
+
+— Ne pas dire : « le testament fait payer 60 % » sans qualifier.
+  Faux dès que la personne désignée est un enfant.
+  Dire : « entre personnes non parentes, le taux est de 60 % — article 777 du
+  Code général des impôts. »
+
+— Ne pas dire : « avec un testament, vous pouvez lui laisser la maison ».
+  Faux dès qu'il y a un enfant.
+  Dire : « un testament ne peut pas tout donner. Avec 1 enfant, on peut en
+  donner librement la moitié ; avec 2 enfants, le tiers ; avec 3 enfants ou
+  plus, le quart. Le reste revient aux enfants. Article 913 du Code civil. »
+  Ne jamais énoncer les 3 fractions sans dire qu'elles sont ce qu'on peut donner
+  librement : seules, elles se comprennent comme la part de l'enfant, et elles
+  disent alors l'inverse du droit.
+
+— Ne pas dire : « si vous n'avez pas de contrat, vous êtes en communauté réduite
+  aux acquêts ». Faux pour les mariages antérieurs au 1er février 1966.
+  Dire : la phrase 5 de la section 4, en entier, avec les 2 cas ET la réserve du
+  changement de régime.
+
+— Ne pas dire que la loi de 1965 « n'a rien changé pour les couples déjà
+  mariés ». Faux : elle s'est appliquée immédiatement aux pouvoirs des époux.
+  Dire : « elle n'a pas modifié la composition des biens des couples déjà mariés
+  sans contrat. »
+
+— Ne pas dire « sans donation au dernier vivant, le conjoint choisit entre
+  l'usufruit de la totalité et le quart ». Faux s'il existe un enfant qui n'est
+  pas l'enfant des 2 — il n'y a alors aucun choix — et faux s'il n'y a pas
+  d'enfant, où ce sont les articles 757-1 et 757-2.
+  Dire : les 3 cas du carton 11, dans l'ordre.
+
+— Ne pas dire que la donation au dernier vivant « protège le conjoint sans faire
+  disparaître l'abattement de l'enfant ». Faux : si le conjoint prend l'usufruit
+  de la totalité, l'enfant ne reçoit que la nue-propriété et son abattement ne
+  joue que sur cette valeur — article 669 du CGI. Et ce serait une
+  recommandation.
+  Dire : « elle élargit le choix du conjoint survivant, et ce choix se fait au
+  moment du décès. Nous ne vous disons pas d'en faire une. »
+
+— Ne pas dire : « la communauté universelle est une erreur », ni « il faudrait en
+  changer », ni « demandez à votre notaire de le modifier ».
+  Interdit : c'est une recommandation personnalisée.
+  Dire : « c'est un arbitrage : le conjoint d'un côté, l'abattement de l'enfant
+  de l'autre. Nous ne vous disons pas de changer de régime. Cette décision se
+  prend à 2, avec un notaire, et elle fait partie des 12 questions de l'étape 7. »
+
+— Ne pas dire que la communauté universelle évite des droits au conjoint. Faux :
+  le conjoint survivant est exonéré de toute façon, article 796-0 bis.
+  Dire : « ce que la clause change, c'est qu'il devient seul propriétaire de
+  tout au premier décès. »
+
+— Ne pas dire « l'enfant n'hérite de rien au premier décès ». Trop absolu :
+  l'article 1526, affiché au même moment, réserve les biens propres par nature.
+  Dire : « il ne se transmet en principe rien à l'enfant. »
+
+— Ne pas confondre le régime et la clause. La communauté universelle, c'est
+  l'article 1526. L'attribution intégrale au survivant, c'est une clause du
+  contrat, article 1524. Les 2 articles restent affichés en même temps.
+
+— Ne pas dire « articles 1527 et 1098 » dans la même phrase. L'article 1527,
+  alinéa 2 permet de retrancher l'avantage matrimonial pour ce qui dépasse ;
+  l'article 1098 ouvre à l'enfant d'un premier lit une faculté différente, celle
+  de recevoir en usufruit ce qui dépasse. Ce n'est pas une réduction.
+  Dire à l'oral : le seul article 1527, alinéa 2. Le 1098 est imprimé.
+
+— Ne pas dire « article 757 » seul. Dire et afficher « article 757 du Code
+  civil » : l'étape suivante cite l'article 757 B du CGI, qui traite d'autre
+  chose.
+
+— Ne pas afficher d'article sur la ligne de l'arrondi. L'article 1657 du CGI
+  vise les impôts directs ; les droits de succession sont des droits
+  d'enregistrement. Un article qui ne fonde pas ce qu'il accompagne affaiblit
+  tous les autres.
+
+— Ne pas dire que la démarche de copie intégrale « peut prendre du temps » ou
+  « n'aboutit pas toujours ». Rien ne le documente ici.
+  Dire ce qui est vérifié : c'est gratuit, au guichet avec une carte d'identité
+  ou par lettre, et l'acte porte le nom du notaire.
+
+— Ne pas dire « la mairie » sans réserve. Pour un mariage célébré à l'étranger,
+  c'est le Service central d'état civil de Nantes.
+
+— Ne pas donner de tarif de notaire, ni dire qu'un devis est gratuit. La seule
+  phrase autorisée si le sujet se présente : « demandez-lui son coût avant de
+  vous engager. » La gratuité ne se dit que pour le PACS en mairie, le fait
+  d'écrire soi-même un testament à la main, et la copie intégrale de l'acte de
+  mariage — pas le dépôt d'un testament chez un notaire.
+
+— Ne pas dire à quelqu'un qu'il devrait se marier ou se pacser. On expose ce que
+  la loi fait dans chaque cas, on ne conseille pas un état civil.
+
+— Ne citer aucune proportion : « une personne sur deux », « la moitié des
+  gens », « la plupart ». Rien ne les documente.
+
+— Ne pas dire que le spectateur a « fait une erreur », qu'il « ignore » quelque
+  chose, ou qu'« être marié ne suffit pas ». Formuler la question, pas le
+  manque : « la première question de la fiche est : ai-je un contrat de mariage,
+  oui ou non ? »
+
+— Ne pas envoyer chercher un menu, un onglet ni une ligne « Outils et Kits » :
+  l'espace membre est une seule page dépliée. Le seul chemin qui se dit est
+  « le lien est sous cette vidéo ».
+
+
+------------------------------------------------------------
+6. CE QUE LE SPECTATEUR FAIT
+------------------------------------------------------------
+
+PENDANT LA VIDÉO
+Il prend une feuille et un stylo. S'il veut la fiche, il clique sur « Ma
+situation matrimoniale », juste sous la vidéo ; sur la page qui s'ouvre, le
+bouton orange dit « Imprimer ce document ». Il écrit en haut la date de son
+mariage et la commune où il a été célébré. Il ne part chercher aucun papier
+maintenant.
+
+APRÈS LA VIDÉO — environ 20 minutes
+1. Il cherche 3 documents : le livret de famille · le contrat de mariage s'il
+   existe (chemise cartonnée, nom d'un notaire, date antérieure au mariage) ·
+   l'acte « donation entre époux » ou « donation au dernier vivant » (une ou
+   2 feuilles à l'en-tête d'un notaire, les 2 noms, signée après le mariage).
+2. Il répond aux 3 questions de la fiche :
+   — ai-je un contrat de mariage, oui ou non ? Si non, la date du mariage donne
+     le régime, à faire confirmer par le notaire. S'il ne sait pas, il ne devine
+     pas : il coche « je ne retrouve pas mon contrat ».
+   — si j'ai un contrat, comment s'appelle mon régime ? Recopié en toutes
+     lettres depuis les premières lignes du contrat, même si le nom ne
+     correspond à aucun de ceux de la vidéo.
+   — ai-je une donation au dernier vivant, oui ou non ?
+3. Il coche en bas la case qui décrit sa famille.
+4. S'il n'a rien retrouvé : il demande une copie intégrale de son acte de
+   mariage, au guichet ou par lettre (modèle au dos de la fiche), et il note la
+   date de sa demande.
+   — mariage célébré en France : à la mairie du lieu de mariage ;
+   — mariage célébré à l'étranger : au Service central d'état civil, à Nantes.
+   Dans les 2 cas la copie intégrale est gratuite.
+5. Il range la fiche dans le Classeur Héritage Intact, intercalaire « Notaire ».
+
+Rien n'oblige à le faire le jour même.
+
+CE QUI NE PEUT PAS MAL TOURNER, À DIRE À LA FIN
+Il ne modifie rien, ne signe rien, ne prévient personne. Il lit 3 papiers et
+remplit 1 feuille. S'il s'arrête ici, la feuille remplie reste valable et lui
+servira telle quelle à l'étape 7. S'il ne sait pas répondre, il ne devine pas :
+au bloc 1 il coche « je ne retrouve pas ces informations », au bloc 2 « je ne
+retrouve pas mon contrat », au bloc 3 « je ne sais pas ». Ces cases ne sont pas
+un échec : elles deviennent une question à poser au notaire.
+
+
+------------------------------------------------------------
+7. LE RENVOI DE FIN
+------------------------------------------------------------
+
+Un seul renvoi, dit après la conclusion, sans prix et sans urgence. Écran 16.
+
+L'étape suivante — l'étape 3 — porte sur la date du 70e anniversaire et sur
+l'assurance-vie : une même somme versée avant ou après cette date ne se
+transmet pas de la même façon. Pour la regarder, avoir sous la main ses contrats
+d'assurance-vie et, pour chacun, la date des versements.
+
+Le cas particulier ne se traite pas ici. Il a déjà été dit une fois, en une
+ligne factuelle, au point 9, au moment où le spectateur coche le bloc 4 :
+si l'une des 3 premières cases est cochée, le plan écrit pour cette situation
+existe et le lien est sous la vidéo. Le répéter en fin de vidéo transformerait
+la conclusion en aiguillage, et ferait choisir entre 2 destinations quelqu'un
+qui vient d'écouter 12 minutes.
+
+
+------------------------------------------------------------
+8. LE LIVRABLE
+------------------------------------------------------------
+
+La fiche « Ma situation matrimoniale » remplie — 1 page, gros caractères, à
+imprimer, cases cochées à la main.
+
+  Bloc 1 — Le mariage
+     Date du mariage : .................... (c'est elle qui détermine le régime
+     en l'absence de contrat)
+     Commune du mariage : .................... (nécessaire pour demander la copie
+     intégrale)
+     [ ] Je ne retrouve pas ces informations → elles figurent sur le livret de
+         famille et sur l'acte de mariage.
+
+  Bloc 2 — Le contrat
+     [ ] Je n'ai pas de contrat de mariage
+         [ ] Mariage célébré à partir du 1er février 1966
+             → communauté réduite aux acquêts (art. 1400 code civil)
+         [ ] Mariage antérieur au 1er février 1966
+             → communauté de meubles et acquêts (loi du 13 juillet 1965)
+         Dans les 2 cas, à faire confirmer par votre notaire — et de même si
+         vous avez changé de régime depuis (art. 1397 code civil), ou si votre
+         mariage a été célébré à l'étranger.
+     [ ] J'ai un contrat de mariage
+         Date du contrat : ....................
+         Notaire qui l'a reçu : ....................
+         Nom du régime, recopié en toutes lettres : ....................
+     [ ] Je ne retrouve pas mon contrat → copie intégrale de l'acte de mariage à
+         demander à la mairie du lieu de mariage, ou au Service central d'état
+         civil de Nantes si le mariage a été célébré à l'étranger.
+         Demande faite le : ...........
+
+  Bloc 3 — La donation au dernier vivant
+     [ ] Oui.  Date : ..............  Notaire : ..............
+     [ ] Non
+     [ ] Je ne sais pas → question reprise dans les 12 questions de l'étape 7
+
+  Bloc 4 — Le point de vigilance qui me concerne
+     [ ] Nous vivons ensemble sans être ni mariés ni pacsés
+     [ ] Il y a dans notre famille un enfant qui n'est pas l'enfant des 2
+     [ ] Je n'ai pas d'enfant
+     [ ] Aucun de ces 3 cas
+     Les 3 premières cases sont exactement les 3 situations pour lesquelles un
+     plan écrit existe. La case « un de mes enfants vit en couple sans être ni
+     marié ni pacsé » est supprimée : le sujet n'est traité nulle part dans
+     cette vidéo, et aucun plan ne lui correspond.
+
+  Au dos :
+     — les 3 régimes et leurs articles · l'art. 1405 ;
+     — le calcul du concubin en colonne ;
+     — le tableau PACS seul / testament seul / les 2 ;
+     — l'art. 913 du Code civil, sous le titre « ce que l'on peut donner
+       librement par testament quand on a des enfants » : 1 enfant la moitié,
+       2 enfants le tiers, 3 enfants et plus le quart — le reste revient aux
+       enfants ;
+     — le testament écrit à la main : les 3 conditions de l'art. 970, et le fait
+       qu'il peut être déposé chez un notaire, qui l'inscrit au fichier central
+       des dispositions de dernières volontés — demandez-lui son coût avant de
+       vous engager ;
+     — la donation au dernier vivant : avec, art. 1094-1 ; sans, les 3 cas des
+       art. 757, 757-1 et 757-2 du Code civil ;
+     — la réserve de l'enfant non commun : l'avantage matrimonial peut être
+       retranché pour ce qui dépasse, art. 1527, alinéa 2 du Code civil. Et,
+       dans une phrase séparée : pour une donation faite au conjoint, l'enfant
+       d'un premier lit peut demander à recevoir en usufruit, et non en pleine
+       propriété, ce qui dépasse — art. 1098 du Code civil ;
+     — le modèle de lettre de demande de copie intégrale, avec les 2 adresses
+       possibles : la mairie du lieu de mariage, ou le Service central d'état
+       civil de Nantes pour un mariage célébré à l'étranger.
+
+  Bas de page : « Contenu pédagogique. Ne constitue pas un conseil personnalisé.
+  À faire relire par votre notaire. »
+
+La fiche se range dans le Classeur Héritage Intact, intercalaire « Notaire », et
+se reporte telle quelle dans le Dossier à apporter chez votre notaire.
+
+
+------------------------------------------------------------
+À VÉRIFIER SUR LEGIFRANCE AVANT INCRUSTATION
+------------------------------------------------------------
+art. 757, 757-1 et 757-2 code civil (droits du conjoint survivant, dans les
+3 configurations) · art. 1094-1 code civil (quotité disponible entre époux) ·
+art. 913 code civil (quotité disponible en présence d'enfants) · art. 1524 et
+1526 code civil (clause d'attribution intégrale, communauté universelle) ·
+art. 1527, al. 2 code civil (action en retranchement) et art. 1098 code civil
+(faculté de l'enfant d'un premier lit) · art. 1397 code civil (changement de
+régime) · art. 76 et 1394 code civil (mentions de l'acte de mariage) ·
+art. 669 CGI (barème usufruit / nue-propriété) · référence exacte de la loi
+du 13 juillet 1965 (n° 65-570), son entrée en vigueur au 1er février 1966 et la
+portée exacte de ses dispositions transitoires · le montant de 1 594 € de
+l'art. 788, IV CGI · le calcul 100 000 → 59 044 / 40 956, calculé ici à partir
+des seuls textes.

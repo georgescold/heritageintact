@@ -2,9 +2,21 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { UpsellPage } from "@/components/UpsellPage";
 import { getOrder } from "@/lib/db";
-import { VIDEO } from "@/lib/config";
+import { PRODUCTS, VIDEO } from "@/lib/config";
+import { etapeTunnel } from "@/lib/tunnel";
 
-export const metadata: Metadata = { title: "Le Plan Transmission Complet" };
+/**
+ * ⚠️ AUCUN NOM DE PRODUIT N'EST ÉCRIT EN DUR ICI.
+ *
+ * Cette page appelait le produit « Le Plan Transmission Complet » (titre, h2,
+ * corps), le bouton juste en dessous l'appelait « Le Plan familial », et tout
+ * l'aval — /merci, le reçu, la boutique de l'espace, les CGV — « Le Plan adapté
+ * à votre famille ». Trois noms pour la même chose, dont deux sur le même
+ * écran. Sur un homme de 74 ans qui vérifie son relevé bancaire ligne à ligne,
+ * un nom qui change entre l'achat et la facture est la définition d'une
+ * arnaque : c'est un appel à la banque avant d'être un email au support.
+ */
+export const metadata: Metadata = { title: PRODUCTS.upsell1.name };
 
 export default async function Upsell1Page({
   searchParams,
@@ -15,12 +27,29 @@ export default async function Upsell1Page({
   const order = o ? await getOrder(o) : null;
   if (!order) redirect("/commande");
 
+  /**
+   * ⚠️ C'EST LE TUNNEL QUI DÉCIDE, PAS CETTE PAGE.
+   *
+   * `etapeTunnel` répond à deux questions d'un coup : cet écran a-t-il sa place
+   * dans le parcours de CET acheteur, et qu'est-ce qui vient après lui. Il tient
+   * compte des réponses de qualification quand elles existent, et du drapeau
+   * `disponible` toujours — un produit qui ne livre rien ne peut pas rester en
+   * vente, et un clic sur le bouton vert n'afficherait qu'un bandeau d'échec.
+   *
+   * Quand l'écran est sauté, le client ne voit pas une offre cassée : il voit
+   * l'étape suivante.
+   */
+  const etape = await etapeTunnel("plan", order.id, {
+    bumpPresent: order.items.some((i) => i.sku === "bump"),
+  });
+  if (!etape.afficher) redirect(etape.versOu);
+
   return (
     <UpsellPage
       step={2}
       orderId={order.id}
       sku="upsell1"
-      next={`/kit-assurance-vie?o=${order.id}`}
+      next={etape.suivant}
       kicker="Attendez : votre commande est validée."
       h1={
         <>
@@ -28,7 +57,7 @@ export default async function Upsell1Page({
           familiale, laquelle de vos 3 dates en premier&nbsp;?
         </>
       }
-      h2="Le Plan Transmission Complet : les 12 situations familiales, chacune avec son plan d'action dans l'ordre, ses 3 pièges, ses 3 questions au notaire, et le Simulateur Complet."
+      h2={`${PRODUCTS.upsell1.name} : les 12 situations familiales, chacune avec son plan d'action dans l'ordre, ses 3 pièges, ses 3 questions au notaire, et ${PRODUCTS.backend1.name}.`}
       videoId={VIDEO.upsell1}
       videoMinutes={4}
       rows={[
@@ -65,8 +94,8 @@ export default async function Upsell1Page({
         vivant, formidable en famille « classique », peut spolier les enfants d&apos;un premier lit.
       </p>
       <p>
-        C&apos;est pour ça que le Plan Transmission Complet existe : douze situations familiales, et
-        pour chacune, <strong>une page</strong>. Les 3 dates dans le bon ordre, les trois pièges à
+        C&apos;est pour ça que {PRODUCTS.upsell1.name} existe : douze situations familiales, et pour
+        chacune, <strong>une page</strong>. Les 3 dates dans le bon ordre, les trois pièges à
         éviter, les trois questions à poser au notaire, et ce que ça change en euros sur un cas
         concret.
       </p>

@@ -23,6 +23,15 @@ export default function Confidentialite() {
           Données de navigation à des fins de mesure d&apos;audience et publicitaire (pixel Meta),
           sous réserve de votre consentement.
         </li>
+        <li>
+          Quatre réponses <strong>facultatives</strong>, si vous choisissez de les donner au bon de
+          commande : votre situation de couple, la présence d&apos;enfants, l&apos;existence
+          d&apos;une assurance-vie et votre tranche d&apos;âge. Elles servent uniquement à choisir
+          les documents et les offres qui vous sont présentés ensuite. Elles ne modifient ni le prix
+          de votre commande ni le contenu de votre Méthode, ne sont transmises à aucun tiers ni à
+          aucun outil publicitaire, et sont supprimées lors de votre désinscription. Aucune donnée
+          de santé n&apos;est demandée, ni vous concernant, ni concernant vos proches.
+        </li>
       </ul>
 
       <h2>Finalités et bases légales</h2>

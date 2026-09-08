@@ -1,0 +1,414 @@
+============================================================
+ÉTAPE 0 — BIENVENUE ET VOTRE FACTURE INVISIBLE
+Durée réelle : environ 24 minutes de narration (2 835 mots au prompteur, à 120 mots
+        par minute, rythme calme et solennel) + 20 minutes d'exercice en pause
+        + 2 minutes de calendrier — soit environ 46 minutes d'étape.
+Durée annoncée au spectateur : 25 minutes de vidéo, environ une heure en tout.
+        On annonce toujours AU-DESSUS du réel, jamais en dessous : la première
+        promesse tenue vaut plus que tout le reste du script.
+Format : voix + écran, faceless
+============================================================
+
+CONVENTION D'ÉCRITURE DES NOMBRES — actée pour ce fichier
+
+La règle « les nombres s'écrivent en chiffres » vise les cardinaux, les montants,
+les âges, les durées, les taux et les numéros d'article : 3 phrases, 7 erreurs,
+2 tiers, 100 000 €, 70 ans, 6 mois, 20 %. Elle ne vise PAS les ordinaux, qui
+restent en lettres — « Première phrase », « Deuxième tranche », « Troisième
+ligne » — parce qu'ils se lisent sans ambiguïté au prompteur et qu'ils portent le
+rythme de la lecture. Aucun cardinal ne doit rester en lettres dans le script.
+
+CE QUE LE SPECTATEUR SAIT FAIRE À LA FIN
+
+Expliquer en 3 phrases comment se calculent les droits de succession en France.
+Lire le barème de l'article 777 tranche par tranche et l'appliquer à sa propre part.
+Remplir le Simulateur de Facture Invisible et sortir SON chiffre, en euros.
+Inscrire ses 3 dates sur le Calendrier des 3 Dates.
+
+CE QU'IL LUI FAUT SOUS LA MAIN
+
+Le dernier relevé de chacun de ses comptes et livrets.
+Une estimation de son logement — ce qu'on lui en donnerait aujourd'hui, pas ce qu'il l'a payé.
+Son contrat de mariage ou de PACS, s'il en existe un.
+Ses contrats d'assurance-vie, et le relevé annuel de chacun, avec la date des versements.
+La liste des donations déjà faites, avec leur date, s'il y en a eu.
+Un stylo, et une feuille. Le fichier peut aussi s'imprimer.
+
+Cette liste est annoncée À L'ORAL dès le début de la vidéo, avant le premier calcul,
+pour que le spectateur puisse sortir ses papiers pendant qu'il écoute.
+
+------------------------------------------------------------
+SCRIPT — à lire au prompteur
+------------------------------------------------------------
+
+[ÉCRAN : fond clair, une seule ligne. « Étape 0 — Votre Facture Invisible ».]
+
+Bonjour, et bienvenue.
+
+Vous venez de rejoindre la Méthode Héritage Intact. Cette première étape se fait en 2 temps. D'abord, vous nous écoutez pendant 25 minutes. Ensuite, vous mettez la vidéo en pause et vous prenez 20 minutes, chez vous, tranquillement, pour remplir un document. Puis 2 minutes pour écrire 3 dates. Comptez environ une heure en tout. À la fin, vous aurez un chiffre. Votre chiffre. L'estimation de ce que votre famille devrait payer à l'État si rien n'était fait, et si les choses restaient exactement comme elles sont aujourd'hui.
+
+Ce chiffre, très peu de gens le connaissent de leur vivant. On le découvre après. Dans un bureau, assis en face d'un notaire, à un moment où plus rien ne peut être changé.
+
+Vous, vous allez le connaître aujourd'hui. Dans moins d'une heure.
+
+Une chose avant de commencer. Tout à l'heure, vous aurez besoin de 4 papiers : le dernier relevé de vos comptes et de vos livrets, une idée de ce que vaut votre logement aujourd'hui, votre contrat de mariage si vous en avez un, et vos relevés d'assurance-vie. Si vous les avez sous la main, posez-les à côté de vous maintenant. Si vous ne les avez pas, ce n'est pas grave du tout : écoutez d'abord, vous irez les chercher après.
+
+[ÉCRAN : « Qui vous parle ».]
+
+Un mot sur nous, et ce sera court.
+
+Nous sommes Héritage Intact. Nous ne sommes ni notaire, ni avocat, ni conseiller, et nous ne prétendons à aucun de ces titres. Nous ne vendons aucun placement, aucun contrat, aucune assurance. Aucune banque, aucun assureur, aucun notaire ne nous verse de commission. Personne ne nous paie pour vous orienter, et ce que vous déciderez de faire de votre patrimoine ne nous rapporte rien.
+
+Ce que nous faisons est plus simple que ça. Nous lisons la loi française, nous la mettons en chiffres, et nous affichons l'article de loi à côté de chaque chiffre. Vous allez voir ces articles s'afficher à l'écran pendant toute la Méthode. Ils sont là pour que tout soit vérifiable. Par vous, si vous en avez l'habitude : ces articles sont publics et gratuits, sur le site officiel Legifrance. Par l'un de vos enfants, si vous préférez. Ou tout simplement par votre notaire : vous n'aurez qu'à lui montrer la page, il connaît ces articles par cœur. Rien de ce que nous disons ne vous demande de nous croire sur parole.
+
+Notre autorité s'arrête exactement là : ce que dit le texte. Tout ce que vous allez entendre est pédagogique et général. Ce n'est pas un conseil personnalisé. Chaque décision que vous prendrez doit être relue par votre notaire, et nous vous dirons précisément quoi lui apporter le jour où vous irez le voir.
+
+[ÉCRAN : « Une succession, en 3 phrases ». Les 3 phrases apparaissent une par une, chacune avec son article en bas de cadre.]
+
+Avant votre chiffre, il faut 3 phrases. 3. Pas une de plus.
+
+Première phrase. On additionne tout ce que la personne possédait — la maison, les comptes, les livrets, la voiture — et on retire ce qu'elle devait encore. Ce qui reste, c'est ce qui se transmet.
+
+Deuxième phrase. Ce qui reste se partage. Selon la loi, si rien n'a été écrit. Selon le testament, s'il y en a un — mais un testament ne peut pas tout : la loi réserve à vos enfants une part que personne ne peut leur retirer. Ce sont les articles 912 et 913 du code civil.
+
+Troisième phrase, et c'est la seule qui coûte de l'argent. Chaque héritier paie, sur sa part, un impôt qui porte un nom : les droits de succession. Attention au mot : ce ne sont pas des droits qu'on vous donne, c'est un impôt que l'on vous réclame. Et on ne le calcule qu'après avoir retiré son abattement à lui.
+
+Arrêtons-nous une seconde sur ce mot, parce que tout le reste en dépend : abattement. Un abattement, c'est une somme qu'on efface avant de calculer l'impôt. Sur cette somme-là, votre enfant ne paiera rien du tout. Rien. C'est seulement au-dessus que le calcul commence.
+
+[ÉCRAN : « Enfant : 100 000 € par parent — art. 779 du code général des impôts ».]
+
+Pour un enfant, cette somme effacée est de 100 000 €. Par parent. C'est l'article 779 du code général des impôts.
+
+Retenez la mécanique, elle ne change jamais : on efface 100 000 €, et tout ce qui dépasse est taxé.
+
+Tout ce qui dépasse. C'est là, et nulle part ailleurs, que la facture se fabrique.
+
+[ÉCRAN : « Cas type — Jean-Pierre, 67 ans, Nantes. Marié. Un fils : Nicolas. » Mention permanente en bas de cadre : « exemple pédagogique — personnage fictif ». Pavillon vu de l'extérieur, ou silhouette de dos. Aucun visage.]
+
+Prenons un exemple. Un cas type, que nous avons construit pour la démonstration. Appelons-le Jean-Pierre : 67 ans, il vit à Nantes, il est marié, il a un fils, Nicolas.
+
+Une précision tout de suite, pour que rien ne soit flou. Ce que nous allons calculer, ce n'est pas ce qui se passe au premier décès. C'est la facture que Nicolas recevra le jour où il héritera de tout, quand ses 2 parents seront partis. C'est ce moment-là que personne ne calcule de son vivant. Et c'est celui qui coûte.
+
+[ÉCRAN : « Entre époux, aucun droit — art. 796-0 bis du code général des impôts ».]
+
+Pourquoi ce moment-là, et pas l'autre ? Cela vous concerne directement si vous êtes marié, alors nous le disons lentement. Entre époux, il n'y a aucun droit de succession. Le conjoint survivant est totalement exonéré : c'est l'article 796-0 bis du code général des impôts. C'est la même chose entre partenaires de PACS. Au premier décès, la facture n'apparaît donc pas. Elle est simplement reportée.
+
+Elle apparaît au second. Le jour où Nicolas hérite seul, de l'ensemble, avec un seul abattement de 100 000 €. C'est ce jour-là que nous calculons, parce que c'est le seul qui coûte quelque chose.
+
+Jean-Pierre a un pavillon de périphérie, 4 chambres, acheté il y a longtemps et payé jusqu'au dernier centime. Aujourd'hui, il en vaut 380 000 €.
+
+Et Jean-Pierre a mis de l'argent de côté. 250 € par mois. Pendant 40 ans. Sans jamais y toucher. 250 € par mois pendant 40 ans, cela fait 120 000 € sur les livrets.
+
+380 000 € et 120 000 €. 500 000 € en tout.
+
+Jean-Pierre est exactement ce qu'on appelle un homme prévoyant. Il n'a pas de dettes. Il n'a jamais rien acheté à crédit. Il a fait, toute sa vie, précisément ce qu'on lui avait dit de faire.
+
+Et pourtant.
+
+[ÉCRAN : le Simulateur de Facture Invisible, écran de saisie. On remplit en direct : maison 380 000 € · livrets 120 000 € · 1 enfant. La case assurance-vie reste visible à l'image, et vide.]
+
+Voici le Simulateur de Facture Invisible. C'est le fichier que vous allez remplir tout à l'heure. Nous le remplissons d'abord devant vous, avec les chiffres de Jean-Pierre, pour que vous voyiez exactement ce qui se passe.
+
+Maison : 380 000 €. Livrets : 120 000 €. Nombre d'enfants : 1.
+
+Jean-Pierre est marié, et vous voyez que cela ne change rien à cet écran-là : nous regardons ce que Nicolas devra le jour où tout lui reviendra, et c'est à ce moment-là que la facture tombe en entier. Jean-Pierre, lui, n'a aucune assurance-vie : la dernière case du fichier reste vide. Vous, vous en avez peut-être une. C'est justement cette case-là que nous ouvrirons à l'étape 3.
+
+Patrimoine transmis : 500 000 €.
+
+On retire l'abattement de Nicolas. 100 000 €, article 779.
+
+500 000 € moins 100 000 €. Il reste 400 000 €.
+
+400 000 €. C'est la part taxable. C'est sur cette somme, et sur elle seule, que l'État va calculer.
+
+[ÉCRAN : le barème de l'art. 777, tranche par tranche. Les 4 lignes s'ajoutent une par une, avec leur résultat au centime à droite.]
+
+Maintenant, le barème. Article 777 du code général des impôts. Il fonctionne par tranches, exactement comme l'impôt sur le revenu. Nous le déroulons lentement, parce que c'est le seul moment technique de cette vidéo.
+
+Une précision avant de commencer, parce que vous allez peut-être vérifier au crayon, et vous aurez raison de le faire. Nous vous donnons des euros entiers, sans les centimes, pour que ce soit lisible. L'écran, lui, affiche le centime, et c'est avec les centimes que le total est calculé. Si votre addition tombe à 1 ou 2 € de la nôtre, ce n'est pas une erreur, c'est l'arrondi. Le chiffre juste est toujours celui de l'écran.
+
+Première tranche. Les 8 072 premiers euros sont taxés à 5 %. Cela fait 403 €.
+
+Deuxième tranche. De 8 072 € à 12 109 €, on passe à 10 %. Cela fait 403 € de plus.
+
+Troisième tranche. De 12 109 € à 15 932 €, 15 %. Cela fait 573 €.
+
+Jusqu'ici, tout va bien. Ces 3 premières tranches, mises bout à bout, font moins de 1 400 €. On se dit que ce n'est pas si terrible.
+
+Et puis arrive la quatrième tranche.
+
+[ÉCRAN : en grand, seul au centre : « de 15 932 € à 552 324 € : 20 % — art. 777 CGI ».]
+
+Au-delà de 15 932 €, le taux passe à 20 %. Et il y reste. Jusqu'à 552 324 €.
+
+Revenons à Jean-Pierre. Sa part taxable est de 400 000 €. Les 15 932 premiers euros ont déjà été comptés, dans les 3 tranches que nous venons de voir. On les enlève. 400 000 € moins 15 932 €. Il reste 384 068 €. Et ces 384 068 € sont taxés à 20 %.
+
+76 813 €.
+
+[ÉCRAN : le total, seul, en très grand. « 78 194 € ». Sous-titre : art. 777 et 779 CGI.]
+
+78 194 €.
+
+78 194 €, voilà ce que Nicolas devra payer le jour où il héritera de tout.
+
+Prenez le temps de le regarder. Personne n'a triché. Personne n'a fait d'erreur. Jean-Pierre n'a rien fait de mal — il a travaillé, il a remboursé sa maison, il a épargné 250 € par mois pendant 40 ans.
+
+78 194 €.
+
+[ÉCRAN : « 120 000 € − 78 194 € = 41 806 € ».]
+
+Et maintenant, regardez ce que cela veut dire dans la vraie vie.
+
+Les 40 ans d'épargne de Jean-Pierre, ces 120 000 € mis de côté un mois après l'autre, servent à payer la facture. Il en reste 41 806 €.
+
+Sur 120 000 €, il en reste 41 806 €. Près des 2 tiers de l'épargne d'une vie entière partent en 6 mois.
+
+[ÉCRAN : 2 lignes. « Déclaration : 6 mois — art. 641 CGI » / « Paiement au dépôt — art. 1701 CGI ».]
+
+6 mois, parce que c'est le délai. Quand le décès a lieu en France métropolitaine, la déclaration de succession se dépose dans les 6 mois : article 641 du code général des impôts. Et les droits se paient au moment de ce dépôt : article 1701 du code général des impôts.
+
+Nicolas, lui, garde la maison. Il a de quoi payer. Toutes les familles n'ont pas cette chance : quand l'argent liquide manque, c'est la maison qui part. Nous verrons ce cas-là, en détail, à l'étape 4.
+
+Et avant d'aller plus loin, nous répondons tout de suite à la question qui vient de se poser dans votre tête. Est-ce que ce chiffre est une fatalité ? Non. Ni celui de Jean-Pierre, ni le vôtre. Cette facture est fabriquée par 7 erreurs, et chacune des 7 se corrige. C'est exactement ce que nous allons faire, étape après étape, dans l'ordre, sans rien laisser à votre initiative. Mais on ne répare pas ce qu'on n'a pas mesuré. Alors aujourd'hui, une seule chose compte : connaître le chiffre.
+
+[ÉCRAN : « Pourquoi personne ne vous l'a dit ».]
+
+Une question se pose, et elle est légitime : pourquoi est-ce que personne ne prévient ?
+
+La réponse est simple, et il n'y a pas de coupable. On va chez le notaire pour un acte précis, et le plus souvent on y va après. Ce n'est pas son métier de sonner à votre porte pour vous prévenir avant. La banque, elle, répond sur les produits qu'elle propose, pas sur le calcul des droits. Et l'administration n'a aucune raison d'écrire aux gens pour leur annoncer ce qu'ils devront un jour.
+
+Il n'y a personne dont ce soit le métier de vous prévenir avant. C'est tout. Ce n'est pas un complot, c'est un trou. Et ce trou, vous êtes en train de le combler, maintenant. Pas tout seul : à chaque étape, nous vous disons exactement quoi faire, dans quel ordre, et ce qu'il faudra montrer à votre notaire. Vous n'avez rien à deviner.
+
+[ÉCRAN : « À vous. 20 minutes. » Puis la liste des 4 informations.]
+
+Maintenant, c'est à vous.
+
+Mettez cette vidéo en pause quand nous vous le dirons, et ouvrez le Simulateur de Facture Invisible. Il se trouve juste sous cette vidéo : faites glisser la page vers le bas, vous verrez un cadre avec les 3 versions.
+
+Vous avez le choix entre 3 versions, et vous prenez celle qui vous met à l'aise. Une version papier, que vous imprimez et que vous remplissez au stylo. Une version à remplir sur l'ordinateur, qui fait les calculs à votre place. Et une version en ligne, si vous avez l'habitude. Les 3 donnent le même résultat. Le papier n'est pas la version au rabais : c'est une version complète, et elle donne exactement le même chiffre que les 2 autres.
+
+Il vous faut 4 informations, pas une de plus.
+
+La première : la valeur de votre logement. Pas ce que vous l'avez payé. Ce qu'on vous en donnerait aujourd'hui. Une estimation à 10 000 € près suffit. Nous ne cherchons pas le chiffre exact d'un expert. Nous cherchons le bon ordre de grandeur, et cela suffit largement pour comprendre.
+
+La deuxième : le total de vos comptes, livrets et placements. Additionnez les derniers relevés.
+
+La troisième : votre situation. Marié, pacsé, en concubinage, veuf. Et le nombre de vos enfants. Si vous êtes marié, le document vous demandera aussi votre régime matrimonial : c'est écrit sur votre contrat de mariage. Si vous n'avez jamais fait de contrat, ou si vous ne le retrouvez pas, cochez « je ne sais pas ». Cela ne bloque rien, et nous y reviendrons.
+
+[ÉCRAN : incrustation muette en bas de cadre, au moment de la 4e information : « art. 990 I et 757 B CGI ».]
+
+La quatrième, et c'est la plus importante : vos contrats d'assurance-vie. Le montant de chacun, et surtout la date des versements. Notez si l'argent a été versé avant ou après votre 70e anniversaire. Vous comprendrez pourquoi à l'étape 3. Pour l'instant, notez la date, c'est tout.
+
+Une chose que nous voulons vous dire clairement, parce que nous savons qu'elle vous traverse l'esprit. Remplir ce fichier ne déclenche absolument rien. Rien n'est envoyé nulle part. Le fichier reste chez vous — sur votre ordinateur, ou sur votre feuille de papier. Nous n'en recevons aucune copie, et aucune administration n'en est informée. Vous ne signez rien, vous n'engagez rien, vous ne changez rien à votre situation. C'est un brouillon, chez vous, pour vous. Vous pouvez vous tromper, raturer, recommencer. Il n'existe aucune façon de mal faire cet exercice-là.
+
+Mettez en pause. Comptez 20 minutes si vos papiers sont à côté de vous. Davantage s'il faut aller les chercher, et c'est très bien aussi. Ce n'est pas une course. Nous vous attendons.
+
+[ÉCRAN : « Le Calendrier des 3 Dates » — 3 lignes vides, à remplir. En petit, en regard de chacune : ligne 1, « art. 990 I et 757 B CGI » ; ligne 2, « art. 669 CGI » ; ligne 3, « art. 784 CGI ».]
+
+Vous avez votre chiffre. Il est peut-être plus élevé que celui de Jean-Pierre. Il est peut-être plus bas. Dans les 2 cas, ce qui compte, c'est qu'il soit écrit. Un chiffre écrit est un chiffre sur lequel on peut agir. Un chiffre qu'on n'a jamais posé, personne ne peut rien pour lui. Vous venez de faire la chose la plus difficile de toute la Méthode, et vous l'avez faite en premier.
+
+Il reste une chose à faire, et elle prend 2 minutes.
+
+Ouvrez le second document : le Calendrier des 3 Dates. C'est une page. Une seule. Elle a 3 lignes, et vous allez les remplir maintenant.
+
+Première ligne : la date de votre 70e anniversaire. Écrivez-la, même si elle est passée depuis longtemps. Surtout si elle est passée.
+
+Deuxième ligne : la date de votre 71e anniversaire.
+
+Troisième ligne : la date de votre dernière donation, si vous en avez déjà fait une, plus 15 ans. Ces 15 ans, c'est l'article 784 du code général des impôts, et vous verrez à quoi ils servent. Si vous n'avez jamais fait de donation, écrivez « jamais ». C'est une réponse parfaitement valable.
+
+Nous ne vous expliquons pas encore ce que ces 3 dates commandent. Chacune a son étape. Ce que nous voulons, c'est qu'elles soient écrites, devant vous, en toutes lettres. Parce que ces 3 dates avancent en silence, elles ne préviennent pas, et une fois passées, elles ne reviennent jamais.
+
+Et une chose tout de suite, parce que beaucoup de personnes qui suivent cette Méthode ont déjà passé 70 ans, et 71 ans. Une date passée ne ferme pas tout. Elle change ce qu'il est possible de faire, et elle donne plus de poids aux 2 autres. Ce qui est passé, nous ferons avec, et nous vous dirons exactement comment. Ce qui vient, nous le prendrons à temps.
+
+[ÉCRAN : « Ce que vous avez déjà » — les 2 livrables côte à côte.]
+
+Faisons le point. Vous venez de poser votre stylo. Et vous avez déjà 2 documents que très peu de familles prennent le temps de faire : votre chiffre, et vos 3 dates.
+
+Et sachez ceci. À la fin de chaque étape, vous aurez un document terminé, comme aujourd'hui. Pas un morceau. Pas un brouillon à finir plus tard. Un document fini, que vous pouvez ranger dans un classeur. Si vous vous arrêtez là, vous gardez tout. Vous avancez à votre rythme, et rien ne se perd.
+
+[ÉCRAN : noir, puis une ligne : « Étape 1 — l'erreur n° 1 ».]
+
+Vous avez maintenant votre chiffre sous les yeux. Et la réponse ne change pas.
+
+Ce n'est pas une fatalité.
+
+7 erreurs fabriquent cette facture. 7 exactement. Vous ne les connaissez pas encore. Mais vous venez déjà de faire le plus difficile : vous avez regardé votre chiffre en face, au lieu de ne pas vouloir savoir.
+
+La prochaine étape traite la première de ces 7 erreurs. C'est celle qui coûte le plus cher, et c'est aussi la seule qui ne coûte rien du tout à corriger. Elle tient dans une phrase que tout le monde s'est dite au moins une fois : « je verrai ça plus tard ». Vous allez découvrir combien coûte, exactement, en euros, chaque année où l'on se dit ça.
+
+À tout de suite.
+
+------------------------------------------------------------
+À PRÉPARER POUR LE TOURNAGE
+------------------------------------------------------------
+
+VISUELS — un par [ÉCRAN], fond clair, police ≥ 28 pt, 1 chiffre par slide, sous-titres partout
+
+1. Carton-titre « Étape 0 — Votre Facture Invisible ».
+2. Slide « Qui vous parle » — logo Héritage Intact seul, aucun nom, aucun titre, aucun visage.
+3. Slide « Une succession, en 3 phrases » — les 3 phrases en apparition successive, chacune
+   portant SON article en bas de cadre : phrase 1 « art. 768 CGI » (les dettes du défunt se
+   déduisent) ; phrase 2 « art. 912 et 913 du code civil » (la réserve héréditaire) ;
+   phrase 3 « art. 777 et 779 CGI ».
+4. Slide « Enfant : 100 000 € par parent » + mention « art. 779 CGI » en bas de cadre.
+5. Slide « Cas type — Jean-Pierre, 67 ans, Nantes. Marié. Un fils : Nicolas. » — image d'un
+   pavillon de périphérie vu de l'extérieur, ou silhouette de dos. Aucun visage. MENTION
+   OBLIGATOIRE, permanente sur toute la séquence Jean-Pierre : « exemple pédagogique —
+   personnage fictif ».
+6. Slide « Entre époux, aucun droit — art. 796-0 bis CGI ».
+7. Capture animée du Simulateur de Facture Invisible : saisie en direct de 380 000 € ·
+   120 000 € · 1 enfant, la case assurance-vie restant visible et vide à l'image, puis
+   affichage de la part taxable 400 000 €.
+8. Tableau du barème art. 777, les 4 premières lignes s'ajoutant une par une, résultat AU
+   CENTIME à droite (403,60 / 403,70 / 573,45 / 76 813,60).
+9. Slide plein cadre « de 15 932 € à 552 324 € : 20 % — art. 777 CGI ».
+   (Ne JAMAIS écrire « au-delà de 15 932 € : 20 % » : la slide serait fausse lue seule, le
+   barème passant à 30 %, 40 % puis 45 % au-delà de 552 324 €.)
+10. Slide plein cadre « 78 194 € » + mention « art. 777 et 779 CGI ».
+11. Slide « 120 000 € − 78 194 € = 41 806 € ».
+12. Slide 2 lignes : « Déclaration : 6 mois — art. 641 CGI » / « Paiement au dépôt —
+    art. 1701 CGI ».
+13. Slide « Pourquoi personne ne vous l'a dit ».
+14. Slide « À vous — 20 minutes » puis la liste des 4 informations à réunir. Au moment de la
+    4e information, incrustation muette en bas de cadre : « art. 990 I et 757 B CGI ».
+15. Slide « Le Calendrier des 3 Dates » — 3 lignes vides, avec en petit en regard de chacune :
+    ligne 1 « art. 990 I et 757 B CGI » ; ligne 2 « art. 669 CGI » ; ligne 3 « art. 784 CGI ».
+    Aucun de ces articles n'est commenté à l'oral dans cette étape.
+16. Slide de fin « Étape 1 — l'erreur n° 1 » sur fond noir.
+17. Bandeau permanent en bas de cadre, sur toute la durée : « Contenu pédagogique et général
+    — ne constitue pas un conseil personnalisé. Tout modèle d'acte est à faire relire par
+    votre notaire. »
+
+ARTICLES DE LOI À AFFICHER
+
+- art. 768 CGI — les dettes à la charge du défunt sont déduites de l'actif. Affiché en bas
+  de cadre sous la phrase 1 ; non commenté à l'oral.
+- art. 912 et 913 du code civil — la réserve héréditaire : un testament ne peut pas priver
+  un enfant de sa part. Cités à l'oral et affichés sous la phrase 2.
+- art. 779 CGI — abattement de 100 000 € par parent et par enfant.
+- art. 796-0 bis CGI — exonération totale de droits de succession du conjoint survivant et
+  du partenaire de PACS. Cité à l'oral, affiché plein cadre.
+- art. 777 CGI — barème des droits en ligne directe : 5 % jusqu'à 8 072 €, 10 % jusqu'à
+  12 109 €, 15 % jusqu'à 15 932 €, 20 % de 15 932 € à 552 324 €.
+- art. 641 CGI — délai de dépôt de la déclaration de succession : 6 mois si le décès a lieu
+  en France métropolitaine, 12 mois dans tous les autres cas. La condition « métropolitaine »
+  est dite à l'oral ET écrite dans la slide si la place le permet.
+- art. 1701 CGI — les droits de mutation par décès sont payés avant l'enregistrement, donc
+  au moment du dépôt. C'est cet article, et non le 641, qui couvre le paiement.
+- art. 990 I et 757 B CGI — cités uniquement en incrustation muette, au moment de la 4e
+  information et en regard de la ligne 1 du Calendrier ; non commentés dans cette étape,
+  ils appartiennent à l'étape 3.
+- art. 669 CGI — cité uniquement en incrustation muette en regard de la ligne 2 du
+  Calendrier (71e anniversaire) ; il appartient à l'étape 4.
+- art. 784 CGI — rappel fiscal des donations antérieures, le compteur des 15 ans. Prononcé
+  une fois à l'oral au moment de la ligne 3 du Calendrier, et incrusté en regard de cette
+  ligne 3 ; il n'est pas expliqué ici, il appartient à son étape.
+
+CALCULS À AFFICHER, ET LEUR VÉRIFICATION
+
+Cas Jean-Pierre, chiffres canoniques de la fiche 12 — c'est bien SON patrimoine (380 000 € +
+120 000 €) et SA facture (78 194 €), à ne jamais mélanger avec ceux de la famille de Julien
+(480 000 € + 40 000 €, 82 194 €) qui servent à la démonstration avant/après de l'étape 4.
+
+HYPOTHÈSE DU CALCUL, à ne jamais laisser implicite à l'écran comme à l'oral : on calcule au
+SECOND décès, Nicolas héritant seul de l'ensemble, avec un unique abattement de 100 000 €.
+Au premier décès, le conjoint survivant est totalement exonéré (art. 796-0 bis CGI) : aucune
+facture n'apparaît. C'est ce qui rend les 78 194 € exacts.
+
+  Patrimoine transmis      380 000 + 120 000        = 500 000 €
+  Abattement, 1 enfant     art. 779                 − 100 000 €
+  PART TAXABLE                                      = 400 000 €
+
+  Barème art. 777, ligne directe :
+      8 072 × 5 %                                   =    403,60 €
+      (12 109 − 8 072) = 4 037 × 10 %               =    403,70 €
+      (15 932 − 12 109) = 3 823 × 15 %              =    573,45 €
+      (400 000 − 15 932) = 384 068 × 20 %           = 76 813,60 €
+  DROITS                                            = 78 194,35 €  →  « 78 194 € »
+
+  Somme des 3 premières tranches :
+      403,60 + 403,70 + 573,45                      =  1 380,75 €
+
+  Épargne restante après paiement — calcul non présent dans la fiche 12, à faire :
+      120 000 − 78 194                              = 41 806 €
+      41 806 / 120 000 = 34,8 %  →  formulation retenue : « il reste 41 806 € »,
+      « près des 2 tiers de l'épargne d'une vie entière partent » (65,2 % exactement).
+      Ne jamais dire « les deux tiers » sec : 66,7 % ≠ 65,2 %, et le spectateur vérifie.
+
+  Cohérence des 40 ans d'épargne annoncés :
+      250 € × 12 mois × 40 ans                      = 120 000 €   (exact)
+
+  TRAITEMENT DES ARRONDIS — règle de plateau, à ne pas modifier au montage.
+  Les tranches sont dites à l'oral en euros entiers (403 €, 403 €, 573 €, 76 813 €) et
+  affichées AU CENTIME à l'écran. L'écart cumulé des arrondis est de 2,35 €. Le script
+  prévient explicitement le spectateur avant la première tranche (« si votre addition tombe
+  à 1 ou 2 € de la nôtre, c'est l'arrondi ; le chiffre juste est celui de l'écran »), parce
+  qu'on lui a demandé un stylo et qu'il additionnera. Le sous-total n'est JAMAIS annoncé
+  comme un nombre exact : on dit « moins de 1 400 € », jamais « 1 380 € ». Seul le total
+  est prononcé sec : 78 194 €.
+
+VÉRIFICATION AVANT TOURNAGE
+
+Délai et paiement : le texte de l'art. 641 CGI fixe le délai de DÉPÔT de la déclaration —
+6 mois lorsque le décès a lieu en France métropolitaine, 12 mois dans tous les autres cas.
+Il ne dit rien du paiement : c'est l'art. 1701 CGI qui impose le paiement des droits avant
+l'enregistrement, donc au moment du dépôt. Les 2 articles et la condition « métropolitaine »
+sont à confirmer sur Legifrance et à reporter dans la fiche 12 avec leur statut de
+vérification AVANT enregistrement. Tant que ce report n'est pas fait, ne pas tourner la
+séquence des 6 mois : aucun chiffre de loi ne s'affiche sans son article vérifié.
+
+Réserve héréditaire (art. 912 et 913 code civil) et exonération du conjoint (art. 796-0 bis
+CGI) : mêmes exigences, à reporter dans la fiche 12 avec leur statut.
+
+------------------------------------------------------------
+LE LIVRABLE DE CETTE ÉTAPE
+------------------------------------------------------------
+
+1. LE SIMULATEUR DE FACTURE INVISIBLE, rempli.
+   Livré en 3 formats, présentés dans cet ordre au spectateur : version papier A4 à imprimer
+   et remplir au stylo · fichier Excel à remplir sur l'ordinateur · tableur en ligne à calcul
+   automatique. Contenu des 4 blocs de saisie : patrimoine immobilier (bien, valeur estimée) ·
+   épargne et comptes (total) · situation familiale (statut matrimonial, régime — avec une
+   case « je ne sais pas » qui ne bloque aucun calcul —, nombre d'enfants) · contrats
+   d'assurance-vie (montant par contrat, date de chaque versement, avant ou après le 70e
+   anniversaire).
+   Sortie : la part taxable, le barème déroulé tranche par tranche avec l'article en face de
+   chaque ligne, et l'ESTIMATION des droits — le chiffre du spectateur, à faire vérifier par
+   son notaire.
+
+   ENCADRÉ OBLIGATOIRE, en tête du document, AVANT le premier bloc de saisie :
+   « Hypothèse de calcul de ce simulateur : la transmission de la totalité du patrimoine à
+   vos enfants, au second décès, avec un abattement de 100 000 € par enfant (art. 779 CGI).
+   Entre époux ou partenaires de PACS, aucun droit n'est dû (art. 796-0 bis CGI) : la facture
+   n'arrive qu'à la génération suivante. Ce résultat est une estimation pédagogique. Il ne
+   tient compte ni de votre régime matrimonial, ni du forfait mobilier de 5 % (art. 764 CGI),
+   ni de vos dettes (art. 768 CGI), ni de vos contrats d'assurance-vie, qui sont hors
+   succession (art. L132-12 du code des assurances). Il ne remplace pas le calcul de votre
+   notaire. »
+
+   CONTRAINTE DE PRODUCTION — le script promet à l'oral que rien n'est envoyé nulle part et
+   que nous n'en recevons aucune copie. La distribution doit rendre cette phrase vraie au mot
+   près : le tableur en ligne est distribué en « faire une copie » dans l'espace personnel du
+   spectateur, sans formulaire lié, sans collecte de réponses, sans script de remontée, sans
+   aucune télémétrie. Si cette distribution ne peut pas être garantie, retirer la version en
+   ligne du catalogue de l'étape plutôt que de modifier la phrase.
+
+   CONTRAINTE DE PAGE — le script dit « il se trouve juste sous cette vidéo : faites glisser
+   la page vers le bas, vous verrez un cadre avec les 3 versions ». Vérifier que la page de
+   l'étape 0 présente bien un cadre unique, sous le lecteur, avec les 3 versions dans l'ordre
+   papier / Excel / en ligne. Si un e-mail de secours contenant le Simulateur est réellement
+   envoyé le jour de l'inscription, ajouter au script la phrase de repli « il vous a aussi été
+   envoyé par e-mail le jour de votre inscription » — pas avant que cet envoi soit confirmé.
+
+2. LE CALENDRIER DES 3 DATES, complété — PDF d'une page.
+   Ligne 1 : le 70e anniversaire. Ligne 2 : le 71e anniversaire. Ligne 3 : date de la
+   dernière donation + 15 ans, ou « jamais ». Les articles (990 I, 757 B, 669, 784) sont
+   imprimés en petit en regard de chaque ligne, sans commentaire : chacun sera expliqué
+   à son étape. Ces mêmes incrustations existent sur le visuel 15 : le document livré et
+   la slide portent exactement les mêmes articles.
+
+Les deux documents portent le bandeau : contenu pédagogique et général, ne constitue pas
+un conseil personnalisé ; tout modèle d'acte est à faire relire par votre notaire.
+
+RENVOI VERS UN AUTRE PRODUIT : AUCUN.

@@ -28,7 +28,7 @@ const PACKAGING = [
     value: "97 €",
   },
   {
-    label: "La Méthode complète, étape par étape et en français simple : les 8 modules",
+    label: "La Méthode complète, étape par étape et en français simple : les 8 étapes",
     value: "147 €",
   },
   {
@@ -123,12 +123,12 @@ export default function VslPage() {
               parlé. Elle répondait à une question que personne ne s'était
               posée. Le raisonnement se tient maintenant de bout en bout :
               l'État prend une part → cette part vaut 82 194 € → trois
-              décisions la ramènent à 13 989 € → et voici le calcul. */}
+              décisions la ramènent à 13 988 € → et voici le calcul. */}
           <p className="mb-5 text-[1.12rem] leading-snug">
             Sur une maison de province et les économies d&apos;une vie, cette part est de{" "}
             <strong className="whitespace-nowrap text-red">82 194 €</strong>. Trois décisions,
             prises de votre vivant, la ramènent à{" "}
-            <strong className="whitespace-nowrap text-green">13 989 €</strong> — sans rien vendre et
+            <strong className="whitespace-nowrap text-green">13 988 €</strong> — sans rien vendre et
             sans quitter votre maison.
           </p>
 
@@ -155,7 +155,7 @@ export default function VslPage() {
         <TheNumber />
 
         {/* ═══ PREUVE — le second chiffre, celui qu'on promettait ═════
-            La sous-headline annonce 82 194 € ramenés à 13 989 €. Le bloc
+            La sous-headline annonce 82 194 € ramenés à 13 988 €. Le bloc
             précédent prouve le premier ; celui-ci montre le second et l'écart
             entre les deux. Sans lui, la moitié de la promesse restait à
             croire sur parole. */}
@@ -268,7 +268,7 @@ export default function VslPage() {
             <Check>
               <strong>Les sept erreurs, et la correction de chacune.</strong> Dans l&apos;ordre où
               il faut s&apos;en occuper, avec ce qu&apos;il faut vérifier et où.{" "}
-              <span className="text-text-soft">(la Méthode, 8 modules)</span>
+              <span className="text-text-soft">(la Méthode, 8 étapes)</span>
             </Check>
             <Check>
               <strong>Comment en parler à votre conjoint sans l&apos;inquiéter.</strong> Une feuille
@@ -323,7 +323,7 @@ export default function VslPage() {
               },
               {
                 q: "« Je ne veux pas me déposséder de mon vivant. Et si j'en ai besoin pour l'EHPAD ? »",
-                a: "La bonne objection, et personne ne vous demande ça. Le troisième levier transmet les murs de la maison en vous gardant l'usage à vie : vous y habitez, vous la louez si vous voulez, vous en encaissez les loyers. Elle ne sort de votre patrimoine fiscal qu'à votre décès. Et la règle vaut pour le reste : on ne donne jamais ce dont on n'est pas certain de pouvoir se passer. Le module 4 chiffre précisément ce que vous devez garder.",
+                a: "La bonne objection, et personne ne vous demande ça. Le troisième levier transmet les murs de la maison en vous gardant l'usage à vie : vous y habitez, vous la louez si vous voulez, vous en encaissez les loyers. Elle ne sort de votre patrimoine fiscal qu'à votre décès. Et la règle vaut pour le reste : on ne donne jamais ce dont on n'est pas certain de pouvoir se passer. L'étape 4 chiffre précisément ce que vous devez garder.",
               },
               {
                 q: "« Mon assurance-vie est déjà faite, c'est réglé. »",
@@ -343,7 +343,7 @@ export default function VslPage() {
               },
               {
                 q: "« Ma situation est particulière. »",
-                a: "Elle l'est. Je n'en ai jamais vu qui ne le soit pas — famille recomposée, enfant en concubinage, studio locatif, donation de la main à la main jamais déclarée. C'est pour ça que la méthode ne commence pas par une théorie mais par VOTRE chiffre, et que le module 7 vous oriente parmi douze situations familiales. Trouvez la vôtre, suivez le plan.",
+                a: "Elle l'est. Je n'en ai jamais vu qui ne le soit pas — famille recomposée, enfant en concubinage, studio locatif, donation de la main à la main jamais déclarée. C'est pour ça que la méthode ne commence pas par une théorie mais par VOTRE chiffre, et que l'étape 7 vous oriente parmi douze situations familiales. Trouvez la vôtre, suivez le plan.",
               },
               {
                 q: "« Et si la loi change ? »",

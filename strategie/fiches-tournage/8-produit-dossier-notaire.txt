@@ -1,0 +1,1020 @@
+============================================================
+VIDÉO 8 — LE DOSSIER À APPORTER CHEZ VOTRE NOTAIRE
+Durée cible : 13 minutes | faceless, voix + écran
+============================================================
+
+Produit : Le Dossier à apporter chez votre notaire. Aucun prix n'est prononcé à
+l'oral ni affiché dans cette vidéo.
+
+LE FORMAT, TRANCHÉ. Le spectateur vient de payer et vient de recevoir les
+5 feuilles. La vidéo passe sur chaque feuille et chaque case, dans l'ordre où il
+les remplira. Elle dure environ un quart d'heure ; le remplissage, lui, prend
+environ une heure. Il le fait la vidéo en pause, ou après, et il peut la revoir
+autant de fois qu'il veut. On ne filme donc pas une heure de remplissage en temps
+réel : les lignes écrites à l'image sont des démonstrations courtes, filmées à
+part et montées (§ 2, préambule). Cette permission de mettre la vidéo en pause se
+dit à l'oral, au § 3 point 1.
+
+Source : strategie/scripts-videos/08-video-dossier-notaire.txt
+Documents réels : src/content/documents/inventaire.tsx · fiche-famille.tsx ·
+pieces-a-apporter.tsx · mail-rendez-vous.tsx · compte-rendu.tsx
+
+⚠ AVANT DE TOURNER — 5 écarts entre le script source, les feuilles livrées et les
+autres étapes, à trancher avec le responsable produit.
+  1. Le script décrit un inventaire « 5 colonnes, une ligne par bien ». La feuille
+     livrée a 6 rubriques et des colonnes différentes. La fiche ci-dessous suit
+     LA FEUILLE LIVRÉE, parce que c'est elle que le spectateur a sous les yeux.
+     (§ 1 B)
+  2. La ligne « où se trouve ce dossier dans la maison » n'existe pas sur le
+     compte-rendu livré. Solution retenue : on la fait ajouter à la main. (§ 1 G)
+  3. La feuille des 12 questions de l'étape 7 — celle vers laquelle cette vidéo
+     renvoie — imprime en ouverture : « Le notaire est payé à l'acte, et il acte
+     ce que vous lui demandez. » Cette vidéo interdit les deux affirmations
+     (§ 1 A, § 5 piège 1) : le spectateur les lirait sur la feuille qu'il aura en
+     main juste après. Correction demandée dans
+     src/content/documents/questions-notaire.tsx : « Le notaire ne devine pas
+     votre projet : ces douze questions le lui donnent en vingt minutes. »
+  4. Le mail-type livré annonce cinq éléments, dont « une estimation des droits
+     qui seraient dus aujourd'hui ». Cette estimation vient du Simulateur de
+     Facture Invisible, que l'acheteur du seul Dossier peut ne pas avoir. Tant que
+     le document n'est pas corrigé, la vidéo dit de barrer cette mention avant de
+     recopier. (§ 1 F, § 3 point 8)
+  5. Le Simulateur livré (simulateur-papier.tsx) imprime « Le cas de Jean-Pierre :
+     maison 480 000 € + épargne 40 000 €, un enfant, Julien ». Les chiffres
+     canoniques du projet attribuent 480 000 € au cas Julien, et 380 000 € au cas
+     Jean-Pierre. Tant que ce n'est pas tranché, 480 000 € n'est pas une valeur
+     neutre : le spectateur qui a le Simulateur sous les yeux y reconnaîtra la
+     maison de Jean-Pierre. Soit le Simulateur est corrigé, soit le § 1 I autorise
+     une troisième valeur d'illustration rattachée à aucun cas. (§ 1 I)
+
+
+------------------------------------------------------------
+1. CE QUE JE DOIS SAVOIR AVANT DE TOURNER
+------------------------------------------------------------
+
+--- A. À QUOI SERT CE DOSSIER, EN TERMES EXACTS ---
+
+Un notaire travaille sur les pièces qu'on lui apporte. Du vivant de son client,
+les relevés bancaires et les dates de donation ne sont pas à sa disposition :
+c'est le client qui les lui apporte. Sans ces pièces, il ne peut ni vérifier ni
+chiffrer, et le rendez-vous doit être repris plus tard.
+→ Ce constat cadre le tournage ; il n'est pas raconté à l'oral (§ 3, point 2).
+
+Deux informations ne peuvent venir que du spectateur, parce que le notaire ne
+peut pas aller les chercher à sa place :
+  - la date exacte de chaque donation déjà faite ;
+  - la date de chaque versement sur chaque contrat d'assurance-vie.
+C'est ce qui justifie que ces deux colonnes soient traitées lentement dans la
+vidéo, et que le reste soit traité vite.
+
+⚠ Le notaire est tenu d'un devoir de conseil. Ne jamais dire, ni écrire, qu'il
+« acte ce que vous demandez ». Il reçoit une décision et lui donne la forme d'un
+acte, et il peut déconseiller — le compte-rendu a une rubrique exprès pour ça
+(« ce qui a été écarté, et pour quelle raison »). Aucune mention, à l'oral comme
+à l'écran, de la façon dont un notaire est rémunéré : aucun montant d'émoluments,
+aucun pourcentage. La vidéo dit « demandez un devis », et rien de plus.
+⚠ La feuille des 12 questions de l'étape 7 enfreint aujourd'hui ces deux
+interdits — écart n° 3 en tête de fiche, à faire corriger avant le tournage.
+
+--- B. LA FEUILLE 1 : L'INVENTAIRE PATRIMONIAL (état réel du document) ---
+
+En-tête : 2 champs — « Établi par », « Le ».
+Puis 6 rubriques :
+
+  1. L'IMMOBILIER — 4 colonnes, 4 lignes :
+     Adresse du bien | Valeur estimée | Mode de détention | Acquis en
+     Le mode de détention est la colonne la plus souvent laissée vide, et c'est
+     elle qui indique comment le bien se transmet. Les réponses possibles sont
+     imprimées sous le tableau : bien propre · communauté · indivision (avec la
+     quote-part) · nue-propriété ou usufruit déjà séparés · parts de société.
+     Indivision, à gloser une fois : un bien détenu à plusieurs, chacun pour une
+     part, le plus souvent après un héritage entre frères et sœurs.
+     Dans le doute : écrire « à confirmer », seul, sans nom de mode. On n'écrit un
+     mode que si on en est sûr ; sinon le notaire tranchera à partir de la date du
+     mariage et de l'acte. C'est la même règle qu'au point D : on ne fait pas
+     déduire au spectateur une qualification qui a des conséquences.
+
+  2. LES COMPTES ET L'ÉPARGNE — 4 colonnes, 5 lignes :
+     Établissement | Type de compte | Solde approximatif | Titulaire
+     « Solde approximatif » est le mot du document : un ordre de grandeur suffit.
+
+  3. LES CONTRATS D'ASSURANCE-VIE — 4 colonnes, 4 lignes :
+     Compagnie | N° de contrat | Montant | Versé avant / après 70 ans
+     Voir le point C : c'est la rubrique technique de la feuille.
+
+  4. LE RESTE — 3 colonnes, 4 lignes :
+     Nature | Valeur estimée | Où se trouve la pièce justificative
+     Le document précise ce qui entre ici : véhicules, parts de société, objets de
+     valeur, prêts consentis à un proche, terrains, bois et forêts.
+
+  5. CE QUE JE DOIS — 3 colonnes, 3 lignes :
+     Créancier | Nature de la dette | Capital restant dû
+     C'est ici que vont les crédits en cours, et non dans une colonne de la
+     rubrique 1 : le script source se trompe sur ce point, la feuille a raison.
+
+  6. LES TOTAUX — 3 champs :
+     Total de ce que je possède · Total de ce que je dois · Masse à transmettre
+     (la différence des deux).
+
+La feuille porte elle-même la phrase de garde : les valeurs sont des estimations
+personnelles, sans valeur d'expertise, et le notaire les fera confirmer pour les
+actes qui l'exigent.
+
+⚠ « Masse à transmettre » est un total de patrimoine, pas une base d'impôt. Aucun
+abattement n'y est retranché, et l'exonération du conjoint survivant n'y figure
+pas. Ne jamais laisser entendre que ce chiffre est le montant sur lequel les
+droits se calculent. Si la question se pose à l'écran, une seule phrase : « ce
+total sert à ce que le notaire voie l'ensemble d'un coup, ce n'est pas une base
+de calcul d'impôt. »
+
+--- C. LE POINT TECHNIQUE : LA COLONNE « VERSÉ AVANT / APRÈS 70 ANS » ---
+
+Ce n'est pas l'âge du contrat qui compte, c'est la date de chaque versement. Un
+même contrat peut relever des deux régimes en même temps.
+
+  Primes versées AVANT le 70e anniversaire — art. 990 I CGI.
+  Abattement de 152 500 € par bénéficiaire, tous les contrats du même assuré
+  confondus, sur le capital transmis. Au-delà de l'abattement, rien n'est bloqué :
+  la somme se transmet quand même, elle est simplement taxée.
+
+  Primes versées APRÈS le 70e anniversaire — art. 757 B CGI.
+  Abattement de 30 500 €, tous contrats et tous bénéficiaires du même assuré
+  confondus. Et il ne porte que sur les primes versées : les gains produits par
+  ces primes restent hors champ.
+
+Ces deux règles valent pour les contrats ouverts à partir du 20 novembre 1991.
+Sur un contrat plus ancien, la règle n'est pas la même, et l'âge au moment du
+versement ne joue pas de la même façon. La consigne au spectateur tient en une
+ligne, et elle se dit une fois : si l'un de ses contrats est plus ancien, il porte
+sa date d'ouverture dans la colonne, et c'est son notaire qui tranchera. Cette
+date d'ouverture est donc une mention à porter dans la colonne, au même titre que
+« dates à demander ».
+
+Comment remplir la colonne, concrètement : si tous les versements d'un contrat
+sont du même côté du 70e anniversaire, une ligne suffit. Si le contrat a été
+alimenté des deux côtés, on écrit deux lignes pour ce contrat, une par régime,
+avec le montant de chaque côté. C'est la seule difficulté de la feuille.
+La rubrique n'a que 4 lignes, et un contrat mixte en consomme deux : si elles
+manquent, on continue au dos (§ 1 H, point 5).
+
+Où sont les dates : sur les relevés de situation annuels. Si un relevé ne remonte
+pas assez loin, on écrit « dates à demander » et on passe à la suite —
+l'historique des versements se demande par courrier à l'assureur, et une ligne
+« à demander » est une ligne remplie.
+
+⚠ Le mot « abattement » doit être prononcé et affiché dans les deux cas. Lu seul,
+« 152 500 € par bénéficiaire » se comprend comme un plafond de transmission, ce
+qui est faux.
+⚠ Les 152 500 € ne se multiplient pas par le nombre de contrats. C'est un
+abattement par bénéficiaire pour l'ensemble des sommes dues au titre de tous les
+contrats du même assuré. La mention « tous contrats du même assuré confondus »
+accompagne le chiffre partout où il est dit et partout où il est affiché.
+⚠ Et ne jamais dire « 30 500 € par personne » : c'est un abattement global, tous
+contrats et tous bénéficiaires réunis.
+
+--- D. LA FEUILLE 2 : LA FICHE FAMILLE (état réel du document) ---
+
+7 rubriques :
+
+  1. MOI — Nom, prénom · Date et lieu de naissance · Adresse.
+
+  2. MA SITUATION MATRIMONIALE — 6 cases à cocher :
+     Marié (date et lieu du mariage) · Pacsé (date d'enregistrement) · Concubin ·
+     Divorcé · Veuf ou veuve (date du décès) · Célibataire.
+     Puis 3 champs :
+       - Régime matrimonial (l'indice imprimé propose : communauté, séparation de
+         biens, participation aux acquêts) ;
+       - Contrat de mariage : oui / non — si oui, chez quel notaire et en quelle
+         année ;
+       - Donation au dernier vivant : oui / non / je ne sais pas.
+     Sortie de secours, à dire mot pour mot (§ 4) : si aucun contrat de mariage
+     n'a jamais été signé, on écrit « sans contrat » et rien d'autre. C'est une
+     réponse complète et c'est le cas le plus fréquent.
+     ⚠ Ne jamais faire déduire un nom de régime au spectateur. Un régime porte des
+     conséquences ; c'est le notaire qui le nomme, à partir de la date du mariage
+     et de l'existence ou non d'un contrat. Faire écrire « communauté » à quelqu'un
+     qui l'a supposé, c'est mettre une erreur dans un dossier qui sera lu.
+     La case « je ne sais pas » de la donation au dernier vivant est prévue par le
+     document : la cocher est une réponse, pas un échec.
+
+  3. MON CONJOINT OU PARTENAIRE — Nom, prénom · Date et lieu de naissance.
+     Si le spectateur est seul, veuf ou divorcé, il écrit « sans objet » en
+     travers de la rubrique et passe à la suivante. Rien d'autre ne change dans la
+     feuille. On écrit « sans objet » plutôt que de laisser vide, parce qu'une
+     rubrique vide se lit comme un oubli.
+
+  4. MES ENFANTS — 4 colonnes, 4 lignes :
+     Nom et prénom | Né(e) le | Issu de quelle union | Situation particulière
+     Le document liste ce que couvre la dernière colonne : enfant d'un premier
+     lit, enfant du conjoint, enfant adopté, enfant résidant à l'étranger, enfant
+     protégé ou en situation de handicap.
+     À traiter sobrement : ces deux colonnes ne sont pas des questions
+     indiscrètes, ce sont les deux informations qui changent la part de chacun et
+     les documents à préparer.
+
+  5. MES PETITS-ENFANTS — 3 colonnes, 5 lignes :
+     Nom et prénom | Né(e) le | Enfant de
+     5 lignes suffisent rarement à 75 ans : voir la sortie du § 1 H, point 5.
+
+  6. LES DONATIONS DÉJÀ FAITES — 5 colonnes, 5 lignes :
+     À qui | Quoi | Montant ou valeur | Date exacte | Déclarée ?
+     Le mécanisme, à expliquer une fois et une seule :
+       - art. 779 CGI — chaque parent peut donner 100 000 € à chaque enfant sans
+         que cet enfant paie de droits. C'est un abattement, le même mot que pour
+         l'assurance-vie. Et comme pour l'assurance-vie, ce n'est pas un plafond :
+         on peut donner plus, ce qui dépasse est simplement taxé ;
+       - art. 784 CGI — cet abattement se remet à neuf 15 ans après, et le compteur
+         part de la date du don.
+     C'est pour cela que la colonne « Date exacte » pèse plus lourd que la colonne
+     « Montant ».
+     ⚠ Même règle de sécurité que pour les 152 500 € : « 100 000 € » ne se dit
+     jamais ni ne s'affiche jamais sans le mot « abattement » et sans la phrase qui
+     dit qu'on peut donner au-delà. Lu seul, le chiffre se comprend comme une
+     interdiction de donner davantage, ce qui est faux.
+     Où retrouver une date :
+       - donation passée devant notaire → elle est sur l'acte ; à défaut, le nom de
+         l'étude suffit à la retrouver ;
+       - don de la main à la main → sur le relevé bancaire du mois, ou sur la
+         déclaration envoyée aux impôts si elle a été faite ;
+       - sinon → le mois et l'année, suivis de « à vérifier ». La question se
+         reposera au rendez-vous.
+     Colonne « Déclarée ? » : c'est une question de fait. Écrire « non » ne
+     déclenche aucune démarche de la part du spectateur ce soir. Cette feuille est
+     faite pour être lue par son notaire, et c'est précisément l'information dont
+     celui-ci a besoin avant de rédiger quoi que ce soit.
+     ⚠ Ne jamais dire ni laisser entendre que cette feuille reste chez lui : elle
+     est la 2e des 3 « feuilles de la Méthode à joindre » (§ 1 E), elle part dans
+     la pochette et elle est lue à l'étude. Obtenir un « non » en promettant que le
+     papier ne sortira pas de la maison serait faux, et c'est le seul endroit de la
+     vidéo où cette faute est possible.
+     Le document demande expressément d'y porter aussi les dons remis de la main
+     à la main, même anciens, même modestes, même non déclarés.
+
+  7. TESTAMENT — J'ai rédigé un testament : oui / non — si oui, où est-il déposé.
+
+La feuille porte elle-même sa mention de garde, en bas : elle n'a aucune valeur
+d'acte et ne remplace aucun état civil. Elle reste à l'image sur le dernier plan
+de la fiche famille, et se dit une fois, sans la développer.
+
+--- E. LA FEUILLE 3 : LA CHECK-LIST DES 12 PIÈCES (liste réelle, dans l'ordre) ---
+
+  1. Ma pièce d'identité — et celle du conjoint ou partenaire.
+  2. Le livret de famille — toutes les pages remplies, y compris les mentions.
+  3. Le contrat de mariage ou de PACS — s'il en existe un ; à défaut, la date et
+     le lieu du mariage suffisent pour commencer.
+  4. Le jugement de divorce — s'il y a lieu, avec la convention qui l'accompagne.
+  5. Les titres de propriété — de chaque bien immobilier ; c'est l'acte d'achat
+     remis par le notaire à l'époque.
+  6. Le dernier avis de taxe foncière — pour chaque bien ; il porte les références
+     cadastrales.
+  7. Les relevés d'assurance-vie — le relevé de situation annuel de chaque
+     contrat, avec le numéro de contrat.
+  8. La clause bénéficiaire de chaque contrat — le texte exact. C'est la page qui
+     dit à qui l'argent doit revenir. Elle se demande à l'assureur si elle n'est
+     pas sous les yeux.
+  9. Les relevés de comptes et de placements — un relevé récent par établissement.
+ 10. Les actes de donation déjà passés — et les déclarations de dons manuels, si
+     elles ont été faites.
+ 11. Les tableaux d'amortissement des crédits — pour le capital restant dû à ce
+     jour.
+ 12. Le testament, s'il existe — ou l'indication de l'endroit où il est déposé.
+
+Puis, sur la même feuille, 3 cases « les feuilles de la Méthode à joindre » :
+l'inventaire rempli, la fiche famille remplie, et le plan en une page.
+⚠ Le plan en une page appartient à La Méthode Héritage Intact et le spectateur
+peut ne pas l'avoir. À dire une fois : les deux premières cases se cochent avec
+les feuilles qu'il vient de remplir ; la troisième ne se coche que s'il possède
+La Méthode, et son absence ne manque à personne.
+
+Puis l'encadré « SI UNE PIÈCE MANQUE, ALLEZ QUAND MÊME », le champ « Ce qui me
+manque encore », et 2 champs : « Rendez-vous le », « Chez » (nom de l'étude,
+adresse, téléphone).
+
+--- F. LA FEUILLE 4 : LE MAIL-TYPE ---
+
+Le document est fourni en 2 versions, parce qu'une partie des lecteurs n'écrit
+pas de mail : une version email et une version téléphone à lire à voix haute.
+
+Le corps du mail est déjà rédigé. Ce qui compte dans ce mail, c'est le paragraphe
+qui annonce les pièces : une étude qui lit « j'apporterai l'inventaire de mes
+biens avec leur mode de détention, ma situation familiale, la liste des donations
+avec leurs dates, les relevés et les clauses bénéficiaires » sait, avant le
+rendez-vous, ce que le spectateur apportera.
+
+⚠ Le paragraphe livré annonce un cinquième élément : « et une estimation des
+droits qui seraient dus aujourd'hui ». Cette estimation vient du Simulateur de
+Facture Invisible, que l'acheteur du seul Dossier peut ne pas avoir (écart n° 4).
+Tant que le document n'est pas corrigé, la consigne à donner est simple : si vous
+ne l'avez pas encore faite, barrez cette dernière mention avant de recopier, le
+message tient sans elle.
+
+4 blancs à compléter, et 4 seulement :
+  - les sujets que je voudrais aborder ;
+  - mes disponibilités ;
+  - mon nom ;
+  - mon téléphone.
+Ce sont bien 4 traits soulignés sur la feuille livrée — le nom et le téléphone
+sont sur deux lignes distinctes de la signature. Le spectateur qui compte en
+trouvera 4.
+
+Et si le spectateur n'a pas encore d'étude : le mail s'écrit quand même. Il écrit
+« étude à choisir » dans le champ « Chez » de la check-list, il garde la feuille,
+et le message part le jour où il en a choisi une. Les études de sa commune sont
+dans l'annuaire officiel des notaires, en mairie ou sur internet. Sans cette
+sortie, une partie de l'avatar arrive à la partie 4 avec un mail prêt et personne
+à qui l'envoyer.
+
+Le document porte ensuite 2 précisions à reprendre :
+  - on est libre de choisir son notaire et d'en changer ; il n'y a aucune
+    obligation d'aller chez celui qui a rédigé un acte précédent ;
+  - demander dès le premier échange ce que coûteront les actes envisagés et sur
+    quelle valeur ils sont calculés. C'est une question normale, et elle se pose
+    au début.
+
+Et 3 champs de suivi en bas de feuille : message envoyé le · réponse reçue le ·
+rendez-vous fixé au.
+
+Le mot « démembrement ». La vidéo ne peut pas savoir ce que le spectateur écrit :
+le déclencheur est donc le narrateur, pas le spectateur. Le mot est prononcé une
+fois, au § 3 point 8, comme exemple de sujet à porter dans la ligne des sujets du
+mail — « donner la nue-propriété de ma maison » — avec sa glose courte : donner
+les murs, garder l'usage à vie. Article 578 du code civil, qui définit l'usufruit.
+⚠ Ne pas afficher l'art. 669 CGI dans cette vidéo, et ne prononcer aucun
+pourcentage de nue-propriété. Le barème 60 % / 70 % et l'art. 669 appartiennent à
+l'étape 4 de La Méthode.
+
+--- G. LA FEUILLE 5 : LE COMPTE-RENDU À TROUS ---
+
+Elle ne se remplit pas ce soir, sauf une ligne. Elle se remplit en sortant du
+rendez-vous — sur un banc, dans la voiture, au café d'en face. Ce sont les termes
+exacts employés par le notaire qui serviront ensuite : ils se notent tant qu'ils
+sont encore présents.
+
+Structure réelle : en-tête (rendez-vous du · chez · étaient présents), puis
+  1. Ce qui a été confirmé — régime matrimonial, existence d'une donation au
+     dernier vivant, droits estimés aujourd'hui par enfant, écart avec mon propre
+     calcul et pourquoi.
+  2. Ce qui a été décidé — La décision | Qui s'en occupe | Avant quelle date |
+     Coût annoncé.
+  3. Ce qui a été écarté, et pour quelle raison — 2 colonnes.
+  4. Ce que je dois fournir — La pièce demandée | Où je la trouve | Envoyée le.
+  5. La suite — prochain rendez-vous, ce qui doit être signé et quand.
+Puis l'encadré « pour mon conjoint, ou pour celui qui lira cette feuille », et
+3 cases finales : relue à voix haute avec le conjoint · dates reportées sur le
+plan en une page · feuille rangée au classeur, à sa place.
+Et, en dernière ligne de la feuille, sa mention de garde, imprimée : ce
+compte-rendu est une note personnelle, il n'engage pas le notaire et ne remplace
+ni les actes ni les courriers de l'étude, qui font seuls foi. Elle reste à l'image
+sur l'arrêt final du carton 20, et se dit une fois, sans la développer.
+
+⚠ ÉCART À TRANCHER. Le script source fait de la ligne « où se trouve ce dossier
+dans la maison » la raison d'être de la feuille. Cette ligne n'existe pas sur le
+document livré. Tant qu'elle n'y est pas ajoutée, la vidéo demande de l'écrire à
+la main sous la troisième case, et c'est ce que dit la fiche. Si le document est
+corrigé avant le tournage, remplacer « ajoutez à la main » par « la dernière
+ligne ».
+La formulation reste une instruction, jamais un rappel de la mort : « écrivez où
+se trouve ce dossier. 6 mots suffisent : tiroir du buffet, salle à manger. »
+
+--- H. LE CADRE DE RÉASSURANCE, CONSTANT D'UN BOUT À L'AUTRE ---
+
+Ces cinq points sont le fond de la vidéo autant que le droit. Ils se disent en
+une ou deux phrases chacun, sans les développer, et ils ne se répètent pas.
+
+  1. Aucune des feuilles remplies ce soir n'est envoyée à qui que ce soit. Rien
+     n'est signé, rien n'est définitif. Le seul message qui part est celui de la
+     partie 4 — la demande de rendez-vous — et c'est le spectateur qui décide de
+     l'envoyer.
+     ⚠ Ne jamais dire « rien de ce que vous écrivez ce soir n'est envoyé nulle
+     part » sans cette réserve : la partie 4 fait précisément envoyer un message,
+     dans la même vidéo.
+  2. On peut s'arrêter à la fin de n'importe laquelle des 4 parties. Ce qui est
+     rempli reste rempli, et la partie suivante se reprend un autre soir sans
+     rien refaire. Et la vidéo elle-même se met en pause et se revoit autant de
+     fois qu'on veut (§ 3, point 1).
+  3. Une case qu'on ne sait pas remplir a une réponse prévue, et elle est
+     différente selon la case : « à confirmer » pour le mode de détention, « dates
+     à demander » pour l'assurance-vie, « à vérifier » pour la date d'un don,
+     « à retrouver » pour une pièce, « sans contrat » pour le régime matrimonial,
+     « je ne sais pas » pour la donation au dernier vivant, et « sans objet » en
+     travers d'une rubrique qui ne concerne pas le spectateur. Aucune de ces
+     mentions n'empêche le notaire de travailler ; elles se lèvent au rendez-vous.
+  4. Les valeurs portées sont des estimations personnelles, sans valeur
+     d'expertise ; le notaire les fera confirmer pour les actes qui l'exigent.
+  5. Si les lignes manquent — plus de 5 petits-enfants, plus de 4 contrats, un
+     contrat mixte qui prend deux lignes, plus de 5 donations, plus de 3 dettes —
+     on continue au dos de la feuille en rappelant le numéro de la rubrique. Le
+     notaire lit le dos. Ce point se dit une fois, au § 3 point 4, et il est
+     rappelé à l'image au carton 9, là où le problème se voit.
+
+--- I. CHIFFRES ET ILLUSTRATIONS AUTORISÉS ---
+
+Aucun chiffre nouveau n'est calculé dans cette vidéo, et aucun barème n'y est
+déroulé. Les seuls chiffres DE DROIT prononcés sont 152 500 €, 30 500 €,
+100 000 €, 15 ans et 70 ans, tous rattachés à leur article. Aucun autre chiffre
+fiscal, aucun taux, aucun barème.
+Les chiffres d'organisation — le minutage, le nombre de rubriques, les 12 pièces,
+les 4 parties, les 4 blancs, les 6 mots — et la ligne d'exemple ne relèvent pas de
+cette règle : ils se disent normalement.
+La seule valeur de maison autorisée pour une ligne d'exemple est 480 000 €
+(cas Julien). 380 000 € est strictement réservé au cas Jean-Pierre : ne jamais le
+faire apparaître ici. Ne jamais inventer une troisième valeur.
+⚠ Écart n° 5, à trancher avant le tournage : le Simulateur livré imprime
+480 000 € au nom du cas de Jean-Pierre. Tant qu'il n'est pas corrigé, la ligne
+d'exemple de cette vidéo évoque un cas du projet pour qui a la feuille sous les
+yeux. Si le responsable produit choisit de ne pas corriger le Simulateur, il faut
+au contraire autoriser ici une valeur d'illustration distincte des deux cas, et
+lever pour ce seul usage l'interdiction d'inventer une troisième valeur.
+« 12 rue des Tilleuls » et « 1988 » sont des détails d'illustration neutres,
+rattachés à aucun cas du projet : ne pas les associer à Julien ni à Jean-Pierre.
+Aucun assureur, aucune banque, aucune étude, aucun contrat, aucun placement n'est
+nommé.
+
+
+------------------------------------------------------------
+2. CE QUE JE MONTRE À L'ÉCRAN
+------------------------------------------------------------
+
+À fabriquer avant le tournage. Chaque feuille est filmée telle qu'elle est
+imprimée — jamais retouchée, jamais grisée, jamais amputée : c'est la feuille que
+le spectateur a sous les yeux.
+
+RÈGLES COMMUNES À TOUS LES CARTONS
+  - Corps ≥ 24 pt, fond clair, texte noir. Jamais plus de 8 lignes à l'écran.
+    Au-delà de 8 lignes, le carton se coupe en deux écrans.
+  - Les lignes écrites à l'image sont filmées à part et montées. Une écriture ne
+    dure jamais plus de 4 secondes à l'écran. On ne filme aucun remplissage en
+    temps réel : le spectateur remplit la vidéo en pause, ou après.
+  - Cadre : une main et une feuille, jamais au-delà du poignet.
+
+  1. CARTON-TITRE — « Le Dossier à apporter chez votre notaire » /
+     « 5 feuilles · 4 parties · environ 1 heure ». Fond clair, police ≥ 28 pt.
+
+  2. CARTON DE RÉASSURANCE, 2 lignes, rien d'autre — « Vos feuilles ne sont
+     envoyées à personne. Rien n'est signé. » / « Vous pouvez vous arrêter à la
+     fin de chaque partie. »
+
+  3. CARTON — « Le notaire travaille sur ce que vous lui apportez. »
+     ⚠ Ne jamais écrire « le notaire acte ce que vous demandez ».
+
+  4. LE MINUTAGE — 4 blocs alignés : 25 min · 15 min · 15 min · 5 min ≈ 1 heure.
+     Le mot « environ » est à l'image et dans la voix : c'est un budget indicatif,
+     pas une durée due.
+
+  5. L'INVENTAIRE, RUBRIQUE 1 — le tableau immobilier vierge, ses 4 colonnes
+     titrées (Adresse du bien / Valeur estimée / Mode de détention / Acquis en),
+     puis une ligne écrite en direct :
+     « 12 rue des Tilleuls — 480 000 € (estimation) — bien propre — 1988 ».
+     Sous le tableau, la liste des modes de détention imprimée sur la feuille.
+     ⚠ Le mot « communauté » n'est jamais écrit à l'écran ni prononcé comme un
+     exemple à recopier : c'est le notaire qui nomme un régime (§ 1 D, § 5
+     piège 5). L'exemple modélise ce que le spectateur va recopier.
+
+  6. INCRUSTE — « indivision : à plusieurs, chacun pour une part » et, en dessous,
+     « dans le doute : à confirmer ».
+
+  7. L'INVENTAIRE, RUBRIQUES 2, 4 ET 5 — les trois tableaux défilent avec leurs
+     titres de colonnes. Les rubriques 2 et 4 sont montrées déjà remplies. UNE
+     seule ligne écrite en direct, dans la rubrique 5 (les dettes).
+
+  8. SLIDE ASSURANCE-VIE — 2 blocs côte à côte.
+     À gauche : « versements AVANT 70 ans — abattement de 152 500 € par
+     bénéficiaire, tous contrats du même assuré confondus — art. 990 I CGI ».
+     À droite : « versements APRÈS 70 ans — abattement de 30 500 €, tous les
+     contrats et tous les bénéficiaires réunis — art. 757 B CGI ».
+     Ligne de bas de slide, 2 lignes : « au-delà, la somme se transmet quand même,
+     elle est taxée » / « ces deux règles valent pour les contrats ouverts à partir
+     du 20 novembre 1991 ».
+     ⚠ Le mot « abattement » figure dans les 2 blocs, et la mention « tous contrats
+     du même assuré confondus » figure dans le bloc de gauche : sans elle, le
+     spectateur qui a 3 contrats comprend 3 × 152 500 €. Un seul chiffre par bloc,
+     l'article affiché en face.
+
+  9. L'INVENTAIRE, RUBRIQUE 3 — le tableau assurance-vie ; un contrat écrit sur
+     2 lignes, une par régime, pour montrer le seul cas difficile. Puis une
+     seconde ligne où la colonne du montant est laissée vide et où l'on écrit
+     « dates à demander ». Incruste à cet endroit, là où le problème se voit :
+     « si les 4 lignes ne suffisent pas : continuez au dos, en rappelant le numéro
+     de la rubrique ».
+
+ 10. L'INVENTAIRE, RUBRIQUE 6 — les 3 champs de totaux, et sous eux l'incruste
+     « total de patrimoine — ce n'est pas une base de calcul d'impôt ».
+
+ 11. LA FICHE FAMILLE, RUBRIQUE 2 — les 6 cases (marié · pacsé · concubin ·
+     divorcé · veuf ou veuve · célibataire), une seule cochée à l'écran, puis les
+     3 champs en dessous ; « sans contrat » écrit en direct dans le champ contrat
+     de mariage, et « je ne sais pas » coché pour la donation au dernier vivant.
+
+ 12. LA FICHE FAMILLE, RUBRIQUES 3 À 5 — la rubrique conjoint barrée d'un « sans
+     objet » écrit en travers ; puis les tableaux enfants et petits-enfants avec
+     leurs titres de colonnes. La voix dit « sans objet », pas « laissez vide » :
+     l'image et la voix disent la même chose.
+
+ 13. SLIDE DONATIONS — « abattement de 100 000 € par parent et par enfant —
+     art. 779 CGI » et, en dessous, « le compteur repart 15 ans après la date du
+     don — art. 784 CGI ».
+     Ligne de bas de slide, comme au carton 8 : « on peut donner au-delà : ce qui
+     dépasse est simplement taxé ».
+
+ 14. LA FICHE FAMILLE, RUBRIQUE 6 — le tableau des donations, colonne « Date
+     exacte » surlignée ; une ligne écrite en direct avec « mars 2011 — à
+     vérifier » dans cette colonne et « non » dans la colonne « Déclarée ? ».
+
+ 15. LA CHECK-LIST — les 12 titres seuls, sans leurs précisions, en 2 colonnes de
+     6, la ligne en cours surlignée et cochée au moment où elle est prononcée. Le
+     compte de 12 reste lisible d'un bout à l'autre. Pas de 13e ligne.
+     ⚠ Ne pas afficher les précisions du document sous chaque ligne : cela ferait
+     24 lignes à l'écran, illisibles pour l'avatar.
+
+ 16. LA CHECK-LIST, BAS DE PAGE — les 3 cases « feuilles de la Méthode », telles
+     qu'elles sont imprimées, sans grisé. Les deux premières se cochent à l'écran ;
+     la troisième reste vierge, avec l'incruste « celle-là ne se coche que si vous
+     avez La Méthode ». Puis l'encadré « si une pièce manque, allez quand même » ;
+     puis le champ « ce qui me manque encore » rempli en direct d'une seule
+     mention.
+
+ 17. LE MAIL-TYPE, EN 2 ÉCRANS — écran A : l'objet et le premier paragraphe.
+     Écran B : le paragraphe des pièces, puis les 4 blancs en gros plan, surlignés
+     l'un après l'autre et remplis à l'écran. La version téléphone vient ensuite,
+     sur un carton séparé de 3 lignes.
+     ⚠ Tant que l'écart n° 4 n'est pas tranché, l'écran B montre la dernière
+     mention du paragraphe des pièces — « et une estimation des droits qui seraient
+     dus aujourd'hui » — barrée d'un trait, au moment où la voix dit de la barrer.
+
+ 18. INCRUSTE, au § 3 point 8, quand le narrateur donne l'exemple de sujet —
+     « démembrement : donner les murs, garder l'usage à vie », et en dessous, plus
+     petit, « art. 578 code civil — définition de l'usufruit ».
+     ⚠ Aucun art. 669 CGI, aucun pourcentage dans cette vidéo.
+
+ 19. LES 2 PRÉCISIONS DU MAIL — 2 lignes : « aucune règle ne vous oblige à
+     retourner chez le notaire qui a rédigé un acte précédent » / « demandez ce que
+     coûteront les actes, et sur quelle valeur ils sont calculés ».
+
+ 20. LE COMPTE-RENDU — ses 5 rubriques défilent ; arrêt sur les 3 cases finales,
+     et la ligne « où se trouve ce dossier — tiroir du buffet, salle à manger »
+     écrite à la main dessous, tenue 3 secondes de plus. Sur cet arrêt final, la
+     mention imprimée en bas de feuille reste à l'image : « ce compte-rendu est
+     votre note personnelle ; il n'engage pas le notaire et ne remplace ni les
+     actes ni les courriers de l'étude, qui font seuls foi ».
+
+ 21. CARTON DE FIN — « 4 parties · environ 1 heure · 1 mail envoyé ».
+
+ 22. MENTION LÉGALE, plein écran — « Contenu pédagogique. Ne constitue pas un
+     conseil personnalisé. Chiffres et articles à jour au [mois année du
+     tournage]. Le message de prise de rendez-vous est un modèle, pas un acte :
+     les actes sont rédigés par votre notaire. »
+     Elle monte quand la mention est dite, et elle reste à l'image pendant le
+     renvoi de fin, qui est le dernier mot de la vidéo (§ 3 point 9, § 7).
+     ⚠ Le mois et l'année ne sont pas décoratifs : la vidéo prononce et affiche
+     4 valeurs fixées par la loi de finances et révisables (152 500 €, 30 500 €,
+     100 000 €, le délai de 15 ans), et elle vivra plusieurs années à l'intérieur
+     du produit.
+     ⚠ Ne pas écrire « tout modèle d'acte est à faire relire par votre notaire » :
+     cette vidéo ne livre aucun modèle d'acte, seulement un modèle de message.
+
+ARTICLES À AFFICHER, AVEC LEUR NUMÉRO
+  - art. 990 I CGI — abattement de 152 500 € par bénéficiaire, tous contrats du
+    même assuré confondus, sur les primes versées avant 70 ans ; au-delà, la somme
+    est transmise et taxée
+  - art. 757 B CGI — abattement global de 30 500 €, tous bénéficiaires et tous
+    contrats du même assuré confondus, sur les seules primes versées après
+    70 ans ; les gains produits par ces primes restent hors champ
+  - art. 990 I et 757 B CGI — applicables aux contrats ouverts à partir du
+    20 novembre 1991 ; sur un contrat plus ancien, la règle n'est pas la même
+  - art. 779 CGI — abattement de 100 000 € par parent et par enfant ; on peut
+    donner au-delà, ce qui dépasse est taxé
+  - art. 784 CGI — rappel fiscal de 15 ans, à compter de la date du don
+  - art. 578 code civil — définition de l'usufruit, affiché uniquement en face de
+    la glose du mot « démembrement » au point 8
+    ⚠ Cet article ne définit que l'usufruit. Ne pas l'étiqueter « usufruit et
+    nue-propriété » : l'autorité du narrateur ne vient que des articles affichés.
+
+
+------------------------------------------------------------
+3. CE QUE JE DIS, DANS L'ORDRE
+------------------------------------------------------------
+
+9 points. Repères à dire avec ses mots, pas des phrases à lire. Débit lent,
+environ 140 mots par minute, une pause d'une seconde après chaque chiffre.
+Le minutage indiqué à droite est le budget de chaque point. Les 9 points totalisent
+11 min 40 ; le renvoi de fin (§ 7) prend 25 secondes.
+Aux 9 points s'ajoutent environ 30 secondes de pauses après les chiffres — plus de
+30 chiffres sont prononcés — et le temps des écritures montées à l'image. Ce temps
+est dans la durée : il ne se rattrape pas au débit. D'où la durée cible de
+13 minutes portée en tête de fiche.
+
+La mention en fin de point — « (phrases 3 et 4 du § 4, mot pour mot) » — dit où
+tombe chacune des 7 phrases exactes. Celui qui tourne n'a pas à chercher dans le
+§ 4 pendant la prise.
+
+⚠ Ne pas accélérer le débit pour tenir la durée : le débit lent est ce qui rend la
+vidéo écoutable à 80 ans. S'il faut couper, couper dans cet ordre, et rien
+d'autre : la glose « indivision » du point 3, puis la liste des 12 pièces du
+point 7 réduite au rythme des cases qui se cochent sans commentaire, puis
+l'énumération des 5 rubriques du compte-rendu au point 9. Ne JAMAIS couper dans le
+point 5 (assurance-vie), dans la seconde moitié du point 6 (la date des
+donations), ni dans aucune des sorties de secours.
+
+  1. CE QU'ON FAIT, LE FORMAT, ET CE QUI NE PEUT PAS MAL TOURNER — 1 min 05
+     Le Dossier vient d'arriver ; on le passe en revue feuille par feuille, case
+     par case, dans l'ordre où il se remplit. Il faut un stylo, une pochette, et
+     les papiers qui sont déjà dans la maison.
+     Puis le format, dit clairement : cette vidéo dure environ un quart d'heure, le
+     remplissage prend environ une heure ; on met la vidéo en pause pendant qu'on
+     écrit et on la reprend ensuite, et on peut la revoir autant de fois qu'on
+     veut.
+     Puis la réassurance : aucune des feuilles remplies ce soir n'est envoyée à qui
+     que ce soit, rien n'est signé, rien n'est définitif ; le seul message qui part
+     est celui de la partie 4, et c'est le spectateur qui décide de l'envoyer. On
+     peut s'arrêter à la fin de n'importe laquelle des 4 parties : ce qui est
+     rempli reste rempli.
+     (phrase 1 du § 4, mot pour mot)
+     → Ce point se dit une fois. Il ne se reprend pas à la fin.
+
+  2. POURQUOI CE DOSSIER, ET LES 4 PARTIES — 45 s
+     Un notaire travaille sur les pièces qu'on lui apporte : de votre vivant, vos
+     relevés et vos dates ne sont pas à sa disposition, c'est vous qui les lui
+     apportez. Deux informations ne peuvent venir que du spectateur — la date de
+     chaque donation déjà faite, et la date de chaque versement d'assurance-vie.
+     Puis le minutage, donné comme un budget indicatif et pas comme une durée due :
+     inventaire environ 25 min, fiche famille environ 15 min, pièces environ
+     15 min, mail environ 5 min.
+     → Ne pas décrire le rendez-vous raté ni le rendez-vous réussi : le fait
+       suffit. Et ne jamais dire que le notaire acte ce qu'on lui demande.
+
+  3. L'INVENTAIRE — L'IMMOBILIER ET LA COLONNE « MODE DE DÉTENTION » — 1 min 15
+     Rubrique 1 : adresse, valeur estimée, mode de détention, année d'acquisition.
+     Une ligne écrite à l'écran. Le mode de détention : les réponses possibles
+     sont imprimées sous le tableau ; gloser « indivision » en une phrase ; dans
+     le doute, écrire « à confirmer », seul, sans nom de mode.
+     La valeur : écrire ce qu'on pense, et ajouter le mot « estimation ». Une case
+     vide oblige le notaire à refaire l'estimation lui-même ; un chiffre approché,
+     non.
+     (phrase 2 du § 4, mot pour mot)
+     → Cette phrase se dit lentement, une seule fois.
+
+  4. L'INVENTAIRE — LES COMPTES, LE RESTE, LES DETTES, LES TOTAUX — 1 min 10
+     Rubrique 2, un ordre de grandeur suffit, c'est le mot du document.
+     Rubrique 4, ce qui n'entre nulle part ailleurs : véhicules, parts de société,
+     objets de valeur, prêts consentis à un proche, terrains, bois et forêts.
+     Rubrique 5, les crédits en cours vont ici, avec le capital restant dû.
+     Rubrique 6, les 3 totaux — et la précision qu'il s'agit d'un total de
+     patrimoine, pas d'une base de calcul d'impôt.
+     Et, une fois pour toute la feuille : si les lignes manquent, on continue au
+     dos en rappelant le numéro de la rubrique ; le notaire lit le dos.
+
+  5. L'INVENTAIRE — L'ASSURANCE-VIE, LA SEULE DIFFICULTÉ DE LA FEUILLE — 2 min
+     La colonne de droite demande si l'argent a été versé avant ou après 70 ans.
+     Ce n'est pas l'âge du contrat, c'est la date de chaque versement. Les deux
+     régimes, dits une fois chacun, avec leur article et le mot « abattement ».
+     Puis le geste : si tout est du même côté, une ligne ; si le contrat a été
+     alimenté des deux côtés, deux lignes, une par régime. Puis les dates sont sur
+     les relevés annuels, et si le relevé ne remonte pas assez loin, « dates à
+     demander » — l'historique se demande par courrier à l'assureur.
+     Et, en dernière ligne du point, une fois : ces deux règles valent pour les
+     contrats ouverts à partir du 20 novembre 1991 ; si l'un de vos contrats est
+     plus ancien, notez sa date d'ouverture dans la colonne, c'est votre notaire
+     qui tranchera.
+     (phrases 3 et 4 du § 4, mot pour mot)
+     → C'est le point le plus lent de la vidéo. Ne rien y couper.
+
+  6. LA FICHE FAMILLE — 2 min 40
+     Rubrique 1, l'identité. Rubrique 2, cocher une case parmi les 6, puis les
+     3 champs : régime matrimonial, contrat de mariage, donation au dernier
+     vivant. La sortie « sans contrat ». La case « je ne sais pas », qui est une
+     réponse. Rubrique 3, « sans objet » en travers si elle ne concerne pas.
+     Rubriques 4 et 5, enfants et petits-enfants, en disant pourquoi les colonnes
+     « issu de quelle union » et « situation particulière » existent.
+     Puis la rubrique 6, les donations déjà faites : les 2 articles, la colonne
+     « Date exacte » qui pèse plus que le montant, les 3 endroits où retrouver une
+     date, et « à vérifier » sinon. Et la colonne « Déclarée ? » : écrire « non »
+     ne déclenche aucune démarche ce soir ; cette feuille est faite pour être lue
+     par le notaire, et c'est l'information dont il a besoin. Rubrique 7, le
+     testament. Puis, une fois, la mention imprimée en bas de feuille : elle n'a
+     aucune valeur d'acte et ne remplace aucun état civil.
+     (phrases 5 et 6 du § 4, mot pour mot)
+     → Ne jamais faire déduire un nom de régime matrimonial.
+     → Ne jamais dire que cette feuille reste à la maison : elle part dans la
+       pochette.
+
+  7. LES 12 PIÈCES — 55 s
+     Une pochette, la feuille, et on coche. Énoncer les 12 au rythme où elles se
+     cochent à l'écran, sans commentaire, sauf 2 : la clause bénéficiaire, qui est
+     la page disant à qui l'argent doit revenir et qui se demande à l'assureur si
+     on ne l'a pas ; et le fait qu'une pièce manquante se note « à retrouver » dans
+     le champ prévu, sans bloquer. Puis les 3 cases des feuilles de la Méthode, la
+     troisième réservée à ceux qui possèdent La Méthode.
+
+  8. LE MAIL, ET LES 2 QUESTIONS À POSER — 1 min 10
+     Le mail est déjà écrit ; il reste 4 blancs : les sujets, les disponibilités,
+     le nom, le téléphone. Une version téléphone existe si on préfère appeler.
+     Un exemple de sujet à écrire : « donner la nue-propriété de ma maison ». Si
+     vous employez le mot « démembrement », c'est celui-là : donner les murs,
+     garder l'usage à vie — article 578 du code civil.
+     Ce qui compte dans ce mail, c'est le paragraphe qui annonce les pièces :
+     l'étude sait, avant le rendez-vous, ce que vous apporterez.
+     Tant que l'écart n° 4 n'est pas tranché : ce paragraphe annonce aussi une
+     estimation des droits ; si vous ne l'avez pas encore faite, barrez cette
+     dernière mention avant de recopier, le message tient sans elle.
+     Si vous n'avez pas encore d'étude, le mail s'écrit quand même : écrivez
+     « étude à choisir » dans le champ « Chez » de la check-list, gardez la
+     feuille ; les études de votre commune sont dans l'annuaire officiel des
+     notaires, en mairie ou sur internet, et le mail part le jour où vous en avez
+     choisi une.
+     Puis les 2 précisions : aucune règle ne vous oblige à retourner chez le
+     notaire qui a rédigé un acte précédent — vous choisissez votre étude et vous
+     pouvez en changer ; et on demande dès le premier échange ce que coûteront les
+     actes et sur quelle valeur ils sont calculés.
+     → Aucun montant, aucun pourcentage, rien sur la rémunération d'un notaire.
+     → Aucun art. 669, aucun pourcentage de nue-propriété avec le mot
+       « démembrement ».
+
+  9. LE COMPTE-RENDU, ET LA LIGNE À ÉCRIRE CE SOIR — 40 s
+     Cette feuille se remplit en sortant du rendez-vous, pas 3 jours après : sur un
+     banc, dans la voiture, au café d'en face. Ce sont les termes exacts employés
+     par le notaire qui serviront ensuite. Ses 5 rubriques, énoncées vite, puis, une
+     fois : cette feuille est votre note personnelle, elle n'engage pas le notaire.
+     Puis la seule chose à faire ce soir : écrire, sous les 3 cases du bas, où se
+     trouve ce dossier dans la maison. 6 mots suffisent.
+     Puis la mention légale, dite une fois, juste avant le renvoi.
+     (phrase 7 du § 4, mot pour mot)
+     → Dire l'instruction seule. Ne pas expliquer pourquoi quelqu'un d'autre
+       devra ouvrir ce dossier.
+
+  Puis le renvoi (§ 7), après cette conclusion et après la mention légale, jamais
+  avant. C'est le dernier mot de la vidéo.
+
+
+------------------------------------------------------------
+4. LES PHRASES À DIRE MOT POUR MOT
+------------------------------------------------------------
+
+7 phrases. Tout le reste se dit avec ses mots.
+Y ont leur place : les chiffres, les articles, les conditions de droit, les
+mentions légales — et les 2 phrases de réassurance dont la formulation exacte
+engage, la phrase 1 et la phrase 2. Ces deux-là sont ici parce qu'une paraphrase
+les rend fausses : la 1 dirait qu'aucun message ne part alors que la partie 4 en
+envoie un ; la 2 laisserait entendre qu'un chiffre approché a une valeur qu'il
+n'a pas.
+
+  1. « Aucune des feuilles que vous remplissez ce soir n'est envoyée à qui que ce
+     soit. Rien n'est signé, rien n'est définitif. Le seul message qui part, c'est
+     celui de la partie 4 : la demande de rendez-vous, et c'est vous qui décidez
+     de l'envoyer. »
+
+  2. « Écrivez ce que vaut la maison d'après vous, et ajoutez le mot
+     "estimation". Une estimation personnelle suffit à cette feuille : le notaire
+     la fera confirmer pour les actes qui l'exigent. »
+
+  3. « Pour l'argent versé avant votre 70e anniversaire, l'impôt ne prend rien
+     jusqu'à 152 500 € par bénéficiaire, tous vos contrats réunis : c'est ce qu'on
+     appelle un abattement, article 990 I. Au-delà, rien n'est bloqué : la somme
+     se transmet quand même, elle est simplement taxée. »
+
+  4. « Pour l'argent versé après cet anniversaire, l'abattement est de 30 500 €,
+     à partager entre tous vos bénéficiaires et tous vos contrats réunis, article
+     757 B. Et il ne porte que sur les sommes versées : ce que le contrat a
+     rapporté reste en dehors. »
+
+  5. « Chaque parent peut donner 100 000 € à chaque enfant sans que cet enfant
+     paie de droits : c'est un abattement, article 779. On peut donner plus — ce
+     qui dépasse est simplement taxé. Et cet abattement se remet à neuf tous les
+     15 ans, à compter du jour du don, article 784. »
+
+  6. « Si vous n'avez jamais signé de contrat de mariage, écrivez "sans contrat"
+     et rien d'autre. C'est une réponse complète, et c'est le cas le plus
+     fréquent : c'est votre notaire qui nommera votre régime. »
+
+  7. « Contenu pédagogique. Ne constitue pas un conseil personnalisé. Chiffres et
+     articles à jour au [mois année du tournage]. Le message de prise de
+     rendez-vous est un modèle, pas un acte : les actes sont rédigés par votre
+     notaire. »
+
+
+------------------------------------------------------------
+5. LES PIÈGES — CE QU'IL NE FAUT SURTOUT PAS DIRE
+------------------------------------------------------------
+
+  1. « Le notaire acte ce que vous lui demandez. »
+     → FAUX et interdit. Le notaire est tenu d'un devoir de conseil. Dire : « le
+       notaire travaille sur ce que vous lui apportez », et rien de plus.
+     ⚠ La feuille des 12 questions de l'étape 7 imprime aujourd'hui cette phrase,
+       ainsi qu'une mention de la rémunération du notaire. Écart n° 3 en tête de
+       fiche : à corriger avant que cette vidéo ne renvoie vers cette feuille.
+
+  2. « 152 500 € par bénéficiaire » ou « 100 000 € par parent et par enfant »,
+     dits ou affichés sans le mot « abattement ».
+     → Lu seul, le chiffre se comprend comme un plafond, ce qui est faux dans les
+       deux cas. Toujours : « un abattement de 152 500 € par bénéficiaire », « un
+       abattement de 100 000 € par parent et par enfant », et toujours suivis de
+       la phrase qui dit qu'on peut aller au-delà : « la somme se transmet quand
+       même, elle est taxée » pour l'assurance-vie, « on peut donner plus, ce qui
+       dépasse est simplement taxé » pour les donations. La même règle de sécurité
+       s'applique aux deux chiffres : la fiche l'appliquait au 152 500 € et pas au
+       100 000 €, alors que le contresens est identique.
+
+  2 bis. « 152 500 € par bénéficiaire » sans « tous contrats du même assuré
+     confondus ».
+     → C'est la sur-estimation la plus fréquente du sujet : le spectateur qui a
+       3 contrats comprend 3 × 152 500 € par bénéficiaire. L'abattement vaut pour
+       l'ensemble des sommes dues au titre de tous les contrats du même assuré.
+       La mention accompagne le chiffre partout, à l'oral comme à l'écran.
+
+  2 ter. Donner la bascule « avant / après 70 ans » comme la règle générale, sans
+     réserve.
+     → Elle ne vaut que pour les contrats ouverts à partir du 20 novembre 1991.
+       Sur un contrat plus ancien — courant chez quelqu'un de 65 à 85 ans, qui
+       avait alors entre 30 et 50 ans — la règle n'est pas la même. Dire, une
+       fois : « ces deux règles valent pour les contrats ouverts à partir du
+       20 novembre 1991 ; si l'un de vos contrats est plus ancien, notez sa date
+       d'ouverture dans la colonne, c'est votre notaire qui tranchera. »
+
+  3. « 30 500 € par bénéficiaire » ou « 30 500 € par contrat ».
+     → FAUX. C'est un abattement global : 30 500 €, tous contrats et tous
+       bénéficiaires du même assuré réunis, article 757 B.
+
+  4. « L'assurance-vie ouverte avant 70 ans est exonérée. »
+     → FAUX : ce n'est pas la date d'ouverture du contrat, c'est la date de chaque
+       versement. Dire : « c'est la date de chaque versement qui décide, pas l'âge
+       du contrat ; un même contrat peut relever des deux régimes. »
+
+  5. Faire déduire au spectateur le nom de son régime matrimonial (« sans contrat,
+     donc vous êtes en communauté »).
+     → Le régime porte des conséquences et se déduit de plusieurs éléments. Dire :
+       « écrivez "sans contrat" — c'est votre notaire qui nommera votre régime. »
+
+  6. Présenter la « masse à transmettre » comme la somme sur laquelle les droits
+     se calculent.
+     → FAUX : aucun abattement n'y est retranché. Dire : « c'est un total de
+       patrimoine, pour que le notaire voie l'ensemble d'un coup. Ce n'est pas une
+       base de calcul d'impôt. »
+
+  7. Chiffrer, même approximativement, ce que coûtera un acte, ou expliquer
+     comment un notaire est rémunéré.
+     → Interdit. Une seule formulation : « demandez ce que coûteront les actes
+       envisagés, et sur quelle valeur ils sont calculés. »
+
+  8. Citer l'art. 669 CGI ou prononcer un pourcentage de nue-propriété (60 %,
+     70 %) en glosant le mot « démembrement ».
+     → Le barème appartient à l'étape 4 de La Méthode. Ici : « donner les murs,
+       garder l'usage à vie », article 578 du code civil, et rien de plus.
+     ⚠ Et ne pas étiqueter l'art. 578 « usufruit et nue-propriété » : il ne
+       définit que l'usufruit. À l'écran : « art. 578 du code civil — définition
+       de l'usufruit ».
+
+  9. Laisser entendre qu'une case non remplie est un échec, ou qu'il faut avoir
+     tout retrouvé avant d'aller au rendez-vous.
+     → Dire la sortie prévue par la feuille : « à confirmer », « dates à
+       demander », « à vérifier », « à retrouver », « je ne sais pas », « sans
+       objet ». Et : « avec 10 pièces sur 12, le rendez-vous se tient. Les 2 qui
+       manquent se notent dans le champ "ce qui me manque encore", et l'étude les
+       demandera. »
+     ⚠ L'encadré imprimé sur la check-list porte « vaut infiniment mieux ». Ne pas
+       le lire à voix haute : dire la formulation ci-dessus.
+
+ 10. Laisser croire que la troisième case des feuilles à joindre — le plan en une
+     page — est obligatoire.
+     → Dire : « celle-là ne se coche que si vous avez La Méthode. Sans elle, votre
+       dossier est complet. »
+
+ 11. Écrire « non » dans la colonne « Déclarée ? » présenté comme un aveu, ou
+     comme quelque chose qui pourrait se retourner contre le spectateur.
+     → Dire : « c'est une question de fait. Votre notaire a besoin de la connaître,
+       et c'est au rendez-vous qu'elle se règle. »
+     ⚠ Ne JAMAIS dire « cette feuille reste sur votre table » : c'est faux. La
+       fiche famille remplie est la 2e des 3 feuilles à joindre, elle part dans la
+       pochette et elle est lue à l'étude. Obtenir un « non » en promettant le
+       contraire serait une fausse réassurance, sur la case où elle serait la plus
+       grave.
+
+ 12. Nommer un assureur, une banque, une étude, un contrat ou un placement, ou
+     recommander d'en ouvrir un.
+     → Interdit sans exception.
+
+ 13. Faire apparaître 380 000 € comme valeur de maison dans un exemple.
+     → Réservé au cas Jean-Pierre. La seule valeur générique autorisée est
+       480 000 €.
+
+
+------------------------------------------------------------
+6. CE QUE LE SPECTATEUR FAIT
+------------------------------------------------------------
+
+CE QU'IL SORT AVANT DE COMMENCER
+  Le Dossier imprimé — ses 5 feuilles : inventaire, fiche famille, check-list des
+  12 pièces, mail-type, compte-rendu. Un stylo. Une pochette ou une chemise
+  cartonnée.
+  Le titre de propriété du logement et le dernier avis de taxe foncière.
+  Les relevés annuels de ses contrats d'assurance-vie.
+  Les relevés de ses comptes et livrets.
+  Le livret de famille, et le contrat de mariage ou de PACS s'il en existe un.
+  Les actes des donations déjà faites, s'il les retrouve, ou à défaut les relevés
+  bancaires et les déclarations envoyées aux impôts.
+  Les tableaux d'amortissement de ses crédits en cours.
+  Et, s'il l'a déjà rempli, le Simulateur de Facture Invisible de La Méthode
+  Héritage Intact : les mêmes montants s'y trouvent. S'il ne l'a pas, il ne lui
+  manque rien : le Dossier se remplit avec les papiers qui sont devant lui.
+  → Cette dernière ligne appartient à la liste de préparation écrite (page produit
+    et PDF). Elle NE SE PRONONCE PAS : à l'oral, le § 3 point 1 s'en tient au
+    stylo, à la pochette et aux papiers qui sont déjà dans la maison. La vidéo n'a
+    qu'un seul renvoi, et il est à la fin. S'il fallait la dire, elle se réduirait
+    à : « si vous avez déjà rempli le Simulateur, gardez-le à côté : les mêmes
+    montants s'y trouvent. »
+
+PENDANT LA VIDÉO, EN LA METTANT EN PAUSE, OU APRÈS
+  Le remplissage ne se fait pas au rythme de la vidéo : la vidéo passe sur chaque
+  case, il met en pause pour écrire, il reprend. Les durées ci-dessous sont des
+  budgets indicatifs, pas des durées dues.
+  Partie 1, environ 25 min — il remplit l'inventaire, ses 6 rubriques. Pour chaque
+  contrat d'assurance-vie, il renseigne la colonne « versé avant / après 70 ans »,
+  en s'aidant des dates portées sur ses relevés annuels, et il écrit « dates à
+  demander » là où le relevé ne remonte pas assez loin. Si les lignes manquent, il
+  continue au dos en rappelant le numéro de la rubrique.
+  Partie 2, environ 15 min — il remplit la fiche famille : l'identité, la case de
+  situation matrimoniale, les 3 champs qui suivent, les tableaux enfants et
+  petits-enfants (rubriques 4 et 5), et le tableau des donations déjà faites avec
+  la date de chacune.
+  Partie 3, environ 15 min — il coche les 12 pièces au fur et à mesure qu'il les
+  met dans la pochette, et note dans le champ prévu ce qui lui manque encore.
+  Partie 4, environ 5 min — il recopie le mail-type et complète les 4 blancs : les
+  sujets, ses disponibilités, son nom, son téléphone. S'il a une étude, il envoie
+  et note la date d'envoi en bas de la feuille. S'il n'en a pas encore, il écrit
+  « étude à choisir » dans le champ « Chez » de la check-list et garde la feuille :
+  le mail part le jour où il a choisi une étude. S'il préfère appeler, il lit la
+  version téléphone.
+  Puis, avant de ranger : il écrit sous les 3 cases du compte-rendu où se trouve
+  ce dossier dans la maison.
+
+APRÈS
+  Il range les 5 feuilles et les 12 pièces dans la pochette, à l'endroit qu'il
+  vient d'écrire.
+  En sortant du rendez-vous, sur place et pas 3 jours plus tard, il remplit le
+  compte-rendu : ce qui a été confirmé, ce qui a été décidé et avant quelle date,
+  ce qui a été écarté et pourquoi, ce qu'il doit fournir, et la suite. Puis il le
+  relit à voix haute avec son conjoint, ou avec la personne qui lira cette feuille
+  — c'est le titre de l'encadré du bas — et il le range au classeur.
+
+
+------------------------------------------------------------
+7. LE RENVOI DE FIN
+------------------------------------------------------------
+
+VERS : l'étape 7 de La Méthode Héritage Intact — « Chez le notaire ».
+C'est le titre exact du carton de l'étape 7. Le spectateur doit retrouver le même
+intitulé, sinon il cherche un document qui n'existe pas sous ce nom.
+
+Budget : 25 secondes. Placé après la conclusion ET après la mention légale, jamais
+avant : la mention légale est dite d'abord, le renvoi vient après elle, et c'est
+le dernier mot de la vidéo. C'est la convention du projet (fiche 7, § 7).
+Factuel, aucun prix prononcé, aucune urgence.
+
+L'idée à dire : le Dossier est rempli et le rendez-vous est demandé. L'étape
+suivante est le rendez-vous lui-même. Elle est traitée dans l'étape 7 de La
+Méthode Héritage Intact : ce qu'un notaire fait et ce qu'il ne fait pas,
+l'organisation des 12 questions imprimées, et les 3 questions à ne pas poser.
+Pour la regarder, il faut avoir cette pochette, le compte-rendu vierge et un stylo
+à côté de soi.
+
+BRANCHE — si le spectateur a déjà La Méthode. L'étape 7 en est la dernière vidéo :
+pour lui, ce n'est pas une étape d'après mais une vidéo qu'il a déjà vue. À dire,
+dans la même phrase : « si vous avez déjà La Méthode, c'est l'étape 7 : reprenez-la
+avec le dossier rempli devant vous. »
+
+⚠ Nommer le contenu comme il est nommé sur la feuille livrée : « les 3 questions à
+ne pas poser » (questions-notaire.tsx). Ne pas annoncer « les 3 formulations qui
+font rater un rendez-vous » — le titre n'existe pas, et la tournure agite un échec
+au lieu de dire ce que la suite traite.
+
+
+------------------------------------------------------------
+8. LE LIVRABLE
+------------------------------------------------------------
+
+Une pochette, sur la table, contenant :
+
+  1. L'INVENTAIRE PATRIMONIAL rempli — les 6 rubriques, dont la colonne « mode de
+     détention » de l'immobilier et, pour chaque contrat d'assurance-vie, la
+     colonne « versé avant / après 70 ans ». Les lignes incertaines portent
+     « à confirmer » ou « dates à demander ».
+
+  2. LA FICHE FAMILLE remplie — l'identité, la case de situation matrimoniale, le
+     régime ou la mention « sans contrat », la donation au dernier vivant, les
+     tableaux enfants et petits-enfants (rubriques 4 et 5), et le tableau des
+     donations déjà faites avec pour chacune sa date exacte — ou son mois, son
+     année et la mention « à vérifier » — et la réponse à la colonne
+     « Déclarée ? ».
+
+  3. LA CHECK-LIST DES 12 PIÈCES cochée — les pièces réunies dans la pochette, les
+     manquantes notées dans le champ « ce qui me manque encore », et les 2 champs
+     « Rendez-vous le » et « Chez » prêts à recevoir la réponse de l'étude.
+
+  4. LE MAIL DE PRISE DE RENDEZ-VOUS — 4 blancs complétés : les sujets, les
+     disponibilités, le nom, le téléphone. Envoyé si l'étude est choisie, et la
+     date d'envoi notée au bas de la feuille ; prêt à partir sinon, avec « étude à
+     choisir » porté dans le champ « Chez » de la check-list.
+
+  5. LE COMPTE-RENDU À TROUS, encore vierge, agrafé en dernière page — à une ligne
+     près : l'endroit où se trouve ce dossier dans la maison, écrit ce soir.
+
+Formats livrés : PDF imprimable A4, recto simple, marges compatibles avec une
+imprimante domestique, plus une version tableur pour l'inventaire.

@@ -1,0 +1,1006 @@
+============================================================
+VIDÉO 7 — CHEZ LE NOTAIRE
+Durée cible : 11 à 12 minutes | faceless, voix + écran
+============================================================
+
+Dernière vidéo de La Méthode Heritage Intact.
+Le spectateur a déjà payé. Il n'a rien à se voir revendre.
+Cette vidéo livre un mode d'emploi de rendez-vous, et elle rassure.
+
+
+------------------------------------------------------------
+1. CE QUE JE DOIS SAVOIR AVANT DE TOURNER
+------------------------------------------------------------
+
+1.1 — LE RÔLE EXACT DU NOTAIRE
+
+Le notaire est un officier public (ordonnance n° 45-2590 du 2 novembre 1945
+relative au statut du notariat, art. 1er). Sa fonction tient en trois gestes :
+il reçoit la décision qu'on lui apporte, il lui donne la forme d'un acte
+authentique, et il en conserve l'original.
+
+L'acte authentique (art. 1369 et 1371 du code civil) fait foi jusqu'à
+inscription de faux de ce que le notaire a personnellement accompli ou
+constaté : la date, la comparution, les signatures. C'est la forme exigée pour
+une donation immobilière.
+
+⚠️ NE JAMAIS DIRE « personne ne pourra le contester après vous ». C'est faux :
+la force probante renforcée couvre les constatations du notaire, pas la
+véracité de ce que les parties ont déclaré, et un acte régulier reste
+attaquable par d'autres voies — action en réduction des héritiers réservataires
+(art. 920 et 921 du code civil), nullité pour insanité d'esprit ou vice du
+consentement (art. 901), recel successoral, requalification fiscale
+(art. L64 du LPF). L'authenticité protège la forme et la date, pas le fond de
+la décision.
+
+Le notaire est aussi tenu à un devoir de conseil, et ce devoir existe dès le
+premier rendez-vous : il ne dépend pas de l'existence d'un dossier constitué.
+Simplement, sans le régime matrimonial, sans les valeurs et sans les dates des
+dons déjà faits, il ne peut répondre que par des généralités, parce que la
+réponse change d'une situation de famille à l'autre.
+
+Ce qu'il ne fait pas : il ne décide pas à votre place, il ne réunit pas vos
+papiers à votre place, et il n'appellera personne pour prévenir qu'un
+anniversaire approche. C'est à vous d'écrire la date.
+
+⚠️ NE PAS DIRE « il ne construit pas la stratégie à votre place ». C'est faux —
+conseiller sur une transmission est le cœur du métier, et le manquement au
+devoir de conseil engage la responsabilité du notaire — et c'est dénigrant pour
+une profession réglementée (art. 1240 du code civil). La formule juste :
+« il conseille, c'est son devoir, mais sur la base de ce que vous posez sur la
+table. Ce qu'il ne fera pas, c'est réunir vos papiers à votre place, ni vous
+appeler pour vous dire qu'une date approche. »
+
+⚠️ FORMULATION INTERDITE — ne jamais dire ni écrire « le notaire acte ce que
+vous lui demandez ». C'est faux (il refuse un acte illégal, et il conserve son
+devoir de conseil) et c'est interdit par la doctrine du projet. La formule
+juste : « il reçoit votre décision et lui donne la forme d'un acte
+authentique ». Cette même phrase fautive figure aujourd'hui en production à
+trois endroits : `src/content/documents/questions-notaire.tsx` (l. 58),
+`src/lib/methode.ts` (ETAPES[7].resume) et `src/lib/sequence.ts` (l. 95, email
+j4 de la séquence) : à corriger avant que la vidéo sorte, sinon le document et
+l'email contredisent la voix.
+
+Les cas où le notaire n'est pas optionnel. L'art. 931 du code civil impose
+l'acte notarié, à peine de nullité, à TOUS les actes portant donation entre
+vifs — pas seulement immobilière (le don manuel n'est qu'une exception
+jurisprudentielle). À l'oral on prend l'application la plus parlante : pour
+donner les murs d'un logement, sans notaire la donation n'existe pas. Mais on
+ne dit jamais que c'est le SEUL cas : la donation-partage doit être faite dans
+les formes des donations (art. 1076 du code civil), le changement de régime
+matrimonial exige un acte notarié (art. 1397), le testament authentique aussi.
+Ces deux points figurent justement sur la feuille (question 9 et bloc famille) :
+un spectateur ne doit pas pouvoir en conclure qu'il peut faire une
+donation-partage ou changer de régime sans notaire.
+
+Les dons d'argent de la main à la main obéissent à une règle à part : ils se
+déclarent (art. 757 du CGI). C'est la question 8 de la feuille. À dire, sinon
+un spectateur qui a déjà donné 10 000 € à son fils croit ce don nul.
+
+
+1.2 — LA DIFFÉRENCE ENTRE LES DEUX RENDEZ-VOUS, RÉDUITE À SON MÉCANISME
+
+C'est le cœur pratique de l'étape, et il n'a besoin d'aucun personnage.
+
+Au début d'un premier rendez-vous, le notaire pose toujours les mêmes trois
+questions, parce que rien ne peut être calculé avant :
+  1. Sous quel régime êtes-vous marié ?
+  2. Combien vaut votre logement aujourd'hui ?
+  3. Avez-vous déjà donné quelque chose, à qui, et à quelle date ?
+
+Sans réponse aux trois, le rendez-vous ne peut produire aucun chiffre et aucun
+acte : il se termine par une liste de pièces à réunir. Avec les réponses aux
+trois, le même rendez-vous démarre au calcul et peut se terminer par une date
+de signature.
+
+C'est tout. On compare deux rendez-vous par ce qui est posé sur la table, pas
+par ce qu'a ressenti celui qui était assis derrière.
+
+⚠️ Ne pas rejouer la scène du script d'origine (l'homme qui ne sait pas, la
+liste qui dort six mois sur la table de la cuisine, le second rendez-vous qui
+le rachète). C'est la structure de la vidéo de vente, et elle a déjà servi.
+
+
+1.3 — LES 5 BLOCS DE LA POCHETTE
+
+⚠️ CE BLOC A ÉTÉ RÉÉCRIT SUR CE QUE LE SPECTATEUR POSSÈDE RÉELLEMENT.
+Vérification faite dans `src/lib/methode.ts` : les étapes e2, e3 et e5 ont
+`documents: []`, et DOCUMENTS ne contient aucune feuille « ma situation
+matrimoniale », « La liste de mes dons » ni « Le Test des 3 Questions ». La
+seule feuille famille existante, « Ma fiche famille », est en `sku: "bump"` :
+l'acheteur du produit seul ne l'a pas. Les blocs ci-dessous ne renvoient donc
+qu'à des feuilles réellement livrées en `sku: "front"`, ou à des papiers
+personnels que le spectateur a déjà chez lui.
+
+  Bloc 1 — L'INVENTAIRE. Ce qu'on possède, bien par bien, avec une valeur en
+  face, et le montant que la famille paierait aujourd'hui.
+  → première page du Simulateur de Facture Invisible, étape 0.
+
+  Bloc 2 — LA FAMILLE. Votre livret de famille, votre contrat de mariage si
+  vous en avez un, et la donation au dernier vivant si elle existe.
+  → papiers personnels, rien à imprimer.
+
+  Bloc 3 — LES DONATIONS DÉJÀ FAITES. La feuille sur laquelle vous les avez
+  listées à l'étape 5, ou une feuille libre : montant, date, bénéficiaire,
+  déclaré ou non. C'est ce bloc qui dit où en est le compteur des 15 ans : les
+  donations de moins de 15 ans sont rappelées dans le calcul des droits
+  (art. 784 du CGI).
+
+  Bloc 4 — L'ASSURANCE-VIE. Vos contrats eux-mêmes, la date de chaque versement
+  (avant ou après 70 ans), et la dernière clause bénéficiaire que vous avez
+  signée. Les deux régimes : art. 990 I du CGI, un abattement de 152 500 € sur
+  la part revenant à chaque bénéficiaire, capital et gains compris, pour les
+  primes versées avant 70 ans ; art. 757 B du CGI, 30 500 € au total, tous
+  contrats et tous bénéficiaires réunis, pour les primes versées après 70 ans —
+  et là les gains ne sont pas taxés.
+  → papiers personnels, rien à imprimer.
+
+  Bloc 5 — LES CHOIX. Pas les questions : ce qu'on veut donner, à qui, et
+  quand.
+  → Le Calendrier des 3 Dates, reçu à l'étape 0 et complété au fil des étapes.
+
+Ces cinq blocs sont énumérés à l'oral une fois, pendant qu'ils s'empilent à
+l'écran. On n'affiche un numéro d'étape que sur les blocs dont la feuille est
+réellement livrée à cette étape (blocs 1 et 5 : étape 0). Les blocs 2 et 4 sont
+des papiers personnels, le bloc 3 est une feuille libre ou la liste faite à
+l'étape 5. Ils ne sont pas répétés à la fin : la check-list imprimée les
+reprend.
+
+⚠️ Deux régimes de l'assurance-vie, deux bornes de date à dire. L'art. 757 B ne
+vise que les contrats souscrits à compter du 20 novembre 1991, et l'art. 990 I
+que les primes versées à compter du 13 octobre 1998. Le public de ces vidéos a
+65 à 85 ans : une part détient des contrats ouverts avant ces dates, pour
+lesquels la règle des 70 ans ne joue pas. Il faut donc dire : « ces deux règles
+concernent les contrats ouverts depuis le 20 novembre 1991 et les primes
+versées depuis le 13 octobre 1998. Si votre contrat est plus ancien, la règle
+n'est pas la même : c'est une question à poser au rendez-vous. »
+
+⚠️ Et une exonération qui écarte les deux : si le bénéficiaire est le conjoint
+ou le partenaire de PACS, il est exonéré (art. 796-0 bis du CGI). Un spectateur
+marié dont la clause bénéficiaire désigne son conjoint peut courir après une
+date de 70 ans qui ne le concerne pas. À dire, et à mettre en carton.
+
+
+1.4 — LES 12 QUESTIONS : CE QU'IL FAUT EN DIRE, ET CE QU'IL NE FAUT PAS EN FAIRE
+
+Les 12 questions sont imprimées, numérotées de 1 à 12, avec une ligne de
+réponse sous chacune. Le spectateur ne les apprend pas : il pose la feuille sur
+le bureau, il les lit, il note la réponse à côté.
+
+Elles ne se lisent donc PAS à voix haute dans la vidéo. Les lire prend trois
+minutes et n'apprend rien à quelqu'un qui a la feuille sous les yeux. À l'oral,
+on donne l'organisation de la feuille, rien de plus :
+
+  · questions 1 à 3 — le couple et la part de chacun ;
+  · question 4 — la confirmation du chiffre qu'on apporte ;
+  · questions 5 à 7 — les murs du logement ;
+  · questions 8 à 10 — ce qui est déjà parti : les dons, la donation-partage,
+    la clause d'assurance-vie ;
+  · questions 11 et 12 — le coût des actes, et l'ordre dans lequel les faire.
+
+Cela fait CINQ familles. Le compte est à vérifier partout : la fiche a
+longtemps dit « 4 familles » alors qu'elle en énumérait cinq.
+
+Le vocabulaire à poser une seule fois, parce que sans lui les questions 5 à 7
+ne sont pas lisibles : donner les murs de son logement en gardant l'usage
+jusqu'au bout porte deux noms dans la loi. L'usufruit, c'est ce qu'on garde :
+le droit d'user du bien et d'en percevoir les revenus (art. 578 du code civil),
+et il s'éteint au décès de l'usufruitier (art. 617). La nue-propriété, c'est ce
+qu'on donne : les murs. On reste chez soi.
+
+⚠️ Et il faut dire la contrepartie, sans quoi la réassurance dépasse le vrai.
+Après donation de la nue-propriété, le donateur garde l'usage mais ne peut plus
+vendre le logement seul : la vente en pleine propriété suppose l'accord des
+nus-propriétaires (art. 621 du code civil sur la vente simultanée de l'usufruit
+et de la nue-propriété). Pour un public de 65 à 85 ans, dont une partie devra
+vendre pour financer un EHPAD ou un déménagement, l'omission serait matérielle.
+La formule : « Vous restez chez vous. En revanche, vendre le logement demandera
+ensuite l'accord de ceux qui ont reçu les murs — c'est la question 6 de votre
+feuille. »
+
+Deux clauses possibles dans l'acte de donation, à connaître pour tourner —
+elles s'affichent en carton et elles sont la question 7 de la feuille :
+  · Le droit de retour conventionnel (art. 951 du code civil) : si l'enfant
+    décède avant le donateur, le bien revient au donateur au lieu de partir
+    dans la succession de l'enfant.
+  · La clause d'inaliénabilité (art. 900-1 du code civil) : elle interdit au
+    donataire de revendre le bien, et elle n'est valable QUE si elle est
+    temporaire et justifiée par un intérêt sérieux et légitime — le donataire
+    peut d'ailleurs être judiciairement autorisé à disposer du bien. Présentée
+    nue, elle passerait pour un outil de blocage disponible sans condition,
+    ce qui est faux et ferait demander au notaire un acte qu'il refusera.
+Ces deux clauses ne s'inventent pas dans un salon : c'est la question 7 de la
+feuille, le notaire dit si elles ont un sens dans le cas présent.
+
+Les autres articles qui accompagnent ces questions et qui doivent être à
+l'écran :
+  · art. 669 du CGI — le barème de la nue-propriété est par tranches de dix
+    ans : 60 % de 61 à 70 ans, 70 % de 71 à 80 ans, 80 % de 81 à 90 ans. Ne
+    jamais énoncer « 70 % à partir de 71 ans » sans borne : l'audience va
+    jusqu'à 85 ans, et un spectateur de 82 ans à qui on dicte 70 % se trompe de
+    dix points sur la valeur donnée.
+  · art. 605 et 606 du code civil — l'entretien courant reste à celui qui
+    habite ; les grosses réparations restent à la charge de celui qui reçoit
+    les murs, sauf si elles viennent d'un défaut d'entretien depuis l'ouverture
+    de l'usufruit. Ne pas dire « les gros travaux passent à » : cela suggère une
+    obligation que l'usufruitier pourrait imposer, ce que la jurisprudence
+    refuse.
+
+⚠️ Vérifier avant tournage que le libellé des 5 familles annoncé à l'oral
+correspond bien à la numérotation de la feuille livrée
+(`src/content/documents/questions-notaire.tsx`). Si la feuille change, la voix
+change.
+
+
+1.5 — LES 3 QUESTIONS À REFORMULER
+
+Trois questions qui ne peuvent pas recevoir de réponse utile telles qu'elles
+sont posées, et leur version répondable. Ce bloc reste à l'oral en entier.
+Chaque question est immédiatement suivie de sa version répondable : on ne laisse
+jamais une reformulation sans sa version utile.
+
+⚠️ Ce sont EXACTEMENT les trois de la feuille livrée
+(`src/content/documents/questions-notaire.tsx`, encadrés « Les 3 questions à ne
+pas poser »). Le spectateur a la feuille sous les yeux pendant qu'on parle : si
+la voix en cite une quatrième, il perd confiance dans l'une ou dans l'autre.
+
+  « Vous me conseillez quoi ? »
+  → Le devoir de conseil existe dès le premier rendez-vous. Simplement, sans
+    votre régime, vos valeurs et vos dates, il ne peut répondre que par des
+    généralités, parce que la réponse change d'une famille à l'autre. Version
+    répondable : poser la pochette, puis dire ce qu'on veut faire et demander
+    si c'est possible.
+
+  « Combien je vais payer ? »
+  → Ce n'est pas vous qui paierez : ce sont vos enfants, chacun sur sa part.
+    Version répondable : demander ce que paiera chaque enfant.
+    Précision à ajouter, sans en faire une question interdite : le coût des
+    actes, c'est autre chose. Il revient deux fois sur la feuille — une fois
+    sur les clauses, à la question 7, et une fois en entier à la question 11.
+    C'est la 11 qui compte, et elle se pose à la fin, par écrit.
+
+  « Est-ce qu'on peut éviter les impôts ? »
+  → La loi ne les fait pas disparaître par une astuce. Elle prévoit des
+    abattements et des exonérations, et c'est ce qu'on utilise : art. 779 du
+    CGI pour les donations, art. 990 I du CGI pour l'assurance-vie, art. 669 du
+    CGI pour la nue-propriété, art. 796-0 bis du CGI pour le conjoint et le
+    partenaire de PACS, qui sont exonérés. Version répondable : « qu'est-ce que
+    la loi prévoit dans ma situation, et qu'est-ce que je peux utiliser ? »
+
+⚠️ AUCUN montant d'émoluments prononcé ni affiché, jamais, sous aucune forme,
+pas même un ordre de grandeur. Le tarif est réglementé, révisé par arrêté, et
+le coût dépend d'éléments que nous n'avons pas. Aucun ordre de grandeur ne peut
+donc être donné ici.
+
+⚠️ NE PLUS DIRE « son devis est gratuit », nulle part. C'est une affirmation de
+fait non vérifiée sur une profession tierce, qu'aucun article affiché ne
+soutient : les émoluments d'actes sont tarifés, mais les prestations non
+tarifées — dont la consultation — sont rémunérées par des honoraires librement
+négociés (art. L444-1 du code de commerce). Rien ne garantit qu'un premier
+rendez-vous ou un chiffrage soit gratuit dans toutes les études. La seule chose
+à dire sur l'argent du rendez-vous : le coût complet des actes se demande à la
+fin, par écrit, avant toute signature.
+
+
+1.6 — LES FEUILLES DE LA PAUSE, ET CE QU'ON Y ÉCRIT
+
+⚠️ TROIS feuilles à imprimer, pas deux. Vérification faite dans
+`src/lib/methode.ts` : ETAPES[7].documents = ["ma-situation",
+"questions-notaire", "plan-en-1-page", "regle-mise-a-jour"]. Le spectateur voit
+donc quatre documents sous la vidéo. La feuille des 12 questions est NEUVE à
+cette étape : si la voix n'envoie pas la chercher, il ne l'imprime jamais — et
+elle est pourtant filmée, glissée dans la pochette et listée au livrable.
+
+  A. « Quelle est ma situation ? » — 12 cases.
+     Cochez la case qui vous correspond ; si deux vous correspondent, cochez
+     les deux. Les 12 situations ne sont PAS énumérées à l'oral — elles sont
+     sous ses yeux, et les lire coûte une minute pour rien.
+     En bas de la même feuille, deux champs à ne pas oublier de faire remplir :
+     le numéro de sa case, et la première question qu'il posera au notaire —
+     qu'il recopie ensuite en haut de la feuille des 12 questions.
+
+  B. « Les 12 questions à poser à votre notaire » — la feuille qui part chez le
+     notaire. Rien ne s'y écrit pendant la vidéo, sauf la première question
+     recopiée en haut.
+
+  C. « Mon plan en une page » — recto, une page.
+     Trois choses s'y écrivent pendant la vidéo :
+       · le chiffre du Simulateur, section 1, ligne « Ce que ma famille
+         paierait aujourd'hui », indice « Simulateur, encadré F ». La ligne
+         juste en dessous, ce qu'elle paierait après le plan, reste vide :
+         elle se remplira quand les actes seront passés ;
+       · les 3 dates, section 2 de la feuille, tableau « la date / le jour /
+         ce que je fais avant » ;
+       · en bas, le jour où l'on appellera pour prendre rendez-vous.
+
+  La QUATRIÈME feuille, « La règle de mise à jour », ne sert pas aujourd'hui :
+  on dit de la garder pour la fin. Elle est reprise au renvoi (section 7).
+
+Les 3 dates, à dicter avec leurs articles à l'écran :
+  · le compteur des 15 ans — la date de la dernière donation, plus 15 ans :
+    le jour où l'abattement de 100 000 € par parent et par enfant se recharge
+    (art. 779 et 784 du CGI). Pour un don d'argent de la main à la main, c'est
+    la date à laquelle il a été déclaré qui commande ;
+  · le 70e anniversaire, pour l'assurance-vie — pour les primes versées avant,
+    chaque bénéficiaire a un abattement de 152 500 € sur ce qu'il reçoit,
+    capital et gains compris (art. 990 I du CGI) ; pour les primes versées
+    après, 30 500 € au total pour tous les contrats et tous les bénéficiaires
+    réunis, et là les gains ne sont pas taxés (art. 757 B du CGI). Ces deux
+    règles concernent les contrats ouverts depuis le 20 novembre 1991 et les
+    primes versées depuis le 13 octobre 1998 ; si le contrat est plus ancien,
+    la règle n'est pas la même, c'est une question à poser au rendez-vous. Et
+    si le bénéficiaire est le conjoint ou le partenaire de PACS, il est exonéré
+    (art. 796-0 bis du CGI) ;
+  · le 71e anniversaire, pour les murs — la nue-propriété est comptée à 60 %
+    tant qu'on n'a pas 71 ans, et à 70 % de 71 à 80 ans ; au-delà le barème
+    continue par tranches de dix ans, 80 % de 81 à 90 ans (art. 669 du CGI).
+
+L'ordre ci-dessus est celui du Calendrier des 3 Dates tel qu'il est livré
+(date n° 1 le compteur, n° 2 le 70e, n° 3 le 71e). C'est cet ordre-là qu'on
+utilise pour les dicter, sinon le spectateur cherche une ligne qui n'est pas
+là. Sur le Plan en une page, en revanche, il les recopie dans l'ordre où elles
+tombent CHEZ LUI. La première ligne est la seule dont il ait à s'occuper
+aujourd'hui.
+
+⚠️ Sur la ligne du 70e anniversaire, la formule exacte à tenir : « c'est une
+question à poser à l'établissement qui gère le contrat, et à faire figurer au
+rendez-vous chez le notaire pour la cohérence de l'ensemble. Nous ne disons ni
+quoi verser, ni où, ni sur quel contrat : ce n'est pas notre rôle, et ce serait
+un conseil personnalisé. » Aucun assureur, aucun contrat, aucun placement nommé
+(statut CIF). Ne pas dire seulement « à qui la poser » sans donner cette
+formule : celui qui tourne improviserait là où l'interdit est le plus serré.
+
+
+1.7 — QUOI FAIRE QUAND ON NE SAIT PAS RÉPONDRE
+
+À dire, parce que c'est ce qui bloque le remplissage :
+  · une valeur qu'on ignore → on écrit une estimation, et le mot « estimation »
+    à côté. Une estimation permet au notaire de lancer le calcul. Une case vide
+    l'oblige à le repousser au rendez-vous suivant ;
+  · une date de don qu'on ne retrouve pas → on écrit « date à vérifier ». Cela
+    devient la question à poser au rendez-vous, ce n'est pas un motif pour le
+    repousser ;
+  · une case dont on n'est pas sûr → on la laisse et on avance. La feuille se
+    reprend plus tard, elle n'expire pas.
+
+
+1.8 — CE QUI NE PEUT PAS MAL TOURNER
+
+Rassembler des papiers qui sont déjà chez soi ne casse rien et n'engage rien.
+Cocher une case et écrire une date sur une feuille personnelle ne sont pas des
+actes juridiques. Rien n'est envoyé nulle part, rien n'est signé, et le
+rendez-vous n'a pas besoin d'être pris ce soir. On peut s'arrêter à la fin de
+cette vidéo et reprendre dans trois semaines : la pochette et les feuilles
+restent valables telles quelles.
+
+⚠️ Cette permission arrive tard dans la vidéo (point 8). Celui qui bloque le
+fait plus tôt, à la pause d'impression. Une demi-ligne est donc placée dès le
+point 6, à la pause : si on n'a pas d'imprimante sous la main, on s'arrête là,
+la vidéo reste dans l'espace et rien de ce qui a été fait ne se perd. La
+formulation complète reste au point 8.
+
+
+1.9 — LE CADRE LÉGAL DE LA VIDÉO
+
+Contenu pédagogique et général, ne constitue pas un conseil personnalisé. Tout
+modèle remis porte la mention « à faire relire par votre notaire ». Le narrateur
+ne revendique aucun titre : il parle en « nous », au nom de Heritage Intact, et
+son autorité vient uniquement des articles affichés à l'écran.
+
+⚠️ Corollaire pour le renvoi de fin : on ne peut pas promettre de dire quel
+acte correspond à la situation personnelle du spectateur ni dans quel ordre
+l'exécuter. C'est la définition d'une consultation juridique personnalisée,
+réservée aux professions réglementées (loi n° 71-1130 du 31 décembre 1971,
+art. 54 et 60), et cela contredirait la mention légale affichée trois lignes
+plus tôt.
+
+
+------------------------------------------------------------
+2. CE QUE JE MONTRE À L'ÉCRAN
+------------------------------------------------------------
+
+Bandeau permanent, sur toute la durée, en bas de cadre :
+« contenu pédagogique · ne constitue pas un conseil personnalisé ».
+Aucun visage, jamais. Mains hors cadre ou personnes de dos uniquement.
+Police 28 pt minimum, fond clair, texte noir.
+
+  1. Carton-titre : « Étape 7 — Chez le notaire ».
+
+  2. Deux colonnes, texte seul : « Ce qu'il fait » — reçoit la décision · lui
+     donne la forme d'un acte authentique · en conserve l'original · conseille,
+     sur la base de ce qu'on lui apporte.
+     « Ce qu'il ne fait pas » — décider à votre place · faire l'inventaire et
+     le calendrier à votre place · vous prévenir qu'une date approche.
+
+  3. Incrustation double : ordonnance n° 45-2590 du 2 novembre 1945, art. 1er —
+     le notaire est un officier public : il reçoit les actes, il en assure la
+     date et il en conserve le dépôt | art. 1371 du code civil — l'acte
+     authentique fait foi jusqu'à inscription de faux de ce que le notaire a
+     personnellement accompli ou constaté.
+
+  4. Incrustation double : art. 931 du code civil — toute donation entre vifs
+     doit être passée devant notaire, à peine de nullité | art. 1397 du code
+     civil — le changement de régime matrimonial se fait par acte notarié.
+
+  5. Écran partagé, deux colonnes, sans visage. En haut, les 3 questions
+     d'ouverture d'un rendez-vous : le régime · la valeur du logement · la date
+     des dons. À gauche : « sans les réponses → une liste de pièces à réunir ».
+     À droite : « avec les réponses → un calcul, puis une date de signature ».
+
+  6. Les 5 blocs, empilés un par un pendant qu'ils sont cités : inventaire
+     (étape 0) · famille (papiers personnels) · donations (liste faite à
+     l'étape 5, ou feuille libre) · assurance-vie (vos contrats) · vos choix,
+     le Calendrier des 3 Dates (étape 0). ⚠️ N'afficher un numéro d'étape que
+     sur les blocs dont la feuille est réellement livrée à cette étape : les
+     blocs 2, 3 et 4 n'en portent pas.
+
+  7. Incrustation sur le bloc 3 : art. 784 du CGI — les donations de moins de
+     15 ans sont rappelées dans le calcul des droits.
+
+  8. Incrustation double sur le bloc 4 : art. 990 I du CGI — primes versées
+     AVANT 70 ans, 152 500 € d'abattement sur la part de chaque bénéficiaire,
+     capital et gains compris | art. 757 B du CGI — primes versées APRÈS
+     70 ans, 30 500 € au total, tous contrats et tous bénéficiaires réunis ;
+     les gains ne sont pas taxés.
+
+  9. Incrustation double, immédiatement après la 8 : art. 990 I et 757 B du
+     CGI — applicables aux contrats souscrits depuis le 20 novembre 1991 et aux
+     primes versées depuis le 13 octobre 1998 | art. 796-0 bis du CGI — si le
+     bénéficiaire est votre conjoint ou votre partenaire de PACS, il est
+     exonéré.
+
+ 10. Reproduction SIMPLIFIÉE de la feuille des 12 questions, pas la feuille
+     réelle : les 5 familles en 5 blocs, avec les numéros de questions
+     (1-3 le couple · 4 mon chiffre · 5-7 les murs · 8-10 ce qui est déjà parti
+     · 11-12 le coût et l'ordre). Chaque bloc se surligne quand il est nommé.
+     Puis un seul plan de la vraie feuille, à plat, deux secondes, pour qu'il
+     la reconnaisse — sans qu'on ait à la lire.
+     ⚠️ La feuille réelle porte 12 questions longues, 12 lignes de réponse,
+     3 encadrés et 3 champs de fin : filmée en entier en 16/9, chaque ligne
+     tombe très en dessous du 28 pt minimum. Aucune question n'est lue par la
+     voix.
+
+ 11. Incrustation double, dans la famille « les murs » : art. 578 du code
+     civil — l'usufruit : le droit d'user du bien et d'en percevoir les revenus
+     | art. 617 du code civil — il s'éteint au décès de l'usufruitier.
+     Puis, enchaînée : art. 669 du CGI — 60 % jusqu'à 70 ans · 70 % de 71 à
+     80 ans · 80 % de 81 à 90 ans.
+
+ 12. Incrustation, toujours dans la famille « les murs » : art. 605 et 606 du
+     code civil — l'entretien courant reste à celui qui habite ; les grosses
+     réparations restent à la charge de celui qui reçoit les murs, sauf si
+     elles viennent d'un défaut d'entretien.
+     ⚠️ Carton séparé du 11, jamais une incrustation triple : six articles en
+     quarante secondes ne se lisent pas à 78 ans.
+
+ 13. Incrustation double, en fin de famille « les murs », sur la question 7 :
+     art. 951 du code civil — le droit de retour conventionnel | art. 900-1 du
+     code civil — une clause d'inaliénabilité n'est valable que si elle est
+     temporaire et justifiée par un intérêt sérieux et légitime.
+
+ 14. « Les 3 questions à reformuler ». Chacune s'affiche, puis sa version
+     répondable s'écrit dessous, précédée d'une flèche. AUCUN BARRÉ — ce ne
+     sont pas des questions interdites. Sur la question du coût, ajouter à
+     l'écran : « question 11 de la feuille — à poser à la fin ».
+
+ 15. PAUSE plein écran. Visuel des 3 documents côte à côte, flèche vers le bas,
+     mention « juste sous cette vidéo » : « Quelle est ma situation ? »,
+     « Les 12 questions à poser à votre notaire », « Mon plan en une page ».
+     En dessous, plus petit : « la 4e feuille, La règle de mise à jour, sert à
+     la fin ». Et la liste de ce qu'on rapporte : un stylo · le Simulateur de
+     l'étape 0 · le Calendrier des 3 Dates.
+
+ 16. La grille des 12 cases, 3 colonnes de 4, une case qui se coche à l'écran.
+     Puis le bas de la même feuille : les deux champs « Ma situation est la
+     n° » et « La première question que je poserai au notaire » qui se
+     remplissent, et la première question qui se recopie en haut de la feuille
+     des 12 questions.
+
+ 17. Le Plan en une page, section 1 « Mon chiffre » : la ligne « Ce que ma
+     famille paierait aujourd'hui » qui se remplit ; la ligne du dessous reste
+     vide, avec la mention « se remplira quand les actes seront passés ».
+
+ 18. Le Plan en une page, section 2 « Mes trois dates », tableau à 3 colonnes
+     rempli à l'écran ligne après ligne. Bandeau bas qui change à chaque ligne :
+     ligne compteur des 15 ans → art. 779 du CGI, 100 000 € par parent et par
+     enfant · art. 784 du CGI, rappel sur 15 ans ; ligne 70e anniversaire →
+     art. 990 I du CGI, 152 500 € par bénéficiaire · art. 757 B du CGI,
+     30 500 € au total ; ligne 71e anniversaire → art. 669 du CGI, 60 % jusqu'à
+     70 ans · 70 % de 71 à 80 ans · 80 % de 81 à 90 ans.
+
+ 19. « Le rangement de la pochette » : plan de dessus d'une chemise cartonnée
+     sur un plan de travail, les 5 blocs qui y entrent, l'étiquette « notaire »
+     écrite au stylo. Puis la section 4 du Plan, « Où sont les papiers », qui se
+     remplit. Puis le bas du Plan avec la ligne « j'appelle le : ......... ».
+
+ 20. Récapitulatif, quatre lignes qui s'allument : votre chiffre · vos dates ·
+     votre plan · votre pochette.
+
+ 21. Mention légale plein écran : contenu pédagogique et général, ne constitue
+     pas un conseil personnalisé ; tout modèle d'acte est à faire relire par
+     votre notaire.
+
+ 22. Renvoi : « La règle de mise à jour — dans votre espace, plus bas sur la
+     même page ». Aucun prix affiché, aucun compte à rebours, aucune mention de
+     disponibilité limitée. ⚠️ Le mot « onglet » est banni de tous les cartons :
+     l'espace membre est une seule page dépliée, sans onglet ni accordéon
+     (`src/app/actions.ts`, l. 322-327).
+
+À FABRIQUER OU À CORRIGER AVANT LE TOURNAGE :
+
+  a. `src/content/documents/plan-en-1-page.tsx` — ajouter la SEULE ligne
+     « j'appelle le : ......... », sous la section 4. La check-list des 5 blocs
+     de la pochette va au VERSO de la feuille des 12 questions — celle qui part
+     chez le notaire — et pas sur le Plan, qui reste à une page : le document
+     porte cette contrainte dans son propre en-tête (« Une seule page, et jamais
+     deux »), et il contient déjà 4 sections, 2 tableaux, 8 champs, un encadré
+     et deux paragraphes.
+  b. `src/content/documents/questions-notaire.tsx`, l. 58 — remplacer « Le
+     notaire est payé à l'acte, et il acte ce que vous lui demandez. » par « Le
+     notaire reçoit votre décision et lui donne la forme d'un acte
+     authentique. » (chaîne vérifiée : c'est ce texte-là qui est en production,
+     pas la citation qui circulait dans les notes de relecture).
+  c. `src/lib/methode.ts`, ETAPES[7].resume — même phrase, même correction.
+  c bis. `src/lib/sequence.ts`, l. 95 (email j4) — même phrase, même
+     correction : « Le notaire acte ce que vous demandez ».
+  c ter. `src/lib/methode.ts`, ETAPES[7].ceSoir — dit « Puis prenez le
+     rendez-vous », alors que la vidéo dit qu'il n'a pas besoin d'être pris ce
+     soir. Aligner sur « Puis écrivez le jour où vous appellerez. »
+  d. `src/content/documents/ma-situation.tsx`, l. 80 — supprimer « beaucoup de
+     familles sont dans ce cas » du sous-titre : proportion non sourcée, que la
+     section 5 de cette fiche s'interdit par ailleurs. Le sous-titre devient
+     « Cochez la vôtre. Vous pouvez en cocher deux. » Et passer le champ « Ma
+     situation est la n° » au pluriel : « Ma situation est la n° (ou les n°) ».
+  e. Vérifier qu'aucun bloc de la pochette ne renvoie à une feuille absente de
+     DOCUMENTS ou réservée au bump. État constaté : les étapes e2, e3 et e5 ont
+     `documents: []`, et « Ma fiche famille » est en `sku: "bump"`. Les blocs 2,
+     3 et 4 ont donc été réécrits sur des papiers personnels. Si les feuilles
+     « ma situation matrimoniale », « La liste de mes dons » et « Le Test des
+     3 Questions » sont créées et déclarées en `sku: "front"` avant la sortie,
+     la section 1.3 se réécrit dans l'autre sens — mais pas avant.
+  f. `src/content/documents/calendrier-3-dates.tsx`, l. 48-50 — le barème de la
+     nue-propriété y est écrit sans borne haute (« 70 % à partir de 71 ans »).
+     Corriger en « 60 % jusqu'à 70 ans, 70 % de 71 à 80 ans, 80 % de 81 à
+     90 ans », sinon le papier contredit la voix pour tout spectateur de plus
+     de 80 ans.
+  g. `src/content/documents/calendrier-3-dates.tsx`, l. 29 — le champ dit
+     « Date de ma dernière donation », la voix parle de la date déclarée pour
+     un don manuel. Ajouter l'indice « pour un don de la main à la main, la
+     date de la déclaration, pas celle du chèque ».
+  h. Vérifier que les 5 familles annoncées à l'oral correspondent bien à la
+     numérotation 1-12 de la feuille livrée.
+  i. Le renvoi de fin (section 7) pointe vers « La règle de mise à jour »,
+     feuille déjà livrée en `sku: "front"`. Il ne pointe PAS vers Le Plan
+     adapté à votre famille tant que deux conditions ne sont pas remplies :
+     les douze plans déclarés dans DOCUMENTS en `sku: "upsell1"` (trois le sont
+     aujourd'hui : situations 2, 9 et 11) et `PRODUCTS.upsell1.disponible`
+     repassé à `true` (il est à `false` depuis le 8 septembre 2026). Le jour où
+     les deux sont vraies, la section 7 se réécrit — voir la variante notée
+     dans cette section, qui reste dans les limites de la mention légale.
+
+
+------------------------------------------------------------
+3. CE QUE JE DIS, DANS L'ORDRE
+------------------------------------------------------------
+
+10 points. Chacun est un repère, à dire avec ses mots.
+Minutage indicatif entre parenthèses, total 11 min 15 pour les 10 points.
+
+  1. (1 min 10) Ce que fait un notaire, et ce qu'il ne fait pas. Il reçoit la
+     décision, il lui donne la forme d'un acte authentique, il en garde
+     l'original. Un acte authentique, c'est un acte dont la date et ce que le
+     notaire a constaté font foi jusqu'à inscription de faux. Il conseille,
+     c'est son devoir, et ce devoir existe dès le premier rendez-vous — mais
+     sur la base de ce qu'on pose sur la table. Ce qu'il ne fera pas : réunir
+     vos papiers à votre place, ni vous appeler pour dire qu'une date approche.
+     L'un des cas où il n'est pas optionnel : pour donner les murs d'un
+     logement, sans notaire la donation n'existe pas — et une donation-partage
+     comme un changement de régime matrimonial passent eux aussi
+     obligatoirement par lui.
+     → Ne jamais dire « personne ne pourra le contester après vous », ni « il
+       ne construit pas la stratégie », ni « il acte ce que vous demandez », ni
+       « le seul cas où ». Ton neutre : c'est une description de fonction, pas
+       un reproche fait à une profession.
+     → Ajouter une ligne sur les dons de la main à la main : ils obéissent à
+       une règle à part, ils se déclarent — c'est la question 8 de la feuille.
+       Sinon un spectateur qui a déjà donné croit son don nul.
+
+  2. (0 min 50) Les deux rendez-vous, comparés par ce qui est posé sur la
+     table. Un rendez-vous s'ouvre toujours sur les mêmes 3 questions : le
+     régime, la valeur du logement, la date des dons. Sans les réponses, rien
+     ne peut être calculé et le rendez-vous se termine par une liste de pièces.
+     Avec les réponses, il commence au calcul et peut se terminer par une date
+     de signature.
+     → Aucun personnage, aucune scène, aucune humiliation. La comparaison est
+       entre deux dossiers, pas entre deux hommes.
+
+  3. (1 min 20) Les 5 blocs de la pochette, cités pendant qu'ils s'empilent :
+     inventaire (Simulateur, étape 0), famille (livret de famille, contrat de
+     mariage, donation au dernier vivant), donations déjà faites (la liste de
+     l'étape 5, ou une feuille libre), assurance-vie (les contrats et la
+     dernière clause bénéficiaire signée), vos choix (le Calendrier des 3
+     Dates, reçu à l'étape 0).
+     → Une phrase par bloc. Ne pas re-expliquer les mécanismes des étapes
+       précédentes : le bloc donations dit où en est le compteur des 15 ans, le
+       bloc assurance-vie porte les deux régimes, leurs deux dates
+       d'application et l'exonération du conjoint, et les articles sont à
+       l'écran.
+
+  4. (1 min 10) La feuille des 12 questions : elle s'imprime, elle se pose sur
+     le bureau, elle se lit sur place. Donner l'organisation de la feuille en
+     cinq familles — couple, mon chiffre, les murs, ce qui est déjà parti, le
+     coût et l'ordre — et le vocabulaire nécessaire : usufruit, ce qu'on garde,
+     le droit d'user du bien ; nue-propriété, ce qu'on donne, les murs. Vous
+     restez chez vous. En revanche, vendre le logement demandera ensuite
+     l'accord de ceux qui ont reçu les murs — c'est la question 6 de votre
+     feuille. Entretien courant pour celui qui habite, gros travaux pour celui
+     qui a les murs — question 7. Et deux clauses possibles, droit de retour et
+     inaliénabilité, que le notaire dit d'utiliser ou non — question 7 aussi.
+     → Ne lire aucune des 12 questions. Il les a sous les yeux.
+     → Cinq familles, pas quatre. Et le barème de la nue-propriété se dit
+       borné : 60 % jusqu'à 70 ans, 70 % de 71 à 80 ans, et le barème continue
+       par tranches de dix ans au-delà.
+
+  5. (1 min 10) Les 3 questions à reformuler, chacune suivie immédiatement de
+     sa version répondable. Ce sont exactement les trois de sa feuille : « Vous
+     me conseillez quoi ? », « Combien je vais payer ? », « Est-ce qu'on peut
+     éviter les impôts ? ».
+     → Ne jamais laisser une question sans sa version répondable. Aucune n'est
+       « interdite » : elles sont mal posées, pas défendues.
+     → Sur le coût : il revient deux fois sur la feuille, à la question 7 pour
+       les clauses et à la question 11 en entier. C'est la 11 qui compte, et
+       elle se pose à la fin, par écrit. Aucun montant d'émoluments, et ne
+       jamais dire que le devis est gratuit.
+
+  6. (1 min 00) La pause d'impression. Trois feuilles, sous la vidéo : Quelle
+     est ma situation ?, Les 12 questions à poser à votre notaire, et Mon plan
+     en une page. La quatrième, La règle de mise à jour, ne sert pas
+     aujourd'hui : gardez-la pour la fin. Mettez en pause, allez les imprimer,
+     et rapportez trois choses avec vous : un stylo, votre Simulateur de
+     l'étape 0, et votre Calendrier des 3 Dates. Prenez le temps qu'il faut, la
+     vidéo vous attend. Puis la grille des 12 cases : cochez celle qui vous
+     correspond ; si deux vous correspondent, cochez les deux. Puis, en bas de
+     la même feuille, écrivez le numéro de votre case et la première question
+     que vous poserez au notaire — et recopiez-la en haut de la feuille des 12
+     questions.
+     → Une demi-ligne de permission, ici et pas plus tard : si vous n'avez pas
+       d'imprimante sous la main, ou si vous préférez faire ça demain matin,
+       arrêtez ici — la vidéo reste dans votre espace, et rien de ce que vous
+       avez fait ne se perd.
+     → Ne pas énumérer les 12 situations à l'oral. Ne pas dire « beaucoup de
+       familles sont dans ce cas ».
+
+  7. (1 min 55) Le chiffre, puis les 3 dates. Première ligne du Plan,
+     section 1 : recopiez le chiffre de votre Simulateur, celui de l'encadré F,
+     celui que votre famille paierait aujourd'hui. La ligne juste en dessous,
+     ce qu'elle paierait après votre plan, vous la laissez vide : elle se
+     remplira quand les actes seront passés. Puis les 3 dates, dictées avec
+     leurs chiffres et leurs articles, dans l'ordre du Calendrier — le compteur
+     des 15 ans, le 70e anniversaire, le 71e anniversaire — puis la consigne :
+     sur le Plan, on les recopie dans l'ordre où elles tombent chez soi. Celle
+     qui arrive en premier passe sur la première ligne : c'est la seule dont on
+     ait à s'occuper aujourd'hui.
+     → Débit lent, il écrit. Aucune recommandation de versement, de contrat ou
+       de placement.
+     → Sur le compteur : c'est la date de la dernière donation qui commande, et
+       la date de déclaration pour un don de la main à la main. Sur son
+       Calendrier, la ligne « date de ma dernière donation » : lui dire d'y
+       écrire la date à laquelle ce don a été déclaré.
+     → Sur le 70e anniversaire, la formule exacte est en section 4, phrase 3.
+       Ne rien improviser au-delà.
+
+  8. (0 min 50) Quoi faire quand on ne sait pas répondre, et ce qui ne peut pas
+     mal tourner. Une valeur qu'on ignore : une estimation, et le mot
+     « estimation » à côté. Une estimation permet au notaire de lancer le
+     calcul ; une case vide l'oblige à le repousser au rendez-vous suivant. Une
+     date qu'on ne retrouve pas : « à vérifier », et ça devient une question
+     pour le rendez-vous. Rien n'est signé, rien n'est envoyé nulle part, on
+     peut s'arrêter ici et reprendre dans trois semaines.
+
+  9. (1 min 05) Le rangement de la pochette, et la date d'appel. La chemise
+     cartonnée, les 5 blocs dedans dans l'ordre, le mot « notaire » écrit au
+     stylo dessus, et on la range là où on la retrouvera. Puis la section 4 du
+     Plan, « où sont les papiers » : où est le titre de propriété, où sont les
+     contrats, et le nom de votre notaire si vous en avez déjà un — ça se
+     remplit en même temps que la chemise. Puis la dernière ligne : en bas du
+     Plan, le jour où on appellera. On écrit une date. Elle peut être changée.
+     → La section 3 du Plan, « ce que j'ai décidé », reste ouverte : elle se
+       remplira au retour du rendez-vous. Le dire, pour qu'il ne croie pas sa
+       feuille ratée.
+     → Quand on le veut : une chemise cartonnée, les 5 blocs dedans. Aucune
+       échéance, pas « ce soir ».
+
+ 10. (0 min 45) Le récapitulatif, puis la mention légale. Quatre mots : votre
+     chiffre, vos dates, votre plan, votre pochette. Puis la mention légale.
+     → Le récapitulatif ne réénumère pas les 8 étapes et ne compare le
+       spectateur à personne.
+
+Puis, APRÈS la mention légale et jamais avant, le renvoi de fin (section 7) —
+0 min 30 à budgéter. Total à l'écran : 11 min 45, carton-titre compris.
+
+
+------------------------------------------------------------
+4. LES PHRASES À DIRE MOT POUR MOT
+------------------------------------------------------------
+
+  1. « Le notaire reçoit votre décision, il lui donne la forme d'un acte
+     authentique, et il en garde l'original. Un acte authentique, c'est un acte
+     dont la date et ce que le notaire a constaté font foi jusqu'à inscription
+     de faux. »   [art. 1369 et 1371 du code civil à l'écran]
+
+  2. « Pour donner les murs d'un logement, l'acte notarié est obligatoire :
+     sans notaire, la donation n'existe pas. Une donation-partage et un
+     changement de régime matrimonial passent eux aussi obligatoirement par
+     lui. »   [art. 931 et 1397 du code civil à l'écran]
+
+  3. « Pour les primes versées avant vos 70 ans, chaque bénéficiaire a un
+     abattement de 152 500 € sur ce qu'il reçoit, capital et gains compris.
+     Pour les primes versées après 70 ans, l'abattement est de 30 500 € au
+     total, pour tous les contrats et tous les bénéficiaires réunis — et là,
+     les gains ne sont pas taxés. Ces deux règles concernent les contrats
+     ouverts depuis le 20 novembre 1991 et les primes versées depuis le
+     13 octobre 1998. Et si le bénéficiaire est votre conjoint ou votre
+     partenaire de PACS, il est exonéré. »
+     [art. 990 I, 757 B et 796-0 bis du CGI à l'écran]
+
+  4. « La nue-propriété est comptée à 60 % tant que vous n'avez pas 71 ans, et
+     à 70 % de 71 à 80 ans. Au-delà, le barème continue par tranches de dix
+     ans. »   [art. 669 du CGI à l'écran]
+
+  5. « La date de votre dernière donation — pour un don d'argent de la main à
+     la main, la date où il a été déclaré — plus 15 ans : c'est le jour où
+     votre abattement de 100 000 € par parent et par enfant se recharge. »
+     [art. 779 et 784 du CGI à l'écran]
+
+  6. « Le coût complet des actes se demande à la fin du rendez-vous, par écrit,
+     avant toute signature. »
+
+  7. « Tout ce que nous avons vu ensemble est pédagogique et général. Ce n'est
+     pas un conseil personnalisé. Chaque modèle que nous vous remettons porte
+     la même mention : à faire relire par votre notaire. »
+
+
+------------------------------------------------------------
+5. LES PIÈGES — CE QU'IL NE FAUT SURTOUT PAS DIRE
+------------------------------------------------------------
+
+  · « Personne ne pourra le contester après vous. »
+    → FAUX, et c'est une réassurance qu'on ne peut pas tenir. Un acte notarié
+      se conteste : action en réduction des héritiers réservataires (art. 920
+      et 921 du code civil), nullité pour insanité d'esprit ou vice du
+      consentement (art. 901), recel successoral, requalification fiscale
+      (art. L64 du LPF). Et l'art. 1371 ne fait foi jusqu'à inscription de faux
+      que de ce que le notaire a personnellement accompli ou constaté. Dire :
+      « la date et ce que le notaire a constaté font foi jusqu'à inscription de
+      faux », et rien de plus.
+
+  · « Le notaire acte ce que vous lui demandez. »
+    → FAUX et interdit. Dire : « il reçoit votre décision et lui donne la forme
+      d'un acte authentique ». Il conserve son devoir de conseil et refuse un
+      acte illégal.
+
+  · « Il ne construit pas la stratégie à votre place. »
+    → FAUX et dénigrant pour une profession réglementée. Dire : « il conseille,
+      c'est son devoir, mais sur la base de ce que vous posez sur la table. Ce
+      qu'il ne fera pas, c'est réunir vos papiers à votre place, ni vous appeler
+      pour vous dire qu'une date approche. »
+
+  · « Le seul cas où le notaire est obligatoire, c'est la donation
+    immobilière. »
+    → FAUX. L'art. 931 vise tous les actes portant donation entre vifs. La
+      donation-partage (art. 1076) et le changement de régime matrimonial
+      (art. 1397) passent aussi par lui. Dire « l'un des cas », jamais « le
+      seul ».
+
+  · « Un acte notarié coûte environ… » / tout ordre de grandeur d'émoluments /
+    « son devis est gratuit ».
+    → INTERDIT sans exception. Le tarif est réglementé et révisé par arrêté, et
+      les prestations non tarifées relèvent d'honoraires libres (art. L444-1 du
+      code de commerce) : rien ne garantit la gratuité d'un premier rendez-vous
+      dans toutes les études. Dire : « le coût complet des actes se demande à la
+      fin, par écrit, avant toute signature », et rien d'autre.
+
+  · « Voilà comment échapper aux droits de succession. »
+    → Dire : « on n'y échappe pas. La loi prévoit des abattements et des
+      exonérations, et c'est ce qu'on utilise : art. 779 pour les donations,
+      art. 990 I pour l'assurance-vie, art. 669 pour la nue-propriété,
+      art. 796-0 bis pour le conjoint et le partenaire de PACS. »
+
+  · « 30 500 € par bénéficiaire » sur les primes versées après 70 ans.
+    → FAUX. C'est 30 500 € AU TOTAL, tous contrats et tous bénéficiaires
+      confondus. Et là, les gains ne sont pas taxés — ce qui n'est pas le cas
+      sous l'art. 990 I, où l'abattement de 152 500 € porte sur ce que reçoit
+      chaque bénéficiaire, capital ET gains.
+
+  · « Les primes versées avant 70 ans comptent 152 500 € par bénéficiaire. »
+    → Imprécis. L'abattement porte sur la part revenant à chaque bénéficiaire,
+      pas sur les primes. Dire : « chaque bénéficiaire a un abattement de
+      152 500 € sur ce qu'il reçoit, capital et gains compris. »
+
+  · « 60 % après 70 ans » pour la nue-propriété, ou « 70 % à partir de 71 ans »
+    sans borne haute.
+    → FAUX au-delà de 80 ans. Le barème de l'art. 669 du CGI est par tranches
+      de dix ans : 60 % de 61 à 70 ans, 70 % de 71 à 80 ans, 80 % de 81 à
+      90 ans. L'audience va jusqu'à 85 ans.
+
+  · « Les murs partent aux enfants, on reste chez soi », dit seul.
+    → Incomplet sur le mécanisme le plus lourd de la méthode. Ajouter : vendre
+      le logement demandera ensuite l'accord de ceux qui ont reçu les murs
+      (art. 621 du code civil). C'est la question 6 de la feuille.
+
+  · « Les gros travaux passent à celui qui reçoit les murs. »
+    → Imprécis. Les grosses réparations RESTENT à la charge du nu-propriétaire
+      (art. 605 et 606), sauf si elles viennent d'un défaut d'entretien depuis
+      l'ouverture de l'usufruit — et l'usufruitier ne peut pas le contraindre à
+      les faire.
+
+  · La clause d'inaliénabilité présentée nue.
+    → Elle n'est valable que si elle est temporaire ET justifiée par un intérêt
+      sérieux et légitime (art. 900-1 du code civil), et le donataire peut être
+      judiciairement autorisé à disposer du bien. Présentée sans ses conditions,
+      elle ferait demander au notaire un acte qu'il refusera.
+
+  · « Les dons de plus de 15 ans sont oubliés. »
+    → Incomplet. Le délai de 15 ans court à compter de la date de la donation,
+      et de la date de déclaration pour un don manuel ; c'est la plus récente
+      qui commande (art. 784 et 757 du CGI). Et fiscalement seulement :
+      civilement, entre les enfants, la règle est différente — selon la forme
+      de la donation, ce qui a été donné peut être repris dans le partage
+      (art. 843 du code civil), sauf donation-partage acceptée par tous les
+      réservataires (art. 1078). C'est la question 9 de la feuille.
+
+  · « Les dons faits pendant les 15 dernières années sont RAPPORTÉS au
+    calcul. »
+    → Mot du civil (le rapport, art. 843, sans limite de 15 ans) collé sur un
+      article du fiscal. Dire : « les donations de moins de 15 ans sont
+      RAPPELÉES dans le calcul des droits » (art. 784 du CGI).
+
+  · « Versez avant vos 70 ans sur votre contrat. » / nommer un assureur, un
+    contrat, un support.
+    → INTERDIT (statut CIF). Dire : « c'est une question à poser à
+      l'établissement qui gère le contrat, et à faire figurer au rendez-vous
+      chez le notaire pour la cohérence de l'ensemble. Nous ne disons ni quoi
+      verser, ni où, ni sur quel contrat. »
+
+  · « Cochez une seule case. »
+    → Le document livré autorise deux cases. Dire : « cochez celle qui vous
+      correspond ; si deux vous correspondent, cochez les deux. »
+
+  · « Sans ce rendez-vous, tout ce que vous avez fait ne sert à rien. »
+    → FAUX et inquiétant. Dire : « la pochette est prête ; le rendez-vous n'a
+      pas besoin d'être pris ce soir. »
+
+  · « Très peu de familles françaises ont cette page-là. » / « beaucoup de
+    familles sont dans ce cas » / « la situation la plus courante » / toute
+    proportion, tout pourcentage de marché.
+    → Aucune statistique non sourcée. Supprimer, sans remplacement.
+
+  · « Il n'y a pas de service qui prévienne. »
+    → Affirmation absolue et invérifiable sur l'ensemble du marché, et elle
+      crée un manque. Supprimer. Garder seulement : « il n'appellera personne
+      pour prévenir qu'un anniversaire approche. C'est à vous d'écrire la
+      date. »
+
+  · Promettre de dire quel acte correspond à la situation du spectateur, et
+    dans quel ordre le faire chez lui.
+    → C'est la définition d'une consultation juridique personnalisée, réservée
+      aux professions réglementées (loi n° 71-1130 du 31 décembre 1971, art. 54
+      et 60), et cela contredit la mention légale affichée trois lignes plus
+      tôt. Un document pédagogique présente des mécanismes et des questions à
+      poser ; il ne prescrit pas d'acte.
+
+  · Prononcer un prix, dire « offre », « places limitées », « avant la fin de
+    la semaine ».
+    → INTERDIT. Le renvoi dit ce que traite le document et où il se trouve.
+
+  · Envoyer vers « l'onglet Outils et Kits ».
+    → Cet onglet n'existe pas et n'existera pas : l'espace membre est une seule
+      page dépliée, sans onglet ni accordéon. Dire : « dans votre espace, plus
+      bas sur la même page. »
+
+
+------------------------------------------------------------
+6. CE QUE LE SPECTATEUR FAIT
+------------------------------------------------------------
+
+PENDANT LA VIDÉO
+  · Il met en pause à la marque d'impression et imprime 3 feuilles :
+    « Quelle est ma situation ? », « Les 12 questions à poser à votre notaire »
+    et « Mon plan en une page ». La 4e, « La règle de mise à jour », il la
+    garde pour la fin.
+  · Il revient avec un stylo, son Simulateur de l'étape 0 et son Calendrier des
+    3 Dates.
+  · Il coche sa case sur la grille des 12 situations — une, ou deux.
+  · En bas de cette feuille, il écrit le numéro de sa case et la première
+    question qu'il posera au notaire, et il la recopie en haut de la feuille
+    des 12 questions.
+  · Il recopie sur le Plan, section 1, le chiffre de son Simulateur (encadré F).
+    Il laisse vide la ligne du dessous.
+  · Il écrit ses 3 dates dans la section 2 du Plan, dans l'ordre où elles
+    tombent pour lui, en s'aidant de son Calendrier des 3 Dates.
+  · Il remplit la section 4 du Plan, « où sont les papiers ».
+  · Il écrit en bas du Plan le jour où il appellera pour prendre rendez-vous.
+
+APRÈS LA VIDÉO
+  · Quand il le veut : une chemise cartonnée, et les 5 blocs dedans, dans
+    l'ordre : la première page de son Simulateur (étape 0) · ses papiers de
+    famille, livret et contrat de mariage · la liste de ses dons (étape 5, ou
+    une feuille libre) · ses contrats d'assurance-vie et sa dernière clause
+    bénéficiaire · son Calendrier des 3 Dates (étape 0).
+  · Il écrit « notaire » sur la chemise, au stylo, et il la range là où il la
+    retrouvera.
+  · Il glisse par-dessus la feuille des 12 questions et son Plan en une page.
+  · La section 3 du Plan, « ce que j'ai décidé », se remplira au retour du
+    rendez-vous.
+
+S'IL BLOQUE
+  · Valeur inconnue → une estimation, et le mot « estimation » à côté.
+  · Date de don introuvable → « à vérifier », et ça devient une question pour
+    le rendez-vous.
+  · Case dont il n'est pas sûr → il la laisse et il avance. Rien n'expire.
+  · Pas d'imprimante ce soir → il s'arrête à la pause. La vidéo reste dans son
+    espace, rien ne se perd.
+
+
+------------------------------------------------------------
+7. LE RENVOI DE FIN
+------------------------------------------------------------
+
+Vers : LA RÈGLE DE MISE À JOUR — dans votre espace, plus bas sur la même page.
+Placé après le récapitulatif et après la mention légale, jamais avant.
+
+À dire : la dernière feuille de votre espace s'appelle La règle de mise à jour.
+Elle dit quand ce plan doit être ressorti : chaque année, et à chaque
+changement de loi. C'est la seule chose qui reste à faire après aujourd'hui.
+
+Aucun prix. Aucun produit. Aucune urgence.
+
+⚠️ POURQUOI PAS LE PLAN ADAPTÉ À VOTRE FAMILLE. Il n'est pas en vente
+(`PRODUCTS.upsell1.disponible` est à `false` depuis le 8 septembre 2026) et il
+ne couvre que 3 des 12 situations (DOCUMENTS ne déclare que les situations 2, 9
+et 11). Un renvoi vers lui enverrait le spectateur vers un produit introuvable,
+à la dernière seconde de la méthode.
+
+VARIANTE À N'UTILISER QUE SI LES DOUZE PLANS SONT DÉCLARÉS ET LE PRODUIT REMIS
+EN VENTE — et telle quelle, sans y ajouter de promesse d'acte :
+« Ici, La Méthode s'arrête. Elle a traité un cas de figure : un couple, des
+enfants, un logement. Ce qu'elle ne détaille pas, ce sont les situations
+particulières : famille recomposée, enfant vulnérable, enfant à l'étranger,
+parts d'entreprise. Pour chacune des 12 cases, il existe un document pédagogique
+qui présente les mécanismes concernés et les questions à poser à votre notaire.
+Il est dans votre espace, plus bas sur la même page, où son prix est écrit sur
+la page. À prendre si votre case le demande ; à ne pas prendre si votre Plan en
+une page vous suffit. » Aucun prix à l'écran de la vidéo, aucun prix prononcé,
+et le document lui-même porte la mention « contenu pédagogique · à faire relire
+par votre notaire ». La phrase « ne le prenez pas si votre Plan vous suffit » se
+dit, elle n'est pas décorative.
+
+
+------------------------------------------------------------
+8. LE LIVRABLE
+------------------------------------------------------------
+
+MON PLAN EN UNE PAGE, complété — PDF d'une page, recto, imprimé pendant la
+vidéo. Il porte :
+  · le chiffre du Simulateur, recopié (section 1) ;
+  · les 3 dates, classées dans l'ordre où elles tombent pour lui (section 2) ;
+  · où sont les papiers, et le nom de son notaire s'il en a un (section 4) ;
+  · en bas, le jour où il appellera.
+  · La section 3, « ce que j'ai décidé », reste à remplir au retour du
+    rendez-vous.
+
+FOURNI AVEC :
+  · « Quelle est ma situation ? » — 12 cases, une ou deux cochées, le numéro de
+    sa case et sa première question écrits en bas ;
+  · la feuille des 12 questions au notaire, numérotées, avec une ligne de
+    réponse sous chacune, les 3 questions à reformuler, et sa première question
+    recopiée en haut — 1 page recto, à poser sur le bureau ;
+  · au verso de cette même feuille, la check-list des 5 blocs de la pochette ;
+  · « La règle de mise à jour », gardée pour la fin.
+
+EN MAIN, PHYSIQUEMENT : une chemise cartonnée marquée « notaire », contenant
+les 5 blocs, avec le Plan en une page et les 12 questions par-dessus, rangée là
+où il la retrouvera.
+
+Toutes les pages portent la mention : contenu pédagogique, ne constitue pas un
+conseil personnalisé ; à faire relire par votre notaire.

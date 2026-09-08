@@ -1,6 +1,7 @@
+import type { ReactNode } from "react";
 import { Header, Footer } from "@/components/Chrome";
 
-export default function LegalLayout({ children }: LayoutProps<"/">) {
+export default function LegalLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <Header minimal />

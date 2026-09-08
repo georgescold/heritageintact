@@ -91,7 +91,7 @@ export const SEQUENCE: Etape[] = [
       "Vous vous dites peut-être : <em>« C'est bien joli, mais ma situation est particulière. »</em>",
       "Vous avez raison.",
       "Un enfant divorcé, un autre en couple sans être marié. Un studio locatif acheté « pour la retraite ». Une maison de vacances à trois. Une famille recomposée. Un contrat ouvert avant 70 ans, un autre après. Une donation faite en 2011 de la main à la main, jamais déclarée.",
-      "Je n'ai jamais vu de situation qui ne soit pas particulière. C'est exactement pour ça que la méthode ne commence pas par une théorie : elle commence par <strong>votre chiffre</strong> et <strong>vos dates</strong>. Le module 7 vous oriente ensuite selon votre situation familiale, parmi douze.",
+      "Je n'ai jamais vu de situation qui ne soit pas particulière. C'est exactement pour ça que la méthode ne commence pas par une théorie : elle commence par <strong>votre chiffre</strong> et <strong>vos dates</strong>. L'étape 7 vous oriente ensuite selon votre situation familiale, parmi douze.",
       "Autre doute légitime : <em>« Il faudra de toute façon aller chez le notaire. »</em> Oui. Et c'est précisément le point. Y aller avec un dossier et des décisions plutôt que les mains vides change tout. Le notaire acte ce que vous demandez ; sans dossier, vous ressortez avec « revenez quand vous saurez ».",
       `Dernier doute : <em>« ${euros(PRODUCTS.front.price)} sur internet, à mon âge ? »</em> Garantie 30 jours, sans justification à fournir, et vous gardez le simulateur. Vous ne pouvez pas y perdre.`,
     ],

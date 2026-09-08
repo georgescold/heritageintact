@@ -1,0 +1,1028 @@
+============================================================
+VIDEO 9 — LIRE VOTRE CONTRAT D'ASSURANCE-VIE
+Duree cible : 24 minutes | faceless, voix + ecran
+============================================================
+
+
+------------------------------------------------------------
+1. CE QUE JE DOIS SAVOIR AVANT DE TOURNER
+------------------------------------------------------------
+
+REGLE DE FORME
+
+Produit autonome, achete apres La Methode. Le spectateur a paye. Il a
+peut-etre deja vu les 8 etapes. On ne lui revend rien, on ne lui rappelle
+rien : on ouvre son contrat avec lui.
+On livre et on rassure. Aucune scene, aucun personnage, aucun prenom (ni
+Julien, ni Jean-Pierre), aucune chute, aucune question rhetorique. Si une
+phrase ne fait ni comprendre ni apaiser, elle ne se dit pas.
+
+
+L'OBJET DE LA VIDEO
+
+Le spectateur doit sortir de la video en sachant lire SON contrat. Pas un
+contrat en general : le sien, avec ses propres taux, ses propres dates et sa
+propre clause. Quatre informations sont a trouver, et ce sont celles dont la
+suite a besoin :
+  - le taux de frais sur versement,
+  - le taux de frais de gestion annuels,
+  - la date de chaque versement,
+  - le texte exact de la clause beneficiaire.
+Tout le reste de la video sert a trouver ces quatre choses, a les ecrire, et
+a savoir quoi faire quand on ne les trouve pas.
+
+
+LA LIMITE D'AUTORITE — a integrer avant tout le reste
+
+Nous n'avons aucun contrat a proposer, aucun assureur a recommander, aucun
+placement a conseiller. Ce n'est pas une posture de modestie : une
+recommandation, meme non nominative, sur l'opportunite de souscrire un
+contrat d'assurance releve de la distribution d'assurances (art. L511-1 du
+code des assurances) et suppose une immatriculation ORIAS que le narrateur
+n'a pas. On explique comment LIRE. Jamais quoi ACHETER.
+Consequence concrete au tournage : aucun assureur, aucun contrat, aucun
+etablissement, aucun support et aucun placement n'est nomme — ni a l'oral,
+ni a l'ecran, ni sur les documents filmes. Tous les documents filmes portent
+« ASSUREUR », « 000 000 000 », « NOM PRENOM ».
+
+
+LES TROIS DOCUMENTS, ET CE QU'ON Y CHERCHE
+
+1. Le bulletin d'adhesion, que l'assureur appelle aussi conditions
+   particulieres : 2 a 4 pages, avec le nom de l'assure, la date et sa
+   signature. C'est la que la clause beneficiaire se trouve le plus souvent :
+   sur le bulletin, ou sur le dernier avenant signe — l'avenant est la feuille
+   signee pour changer la clause, et c'est ce papier-la qui fait foi, pas le
+   bulletin d'origine. Elle peut aussi avoir ete ecrite ailleurs : dans un
+   testament, ou dans un courrier adresse a l'assureur. En cas de doute, c'est
+   la premiere demande de la Lettre A — la copie de la clause en vigueur,
+   celle que l'assureur appliquera.
+   Point de tournage : cette reserve ne se coupe pas. Un spectateur qui a
+   redige sa clause chez son notaire, ou qui a ecrit a son assureur il y a dix
+   ans, auditerait sinon une clause qui n'est plus la sienne, et pourrait la
+   « corriger » en revoquant sans le savoir une designation posterieure.
+
+2. Les conditions generales : le livret epais, en petits caracteres. Le
+   spectateur ne le lit pas. Il y cherche une seule rubrique, en general
+   vers la fin, intitulee « frais » ou « tarification ». C'est la que sont
+   ses deux taux — le plus souvent. Le tableau de frais figure parfois dans
+   les conditions particulieres ou en annexe, et les frais reellement preleves
+   dans l'annee figurent sur le releve annuel. S'il ne trouve rien nulle part,
+   il laisse les lignes 3 et 4 de la grille vides : c'est la 4e demande de la
+   Lettre A.
+
+3. Le releve de situation annuel, envoye chaque annee. C'est le plus utile
+   des trois : valeur du contrat, frais preleves dans l'annee, liste des
+   supports (souvent au dos), et tres souvent l'historique date des
+   versements.
+
+
+LES DEUX TYPES DE FRAIS — le mecanisme, pas les chiffres
+
+Frais sur versement : preleves a l'entree, chaque fois que de l'argent est
+mis sur le contrat. Cette part n'entre jamais dans le contrat. Ce n'est pas
+une perte de marche, c'est un montant qui n'est jamais arrive.
+
+Frais de gestion annuels : preleves chaque annee sur ce que contient le
+contrat, que les marches montent ou descendent. Ils s'appliquent a l'encours,
+pas au versement.
+
+Ou les chercher : rubrique « frais » ou « tarification » des conditions
+generales ; a defaut, conditions particulieres ou annexe ; a defaut, releve
+annuel, qui porte les frais preleves dans l'annee. Si rien n'est trouve,
+lignes 3 et 4 laissees vides et 4e demande de la Lettre A.
+
+DECISION DE TOURNAGE, IMPORTANTE : on ne prononce AUCUN taux de frais a
+l'oral et on n'en imprime aucun. Aucun taux de frais n'est source dans
+12-chiffres-succession.md — verifie, il n'y en a pas. Prononce ou imprime, un
+taux serait entendu comme une moyenne de marche, ce qu'il ne serait pas.
+Aucune addition d'exemple non plus.
+Le livrable utile est : OU lire son taux a soi, dans SES conditions
+generales, et l'ecrire. L'illustration se fait avec le taux du spectateur, sur
+la piece 3, en cases a remplir.
+
+
+LA DATE DU VERSEMENT — le coeur juridique
+
+Ce qui compte n'est pas l'age du contrat. C'est la date de CHAQUE versement.
+Un meme contrat peut donc obeir aux deux regimes en meme temps : les
+versements faits avant le 70e anniversaire sous un article, ceux faits apres
+sous un autre. Le repere est le jour exact du 70e anniversaire, pas l'annee.
+
+Versements faits AVANT 70 ans — art. 990 I du code general des impots :
+abattement de 152 500 EUR PAR BENEFICIAIRE, tous contrats du meme assure
+confondus. Au-dela : 20 % jusqu'a 700 000 EUR taxables par beneficiaire,
+31,25 % ensuite. Le seuil de 700 000 EUR s'apprecie sur la part TAXABLE de
+chaque beneficiaire, c'est-a-dire apres l'abattement : le mot « taxables » ne
+se supprime nulle part, ni a l'oral, ni a l'ecran, ni sur les pieces. A
+retenir aussi : sous 990 I, l'abattement porte sur le CAPITAL TRANSMIS —
+primes et gains — et pas seulement sur ce qui a ete verse.
+
+Versements faits APRES 70 ans — art. 757 B du code general des impots :
+30 500 EUR une seule fois, tous beneficiaires et tous contrats confondus, et
+ce seuil porte sur les PRIMES VERSEES, pas sur ce que les beneficiaires
+recevront. Au-dela, la fraction excedentaire entre dans l'assiette des droits
+de succession, au bareme du lien de parente (art. 777). L'argent, lui, reste
+hors succession civile : il ne se partage pas avec le reste du patrimoine. Il
+est taxe, il n'est pas partage.
+Reserve a dire, et non a sous-entendre : cela suppose qu'une personne vivante
+soit nommee dans la clause. Si la clause ne designe plus personne, ou si la
+personne nommee est decedee et que rien n'a ete prevu apres elle, le capital
+rejoint la succession et se partage comme le reste. On enonce cette reserve
+sans citer d'article : celui du code des assurances qui la fonde n'est pas
+dans la fiche 12.
+Attention au vocabulaire : ne jamais preter a l'art. 757 B les mots
+« abattement global ». Le texte vise « la fraction des primes versees apres
+l'age de soixante-dix ans qui excede 30 500 EUR ». « Abattement global » est
+du vocabulaire de doctrine administrative, pas de la loi.
+
+L'EXEMPLE CHIFFRE NE SE PRONONCE PAS EN ENTIER. Sur 40 000 EUR verses :
+avant 70 ans, on est sous 152 500 EUR, donc 0 EUR de droits ; apres 70 ans,
+40 000 − 30 500 = 9 500 EUR entrent dans l'assiette. Ce que ces 9 500 EUR
+coutent depend du reste de la succession, et le dire suppose deux hypotheses
+cumulatives (abattement de 100 000 EUR de l'art. 779 deja consomme, ET part
+nette taxable deja superieure a 15 932 EUR). Un chiffre qui exige deux
+hypotheses cumulatives ne se donne pas a l'oral : on l'imprime. Le calcul
+complet, avec ses deux hypotheses ecrites noir sur blanc, est sur la piece 3.
+A l'oral on s'arrete a « 9 500 EUR entrent dans l'assiette ».
+
+Contrats anciens : les regles ont change plusieurs fois depuis la creation de
+ces contrats. Pour les plus anciens, elles peuvent etre differentes de ce que
+nous decrivons ici — nous ne les decrivons pas, et personne ne peut le
+trancher sans le contrat sous les yeux. Les dates de bascule ne figurent pas
+dans 12-chiffres-succession.md : on n'en prononce aucune, on n'en affiche
+aucune, et on ne donne ni decennie ni ordre de grandeur. La consigne au
+spectateur tient en une phrase : noter la date de souscription en haut de la
+feuille — ou noter qu'on ne la connait pas — et poser la question au notaire.
+On ne dit pas non plus dans quel sens la difference joue : l'affirmer
+supposerait la date de bascule que l'on vient de refuser de prononcer.
+
+
+LES TROIS NUANCES — a ne jamais couper
+
+1. Avant 70 ans, les 152 500 EUR portent sur tout ce qui est transmis, gains
+   compris. Le detail chiffre est sur la piece 3, il ne se prononce pas.
+2. Apres 70 ans, tout n'est pas perdu : les gains echappent aux droits de
+   succession, et les 30 500 EUR s'ajoutent aux abattements de la
+   succession. C'est moins avantageux. Ce n'est pas rien.
+3. Si le beneficiaire est le conjoint marie ou le partenaire de PACS, il est
+   exonere de droits dans tous les cas — art. 796-0 bis du code general des
+   impots. Un mot accompagne obligatoirement cette nuance : dans une clause
+   standard, « mon conjoint » designe un epoux. Un partenaire de PACS n'est
+   pas couvert par ce mot, et il n'est pas non plus un heritier. Pour qu'il
+   recoive, il doit etre nomme dans la clause.
+C'est le seul endroit de la video ou l'on dit qu'apres 70 ans tout n'est pas
+perdu, et le seul ou l'on dit que le conjoint et le partenaire de PACS sont
+exoneres. Sans ce bloc, un spectateur marie ou pacse repart avec une
+information incomplete : il croit que les 30 500 EUR le concernent, alors que
+le beneficiaire conjoint ou partenaire de PACS est exonere.
+
+Precision de vocabulaire imposee : on ne dit jamais « exonere » seul a propos
+des droits sur les versements. On dit « 0 EUR de droits », et on ajoute que
+les prelevements sociaux restent dus sur les gains du contrat au deces. Ce
+sont deux choses differentes. On les nomme, sans taux et sans numero
+d'article : l'art. L136-7 du code de la securite sociale n'est pas encore
+dans la fiche 12.
+
+
+LA CLAUSE BENEFICIAIRE
+
+Le geste : la lire a voix haute, et poser une seule question — les personnes
+nommees dans cette clause sont-elles celles que je veux aujourd'hui ?
+
+La clause standard, celle qui est deja imprimee sur le bulletin, dit le plus
+souvent : « mon conjoint, a defaut mes enfants nes ou a naitre, a defaut mes
+heritiers ». Elle n'est pas fausse. Elle est generique : elle ne tient compte
+ni des petits-enfants, ni d'un divorce, ni d'un remariage. Et « mon conjoint »
+y designe un epoux : un partenaire de PACS n'est pas couvert par ce mot.
+
+Deux autres formes existent, redigees et commentees ligne par ligne sur la
+piece 4 :
+  - la clause a options : le conjoint choisit le moment venu — tout, ou une
+    part seulement, le reste allant aux enfants. Le choix se fait au moment du
+    deces, en fonction de la situation d'alors.
+  - la clause demembree : le conjoint recoit l'argent et vit avec ; les
+    enfants ne recoivent pas l'argent, ils recoivent une creance sur la
+    succession du conjoint. Il faut le dire tel quel : si le conjoint a tout
+    depense et qu'il ne reste rien, la creance ne se paie pas ; et pour
+    qu'elle soit seulement deductible, elle doit avoir ete constatee dans un
+    acte, du vivant du conjoint. C'est la forme la plus technique de toutes :
+    elle ne se recopie pas, elle se redige avec un professionnel qui a le
+    contrat sous les yeux. A l'oral, cela tient en trois phrases, pas plus,
+    et le detail est sur la piece 4.
+Note de tournage sur la deductibilite : le texte exige un acte authentique, ou
+un acte sous seing prive ayant date certaine avant le deces du
+quasi-usufruitier. Les articles qui fondent ce paragraphe (art. 587 du code
+civil, art. 773, 2° du CGI — ecrit « 773, 2° », jamais « 773-2 ») ne sont pas
+dans la fiche 12 : on n'affiche rien. Le paragraphe est ecrit pour etre juste
+sans eux — il enonce la regle, pas le numero.
+
+Limite generale a dire une fois, apres la clause demembree : le regime suppose
+que les sommes versees restent proportionnees aux moyens de l'assure — ses
+revenus et son patrimoine, son age, sa situation de famille, et l'interet que
+le contrat a pour lui. Des versements manifestement exageres au regard de tout
+cela peuvent etre remis dans la succession. Ou se situe la limite depend de la
+situation ; c'est une question pour le notaire.
+Ne jamais reduire ce critere au seul patrimoine : reduit ainsi, il fait croire
+a un seuil de pourcentage, et il conduit les spectateurs modestes a s'inquieter
+a tort et les spectateurs aises a se croire a l'abri.
+
+LE BENEFICIAIRE ACCEPTANT — la seule limite a la modification de la clause
+
+Tant que personne n'a officiellement accepte d'etre beneficiaire, la clause
+se change quand on veut. Si un beneficiaire a signe une acceptation, elle ne
+se modifie plus sans son accord ecrit. Le spectateur peut le demander a son
+assureur : c'est la 3e demande de la Lettre A. Compter un mois. Si rien
+n'arrive, la marche a suivre est au dos de la piece 5.
+Apaisement obligatoire immediatement apres : si la reponse est oui, la clause
+reste modifiable avec l'accord ecrit du beneficiaire. Cet accord se demande
+par ecrit.
+Deux reserves a mentionner : contrat souscrit a deux (l'autre souscripteur
+doit etre d'accord), et contrat donne en garantie d'un pret (la garantie
+passe avant). Dans ces deux cas, poser la question a l'assureur avant
+d'ecrire quoi que ce soit.
+On enonce la regle sans citer de numero d'article : celui du code des
+assurances n'est pas encore dans la fiche 12.
+
+
+UN SECOND CONTRAT PLUTOT QU'ALIMENTER LE PREMIER
+
+Ce point est traite ici parce qu'il porte sur une regle de droit precise, et
+non sur un arbitrage. On ne repond pas a l'arbitrage : ouvrir un contrat est
+une decision qui appartient au spectateur et a un professionnel habilite.
+Ce qu'on peut faire, et qui est le vrai contenu, c'est dire ce que la loi
+regarde et ce qu'elle ne regarde pas.
+Elle ne regarde pas le nombre de contrats. Elle regarde la date de chaque
+versement. Les 152 500 EUR se comptent par beneficiaire, tous contrats
+confondus. Les 30 500 EUR se comptent une seule fois pour tout le monde. Un
+second contrat n'ajoute donc AUCUN abattement. L'idee d'un abattement
+supplementaire par contrat est fausse.
+Ce bloc ne conclut sur aucun avantage. Il dit ce que la loi regarde, il
+demonte l'idee du double abattement, il renvoie au notaire. Si on y ajoute au
+montage un « deux releves plus lisibles », la video redevient un conseil
+d'arbitrage et sort de sa conformite.
+
+
+LES DEUX LETTRES
+
+La Lettre A (piece 5), quand on ne trouve pas ses papiers. Elle demande
+quatre choses, DANS CET ORDRE, identique a l'oral et sur le papier : copie de
+la clause en vigueur / historique date des versements / existence eventuelle
+d'une acceptation de beneficiaire / frais en cours. Envoi en recommande, une
+copie gardee, la date d'envoi notee en haut de la fiche. Compter un mois, pas
+15 jours. Aucune promesse de delai de reponse, aucune affirmation que
+l'assureur est tenu de repondre sous X jours, aucune affirmation de gratuite.
+Si rien n'arrive, la marche a suivre est au dos de la piece 5.
+
+CE QUI CHANGE AVEC LA LETTRE B — a dire avant de la decrire. Envoyer la
+Lettre B est la seule action de ce dossier qui produise un effet : elle change
+la clause. Elle ne touche pas a l'argent, ne ferme pas le contrat et ne
+modifie pas sa date d'ouverture, mais elle change qui recoit — et si un
+beneficiaire accepte ensuite, elle ne se defait plus sans son accord. C'est
+pour cela que le texte de la nouvelle clause se fait relire par le notaire
+avant l'envoi.
+
+La Lettre B (piece 6), qui modifie la clause. Cinq elements obligatoires :
+nom et adresse / numero du contrat / la phrase qui demande la prise en compte
+d'une nouvelle clause / le texte exact de cette nouvelle clause / la date et
+la signature a la main. La lettre porte en outre la mention « la presente
+designation annule et remplace toute designation anterieure, quelle qu'en soit
+la forme » : elle est imprimee sur la piece 6, elle n'est pas dictee a l'oral.
+Recommande avec accuse de reception, et confirmation ecrite demandee a
+l'assureur. Tant que cette confirmation n'est pas dans le dossier, ce n'est
+pas fait. Sans reponse dans le mois : renvoyer exactement la meme lettre, avec
+le mot « rappel » ecrit a la main en haut.
+Ces cinq elements sont numerotes dans la marge de la piece 6 : a l'oral, on
+ne les dicte pas un par un, on dit qu'ils sont cinq et qu'ils sont numerotes
+sur la feuille.
+Reassurance a dire : changer une clause ne touche pas a l'argent, ne ferme
+pas le contrat, et ne modifie pas la date d'ouverture du contrat.
+
+
+LA GRILLE SUR 10 — la seule chose qui se lit lentement et integralement
+
+Une page par contrat, 10 lignes, 1 point chacune. Lecture lente, une ligne a
+la fois, avec les pauses. C'est le seul moment de la video ou le spectateur
+ecrit ; on ne l'accelere jamais pour gagner du temps.
+  1. Je sais ou est mon contrat.
+  2. Je connais son nom et son numero.
+  3. Je connais les frais sur versement.
+  4. Je connais les frais de gestion.
+  5. Je sais sur quels supports mon argent est place. (Les supports : la
+     liste des placements sur lesquels l'argent du contrat est reparti ;
+     elle est sur le releve annuel, en general au dos.)
+  6. J'ai le texte exact de ma clause sous les yeux.
+  7. Cette clause nomme les personnes que je veux, aujourd'hui.
+  8. Je sais ce que j'ai verse avant 70 ans.
+  9. Je sais ce que j'ai verse apres.
+ 10. Une personne de confiance sait que ce contrat existe.
+Puis : aucun score n'est mauvais. Il est normal que beaucoup de cases restent
+vides la premiere fois. Le score ne dit pas si on a bien fait : il dit par ou
+commencer. Chaque case vide est une ligne de la Lettre A, sauf la ligne 9 si
+le spectateur n'a pas encore 70 ans.
+Spectateur de moins de 70 ans — a dire, la moitie basse de la cible est
+concernee : la ligne 9 se coche sans objet, elle est deja acquise ; la ligne 8
+est le total de tout ce qu'il a verse. Il n'a rien a demander a son assureur
+pour ces deux lignes-la. Et si la date de son 70e anniversaire est devant lui,
+il l'ecrit quand meme en haut de la piece 2 : c'est la date a connaitre.
+Les « je » de ces 10 lignes sont la voix du spectateur : ils restent tels
+quels. Partout ailleurs, le narrateur dit « nous » et vouvoie.
+Ne jamais edulcorer la formule : aucun score n'est mauvais, le score dit par
+ou commencer, chaque case vide est une ligne de la Lettre A.
+
+
+CE QUI NE PEUT PAS MAL TOURNER PENDANT LA VIDEO — a dire, pas a sous-entendre
+
+Pendant cette video, rien n'est signe, rien n'est ferme, rien n'est rachete,
+rien n'est souscrit. Le spectateur constate. Il constate d'abord ; s'il decide
+de changer quelque chose, c'est a la fin, et par une seule lettre. Il peut
+arreter la video a tout moment et la reprendre trois semaines plus tard sans
+rien perdre : les papiers ne bougent pas, les articles non plus, et la grille
+a moitie remplie reste valable. S'il ne sait pas repondre a une case, il la
+laisse vide : c'est justement une ligne de sa Lettre A. S'il ne trouve aucun
+papier, il ecrit la Lettre A et il reprend la video quand la reponse de
+l'assureur arrive.
+La seule action qui engage quelque chose est l'envoi de la Lettre B, decrit
+plus haut : elle change la clause, et son texte se fait relire par le notaire
+avant l'envoi. Tant que la Lettre B n'est pas partie, rien n'est engage.
+
+
+------------------------------------------------------------
+2. CE QUE JE MONTRE A L ECRAN
+------------------------------------------------------------
+
+1. LES 3 DOCUMENTS, photographies a plat, cote a cote : bulletin d'adhesion /
+   conditions generales / releve annuel. Mains vues du dessus, aucun visage.
+   Documents recomposes par nous et imprimes, jamais des documents reels :
+   « ASSUREUR », « 000 000 000 », « NOM PRENOM ».
+
+2. BANDEAU PERMANENT, discret, bas d'ecran, cale au montage sur la replique
+   « ce contenu est pedagogique » et maintenu jusqu'a la fin :
+   « Contenu pedagogique — ne constitue pas un conseil personnalise ».
+
+3. LES 4 CHOSES A TROUVER, numerotees, police large : frais sur versement /
+   frais de gestion / date de chaque versement / clause beneficiaire.
+
+4. LA LETTRE A en gros plan, les 4 demandes surlignees DANS L'ORDRE : clause
+   en vigueur / historique date des versements / existence d'une acceptation
+   de beneficiaire / frais en cours.
+
+5. CONDITIONS GENERALES OUVERTES a la rubrique « frais » — document recompose
+   par nous, doigt qui suit la ligne, deux encadres qui s'allument : « frais
+   sur versement » et « frais de gestion annuels ». Les deux encadres sont
+   VIDES : aucun taux a l'ecran. Mention : « lisez le taux de VOTRE contrat ».
+
+6. LIGNE DE TEMPS horizontale, un trait vertical net au 70e anniversaire.
+   Puis la fiche des versements VIERGE, colonnes visibles, avec une seule
+   ligne d'exemple en placeholders : JJ/MM/AAAA — montant — X dans la colonne
+   avant / apres. Aucune date reelle, aucun montant reel.
+
+7. SLIDE 152 500 EUR, seul, centre. Bas de slide : art. 990 I du code general
+   des impots. Mention a l'ecran : « par beneficiaire — tous contrats du meme
+   assure confondus. Au-dela de l'abattement : 20 % jusqu'a 700 000 EUR
+   taxables, 31,25 % ensuite ».
+
+8. SLIDE 30 500 EUR, seul, meme composition. Bas de slide : art. 757 B du
+   code general des impots. Mention a l'ecran : « une seule fois — sur les
+   primes versees apres 70 ans, tous beneficiaires et tous contrats
+   confondus ».
+
+9. LE TABLEAU DE DECISION (piece 3) filme a plat : colonne AVANT = 0 EUR de
+   droits (art. 990 I) / colonne APRES = 40 000 − 30 500 = 9 500 EUR dans
+   l'assiette (art. 757 B). Le calcul complet et ses 2 hypotheses sont
+   imprimes sur la piece que le spectateur a en main ; a l'ecran on ne filme
+   que les deux en-tetes de colonne, en gros caracteres. Ne pas compter sur
+   la lisibilite d'un A4 filme a plat. Rien de tout cela n'est prononce.
+   Sous-titre : « les prelevements sociaux sur les gains restent dus ».
+
+10. SLIDE DES 3 NUANCES : capital et non primes / gains hors droits de
+    succession apres 70 ans / conjoint marie et partenaire de PACS exoneres —
+    art. 796-0 bis du code general des impots, porte sur la 3e nuance. En bas
+    de slide : « dans une clause standard, "mon conjoint" designe un epoux ».
+
+11. CLAUSE BENEFICIAIRE, gros plan, lue ligne a ligne. Document RECOMPOSE par
+    nous au traitement de texte et imprime, jamais un contrat reel filme :
+    en-tete « ASSUREUR », numero « 000 000 000 », « NOM PRENOM ». AUCUNE
+    incrustation d'article — ni L132-12, ni L132-13 (voir CE QUI RESTE A
+    REGLER, point 1).
+
+12. SLIDE DES 3 FORMES DE CLAUSE — standard / a options / demembree. Chacune
+    porte « a faire relire par votre notaire ».
+
+13. SLIDE BENEFICIAIRE ACCEPTANT, fond legerement contraste, 2 colonnes :
+    « personne n'a accepte → la clause se change » / « quelqu'un a accepte →
+    accord ecrit necessaire ». En bas : les 2 reserves (contrat souscrit a 2,
+    contrat donne en garantie d'un pret).
+
+14. SLIDE SECOND CONTRAT, 2 colonnes : « ce que la loi regarde : la date de
+    chaque versement » / « ce que la loi ne regarde pas : le nombre de
+    contrats ». En bas : « un second contrat n'ajoute aucun abattement ».
+
+15. LA GRILLE VIERGE. Les 10 lignes sont numerotees a l'ecran, et seule la
+    ligne lue s'eclaire. Les cases restent VIDES a l'ecran : c'est le
+    spectateur qui ecrit, pas nous. Puis, sous le score : « aucun score n'est
+    mauvais — chaque case vide est une ligne de votre Lettre A, sauf la
+    ligne 9 si vous n'avez pas encore 70 ans ».
+
+16. LA LETTRE B a plat, les 5 elements numerotes dans la marge, encadres
+    ensemble et non un par un. L'encadre place au-dessus du champ de la
+    clause est visible a l'image : « le texte que vous recopiez ici doit avoir
+    ete relu par votre notaire avant l'envoi ».
+
+17. SLIDE « LES DEUX CHEMINS » : 2 chemins — la grille remplie, ou la Lettre A
+    a poster.
+
+17 bis. CARTON MUET pendant le renvoi de fin : « LE DOSSIER NOTAIRE — ou se
+    rangent la grille et la fiche des versements ».
+
+18. CARTON DE FIN, muet : « Contenu pedagogique — ne constitue pas un conseil
+    personnalise. Chiffres verifies au 5 septembre 2026. »
+
+A FABRIQUER AVANT LE TOURNAGE : les 6 pieces du dossier PDF (grille d'audit,
+fiche des versements, tableau de decision, 3 modeles de clause, Lettre A,
+Lettre B), imprimees, avec le numero de piece EN GROS en haut a droite — le
+narrateur y renvoie a voix haute. Plus un jeu de documents RECOMPOSES et
+imprimes par nous (bulletin 2 pages, une double page « frais » de conditions
+generales, un releve annuel) pour les plans 1, 5 et 11 : recomposer plutot
+qu'anonymiser. Un livret reel porte le nom de l'assureur en pied de chaque
+page, et un seul oubli casse la regle de conformite la plus dure de cette
+fiche.
+
+
+CE QUI RESTE A REGLER AVANT DE FABRIQUER LES CARTONS
+
+Points bloquants pour l'affichage, verifies dans 12-chiffres-succession.md au
+moment d'ecrire cette fiche :
+
+1. Art. L132-13 du code des assurances (primes manifestement exagerees) —
+   absent de la fiche 12. Tant qu'il n'y est pas, le carton 11 se filme SANS
+   incrustation d'article : ni L132-12, ni L132-13.
+2. Prelevements sociaux dus au deces sur les gains (art. L136-7 du code de la
+   securite sociale) — absent. Nommes a l'oral, sans taux et sans numero.
+3. Dates d'application des regimes 990 I et 757 B pour les contrats anciens —
+   absentes. Aucune date, aucune decennie, aucun ordre de grandeur n'est
+   prononce ni affiche. On constate que les regles ont change, on ne dit pas
+   dans quel sens, et on renvoie au notaire avec la date de souscription
+   ecrite sur la feuille.
+4. Art. 587 du code civil et art. 773, 2° du CGI (clause demembree) —
+   absents. Le paragraphe est ecrit pour etre juste sans eux : il enonce la
+   regle, pas le numero. La reference s'ecrit « art. 773, 2° », jamais
+   « 773-2 » : cette derniere forme n'existe pas.
+5. Article du code des assurances sur l'acceptation du beneficiaire, et
+   article sur le sort du capital quand la clause ne designe plus personne —
+   absents. Regles enoncees, numeros non affiches.
+6. Taux de frais — absents de la fiche 12. Aucun taux n'est prononce, aucun
+   n'est affiche, et aucun n'est imprime sur les pieces. La piece 3 ne porte
+   que des cases a remplir par le spectateur avec le taux lu dans ses propres
+   conditions generales.
+7. Art. L511-1 du code des assurances (definition de la distribution
+   d'assurances) — absent de la fiche 12. Note interne uniquement : ni
+   affiche, ni prononce. A porter dans la fiche 12 si une autre video doit
+   s'y appuyer.
+
+
+------------------------------------------------------------
+3. CE QUE JE DIS, DANS L ORDRE
+------------------------------------------------------------
+
+Dix points, environ 2 480 mots parles. A 120 mots par minute — le debit
+maximum sur cette cible — cela fait 20 a 21 minutes de parole pleine, AVANT
+toute pause. S'y ajoutent les 10 silences d'ecriture de la grille, le passage
+lent de la ligne du temps et le renvoi de fin : prevoir 24 minutes au montage.
+Les pauses ou le spectateur arrete lui-meme la video (recherche des papiers,
+point 2) ne comptent pas dans cette duree. Le debit de 120 a 125 mots par
+minute n'est pas negociable sur cette cible.
+
+1. CE QU'ON FAIT, CE QU'ON NE FERA PAS. (~240 mots)
+   Quatre informations a trouver dans son propre contrat. Comptez une
+   demi-heure si vos papiers sont dans la maison. S'ils n'y sont pas, nous
+   vous donnons la lettre a envoyer, et vous reprendrez cette video quand la
+   reponse arrivera : nous verrons cela dans un instant. Dans les deux cas,
+   vous ressortez avec quelque chose d'ecrit.
+   Avant de commencer, prenez le dossier de six feuilles imprime. Si vous
+   n'avez pas d'imprimante, prenez six feuilles blanches et numerotez-les de
+   1 a 6 en haut a droite : nous vous dirons quoi ecrire sur chacune.
+   Vous pouvez arreter cette video a n'importe quel moment et la reprendre
+   plus tard, meme dans trois semaines : rien ne se perd. Les papiers ne
+   bougent pas, les regles non plus, et une grille a moitie remplie reste
+   valable.
+   Nous ne touchons a rien : rien n'est signe, ferme, rachete ni souscrit.
+   Aucun contrat a proposer, aucun assureur a recommander, aucun placement a
+   conseiller — ce n'est pas notre metier et la loi nous l'interdit. Puis la
+   mention pedagogique.
+   > A dire d'entree, avant tout contenu. C'est ce qui autorise le spectateur
+     a sortir ses papiers sans crainte.
+   > La condition (« si vos papiers sont dans la maison ») accompagne la
+     duree des la premiere minute. Jamais la duree seule.
+
+2. LES 3 DOCUMENTS A SORTIR — ET LA LETTRE A SI ON NE LES TROUVE PAS.
+   (~330 mots)
+   Bulletin d'adhesion, ou le dernier avenant signe s'il y en a un : c'est la
+   que la clause se trouve le plus souvent. Elle a pu aussi etre ecrite dans
+   un testament ou dans un courrier a l'assureur ; en cas de doute, c'est la
+   premiere demande de la Lettre A. Conditions generales : une seule rubrique,
+   « frais » ou « tarification » ; a defaut, conditions particulieres, annexe,
+   ou releve annuel. Releve annuel : le plus utile des trois.
+   Avant que vous ne vous leviez : beaucoup ne trouvent rien, ce n'est pas
+   bloquant — la Lettre A, piece 5, ses 4 demandes dans l'ordre, recommande,
+   copie gardee, date d'envoi notee, compter un mois.
+   Maintenant, mettez la video en pause et allez voir ce que vous avez.
+   > La consigne de pause se donne EN DERNIER. Celui qui se leve avant la
+     Lettre A ne l'entendra jamais.
+   > Ne pas separer les deux moities de ce point : celui qui ne trouve rien
+     doit savoir quoi faire dans la minute, pas dans dix minutes.
+   > Aucune promesse de delai, aucune affirmation de gratuite.
+
+3. LES DEUX TAUX : OU LIRE LES SIENS. (~260 mots)
+   Frais sur versement, preleves a l'entree : cette part n'entre jamais dans
+   le contrat. Frais de gestion, preleves chaque annee sur l'encours, que les
+   marches montent ou descendent. Ou ils sont ecrits, et le geste : les
+   recopier sur la grille, lignes 3 et 4. Si vous ne trouvez pas de rubrique
+   frais dans les conditions generales, regardez vos conditions particulieres,
+   puis votre releve annuel, ou figurent les frais preleves dans l'annee. Si
+   vous ne trouvez rien nulle part, laissez les lignes 3 et 4 vides : c'est la
+   4e demande de la Lettre A.
+   > AUCUN taux d'exemple prononce, aucune addition. On dit ce que chaque
+     frais est, et ou lire le sien.
+   > La piece 3 ne porte aucun taux imprime : elle porte des cases que le
+     spectateur remplit avec le sien.
+
+4. LA LIGNE DU TEMPS. (~250 mots)
+   Ce n'est pas l'age du contrat, c'est la date de chaque versement — un meme
+   contrat peut obeir aux deux regimes en meme temps. En haut de la feuille,
+   d'abord et seule : la date exacte du 70e anniversaire, jour, mois, annee.
+   Si cette date est encore devant vous, ecrivez-la quand meme : c'est la date
+   a connaitre. Ensuite une ligne par versement, date a gauche, montant a
+   droite, et pour chaque ligne : avant ou apres cette date. Pas l'annee des
+   70 ans. Le jour.
+   Puis les contrats anciens : les regles ont change plusieurs fois depuis la
+   creation de ces contrats, et pour les plus anciens elles peuvent etre
+   differentes de ce que nous venons de decrire. Nous ne les decrivons pas, et
+   personne ne peut le trancher sans le contrat sous les yeux. Ecrivez la date
+   de souscription de votre contrat en haut de la feuille — ou, si vous ne la
+   connaissez pas, ecrivez-le — et posez la question a votre notaire.
+   > Passage lent : le spectateur ecrit. Laisser la ligne de temps a l'ecran.
+   > Aucune date de bascule prononcee, aucune decennie, aucun ordre de
+     grandeur, et aucune affirmation sur le sens de la difference.
+
+5. CE QUE LA DATE CHANGE. (~260 mots)
+   Avant 70 ans, art. 990 I : 152 500 EUR par beneficiaire, tous contrats
+   confondus, 20 % au-dela, puis 31,25 % a partir de 700 000 EUR taxables par
+   beneficiaire. Apres 70 ans, art. 757 B : 30 500 EUR une seule fois, tous
+   beneficiaires et tous contrats confondus, et ce seuil porte sur ce qui a
+   ete verse, pas sur ce qui sera recu. Au-dela, la fraction entre dans
+   l'assiette des droits ; l'argent, lui, reste hors succession civile — il
+   est taxe, il n'est pas partage, a condition qu'une personne vivante soit
+   nommee dans la clause. Sur 40 000 EUR : avant, 0 EUR de droits ; apres,
+   9 500 EUR dans l'assiette. Ce que ces 9 500 EUR coutent depend du reste de
+   la succession : le calcul complet et ses deux hypotheses sont sur la
+   piece 3.
+   > S'arreter la. Ne pas prononcer les 1 900 EUR : ce chiffre suppose deux
+     hypotheses cumulatives, il s'imprime.
+   > Le mot « taxables » ne se supprime pas des 700 000 EUR.
+   > Dire « 0 EUR de droits », jamais « exonere » seul, et nommer les
+     prelevements sociaux qui restent dus sur les gains — sans taux, sans
+     article.
+
+6. LES 3 NUANCES. (~160 mots)
+   Avant 70 ans, l'abattement porte sur tout ce qui est transmis, gains
+   compris. Apres 70 ans, les gains echappent aux droits et les 30 500 EUR
+   s'ajoutent aux abattements de la succession : c'est moins avantageux, ce
+   n'est pas rien. Conjoint marie ou partenaire de PACS : 0 EUR de droits
+   dans tous les cas, art. 796-0 bis.
+   > Bloc a ne jamais couper. C'est le seul endroit ou un spectateur de plus
+     de 70 ans, et un spectateur marie ou pacse, trouvent leur reponse.
+   > Dire, dans la meme respiration que la phrase 6 et AVANT elle : dans une
+     clause standard, « mon conjoint » designe un epoux. Un partenaire de
+     PACS n'est pas couvert par ce mot, et il n'est pas non plus un heritier ;
+     pour qu'il recoive, il doit etre nomme dans la clause.
+
+7. LA CLAUSE BENEFICIAIRE, ET QUI PEUT LA BLOQUER. (~340 mots)
+   Ou elle se trouve, l'avenant s'il y en a un, la reserve du testament et du
+   courrier a l'assureur, la lire a voix haute, et une seule question : les
+   personnes nommees dans cette clause sont-elles celles que je veux
+   aujourd'hui ? La clause standard : ce qu'elle dit, pourquoi elle n'est pas
+   fausse, ce dont elle ne tient pas compte — les petits-enfants, un divorce,
+   un remariage — et le mot « mon conjoint », qui designe un epoux et non un
+   partenaire de PACS. Les deux autres formes en trois phrases, detail sur la
+   piece 4 ; la demembree ne se recopie pas. La limite des primes
+   manifestement exagerees, appreciee sur les moyens : revenus, patrimoine,
+   age, situation de famille, interet du contrat pour vous. Puis le
+   beneficiaire acceptant : tant que personne n'a accepte, la clause se change
+   quand on veut ; si quelqu'un a accepte, il faut son accord ecrit — et cet
+   accord peut lui etre demande par ecrit. Vous pouvez savoir si quelqu'un a
+   accepte en le demandant a votre assureur : c'est la 3e demande de la
+   Lettre A, comptez un mois. Les deux reserves : contrat souscrit a deux,
+   contrat donne en garantie d'un pret.
+   > L'apaisement suit immediatement l'alerte, dans la meme respiration.
+     Jamais un bloc de peur laisse ouvert.
+   > Ne rien promettre sur la reponse de l'assureur : ni delai, ni obligation
+     de repondre. Si rien n'arrive, la marche a suivre est au dos de la
+     piece 5.
+   > Aucun numero d'article prononce sur l'acceptation ni sur la clause
+     demembree.
+
+8. UN SECOND CONTRAT PLUTOT QU'ALIMENTER LE PREMIER. (~140 mots)
+   Nous ne repondons pas a la place du spectateur : ouvrir un contrat se
+   decide avec un professionnel habilite. Ce que la loi regarde : la date de
+   chaque versement. Ce qu'elle ne regarde pas : le nombre de contrats. Les
+   152 500 EUR se comptent par beneficiaire tous contrats confondus, les
+   30 500 EUR une seule fois pour tout le monde. Un second contrat n'ajoute
+   aucun abattement. Le reste se discute avec le notaire, contrat sous les
+   yeux.
+   > Ne conclure sur aucun avantage, dans aucun sens.
+
+9. LA GRILLE SUR 10. (~260 mots)
+   Une page par contrat, 10 lignes numerotees de 1 a 10, 1 point chacune. Les
+   10 lignes, lues lentement, une a la fois, avec la pause. Si vous n'avez pas
+   encore 70 ans : la ligne 9 se coche sans objet, elle est deja acquise, et
+   la ligne 8 est le total de tout ce que vous avez verse — vous n'avez rien a
+   demander a votre assureur pour ces deux lignes-la. Puis : aucun score n'est
+   mauvais, il est normal que des cases restent vides la premiere fois, le
+   score dit par ou commencer, et chaque case vide est une ligne de la
+   Lettre A.
+   > Ne jamais accelerer ce passage. C'est le seul moment ou le spectateur
+     ecrit sous la dictee.
+   > A dire avec ses mots, sans jamais l'edulcorer : aucun score n'est
+     mauvais, le score dit par ou commencer, chaque case vide est une ligne de
+     la Lettre A — sauf la ligne 9 si le spectateur n'a pas encore 70 ans.
+
+10. LA LETTRE B, ET LES DEUX CHEMINS. (~240 mots)
+    La Lettre B, piece 6 : cinq elements, numerotes dans la marge de la
+    feuille. Recommande avec accuse de reception, confirmation ecrite
+    demandee ; tant qu'elle n'est pas au dossier, ce n'est pas fait ; sans
+    reponse dans le mois, meme lettre avec « rappel » a la main. Envoyer cette
+    lettre est la seule action de ce dossier qui produise un effet : elle
+    change la clause. Elle ne touche pas a l'argent, ne ferme pas le contrat
+    et ne modifie pas sa date d'ouverture, mais elle change qui recoit. C'est
+    pour cela que le texte de la nouvelle clause se fait relire par votre
+    notaire avant l'envoi. Puis les deux chemins : soit les papiers sont dans
+    la maison et la grille se remplit maintenant, soit la Lettre A est a
+    recopier et a poster, et la video se reprend quand la reponse arrive. Dans
+    les deux cas, on peut s'arreter la et reprendre plus tard : tant que la
+    Lettre B n'est pas partie, rien n'est engage.
+    > Ne pas dicter les 5 elements un par un : ils sont numerotes sur la
+      feuille.
+    > Rappeler, avant l'envoi de la Lettre B, que le texte de la nouvelle
+      clause passe par le notaire.
+    > Le renvoi de fin vient APRES cette conclusion, jamais avant.
+
+
+------------------------------------------------------------
+4. LES PHRASES A DIRE MOT POUR MOT
+------------------------------------------------------------
+
+1. « Nous n'avons aucun contrat a vous proposer, aucun assureur a vous
+   recommander, aucun placement a vous conseiller : ce n'est pas notre metier,
+   et la loi nous l'interdit. »
+
+2. « Ce contenu est pedagogique. Il ne constitue pas un conseil personnalise,
+   et chaque modele que nous vous remettons porte la mention "a faire relire
+   par votre notaire". »
+
+3. « 152 500 euros par beneficiaire, tous contrats du meme assure confondus,
+   des lors que les versements ont eu lieu avant vos 70 ans. Ces 152 500 euros
+   portent sur ce qui sera transmis — ce que vous avez verse et ce que le
+   contrat a produit. Article 990 I du code general des impots. Au-dela, cette
+   personne paie 20 % jusqu'a 700 000 euros taxables, puis 31,25 %. »
+
+4. « 30 500 euros, une seule fois, tous vos contrats et tous vos
+   beneficiaires confondus, sur ce que vous avez verse apres 70 ans — pas sur
+   ce que vos beneficiaires recevront. Article 757 B du code general des
+   impots. »
+
+5. « 0 euro de droits. Les prelevements sociaux, eux, restent dus sur les
+   gains du contrat au moment du deces. Ce sont deux choses differentes. »
+
+6. « Si votre beneficiaire est votre conjoint marie ou votre partenaire de
+   PACS, il est exonere de droits dans tous les cas. Article 796-0 bis du
+   code general des impots. »
+
+7. « Nous ne vous disons pas de verser : nous vous disons ce que la loi fait
+   de la date. Ce que vous en ferez se decide avec votre notaire. »
+
+Note de conformite : la phrase 7 est celle qui tient la conformite de toute
+la video. Elle ne se reformule pas, elle ne se coupe pas.
+
+
+------------------------------------------------------------
+5. LES PIEGES — CE QU IL NE FAUT SURTOUT PAS DIRE
+------------------------------------------------------------
+
+- NE PAS DIRE : « l'abattement global de 30 500 euros prevu par la loi ».
+  DIRE : « l'article 757 B laisse passer 30 500 euros, une seule fois, sur
+  les primes versees apres 70 ans ». Le texte de loi ne contient ni
+  « abattement » ni « global » : c'est du vocabulaire de doctrine
+  administrative, il ne se prete pas a la loi.
+
+- NE PAS DIRE : « les 30 500 euros par beneficiaire ».
+  DIRE : « 30 500 euros une seule fois, tous beneficiaires et tous contrats
+  confondus ». C'est le contresens le plus grave de la video : il multiplie
+  l'abattement par le nombre de beneficiaires.
+
+- NE PAS DIRE : « les 30 500 euros portent sur ce que vos enfants
+  recevront ».
+  DIRE : « ils portent sur ce que vous avez verse ». Le seuil est sur les
+  primes, pas sur le capital transmis.
+
+- NE PAS DIRE : « au-dela des 152 500 euros, c'est 20 % » sans la suite.
+  DIRE : « 20 % jusqu'a 700 000 euros taxables par beneficiaire, puis
+  31,25 % ». Le seuil de 700 000 euros s'apprecie apres l'abattement, sur la
+  part taxable : le mot « taxables » ne se supprime ni a l'oral, ni sur les
+  cartons, ni sur les pieces.
+
+- NE PAS DIRE : « les 152 500 euros portent sur ce que vous avez verse ».
+  DIRE : « ils portent sur ce qui sera transmis — ce que vous avez verse et
+  ce que le contrat a produit ». La date des versements declenche le regime ;
+  l'abattement, lui, porte sur le capital transmis.
+
+- NE PAS DIRE : « apres 70 ans, l'assurance-vie ne sert plus a rien ».
+  DIRE : « c'est moins avantageux, ce n'est pas rien — les gains echappent
+  aux droits de succession, et les 30 500 euros s'ajoutent aux abattements de
+  la succession ».
+
+- NE PAS DIRE : « votre beneficiaire est exonere » quand il s'agit des
+  versements.
+  DIRE : « 0 euro de droits », en nommant les prelevements sociaux qui
+  restent dus sur les gains. Le mot « exonere » n'est employe seul que pour
+  le conjoint et le partenaire de PACS, art. 796-0 bis.
+
+- NE PAS LAISSER CROIRE qu'une clause standard couvre un partenaire de PACS.
+  DIRE : « dans une clause standard, "mon conjoint" designe un epoux ; un
+  partenaire de PACS n'est pas couvert par ce mot et n'est pas non plus un
+  heritier — pour qu'il recoive, il doit etre nomme dans la clause ». Cette
+  precision se dit AVANT la phrase 6, jamais apres.
+
+- NE PAS DIRE : « 9 500 euros a 20 %, donc 1 900 euros ».
+  DIRE : « 9 500 euros entrent dans l'assiette des droits ; ce qu'ils coutent
+  depend du reste de votre succession, le calcul complet est sur la piece 3 ».
+  Le chiffre de 1 900 euros n'est vrai que sous deux hypotheses cumulatives ;
+  prononce seul, il est faux.
+
+- NE PAS DIRE : « selon les contrats, les frais de gestion vont de 0,6 % a
+  3 % », ni aucun taux de frais.
+  DIRE : « votre taux a vous est ecrit dans vos conditions generales, a la
+  rubrique frais — allez le chercher et notez-le ». Aucun taux de frais n'est
+  source a ce jour ; prononce, il serait entendu comme une moyenne de marche.
+  Meme regle sur le papier : aucun taux imprime sur la piece 3, seulement des
+  cases a remplir.
+
+- NE PAS DIRE : « ouvrir un second contrat vous donne un second abattement ».
+  DIRE : « un second contrat n'ajoute aucun abattement — la loi regarde la
+  date de chaque versement, pas le nombre de contrats ». Et ne conclure sur
+  aucun avantage dans l'autre sens non plus.
+
+- NE PAS DIRE : « l'assurance-vie echappe a la succession » sans nuance.
+  DIRE : « l'argent reste hors succession civile — il ne se partage pas —
+  mais la fraction au-dela de 30 500 euros entre dans l'assiette des droits ».
+  Affirme sans nuance, cela laisse croire que l'assurance-vie contourne la
+  reserve des enfants, et cela contredit ce que la video dit trois minutes
+  plus tot. Ajouter la reserve : cela suppose qu'une personne vivante soit
+  nommee dans la clause ; si la clause ne designe plus personne, ou si la
+  personne nommee est decedee et que rien n'a ete prevu apres elle, le capital
+  rejoint la succession et se partage comme le reste.
+
+- NE PAS DIRE : « la clause beneficiaire est sur le bulletin, et nulle part
+  ailleurs ».
+  DIRE : « c'est la qu'elle se trouve le plus souvent — sur le bulletin ou sur
+  le dernier avenant signe ; elle a pu aussi etre ecrite dans un testament ou
+  dans un courrier a l'assureur ». Sinon un spectateur audite une clause qui
+  n'est plus la sienne, et peut revoquer sans le savoir une designation
+  posterieure.
+
+- NE PAS DIRE : « l'assureur est tenu de vous repondre sous 15 jours », ni
+  « cette demande est gratuite », ni « c'est verifiable aupres de votre
+  assureur » comme d'une certitude.
+  DIRE : « comptez un mois, pas 15 jours ; si rien n'arrive, la marche a
+  suivre est au dos de la Lettre A ».
+
+- NE PAS DIRE : « si quelqu'un a accepte, c'est fini ».
+  DIRE : « il faut son accord ecrit — cet accord peut lui etre demande par
+  ecrit ».
+
+- NE PAS DIRE : « la clause demembree est la meilleure ».
+  DIRE : « c'est la plus technique, elle ne se recopie pas, elle se redige
+  avec un professionnel qui a votre contrat sous les yeux ».
+
+- NE PAS REDUIRE le critere des primes manifestement exagerees au seul
+  patrimoine.
+  DIRE : « proportionnees a vos moyens — vos revenus et votre patrimoine,
+  votre age, votre situation de famille, et l'interet que le contrat a pour
+  vous ». Reduit au patrimoine, le critere se comprend comme un seuil de
+  pourcentage.
+
+- NE PAS EMPLOYER de superlatif absolu sur l'assurance-vie (« le placement le
+  plus puissant », « sans risque », « rien ne peut mal tourner »), ni aucune
+  statistique de marche ou de population (« 9 contrats sur 10 », « la plupart
+  des gens », « c'est la question qui revient toujours », « on entend souvent
+  l'inverse »). Le produit n'a aucun historique client : une phrase de ce type
+  serait une allegation au sens de l'art. L121-2 du code de la consommation.
+
+- NE PAS ANNONCER une duree de resultat (« votre assurance-vie verifiee en
+  30 minutes ») sans sa condition. La duree se donne toujours accompagnee de
+  « si vos papiers sont dans la maison », et du chemin de la Lettre A pour
+  l'autre cas.
+
+- NE PAS NOMMER un assureur, un contrat, un etablissement, un support ou un
+  placement — ni a l'oral, ni a l'ecran, ni sur un document filme.
+
+- NE PAS FILMER de document reel, meme anonymise : tous les documents a
+  l'image sont recomposes et imprimes par nous.
+
+- NE PAS AFFICHER l'art. L132-12 du code des assurances sans l'art. L132-13 a
+  cote. Verification faite : L132-13 n'est pas dans 12-chiffres-succession.md.
+  Tant qu'il n'y est pas, on n'incruste ni l'un ni l'autre.
+
+- NE PAS AFFICHER ni prononcer : un taux de prelevements sociaux, l'art.
+  L136-7, une date de bascule des regimes 990 I / 757 B — ni date, ni
+  decennie, ni ordre de grandeur —, l'art. 587 du code civil, l'art. 773, 2°
+  du CGI, ou l'article du code des assurances sur l'acceptation du
+  beneficiaire. Aucun n'est encore dans la fiche 12.
+
+- NE PAS ECRIRE « art. 773-2 du CGI ». La reference exacte est « art. 773, 2°
+  du CGI ». La forme « 773-2 » n'existe pas et se propagerait aux autres
+  fiches comme une citation valide.
+
+- NE PAS CITER de montant d'emoluments de notaire. Aucun temoignage, aucun
+  avis client, aucune personne reelle, aucun prenom — ni Julien, ni
+  Jean-Pierre.
+
+- NE PAS DIRE « je ». Le narrateur dit « nous » et vouvoie. Les « je » des 10
+  lignes de la grille sont la voix du spectateur et restent tels quels.
+
+- FIGURE A SURVEILLER AU MONTAGE : « ce n'est pas X, c'est Y ». Elle ne se
+  garde que la ou elle porte une distinction juridique reelle — taxe /
+  partage, 0 EUR de droits / prelevements sociaux. Partout ailleurs elle
+  sonne comme une cadence de copy, et elle se supprime.
+
+
+------------------------------------------------------------
+6. CE QUE LE SPECTATEUR FAIT
+------------------------------------------------------------
+
+PENDANT LA VIDEO
+
+- Il prend le dossier de six feuilles imprime. S'il n'a pas d'imprimante, il
+  prend six feuilles blanches et les numerote de 1 a 6 en haut a droite.
+- Il met la video en pause et va chercher ses 3 documents.
+- Il ouvre ses conditions generales a la rubrique « frais » et recopie ses
+  deux taux sur les lignes 3 et 4 de la grille d'audit (piece 1). S'il ne
+  trouve pas la rubrique, il regarde ses conditions particulieres puis son
+  releve annuel ; s'il ne trouve rien, il laisse les deux lignes vides.
+- Il ecrit, en haut de la fiche des versements (piece 2), la date exacte de
+  son 70e anniversaire — jour, mois, annee — meme si cette date est encore
+  devant lui.
+- Il remplit une ligne par versement : date, montant, contrat concerne, et la
+  croix dans la colonne « avant 70 ans » ou « apres 70 ans ». Il fait les
+  deux totaux en bas de page.
+- Il ecrit la date de souscription de son contrat sur la piece 2, ou coche
+  « je ne connais pas cette date » → question a poser au notaire dans tous les
+  cas.
+- Il lit sa clause beneficiaire a voix haute, sur le bulletin d'adhesion ou
+  sur le dernier avenant signe — ou, s'il sait l'avoir ecrite ailleurs, il en
+  demande la copie par la Lettre A.
+- Il remplit la grille d'audit sous la dictee, une page par contrat, et il
+  compte son score. S'il n'a pas encore 70 ans, la ligne 9 se coche sans
+  objet.
+
+APRES LA VIDEO
+
+- Chemin 1, les papiers sont dans la maison : la grille est remplie, la fiche
+  des versements aussi, et il classe les deux avec le contrat.
+- Chemin 2, il ne trouve pas ses papiers : il recopie la Lettre A (piece 5),
+  la poste en recommande, en garde une copie, et note la date d'envoi en haut
+  de sa fiche. Il reprend la video quand la reponse arrive.
+- S'il a decide de changer sa clause : il fait relire le texte de la nouvelle
+  clause par son notaire, puis il ecrit la Lettre B (piece 6), cinq elements
+  numerotes dans la marge, recommande avec accuse de reception, et il note
+  « confirmation ecrite recue le ___ ».
+- Il verifie, s'il a un doute, l'existence d'une acceptation de beneficiaire :
+  c'est la 3e demande de la Lettre A.
+
+DOCUMENTS UTILISES : pieces 1 a 6 du dossier de cette video, imprimees — ou
+six feuilles blanches numerotees de 1 a 6 s'il n'a pas d'imprimante. Plus,
+chez lui : bulletin d'adhesion ou conditions particulieres, conditions
+generales, releves de situation annuels, un stylo, une enveloppe et un timbre.
+Pas de chequier.
+
+IL PEUT S'ARRETER A TOUT MOMENT. Rien n'est engage, rien n'est signe, rien
+n'est depense tant que la Lettre B n'est pas partie. Une grille a moitie
+remplie reste valable dans trois semaines : les papiers ne bougent pas, les
+articles non plus. Une case a laquelle il ne sait pas repondre se laisse vide
+— c'est une ligne de sa Lettre A, pas une erreur.
+
+
+------------------------------------------------------------
+7. LE RENVOI DE FIN
+------------------------------------------------------------
+
+VERS : Le Dossier notaire.
+
+A dire, apres la conclusion, en deux phrases factuelles : ce qui vient d'etre
+rempli — la grille, la fiche des versements avec les deux totaux, le texte
+exact de la clause — correspond a la ligne assurance-vie de l'inventaire
+etabli lors d'une succession. Le Dossier notaire est le classeur qui recoit
+ces pieces avec le reste du patrimoine, et il indique ou chaque document se
+range.
+Si le spectateur l'a deja : la consigne est de glisser la grille et la fiche
+des versements a la ligne assurance-vie de son inventaire, et d'ecrire « en
+attente » a la place de ce qu'il n'a pas encore.
+
+POURQUOI CELUI-LA, ET PAS UNE VIDEO SUIVANTE. Ce produit est autonome : il
+n'a pas de video suivante. Ses deux seules frontieres sinceres — la clause
+demembree et la decision de verser — se renvoient au notaire du spectateur,
+pas a une page de vente. Le Dossier notaire est donc le seul renvoi qui soit
+l'etape logique d'apres plutot qu'une offre : les papiers remplis pendant
+cette video n'ont pas encore d'endroit ou etre ranges, et c'est precisement ce
+qu'il apporte.
+
+Aucun prix prononce. Aucune urgence. Aucun autre renvoi dans toute la video.
+Le carton 17 bis, muet, accompagne ce renvoi.
+
+
+------------------------------------------------------------
+8. LE LIVRABLE
+------------------------------------------------------------
+
+Un dossier PDF imprimable, A4, recto simple, 6 pieces. Le numero de la piece
+est imprime EN GROS en haut a droite de chaque page : le narrateur y renvoie
+a voix haute.
+
+1. LA GRILLE D'AUDIT — 1 page par contrat, 4 exemplaires vierges. 10 lignes
+   numerotees dans le meme ordre que la video, 1 point par ligne, score sur
+   10 en bas de page. La ligne 5 rappelle ce qu'est un support — « la liste
+   des placements sur lesquels l'argent du contrat est reparti ; elle est sur
+   le releve annuel, en general au dos » —, la ligne 10 ce qu'est une personne
+   de confiance. Sous les lignes 8 et 9 : « si vous n'avez pas encore 70 ans,
+   la ligne 9 se coche sans objet, elle est deja acquise ; la ligne 8 est le
+   total de tout ce que vous avez verse. Vous n'avez rien a demander a votre
+   assureur pour ces deux lignes-la. » Sous le score : « aucun score n'est
+   mauvais — chaque case vide est une ligne de votre Lettre A, sauf la ligne 9
+   si vous n'avez pas encore 70 ans ».
+
+2. LA FICHE DES VERSEMENTS — une ligne par versement : date, montant, contrat
+   concerne, colonne a cocher « avant 70 ans » / « apres 70 ans ». En-tete, en
+   premier et en gros : la date exacte du 70e anniversaire, ecrite a la main,
+   suivie de « si cette date est devant vous, ecrivez-la quand meme : c'est la
+   date a connaitre ». Puis deux lignes : « date de souscription de mon
+   contrat : ___ / ___ / ______ » et « je ne connais pas cette date →
+   question a poser au notaire dans tous les cas ». Totaux en bas : total
+   verse avant, total verse apres.
+
+3. LE TABLEAU DE DECISION AVANT / APRES 70 ANS — 1 page. A gauche l'art.
+   990 I : « 152 500 EUR par beneficiaire, puis 20 % jusqu'a 700 000 EUR
+   taxables et 31,25 % au-dela ». A droite l'art. 757 B (30 500 EUR une seule
+   fois, sur les primes). L'exemple des 40 000 EUR entierement deroule, avec
+   ses DEUX hypotheses ecrites noir sur blanc et la mention « les prelevements
+   sociaux sur les gains restent dus ». Le detail « capital et non primes »
+   (140 000 EUR verses + 20 000 EUR de gains = 160 000 EUR transmis ;
+   7 500 EUR au-dessus de l'abattement — hypotheses : un seul beneficiaire, et
+   la totalite des sommes versee avant 70 ans). Les 3 nuances en pied de page,
+   avec l'art. 796-0 bis sur la troisieme.
+   FRAIS — aucun taux imprime, aucun exemple chiffre. A la place, un
+   formulaire a remplir par le spectateur :
+     « Mon taux de frais sur versement, lu dans mes conditions generales :
+       ____ %. Sur 10 000 EUR verses, cela represente ____ EUR qui n'entrent
+       pas dans le contrat. »
+     « Mon taux de frais de gestion annuels : ____ %. »
+   Sous le formulaire : « lisez le taux de VOTRE contrat » et « a somme
+   constante, aucune hypothese de rendement ».
+
+4. LES 3 MODELES DE CLAUSE BENEFICIAIRE — standard, a options, demembree.
+   Chacune redigee en toutes lettres puis commentee ligne par ligne dans la
+   marge. Le modele demembre porte en tete, en encadre : « cette clause ne se
+   recopie pas — le conjoint peut depenser les fonds, les enfants n'ont
+   qu'une creance, et cette creance n'est deductible que si elle a ete
+   constatee dans un acte ». Le modele standard porte en marge : « "mon
+   conjoint" designe un epoux ; un partenaire de PACS doit etre nomme ».
+   Chaque modele porte « a faire relire par votre notaire », et la mention est
+   reprise en pied de piece.
+
+5. LA LETTRE A — demande de communication a l'assureur, DANS L'ORDRE ANNONCE
+   A L'ORAL : copie de la clause en vigueur / historique date de tous les
+   versements / existence eventuelle d'une acceptation de beneficiaire /
+   frais en cours. Texte a trous, envoi en recommande indique, ligne
+   « poste le ___ ». Au dos : la marche a suivre si rien n'arrive dans le
+   mois, et les 2 questions a poser en cas de contrat souscrit a 2 ou donne
+   en garantie d'un pret. Mention en pied de piece : « a faire relire par
+   votre notaire ».
+
+6. LA LETTRE B — demande de modification de la clause beneficiaire. Texte a
+   trous, les 5 elements obligatoires numerotes dans la marge dans le meme
+   ordre que la video, plus la ligne imprimee « la presente designation annule
+   et remplace toute designation anterieure, quelle qu'en soit la forme ».
+   Au-dessus du champ de la clause, un encadre : « le texte que vous recopiez
+   ici doit avoir ete relu par votre notaire avant l'envoi. Une clause mal
+   redigee ne se corrige pas apres le deces. » Ligne de suivi « confirmation
+   ecrite de l'assureur recue le ___ », et consigne de relance (meme lettre,
+   mention « rappel » a la main) si rien n'arrive dans le mois. A classer avec
+   le contrat. Mention en pied de piece : « a faire relire par votre
+   notaire ».
+
+Mention en pied de chaque page : contenu pedagogique, ne constitue pas un
+conseil personnalise. Chiffres verifies au 5 septembre 2026.
+
+A CORRIGER DANS 12-chiffres-succession.md, sans quoi l'erreur se propagera
+aux autres videos : §6, ligne 109, la fiche prete au texte de loi les mots
+« abattement global de 30 500 EUR ». L'art. 757 B ne les contient pas. Cette
+fiche de tournage ne les emploie nulle part.

@@ -8,7 +8,7 @@ import { CTA } from "@/lib/config";
 import { UrgencyBar, UrgencyCountdown } from "@/components/Urgency";
 
 export const metadata: Metadata = {
-  title: "Et si vos enfants héritaient de 68 205 € de plus ?",
+  title: "Et si vos enfants héritaient de 68 206 € de plus ?",
   description:
     "Vous avez plus de 60 ans, une maison payée et des enfants ? Découvrez les 3 dates butoirs que personne n'est payé pour vous dire, et qu'il faut connaître pour faire baisser la facture de l'État sur votre succession.",
 };
@@ -82,7 +82,7 @@ export default function LandingPage() {
             {/* ══ HEADLINE — le bénéfice, en question ══════════════════ */}
             <h1 className="text-[1.6rem] leading-[1.12] sm:text-[2.5rem]">
               Et si vos enfants héritaient de{" "}
-              <span className="whitespace-nowrap text-orange">68 205 €</span> de plus&nbsp;?
+              <span className="whitespace-nowrap text-orange">68 206 €</span> de plus&nbsp;?
             </h1>
 
             {/* ══ SUB-HEADLINE — l'objection levée ═════════════════════ */}

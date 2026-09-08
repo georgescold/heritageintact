@@ -1,0 +1,850 @@
+============================================================
+VIDEO 6 — CE QUE VOUS AVEZ DEJA DONNE
+Duree cible : 12 minutes | faceless, voix + ecran
+============================================================
+
+Fusion des anciennes etapes 5 (le don de la main a la main) et 6 (les
+petits-enfants). C'est le meme sujet : ce qui sort du patrimoine du vivant du
+donateur. Deux mecanismes, deux actions, une seule video.
+
+
+------------------------------------------------------------
+1. CE QUE JE DOIS SAVOIR AVANT DE TOURNER
+------------------------------------------------------------
+
+PREMIER TEMPS — CE QUI A DEJA ETE DONNE
+
+Un virement pour un apport, un cheque a un mariage, une remise d'especes : la
+loi appelle cela un don manuel. Il n'est ecrit nulle part et il ne passe devant
+personne. Faute d'ecrit, il n'a pas de date opposable a l'administration, et sa
+valeur doit etre reconstituee au moment du partage.
+
+Le point central de tout ce premier temps : il y a DEUX comptes, et ils ne
+suivent pas les memes regles.
+
+  · Le compte de l'impot. Un don DECLARE sort du calcul fiscal au bout de
+    15 ans (rappel fiscal, art. 784 CGI). C'est la ligne « Date n° 1 — le
+    compteur des 15 ans » du Calendrier des 3 dates.
+  · Le compte du partage entre les enfants. Lui n'a aucun delai. Un don de
+    20 ans, de 30 ans, revient dans les comptes le jour de la succession, quel
+    que soit son age.
+
+LE RAPPORT (art. 843 c. civ.). Au moment du partage, on remet dans les comptes
+ce que chaque enfant a deja recu, pour verifier que le partage est egal. On
+appelle cela le rapport.
+
+LA REGLE QUI CREE L'ECART (art. 860-1, qui renvoie a l'art. 860 c. civ.). Le
+rapport d'une somme d'argent est egal a son montant — SAUF si cette somme a
+servi a acquerir un bien. Dans ce cas, on remet la valeur du bien au jour du
+partage, d'apres son etat au jour de l'acquisition. Ce n'est donc pas la somme
+versee qui revient, c'est ce que le bien vaut le jour du partage.
+
+Consequence, sur l'exemple chiffre canonique (cas civil illustratif, valeurs
+rondes, distinct des cas Julien et Jean-Pierre — ceux-la n'ont qu'un enfant et
+ne peuvent pas porter une demonstration de fratrie) :
+
+    Une mere veuve, 2 enfants, qui donne seule et de ses propres deniers. Il y
+    a 20 ans, 60 000 EUR a chacun, le meme jour. L'enfant 1 achete un
+    appartement, qui vaut aujourd'hui 180 000 EUR. L'enfant 2 a depense la
+    somme.
+
+    Biens laisses au deces                    200 000 EUR
+    + rapport enfant 1                        180 000 EUR
+    + rapport enfant 2                         60 000 EUR
+    MASSE A PARTAGER                          440 000 EUR
+    Part de chacun (/2)                       220 000 EUR
+    Enfant 1 : 220 000 - 180 000 =             40 000 EUR
+    Enfant 2 : 220 000 -  60 000 =            160 000 EUR
+    ECART                                     120 000 EUR
+
+    Controle : 40 000 + 160 000 = 200 000 EUR, soit exactement les biens
+    existants. Le partage est boucle.
+
+DEUX PRECISIONS DE RIGUEUR, ET ELLES SE DISENT TOUTES LES DEUX A L'ORAL.
+
+1. Un seul donateur et un seul deces : « une mere, veuve », qui donne seule et
+   de ses propres deniers. Avec 2 parents donateurs, il y a 2 successions a
+   2 dates et le don se rapporte pour moitie dans chacune : l'addition ci-dessus
+   ne correspondrait a rien. Si le don venait de la communaute alors que la mere
+   etait mariee, il est repute provenir pour moitie de chaque epoux, et c'est le
+   meme probleme. L'hypothese est donc a l'ecran (carton 3) et dite une fois.
+2. L'ecart de 120 000 EUR porte sur ce que les 2 enfants TOUCHENT ce jour-la.
+   Au total, en comptant ce qui a deja ete recu il y a 20 ans, chacun des deux
+   aura recu la meme valeur : 220 000 EUR.
+   ⚠️ Ne jamais dire « chacun repart avec 220 000 EUR ». L'enfant 2 a depense sa
+   part il y a 20 ans : il repart avec 160 000 EUR. L'egalite est une egalite de
+   valeur cumulee sur 20 ans, pas une egalite de ce qui est touche ce jour-la.
+   C'est la formulation qui rend le chiffre inattaquable, elle est en phrase
+   mot pour mot n° 2.
+
+A savoir sans le dire, sauf si la question est posee : les travaux payes par
+l'enfant lui-meme ne sont pas comptes dans le rapport, puisqu'on retient le bien
+d'apres son etat au jour de l'acquisition (860-1 renvoyant a 860). C'est sur la
+feuille, pas dans la video.
+
+HORS PART SUCCESSORALE (art. 843, 919-2, 922 c. civ.). Quand il est ecrit dans
+l'acte que le don vient en plus de la part de l'enfant, le don echappe au
+partage egal, mais pas aux comptes : il est reuni fictivement a la masse pour
+verifier que la part reservee de chaque enfant est respectee, et il se reduit
+s'il la depasse. Cela se decide dans un acte, chez le notaire — jamais sur un
+coin de table. Ces six lignes de droit n'appellent aucune action : elles vont
+sur le papier, pas dans la bouche.
+
+DECLARER UN DON DEJA FAIT. Declarer ne rend pas imposable, c'est l'inverse.
+Sous l'abattement de 100 000 EUR par parent et par enfant (art. 779 CGI), la
+declaration coute 0 EUR. Ce qui est declare s'impute sur ces 100 000 EUR, qui ne
+se reconstituent qu'au bout de 15 ans (art. 784) — a l'exception du don familial
+de somme d'argent de l'art. 790 G, qui n'est pas un abattement mais une
+exoneration : il a son propre plafond, il se cumule avec l'abattement de
+l'art. 779 (790 G, II) et il n'entre pas dans le rappel fiscal (790 G, III). Il
+ne s'impute donc pas sur les 100 000 EUR. Si les dons depassent ce plafond, on ne
+remplit rien sans en parler au notaire.
+
+QUI DECLARE, ET OU. C'est celui qui recoit, pas celui qui donne. Depuis le
+1er janvier 2026, la declaration se fait en principe EN LIGNE, depuis l'espace
+particulier du donataire sur impots.gouv.fr, rubrique « Declarer », puis la
+rubrique de declaration d'un don. Le formulaire papier n° 2735 (Cerfa 11278)
+n'est admis que dans les cas de dispense listes par l'administration, notamment
+l'absence d'acces a internet et le donataire mineur.
+⚠️ Ne plus presenter le papier comme une « voie de secours » ouverte a tous :
+un envoi papier hors cas de dispense peut etre refuse, et sur un don releve du
+790 G cela ferait manquer le delai d'un mois et perdre l'exoneration.
+⚠️ Le libelle exact de la rubrique est a relever le jour du tournage (l'etape 1
+affiche « Vous avez recu un don »). Voir A VERIFIER AVANT D'ENREGISTRER.
+
+CE QUE FAIT LA DECLARATION : elle pose une date certaine (un montant, un jour,
+un nom) ; elle fait partir le compteur des 15 ans de l'art. 784. Sans elle, la
+date de ce don n'est etablie nulle part. Un don non declare n'a jamais demarre
+son compteur : pour l'impot, il compte encore, et il sera compte au deces sur
+l'abattement restant. Aucun taux, aucune penalite, aucun « interet de retard »
+ne doit etre prononce : l'obligation declarative d'un don manuel revele ne nait
+qu'a la revelation (635 A), la sanction reelle est celle qui vient d'etre
+decrite.
+
+LE SEUL POINT QUI PRESSE. Le don familial de somme d'argent de l'art. 790 G
+(31 865 EUR, donateur de moins de 80 ans, donataire majeur ou emancipe,
+renouvelable tous les 15 ans) doit etre declare dans le MOIS qui suit le don
+(art. 790 G, IV). Passe un mois, c'est cette exoneration-la qui est perdue. Le
+don, lui, reste valable et reste possible : il s'impute alors sur l'abattement de
+100 000 EUR de l'art. 779, ou sur les 31 865 EUR de l'art. 790 B pour un
+petit-enfant — et sous cet abattement, la declaration coute toujours 0 EUR. D'ou
+une question fermee a poser dans la video, et une seule.
+⚠️ NE PAS AFFICHER L'ART. 635 A SUR CE POINT. Le 635 A regit les dons manuels
+REVELES, et son delai d'un mois court a compter de la revelation du don a
+l'administration, pas de la date du don. Le delai du don familial de somme
+d'argent est au IV de l'art. 790 G, et nulle part ailleurs. (La fiche de
+l'etape 1 cite « 790 G III » sur ce meme delai : c'est le IV, a corriger la-bas
+aussi.)
+
+LA DONATION-PARTAGE (art. 1075 s., 1077, 1078 c. civ.). Partage fait de son
+vivant, chez le notaire, ou chaque enfant recoit un lot et signe. Sous les
+conditions de l'art. 1078 — tous les enfants allotis, tous acceptants, pas de
+reserve d'usufruit sur une somme d'argent — les valeurs sont arretees au jour de
+l'acte : ce qui est donne ce jour-la est compte a sa valeur de ce jour-la,
+quelle que soit son evolution ensuite (art. 1078). Et l'art. 1078-1 permet de
+reincorporer un don ancien, meme de 20 ans : il est inscrit dans l'acte, l'enfant
+signe, et sa valeur est arretee au jour de l'acte, compte tenu de l'emploi qui a
+ete fait de l'argent dans l'intervalle. Un don de 60 000 EUR devenu un
+appartement de 180 000 EUR se reincorpore pour 180 000 EUR, pas pour 60 000 EUR :
+l'acte arrete l'ecart a venir, il n'efface pas l'ecart deja constitue.
+⚠️ Deux erreurs a ne pas commettre ici. Ne jamais dire « fige les valeurs au jour
+de la donation » : un spectateur de 75 ans l'entend comme « au jour du don
+d'origine », et c'est le contresens exact. On dit « au jour de l'acte », c'est-a-
+dire au jour ou on le signe. Et attention au vocabulaire : dans une
+donation-partage il n'y a pas de rapport, donc pas de masse de 440 000 EUR ni de
+part de 220 000 EUR — ne jamais reutiliser la frise du calcul precedent ici.
+
+SECOND TEMPS — LES PETITS-ENFANTS
+
+TROIS DONS POSSIBLES, dans cet ordre.
+
+1. Art. 790 B CGI — 31 865 EUR par grand-parent et par petit-enfant. Aucune
+   condition d'age, ni pour le donateur ni pour le donataire : un petit-enfant
+   mineur est accepte. L'abattement se reconstitue au bout de 15 ans, non pas au
+   titre du 790 B (qui ne fixe que le montant) mais du rappel fiscal de
+   l'art. 784. Compteur separe de celui des 100 000 EUR de l'art. 779 : ce que
+   recoit un petit-enfant n'entame pas l'abattement de son parent.
+   Verification a faire AU MOMENT DE REMPLIR LES DEUX FEUILLES, pas pendant la
+   video : la liste des dons se remplit d'abord, la ligne par petit-enfant
+   ensuite, la premiere nourrit la seconde. Si quelque chose a deja ete donne a
+   ce petit-enfant il y a moins de 15 ans, c'est deja pris sur les 31 865 EUR —
+   SAUF s'il s'agissait d'un don de somme d'argent declare au titre de
+   l'art. 790 G, ou d'un don relevant de l'art. 790 A bis : l'art. 790 G, III les
+   exclut du rappel fiscal de l'art. 784, ils n'entament ni les 31 865 EUR du
+   790 B, ni les 100 000 EUR du 779.
+   ⚠️ Sans cette exception, la consigne fait renoncer a un abattement dont le
+   spectateur dispose encore. En cas de doute sur le regime sous lequel un don a
+   ete declare : « je ne sais pas », et c'est une question pour le notaire.
+
+2. Art. 790 G CGI — le meme don familial de somme d'argent que pour les
+   enfants, 31 865 EUR de PLUS, cumulables avec le 790 B (790 G, II). Deux
+   conditions strictes : donateur de moins de 80 ans le jour du don, donataire
+   majeur ou emancipe. Sommes d'argent en pleine propriete uniquement (virement,
+   cheque). Declaration dans le mois (790 G, IV), par celui qui recoit.
+   Cumul : 63 730 EUR par grand-parent et par petit-enfant, 127 460 EUR pour un
+   couple. Deux compteurs distincts : celui du 790 G repart quinze ans apres
+   chaque don de somme d'argent (790 G, I), et hors rappel fiscal (790 G, III) ;
+   celui du 790 B depend du rappel fiscal de l'art. 784. Ils ne se rouvrent pas
+   forcement le meme jour — ne jamais dire « 63 730 EUR tous les 15 ans » comme
+   si c'etait un seul compteur.
+   Si le petit-enfant est mineur, ou si l'un des deux grands-parents a passe
+   80 ans, il reste les 31 865 EUR du 790 B, sans condition d'age.
+
+3. Art. 790 A bis CGI — 100 000 EUR par donateur, 300 000 EUR au total par
+   donataire, en argent. Des conditions cumulatives, et une fenetre fermee aux
+   deux bouts. Les conditions, telles qu'elles s'impriment sur la feuille :
+   sommes d'argent consenties en pleine propriete ; emploi dans les 6 mois ;
+   acquisition d'un logement neuf ou en VEFA — ni terrain, ni construction par le
+   donataire lui-meme, ni remboursement de pret, ni apport a une SCI — OU travaux
+   de renovation energetique eligibles a MaPrimeRenov' et realises par un
+   professionnel, dans le logement dont le donataire est deja proprietaire ;
+   affectation de 5 ans ; non-cumul avec les aides et deductions correspondantes ;
+   justificatifs a conserver a la disposition de l'administration.
+   L'AFFECTATION DE 5 ANS N'EST PAS LA MEME DANS LES DEUX CAS :
+   · acquisition d'un logement neuf ou en VEFA — residence principale du
+     donataire, ou d'un locataire qui n'appartient pas a son foyer fiscal,
+     pendant 5 ans a compter de l'acquisition ou de l'achevement s'il est
+     posterieur ;
+   · travaux de renovation energetique — le logement doit rester l'habitation
+     principale du DONATAIRE pendant 5 ans a compter de l'achevement des travaux.
+     Pas de location dans ce cas : un petit-enfant qui ferait renover puis
+     louerait perdrait l'exoneration.
+   FENETRE : versements effectues entre le 15 fevrier 2025 et le 31 decembre
+   2026 (art. 790 A bis, III). Les deux bornes se disent et s'ecrivent ensemble :
+   un versement anterieur au 15 fevrier 2025 n'ouvre droit a rien, et un
+   spectateur qui a aide un petit-enfant en 2024 ne doit pas cocher « oui ».
+   Tout cela s'imprime. A l'oral il reste une phrase et une question fermee.
+   ⚠️ Ne pas annoncer un nombre de conditions : le compte n'est pas verifiable
+   ligne a ligne sur la feuille, et un chiffre annonce qui ne correspond pas a la
+   liste oblige a revenir au papier. On dit « les conditions cumulatives de
+   l'art. 790 A bis », et elles sont imprimees.
+
+LE CONTENU NEUF DE CE SECOND TEMPS : de son vivant, en donation, 31 865 EUR
+(art. 790 B). Au deces, si le parent est vivant, 1 594 EUR (IV de l'art. 788) —
+et seulement si un testament a designe le petit-enfant, car du vivant de son
+parent il n'est pas heritier et ne recoit rien automatiquement. Le montant depend
+donc du moment, et de l'existence d'un testament.
+⚠️ « Ne recoit rien automatiquement », jamais « n'herite de rien » : si son
+parent renonce a la succession, le petit-enfant vient par representation
+(art. 754 c. civ., representation du renoncant admise en ligne directe depuis
+2006), et il en va de meme si le parent est declare indigne (art. 729-1). Le mot
+« automatiquement » n'est pas une precaution de style, c'est ce qui rend la
+phrase vraie.
+
+LA LIMITE CIVILE (art. 912 et 919-2 c. civ.). Ce qui est donne a un petit-enfant
+du vivant de son parent s'impute sur la quotite disponible. Si une liberalite
+depasse cette quotite, l'enfant concerne peut en demander la reduction (art. 920
+et s. c. civ.) : la reserve est protegee par cette action, elle n'est pas
+intangible en fait, et un heritier reservataire peut meme renoncer par
+anticipation a l'exercer (art. 929). C'est le notaire qui chiffre cette limite
+pour une famille donnee — nous ne le faisons pas.
+
+LES MINEURS. Question qui vient toujours : on peut donner a un petit-enfant
+mineur au titre du 790 B. La donation faite a un mineur non emancipe est
+acceptee par ses representants legaux (art. 935 c. civ.). L'argent est depose sur
+un compte ouvert a son nom : il est a lui, ses parents l'administrent au titre de
+l'administration legale (art. 382 et s. c. civ.), ils n'en sont pas
+proprietaires.
+
+CE QUI NE FIGURE PAS DANS CETTE VIDEO, ET POURQUOI
+- La cascade a 2 etages (31 865 -> 25 492 -> 20 394, « 36 % »). Supprimee : elle
+  exige deux hypotheses enoncees a voix haute pour etre vraie, et elle est batie
+  pour faire ressentir une perte, pas pour faire agir. Elle est remplacee par la
+  comparaison 31 865 / 1 594, qui est un fait sans hypothese.
+- Le parcours de declaration sur impots.gouv.fr n'est PAS re-explique : il est
+  livre a l'etape 1, avec sa capture d'ecran et le document « Declarer un don ».
+  Ici, un rappel de 30 secondes et un renvoi a cette feuille, rien de plus. La
+  capture de l'etape 1 est reutilisee telle quelle, on n'en refait pas une.
+- Le bareme de l'art. 777 n'est pas mobilise : la demonstration du premier
+  temps est civile, pas fiscale. Aucun droit de succession n'est calcule ici.
+- Aucun montant d'emoluments de notaire, aucun cout de reincorporation, aucun
+  droit de partage n'est chiffre, et aucune affirmation sur la gratuite d'une
+  prestation de notaire.
+- Aucune mention de placement, d'assureur, de contrat ou de support d'epargne.
+
+A VERIFIER AVANT D'ENREGISTRER
+- L'ETAT DU DROIT SUR LA DECLARATION EN LIGNE. L'obligation de declarer un don
+  manuel en ligne depuis le 1er janvier 2026, et la liste des cas de dispense qui
+  autorisent encore le formulaire papier n° 2735, sur impots.gouv.fr, le jour du
+  tournage. Si le texte a bouge, ce sont la phrase mot pour mot n° 3, le
+  carton 6 et les 2 feuilles imprimees qui changent ensemble.
+- Art. 790 A bis sur legifrance.gouv.fr : les DEUX bornes de la fenetre
+  (15 fevrier 2025 – 31 decembre 2026, art. 790 A bis, III), la borne de fin
+  etant soumise a un rapport d'evaluation. Non proroge, on tourne tel quel ;
+  proroge, on change la date partout ; modifie, on reecrit le paragraphe et les
+  plafonds. Verifier mot a mot la clause de non-cumul et les DEUX conditions
+  d'affectation de 5 ans, qui ne sont pas les memes pour l'acquisition et pour
+  les travaux. Renseigner le bandeau « etat du droit verifie le [JJ/MM/AAAA] ».
+- LA CAPTURE impots.gouv.fr. La rubrique n'est accessible que dans l'espace
+  particulier authentifie : une capture reelle affiche un nom, un numero fiscal
+  et parfois des montants. Solution par defaut : reutiliser la capture deja
+  tournee pour l'etape 1. Si une capture neuve est indispensable, masquage opaque
+  du nom, du numero fiscal et de l'adresse avant montage, et ne garder visible
+  que le fil d'ariane et le libelle de la rubrique.
+- Les articles 754, 843, 860, 860-1, 912, 919-2, 920, 922, 929, 935, 1077, 1078,
+  1078-1 c. civ. et 635 A, 779, 784, 788, 790 A bis, 790 B, 790 G CGI, a
+  controler sur Legifrance : toute la demonstration repose sur eux.
+- LE NUMERO DE L'ETAPE, avant de fabriquer le carton 1. `src/lib/methode.ts`
+  porte 8 etapes, dont e5 « Le don de la main a la main » et e6 « Oublier les
+  petits-enfants » : cette video couvre les deux, et le carton-titre les nomme
+  toutes les deux. Tant que methode.ts n'a pas tranche — fusion des 2 entrees, ou
+  2 entrees pointant sur la meme video — ne pas fabriquer un carton qui n'en
+  nomme qu'une : un membre qui ouvre « etape 6 » doit reconnaitre la video qu'il
+  a devant lui. La fiche de l'etape 7 designe deja le livrable de cette video
+  comme « La liste de mes dons, etape 5 » : cette designation-la est correcte et
+  ne bouge pas.
+- A REPERCUTER SUR L'ETAPE 4 (fiche 5), dans son renvoi de fin : « avoir sous la
+  main le Calendrier des 3 dates, une feuille, et les prenoms et ages
+  approximatifs de vos petits-enfants ». Sans cela, le spectateur arrive ici sans
+  savoir lesquels sont majeurs.
+
+
+------------------------------------------------------------
+2. CE QUE JE MONTRE A L ECRAN
+------------------------------------------------------------
+
+Regle generale : police >= 28 pt, fond clair, 1 chiffre par slide. Bandeau
+permanent discret « Contenu pedagogique — ne constitue pas un conseil
+personnalise » sur toute la duree.
+
+1.  Carton-titre : « Etapes 5 et 6 — Ce que vous avez deja donne ». Aucun
+    chiffre, aucun bandeau de progression : aucune autre etape de la serie n'en
+    porte, et le produit en compte 8, pas 7.
+2.  Contraste, 2 lignes : « Pour l'impot, un don DECLARE sort du calcul au bout
+    de 15 ans — art. 784 CGI » / « Pour le partage entre vos enfants, il n'y a
+    aucun delai : le don revient dans les comptes quel que soit son age —
+    art. 843 code civil ».
+3.  Le cas, 3 lignes : « 1 parent veuf, qui donne seul et de ses propres
+    deniers · 2 enfants · 60 000 EUR chacun · il y a 20 ans ». Mention en bas :
+    « exemple chiffre simplifie — un seul donateur, une seule succession, aucune
+    autre donation ».
+4.  Le rapport, 2 colonnes cote a cote. Enfant 1 : 60 000 EUR -> appartement ->
+    180 000 EUR aujourd'hui. Enfant 2 : 60 000 EUR -> depense -> 60 000 EUR.
+    Incrustation : art. 843, art. 860-1 (en surbrillance), art. 860 c. civ.
+5.  Le partage, apparition ligne par ligne, une ligne toutes les 3 secondes :
+        Biens laisses au deces            200 000 EUR
+        + rapport enfant 1                180 000 EUR
+        + rapport enfant 2                 60 000 EUR
+        MASSE A PARTAGER                  440 000 EUR
+        Part de chacun (/2)               220 000 EUR
+        Enfant 1 : 220 000 - 180 000  =    40 000 EUR
+        Enfant 2 : 220 000 -  60 000  =   160 000 EUR
+        ECART                             120 000 EUR
+    Sous-titre du bas : « ecart sur ce que chacun TOUCHE au partage — au total,
+    chacun aura recu 220 000 EUR ».
+6.  RAPPEL DE L'ETAPE 1. La capture d'ecran du parcours impots.gouv.fr TOURNEE
+    POUR L'ETAPE 1, reutilisee telle quelle, avec 4 incrustations successives :
+    « Declarer un don ne le rend pas imposable » · « 100 000 EUR par parent et
+    par enfant — art. 779 CGI ; les donations declarees se cumulent sur 15 ans —
+    art. 784 CGI » · « c'est celui qui recoit qui declare, en ligne, depuis son
+    espace particulier — formulaire papier n° 2735 seulement dans les cas de
+    dispense » · « reprenez votre feuille "Declarer un don" de l'etape 1 ».
+    → NE PAS REFAIRE DE CAPTURE. Voir A VERIFIER AVANT D'ENREGISTRER.
+7.  Le seul point qui presse : « 31 865 EUR — art. 790 G CGI · donateur de moins
+    de 80 ans · donataire majeur ou emancipe · sommes d'argent uniquement · a
+    declarer dans le mois qui suit le don — art. 790 G, IV ». Ne PAS afficher
+    l'art. 635 A sur ce carton.
+8.  Une ligne, texte seul : « Un acte signe chez le notaire arrete les valeurs AU
+    JOUR DE CET ACTE, y compris pour un don deja fait — art. 1078 et 1078-1
+    c. civ. — conditions au dos de votre feuille ». NE PAS reprendre la frise du
+    visuel 5 ni le mot « rapport » : dans une donation-partage il n'y a pas de
+    rapport.
+9.  « 31 865 EUR — par grand-parent, par petit-enfant », avec en bas, sur
+    2 lignes distinctes : « art. 790 B CGI — le montant » et « art. 784 CGI —
+    reconstitution au bout de 15 ans ». Ne JAMAIS ecrire « art. 790 B — tous
+    les 15 ans ».
+10. Comparatif, tenu 8 secondes : « 31 865 EUR — art. 790 B CGI, de votre
+    vivant, en donation » / « 1 594 EUR — art. 788, IV CGI, petit-enfant
+    legataire du vivant de son parent ».
+11. Cumul : « 790 B 31 865 + 790 G 31 865 = 63 730 EUR par grand-parent et par
+    petit-enfant — 127 460 EUR pour un couple » + les 2 articles cote a cote +
+    2 lignes en petit : « 790 G : moins de 80 ans, donataire majeur ou emancipe »
+    et « deux compteurs distincts — art. 790 G, I et art. 784 ». Pas de slide
+    supplementaire pour les conditions du 790 G : elles sont deja au carton 7.
+12. Le 790 A bis : « Un troisieme don, reserve au logement — art. 790 A bis CGI —
+    100 000 EUR par donateur » + « fenetre : versements du 15 fevrier 2025 au
+    31 decembre 2026 » + « conditions detaillees sur votre feuille » + bandeau
+    « etat du droit verifie le [JJ/MM/AAAA] — legifrance.gouv.fr ». Rien d'autre
+    sur ce carton : les conditions sont imprimees, elles ne sont pas lisibles en
+    9 lignes a 28 pt.
+13. Le petit-enfant mineur, 3 lignes, aucun chiffre, incrustations « art. 790 B
+    CGI » ET « art. 935 et 382 c. civ. ».
+14. Cadrage civil, 2 lignes, aucun euro : « art. 912 et 919-2 du code civil —
+    quotite disponible et reserve hereditaire » / « art. 920 et s. — l'enfant
+    concerne peut demander la reduction ; c'est votre notaire qui chiffre ».
+15. CE SOIR, 1er tableau vide, pleine largeur : « La liste de mes dons » — marge
+    a croix · A QUI · COMBIEN · QUAND (mois / annee) · DEPENSE OU BIEN ACHETE ·
+    DECLARE / NON DECLARE / JE NE SAIS PAS. Legende : « une croix = a faire
+    declarer ».
+16. CE SOIR, 2e tableau vide, pleine largeur, montre apres le premier : « Une
+    ligne par petit-enfant » — PRENOM · AGE · DEJA DONNE (montant et annee) ·
+    MONTANT ENVISAGE · ECHEANCE. Plus, en bas, les 2 cases de chiffres et la
+    ligne « versement entre le 15 fevrier 2025 et le 31 decembre 2026 : oui /
+    non / a demander ».
+    → Les 2 tableaux ne sont JAMAIS cote a cote : 11 colonnes de texte sur une
+    image 16:9 a 28 pt ne sont pas fabricables.
+17. Carton muet, mention legale plein ecran : « Contenu pedagogique. Ne
+    constitue pas un conseil personnalise. Faites relire toute decision par
+    votre notaire. »
+18. Renvoi : « Etape 7 — Chez le notaire ».
+
+A FABRIQUER AVANT LE TOURNAGE : les 18 visuels ci-dessus, sauf le 6, qui
+reutilise une capture existante ; les 2 documents imprimables du spectateur
+(« La liste de mes dons », « Une ligne par petit-enfant »), qui doivent exister
+avant le tournage puisqu'ils portent tout ce qui sort de l'oral.
+
+
+------------------------------------------------------------
+3. CE QUE JE DIS, DANS L ORDRE
+------------------------------------------------------------
+
+10 points. Une idee par point, a dire avec ses mots — ce sont des reperes, pas
+un texte a lire.
+
+1. Cette etape traite de ce qui sort de votre patrimoine de votre vivant. Deux
+   parties : d'abord ce que vous avez deja donne, ensuite vos petits-enfants.
+   Il faut une feuille, un stylo, et de quoi savoir lesquels de vos
+   petits-enfants sont majeurs.
+   > Une annee approximative suffit, on ne verifie rien ce soir. Annoncer le
+   > plan, rien de plus.
+
+2. Un don de la main a la main — virement, cheque, enveloppe — n'est ecrit nulle
+   part, et il obeit a deux comptes qui ne suivent pas les memes regles : pour
+   l'impot, un don DECLARE sort du calcul au bout de 15 ans ; pour le partage
+   entre vos enfants, il n'y a aucun delai.
+   > C'est la charniere de toute la premiere partie. Dire les deux comptes avant
+   > l'exemple, pas apres : le spectateur doit savoir ce qu'il regarde.
+
+3. Au partage, on remet dans les comptes ce que chacun a deja recu — c'est le
+   rapport. Et quand l'argent a servi a acheter un bien, ce n'est pas la somme
+   qui revient, c'est la valeur du bien au jour du partage.
+   > Premiere ligne a dire, avant tout chiffre : « L'exemple est un cas type :
+   > un seul parent, qui donne seul et de ses propres deniers, une seule
+   > succession. Quand les deux parents ont donne, le calcul se fait deux fois,
+   > une fois par succession. »
+   > Laisser les chiffres a l'ecran faire le travail : on lit le tableau, on ne
+   > raconte pas les deux enfants. Et dire « ce que chacun TOUCHE ce jour-la » —
+   > au total, chacun aura recu 220 000 EUR. Jamais « chacun repart avec ».
+
+4. Declarer un don deja fait ne le rend pas imposable — sous l'abattement, cela
+   coute 0 EUR — et la seule chose qui presse ce soir, c'est le delai d'un mois
+   du don de somme d'argent. Question fermee : avez-vous donne une somme d'argent
+   a un enfant ou a un petit-enfant majeur depuis moins d'un mois ?
+   > Rappel de l'etape 1, pas re-explication : une phrase pour dire que c'est
+   > celui qui recoit qui declare, en ligne depuis son espace, un renvoi a sa
+   > feuille « Declarer un don », et on passe. 30 secondes, capture de l'etape 1
+   > a l'ecran. C'est le premier passage a couper si la prise deborde.
+   > Si oui : le noter en haut de la feuille et prevenir demain celui qui l'a
+   > recu. Si le dernier don date de plus d'un mois : le dire, et dire aussi
+   > qu'il n'y a rien de perdu. Aucune penalite, aucun interet de retard.
+
+5. Il existe un acte qui arrete les valeurs au jour ou on le signe, y compris
+   pour un don deja fait, meme ancien. Il arrete ce qui vient apres ; il ne
+   revient pas sur ce qui s'est passe avant.
+   > Une phrase, pas davantage, et il se signe chez le notaire. Ne jamais dire
+   > « au jour de la donation » : c'est entendu comme « au jour du don
+   > d'origine ». Les conditions des articles 1078 et 1078-1 s'impriment. Ne pas
+   > reutiliser le tableau du calcul precedent.
+
+6. Deuxieme partie, vos petits-enfants : 31 865 EUR par grand-parent et par
+   petit-enfant, sans condition d'age, mineur accepte, et ce compteur est separe
+   de celui de vos enfants.
+   > Le mineur se dit ici, en deux lignes : ses parents acceptent le don pour
+   > lui, l'argent est depose sur un compte a son nom, il est a lui, ils
+   > l'administrent sans en etre proprietaires.
+   > Ce soir, quand vous ferez votre liste, commencez par ce qui a deja ete donne
+   > a chaque petit-enfant depuis moins de 15 ans : c'est deja pris sur ces
+   > 31 865 EUR — sauf si ce don a ete declare comme don de somme d'argent, qui a
+   > son propre compteur. Si vous ne savez pas sous quel regime il a ete declare,
+   > ecrivez « je ne sais pas » : c'est une question pour votre notaire, pas pour
+   > ce soir. Ne PAS demander de verifier pendant la video : la liste n'existe
+   > pas encore.
+
+7. Le point a retenir : 31 865 EUR de votre vivant, en donation. 1 594 EUR a
+   votre deces si son parent est vivant — et encore, seulement si un testament
+   l'a prevu, car du vivant de son parent un petit-enfant ne recoit rien
+   automatiquement.
+   > Le mot « automatiquement » n'est pas facultatif : si son parent renonce a la
+   > succession, le petit-enfant vient par representation.
+
+8. Deux autres dons existent : le don de somme d'argent, qui se cumule et porte
+   le total a 63 730 EUR par grand-parent, sous deux conditions strictes ; et un
+   don reserve au logement, qui se referme le 31 decembre 2026 — une seule
+   question ce soir, un de vos petits-enfants est-il dans ce cas.
+   > Les deux conditions du don de somme d'argent se disent : moins de 80 ans, et
+   > petit-enfant majeur ou emancipe. Sans elles, un grand-parent de 82 ans ecrit
+   > 63 730 EUR sur sa feuille et le chiffre est faux.
+   > Ne pas enumerer a l'oral les conditions du don logement : elles sont
+   > imprimees. Mais ne jamais dire « avant le 31 decembre 2026 » sans la borne de
+   > debut : le dispositif ne vise que les versements faits entre le 15 fevrier
+   > 2025 et le 31 decembre 2026, et les deux dates sont a l'ecran pendant qu'on
+   > parle. Si la reponse est non, on barre la ligne.
+
+9. Ce qui est donne a un petit-enfant s'impute sur la part dont vous disposez
+   librement, et c'est votre notaire qui la chiffre pour votre famille.
+   > Deux lignes, aucun euro. Ne pas dire que la reserve des enfants est
+   > intangible : elle est protegee, et c'est l'enfant concerne qui demande la
+   > reduction si elle est entamee.
+
+10. Ce soir, trois gestes. La liste de vos dons, une ligne par don quel qu'en
+    soit l'age, cinq colonnes, une croix dans la marge pour chaque don non
+    declare. Puis une ligne par petit-enfant, et les deux chiffres du bas : le
+    nombre de petits-enfants multiplie par 31 865 EUR, et par 2 si vous etes deux
+    grands-parents ; puis vos 80 ans et ceux de votre conjoint. Enfin, votre
+    Calendrier des 3 dates.
+    > Ces deux dates de 80 ans restent sur la fiche, elles ne s'ajoutent pas au
+    > Calendrier des 3 dates. Le total des petits-enfants ne remplace pas le
+    > chiffre de l'etape 0.
+    > Troisieme geste, dit en entier : reprenez la ligne « Date n° 1 — le
+    > compteur des 15 ans » de votre Calendrier des 3 dates. Elle ne se corrige
+    > que si votre liste fait apparaitre une DONATION DECLAREE plus recente qui
+    > s'est imputee sur l'abattement de 100 000 EUR de l'article 779 — dans ce
+    > cas, corrigez la date et refaites l'addition, cette date plus 15 ans. Un
+    > don de somme d'argent declare au titre de l'article 790 G ne change pas
+    > cette ligne, l'article 790 G, III l'exclut du rappel fiscal. Un don jamais
+    > declare ne la change pas non plus. En cas de doute sur le regime d'un don,
+    > on ne touche pas a la ligne et on note la question pour le notaire.
+    > Puis l'apaisement — phrase mot pour mot n° 8 — et l'on ajoute qu'une date
+    > approximative vaut mieux qu'une case vide, et qu'on peut s'arreter a la fin
+    > de cette video et reprendre plus tard sans rien perdre : les deux feuilles
+    > sont finies, elles restent bonnes. Puis la mention legale, puis le renvoi.
+
+MINUTAGE. Environ 1 500 mots parles, chaque montant compte pour le nombre de
+mots qu'il coute reellement a voix haute (« 31 865 EUR » = 9 mots, un numero
+d'article = 3 a 5 ; la video en contient une cinquantaine, soit environ
+2 minutes que le comptage « 1 montant = 1 mot » escamotait). A 125 mots par
+minute — le debit des etapes 2, 3 et 4, et le bon debit pour une audience de 65 a
+85 ans — la voix seule fait 12 minutes. Le tableau du visuel 5 (8 lignes a
+3 secondes) et la tenue de 8 secondes du comparatif se logent sous la voix. La
+prise tient les 12 minutes si le rappel de l'etape 1 (point 4) reste sous
+30 secondes. Si elle deborde, couper dans cet ordre : le rappel de l'etape 1
+(point 4), qui est deja livre ailleurs ; puis la phrase sur l'acte qui arrete les
+valeurs (point 5) ; puis la precision « une date approximative vaut mieux qu'une
+case vide ». Ne jamais couper le delai d'un mois du 790 G (point 4), la
+comparaison 31 865 / 1 594 (point 7), ni la correction du Calendrier (point 10) :
+ce sont les seuls passages qui appellent une action datee.
+
+
+------------------------------------------------------------
+4. LES PHRASES A DIRE MOT POUR MOT
+------------------------------------------------------------
+
+8 phrases. Tout le reste se dit librement. Le point de la section 3 auquel
+chacune appartient est indique entre parentheses.
+
+1. (point 2) « Pour l'impot, un don declare sort du calcul au bout de 15 ans —
+   article 784 du code general des impots. Pour le partage entre vos enfants, il
+   n'y a aucun delai : le don revient dans les comptes quel que soit son age —
+   article 843 du code civil. »
+
+2. (point 3) « Quand l'argent donne a servi a acheter un bien, ce n'est pas la
+   somme qui revient dans les comptes : c'est la valeur de ce bien au jour du
+   partage. Article 860-1 du code civil. Au total, chacun des deux enfants aura
+   recu la meme valeur, 220 000 EUR, en comptant ce qui a deja ete recu il y a
+   20 ans ; les 120 000 EUR d'ecart portent seulement sur ce que chacun touche le
+   jour du partage. »
+
+3. (point 4) « Declarer un don ne le rend pas imposable. Sous l'abattement de
+   100 000 EUR par parent et par enfant, article 779, la declaration coute
+   0 EUR. Et c'est celui qui recoit qui declare, en ligne sur impots.gouv.fr
+   depuis son espace particulier ; le papier n'est admis que dans les cas de
+   dispense prevus par l'administration. »
+
+4. (point 4) « Le don familial de somme d'argent de l'article 790 G —
+   31 865 EUR, donateur de moins de 80 ans, donataire majeur ou emancipe — doit
+   etre declare dans le mois qui suit le don, au quatrieme paragraphe de ce meme
+   article 790 G. Passe un mois, c'est cette exoneration-la qui est perdue. Le
+   don, lui, reste valable : il s'impute alors sur l'abattement de 100 000 EUR de
+   l'article 779, ou sur les 31 865 EUR de l'article 790 B pour un petit-enfant.
+   Sous cet abattement, la declaration coute toujours 0 EUR. »
+
+5. (point 6) « 31 865 EUR par grand-parent et par petit-enfant, article 790 B du
+   code general des impots. Aucune condition d'age : un petit-enfant mineur est
+   accepte. L'abattement se reconstitue au bout de 15 ans, au titre de l'article
+   784. »
+
+6. (point 8) « Il se cumule avec le don de somme d'argent de l'article 790 G, a
+   deux conditions : avoir moins de 80 ans le jour du don, et que ce
+   petit-enfant soit majeur ou emancipe. Les deux reunis : 63 730 EUR par
+   grand-parent et par petit-enfant, 127 460 EUR si vous etes 2 grands-parents.
+   Si votre petit-enfant est mineur, ou si vous avez 80 ans passes, il reste les
+   31 865 EUR de l'article 790 B. »
+
+7. (point 7) « De votre vivant, en donation : 31 865 EUR, article 790 B. A votre
+   deces, du vivant de son parent : 1 594 EUR, au titre du IV de l'article 788.
+   Et sans testament, un petit-enfant dont le parent est vivant ne recoit rien
+   automatiquement. »
+
+8. (point 10) « Rien n'est envoye ce soir, rien n'est signe. Ecrire un montant
+   sur une feuille ne le donne pas, et tout peut changer demain. "Je ne sais
+   pas" est une reponse valable, et c'est deja une information. » — puis, en
+   cloture : « Contenu pedagogique. Ne constitue pas un conseil personnalise.
+   Tout projet de donation est a faire relire par votre notaire. »
+
+Le don du 790 A bis ne figure pas ici : sa date et son article sont a l'ecran
+(carton 12) et sur la feuille, et le point 8 porte la garde sur les deux bornes.
+
+
+------------------------------------------------------------
+5. LES PIEGES — CE QU IL NE FAUT SURTOUT PAS DIRE
+------------------------------------------------------------
+
+- « Un don de plus de 15 ans ne compte plus. » FAUX et dangereux : c'est vrai
+  pour l'impot, et seulement si le don a ete DECLARE. Dire : « Pour l'impot, un
+  don declare sort du calcul au bout de 15 ans. Pour le partage entre vos
+  enfants, il n'y a aucun delai. »
+
+- « Le compteur des 15 ans a demarre le jour du don. » FAUX pour un don jamais
+  declare : le delai ne court que pour une donation ayant date certaine —
+  declaree, enregistree ou notariee. Dire : « Un don jamais declare n'a jamais
+  demarre son compteur. »
+
+- « Vous serez redresse, avec des interets de retard. » FAUX. L'obligation
+  declarative d'un don manuel ne nait qu'a sa revelation (art. 635 A). Dire :
+  « Un don non declare sera compte au deces sur l'abattement qui vous restait,
+  sans qu'aucun compteur n'ait tourne. » Aucun taux, aucune penalite chiffree.
+
+- « Passe un mois, il est perdu. » FAUX tel quel, et inquietant sans raison :
+  l'antecedent est le don, et ce n'est pas le don qui est perdu. Dire : « Passe
+  un mois, c'est cette exoneration-la qui est perdue. Le don, lui, reste valable :
+  il s'impute sur l'abattement de 100 000 EUR de l'article 779, ou sur les
+  31 865 EUR de l'article 790 B pour un petit-enfant. »
+
+- Afficher ou citer l'art. 635 A pour le delai d'un mois du 790 G. FAUX
+  article : le 635 A vise les dons manuels reveles et fait courir le mois depuis
+  la revelation. Dire et afficher : « article 790 G, IV ».
+
+- « A defaut, vous envoyez le formulaire 2735. » Perime : depuis le
+  1er janvier 2026, la declaration se fait en principe en ligne, et le papier
+  n'est admis que dans les cas de dispense listes par l'administration. Dire :
+  « en ligne, depuis son espace particulier ; le papier seulement dans les cas de
+  dispense ».
+
+- « On remet 60 000 EUR dans les comptes. » FAUX pour l'enfant qui a achete un
+  bien. Dire : « On remet la valeur du bien au jour du partage. »
+
+- « Chacun repart avec 220 000 EUR. » FAUX : l'enfant 2 a depense sa part il y a
+  20 ans, il repart avec 160 000 EUR. Dire : « Au total, chacun des deux aura
+  recu la meme valeur, 220 000 EUR, en comptant ce qui a deja ete recu ; les
+  120 000 EUR d'ecart portent sur ce que chacun touche le jour du partage. »
+
+- Ecrire soi-meme « hors part successorale » sur un papier. A ne jamais
+  suggerer. Dire : « Cela se decide dans un acte, avec votre notaire. »
+
+- « Une donation-partage, c'est un rapport fige. » Vocabulaire faux : dans une
+  donation-partage il n'y a pas de rapport. Dire : « Les valeurs sont arretees au
+  jour de l'acte. »
+
+- « L'acte fige les valeurs au jour de la donation » — et, pire, « il annule
+  l'ecart ». FAUX pour un don ancien reincorpore : sa valeur est arretee au jour
+  de l'acte, compte tenu de l'emploi qui a ete fait de l'argent. Dire : « L'acte
+  arrete les valeurs au jour ou on le signe. Il arrete ce qui vient apres ; il ne
+  revient pas sur ce qui s'est passe avant. »
+
+- « Ce que vous avez deja donne a ce petit-enfant depuis moins de 15 ans est
+  deja pris dessus », sans exception. INCOMPLET : un don de somme d'argent
+  declare au titre du 790 G, comme un don relevant du 790 A bis, est exclu du
+  rappel fiscal (790 G, III) et n'entame ni les 31 865 EUR ni les 100 000 EUR.
+  Dire : « sauf si ce don a ete declare comme don de somme d'argent, qui a son
+  propre compteur ».
+
+- Corriger la ligne « Date n° 1 — le compteur des 15 ans » pour un don Sarkozy.
+  FAUX : un don de somme d'argent declare au titre du 790 G ne deplace pas cette
+  ligne. Dire : « seule une donation declaree qui s'est imputee sur l'abattement
+  de 100 000 EUR de l'article 779 corrige cette ligne ».
+
+- « L'article 790 B se renouvelle tous les 15 ans. » Imprecis : le 790 B fixe le
+  montant, le delai vient du rappel fiscal de l'art. 784. Dire : « 31 865 EUR,
+  article 790 B ; et l'abattement se reconstitue au bout de 15 ans au titre de
+  l'article 784. »
+
+- « 63 730 EUR par petit-enfant. » Ambigu. Dire : « 63 730 EUR par
+  grand-parent et par petit-enfant ; 127 460 EUR si vous etes 2. » Ce nombre
+  n'est prononce qu'une seule fois dans toute la video, et jamais sans les deux
+  conditions du 790 G.
+
+- « 63 730 EUR tous les 15 ans. » Faux comme total : ce sont deux compteurs
+  distincts, celui du 790 G (790 G, I) et celui du rappel fiscal (art. 784). Ils
+  ne se rouvrent pas forcement le meme jour. Dire les deux compteurs, ou ne pas
+  parler de delai sur ce total.
+
+- « Votre petit-enfant heritera de 1 594 EUR d'abattement. » Incomplet et
+  rassurant a tort : du vivant de son parent, il ne recoit rien automatiquement,
+  et il n'y a legs que si un testament l'a prevu. Le dire.
+
+- « Sans testament, un petit-enfant dont le parent est vivant n'herite de
+  rien. » FAUX sans le mot « automatiquement » : si son parent renonce, il vient
+  par representation (art. 754 c. civ.). Dire : « ne recoit rien
+  automatiquement ».
+
+- « Avant le 31 decembre 2026 », sans borne de debut. INCOMPLET : le dispositif
+  ne vise que les versements faits entre le 15 fevrier 2025 et le 31 decembre
+  2026. Dire les deux dates, et les afficher ensemble.
+
+- Enumerer a l'oral les conditions du 790 A bis, annoncer leur nombre, ou
+  promettre que la fenetre sera prolongee. Dire : « Ses conditions sont sur votre
+  feuille », rien de plus a l'oral que les deux dates, et laisser le bandeau
+  « etat du droit verifie le [date] » faire le reste a l'ecran.
+
+- « Ouvrez un contrat », « placez cette somme sur… », citer un assureur, une
+  banque ou un support. Interdit (statut CIF). Aucune de ces mentions dans la
+  video ni sur une slide.
+
+- Chiffrer les emoluments du notaire, le cout d'une donation-partage ou d'une
+  reincorporation — et affirmer que son devis est gratuit, ce que nous ne
+  controlons pas. Dire : « Demandez le cout a votre notaire, il vous l'indiquera
+  avant tout acte. »
+
+- « La reserve de vos enfants est intangible. » Trop absolu : elle est protegee
+  par l'action en reduction, que l'enfant concerne doit exercer. Dire : « si une
+  donation depasse la part dont vous disposez librement, l'enfant concerne peut
+  en demander la reduction — c'est votre notaire qui chiffre cette limite. »
+
+- Dire un nombre de familles, une proportion, une moyenne d'age d'heritage.
+  Aucune statistique non sourcee dans cette video, et aucun remplacement : on
+  n'en dit rien.
+
+
+------------------------------------------------------------
+6. CE QUE LE SPECTATEUR FAIT
+------------------------------------------------------------
+
+PENDANT LA VIDEO
+- Il sort une feuille et un stylo, ou il imprime les 2 fiches de cette video. Il
+  n'a besoin de savoir qu'une chose sur ses petits-enfants : lesquels sont
+  majeurs. Une annee approximative suffit.
+- Il repond a une seule question fermee : un don de somme d'argent a un enfant
+  ou un petit-enfant majeur depuis moins d'un mois — oui ou non.
+- Il repond a une seconde question fermee : un petit-enfant qui achete un
+  logement neuf ou en VEFA, ou qui fait des travaux de renovation energetique
+  dans le logement dont il est deja proprietaire, avec une somme versee entre le
+  15 fevrier 2025 et le 31 decembre 2026 — oui, non, ou a lui demander.
+- Il ne verifie rien sur une liste pendant la video : elle n'existe pas encore.
+
+APRES LA VIDEO, LE SOIR MEME
+- Il remplit « La liste de mes dons » : une ligne par don, quel qu'en soit
+  l'age. Cinq colonnes — a qui, combien, quand, ce que l'argent est devenu
+  (depense ou bien achete), declare ou non. Une croix dans la marge sur chaque
+  ligne « non declare ». « Je ne sais pas » est une reponse acceptee.
+- Il remplit « Une ligne par petit-enfant » : prenom, age, deja donne (montant
+  et annee, repris de la liste ci-dessus), montant envisage, echeance. Puis les
+  2 cases du bas : mon total petits-enfants — le nombre de petits-enfants
+  x 31 865 EUR (x 2 s'ils sont 2 grands-parents) — et la date de ses 80 ans et de
+  ceux de son conjoint.
+- Il reprend son Calendrier des 3 dates et corrige la ligne « Date n° 1 — le
+  compteur des 15 ans », uniquement si la liste fait apparaitre une DONATION
+  DECLAREE plus recente qui s'est imputee sur l'abattement de 100 000 EUR de
+  l'art. 779. Un don de somme d'argent declare au titre du 790 G ne change pas
+  cette ligne (790 G, III), un don jamais declare non plus. En cas de doute, on
+  ne touche pas a la ligne et on note la question pour le notaire.
+- Il n'envoie rien, ne signe rien, n'appelle personne. Les croix dans la marge
+  sont des conversations a avoir plus tard avec ceux qui ont recu.
+
+DOCUMENTS UTILISES : « La liste de mes dons » · « Une ligne par petit-enfant » ·
+le Calendrier des 3 dates (rempli precedemment) · la feuille « Declarer un don »
+de l'etape 1.
+
+
+------------------------------------------------------------
+7. LE RENVOI DE FIN
+------------------------------------------------------------
+
+Vers l'etape 7, qui clot La Methode : le rendez-vous chez le notaire.
+
+Idee a dire, apres la conclusion et apres la mention legale : la liste de vos
+dons est l'une des cinq pieces du dossier que le notaire demandera ; l'etape
+suivante montre comment reunir les quatre autres et ce qu'il faut lui poser comme
+questions. Votre feuille des petits-enfants reste a part, c'est une feuille de
+travail. Pour regarder la suite, avoir sous la main une chemise cartonnee et les
+documents deja remplis aux etapes precedentes.
+
+Pas de prix, pas d'urgence, pas de boucle ouverte.
+
+
+------------------------------------------------------------
+8. LE LIVRABLE
+------------------------------------------------------------
+
+Deux feuilles A4, recto, imprimables en noir et blanc — et leurs versions
+tableur.
+
+1. « LA LISTE DE MES DONS ». Tableau a 5 colonnes et 12 lignes vides, precedees
+   d'une marge etroite pour une croix ; sous un trait, 3 lignes « dons de plus
+   de 15 ans ».
+   Colonnes : croix | A QUI | COMBIEN | QUAND (mois / annee) | DEPENSE, OU BIEN
+   ACHETE ? | DECLARE / NON DECLARE / JE NE SAIS PAS.
+   Legende : « Une croix dans la marge = ce don n'est pas declare, c'est une
+   conversation a avoir avec celui qui l'a recu. »
+   Au dos, ce qui a ete sorti de l'oral : le « hors part successorale »
+   (art. 843, 919-2, 922 c. civ.) ; les conditions de la donation-partage
+   (art. 1078) et la reincorporation d'un don ancien (art. 1078-1), avec la
+   precision qu'un don reincorpore est retenu pour sa valeur au jour de l'acte,
+   compte tenu de l'emploi qui a ete fait de l'argent ; la precision sur les
+   travaux payes par l'enfant (art. 860-1 renvoyant a 860).
+   Encadres d'une ligne : « Declarer un don deja fait coute 0 EUR sous
+   100 000 EUR par parent et par enfant — art. 779 ; les donations declarees se
+   cumulent sur 15 ans — art. 784. Le don de somme d'argent de l'art. 790 G a son
+   propre plafond et son propre compteur. » · « La declaration se fait par celui
+   qui recoit, en ligne sur impots.gouv.fr depuis son espace particulier ;
+   formulaire papier n° 2735 uniquement dans les cas de dispense prevus par
+   l'administration. » · « Pour l'impot, un don DECLARE sort du calcul au bout de
+   15 ans — art. 784 ; pour le partage entre vos enfants, il n'y a aucun delai —
+   art. 843 c. civ. » · « Un don jamais declare n'a jamais demarre son
+   compteur. »
+
+2. « UNE LIGNE PAR PETIT-ENFANT ». Tableau a 5 colonnes, 8 lignes vierges :
+   PRENOM · AGE (et date de naissance) · DEJA DONNE (montant et annee) ·
+   MONTANT ENVISAGE · ECHEANCE (maintenant / a sa majorite / plus tard).
+   Colonne de rappel en marge, imprimee, avec les 3 plafonds et leurs articles :
+   · 790 B — 31 865 EUR, sans condition d'age, mineur accepte (la donation a un
+     mineur non emancipe est acceptee par ses representants legaux, art. 935
+     c. civ. ; l'argent est a lui, ses parents l'administrent, art. 382 et s.),
+     reconstitution a 15 ans au titre du 784 ;
+   · 790 G — 31 865 EUR, donateur de moins de 80 ans, donataire majeur ou
+     emancipe, sommes d'argent en pleine propriete, declaration dans le mois qui
+     suit le don (790 G, IV). Compteur propre : il n'entre pas dans le rappel
+     fiscal du 784 (790 G, III) ;
+   · 790 A bis — 100 000 EUR par donateur, 300 000 EUR par donataire. Sommes
+     d'argent en pleine propriete ; emploi dans les 6 mois ; acquisition d'un
+     logement neuf ou en VEFA (ni terrain, ni construction par le donataire
+     lui-meme, ni remboursement de pret, ni apport a une SCI), OU travaux de
+     renovation energetique eligibles a MaPrimeRenov' realises par un
+     professionnel ; non-cumul avec les aides et deductions correspondantes ;
+     justificatifs a conserver ; versement effectue entre le 15 fevrier 2025 et
+     le 31 decembre 2026. Un versement anterieur au 15 fevrier 2025 n'ouvre pas
+     droit a cette exoneration.
+     Les 5 ans d'affectation, en deux lignes distinctes :
+       — acquisition d'un logement neuf ou en VEFA : residence principale du
+         donataire, ou logement loue a titre de residence principale a une
+         personne etrangere a son foyer fiscal, pendant 5 ans a compter de
+         l'acquisition ou de l'achevement s'il est posterieur ;
+       — travaux de renovation energetique : logement dont le donataire est deja
+         proprietaire, conserve en habitation principale pendant 5 ans a compter
+         de l'achevement des travaux.
+     Liste a faire verifier par votre notaire.
+   Bas de la colonne de rappel : la declaration d'un don d'argent (par celui qui
+   recoit, en ligne sur impots.gouv.fr depuis son espace particulier ; formulaire
+   papier n° 2735 uniquement dans les cas de dispense ; a defaut de declaration,
+   taxable le jour de la revelation, art. 757) et l'imputation sur la quotite
+   disponible (art. 912 et 919-2 c. civ.) : si une liberalite depasse cette
+   quotite, l'enfant concerne peut en demander la reduction (art. 920 et s.
+   c. civ.). C'est votre notaire qui chiffre cette limite pour votre famille.
+   2 cases de chiffres en bas de page : « mon total petits-enfants — nombre de
+   petits-enfants x 31 865 EUR (x 2 si nous sommes 2 grands-parents),
+   art. 790 B » et « mes 80 ans / les 80 ans de mon conjoint — art. 790 G ».
+   Ces cases restent sur la fiche : le Calendrier des 3 dates garde ses 3 lignes,
+   et ce total ne remplace pas le chiffre de l'etape 0.
+   Derniere ligne a cocher : « un de mes petits-enfants achete un logement neuf
+   ou fait des travaux de renovation energetique, avec une somme versee entre le
+   15 fevrier 2025 et le 31 decembre 2026 : oui / non / a lui demander ».
+   Rappel imprime : remplir cette fiche n'engage a rien, aucune somme n'est
+   donnee tant qu'aucun virement n'est fait et qu'aucun acte n'est signe.
+
+Pied de page des 2 feuilles : « Contenu pedagogique. Ne constitue pas un conseil
+personnalise. A faire relire par votre notaire. »
+
+Mise a jour a reporter : la ligne « Date n° 1 — le compteur des 15 ans » du
+Calendrier des 3 dates, uniquement si la liste fait apparaitre une DONATION
+DECLAREE plus recente qui s'est imputee sur l'abattement de 100 000 EUR de
+l'art. 779. Un don de somme d'argent declare au titre du 790 G ne change pas
+cette ligne (790 G, III), un don jamais declare non plus.

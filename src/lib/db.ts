@@ -26,6 +26,7 @@ import { randomBytes } from "crypto";
 import { promises as fs } from "fs";
 import path from "path";
 import { PRODUCTS, type ProductSku } from "./config";
+import { nouveauJeton } from "./jeton";
 import { assurerSchema, sql, sqlActif } from "./sql";
 
 export type Lead = {
@@ -46,6 +47,20 @@ export type OrderItem = {
   price: number;
   /** Identifiant du paiement Stripe correspondant. Absent en mode test simulé. */
   paymentIntentId?: string;
+  /**
+   * Article remboursé. Le remboursement se note ICI, dans l'article, et
+   * JAMAIS dans `Order.status`.
+   *
+   * ⚠️ Introduire un statut 'refunded' casserait le compteur de places
+   * fondatrices : `countFounders` filtre sur `status <> 'pending'`, donc tout
+   * troisième statut serait compté comme une place vendue — sur un chiffre
+   * affiché en page de vente.
+   *
+   * Ce champ est purement additif : les deux prédicats de contenance existants
+   * — `items @> [{"sku":"front"}]` dans countFounders, `not (items @> …)` dans
+   * addItem — testent des objets PARTIELS et ne le voient pas.
+   */
+  rembourse?: boolean;
 };
 
 export type Order = {
@@ -63,7 +78,72 @@ export type Order = {
   stripePaymentMethodId?: string;
 };
 
-type Db = { leads: Lead[]; orders: Order[] };
+/**
+ * L'accès à l'espace membre. UN accès = UNE adresse email, jamais une commande :
+ * quelqu'un qui achète La Méthode puis un backend trois mois plus tard doit
+ * retrouver un seul espace.
+ */
+export type Acces = {
+  jeton: string;
+  email: string;
+  firstName: string;
+  createdAt: string;
+  /** Produit d'appel remboursé : l'accès est fermé, la ligne reste. */
+  revoque: boolean;
+  /** Dernière visite. Pour le support et la relance, jamais affichée au membre. */
+  vuLe?: string;
+  /** Dernier renvoi du lien perdu. Sert au garde anti-abus de 2 minutes. */
+  renvoyeLe?: string;
+  /** Clés déjà envoyées : "acces", "c1"…"c3", "recu:<sku>". */
+  envoyes: string[];
+};
+
+/** L'avancement d'un membre sur une étape. Clé (email, etape) : voir sql.ts. */
+export type Progression = {
+  email: string;
+  /** "e0" … "e7". Écrit en base : ne change plus jamais. */
+  etape: string;
+  /** Premier affichage de l'étape. C'est ce signal qui déverrouille la boutique. */
+  ouverteLe: string;
+  /** Coche « j'ai terminé cette étape ». Absent = ouverte mais pas finie. */
+  faiteLe?: string;
+};
+
+/**
+ * LES QUATRE RÉPONSES DU BON DE COMMANDE, telles qu'elles sortent de `profils`.
+ *
+ * Les quatre codes sont typés `string` et non des unions de littéraux : ils
+ * viennent de la base, pas du compilateur. Une union donnerait l'illusion qu'un
+ * code inconnu est impossible, alors qu'une vieille ligne en produirait un. Le
+ * routage (`lib/qualification.ts`) traite tout code inconnu comme une absence
+ * de réponse, c'est-à-dire comme le tunnel d'aujourd'hui.
+ *
+ * ⚠️ CE TYPE NE DOIT JAMAIS S'ÉTENDRE À UNE DATE DE NAISSANCE, UN MONTANT, UN
+ * TEXTE LIBRE NI UNE DONNÉE DE SANTÉ. Voir le commentaire de la table (sql.ts).
+ */
+export type Profil = {
+  orderId: string;
+  email: string;
+  /** M marié(e) · P pacsé(e) · U en couple · V veuf/veuve · S seul(e) · X refus. */
+  vie?: string;
+  /** 1 un enfant · 2 deux ou plus · R enfants d'une autre union · 0 aucun · X refus. */
+  enfants?: string;
+  /** O oui · N non · ? je ne sais plus · X refus. */
+  av?: string;
+  /** a moins de 65 · b 65-69 · c 70 · d 71+ · X refus. Une tranche, jamais une date. */
+  age?: string;
+  /** "plan-seul" · "pack" · "av-dabord" · "defaut". Pour la mesure, et rien d'autre. */
+  piste?: string;
+  createdAt: string;
+};
+
+type Db = {
+  leads: Lead[];
+  orders: Order[];
+  acces: Acces[];
+  progression: Progression[];
+  profils: Profil[];
+};
 
 /* ═════════════════════════════════════════════════════════════════
    LE MODE FICHIER — développement local uniquement
@@ -75,9 +155,21 @@ const FILE = process.env.VERCEL
 
 async function read(): Promise<Db> {
   try {
-    return JSON.parse(await fs.readFile(FILE, "utf8")) as Db;
+    const db = JSON.parse(await fs.readFile(FILE, "utf8")) as Partial<Db>;
+    // ⚠️ Les cinq défauts sont obligatoires : le db.json local a été écrit
+    // quand `acces`, `progression` et `profils` n'existaient pas. Sans eux, la
+    // première lecture rendrait `undefined` là où l'appelant attend un tableau,
+    // et le fichier — sept inscrits et quatre commandes — serait perdu à la
+    // première écriture qui suivrait.
+    return {
+      leads: db.leads ?? [],
+      orders: db.orders ?? [],
+      acces: db.acces ?? [],
+      progression: db.progression ?? [],
+      profils: db.profils ?? [],
+    };
   } catch {
-    return { leads: [], orders: [] };
+    return { leads: [], orders: [], acces: [], progression: [], profils: [] };
   }
 }
 
@@ -123,6 +215,24 @@ const versLead = (r: LigneLead): Lead => ({
   envoyes: r.envoyes ?? [],
 });
 
+type LigneAcces = {
+  jeton: string;
+  email: string;
+  first_name: string;
+  created_at: Date;
+  revoque: boolean;
+  vu_le: Date | null;
+  renvoye_le: Date | null;
+  envoyes: string[];
+};
+
+type LigneProgression = {
+  email: string;
+  etape: string;
+  ouverte_le: Date;
+  faite_le: Date | null;
+};
+
 const versOrder = (r: LigneOrder): Order => ({
   id: r.id,
   email: r.email,
@@ -135,6 +245,60 @@ const versOrder = (r: LigneOrder): Order => ({
   stripeCustomerId: r.stripe_customer_id ?? undefined,
   stripePaymentMethodId: r.stripe_payment_method_id ?? undefined,
 });
+
+const versAcces = (r: LigneAcces): Acces => ({
+  jeton: r.jeton,
+  email: r.email,
+  firstName: r.first_name,
+  createdAt: r.created_at.toISOString(),
+  revoque: r.revoque,
+  vuLe: r.vu_le?.toISOString() ?? undefined,
+  renvoyeLe: r.renvoye_le?.toISOString() ?? undefined,
+  envoyes: r.envoyes ?? [],
+});
+
+const versProgression = (r: LigneProgression): Progression => ({
+  email: r.email,
+  etape: r.etape,
+  ouverteLe: r.ouverte_le.toISOString(),
+  faiteLe: r.faite_le?.toISOString() ?? undefined,
+});
+
+type LigneProfil = {
+  order_id: string;
+  email: string;
+  vie: string | null;
+  enfants: string | null;
+  av: string | null;
+  age: string | null;
+  piste: string | null;
+  created_at: Date;
+};
+
+// Le `?? undefined` n'est pas cosmétique : une colonne vide revient à `null` de
+// Postgres et à `undefined` du mode fichier. Sans cette conversion, `codeUtile`
+// (qualification.ts) verrait `null` d'un côté et `undefined` de l'autre, et les
+// deux modes ne routeraient pas pareil — un parcours déroulé à la main en local
+// ne prouverait plus rien sur la production.
+const versProfil = (r: LigneProfil): Profil => ({
+  orderId: r.order_id,
+  email: r.email,
+  vie: r.vie ?? undefined,
+  enfants: r.enfants ?? undefined,
+  av: r.av ?? undefined,
+  age: r.age ?? undefined,
+  piste: r.piste ?? undefined,
+  createdAt: r.created_at.toISOString(),
+});
+
+/**
+ * L'email tel qu'il est STOCKÉ : `addLead` et `createOrder` écrivent déjà en
+ * minuscules et sans espaces. Toute recherche par email doit passer par ici,
+ * sinon un acheteur qui saisit « Jean-Pierre@Orange.FR » dans le formulaire de
+ * récupération se voit répondre qu'aucun achat ne correspond — et il n'a aucun
+ * autre chemin pour rentrer.
+ */
+const normaliserEmail = (e: string) => e.trim().toLowerCase();
 
 /** Prépare la connexion et le schéma. Le schéma n'est créé qu'une fois par instance. */
 async function pg() {
@@ -195,8 +359,23 @@ export async function createOrder(input: {
   consentImmediateAccess: boolean;
   mode: "test" | "live";
   status?: "pending" | "paid";
+  /**
+   * ⚠️ LE PRIX RÉELLEMENT DÛ PAR CE VISITEUR, ET IL EST OBLIGATOIRE EN PRATIQUE.
+   *
+   * La ligne « front » était écrite à `PRODUCTS.front.price` — 27 € — pendant
+   * que `prepareCheckout` commandait à Stripe `prixFront(...)`, soit 89 € après
+   * le compteur ou 62 € au rattrapage. Deux chemins calculaient le même nombre,
+   * et ils avaient divergé : la banque prélevait 106 € quand le récapitulatif
+   * de /merci annonçait 44 €, et l'événement Purchase de Meta remontait la
+   * valeur basse. Un seul chemin, désormais : l'appelant calcule le prix UNE
+   * fois et le passe ici comme il le passe à Stripe.
+   *
+   * Le repli sur le prix catalogue ne couvre que les appels sans compteur (le
+   * mode simulé), jamais le tunnel réel.
+   */
+  prixFront?: number;
 }): Promise<Order> {
-  const items: OrderItem[] = [{ sku: "front", price: PRODUCTS.front.price }];
+  const items: OrderItem[] = [{ sku: "front", price: input.prixFront ?? PRODUCTS.front.price }];
   if (input.withBump) items.push({ sku: "bump", price: PRODUCTS.bump.price });
   const base = {
     id: id("ord"),
@@ -280,19 +459,44 @@ export async function getLead(id: string): Promise<Lead | null> {
   return db.leads.find((l) => l.id === id) ?? null;
 }
 
-/** Désinscription. Idempotent : cliquer deux fois ne casse rien. */
+/**
+ * Désinscription. Idempotent : cliquer deux fois ne casse rien.
+ *
+ * ⚠️ ELLE PURGE AUSSI LES RÉPONSES DU BON DE COMMANDE. Une réponse sur la
+ * situation de couple, les enfants ou l'âge ne survit pas à une désinscription :
+ * c'est ce que la page de confidentialité annonce, et ce qui doit rester
+ * littéralement vrai. Les lignes de `orders` restent, elles — obligation
+ * comptable de 10 ans —, mais elles ne disent rien de la famille de personne.
+ *
+ * Effet de bord assumé : un désinscrit qui rachète plus tard repart avec un
+ * profil vide, donc au tunnel par défaut. C'est le bon sens du compromis — le
+ * défaut est l'existant, jamais pire.
+ */
 export async function desabonner(id: string): Promise<Lead | null> {
   if (sqlActif) {
     const s = await pg();
     const [r] = await s<LigneLead[]>`
       update leads set desabonne = true where id = ${id} returning *
     `;
-    return r ? versLead(r) : null;
+    if (!r) return null;
+    // La purge est enveloppée : l'acte visible pour l'inscrit est la
+    // désinscription elle-même, et un incident sur une table annexe ne doit pas
+    // lui afficher une erreur qui lui ferait croire qu'il reçoit encore des
+    // emails. La trace au journal reste, et un reclic rejoue la suppression.
+    try {
+      await s`delete from profils where email = ${r.email}`;
+    } catch (e) {
+      console.error("[profils] purge à la désinscription impossible", e);
+    }
+    return versLead(r);
   }
   const db = await read();
   const lead = db.leads.find((l) => l.id === id);
   if (!lead) return null;
   lead.desabonne = true;
+  // Le miroir exact du `delete` SQL : les deux modes doivent se comporter à
+  // l'identique, sinon un test passé en local ne prouve rien sur la production.
+  db.profils = db.profils.filter((p) => p.email !== lead.email);
   await write(db);
   return lead;
 }
@@ -321,17 +525,38 @@ export async function marquerEnvoye(id: string, etape: string): Promise<void> {
   await write(db);
 }
 
-/** Tous les inscrits encore abonnés, pour le passage quotidien du cron. */
+/**
+ * Les inscrits encore abonnés ET PAS ENCORE ACHETEURS, pour le passage
+ * quotidien du cron.
+ *
+ * ⚠️ L'exclusion des acheteurs ferme un bug qui se voyait de l'extérieur.
+ * Quelqu'un qui achetait à J2 continuait de recevoir la séquence prospect :
+ * J4 lui demandait « 27 € sur internet, à mon âge ? » à propos d'un produit
+ * qu'il avait déjà payé, J6 lui proposait un bouton « Accéder à la méthode »,
+ * et J7 lui vendait une dernière fois la place fondatrice qu'il occupait.
+ * Sur cette cible, ce n'est pas une maladresse : c'est un email au support,
+ * puis un doute sur ce qu'il a réellement acheté.
+ *
+ * Le critère est l'EXISTENCE D'UN ACCÈS, pas d'une commande : un accès n'est
+ * créé que sur commande payée, et c'est la seule table qui suive le client
+ * plutôt que la transaction.
+ */
 export async function leadsActifs(): Promise<Lead[]> {
   if (sqlActif) {
     const s = await pg();
     const r = await s<LigneLead[]>`
-      select * from leads where desabonne = false order by created_at asc
+      select l.* from leads l
+      where l.desabonne = false
+        and not exists (select 1 from acces a where a.email = l.email)
+      order by l.created_at asc
     `;
     return r.map(versLead);
   }
   const db = await read();
-  return db.leads.filter((l) => !l.desabonne);
+  // Le miroir exact du `not exists` : les deux modes doivent se comporter à
+  // l'identique, sinon un test passé en local ne prouve rien sur la production.
+  const acheteurs = new Set(db.acces.map((a) => a.email));
+  return db.leads.filter((l) => !l.desabonne && !acheteurs.has(l.email));
 }
 
 export async function getOrder(orderId: string): Promise<Order | null> {
@@ -344,12 +569,31 @@ export async function getOrder(orderId: string): Promise<Order | null> {
   return db.orders.find((o) => o.id === orderId) ?? null;
 }
 
+/**
+ * @param prix LE PRIX RÉELLEMENT DÉBITÉ POUR CET ARTICLE, quand il diffère du
+ *   catalogue. Même motif que `prixFront` sur `createOrder` : un article écrit
+ *   au prix catalogue pendant que Stripe encaisse autre chose, ce sont deux
+ *   chemins qui calculent le même nombre et qui finissent par diverger — la
+ *   banque prélève un montant que le récapitulatif de /merci n'affiche pas, et
+ *   l'événement Purchase de Meta remonte une valeur fausse.
+ *
+ *   Trois cas l'exigent : la seconde offre à prix réduit (l'Assurance-vie à
+ *   50 € au lieu de 97 €, Le Plan à 250 € au lieu de 297 €, la ligne « 3 clauses
+ *   bénéficiaires » n'étant facturée qu'une fois), et le Dossier notaire ajouté
+ *   sans supplément, écrit à 0 €.
+ *
+ *   ⚠️ `0` doit rester `0`. D'où `?? PRODUCTS[sku].price` et jamais `||`, qui
+ *   remettrait 17 € sur une ligne annoncée offerte à l'écran.
+ *
+ *   Sans ce paramètre, le comportement est exactement celui d'avant.
+ */
 export async function addItem(
   orderId: string,
   sku: ProductSku,
   paymentIntentId?: string,
+  prix?: number,
 ): Promise<Order | null> {
-  const item: OrderItem = { sku, price: PRODUCTS[sku].price, paymentIntentId };
+  const item: OrderItem = { sku, price: prix ?? PRODUCTS[sku].price, paymentIntentId };
 
   if (sqlActif) {
     const s = await pg();
@@ -414,4 +658,821 @@ export async function attachStripeCustomer(orderId: string, customerId: string):
   if (!order) return;
   order.stripeCustomerId = customerId;
   await write(db);
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   L'ESPACE MEMBRE — l'accès, la progression, les achats depuis l'espace
+
+   ⚠️ RAPPEL, POUR CHAQUE FONCTION DE CETTE SECTION : les deux modes doivent
+   se comporter à l'identique. Une branche fichier oubliée ne lève RIEN — elle
+   rend simplement le parcours local menteur, et c'est le seul parcours qu'on
+   puisse dérouler à la main avant de facturer un vrai client.
+   ═══════════════════════════════════════════════════════════════ */
+
+/**
+ * Get-or-create de l'accès membre, sans course.
+ *
+ * Même tour qu'`addLead` : `on conflict (email) do update set email =
+ * excluded.email` est un no-op volontaire dont le seul rôle est de faire
+ * renvoyer la ligne existante. ⚠️ NE JAMAIS le remplacer par `do nothing` :
+ * `do nothing` ne renvoie aucune ligne, donc `returning *` serait vide et
+ * l'appelant croirait l'accès inexistant alors qu'il vient de le trouver.
+ *
+ * Appelée par `confirmCheckout` AVANT tout envoi d'email : le jeton doit
+ * exister en base même si Resend ne répond jamais, sans quoi la page /merci
+ * n'aurait pas de lien à afficher — et c'est ce lien affiché qui sauve
+ * l'accès le jour où l'email ne part pas.
+ */
+export async function assurerAcces(input: { email: string; firstName: string }): Promise<Acces> {
+  const email = normaliserEmail(input.email);
+  const firstName = input.firstName.trim();
+
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneAcces[]>`
+      insert into acces (jeton, email, first_name)
+      values (${nouveauJeton()}, ${email}, ${firstName})
+      on conflict (email) do update set email = excluded.email
+      returning *
+    `;
+    return versAcces(r);
+  }
+
+  const db = await read();
+  const existant = db.acces.find((a) => a.email === email);
+  if (existant) return existant;
+  const acces: Acces = {
+    jeton: nouveauJeton(),
+    email,
+    firstName,
+    createdAt: new Date().toISOString(),
+    revoque: false,
+    envoyes: [],
+  };
+  db.acces.push(acces);
+  await write(db);
+  return acces;
+}
+
+/** L'unique lecture de toutes les pages de l'espace : le jeton est clé primaire. */
+export async function accesParJeton(jeton: string): Promise<Acces | null> {
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneAcces[]>`select * from acces where jeton = ${jeton}`;
+    return r ? versAcces(r) : null;
+  }
+  const db = await read();
+  return db.acces.find((a) => a.jeton === jeton) ?? null;
+}
+
+/** Utilisée par /merci et par le formulaire « j'ai perdu mon lien ». */
+export async function accesParEmail(email: string): Promise<Acces | null> {
+  const cle = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneAcces[]>`select * from acces where email = ${cle}`;
+    return r ? versAcces(r) : null;
+  }
+  const db = await read();
+  return db.acces.find((a) => a.email === cle) ?? null;
+}
+
+/** La visite, notée sans bloquer le rendu. Aucun appelant n'attend le résultat. */
+export async function marquerVu(jeton: string): Promise<void> {
+  if (sqlActif) {
+    const s = await pg();
+    await s`update acces set vu_le = now() where jeton = ${jeton}`;
+    return;
+  }
+  const db = await read();
+  const acces = db.acces.find((a) => a.jeton === jeton);
+  if (!acces) return;
+  acces.vuLe = new Date().toISOString();
+  await write(db);
+}
+
+/**
+ * ⚠️ RÉSERVE UN ENVOI. LE MOTIF LE PLUS IMPORTANT DE CE FICHIER.
+ *
+ * `confirmCheckout` (le navigateur) et le webhook Stripe peuvent tomber à la
+ * même seconde. Le motif naïf — lire, envoyer, marquer — enverrait alors DEUX
+ * emails d'accès identiques, à la minute exacte où l'acheteur doute le plus de
+ * ce qu'il vient de faire.
+ *
+ * La parade tient dans le `where not (envoyes @> …)` de l'`update` : la base
+ * n'accorde la clé qu'à un seul des deux, et il n'y a donc jamais qu'un
+ * gagnant. Renvoie une ligne SI ET SEULEMENT SI on a gagné la réservation.
+ *
+ * ⚠️ Réserver AVANT d'envoyer n'est sûr qu'accompagné de `libererEnvoi` :
+ * sans la libération, un refus de Resend brûlerait la clé pour toujours et
+ * l'email d'accès de cet acheteur ne partirait plus JAMAIS.
+ */
+export async function reserverEnvoi(email: string, cle: string): Promise<Acces | null> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneAcces[]>`
+      update acces
+      set envoyes = envoyes || ${s.json([cle])}
+      where email = ${adresse} and not (envoyes @> ${s.json([cle])})
+      returning *
+    `;
+    return r ? versAcces(r) : null;
+  }
+  const db = await read();
+  const acces = db.acces.find((a) => a.email === adresse);
+  if (!acces) return null;
+  // Le même garde qu'en SQL, dans le même ordre : on ne renvoie l'accès que si
+  // la clé n'y était pas.
+  if (acces.envoyes.includes(cle)) return null;
+  acces.envoyes = [...acces.envoyes, cle];
+  await write(db);
+  return acces;
+}
+
+/**
+ * Libère une réservation dont l'envoi a échoué. Le pendant obligatoire de
+ * `reserverEnvoi`.
+ *
+ * ⚠️ Sans clé Resend, `envoyer()` renvoie `{ ok: true }` sans rien envoyer
+ * (email.ts). Un déploiement mal configuré « livrerait » donc à tout le monde
+ * sans qu'un seul email parte, et cette fonction ne serait jamais appelée : le
+ * lien affiché en clair sur /merci reste le seul garde-fou de ce scénario-là.
+ */
+export async function libererEnvoi(email: string, cle: string): Promise<void> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    await s`
+      update acces
+      set envoyes = coalesce(
+            (select jsonb_agg(v) from jsonb_array_elements(envoyes) v
+             where v <> to_jsonb(${cle}::text)),
+            '[]'::jsonb
+          )
+      where email = ${adresse}
+    `;
+    return;
+  }
+  const db = await read();
+  const acces = db.acces.find((a) => a.email === adresse);
+  if (!acces) return;
+  acces.envoyes = acces.envoyes.filter((v) => v !== cle);
+  await write(db);
+}
+
+/**
+ * Remboursement du produit d'appel : l'accès se ferme, la ligne reste.
+ * Le lien continue de répondre — il affiche une page polie avec la date,
+ * jamais une 404.
+ */
+export async function revoquerAcces(email: string): Promise<Acces | null> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneAcces[]>`
+      update acces set revoque = true where email = ${adresse} returning *
+    `;
+    return r ? versAcces(r) : null;
+  }
+  const db = await read();
+  const acces = db.acces.find((a) => a.email === adresse);
+  if (!acces) return null;
+  acces.revoque = true;
+  await write(db);
+  return acces;
+}
+
+/**
+ * ROUVRE UN ACCÈS FERMÉ, quand l'ancien remboursé repasse commande.
+ *
+ * ⚠️ LES DEUX MOITIÉS COMPTENT, ET LA SECONDE EST LA MOINS ÉVIDENTE.
+ *
+ * `revoque = false` rouvre la porte. Mais la clé « acces » est restée posée
+ * dans `envoyes` depuis le premier achat : sans son retrait, `reserverEnvoi`
+ * perdrait la réservation et l'email d'accès de ce nouvel achat ne partirait
+ * JAMAIS — ni par le navigateur, ni par le webhook, ni par le rattrapage du
+ * cron, qui exige lui aussi `not (envoyes @> ["acces"])`.
+ *
+ * Un seul `update` fait les deux : l'acheteur ne peut pas se retrouver rouvert
+ * mais muet, ni averti mais toujours dehors.
+ */
+export async function reouvrirAcces(email: string): Promise<Acces | null> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneAcces[]>`
+      update acces set
+        revoque = false,
+        envoyes = coalesce(
+              (select jsonb_agg(v) from jsonb_array_elements(envoyes) v
+               where v <> to_jsonb('acces'::text)),
+              '[]'::jsonb
+            )
+      where email = ${adresse}
+      returning *
+    `;
+    return r ? versAcces(r) : null;
+  }
+  const db = await read();
+  const acces = db.acces.find((a) => a.email === adresse);
+  if (!acces) return null;
+  acces.revoque = false;
+  acces.envoyes = acces.envoyes.filter((v) => v !== "acces");
+  await write(db);
+  return acces;
+}
+
+/**
+ * Change le jeton d'un membre : lien diffusé, ordinateur familial, capture
+ * d'écran partagée.
+ *
+ * C'est UN update d'une seule ligne, et la progression n'est pas touchée
+ * puisqu'elle est clée sur l'email — c'est toute la raison de ce choix de clé.
+ */
+export async function regenererJeton(email: string, jeton: string): Promise<Acces | null> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneAcces[]>`
+      update acces set jeton = ${jeton} where email = ${adresse} returning *
+    `;
+    return r ? versAcces(r) : null;
+  }
+  const db = await read();
+  const acces = db.acces.find((a) => a.email === adresse);
+  if (!acces) return null;
+  acces.jeton = jeton;
+  await write(db);
+  return acces;
+}
+
+/** Anti-abus du formulaire « j'ai perdu mon lien » : un renvoi toutes les 2 minutes. */
+export async function marquerLienRenvoye(email: string): Promise<void> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    await s`update acces set renvoye_le = now() where email = ${adresse}`;
+    return;
+  }
+  const db = await read();
+  const acces = db.acces.find((a) => a.email === adresse);
+  if (!acces) return;
+  acces.renvoyeLe = new Date().toISOString();
+  await write(db);
+}
+
+/**
+ * Note le premier affichage d'une étape. Idempotent en UNE requête, donc sans
+ * course : aucun lire-puis-écrire, dans aucun des deux modes.
+ *
+ * ⚠️ C'est ce signal, et lui seul, qui déverrouille la boutique de l'espace.
+ * On ne propose jamais un upsell à quelqu'un qui n'a pas encore ouvert
+ * l'étape 0 : il vient de payer, il n'a rien vu, on ne lui vend rien.
+ */
+export async function ouvrirEtape(email: string, etape: string): Promise<void> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    await s`
+      insert into progression (email, etape) values (${adresse}, ${etape})
+      on conflict (email, etape) do nothing
+    `;
+    return;
+  }
+  const db = await read();
+  if (db.progression.some((p) => p.email === adresse && p.etape === etape)) return;
+  db.progression.push({ email: adresse, etape, ouverteLe: new Date().toISOString() });
+  await write(db);
+}
+
+/**
+ * Coche ou décoche une étape.
+ *
+ * ⚠️ Bascule EXPLICITE, jamais un toggle aveugle : la valeur cible vient du
+ * bouton. Un double envoi du formulaire — chose banale sur un vieux navigateur
+ * ou une connexion lente — donne donc exactement le même résultat, là où un
+ * toggle décocherait ce que le membre vient de cocher.
+ */
+export async function cocherEtape(email: string, etape: string, faite: boolean): Promise<void> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    if (faite) {
+      await s`
+        insert into progression (email, etape, faite_le) values (${adresse}, ${etape}, now())
+        on conflict (email, etape) do update set faite_le = now()
+      `;
+    } else {
+      await s`
+        update progression set faite_le = null where email = ${adresse} and etape = ${etape}
+      `;
+    }
+    return;
+  }
+  const db = await read();
+  const ligne = db.progression.find((p) => p.email === adresse && p.etape === etape);
+  if (faite) {
+    // L'`insert … on conflict` couvre le cas où l'étape n'a jamais été ouverte
+    // (formulaire posté sans passer par le rendu) : le miroir doit la créer.
+    if (ligne) ligne.faiteLe = new Date().toISOString();
+    else
+      db.progression.push({
+        email: adresse,
+        etape,
+        ouverteLe: new Date().toISOString(),
+        faiteLe: new Date().toISOString(),
+      });
+  } else {
+    // L'`update` SQL ne touche rien quand la ligne n'existe pas : idem ici.
+    if (!ligne) return;
+    ligne.faiteLe = undefined;
+  }
+  await write(db);
+}
+
+/** Tout l'état d'avancement d'un membre, en une requête. */
+export async function progressionDe(email: string): Promise<Progression[]> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    const r = await s<LigneProgression[]>`select * from progression where email = ${adresse}`;
+    return r.map(versProgression);
+  }
+  const db = await read();
+  return db.progression.filter((p) => p.email === adresse);
+}
+
+/**
+ * LA REQUÊTE D'HABILITATION : ce que le membre a réellement payé.
+ *
+ * ⚠️ `status = 'paid'` STRICTEMENT, et non le `status <> 'pending'` de
+ * `countFounders`. Les deux ne disent pas la même chose : le compteur de
+ * places compte des ventes, celle-ci ouvre des portes. Le jour où un
+ * troisième statut existe, une vente comptée ne doit pas devenir un accès
+ * accordé.
+ *
+ * ⚠️ Deux traitements restent à la charge de l'appelant, et ils ne sont pas
+ * optionnels : écarter les articles `rembourse` (le drapeau est dans l'item,
+ * jamais dans le statut), et étendre les possessions par `INCLUS_DANS` —
+ * sans quoi la boutique proposera Le Simulateur à 147 € à quelqu'un qui vient
+ * de l'obtenir dans Le Plan à 297 €.
+ */
+export async function commandesPayeesParEmail(email: string): Promise<Order[]> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    const r = await s<LigneOrder[]>`
+      select * from orders where email = ${adresse} and status = 'paid'
+      order by created_at asc
+    `;
+    return r.map(versOrder);
+  }
+  const db = await read();
+  return db.orders
+    .filter((o) => o.email === adresse && o.status === "paid")
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+}
+
+/**
+ * La commande payée la plus récente qui porte un moyen de paiement mémorisé.
+ * C'est elle qui fournit la carte d'un achat fait depuis l'espace — et son
+ * empreinte affichée à l'écran (« Visa se terminant par 4242 ») avant tout
+ * débit.
+ */
+export async function commandeAvecCarte(email: string): Promise<Order | null> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneOrder[]>`
+      select * from orders
+      where email = ${adresse} and status = 'paid' and stripe_payment_method_id is not null
+      order by created_at desc limit 1
+    `;
+    return r ? versOrder(r) : null;
+  }
+  const db = await read();
+  return (
+    db.orders
+      .filter((o) => o.email === adresse && o.status === "paid" && o.stripePaymentMethodId)
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0] ?? null
+  );
+}
+
+/**
+ * Protection anti-double-débit des achats faits depuis l'espace.
+ *
+ * Une commande espace « pending » de moins de 2 minutes pour le même SKU est
+ * RÉUTILISÉE : la clé d'idempotence Stripe, construite sur l'identifiant de
+ * commande, reste donc stable sur un double-clic. Passé ces 2 minutes, une
+ * nouvelle commande est créée — c'est ce qui autorise une vraie seconde
+ * tentative après un refus de carte, au lieu de rejouer éternellement la clé
+ * d'un paiement échoué.
+ */
+export async function commandeEspaceEnCours(email: string, sku: ProductSku): Promise<Order | null> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneOrder[]>`
+      select * from orders
+      where email = ${adresse} and status = 'pending'
+        and created_at > now() - interval '2 minutes'
+        and items @> ${s.json([{ sku }])}
+      order by created_at desc limit 1
+    `;
+    return r ? versOrder(r) : null;
+  }
+  const db = await read();
+  const limite = Date.now() - 2 * 60 * 1000;
+  return (
+    db.orders
+      .filter(
+        (o) =>
+          o.email === adresse &&
+          o.status === "pending" &&
+          Date.parse(o.createdAt) > limite &&
+          o.items.some((i) => i.sku === sku),
+      )
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0] ?? null
+  );
+}
+
+/**
+ * LES COMMANDES ESPACE RESTÉES « PENDING » POUR CE PRODUIT, quel que soit leur âge.
+ *
+ * ⚠️ CE N'EST PAS UN DOUBLON DE `commandeEspaceEnCours`. Celle-ci sert la
+ * réutilisation dans les 2 minutes ; celle-là sert la RÉCONCILIATION : une
+ * commande peut rester « pending » alors que le débit a bien été encaissé —
+ * `markOrderPaid` a levé, ou la fonction a été coupée après la réponse de
+ * Stripe. Sans cette lecture, le membre reclique cinq minutes plus tard, une
+ * commande neuve est créée, la clé d'idempotence change, et il est débité une
+ * SECONDE fois de 297 €.
+ *
+ * Bornée à 7 jours : au-delà, un paiement resté en suspens est un incident à
+ * traiter à la main, pas une commande à rejouer.
+ */
+export async function commandesEspacePendantes(email: string, sku: ProductSku): Promise<Order[]> {
+  const adresse = normaliserEmail(email);
+  const debut = new Date(Date.now() - 7 * 86_400_000).toISOString();
+
+  if (sqlActif) {
+    const s = await pg();
+    const r = await s<LigneOrder[]>`
+      select * from orders
+      where email = ${adresse} and status = 'pending'
+        and created_at > ${debut}
+        and items @> ${s.json([{ sku }])}
+      order by created_at desc limit 10
+    `;
+    return r.map(versOrder);
+  }
+  const db = await read();
+  return db.orders
+    .filter(
+      (o) =>
+        o.email === adresse &&
+        o.status === "pending" &&
+        o.createdAt > debut &&
+        o.items.some((i) => i.sku === sku),
+    )
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+    .slice(0, 10);
+}
+
+/**
+ * Une commande ADDITIONNELLE, d'un seul article, pour un achat fait depuis
+ * l'espace.
+ *
+ * ⚠️ Pourquoi ne pas empiler l'article sur la commande d'origine, comme le
+ * fait `addItem` dans le tunnel. Deux raisons, et la seconde est un vrai bug :
+ *   — `orderTotal` gonflerait indéfiniment, donc le récapitulatif de /merci
+ *     afficherait un montant qui n'a jamais été débité en une fois ;
+ *   — un vieux `/merci?o=…` rouvert des mois plus tard rejouerait l'événement
+ *     Purchase de Meta avec ce montant faux, et l'algorithme optimiserait sur
+ *     une valeur inventée.
+ *
+ * `createOrder` reste la fonction du tunnel front et n'est pas touchée.
+ */
+export async function creerCommandeEspace(input: {
+  email: string;
+  firstName: string;
+  sku: ProductSku;
+  mode: "test" | "live";
+  stripeCustomerId?: string;
+  stripePaymentMethodId?: string;
+}): Promise<Order> {
+  const items: OrderItem[] = [{ sku: input.sku, price: PRODUCTS[input.sku].price }];
+  const base = {
+    id: id("ord"),
+    email: normaliserEmail(input.email),
+    firstName: input.firstName.trim(),
+    mode: input.mode,
+    // Le consentement à l'exécution immédiate a été recueilli à la commande
+    // d'origine ; l'achat depuis l'espace le reconduit explicitement à l'écran.
+    consentImmediateAccess: true,
+    // ⚠️ « pending » : rien n'est encaissé tant que Stripe n'a pas répondu.
+    // `markOrderPaid` reste l'unique écrivain du statut « paid ».
+    status: "pending" as const,
+  };
+
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneOrder[]>`
+      insert into orders (id, email, first_name, items, mode, consent_immediate_access, status,
+                          stripe_customer_id, stripe_payment_method_id)
+      values (${base.id}, ${base.email}, ${base.firstName}, ${s.json(items)},
+              ${base.mode}, ${base.consentImmediateAccess}, ${base.status},
+              ${input.stripeCustomerId ?? null}, ${input.stripePaymentMethodId ?? null})
+      returning *
+    `;
+    return versOrder(r);
+  }
+
+  const db = await read();
+  const order: Order = {
+    ...base,
+    items,
+    createdAt: new Date().toISOString(),
+    stripeCustomerId: input.stripeCustomerId,
+    stripePaymentMethodId: input.stripePaymentMethodId,
+  };
+  db.orders.push(order);
+  await write(db);
+  return order;
+}
+
+/**
+ * Le rattrapage du cron : les commandes payées dont l'email d'accès n'est
+ * jamais parti.
+ *
+ * ⚠️ `depuis` N'EST PAS UN CONFORT. Toutes les commandes payées antérieures à
+ * la mise en ligne de l'espace — commandes de test comprises — n'ont aucun
+ * accès : sans cette borne, le premier passage du cron enverrait l'email
+ * d'accès à tout l'historique d'un coup. La constante est
+ * `DATE_ESPACE_EN_LIGNE` (config.ts).
+ *
+ * Aucune colonne n'a été ajoutée à `orders` pour cela : la jointure gauche
+ * sur `acces` suffit, et `acces` est une table neuve — donc vide.
+ */
+export async function commandesSansAcces(depuis: string, limite: number): Promise<Order[]> {
+  if (sqlActif) {
+    const s = await pg();
+    const r = await s<LigneOrder[]>`
+      select o.* from orders o
+      left join acces a on a.email = o.email
+      where o.status = 'paid'
+        and o.created_at > ${depuis}
+        and (a.email is null or not (a.envoyes @> ${s.json(["acces"])}))
+      order by o.created_at asc
+      limit ${limite}
+    `;
+    return r.map(versOrder);
+  }
+  const db = await read();
+  const parEmail = new Map(db.acces.map((a) => [a.email, a]));
+  return db.orders
+    .filter((o) => {
+      if (o.status !== "paid" || o.createdAt <= depuis) return false;
+      const acces = parEmail.get(o.email);
+      return !acces || !acces.envoyes.includes("acces");
+    })
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+    .slice(0, limite);
+}
+
+/**
+ * Combien de jours un accès reste candidat à la séquence de rassurance.
+ *
+ * La dernière étape part au jour 7 : dix jours laissent de la marge pour un
+ * passage de cron manqué, et pas davantage.
+ */
+const FENETRE_SEQUENCE_JOURS = 10;
+
+/**
+ * LES ACCÈS QUI ONT ENCORE QUELQUE CHOSE À RECEVOIR.
+ *
+ * ⚠️ CETTE REQUÊTE REMPLACE UN `order by created_at asc limit 150` QUI NE
+ * REGARDAIT QUE LES 150 MEMBRES LES PLUS ANCIENS. Les anciens n'ont plus
+ * d'étape due — ils ne consommaient donc pas le budget d'envoi, mais ils
+ * occupaient en permanence toutes les places de la fenêtre d'examen. À partir
+ * du 151ᵉ acheteur, plus personne ne recevait c1, c2 ni c3, et le bilan du
+ * cron affichait simplement `rassurances: 0`, ce qui ressemble à une journée
+ * normale.
+ *
+ * Deux bornes, et il faut les deux :
+ *   — la fenêtre de 10 jours : elle seule est bornée par le volume quotidien
+ *     plutôt que par l'historique ;
+ *   — les clés déjà toutes envoyées : un membre servi ne revient pas prendre
+ *     une place. Elle ne suffit PAS seule — une étape à condition fausse (c2
+ *     pour qui a ouvert son étape 0) n'est jamais notée, donc son accès
+ *     resterait candidat pour toujours.
+ *
+ * `cles` vient de `SEQUENCE_CLIENT` et lui est passé par l'appelant : la liste
+ * ne peut pas diverger du tableau qu'elle décrit.
+ */
+export async function accesEnSequence(cles: string[], limite: number): Promise<Acces[]> {
+  const debut = new Date(Date.now() - FENETRE_SEQUENCE_JOURS * 86_400_000).toISOString();
+
+  if (sqlActif) {
+    const s = await pg();
+    const r = await s<LigneAcces[]>`
+      select * from acces
+      where revoque = false
+        and created_at > ${debut}
+        and not (envoyes @> ${s.json(cles)})
+      order by created_at asc
+      limit ${limite}
+    `;
+    return r.map(versAcces);
+  }
+  const db = await read();
+  return db.acces
+    .filter(
+      (a) => !a.revoque && a.createdAt > debut && !cles.every((c) => (a.envoyes ?? []).includes(c)),
+    )
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+    .slice(0, limite);
+}
+
+/**
+ * Retrouve une commande par son paiement Stripe : l'événement
+ * `charge.refunded` ne porte que le `payment_intent`, jamais notre orderId.
+ */
+export async function commandeParPaymentIntent(paymentIntentId: string): Promise<Order | null> {
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneOrder[]>`
+      select * from orders where items @> ${s.json([{ paymentIntentId }])} limit 1
+    `;
+    return r ? versOrder(r) : null;
+  }
+  const db = await read();
+  return db.orders.find((o) => o.items.some((i) => i.paymentIntentId === paymentIntentId)) ?? null;
+}
+
+/**
+ * Marque remboursés les articles payés par ce PaymentIntent.
+ *
+ * ⚠️ Le remboursement se note DANS L'ARTICLE, jamais dans `Order.status` :
+ * un statut 'refunded' serait compté par `countFounders` (qui filtre sur
+ * `status <> 'pending'`) comme une place fondatrice vendue, sur un chiffre
+ * affiché en page de vente.
+ *
+ * ⚠️ Effet de bord connu : `addItem` dédoublonne sur le SKU seul, donc un
+ * article remboursé — qui reste dans `items` — empêche de racheter le même
+ * produit sur cette commande. C'est assumé, et c'est une raison de plus pour
+ * que les achats faits depuis l'espace créent une commande additionnelle.
+ */
+export async function marquerRembourse(
+  orderId: string,
+  paymentIntentId: string,
+): Promise<Order | null> {
+  const appliquer = (order: Order) => {
+    for (const item of order.items) {
+      if (item.paymentIntentId === paymentIntentId) item.rembourse = true;
+    }
+    return order;
+  };
+
+  if (sqlActif) {
+    const s = await pg();
+    const [ligne] = await s<LigneOrder[]>`select * from orders where id = ${orderId}`;
+    if (!ligne) return null;
+    const order = appliquer(versOrder(ligne));
+    await s`update orders set items = ${s.json(order.items)} where id = ${orderId}`;
+    return order;
+  }
+
+  const db = await read();
+  const order = db.orders.find((o) => o.id === orderId);
+  if (!order) return null;
+  appliquer(order);
+  await write(db);
+  return order;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   LES RÉPONSES DU BON DE COMMANDE — table `profils`
+
+   Quatre questions facultatives posées entre « Vos coordonnées » et
+   « Paiement sécurisé ». Elles ne servent QU'À choisir les écrans montrés après
+   le paiement. Elles ne partent dans aucun événement publicitaire, ne transitent
+   par aucune URL, et disparaissent à la désinscription (`desabonner`).
+
+   ⚠️ RAPPEL VALABLE POUR LES TROIS FONCTIONS : une commande sans réponse
+   n'écrit AUCUNE ligne ici, et l'absence de ligne est un état parfaitement
+   normal — c'est même le cas majoritaire tant que `QUALIFICATION_ACTIVE` est à
+   `false`. Toute lecture rend alors `null`, et le routage retombe sur le tunnel
+   d'aujourd'hui.
+   ═══════════════════════════════════════════════════════════════ */
+
+/**
+ * ÉCRIT (OU RÉÉCRIT) LES RÉPONSES D'UNE COMMANDE. NE LÈVE JAMAIS.
+ *
+ * ⚠️ LE « NE LÈVE JAMAIS » EST LA MOITIÉ IMPORTANTE. Cette écriture a lieu dans
+ * la fenêtre la plus fragile du tunnel : après `prepareCheckout`, avant
+ * `stripe.confirmPayment`. Un incident de base à cette seconde-là ne doit pas
+ * empêcher un paiement — on perdrait 27 € et un client pour une information de
+ * confort. En cas d'échec, il n'y a pas de ligne, donc pas de réponse, donc le
+ * tunnel par défaut : le pire cas du dispositif reste l'existant.
+ *
+ * `on conflict (order_id) do update` rend l'appel idempotent : un double clic,
+ * un rechargement, ou une seconde tentative après un refus de carte laissent UNE
+ * ligne. La réécriture est volontairement totale — l'appelant envoie l'état
+ * complet du formulaire, donc une case décochée doit bien effacer l'ancienne
+ * valeur, pas la laisser en place.
+ */
+export async function enregistrerProfil(input: {
+  orderId: string;
+  email: string;
+  vie?: string;
+  enfants?: string;
+  av?: string;
+  age?: string;
+  piste?: string;
+}): Promise<void> {
+  // Même normalisation que `addLead` et `createOrder` : la purge à la
+  // désinscription compare des emails, et « Jean-Pierre@Orange.FR » ne doit pas
+  // survivre à la désinscription de « jean-pierre@orange.fr ».
+  const email = normaliserEmail(input.email);
+
+  try {
+    if (sqlActif) {
+      const s = await pg();
+      await s`
+        insert into profils (order_id, email, vie, enfants, av, age, piste)
+        values (${input.orderId}, ${email}, ${input.vie ?? null}, ${input.enfants ?? null},
+                ${input.av ?? null}, ${input.age ?? null}, ${input.piste ?? null})
+        on conflict (order_id) do update set
+          email   = excluded.email,
+          vie     = excluded.vie,
+          enfants = excluded.enfants,
+          av      = excluded.av,
+          age     = excluded.age,
+          piste   = excluded.piste
+      `;
+      return;
+    }
+
+    const db = await read();
+    const profil: Profil = {
+      orderId: input.orderId,
+      email,
+      vie: input.vie,
+      enfants: input.enfants,
+      av: input.av,
+      age: input.age,
+      piste: input.piste,
+      // Le miroir du `on conflict do update` : la date de création ne bouge pas
+      // à la réécriture, exactement comme la colonne `created_at` en base.
+      createdAt:
+        db.profils.find((p) => p.orderId === input.orderId)?.createdAt ?? new Date().toISOString(),
+    };
+    db.profils = [...db.profils.filter((p) => p.orderId !== input.orderId), profil];
+    await write(db);
+  } catch (e) {
+    // Journalisé, jamais propagé : voir l'avertissement ci-dessus.
+    console.error("[profils] enregistrement impossible", e);
+  }
+}
+
+/**
+ * LES RÉPONSES D'UNE COMMANDE. C'est la lecture du tunnel : chaque écran de
+ * vente résout sa commande par le paramètre `o`, puis demande son profil ici.
+ */
+export async function profilDeCommande(orderId: string): Promise<Profil | null> {
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneProfil[]>`select * from profils where order_id = ${orderId}`;
+    return r ? versProfil(r) : null;
+  }
+  const db = await read();
+  return db.profils.find((p) => p.orderId === orderId) ?? null;
+}
+
+/**
+ * LE PROFIL LE PLUS RÉCENT DE CET ACHETEUR, toutes commandes confondues.
+ *
+ * Sert là où il n'y a pas d'identifiant de commande sous la main — l'espace
+ * membre, par exemple, qui ne doit pas épingler l'Assurance-vie à quelqu'un qui
+ * a déclaré ne pas en avoir. « Le plus récent » et non « le premier » : quelqu'un
+ * qui a ouvert un contrat entre deux commandes a raison contre son ancienne
+ * réponse.
+ */
+export async function profilParEmail(email: string): Promise<Profil | null> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneProfil[]>`
+      select * from profils where email = ${adresse}
+      order by created_at desc limit 1
+    `;
+    return r ? versProfil(r) : null;
+  }
+  const db = await read();
+  return (
+    db.profils
+      .filter((p) => p.email === adresse)
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0] ?? null
+  );
 }

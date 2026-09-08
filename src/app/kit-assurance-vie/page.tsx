@@ -2,9 +2,15 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { UpsellPage } from "@/components/UpsellPage";
 import { getOrder } from "@/lib/db";
-import { VIDEO } from "@/lib/config";
+import { PRODUCTS, VIDEO } from "@/lib/config";
+import { etapeTunnel } from "@/lib/tunnel";
 
-export const metadata: Metadata = { title: "Le Kit Assurance-Vie" };
+/**
+ * ⚠️ AUCUN NOM DE PRODUIT EN DUR — même motif que /plan-complet. Cette page
+ * disait « Le Kit Assurance-Vie » alors que le catalogue, le reçu, /merci et
+ * la boutique disent « Votre assurance-vie, vérifiée en 30 minutes ».
+ */
+export const metadata: Metadata = { title: PRODUCTS.upsell2.name };
 
 export default async function Upsell2Page({
   searchParams,
@@ -15,13 +21,31 @@ export default async function Upsell2Page({
   const order = o ? await getOrder(o) : null;
   if (!order) redirect("/commande");
 
+  // C'est le tunnel qui decide : cet ecran a-t-il sa place dans le parcours de
+  // CET acheteur, et qu'y a-t-il apres lui. Quelqu'un qui a declare ne pas avoir
+  // d'assurance-vie ne voit jamais cette page — lui proposer l'audit d'un
+  // contrat inexistant serait un remboursement annonce, et la seule offre
+  // possible pour lui serait d'en ouvrir un, c'est-a-dire une recommandation de
+  // placement, interdite hors statut CIF.
+  const etape = await etapeTunnel("assurance-vie", order.id, {
+    bumpPresent: order.items.some((i) => i.sku === "bump"),
+  });
+  // L'échec de paiement d'un upsell précédent doit survivre à la redirection :
+  // sans lui, le client repart vers /merci sans jamais savoir que son second
+  // achat n'est pas passé.
+  if (!etape.afficher) {
+    redirect(
+      etape.versOu + (err === "1" ? (etape.versOu.includes("?") ? "&" : "?") + "err=1" : ""),
+    );
+  }
+
   return (
     <UpsellPage
       step={3}
       paymentFailed={err === "1"}
       orderId={order.id}
       sku="upsell2"
-      next={`/merci?o=${order.id}`}
+      next={etape.suivant}
       kicker="Dernière chose avant votre espace."
       h1={
         <>
@@ -29,7 +53,7 @@ export default async function Upsell2Page({
           cinq minutes&nbsp;: 9 contrats sur 10 échouent.
         </>
       }
-      h2="Le Kit Assurance-Vie : l'audit de votre contrat en 30 minutes, les 3 clauses bénéficiaires rédigées et commentées, et le tableau « avant / après 70 ans » pour décider quoi faire avec votre épargne avant votre prochain anniversaire."
+      h2={`${PRODUCTS.upsell2.name} : l'audit de votre contrat, les 3 clauses bénéficiaires rédigées et commentées, et le tableau « avant / après 70 ans » pour décider quoi faire avec votre épargne avant votre prochain anniversaire.`}
       videoId={VIDEO.upsell2}
       videoMinutes={3}
       rows={[
@@ -62,8 +86,8 @@ export default async function Upsell2Page({
         frais sur 20 ans, c&apos;est une année d&apos;épargne offerte à la banque.
       </p>
       <p className="text-[0.95rem] text-text-soft">
-        Aucun assureur ni contrat n&apos;est nommé : le Kit vous apprend à lire et auditer{" "}
-        <em>le vôtre</em>.
+        Aucun assureur ni contrat n&apos;est nommé : {PRODUCTS.upsell2.name} vous apprend à lire et
+        auditer <em>le vôtre</em>.
       </p>
     </UpsellPage>
   );

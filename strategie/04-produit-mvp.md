@@ -87,8 +87,8 @@ Livrables : Simulateur (Google Sheet + version Excel + version papier), Calendri
 
 - **Le démembrement** en français : vous donnez les murs (nue-propriété), vous gardez l'usage à vie (usufruit). Vous restez chez vous. Vous pouvez même la louer.
 - Le barème de l'art. 669 CGI : la loi raisonne en « moins de X ans révolus », donc **la bascule tombe le jour de l'anniversaire**. Tant qu'on n'a pas 71 ans, la nue-propriété vaut **60 %** ; à partir de 71 ans, **70 %**. → *"Tant que vous n'avez pas 71 ans, on transmet sur 60 %. Le jour de vos 71 ans, c'est 70 %. Dix points de patrimoine, pour un anniversaire."*
-- Cas Jean-Pierre : donation de la nue-propriété de la maison (480 k€) à 65 ans, par les deux parents, à l'enfant → base 288 000 €, soit 144 000 € par parent, 44 000 € taxables de chaque côté → 6 994 € × 2 = 13 989 €. Au décès, l'usufruit s'éteint **sans droits**.
-- Avant/après complet sur le cas : **82 194 € → 13 989 €**. Les deux parents donnent la nue-propriété à 65 ans : 288 000 € de nue-propriété, 144 000 € par parent → 44 000 € taxables de chaque côté → 6 994 € × 2 = 13 989 €. L'épargne en assurance-vie (module 3) → 0 €. Julien garde la maison. Le détail à l'écran.
+- Cas Jean-Pierre : donation de la nue-propriété de la maison (480 k€) à 65 ans, par les deux parents, à l'enfant → base 288 000 €, soit 144 000 € par parent, 44 000 € taxables de chaque côté → 6 994 € × 2 = 13 988 €. Au décès, l'usufruit s'éteint **sans droits**.
+- Avant/après complet sur le cas : **82 194 € → 13 988 €**. Les deux parents donnent la nue-propriété à 65 ans : 288 000 € de nue-propriété, 144 000 € par parent → 44 000 € taxables de chaque côté → 6 994 € × 2 = 13 988 €. L'épargne en assurance-vie (module 3) → 0 €. Julien garde la maison. Le détail à l'écran.
 - Objection EHPAD : l'usufruitier peut louer ; on peut garder l'épargne en pleine propriété ; on peut prévoir une **clause de retour** et une **interdiction d'aliéner**.
 - Action : noter la valeur de sa maison et son âge → lire sa ligne du barème.
 

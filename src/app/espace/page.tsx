@@ -1,27 +1,17 @@
-import type { Metadata } from "next";
-import { Header, Footer } from "@/components/Chrome";
-import { CONTACT_EMAIL } from "@/lib/config";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = { title: "Votre espace" };
-
-/** Espace membre : à construire (connexion par lien envoyé par email, sans mot de passe). */
-export default function MemberAreaPlaceholder() {
-  return (
-    <>
-      <Header minimal />
-      <main className="flex-1">
-        <div className="wrap py-12">
-          <h1 className="mb-4 text-[1.6rem]">Votre espace membre</h1>
-          <p className="mb-3">
-            L&apos;espace membre est en construction. Vos accès vous seront envoyés par email : un
-            lien à cliquer, aucun mot de passe à retenir.
-          </p>
-          <p className="text-text-soft">
-            Une question ? <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-          </p>
-        </div>
-      </main>
-      <Footer />
-    </>
-  );
+/**
+ * L'ANCIENNE ADRESSE DE L'ESPACE, CONSERVEE POUR TOUJOURS.
+ *
+ * La page d'entree des membres vit desormais sur /connexion : c'est le mot que
+ * le lecteur emploie lui-meme, et il ne doit pas etre confondu avec la page
+ * d'atterrissage publicitaire, qui vit sur / et poursuit un tout autre but.
+ *
+ * On ne supprime pas cette route pour autant. Des liens sont deja partis par
+ * email, des favoris sont deja poses, et un client de 78 ans qui tombe sur une
+ * 404 ne reessaie pas : il demande un remboursement. Une redirection permanente
+ * coute une ligne et ne s'enleve jamais.
+ */
+export default function AncienneEntreeEspace() {
+  redirect("/connexion");
 }

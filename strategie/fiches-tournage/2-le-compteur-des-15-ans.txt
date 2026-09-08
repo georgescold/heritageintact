@@ -1,0 +1,615 @@
+============================================================
+VIDÉO 2 (étape 1) — LE COMPTEUR DES 15 ANS
+Durée cible : 10 minutes | faceless, voix + écran
+============================================================
+
+Documents livrés avec cette vidéo : declarer-un-don (à fabriquer) ·
+trois-poches, titre affiché « Combien garder pour soi ».
+Le spectateur a déjà, depuis l'étape 0 : le Calendrier des 3 dates, le
+Simulateur de Facture Invisible et le lexique.
+
+Première des 3 dates, et la seule qui ne dépende d'aucun âge.
+Livrable : la ligne n° 1 du Calendrier, vérifiée pièce en main et corrigée si
+besoin — et la date de rechargement recalculée au lendemain.
+
+------------------------------------------------------------
+1. CE QUE JE DOIS SAVOIR AVANT DE TOURNER
+------------------------------------------------------------
+
+CE QUE FAIT CETTE VIDÉO, ET CE QU'ELLE NE REFAIT PAS
+La ligne n° 1 du Calendrier a déjà été écrite à l'étape 0, de mémoire, en
+1 minute et sans explication. Cette vidéo ne la fait pas écrire une seconde
+fois : elle la fait VÉRIFIER sur un papier, et corriger si elle est fausse.
+Ce que l'étape 0 n'a pas donné, et qui s'ajoute ici : le rechargement prend
+effet le lendemain du 15e anniversaire, et ce n'est pas le don qui fait partir
+le délai, c'est l'acte notarié ou la déclaration. Ce sont ces 2 informations
+qui peuvent rendre fausse la ligne écrite à l'étape 0.
+
+LE MÉCANISME EN UNE PHRASE
+Chaque parent peut donner 100 000 € à chaque enfant sans aucun droit à payer
+(art. 779 CGI), et cette enveloppe se reconstitue entièrement une fois 15 ans
+écoulés (art. 784 CGI) — le décompte partant de la date de l'acte quand la
+donation est notariée, et du jour de la déclaration quand il s'agit d'un don
+d'argent de la main à la main.
+
+LES 5 POINTS DE DROIT QUI PORTENT TOUTE L'ÉTAPE
+
+1) L'abattement — art. 779 CGI.
+100 000 € en ligne directe, c'est-à-dire d'un parent vers son enfant. Il se
+compte par parent ET par enfant : un couple avec 2 enfants dispose donc de
+4 enveloppes de 100 000 €. Ce n'est ni un plafond de fortune, ni une faveur
+réservée à qui que ce soit : c'est le régime de droit commun.
+
+2) Le rechargement — art. 784 CGI.
+Le texte parle de dons consentis depuis « plus de quinze ans ». « Plus de » et
+non « quinze ans » : le jour du 15e anniversaire du don, on n'y est pas encore.
+C'est à partir du LENDEMAIN que le don ancien cesse d'être rapporté et que
+l'abattement est de nouveau plein. Ne jamais dire « au bout de 15 ans » sans
+préciser le lendemain : un acte signé le jour même du 15e anniversaire tombe
+encore sous le rappel de l'article 784.
+
+3) Le point de départ dépend de la forme du don.
+Don d'argent de la main à la main : le compteur part du jour où le don est
+déclaré à l'administration, parce qu'avant cela sa date n'est pas opposable
+(art. 757 CGI). Donation faite devant notaire : le compteur part de la date de
+l'acte. Dans les 2 cas, la date à écrire est celle qui figure sur un papier.
+2 conséquences, et ce sont les 2 informations neuves de la vidéo :
+  · chaque don a son propre compteur de 15 ans. Un nouveau don ne remet pas à
+    zéro le compteur des dons plus anciens : un don de 2011 sort du calcul en
+    2026, même si un autre a été fait en 2020. Le don le plus récent donne
+    seulement la date à laquelle l'abattement redevient entier EN TOTALITÉ. Et
+    chaque compteur ne vaut que pour un parent et un enfant : le don du père au
+    premier enfant ne touche ni l'abattement de la mère, ni celui du second
+    enfant ;
+  · si rien n'a jamais été déclaré, le compteur n'a jamais démarré. L'abattement
+    ne servira alors qu'une fois, au décès. Ce constat n'est pas un échec :
+    quand rien n'a jamais été déclaré, c'est le spectateur qui choisit la date
+    de départ du compteur. N'avoir rien déclaré est le cas le plus fréquent.
+
+LE DON FAIT MAIS JAMAIS DÉCLARÉ — le cas le plus fréquent après « rien du tout »
+Une somme remise de la main à la main sans qu'aucun papier n'existe n'a fait
+démarrer aucun compteur : pour l'impôt, le don n'a pas de date opposable
+(art. 757 et 635 A CGI). Sur la ligne n° 1, cette personne écrit donc
+« jamais », même si elle a donné. Ce n'est ni une faute ni une pénalité : le
+don sera compté au décès sur l'abattement restant, et c'est l'étape 6 qui
+traite ce cas et permet d'y revenir. Aucun taux, aucun intérêt de retard,
+aucune sanction chiffrée ne se prononce ici.
+
+4) L'article 784 pendant les 15 ans.
+Pendant les 15 ans, l'administration continue de rapporter le don déclaré au
+calcul de la succession. Donner ne fait donc rien gagner sur la succession tant
+que le délai n'est pas écoulé — l'abattement, lui, est bien consommé
+immédiatement. Une fois les 15 ans écoulés, la somme sort définitivement de
+l'assiette. Une seule et même date produit donc 2 effets : elle recharge
+l'abattement, et elle sort le don de la succession.
+Attention à la portée : ceci ne vaut que pour l'abattement de 100 000 € de
+l'art. 779. Les 31 865 € de l'art. 790 G ne sont jamais rapportés — c'est le
+III de l'article 790 G. Et le rappel retient la valeur du bien au jour de la
+donation : ce que le bien prend de valeur ensuite est gagné dès le premier jour.
+
+5) Si le décès survient avant les 15 ans.
+Le don déclaré est rapporté au calcul, l'abattement déjà consommé ne se
+reconstitue pas — on n'est donc ni gagnant ni perdant par rapport à ne rien
+avoir fait. Ce qui reste acquis : la somme est déjà chez l'enfant, et elle est
+rapportée à sa valeur au jour du don, pas à sa valeur au décès. À faire
+confirmer par le notaire avant tournage.
+
+CE QUE ÇA VAUT EN EUROS
+Le barème de l'art. 777 est un escalier : 5 % jusqu'à 8 072 €, 10 % jusqu'à
+12 109 €, 15 % jusqu'à 15 932 €, puis 20 % jusqu'à 552 324 €. Il a été déroulé
+marche par marche à l'étape 0 et il est imprimé sur le Simulateur : ici, on ne
+le redéroule pas, on l'affiche et on dit « la tranche à 20 % ».
+Dès qu'on possède un logement, la part taxable dépasse 15 932 € : ses derniers
+euros sont taxés à 20 %. C'est pour cela que 100 000 € sortis de l'assiette, ce
+sont 20 000 € de droits en moins.
+⚠️ Ce chiffre ne vaut qu'une fois les 15 ans écoulés : avant, le don est encore
+rapporté (point 4). Ne jamais l'énoncer sans cette condition.
+⚠️ Ce chiffre de 20 000 € vaut pour le foyer et pour un seul enfant, sur une
+enveloppe unique de 100 000 €. Ne jamais l'annoncer « par parent ». Avec
+plusieurs enfants c'est davantage, tant que la part taxable de chacun reste
+au-dessus de 15 932 € — en dessous, elle retombe dans les tranches basses et
+les 100 000 € sortis ne valent plus 20 % d'eux-mêmes.
+
+LE DON D'UN COUPLE SUR DES BIENS COMMUNS — art. 1422 code civil
+Si vous êtes mariés SANS contrat de mariage — le régime légal, le cas le plus
+fréquent — ce qui a été mis de côté pendant le mariage est un bien commun. Si
+vous avez un contrat de séparation de biens, ce n'est pas le cas : le livret
+appartient en propre à son titulaire et le partage par moitié ne s'applique pas.
+Sous le régime légal, donner un bien commun suppose l'accord des 2 époux —
+c'est ce que dit l'article 1422 du code civil, et il ne dit que cela. Que le don
+soit ensuite retenu pour moitié sur chacun ne vient pas de cet article : cela
+vient du traitement fiscal de la donation conjointe, et cela suppose que les 2
+figurent comme DONATEURS sur la déclaration.
+100 000 € pris sur ce livret, ce sont donc 50 000 € du père et 50 000 € de la
+mère : chacun reste très en dessous de son abattement, il lui en reste 50 000 €.
+Si un seul figure comme donateur, la totalité s'impute sur son abattement à lui
+— il est saturé, et celui de l'autre reste intact mais inutilisé.
+⚠️ Ne jamais laisser croire que chaque parent donne 100 000 € dans cet exemple :
+100 000 € sortent du livret, pas 200 000 €.
+⚠️ Ne jamais afficher l'art. 1422 en face de la règle du partage par moitié :
+il ne la contient pas.
+
+LA SECONDE ENVELOPPE — art. 790 G CGI
+Le don familial de sommes d'argent : 31 865 € par parent et par enfant majeur.
+Il ne remplace pas les 100 000 €, il s'y ajoute (art. 790 G II) — soit
+131 865 € par parent et par enfant majeur, sans droits. Ses 4 conditions sont
+IMPRIMÉES sur le document « Déclarer un don », dans les termes du texte :
+parent âgé de moins de 80 ans au jour du don (art. 790 G I 1°) ; enfant majeur
+— 18 ans révolus — ou émancipé au jour du don (art. 790 G I 2°) ; sommes
+d'argent en pleine propriété ; déclaration dans le mois qui suit le don, à
+peine d'exonération perdue (art. 790 G IV).
+Ces 31 865 € ne sont jamais rapportés à la succession — art. 790 G III.
+À l'oral, on n'en dit que ceci : cette enveloppe existe, elle s'ajoute, elle
+n'est jamais rapportée, ses conditions sont sur la feuille, et elle se ferme le
+jour des 80 ans du parent — définitivement. Chaque parent a la sienne, à sa
+propre date : ce sont 2 échéances, pas une.
+Après 65 ans, elle ne se rechargera donc plus jamais : on ne l'utilise qu'une
+fois.
+APAISEMENT OBLIGATOIRE, une partie de l'audience a plus de 80 ans : cette
+enveloppe-là est fermée pour eux, et ce n'était pas la plus grosse. Les
+100 000 € de l'art. 779 ne dépendent d'aucun âge, ils sont entiers, ils ne se
+ferment jamais.
+⚠️ Les 80 ans ne sont PAS une quatrième date du Calendrier. C'est un âge limite,
+il s'inscrit sur le document « Déclarer un don », jamais sur le Calendrier des
+3 dates, dont la maquette est fixée et déjà remise.
+
+QUI DÉCLARE, ET COMMENT — art. 635 A CGI
+Le parent donne, l'ENFANT déclare : c'est le donataire qui est tenu à la
+déclaration (art. 635 A CGI). C'est l'erreur la plus fréquente et elle coûte
+l'exonération du 790 G.
+Le chemin : l'enfant se connecte à son propre espace sur impots.gouv.fr,
+rubrique « Déclarer », puis « Vous avez reçu un don ». À défaut, formulaire
+papier 2735, en double exemplaire, déposé au service de l'enregistrement. Tant
+qu'on reste sous l'abattement, la déclaration ne coûte rien.
+⚠️ Le délai d'un mois à compter du don ne concerne qu'une chose : l'exonération
+des 31 865 € de l'art. 790 G, qui est perdue si la déclaration est tardive
+(art. 790 G IV). En dehors de ce cas, un don ancien se déclare quand on le
+déclare : il n'y a pas de retard à rattraper, et l'obligation déclarative de
+l'art. 635 A court à compter de la révélation du don, pas de sa remise.
+C'est la déclaration qui fait partir le délai de 15 ans.
+Un bien immobilier, lui, ne se donne jamais par virement. L'article 931 du code
+civil impose un acte notarié pour TOUTE donation entre vifs ; le don d'argent
+remis de la main à la main en est la seule exception.
+
+LES 2 RÉASSURANCES À TENIR
+· Réassurance n° 1 — la crainte d'avoir besoin de l'argent plus tard. On ne
+  donne que ce dont on est certain de ne pas avoir besoin. Règle des 3 poches :
+  vivre · imprévu · transmettre. La fiche « Combien garder pour soi » est sous
+  la vidéo, une page, imprimable. Pour qui n'a que sa maison : la donation de la
+  nue-propriété avec réserve d'usufruit — donner les murs, garder l'usage du
+  logement à vie — est traitée à l'étape du 71e anniversaire, la 3e date du
+  Calendrier. Il n'y a rien à décider ici.
+  ⚠️ Ne jamais poser la question « et si j'en ai besoin ? » à l'oral. On entre
+  par l'affirmation.
+· À ce stade, rien ne s'engage : aucun compte ouvert, aucune signature, aucun
+  euro versé. On vérifie 2 dates. On peut s'arrêter à la fin de cette vidéo et
+  ne jamais aller plus loin : les 2 dates restent vraies.
+
+CE QU'IL FAUT AVOIR SOUS LA MAIN POUR SUIVRE
+Le Calendrier des 3 dates et le Simulateur remplis à l'étape 0, le lexique, un
+stylo, et le dossier où sont rangés les papiers de famille. 3 documents peuvent
+porter la date cherchée : un acte de donation ou de donation-partage notarié,
+un accusé de déclaration en ligne, un formulaire 2735 tamponné. N'en avoir
+aucun est le cas le plus fréquent, et la vidéo fonctionne pareil.
+
+CE QUI A ÉTÉ RETIRÉ DU SCRIPT SOURCE, ET QU'ON NE REMET PAS
+L'ouverture « Je verrai ça plus tard » et le chiffre de 20 000 € annoncé avant
+d'être expliqué ; le cas Jean-Pierre redéroulé avec son calcul à 78 194 € (déjà
+fait à l'étape 0) ; le bloc « personne n'a pour métier de venir vous prévenir » ;
+le bloc final « 0 € ou 60 % » sur le concubin (il appartient au contenu de la
+vidéo 3) ; l'escalier de l'art. 777 redéroulé marche par marche.
+
+------------------------------------------------------------
+2. CE QUE JE MONTRE À L'ÉCRAN
+------------------------------------------------------------
+
+Règles communes : fond clair, police ≥ 28 pt, un chiffre par carton,
+sous-titres sur toute la vidéo, aucun visage. Bandeau légal permanent en pied.
+
+1.  TITRE — « Étape 1 — Le compteur des 15 ans ». Sous-titre : « la première
+    des 3 dates ».
+2.  100 000 € — « par parent et par enfant » — art. 779 CGI.
+3.  LE RECHARGEMENT — ligne 1 : « Une fois 15 ans écoulés ». Ligne 2, entre
+    guillemets et attribuée : « plus de quinze ans » — art. 784 CGI. Ligne 3 :
+    « effet à partir du lendemain du 15e anniversaire ».
+4.  FRISE — un don déclaré à 67 ans · un second juste après 82 ans · 2 × 100 000 €
+    sans droits. Ligne du bas : « une seule déclaration : 100 000 € · 2
+    déclarations espacées de plus de 15 ans : 200 000 € ».
+    Aucun personnage nommé sur ce carton.
+5.  LE POINT DE DÉPART — 3 lignes, chacune avec son article en regard :
+    · « les 15 ans partent de la date de l'acte notarié — ou, pour un don
+      d'argent, du jour où il est déclaré » — art. 784 CGI
+    · « plusieurs dons = un compteur par don · le plus récent donne la date où
+      l'abattement redevient entier » — art. 784 CGI
+    · « rien de déclaré = le compteur n'a jamais démarré » — art. 757 et
+      635 A CGI
+6.  LES 2 EFFETS D'UNE SEULE DATE — colonne 1 : « l'abattement redevient plein » ;
+    colonne 2 : « le don sort de la succession ». En dessous : « pendant les
+    15 ans, le don de l'art. 779 est encore rapporté au calcul — art. 784 ».
+    Ne pas écrire « dans les 2 sens » : la formule est interne, elle ne
+    correspond à rien dans l'article affiché.
+7.  L'ESCALIER DE L'ART. 777, affiché entier mais NON commenté marche par
+    marche : 5 % jusqu'à 8 072 € · 10 % jusqu'à 12 109 € · 15 % jusqu'à
+    15 932 € · 20 % de 15 932 € à 552 324 €. Surligner la tranche à 20 % et ses
+    2 bornes.
+8.  Première ligne : « Une fois les 15 ans écoulés : 100 000 € sortis de
+    l'assiette → 20 000 € de droits en moins » — art. 777 et 784. Mention en
+    petit : « pour un enfant ; davantage s'ils sont plusieurs, tant que la part
+    de chacun reste au-dessus de 15 932 € ».
+    NE JAMAIS AFFICHER DE TOTAL DE DROITS D'UN CAS NOMMÉ SUR CE CARTON.
+9.  LE DON D'UN COUPLE — en haut du carton : « mariage sans contrat (régime
+    légal) ». Puis : 100 000 € pris sur un livret commun = 50 000 € du père
+    + 50 000 € de la mère · « l'accord des 2 époux est obligatoire — art. 1422
+    code civil » · « les 2 doivent figurer comme DONATEURS : le don est alors
+    retenu pour moitié sur chacun » (cette ligne sans article) · DROITS : 0 € —
+    art. 779 · « abattement restant : 50 000 € par parent ». La mention « les 2
+    donateurs » reste à l'écran toute la séquence.
+10. 31 865 € — art. 790 G — « s'ajoute aux 100 000 € — art. 790 G II » ·
+    « 100 000 + 31 865 = 131 865 € » · « jamais rapporté à la succession —
+    art. 790 G III » · « se ferme aux 80 ans du parent — une date par parent,
+    hors Calendrier » · « 4 conditions : document Déclarer un don, sous la
+    vidéo ».
+11. LA RÈGLE DES 3 POCHES — vivre · imprévu · transmettre. Titre affiché mot
+    pour mot : fiche « Combien garder pour soi », sous la vidéo. Ne jamais
+    afficher de référence interne.
+12. « C'est votre enfant qui déclare » — art. 635 A CGI.
+13. LE PARCOURS — CAPTURE D'ÉCRAN RÉELLE : impots.gouv.fr > Déclarer > « Vous
+    avez reçu un don ». En dessous, en texte : « à défaut : formulaire 2735, en
+    double exemplaire, au service de l'enregistrement ». À filmer avant le
+    tournage voix. C'est le seul geste montré de la vidéo.
+14. « 0 € à payer tant qu'on reste sous l'abattement » — art. 779.
+15. « Pour l'exonération des 31 865 € : déclaration dans le mois qui suit le
+    don » — art. 790 G IV. Ne pas écrire ce délai en face de l'art. 635 A.
+16. « Toute donation passe devant notaire — art. 931 code civil » · « seule
+    exception : le don d'argent remis de la main à la main » · « un bien
+    immobilier ne se donne donc jamais par virement ».
+17. CE QUE VOUS VÉRIFIEZ MAINTENANT — reproduction de la ligne « Date n° 1 — le
+    compteur des 15 ans » du Calendrier, avec ses 2 cases : « Date de ma
+    dernière donation » (indice : écrivez « jamais » si c'est le cas) et « Donc
+    mon compteur se recharge le » (indice : cette date + 15 ans, effet le
+    lendemain).
+18. LES 3 PAPIERS QUI PORTENT LA DATE — acte notarié · formulaire 2735 tamponné ·
+    accusé de déclaration en ligne. Photographiés à plat.
+19. PLEIN CADRE, tenu 5 s : « Mettez la vidéo en pause. Prenez votre Calendrier,
+    ligne n° 1. »
+20. MENTION FINALE — contenu pédagogique et général, ne constitue pas un conseil
+    personnalisé ; tout modèle d'acte est à faire relire par votre notaire.
+
+À FABRIQUER AVANT LE TOURNAGE
+· Les 20 cartons ci-dessus.
+· Carton 13 — la capture réelle du parcours impots.gouv.fr. Masquer nom,
+  prénom, numéro fiscal et adresse avant montage ; vérifier au montage image
+  par image.
+· Carton 18 — photographier un 2735 VIERGE imprimé depuis impots.gouv.fr, la
+  première page d'un acte notarié corps masqué, et un accusé de déclaration
+  dont l'identité et le numéro fiscal sont floutés. Ne jamais reconstituer un
+  document rempli ni un tampon. Si l'une des 3 pièces manque, remplacer le
+  carton par 3 libellés sur fond clair, sans photo.
+· Le document imprimable « Déclarer un don » : les 4 conditions du 790 G dans
+  les termes du texte (art. 790 G I 1° et 2°, IV), le cumul 131 865 €
+  (art. 790 G II), l'absence de rappel (art. 790 G III), le chemin de
+  déclaration, le 2735, les art. 635 A et 931, et les 2 dates de 80 ans du
+  couple. Sans lui, la matière du carton 10 retombe à l'oral.
+
+------------------------------------------------------------
+3. CE QUE JE DIS, DANS L'ORDRE
+------------------------------------------------------------
+
+Repères, pas un texte à lire.
+
+1. Ce que traite cette étape, et ce qu'on y fait. (≈ 35 s — cartons 1, 17)
+   La première des 3 dates. À l'étape 0, vous avez écrit une date de mémoire.
+   Ici, on la vérifie sur un papier, et on corrige si elle est fausse. Il faut
+   le Calendrier, un stylo, le lexique et le dossier des papiers de famille.
+   Dire qu'on peut mettre la vidéo en pause pour aller chercher le dossier, et
+   la reprendre. Dire qu'un mot inconnu se retrouve sur le lexique, et qu'on
+   peut mettre en pause pour aller le lire.
+
+2. L'abattement de 100 000 €, et son rechargement une fois 15 ans écoulés.
+   (≈ 1 min 10 — cartons 2, 3, 4)
+   Une somme sur laquelle l'enfant ne paie rien. Elle se compte par parent et
+   par enfant : un couple avec 2 enfants, ce sont 4 enveloppes. Article 779.
+   Puis le rechargement, article 784 : la loi dit « plus de quinze ans », donc
+   l'effet est au lendemain du 15e anniversaire, pas le jour même.
+   Insister sur le lendemain : le jour anniversaire, on n'y est pas encore.
+
+3. Le point de départ : la date de l'acte, ou le jour de la déclaration.
+   (≈ 1 min 25 — carton 5)
+   C'est le cœur de l'étape. 2 cas, dits l'un après l'autre : donation devant
+   notaire → le compteur part de la date de l'acte ; don d'argent de la main à
+   la main → il part du jour où le don est déclaré, parce qu'avant cela sa date
+   n'est pas opposable.
+   Puis les 2 précisions : chaque don a son propre compteur, un don récent ne
+   remet à zéro aucun compteur antérieur, et c'est le plus récent qui donne la
+   date à laquelle l'abattement redevient entier en totalité ; et chaque
+   compteur ne vaut que pour un parent et un enfant.
+   Puis le cas « rien de déclaré » : le compteur n'a jamais démarré,
+   l'abattement ne servira qu'une fois. Enchaîner immédiatement : c'est le cas
+   le plus fréquent, et cela veut dire que la date de départ, c'est le
+   spectateur qui la choisit.
+
+4. Ce que fait l'article 784 pendant les 15 ans, et les 2 effets d'une seule
+   date. (≈ 50 s — carton 6)
+   Pendant les 15 ans, le don reste rapporté au calcul de la succession. On ne
+   perd rien à avoir donné, on n'a simplement pas encore gagné les droits.
+   C'est la date qui les fait gagner. Après elle, la somme sort définitivement
+   de l'assiette : la même date recharge l'abattement et sort le don.
+   Ajouter, sans le développer : le rappel retient la valeur du bien au jour du
+   don, donc ce qu'il prend de valeur ensuite est acquis dès le premier jour.
+   Ce point se dit AVANT le chiffre de 20 000 €, jamais après.
+
+5. Ce que vaut une enveloppe rechargée, en euros. (≈ 55 s — cartons 7, 8)
+   Rappeler que le barème est sur le Simulateur, sans le redérouler. Dès qu'on
+   possède un logement, les derniers euros de la part taxable sont dans la
+   tranche à 20 %. Une fois les 15 ans écoulés, 100 000 € sortis de l'assiette
+   = 20 000 € de droits en moins, pour un enfant ; davantage s'ils sont
+   plusieurs, tant que la part de chacun reste au-dessus de 15 932 €.
+   Ne jamais énoncer les 20 000 € sans la condition des 15 ans écoulés. Ne pas
+   dire « par parent ».
+
+6. Quand le don vient d'un livret du couple : 50 000 € + 50 000 €, et les
+   2 donateurs sur la déclaration. (≈ 1 min — carton 9)
+   Poser d'abord la condition : mariés sans contrat, régime légal. Sous
+   séparation de biens, le livret appartient en propre à son titulaire et rien
+   de ce qui suit ne s'applique.
+   Puis : bien commun → accord des 2 époux, art. 1422. Et si les 2 figurent
+   comme donateurs sur la déclaration, le don est retenu pour moitié sur
+   chacun. Dire ce qui se passe si un seul y figure : tout s'impute sur son
+   abattement, celui de l'autre reste inutilisé. Préciser qu'il leur reste
+   50 000 € chacun.
+
+7. La seconde enveloppe, en une phrase, puis l'apaisement pour ceux qui ont
+   passé 80 ans. (≈ 1 min — carton 10)
+   31 865 €, art. 790 G, qui s'ajoutent aux 100 000 € et qui, eux, ne sont
+   jamais rapportés à la succession — c'est le III de l'article 790 G. Les
+   4 conditions sont sur le document « Déclarer un don », on ne les lit pas.
+   Dire où il est : sous la vidéo, une page, à imprimer, à ranger avec le
+   Calendrier. Ce qui compte à l'oral : elle se ferme aux 80 ans du parent, une
+   date par parent, et ce n'est pas une date du Calendrier. Puis : si vous avez
+   passé 80 ans, cette enveloppe-là est fermée, ce n'était pas la plus grosse,
+   et les 100 000 € ne dépendent d'aucun âge.
+
+8. La règle des 3 poches. (≈ 30 s — carton 11)
+   On ne donne que ce dont on est certain de ne pas avoir besoin. Vivre,
+   imprévu, transmettre : c'est la règle des 3 poches, la fiche « Combien
+   garder pour soi » est sous la vidéo. Pour qui n'a que sa maison : la
+   donation de la nue-propriété avec réserve d'usufruit — donner les murs,
+   garder l'usage du logement à vie — est traitée à l'étape du 71e
+   anniversaire, la 3e date du Calendrier. Il n'y a rien à décider ici.
+   Ne jamais poser la question « et si j'en ai besoin ? » à l'oral.
+
+9. Qui déclare, et par où. (≈ 1 min 05 — cartons 12, 13, 14, 15, 16)
+   Le parent donne, l'enfant déclare — art. 635 A. Montrer le parcours à
+   l'écran pendant qu'on le décrit. Le 2735 en double exemplaire comme solution
+   de repli. 0 € à payer sous l'abattement. C'est la déclaration qui fait
+   partir le délai de 15 ans.
+   Le délai d'un mois ne se dit qu'attaché à l'exonération des 31 865 €
+   (art. 790 G IV). Ne jamais laisser entendre qu'un don ancien non déclaré est
+   « en retard » : il se déclare quand on le déclare.
+   Puis l'immobilier : l'art. 931 impose le notaire pour toute donation, le don
+   d'argent de la main à la main en est la seule exception.
+
+10. Le geste, la sortie, la mention — puis le renvoi. (≈ 1 min 30 — cartons 17,
+    18, 19, 20)
+    Dire de mettre la vidéo en pause maintenant, et de reprendre quand les
+    2 cases sont vérifiées — la vidéo attend, il n'y a rien à rattraper.
+    Prendre le Calendrier, ligne n° 1. Chercher UN papier, un seul, qui parle
+    d'une donation — les 3 formes possibles sont à l'écran. Sur ce papier, on ne
+    cherche qu'une date. Plusieurs dates → garder la plus récente. Rien →
+    écrire « jamais ».
+    Dire le cas explicitement : si vous avez donné de la main à la main sans
+    qu'aucun de ces 3 papiers existe, pour la loi le compteur n'a pas démarré —
+    vous écrivez « jamais », même si vous avez donné. Ce n'est ni une faute ni
+    un problème : l'étape 6 traite ce cas et vous y corrigerez cette ligne si
+    besoin.
+    Puis la case 2 : cette date + 15 ans, effet le lendemain.
+    Que faire si on ne sait pas : écrire « à vérifier » dans la case et poser la
+    question au notaire avec le reste du dossier. Une case remplie « à
+    vérifier » est utilisable par le notaire ; une case vide ne lui dit rien.
+    Puis la sortie : aucun compte, aucune signature, aucun euro. On peut
+    s'arrêter là, les 2 dates restent vraies.
+    Puis la mention légale, une fois, en une phrase.
+    Enfin, après la mention légale et jamais avant : le renvoi. Texte en
+    section 7.
+
+MINUTAGE. Environ 1 300 mots parlés, chaque montant compte pour 1 mot. À
+130 mots par minute, silences sur les chiffres compris, la prise tient en
+10 minutes. Si elle déborde, couper dans cet ordre : la précision sur
+l'abattement restant de 50 000 € (point 6), puis le repli formulaire 2735
+(point 9). Ne jamais couper : le point de départ (point 3), l'article 784
+pendant les 15 ans (point 4), ni la fermeture aux 80 ans (point 7).
+
+------------------------------------------------------------
+4. LES PHRASES À DIRE MOT POUR MOT
+------------------------------------------------------------
+
+1. « L'article 779 accorde un abattement de 100 000 €, par parent et par
+   enfant. L'article 784 dit "plus de quinze ans" : c'est donc à partir du
+   lendemain du 15e anniversaire du don que cet abattement redevient plein. »
+
+2. « Les 15 ans partent de la date de l'acte quand la donation a été faite
+   devant notaire, et du jour de la déclaration quand il s'agit d'un don
+   d'argent. Et si vous en avez déclaré plusieurs, chacun a son propre
+   compteur : c'est le plus récent qui donne la date à laquelle votre
+   abattement redevient entier en totalité. »
+
+3. « Si vous êtes mariés sans contrat, un livret constitué pendant le mariage
+   est un bien commun : donner suppose l'accord des 2 époux — article 1422 du
+   code civil. Et si les 2 figurent comme donateurs sur la déclaration, le don
+   est retenu pour moitié sur chacun. »
+
+4. « Une fois les 15 ans écoulés, ces 100 000 € sortent de l'assiette : dans la
+   tranche à 20 % de l'article 777, ce sont 20 000 € de droits en moins, pour
+   un enfant. »
+
+5. « L'article 790 G ajoute 31 865 € par parent et par enfant majeur. Il se
+   ferme le jour des 80 ans du parent, et chaque parent a sa propre date. »
+
+6. « Ce n'est pas vous qui déclarez, c'est votre enfant : c'est l'article
+   635 A. Et s'il veut l'exonération des 31 865 €, la déclaration doit être
+   faite dans le mois qui suit le don — c'est le IV de l'article 790 G. »
+
+7. « L'article 931 du code civil impose un acte notarié pour toute donation ;
+   seul le don d'argent remis de la main à la main y échappe. Un bien
+   immobilier ne peut donc pas se donner par virement. »
+
+8. « Ce contenu est pédagogique et général. Il ne constitue pas un conseil
+   personnalisé : votre situation, c'est votre notaire qui la validera. »
+
+------------------------------------------------------------
+5. LES PIÈGES — CE QU'IL NE FAUT SURTOUT PAS DIRE
+------------------------------------------------------------
+
+· « Au bout de 15 ans, c'est reparti. »
+  → « Une fois 15 ans écoulés — la loi dit "plus de quinze ans", donc à partir
+    du lendemain du 15e anniversaire. »
+
+· « Les 15 ans partent du jour du don. » (sans distinguer la forme du don)
+  → Pour une donation notariée, ils partent de la date de l'acte. Pour un don
+    d'argent de la main à la main, du jour où il est déclaré. Un don d'argent
+    jamais déclaré n'a jamais démarré de compteur.
+
+· « Un nouveau don remet tous les compteurs à zéro. »
+  → Chaque don a le sien. Le plus récent donne seulement la date à laquelle
+    l'abattement redevient entier en totalité. Et le compteur ne vaut que pour
+    un parent et un enfant donnés.
+
+· « 20 000 € par parent. »
+  → 20 000 €, c'est l'écart pour le foyer, pour un enfant, sur une enveloppe de
+    100 000 € sortie de l'assiette une fois les 15 ans écoulés. Avec plusieurs
+    enfants, c'est davantage tant que la part de chacun reste au-dessus de
+    15 932 €. Le chiffre doit être identique partout dans la vidéo.
+
+· Énoncer les 20 000 € sans la condition des 15 ans écoulés.
+  → Le chiffre ne se dit jamais seul : « une fois les 15 ans écoulés » le
+    précède, à l'oral comme sur le carton.
+
+· « Chacun des parents donne 100 000 €. »
+  → Sur un livret commun, 100 000 € donnés = 50 000 € de chacun. Ne jamais
+    laisser croire que 200 000 € sortent du livret.
+
+· « Un livret ouvert pendant le mariage est toujours un bien commun. »
+  → Seulement sous le régime légal, c'est-à-dire sans contrat de mariage. Sous
+    séparation de biens, il appartient en propre à son titulaire.
+
+· « Donner fait baisser tout de suite la succession. »
+  → Faux pendant 15 ans pour l'abattement de l'art. 779 : le don déclaré reste
+    rapporté au calcul (art. 784). C'est après que la somme en sort
+    définitivement. Exception à ne pas oublier : les 31 865 € de l'art. 790 G
+    ne sont jamais rapportés (art. 790 G III).
+
+· « C'est vous qui déclarez le don aux impôts. »
+  → C'est l'enfant qui reçoit, donc c'est lui qui déclare — art. 635 A.
+
+· « Il fallait déclarer dans le mois, vous êtes en retard. »
+  → Faux et inutilement alarmant. Le délai d'un mois conditionne la seule
+    exonération des 31 865 € (art. 790 G IV). Un don ancien se déclare quand on
+    le déclare.
+
+· « Les 31 865 € se rechargent aussi tous les 15 ans. »
+  → Seulement si le parent a encore moins de 80 ans à cette date. Après 65 ans,
+    cela n'arrive pas : cette enveloppe ne s'utilise qu'une fois.
+
+· « Notez vos 80 ans sur le Calendrier. »
+  → Le Calendrier a 3 dates et n'en aura jamais 4. Les 80 ans sont un âge
+    limite : ils s'écrivent sur le document « Déclarer un don ».
+
+· « Cherchez la ligne du compteur, c'est la troisième. »
+  → Sur le Calendrier des 3 dates réellement remis au client, le compteur des
+    15 ans est la ligne n° 1. Dire « la première ligne ». (Contradiction connue
+    avec d'anciens scripts : le document imprimé fait foi.)
+
+· « Il existe une solution pour votre maison, je vous en parlerai plus tard. »
+  → Nommer le mécanisme sur-le-champ : la donation de la nue-propriété avec
+    réserve d'usufruit, traitée à l'étape du 71e anniversaire. On ne laisse
+    jamais une étape suivante en suspens.
+
+· Redérouler un cas chiffré nommé et son total de droits.
+  → Le cas complet a été fait à l'étape 0 et n'appartient qu'à elle. Ici, aucun
+    personnage, aucun total de succession affiché.
+
+· Nommer un placement, un contrat, un assureur, une banque, ou citer un montant
+  d'émoluments de notaire.
+  → Interdit. Dire que des frais d'acte existent et que votre notaire vous en
+    indiquera le montant avant toute signature — sans jamais les chiffrer
+    soi-même.
+
+· « Vous auriez dû le faire plus tôt » sous n'importe quelle forme.
+  → N'avoir jamais rien déclaré est le cas le plus fréquent, et c'est ce qui
+    donne au spectateur le choix de la date de départ.
+
+------------------------------------------------------------
+6. CE QUE LE SPECTATEUR FAIT
+------------------------------------------------------------
+
+PENDANT LA VIDÉO
+· Met en pause au point 1 pour aller chercher le dossier des papiers de famille
+  et son Calendrier des 3 dates.
+· Suit à l'écran le parcours de déclaration sur impots.gouv.fr — il ne fait
+  rien, il regarde à quoi ça ressemble.
+· Met en pause au carton 19, et fait le geste de la ligne n° 1 :
+  — cherche dans le dossier un papier qui parle d'une donation : acte notarié,
+    formulaire 2735 tamponné, ou accusé de déclaration en ligne ;
+  — case 1 : la date portée par ce papier — la plus récente s'il y en a
+    plusieurs — ou le mot « jamais » ;
+  — case 2 : cette date + 15 ans ;
+  — s'il ne sait pas : écrit « à vérifier ».
+· Reprend la vidéo quand les 2 cases sont vérifiées.
+
+APRÈS LA VIDÉO
+· Range le Calendrier avec le Simulateur et le lexique.
+· Si une case porte « à vérifier », glisse la question dans le dossier destiné
+  au notaire.
+
+DOCUMENTS UTILISÉS
+· Le Calendrier des 3 dates (ligne n° 1, vérifiée) — le livrable.
+· Le Simulateur de Facture Invisible (consulté : le barème de l'art. 777).
+· Le lexique en une page (remis à l'étape 0) — à garder ouvert : abattement,
+  assiette, rapport, donateur, donataire.
+· La fiche « Combien garder pour soi » (règle des 3 poches).
+· Le document « Déclarer un don » (4 conditions du 790 G, chemin de
+  déclaration, 2735, les 2 dates de 80 ans).
+
+------------------------------------------------------------
+7. LE RENVOI DE FIN
+------------------------------------------------------------
+
+Vers la VIDÉO 3 (étape 2) — la situation de famille.
+
+Placé après la conclusion et la mention légale. Idée à dire, factuellement :
+« La suite porte sur votre situation de famille — mariage, PACS, ou ni l'un ni
+l'autre. Elle détermine les abattements qui s'appliquent à votre conjoint et à
+vos enfants. La date que vous venez d'écrire vaut dans tous les cas. Pour
+regarder la vidéo 3, ayez votre livret de famille et, si vous en avez un, votre
+contrat de mariage. »
+
+Aucun prix, aucune urgence, aucun autre produit cité. Ne pas rejouer ici le
+calcul « 0 € ou 60 % » : il appartient au contenu de la vidéo 3, où il sera
+énoncé comme un fait chiffré, pas comme une accroche d'ouverture.
+
+------------------------------------------------------------
+8. LE LIVRABLE
+------------------------------------------------------------
+
+La ligne « Date n° 1 — le compteur des 15 ans » du Calendrier des 3 dates,
+écrite à l'étape 0 et désormais vérifiée pièce en main :
+
+  Date de ma dernière donation : ..... / ..... / .......  (ou « jamais »)
+  Donc mon compteur se recharge le : ..... / ..... / .......  (date + 15 ans,
+  effet à partir du lendemain)
+
+Il repart avec la même ligne, mais confirmée par une pièce — ou corrigée. Et
+avec ce qui la rend utilisable : le rechargement prend effet le lendemain du
+15e anniversaire ; le délai part de la date de l'acte notarié, ou du jour de la
+déclaration pour un don d'argent ; un don jamais déclaré n'a fait démarrer
+aucun compteur ; la déclaration incombe à l'enfant (art. 635 A). S'y ajoutent
+les 2 enveloppes : 100 000 € par parent et par enfant (art. 779), et 31 865 €
+en plus par parent et par enfant majeur, tant que le parent a moins de 80 ans
+(art. 790 G I).
+
+Si un don oublié ressort à l'étape 6, cette ligne se corrigera : elle n'est pas
+figée.
+
+Mention en pied de page, comme sur tous les documents : contenu pédagogique et
+général, ne constitue pas un conseil personnalisé ; tout modèle d'acte est à
+faire relire par votre notaire.

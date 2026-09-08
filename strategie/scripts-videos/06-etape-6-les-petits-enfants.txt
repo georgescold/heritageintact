@@ -1,0 +1,470 @@
+============================================================
+ÉTAPE 6 — Erreur n°6 : oublier une génération
+Durée cible : 15 minutes | Format : voix + écran, faceless
+============================================================
+
+REPÈRE DE TOURNAGE : le script parlé fait environ 2 000 mots, à 130 mots par minute
+sur un ton calme et solennel, silences compris. Si la lecture descend sous
+14 minutes, c'est qu'elle est trop rapide pour la cible. L'étape est passée de 8 à
+15 minutes en corrigeant les conditions légales manquantes : si Loys veut la
+raccourcir, cela ne peut pas venir des conditions du 790 G ni de celles du
+790 A bis, ni de la mention sur la quotité disponible.
+
+CE QUE LE SPECTATEUR SAIT FAIRE À LA FIN
+
+Nommer l'abattement propre à ses petits-enfants, et dire combien il vaut pour sa
+famille à lui, en euros.
+Distinguer ce qu'il peut donner à un petit-enfant mineur et ce qu'il ne peut donner
+qu'à un petit-enfant majeur ou émancipé.
+Vérifier si la fenêtre du logement, ouverte jusqu'au 31 décembre 2026, le concerne
+ou ne le concerne pas.
+Remplir une ligne par petit-enfant : prénom, âge, ce qui a déjà été donné, montant
+envisagé, échéance.
+
+CE QU'IL LUI FAUT SOUS LA MAIN
+
+La liste de ses petits-enfants, avec la date de naissance de chacun.
+Sa propre date de naissance, et celle de son conjoint.
+Le Calendrier des 3 Dates, rempli aux Étapes 0, 1 et 4.
+La liste des dons déjà faits, établie à l'Étape 5.
+Un stylo. Rien d'autre. Aucun document bancaire n'est nécessaire pour cette étape.
+
+------------------------------------------------------------
+SCRIPT — à lire au prompteur
+------------------------------------------------------------
+
+[ÉCRAN : ÉTAPE 6 sur 7 — L'erreur n°6 : oublier une génération]
+
+Il existe, dans la loi française, un abattement dont on parle peu.
+
+[ÉCRAN : art. 790 B CGI — 31 865 EUR par grand-parent et par petit-enfant
+         art. 784 CGI — reconstitution au bout de 15 ans]
+
+31 865 EUR.
+
+Par grand-parent, et par petit-enfant. Le montant est écrit à l'article 790 B du
+code général des impôts. Et il se reconstitue tous les 15 ans, au titre du rappel
+fiscal de l'article 784. Il n'a rien de confidentiel. Mais il ne s'applique jamais
+tout seul : il faut le décider, et le déclarer. C'est pour cela qu'il passe si
+souvent à côté d'une famille.
+
+[ÉCRAN : rappel art. 779 CGI — 100 000 EUR par parent et par enfant |
+         art. 912 et 919-2 du code civil — quotité disponible et réserve héréditaire]
+
+Vous êtes peut-être 2 grands-parents. Alors c'est 2 fois cette somme qui peut
+quitter votre patrimoine, pour un seul et même petit-enfant, sans que personne ne
+paie un euro de droits. Nous ferons le total exact tout à l'heure, quand nous aurons
+vu les 3 façons de donner.
+
+Et cette somme n'entame pas l'abattement de 100 000 EUR dont chacun de vos enfants
+dispose de son côté, au titre de l'article 779, celui que nous avons vu à l'Étape 1.
+Ce sont 2 compteurs séparés.
+
+Une précision maintenant, et elle est importante. Ce que vous donnez à un
+petit-enfant du vivant de son parent sort de la part dont vous disposez librement.
+La loi l'appelle la quotité disponible, articles 912 et 919-2 du code civil. La part
+réservée à vos enfants, elle, ne se touche pas. C'est la limite du procédé, et c'est
+votre notaire qui la chiffre pour votre famille.
+
+C'est l'erreur n°6, et elle ne ressemble pas aux autres. Les 5 précédentes vous
+coûtaient de l'argent. Celle-ci ne vous coûte rien aujourd'hui. Elle coûte à la
+génération d'après, et 2 fois : en impôt, puis en années perdues. Nous allons voir
+les 2.
+
+[ÉCRAN : la même somme, 2 étages — art. 777 CGI, tranche à 20 %]
+
+Prenez une famille ordinaire — un exemple, pas votre cas. Une maison, des économies,
+un patrimoine qui dépasse largement les abattements, au point que chaque euro
+transmis en plus tombe dans la tranche à 20 % de l'article 777, celle que nous avons
+déroulée à l'Étape 0.
+
+Nous posons l'hypothèse à voix haute, parce qu'elle compte : dans cet exemple, aux
+2 étages, ce qui est transmis dépasse les abattements. C'est un exemple, ce n'est
+pas votre situation.
+
+Vous laissez 31 865 EUR à votre enfant, au-delà de son abattement. L'État prend
+20 %. 6 373 EUR. Il reste 25 492 EUR.
+
+20 ans passent. Votre enfant transmet à son tour ce qui reste à votre petit-enfant,
+dans la même tranche. Chez lui aussi, ce qui est transmis dépasse ses abattements.
+L'État reprend 20 %. 5 098 EUR.
+
+Il reste 20 394 EUR.
+
+Sur les 31 865 EUR que vous vouliez donner à votre petit-enfant, 11 471 EUR sont
+partis en route. 36 % de la somme, dans cet exemple, pour avoir emprunté un étage de
+trop.
+
+[ÉCRAN : donation directe au petit-enfant, art. 790 B — 0 EUR de droits]
+
+La même somme, donnée directement à votre petit-enfant de votre vivant, sous
+l'article 790 B : 0 EUR de droits.
+
+[ÉCRAN : art. 757 CGI — don manuel révélé : taxable | déclaration n° 2735]
+
+À une condition de forme, et elle n'est pas facultative : le don doit être déclaré à
+l'administration fiscale. C'est cette déclaration qui date le don et qui fait partir
+le compteur des 15 ans de l'article 784. Un don d'argent qui n'est pas déclaré reste
+taxable le jour où il est révélé, au titre de l'article 757. Le formulaire de
+déclaration porte le numéro 2735. Et ce n'est pas vous qui le remplissez : c'est
+celui qui reçoit. Votre petit-enfant remplit une page et la dépose à son centre des
+finances publiques. Une page. C'est tout ce qu'il y a à faire.
+
+[ÉCRAN : 31 865 EUR — art. 790 B CGI, de votre vivant |
+         1 594 EUR — art. 788, IV CGI, à votre décès si son parent est vivant]
+
+Et il faut que vous sachiez une chose. Cet abattement de 31 865 EUR n'existe que de
+votre vivant, et uniquement en donation.
+
+À votre décès, tout change. Si votre enfant est vivant, votre petit-enfant n'est pas
+votre héritier : il n'hérite de rien automatiquement. Il ne reçoit quelque chose que
+si vous l'avez écrit dans un testament. Et ce jour-là, il n'a plus droit qu'à
+1 594 EUR d'abattement, au titre du IV de l'article 788.
+
+31 865 EUR d'un côté. 1 594 EUR de l'autre. C'est la même famille, le même
+petit-enfant, la même somme. Seul le moment a changé.
+
+Pourquoi personne ne vous l'a dit ? Votre banquier connaît vos comptes, pas votre
+arbre généalogique. Votre notaire, lui, connaît la règle par cœur. Mais il répond
+aux questions qu'on lui pose, et vous n'êtes jamais allé le voir pour parler de vos
+petits-enfants. Ce n'est le métier de personne de sonner à votre porte pour vous
+prévenir. Il n'y a ni faute ni négligence de votre part.
+
+[ÉCRAN : 3 façons de donner à un petit-enfant — art. 790 B · art. 790 G ·
+         art. 790 A bis]
+
+Passons à la correction. Il existe 3 façons de donner à un petit-enfant. Nous allons
+les prendre dans l'ordre, et vous verrez tout de suite laquelle vous concerne.
+
+La première, c'est celle que nous venons de voir : l'article 790 B, 31 865 EUR par
+grand-parent et par petit-enfant. Il n'y a aucune condition d'âge, ni pour vous, ni
+pour lui. Elle fonctionne même si votre petit-enfant est mineur. Et l'abattement se
+reconstitue tous les 15 ans, exactement comme le compteur de l'Étape 1, au titre de
+l'article 784.
+
+Une vérification avant tout le reste. Reprenez la liste des dons déjà faits, celle
+que vous avez établie à l'Étape 5. Si vous avez déjà donné quelque chose à ce
+petit-enfant il y a moins de 15 ans, cette somme est déjà prise sur les 31 865 EUR.
+Vous ne repartez pas de zéro. C'est le rappel fiscal de l'article 784.
+
+[ÉCRAN : art. 790 G CGI — 31 865 EUR · donateur de moins de 80 ans · petit-enfant
+         majeur ou émancipé · sommes d'argent uniquement · déclaration dans le mois,
+         formulaire n° 2735]
+
+La deuxième, vous la connaissez déjà : le don familial de sommes d'argent, l'article
+790 G, celui que nous avons vu à l'Étape 1 pour vos enfants. Il vaut aussi pour vos
+petits-enfants. 31 865 EUR de plus. Et nous insistons : de plus. Les 2 se cumulent.
+
+Mais celle-là pose 2 conditions, et elles sont strictes. Vous devez avoir moins de
+80 ans le jour du don. Et votre petit-enfant doit être majeur — ou émancipé.
+
+Il s'agit d'argent uniquement : un virement, un chèque. Et le don doit être déclaré
+aux impôts dans le mois qui suit, sinon l'avantage disparaît. C'est le même
+formulaire que tout à l'heure, le 2735, rempli par celui qui reçoit. Une page,
+déposée à son centre des finances publiques. Rien de plus.
+
+[ÉCRAN : cumul — 790 B 31 865 EUR + 790 G 31 865 EUR = 63 730 EUR par grand-parent
+         et par petit-enfant · 127 460 EUR pour un couple — art. 790 B et 790 G CGI]
+
+Mettez les 2 ensemble, pour un seul grand-parent : 63 730 EUR. 127 460 EUR si vous
+êtes 2. Par petit-enfant. Tous les 15 ans.
+
+À 2 conditions, et nous les redisons parce qu'elles comptent. Que votre petit-enfant
+soit majeur, ou émancipé. Et que vous ayez tous les 2 moins de 80 ans. S'il est
+mineur, ou si l'un de vous a passé 80 ans, il vous reste les 31 865 EUR de l'article
+790 B, par grand-parent, sans aucune condition d'âge. Ce n'est pas rien.
+
+[ÉCRAN : art. 790 A bis CGI — 100 000 EUR par donateur, 300 000 EUR par donataire —
+         fenêtre jusqu'au 31 décembre 2026
+         bandeau permanent : état du droit vérifié le [JJ/MM/AAAA] —
+         legifrance.gouv.fr]
+
+La troisième ne concernera pas tout le monde. Mais elle se referme, et vous devez
+savoir qu'elle existe.
+
+L'article 790 A bis autorise un 3e don, en argent. 100 000 EUR par grand-parent. Et
+jusqu'à 300 000 EUR au total pour un même petit-enfant. Exonéré de droits, mais à
+des conditions précises.
+
+Votre petit-enfant doit employer cette somme dans les 6 mois. Soit pour acheter un
+logement neuf, ou un logement encore sur plan, c'est-à-dire pas encore construit.
+Soit pour des travaux de rénovation énergétique dans le logement dont il est déjà
+propriétaire et qu'il habite.
+
+Et il faut qu'il en fasse, pendant 5 ans, sa résidence principale — ou qu'il le loue
+pendant 5 ans, à titre de résidence principale, à quelqu'un qui n'appartient pas à
+son foyer fiscal. Le garder sans l'habiter et sans le louer ne suffit pas.
+
+Attention à ne pas mélanger les 2 branches. L'achat, ce doit être du neuf ou de la
+vente sur plan — pas une vieille maison à retaper. La rénovation, elle, ne vaut que
+pour le logement dont votre petit-enfant est déjà propriétaire et qu'il habite. Ces
+2 précisions éliminent beaucoup de situations, et nous préférons vous le dire tout
+de suite.
+
+Cette fenêtre est ouverte jusqu'au 31 décembre 2026. À la date de cet enregistrement,
+aucune prolongation n'a été votée. Comme les 3 dates de votre calendrier, c'est une
+date inscrite dans la loi, qui avance en silence, et qui ne se rouvrira pas
+d'elle-même.
+
+[ÉCRAN : exemple — à 25 ans / à 55 ans
+         mention en bas de slide : illustration, aucune donnée statistique]
+
+Et maintenant, l'argument qui n'est pas fiscal. C'est peut-être le seul qui compte
+vraiment.
+
+Aujourd'hui, on hérite tard. Souvent passé 50 ans. Prenons un exemple. Un héritage
+qui arrive à 55 ans arrive sur un compte en banque. Il est utile. Il rassure. Il ne
+change rien.
+
+À 25 ans, la même somme ne va pas sur un compte. Elle va dans un apport pour acheter
+un logement, dans un permis de conduire, dans des études qu'on n'aurait pas faites,
+dans un premier appartement qu'on n'aurait jamais acheté. Elle ne change pas un
+solde. Elle change une trajectoire.
+
+Et il y a ceci, que la loi ne mesure pas : vous êtes là pour le voir.
+
+[ÉCRAN : le petit-enfant mineur — art. 790 B CGI]
+
+Un mot sur les mineurs, parce que c'est la question qui vient toujours. Vous pouvez
+donner à un petit-enfant mineur, au titre de l'article 790 B. Ce sont ses parents qui
+acceptent le don pour lui, et l'argent est déposé sur un compte ouvert à son nom. Cet
+argent est le sien. Ses parents l'administrent, ils ne le possèdent pas. C'est la
+seule chose à retenir sur les mineurs.
+
+[ÉCRAN : CE SOIR, FAITES CECI — une ligne par petit-enfant]
+
+Ce soir, voici ce que vous faites, et cela vous prendra 15 minutes.
+
+Vous prenez la fiche de cette étape. Elle est juste en dessous de cette vidéo, sur le
+bouton « Imprimer la fiche de l'Étape 6 ». Elle tient sur une seule page, en noir et
+blanc. Si vous n'imprimez pas, une feuille et un stylo suffisent : vous tracez 5
+colonnes.
+
+Vous écrivez une ligne par petit-enfant. 5 colonnes seulement. Son prénom. Son âge.
+Ce que vous lui avez déjà donné, et en quelle année — vous le reprenez de votre liste
+de l'Étape 5. Le montant que vous envisagez, même approximatif, même au crayon. Et
+l'échéance : maintenant, à sa majorité, ou plus tard.
+
+Puis 2 chiffres, tout en bas de la fiche.
+
+Le premier : le nombre de vos petits-enfants, multiplié par 31 865 EUR, et multiplié
+par 2 si vous êtes 2 grands-parents. C'est ce que l'article 790 B vous autorise à
+transmettre, tous les 15 ans, sans un euro de droits. C'est votre chiffre à vous.
+Écrivez-le.
+
+Le second : la date de vos 80 ans, et celle des 80 ans de votre conjoint. C'est la
+limite de l'article 790 G, et elle vaut pour chacun de vous séparément. Ces 2 dates
+restent en bas de cette fiche. Ce ne sont pas de nouvelles dates de votre calendrier :
+votre Calendrier des 3 Dates ne bouge pas, il garde ses 3 lignes.
+
+Et une dernière ligne, une seule question : est-ce qu'un de vos petits-enfants achète
+un logement neuf, ou refait le chauffage de chez lui, avant le 31 décembre 2026 ? Si
+c'est non, vous barrez la ligne et vous n'y pensez plus. Si vous ne savez pas, vous
+lui posez la question ce week-end.
+
+Rien de ce que vous écrivez ce soir ne vous engage. Écrire un montant ne le donne pas.
+Vous ne signez rien, vous n'envoyez rien à personne, et vous pouvez tout changer
+demain. Et souvenez-vous de la règle que nous avons posée : on ne donne que ce dont on
+est absolument certain de ne pas avoir besoin. Ce que vous gardez pour vivre ne se
+discute pas.
+
+[ÉCRAN : pont vers l'Étape 7]
+
+Vous pouvez vous arrêter ici. À la fin de cette étape, vous avez votre chiffre, vos
+dates, vos décisions, et maintenant vos petits-enfants. Rien de tout cela ne se perd
+si vous refermez l'ordinateur ce soir.
+
+Mais il reste une dernière erreur, et c'est la seule qui peut ruiner toutes les
+autres. Vous avez maintenant un plan. Il va falloir le faire signer. Et on ne prépare
+pas un rendez-vous chez un notaire les mains vides : sans les pièces, sans les dates,
+sans les montants écrits, le rendez-vous ne débouche sur rien, et il faut le
+reprendre. Nous allons préparer ce dossier ensemble, ligne par ligne.
+
+[ÉCRAN : Contenu pédagogique. Ne constitue pas un conseil personnalisé.]
+
+Tout ce que nous venons de voir est pédagogique. Ce n'est pas un conseil adapté à
+votre situation, et tout projet de donation est à faire relire par votre notaire.
+C'est d'ailleurs tout l'objet de l'étape suivante.
+
+Rendez-vous à l'Étape 7.
+
+------------------------------------------------------------
+À PRÉPARER POUR LE TOURNAGE
+------------------------------------------------------------
+
+VISUELS À FABRIQUER — un par [ÉCRAN], police ≥ 28 pt, fond clair, 1 chiffre par slide
+
+1.  Titre — « ÉTAPE 6 sur 7 — L'erreur n°6 : oublier une génération ». Bandeau de
+    progression 6/7.
+2.  « 31 865 EUR — par grand-parent, par petit-enfant », sur 2 lignes distinctes en
+    bas de slide : « art. 790 B CGI — 31 865 EUR par grand-parent et par
+    petit-enfant » puis « art. 784 CGI — reconstitution au bout de 15 ans ».
+    ⚠️ Ne JAMAIS écrire « art. 790 B — tous les 15 ans » : le 790 B ne fixe que le
+    montant, le délai vient du rappel fiscal du 784.
+3.  Slide de cadrage civil, 2 lignes, aucun euro nouveau : « rappel art. 779 CGI —
+    100 000 EUR par parent et par enfant » et « art. 912 et 919-2 du code civil —
+    quotité disponible et réserve héréditaire ».
+4.  La cascade à 2 étages, animée ligne par ligne, avec « art. 777 CGI — tranche
+    20 % » en incrustation permanente :
+         31 865 EUR transmis à l'enfant
+       − 20 %                             =  6 373 EUR
+         reste                            = 25 492 EUR
+         20 % au second étage             =  5 098 EUR
+         reste au petit-enfant            = 20 394 EUR
+         total prélevé 11 471 EUR, soit 36 %
+    MENTION OBLIGATOIRE en petit sur la slide : « hypothèse — de part et d'autre, le
+    patrimoine transmis dépasse les abattements ; la part concernée se situe dans la
+    tranche à 20 % de l'art. 777. Exemple illustratif. »
+    ⚠️ Ne pas écrire « abattements déjà utilisés » : après les 20 ans du scénario,
+    c'est fiscalement incohérent avec le rechargement enseigné à l'Étape 1.
+5.  « Donation directe au petit-enfant — 0 EUR » + art. 790 B CGI.
+6.  Slide de la déclaration : « art. 757 CGI — don manuel révélé : taxable » et
+    « déclaration n° 2735 — remplie par celui qui reçoit ».
+7.  Comparatif « 31 865 EUR / 1 594 EUR » : « 31 865 EUR — art. 790 B CGI, de votre
+    vivant » d'un côté, « 1 594 EUR — art. 788, IV CGI, petit-enfant légataire, du
+    vivant de son parent » de l'autre. C'est la slide la plus importante de l'étape :
+    elle apparaît AVANT la comparaison et se tient 8 secondes, jusqu'à la fin du
+    paragraphe « Pourquoi personne ne vous l'a dit ? ».
+8.  Slide des 3 façons de donner : « 790 B · 790 G · 790 A bis », 3 lignes, aucun
+    chiffre.
+9.  Conditions du 790 G : « moins de 80 ans » / « petit-enfant majeur ou émancipé » /
+    « sommes d'argent uniquement » / « déclaration dans le mois, formulaire n° 2735 »
+    + art. 790 G CGI.
+10. Slide de cumul : « 790 B 31 865 + 790 G 31 865 = 63 730 EUR par grand-parent et
+    par petit-enfant — 127 460 EUR pour un couple » + les 2 articles côte à côte.
+11. Le 790 A bis : « 100 000 EUR par donateur — 300 000 EUR par donataire — logement
+    neuf ou VEFA, ou rénovation énergétique — 6 mois pour employer — 5 ans
+    d'affectation : résidence principale du donataire, ou location en résidence
+    principale à un tiers » + la ligne « non-cumul : les travaux financés par ce don
+    n'ouvrent pas droit aux aides et déductions correspondantes » + art. 790 A bis CGI
+    + bandeau « fenêtre jusqu'au 31 décembre 2026 » + bandeau permanent « état du
+    droit vérifié le [JJ/MM/AAAA] — legifrance.gouv.fr ».
+12. Slide « exemple — à 25 ans / à 55 ans », 2 colonnes, aucun chiffre d'euro, avec
+    en bas de slide, lisible : « illustration — aucune donnée statistique ».
+13. Slide « le petit-enfant mineur » — 3 lignes, aucun chiffre, avec l'incrustation
+    discrète « art. 790 B CGI » en bas de slide.
+14. Slide action : le tableau à 5 colonnes vide — prénom, âge, déjà donné (montant et
+    année), montant envisagé, échéance. Plus, en bas : les 2 cases de chiffres et la
+    ligne « fenêtre 2026 : oui / non / à demander ».
+15. Slide pont vers l'Étape 7.
+16. Slide de clôture : « Contenu pédagogique. Ne constitue pas un conseil
+    personnalisé. » — la tenir pendant tout le paragraphe de clôture, qui est
+    désormais dit à voix haute.
+
+ARTICLES DE LOI À AFFICHER
+
+- art. 790 B CGI — abattement petit-enfant en donation, 31 865 EUR.
+- art. 784 CGI — rappel fiscal : l'abattement se reconstitue au bout de 15 ans.
+- art. 757 CGI — don manuel révélé : taxable le jour de la révélation. Déclaration
+  n° 2735.
+- art. 788, IV CGI — abattement de 1 594 EUR, à défaut d'autre abattement, pour le
+  petit-enfant légataire lorsque son parent est vivant.
+- art. 779 CGI — abattement de 100 000 EUR par parent et par enfant (rappel Étape 1).
+- art. 777 CGI — barème en ligne directe, tranche à 20 % au-delà de 15 932 EUR.
+- art. 790 G CGI — don familial de sommes d'argent, 31 865 EUR, donateur de moins de
+  80 ans, donataire majeur ou émancipé, déclaration dans le mois.
+- art. 790 A bis CGI — don pour un logement neuf ou en VEFA ou des travaux de
+  rénovation énergétique, 100 000 EUR par donateur, 300 000 EUR par donataire,
+  fenêtre du 15 février 2025 au 31 décembre 2026.
+- art. 912 et 919-2 du code civil — quotité disponible et imputation de la libéralité
+  faite hors part successorale.
+
+CALCUL À VÉRIFIER À L'ÉCRAN (aucun chiffre de cas canonique n'existait pour cette étape ;
+celui-ci est construit uniquement à partir du barème de l'art. 777, tranche à 20 %)
+
+    31 865 × 20 %              = 6 373,00 EUR      → affiché « 6 373 EUR »
+    31 865 − 6 373             = 25 492,00 EUR
+    25 492 × 20 %              = 5 098,40 EUR      → affiché « 5 098 EUR »
+    25 492 − 5 098             = 20 394,00 EUR
+    6 373 + 5 098              = 11 471,00 EUR
+    11 471 ÷ 31 865            = 36,0 %            → affiché « 36 % »
+
+    63 730 = 31 865 (790 B) + 31 865 (790 G), pour UN SEUL grand-parent, par
+             petit-enfant
+    127 460 = 63 730 × 2 grands-parents
+
+    ⚠️ Le nombre 63 730 n'est prononcé qu'UNE SEULE FOIS dans toute l'étape, au
+    moment du cumul, avec cette seule définition. Au début du script, le doublement
+    par 2 grands-parents est dit sans énoncer le total (« 2 fois cette somme »), pour
+    éviter que le même nombre porte 2 bases de calcul opposées dans la même vidéo.
+
+DRAPEAUX DE PRODUCTION — à traiter AVANT d'enregistrer
+
+- ⚠️ ARTICLE 790 A BIS. La fiche 12-chiffres-succession.md signale qu'un rapport
+  d'évaluation devait être remis au Parlement avant le 30 septembre 2026, et que c'est
+  ce rapport qui décide de la prolongation. Le tournage ayant lieu après cette date,
+  RE-VÉRIFIER sur legifrance.gouv.fr avant d'enregistrer le passage. Trois cas : non
+  prorogé, on tourne le texte tel quel ; prorogé, on remplace la date partout dans le
+  paragraphe et sur la slide 11 ; modifié, on réécrit le paragraphe entier, plafonds
+  compris. Dans le même passage sur Legifrance, vérifier MOT À MOT : la clause de
+  non-cumul (les dépenses financées par le don n'ouvrent pas droit aux aides et
+  déductions habituelles) et la formulation exacte de la condition d'affectation de
+  5 ans (résidence principale du donataire, ou location à titre de résidence
+  principale au profit d'une personne étrangère à son foyer fiscal). Renseigner la
+  date du bandeau « état du droit vérifié le [JJ/MM/AAAA] » sur la slide 11.
+- ⚠️ FORMULAIRE 2735. Vérifier sur impots.gouv.fr, avant tournage, la référence exacte
+  et le libellé du formulaire de déclaration des dons manuels et des sommes d'argent,
+  et l'afficher sur les slides 6 et 9 comme on affiche un article de loi.
+- ⚠️ ÂGE D'HÉRITAGE — volontairement non sourcé. Le script dit « on hérite tard,
+  souvent passé 50 ans » et jamais « en moyenne à 55 ans » : cette donnée est
+  démographique, pas fiscale, elle ne figure pas dans la fiche 12. La slide 12 porte
+  2 âges purement illustratifs (25 ans / 55 ans) et DOIT porter la mention
+  « illustration — aucune donnée statistique ». Elle ne doit jamais porter le mot
+  « moyenne », ni une source, ni un pourcentage. Ne pas la « préciser » au montage.
+  Si Loys veut un chiffre exact, il faut d'abord sourcer une publication publique et
+  afficher la source à l'écran, comme pour un article de loi.
+- ⚠️ AUCUN CHIFFRE COMPORTEMENTAL. Le pont vers l'Étape 7 ne contient plus aucune
+  statistique sur ce que font les familles chez le notaire : il énonce le mécanisme
+  (sans les pièces, le rendez-vous ne débouche sur rien). Ne pas y réintroduire de
+  proportion au montage.
+- ⚠️ RACCORD AVEC L'ÉTAPE 5. Le carton de pont de 05-etape-5 (« [ECRAN : Étape 6 —
+  une génération oubliée] ») doit être aligné sur le libellé réel de cette étape :
+  « Étape 6 sur 7 — L'erreur n°6 : oublier une génération ». À corriger dans le
+  fichier 05 avant tournage.
+- ⚠️ LIBELLÉ DU BOUTON. Le script dit « le bouton "Imprimer la fiche de l'Étape 6" ».
+  Vérifier le libellé réel sur la page du membre et l'aligner avant d'enregistrer.
+- Aucun renvoi produit dans cette étape. C'est volontaire : l'étape n'a pas de
+  frontière sincère à signaler, la règle par défaut s'applique.
+- Aucune mention de placement, d'assureur, de contrat ni de support d'épargne dans
+  tout le script. Vérifier au montage qu'aucune slide n'en introduit un.
+
+------------------------------------------------------------
+LE LIVRABLE DE CETTE ÉTAPE
+------------------------------------------------------------
+
+LA FICHE « UNE LIGNE PAR PETIT-ENFANT » — PDF 1 page, A4, recto, imprimable en noir
+et blanc, 8 lignes vierges.
+
+Elle contient :
+
+- Un tableau à 5 colonnes : PRÉNOM · ÂGE (et date de naissance) · DÉJÀ DONNÉ (montant
+  et année, repris de la liste de l'Étape 5) · MONTANT ENVISAGÉ · ÉCHÉANCE
+  (maintenant / à sa majorité / plus tard).
+- Une colonne de rappel en marge, imprimée, avec les 3 plafonds et leurs articles :
+  790 B — 31 865 EUR, sans condition d'âge, mineur accepté, reconstitution au bout de
+  15 ans au titre de l'art. 784 ; 790 G — 31 865 EUR, donateur de moins de 80 ans et
+  petit-enfant majeur ou émancipé, déclaration dans le mois ; 790 A bis —
+  100 000 EUR par donateur et 300 000 EUR par donataire, logement neuf ou VEFA ou
+  rénovation énergétique, emploi dans les 6 mois, puis 5 ans d'affectation en
+  résidence principale — celle du donataire, ou celle d'un locataire étranger à son
+  foyer fiscal — avant le 31 décembre 2026.
+- En bas de cette colonne de rappel, imprimé : « Dans tous les cas, 2 points à voir
+  avec votre notaire : 1. un don d'argent se déclare à l'administration fiscale
+  (formulaire n° 2735, rempli par celui qui reçoit) — c'est cette déclaration qui date
+  le don et fait partir le compteur des 15 ans de l'art. 784 ; à défaut, le don reste
+  taxable le jour où il est révélé, art. 757 ; 2. ce qui est donné à un petit-enfant
+  du vivant de son parent s'impute sur la quotité disponible (art. 912 et 919-2 du
+  code civil), la part réservée à vos enfants restant intangible. »
+- 2 cases de chiffres en bas de page. La première : « mon chiffre — nombre de
+  petits-enfants × 31 865 EUR (× 2 si nous sommes 2 grands-parents), art. 790 B ». La
+  seconde : « ma date de naissance » et « mes 80 ans — art. 790 G », plus « date de
+  naissance de mon conjoint » et « ses 80 ans ». Ces cases restent sur la fiche. Elles
+  ne se reportent PAS sur le Calendrier des 3 Dates, qui conserve ses 3 lignes :
+  compteur des 15 ans, 70e anniversaire, 71e anniversaire.
+- Une dernière ligne, à cocher : « un de mes petits-enfants achète un logement neuf ou
+  fait des travaux de rénovation énergétique avant le 31 décembre 2026 : oui / non /
+  à lui demander ».
+- Le rappel imprimé : remplir cette fiche n'engage à rien, aucune somme n'est donnée
+  tant qu'aucun virement n'est fait et qu'aucun acte n'est signé.
+- En pied de page : « Contenu pédagogique. Ne constitue pas un conseil personnalisé.
+  Tout projet de donation est à faire relire par votre notaire. »

@@ -1,0 +1,775 @@
+============================================================
+VIDEO 1 — BIENVENUE, ET VOTRE CHIFFRE
+Durée cible : 14 minutes | faceless, voix + écran
+============================================================
+
+Source : strategie/scripts-videos/00-etape-0-votre-facture-invisible.txt
+Documents livrés avec cette vidéo : simulateur-papier · calendrier-3-dates · lexique
+Le spectateur a déjà payé. Il a déjà vu la vidéo de vente. On ne réargumente rien :
+on livre le calcul, et on le rassure sur le fait qu'il ne peut rien casser.
+
+
+------------------------------------------------------------
+1. CE QUE JE DOIS SAVOIR AVANT DE TOURNER
+------------------------------------------------------------
+
+1.1 — CE QUE FAIT CETTE VIDÉO
+
+Elle fait sortir un chiffre. Un seul. Le spectateur repart avec le montant que sa
+famille devrait payer si rien n'était fait, écrit de sa main, plus 3 dates écrites
+de sa main. Tout le reste de la vidéo est au service de ces deux gestes.
+
+Elle se déroule en 3 temps : on explique le calcul et on le fait devant lui sur un
+cas type (11 minutes 30 à l'image, POINTS 1 à 8), il met la vidéo en pause et remplit
+le sien (20 minutes chez lui, hors vidéo), puis il reprend la vidéo pour les 3 dates
+(1 minute 50 à l'image, POINTS 9 et 10, plus 2 minutes d'écriture en pause).
+Total à l'image : 13 minutes 20, hors respirations et hors cartons tenus.
+
+1.2 — LE MÉCANISME JURIDIQUE, DANS L'ORDRE OÙ IL SE DIT
+
+a) Ce qui se transmet. On additionne tout ce que la personne possédait — logement,
+comptes, livrets, véhicule — et on retire ce qu'elle devait encore. Les dettes à la
+charge du défunt se déduisent de l'actif : article 768 CGI. Le solde est la masse
+qui se partage.
+
+b) Comment ça se partage. Selon la loi si rien n'a été écrit, selon le testament s'il
+y en a un — mais un testament ne peut pas tout : la loi réserve aux enfants une part
+dont personne ne peut les priver. Articles 912 et 913 du code civil (la réserve
+héréditaire). Les fractions exactes de la quotité disponible ne se disent PAS ici :
+elles sont sur le lexique et elles appartiennent aux étapes suivantes.
+
+c) Qui paie, et sur quoi. Chaque héritier paie sur SA part un impôt appelé droits de
+succession, et seulement après avoir retiré SON abattement. Abattement = une somme
+effacée avant tout calcul d'impôt : en dessous, l'héritier ne paie rien du tout.
+Pour un enfant, l'abattement est de 100 000 € : article 779 CGI. Le 779 dispose qu'il
+s'applique « sur la part de chacun des enfants » — donc une fois par transmission,
+donc une fois par parent ; et, pour les donations, il se reconstitue tous les 15 ans,
+article 784. Le « par parent » et le renouvellement ne sont pas dans le 779 seul :
+ils résultent du 779 combiné au 784. On ne fait pas dire au 779 plus qu'il ne dit.
+
+d) L'hypothèse de tout le calcul, à ne jamais laisser implicite. Elle a deux moitiés,
+et les deux se disent.
+
+   Première moitié — qui est exonéré. Entre époux, il n'y a aucun droit de succession :
+   le survivant est totalement exonéré, article 796-0 bis CGI. La même exonération
+   existe pour un partenaire de PACS, mais elle ne joue que s'il hérite — et un
+   partenaire de PACS n'est pas héritier légal : il n'hérite que s'il y a un testament.
+   Sans testament, ce sont les enfants qui reçoivent dès le premier décès. Le calcul de
+   cette vidéo est celui d'un couple marié.
+   L'article 796-0 bis ne dit rien du sort de la part des enfants au premier décès. On
+   ne lui fait pas porter cette conclusion : il exonère le survivant, un point.
+
+   Seconde moitié — pourquoi tout se calcule au second décès. Nous calculons le cas où
+   la totalité du patrimoine se retrouve sur une seule tête au second décès. C'est ce
+   que produit une communauté universelle avec clause d'attribution intégrale au
+   survivant — le contrat que les notaires conseillaient à cette génération. Dans ce
+   cas, l'enfant n'a rien à payer au premier décès, et tout se calcule au second : il
+   hérite de l'ensemble, avec un seul abattement de 100 000 €.
+   Ce n'est pas une contradiction avec la réserve du point b) : l'attribution intégrale
+   au survivant relève du contrat de mariage, pas d'un legs. Explication pour celui qui
+   tourne, à ne pas développer à l'oral.
+
+   Avec un autre contrat de mariage — régime légal, conjoint en usufruit ou pour un
+   quart en pleine propriété — l'enfant reçoit déjà une part au premier décès, il y
+   consomme un premier abattement de 100 000 €, et les droits se répartissent sur les
+   deux successions. Le total est alors plus bas : `strategie/12-chiffres-succession.md`
+   chiffre le cas Julien à environ 25 000 € sous le régime légal, contre 82 194 € sous
+   communauté universelle.
+
+   Donc : ce que nous donnons est une estimation haute, celle du moment le plus coûteux.
+   NE JAMAIS ÉCRIRE NI DIRE « c'est ce qui rend le chiffre exact ». C'est l'hypothèse qui
+   tient le chiffre, et elle se dit à voix haute.
+
+e) Le barème. Article 777 CGI, en ligne directe, par tranches, comme l'impôt sur le
+revenu : 5 % jusqu'à 8 072 € · 10 % de 8 072 à 12 109 € · 15 % de 12 109 à 15 932 € ·
+20 % de 15 932 à 552 324 € · 30 % de 552 324 à 902 838 € · 40 % de 902 838 à
+1 805 677 € · 45 % au-delà de 1 805 677 €. Les 3 tranches hautes ne se prononcent pas
+à l'oral, mais elles s'affichent en gris et elles sont imprimées sur le Simulateur :
+une slide qui s'arrêterait à 20 % serait fausse lue seule.
+
+f) Le délai. Quand le décès a lieu en France métropolitaine, la déclaration de
+succession se dépose dans les 6 mois : article 641 CGI (12 mois dans les autres cas —
+sans le mot « tous » : le 641 n'est pas seul, des cas particuliers existent, et ils ne
+se citent pas tant qu'ils ne sont pas vérifiés en fiche 12). Le paiement des droits,
+lui, est dû au moment de ce dépôt : article 1701 CGI. Ce sont deux articles différents,
+on ne fait pas dire au 641 ce qu'il ne dit pas.
+Des facilités de paiement existent — paiement fractionné, paiement différé : article
+1717 CGI, et articles 396 et suivants de l'annexe III. Elles se demandent au moment de
+la déclaration, et c'est le notaire qui les monte. Même exigence de vérification
+préalable que pour le 641 et le 1701 : à reporter vérifié dans la fiche 12, sinon on
+ne le dit pas.
+
+g) Pourquoi il n'y a pas d'abattement de 20 % sur le logement. L'article 764 bis CGI
+réduit de 20 % la valeur de la résidence principale du défunt, mais seulement si au
+moins une de ces personnes l'occupe encore au jour du décès comme sa propre résidence
+principale : le conjoint survivant, le partenaire de PACS, ou un enfant mineur ou
+majeur protégé. Au second décès, personne ne l'occupe : l'abattement ne s'applique pas
+(BOFiP, cité en fiche 12 § 8). Son absence dans le calcul est volontaire, pas un oubli.
+À dire seulement si la question est posée.
+
+1.3 — LE CAS TYPE, LIGNE PAR LIGNE
+
+Jean-Pierre, 67 ans, Nantes, marié, un fils : Nicolas. Personnage fictif, mention
+permanente à l'écran sur toute la séquence. Pavillon, 380 000 € aujourd'hui, aucun
+crédit en cours. Livrets : 120 000 €. Aucune dette. Aucun montant d'assurance-vie
+n'entre dans ce calcul : les 120 000 € sont sur des livrets.
+
+Le calcul se conduit dans l'ordre EXACT des 6 lignes du Simulateur papier, parce que
+c'est ce document-là que le spectateur va remplir :
+
+  A. Total des biens          380 000 + 120 000        =  500 000 €
+  B. Crédits et dettes                                 =        0 €
+  C. Masse à partager          A − B                   =  500 000 €
+  D. Part d'un enfant          C ÷ 1 enfant            =  500 000 €
+  E. Part taxable              D − 100 000 (art. 779)  =  400 000 €
+
+  F. Barème art. 777 appliqué à E :
+       8 072 × 5 %                                     =      403,60 €
+       (12 109 − 8 072) = 4 037 × 10 %                 =      403,70 €
+       (15 932 − 12 109) = 3 823 × 15 %                =      573,45 €
+       (400 000 − 15 932) = 384 068 × 20 %             =   76 813,60 €
+     DROITS, PAR ENFANT                                =   78 194,35 €  →  78 194 €
+
+  G. Total famille             F × nombre d'enfants    =   78 194 €  (1 enfant : F = G)
+
+  La ligne G n'a pas d'encadré sur la feuille. Elle est portée par la phrase imprimée
+  sous l'encadré F : « Multipliez par le nombre d'enfants pour obtenir le total que
+  votre famille devra régler. » C'est le total famille, et lui seul, qui se reporte en
+  haut du Calendrier. Sur le cas type, Jean-Pierre a un fils unique : les deux chiffres
+  sont le même, et cela se dit à l'oral pour que personne ne cherche une différence.
+
+  Somme des 3 premières tranches : 1 380,75 € — annoncée « moins de 1 400 € »,
+  jamais comme un nombre exact.
+
+  Liquidité : les droits se paient en argent, au dépôt de la déclaration. Ici,
+  78 194 € à prélever sur 120 000 € de livrets : les livrets suffisent, il reste
+  41 806 €. C'est la seule raison de faire cette soustraction — savoir si les
+  liquidités couvrent la somme. Elle ne se commente pas autrement.
+
+  Les 120 000 € ne se commentent pas : ni leur origine, ni la durée, ni l'effort
+  qu'ils ont demandé. C'est un montant de livrets, rien d'autre.
+
+À PLUSIEURS ENFANTS. Le barème s'applique à la part taxable d'UN enfant, pas à la
+masse. Chaque enfant repart de la première tranche, et le barème est progressif.
+Sur les mêmes 500 000 € :
+  · 2 enfants : D = 250 000 €, E = 150 000 €, droits par enfant 28 194 €,
+    total famille 56 388 €.
+  · 3 enfants : D = 166 667 €, E = 66 667 €, droits par enfant ≈ 11 528 €,
+    total famille ≈ 34 583 €.
+Ces deux exemples sont là pour que celui qui tourne ne soit pas pris de court. Ils ne
+se mettent pas à l'écran : ce qui se dit, c'est la règle — l'encadré F est ce que paie
+UN enfant, le chiffre à retenir est celui-là multiplié par le nombre d'enfants.
+
+RÈGLE DE L'EURO INFÉRIEUR, non modifiable au montage. Les tranches sont dites à l'euro
+inférieur, jamais arrondies : on dit 403 €, 403 €, 573 €, 76 813 € — pas 404 €. Elles
+sont affichées au centime. L'écart cumulé avec le total exact est de 2,35 €, et
+l'addition du spectateur tombe sur 78 192 € contre 78 194 € annoncés. On le prévient
+AVANT la première tranche, parce qu'on lui a demandé un stylo et qu'il additionnera.
+Seul le total est donné sans approximation : 78 194 €, dit une seule fois, sans rien
+ajouter après.
+
+1.4 — LE CALENDRIER DES 3 DATES, TEL QU'IL EST RÉELLEMENT IMPRIMÉ
+
+Ne pas dicter l'ordre de l'ancien script : il ne correspond plus au document livré.
+L'ordre du papier fait foi, sinon le spectateur cherche une ligne qui n'existe pas.
+
+  En haut de la feuille : « Ma facture invisible aujourd'hui » — on y recopie le
+  total famille sorti du Simulateur. C'est ce champ qui relie les deux documents.
+
+  Date n° 1 — le compteur des 15 ans. Deux champs : « date de ma dernière donation »
+  (ou le mot « jamais ») et « donc mon compteur se recharge le » (cette date + 15 ans).
+  Articles imprimés en regard : 779 et 784 CGI. L'article 784 est le seul qu'on
+  prononce ici, et sans l'expliquer : il appartient à l'étape suivante.
+
+  Date n° 2 — le 70e anniversaire. Le sien, ou celui du conjoint. Articles imprimés :
+  990 I et 757 B CGI, plus l'article L132-12 du code des assurances. Non commentés :
+  ils appartiennent à l'étape 3.
+
+  Date n° 3 — le 71e anniversaire. Articles imprimés : 669 CGI. Non commenté : il
+  appartient à l'étape 4.
+
+  En bas : l'encadré « La prochaine échéance qui me concerne » — il y recopie la plus
+  proche des 3. C'est le dernier geste de la vidéo.
+
+  ⚠️ La feuille n'est pas muette : chaque date porte un paragraphe qui donne déjà les
+  100 000 € et les 15 ans, les 152 500 € et les 30 500 €, les 60 % et les 70 %. Le
+  spectateur les lit pendant qu'on lui dit qu'on n'explique rien. Cela s'anticipe en une
+  phrase (POINT 9), sinon il croit avoir raté quelque chose.
+
+1.5 — LES 5 POINTS À TRANCHER AVANT D'ALLUMER LA CAMÉRA
+
+Ce sont des blocages de production, pas des choix de rédaction.
+
+(1) Le Simulateur papier livré porte un exemple intitulé « Le cas de Jean-Pierre »
+qui contient en réalité les chiffres de Julien : 480 000 + 40 000 = 520 000 €, part
+taxable 420 000 €, total 82 194 €, et l'enfant y est nommé Julien. La vidéo, elle,
+démontre Jean-Pierre à 500 000 € et 78 194 €. Deux hommes du même nom et deux totaux
+différents sur la même page : le spectateur le verra dans la minute. À corriger dans
+`src/content/documents/simulateur-papier.tsx` avant le tournage. Une seule option :
+l'exemple du document est renommé « Le cas de Julien » ; le prénom de l'enfant y reste
+Julien et les chiffres restent 480 000 + 40 000, part taxable 420 000, 82 194 €. Ne
+jamais transposer 13 988 € ni 68 206 € sur Jean-Pierre : il n'a pas d'« après » (fiche
+12). Tourner avant cette correction est inutile.
+Même fichier, même passage de correction : la phrase d'introduction « À la fin, vous
+aurez un nombre — celui que personne ne vous a jamais donné » est l'argument de la page
+de vente, interdit à l'intérieur du produit. La remplacer par : « À la fin, vous aurez
+ce nombre écrit, daté, et rangé avec vos deux autres feuilles. »
+
+(2) Le Simulateur papier n'a AUCUN bloc assurance-vie et AUCUN encadré d'hypothèse.
+Deux conséquences pour la voix. D'abord, on ne montre pas de « 4e case » à l'écran :
+on filme les 6 lignes qui existent. Ensuite, la 4e information demandée au spectateur
+(montants et dates de versement de ses contrats) ne se reporte NULLE PART dans le
+Simulateur aujourd'hui : elle se note sur une feuille à part ou au dos, et elle sert
+à l'étape 3. C'est d'ailleurs juste : l'assurance-vie ne fait pas partie de la
+succession au sens CIVIL — les capitaux vont aux bénéficiaires désignés, hors partage,
+article L132-12 du code des assurances. Fiscalement, elle a son propre régime, et il
+n'est pas le même selon que les versements ont été faits avant ou après 70 ans
+(art. 990 I et 757 B) : c'est l'étape 3. Le mot « civil » ne se perd jamais, sinon on
+dit le contraire de l'article qui s'affiche au même instant sur le carton du 70e
+anniversaire. Si le bloc est ajouté au document plus tard, cette consigne change et la
+vidéo se re-tourne sur ce passage seul.
+
+(3) Articles non présents dans la liste vérifiée de `strategie/12-chiffres-succession.md`
+(cette liste contient : CGI 669, 757 B, 764 bis, 777, 779, 784, 787 B, 788, 790 A bis,
+790 B, 790 D, 790 G, 796-0 bis, 990 I, 1133 ; code civil 605-606 et 1075 s. ; code des
+assurances L132-12) :
+  · 641 et 1701 CGI (dépôt et paiement)
+  · 1717 CGI et 396 s. annexe III (paiement fractionné et différé)
+  · 768 et 773 CGI (déduction des dettes)
+  · 764 CGI (forfait mobilier de 5 %)
+  · 912 et 913 du code civil (réserve héréditaire)
+Traitement, article par article — la règle du projet est qu'aucun chiffre de loi ne
+s'affiche sans son article vérifié, et aucune phrase n'est supprimée pour autant :
+  · 641 et 1701 : soit reportés vérifiés dans la fiche 12, soit la seconde moitié du
+    POINT 7 (les deux délais) et le carton 14 ne sont pas tournés.
+  · 1717 et 396 s. annexe III : soit reportés vérifiés, soit la phrase sur les
+    facilités de paiement ne se dit pas.
+  · 768 et 773 : soit reportés vérifiés, soit le carton 4 affiche la phrase 1 sans
+    article et la voix dit « ce qu'il possédait, moins ce qu'il devait », sans numéro ;
+    idem pour les dettes non déductibles en section 5.
+  · 764 : soit reporté vérifié, soit le forfait mobilier se mentionne sans son numéro.
+  · 912 et 913 : ils ne figurent pas du tout dans la fiche 12 — ni vérifiés, ni
+    signalés « non re-vérifiés » (le marqueur « non re-vérifié » de la fiche 12 porte
+    sur son § 10, donation-partage, art. 1075 s.). À y ajouter, vérifiés, avant le
+    tournage. À défaut : la phrase 2 des 3 phrases se dit quand même, mais le carton 4
+    ne l'accompagne d'aucun article.
+  · Cas particuliers du délai (Corse, La Réunion) : non vérifiés en fiche 12, donc non
+    cités. D'ici là on dit « 12 mois dans les autres cas », sans « tous ».
+
+(4) L'encadré F du Simulateur livré imprime, en toutes lettres : « Les droits se paient
+dans les six mois du décès, en argent. » C'est mot pour mot la formulation que la
+section 5 classe comme INCOMPLÈTE (6 mois seulement si le décès a lieu en France
+métropolitaine, art. 641 CGI) et comme FAUX ARTICLE (le paiement relève du 1701, pas du
+délai de dépôt). Les cartons 8 et 11 filment cette page : l'écran afficherait l'erreur
+pendant que la voix énonce la correction, et le spectateur repartirait avec la version
+fausse sur sa feuille, pour tout le reste du produit. À corriger dans
+`src/content/documents/simulateur-papier.tsx` AVANT le tournage, en : « La déclaration
+de succession se dépose dans les 6 mois si le décès a lieu en France métropolitaine
+(art. 641 CGI), 12 mois dans les autres cas. Les droits se paient au moment de ce dépôt
+(art. 1701 CGI). Des facilités de paiement existent : parlez-en à votre notaire. » Tant
+que ce n'est pas corrigé, aucune capture du Simulateur ne se filme — donc ni le carton 8
+ni le carton 11 — et le POINT 5 ne se tourne pas.
+
+(5) Les « 3 versions » du Simulateur n'existent pas sur le site. `src/lib/methode.ts`
+ne livre à l'étape 0 que trois feuilles imprimables — simulateur-papier,
+calendrier-3-dates, lexique — et aucune version tableur ni Excel. Les trois versions
+sont prévues dans `strategie/04-produit-mvp.md`, pas dans le produit livré. Soit elles
+sont ajoutées avant le tournage, soit la phrase des 3 versions du POINT 8 ne se dit
+pas, et on dit à la place : la feuille s'imprime, et elle se remplit au stylo.
+
+1.6 — OÙ SONT LES DOCUMENTS
+
+Relevé sur le site le jour de la rédaction de cette fiche. À revérifier sur la page en
+ligne avant le tournage : si un intitulé change, cette section et le carton 15 changent.
+
+  Page : l'espace personnel, `/espace/<son lien personnel>` — celui reçu par email.
+  Bloc : « MES DOCUMENTS À IMPRIMER ».
+  Bouton global : « Tout imprimer (3 documents) ».
+  Sur chaque feuille : « Imprimer ce document ».
+  Intitulés exacts des 3 feuilles de l'étape 0, dans l'ordre où elles apparaissent :
+    1. « Le Simulateur de Facture Invisible »
+    2. « Le Calendrier des 3 dates »
+    3. « Le lexique en une page »
+
+On les imprime tous les trois en une fois, au même moment. Le Calendrier sert dès la
+reprise de la vidéo, et le Lexique fait partie du livrable.
+
+
+------------------------------------------------------------
+2. CE QUE JE MONTRE À L'ÉCRAN
+------------------------------------------------------------
+
+Fond clair, police ≥ 28 pt, 1 seul chiffre par slide, sous-titres sur toute la durée.
+Aucun visage, jamais. Le fond clair ne change à aucun moment, y compris sur le dernier
+carton.
+
+CARTON 0 — BANDEAU PERMANENT, présent du début à la fin, en bas de cadre :
+  « Contenu pédagogique et général — ne constitue pas un conseil personnalisé.
+  Tout modèle d'acte est à faire relire par votre notaire. »
+
+1. Carton-titre : « Étape 0 — Bienvenue, et votre chiffre ».
+
+2. « Ce qu'il vous faut à côté de vous » — 7 lignes, les 2 premières d'abord :
+   les 3 feuilles de cette étape, imprimées : le Simulateur · le Calendrier des 3 dates ·
+   le Lexique — puis « un stylo, et de quoi écrire posément ». Puis les papiers
+   personnels : les derniers relevés de comptes et livrets · une estimation du
+   logement · le contrat de mariage ou de PACS s'il en existe un · les relevés
+   d'assurance-vie avec la date des versements.
+
+3. « Qui vous parle » — logo Héritage Intact seul, aucun nom, aucun titre. 3 lignes :
+   aucune commission · aucun placement vendu · aucun titre revendiqué. Quatrième
+   ligne : « Articles publics et gratuits — Legifrance ».
+
+4. « Une succession, en 3 phrases » — apparition une par une, chacune avec son article
+   en bas de cadre : phrase 1 « art. 768 CGI » · phrase 2 « art. 912 et 913 du code
+   civil » · phrase 3 « art. 777 et 779 CGI ».
+   ⚠️ Les articles des phrases 1 et 2 ne s'affichent que si le point 1.5 (3) est levé.
+
+5. « Abattement : une somme effacée avant tout calcul d'impôt » puis, plein cadre,
+   « Enfant : 100 000 € — art. 779 CGI » et, en seconde ligne, « une fois par parent ;
+   pour les donations, reconstitué tous les 15 ans — art. 784 CGI ».
+
+6. « Cas type — Jean-Pierre, 67 ans, Nantes. Marié. Un fils : Nicolas. » Pavillon vu
+   de l'extérieur, ou silhouette de dos. MENTION PERMANENTE sur toute la séquence :
+   « exemple pédagogique — personnage fictif ».
+
+7. Plein cadre, 3 lignes : « Entre époux et partenaires de PACS : aucun droit de
+   succession — art. 796-0 bis CGI » · « Ce que nous calculons ici : un couple marié,
+   au second décès » · « Hypothèse de ce calcul : tout le patrimoine sur une seule tête
+   au second décès ».
+
+8. Capture du SIMULATEUR PAPIER. D'abord le tableau de la page 1, rempli :
+   ligne 1 « Pavillon / 380 000 € / nous deux » · ligne 2 « Livrets / 120 000 € /
+   nous deux » · les 4 autres lignes barrées. Puis le report et le remplissage en
+   direct des lignes A à E, dans l'ordre du document : A 500 000 € · B 0 € ·
+   C 500 000 € · D 500 000 € (1 enfant) · E 400 000 €. La ligne E est entourée à
+   l'écran. En regard de E : « art. 779 et 784 CGI — comme sur votre feuille ».
+
+9. Tableau du barème art. 777. Les 4 premières lignes s'ajoutent une par une, résultat
+   AU CENTIME à droite : 403,60 / 403,70 / 573,45 / 76 813,60. Les 3 tranches
+   supérieures restent visibles en gris, non commentées, avec leurs seuils en toutes
+   lettres : « De 552 324 € à 902 838 € : 30 % » · « De 902 838 € à 1 805 677 € : 40 % » ·
+   « Au-delà de 1 805 677 € : 45 % ».
+
+10. Plein cadre, seul : « De 15 932 € à 552 324 € : 20 % — art. 777 CGI ».
+    ⚠️ Ne jamais fabriquer la variante « au-delà de 15 932 € : 20 % » : lue seule,
+    elle est fausse.
+
+11. Plein cadre : « 78 194 € » + « art. 777 et 779 CGI ». Puis le même chiffre posé
+    dans l'encadré F du Simulateur, pour que le spectateur voie où il écrira le sien.
+
+12. Plein cadre, 2 lignes : « F = ce que paie UN enfant » · « Total famille = F ×
+    nombre d'enfants ». Troisième ligne, en plus petit : « Jean-Pierre a un fils
+    unique : ici, les deux chiffres sont le même. »
+
+13. « Les droits se paient en argent — 120 000 € − 78 194 € = 41 806 € ».
+
+14. 2 lignes : « Déclaration : 6 mois si le décès a lieu en France métropolitaine —
+    art. 641 CGI » / « Paiement au moment du dépôt — art. 1701 CGI ». Si le 1717 est
+    levé, troisième ligne : « Des facilités de paiement existent — art. 1717 CGI ».
+    ⚠️ À ne fabriquer que si le point 1.5 (3) est levé.
+
+15. Capture de la page en ligne : le bloc « MES DOCUMENTS À IMPRIMER » entouré, les
+    3 feuilles visibles avec leurs intitulés exacts, et le bouton « Tout imprimer ».
+    C'est le carton qui accompagne la consigne de navigation du POINT 8.
+
+16. « À vous — 20 minutes », puis les 4 informations à réunir. Au moment de la 4e,
+    incrustation muette en bas de cadre : « art. 990 I et 757 B CGI ».
+
+17. « Ce que remplir ce fichier ne fait pas » — 5 lignes : rien n'est envoyé nulle
+    part · nous n'en recevons aucune copie · aucune administration n'en est informée ·
+    vous ne signez rien · vous ne changez rien à votre situation.
+
+18. Plein cadre tenu : « Mettez la vidéo en pause maintenant ».
+
+19. Le CALENDRIER DES 3 DATES tel qu'il est livré, dans son ordre réel : le champ du
+    haut « Ma facture invisible aujourd'hui », puis n° 1 le compteur des 15 ans
+    (art. 779 et 784), n° 2 le 70e anniversaire (art. 990 I, 757 B et L132-12 du code
+    des assurances), n° 3 le 71e anniversaire (art. 669), puis l'encadré « La prochaine
+    échéance qui me concerne ».
+
+20. Plein cadre tenu : « Mettez la vidéo en pause pour écrire vos 3 dates ».
+
+21. Carton du renvoi, même fond clair que le reste de la vidéo : « Étape 1 — la
+    première ligne de votre Calendrier ». Affiché pendant que le renvoi est dit, donc
+    après la mention légale prononcée et après la phrase de sortie.
+
+22. Carton muet de fin : rappel de la mention légale, sans voix.
+
+À FABRIQUER AVANT LE TOURNAGE : les 22 cartons ci-dessus, le bandeau permanent, la
+capture animée du Simulateur (tableau de la page 1, puis lignes A à E), la capture de
+la page de téléchargement et la capture du Calendrier vierge. Plus les corrections du
+fichier `simulateur-papier.tsx` décrites en 1.5 (1) et 1.5 (4).
+
+
+------------------------------------------------------------
+3. CE QUE JE DIS, DANS L'ORDRE
+------------------------------------------------------------
+
+10 points. Le budget de minutes en face de chacun est ferme : il tient les 13 minutes 20
+à l'image, dans une durée cible de 14 minutes. Ce sont des repères, à dire avec mes
+mots — sauf ce qui est en section 4.
+
+POINT 1 — Ce qui se passe dans cette étape, et les papiers à sortir. (1 min)
+  Deux temps : on écoute, puis on remplit chez soi. À la fin, un chiffre écrit et
+  3 dates écrites.
+  Je donne la liste des papiers TOUT DE SUITE, avant le premier calcul, pour qu'il
+  puisse aller les chercher pendant qu'il écoute. Et je dis qu'écouter d'abord et
+  chercher après convient tout autant.
+  Je dis, une fois, qu'on peut mettre en pause quand on veut, revenir en arrière autant
+  de fois qu'on veut, et reprendre demain : la vidéo reste disponible et rien ne se perd.
+
+POINT 2 — Qui parle, et ce que nous ne faisons pas. (1 min)
+  Aucune commission de personne, aucun placement vendu, aucun titre revendiqué. Notre
+  autorité s'arrête au texte affiché à l'écran, vérifiable sur Legifrance, par lui,
+  par un de ses enfants, ou par son notaire.
+  Court. C'est le seul endroit de toute la série où cela se dit : ne pas y revenir
+  dans les vidéos suivantes.
+
+POINT 3 — Une succession, en 3 phrases, et le mot « abattement ». (1 min 45)
+  Phrase 1 : ce qu'on possédait moins ce qu'on devait. Phrase 2 : le partage, et la
+  part réservée aux enfants. Phrase 3 : chaque héritier paie sur sa part, après son
+  abattement. Puis la définition : une somme effacée avant tout calcul. Puis 100 000 €,
+  article 779 — une fois par parent, et reconstitué tous les 15 ans pour les donations,
+  article 784.
+  Je ne détaille pas les fractions de la quotité disponible : elles sont sur le
+  lexique. Je dis « droits de succession » et je précise en une incise que c'est un
+  impôt, pas un droit qu'on reçoit. Je ne fais pas dire au 779 seul le « par parent » :
+  c'est le 779 avec le 784.
+
+POINT 4 — Ce que nous calculons : un couple marié, au second décès. (1 min 15)
+  Entre époux et pacsés, aucun droit — article 796-0 bis. Pour un PACS, l'exonération
+  ne joue que si le partenaire hérite, et il n'hérite que par testament : ici, on
+  calcule un couple marié. Nous nous plaçons dans le cas où le conjoint survivant
+  recueille l'ensemble : l'enfant hérite alors au second décès, avec un seul abattement.
+  À dire lentement, et sans raccourci : la moitié de l'audience est mariée. C'est
+  l'hypothèse qui tient le chiffre, et elle se dit à voix haute. Si le contrat de
+  mariage est différent, l'enfant reçoit déjà une part au premier décès et le total est
+  plus bas : ce que nous donnons est une estimation haute.
+  Ne jamais dire « c'est le seul moment qui coûte » ni « c'est ce qui rend le chiffre
+  exact ».
+
+POINT 5 — Le Simulateur, rempli devant lui, sur le cas type. (1 min 30)
+  Je présente Jean-Pierre en 2 lignes : 67 ans, marié, un fils, un pavillon à 380 000 €
+  et 120 000 € de livrets, aucune dette. Puis je remplis le tableau du haut, puis A, B,
+  C, D, E à l'écran, et je m'arrête sur la part taxable : 400 000 €.
+  Je dis en une phrase que le calcul se fait sur la part d'UN enfant, et que le chiffre
+  à retenir est celui-là multiplié par le nombre d'enfants.
+  En arrivant à la ligne E : « votre feuille indique 100 000 € par parent, et un
+  compteur qui se recharge tous les 15 ans. C'est vrai, et c'est ce que nous verrons aux
+  étapes suivantes. Ici, sur cette succession-là, il y a un seul abattement à
+  soustraire : 100 000 €. »
+  Je décris le personnage, je ne le raconte pas : pas de portrait moral, pas de
+  « et pourtant ». Les chiffres suffisent. Je ne dis jamais « il n'a pas
+  d'assurance-vie » : je dis qu'aucun montant d'assurance-vie n'entre dans ce calcul.
+  Je dis « exemple pédagogique, personnage fictif » une fois, la mention reste affichée.
+
+POINT 6 — Le barème, tranche par tranche, jusqu'au total. (2 min)
+  L'avertissement d'arrondi d'abord, avec mes mots : je donne des euros entiers à
+  l'euro inférieur, l'écran affiche les centimes, c'est avec les centimes que le total
+  est calculé ; son addition tombera 2 € en dessous, ce n'est pas une erreur ; le
+  chiffre juste est celui de l'écran. Puis les 4 tranches, dans l'ordre, avec leur
+  résultat. Puis le total : 78 194 €.
+  Le sous-total des 3 premières tranches se dit « moins de 1 400 € ». Le total est donné
+  sans approximation, une seule fois, et on n'ajoute rien après : pas de silence appuyé,
+  pas de commentaire.
+
+POINT 7 — Avec quoi cela se paie, et quand. (45 s)
+  Les droits se paient en argent, au dépôt de la déclaration. Ici les livrets couvrent :
+  120 000 € moins 78 194 €, il reste 41 806 €. Déclaration dans les 6 mois si le décès
+  a lieu en France métropolitaine (art. 641), paiement au moment du dépôt (art. 1701),
+  et des facilités de paiement existent, que le notaire monte (art. 1717).
+  Aucune fraction, aucun « deux tiers », aucune formule sur l'épargne d'une vie. Une
+  question de liquidité, et deux délais.
+  Ne pas tourner la seconde moitié de ce point (les deux délais et les facilités,
+  carton 14) si 1.5 (3) n'est pas levé. La soustraction et le carton 13 se tournent dans
+  tous les cas. Sans les délais, le point dure 20 s au lieu de 45 s.
+
+POINT 8 — À vous : les 3 feuilles, les 4 informations, et ce qui ne peut pas mal
+tourner. (2 min 15)
+  Où trouver les 3 fichiers sur la page, et lesquels imprimer : le Simulateur, le
+  Calendrier des 3 dates, le Lexique. On les imprime tous les trois maintenant, en une
+  fois. Le détail des intitulés est en 1.6, le carton 15 les montre à l'écran.
+  L'encadré F, c'est ce que paie UN enfant. Si vous en avez deux, multipliez par deux ;
+  trois, par trois. C'est ce total-là que vous reportez en haut du Calendrier.
+  Les 4 informations : valeur du logement à 10 000 € près, total des comptes et livrets,
+  situation familiale et nombre d'enfants, puis les montants et dates de versement des
+  contrats d'assurance-vie — notés à part, pour l'étape 3.
+  Les 3 sorties de secours, à dire nommément. Pour le contrat de mariage : « si vous ne
+  savez pas quel est votre contrat de mariage, écrivez “je ne sais pas” : la feuille se
+  remplit quand même et le chiffre reste utile. Sachez seulement qu'il est calculé dans
+  l'hypothèse la plus lourde, celle où tout arrive à vos enfants d'un coup. Votre contrat
+  de mariage peut le faire baisser. C'est la première question à poser à votre notaire,
+  et elle est déjà sur votre feuille. » Puis une estimation à 10 000 € près pour le
+  logement, et « à vérifier » pour une date qu'il n'a pas sous la main.
+  Puis la phrase sur ce que remplir ne déclenche pas. Puis : mettez en pause,
+  20 minutes, davantage s'il faut aller chercher les papiers. Et : pendant cette pause,
+  imprimez aussi le Calendrier des 3 dates — on s'en sert dès que la vidéo reprend.
+  ⚠️ La phrase sur les « 3 versions » du Simulateur ne se dit que si 1.5 (5) est levé.
+  Sinon : la feuille s'imprime, et elle se remplit au stylo.
+
+POINT 9 — [après la pause] Le Calendrier des 3 dates. (1 min 30)
+  Avant de lire les 3 dates, je dis : prenez le Calendrier, et remettez en pause le
+  temps d'écrire — je vous laisse le temps qu'il faut.
+  Report du total famille en haut de la feuille. Puis les 3 dates dans l'ordre du
+  document : dernière donation et cette date + 15 ans (art. 784), 70e anniversaire, 71e
+  anniversaire. Puis l'encadré du bas : recopier la plus proche des 3.
+  Je dis en une phrase que la feuille explique déjà chaque date en deux lignes, qu'il
+  n'a rien à en faire aujourd'hui, et que chacune a son étape.
+  Je n'explique aucune des 3. Je dis pourquoi : chacune a son étape.
+  On annonce le rangement, jamais l'intérêt. Dire : « chacune de ces 3 dates est traitée
+  dans une étape. » Ne jamais dire : « vous verrez ce qu'elle change », « c'est là que
+  tout se joue », « gardez-la en tête ».
+  Puis l'apaisement, qui concerne une grande partie de l'audience : une date passée ne
+  ferme pas tout — elle change ce qui reste possible, et les deux autres dates continuent
+  de compter. « Jamais » est une réponse valable, et elle s'écrit.
+
+POINT 10 — La mention légale, et où l'on va. (20 s)
+  Une phrase de mention légale, dite une seule fois, à la fin. Puis le renvoi de la
+  section 7.
+  Avant le renvoi, une seule phrase de sortie : il peut s'arrêter là, ses 2 documents
+  sont finis et ne dépendent pas de la suite.
+
+
+------------------------------------------------------------
+4. LES PHRASES À DIRE MOT POUR MOT
+------------------------------------------------------------
+
+1. « Nous ne sommes ni notaire, ni avocat, ni conseiller, et nous ne revendiquons
+   aucun de ces titres. Nous ne vendons aucun placement, aucun contrat, aucune
+   assurance, et aucune banque, aucun assureur, aucun notaire ne nous verse de
+   commission. »
+
+2. « Pour un enfant, l'abattement est de 100 000 €. C'est l'article 779 du code général
+   des impôts. Il s'applique à la part de l'enfant dans chaque transmission — donc une
+   fois par parent ; et pour les donations, il se reconstitue tous les quinze ans,
+   article 784. »
+
+3. « Entre époux, il n'y a aucun droit de succession : le survivant est totalement
+   exonéré. C'est l'article 796-0 bis du code général des impôts. La même exonération
+   existe entre partenaires de PACS, mais elle ne joue que si le partenaire hérite, et
+   il n'hérite que s'il y a un testament. Ce que nous calculons ici, c'est un couple
+   marié, au second décès : le jour où l'enfant hérite de l'ensemble, avec un seul
+   abattement de 100 000 €. Ce calcul suppose que la totalité du patrimoine se retrouve
+   sur une seule tête, ce que produit une communauté universelle avec attribution
+   intégrale au survivant. Si votre contrat de mariage est différent, vos enfants
+   reçoivent déjà une part au premier décès, avec un premier abattement de 100 000 €, et
+   le total est plus bas que celui que nous calculons ici. Votre notaire vous dira lequel
+   des deux est votre cas. »
+
+4. « Si vous additionnez ce que je dis, vous trouvez 78 192 €. L'écran, lui, affiche les
+   centimes, et le total exact est 78 194 €. Ces 2 € d'écart ne sont pas une erreur :
+   c'est l'euro inférieur. Le chiffre juste est celui de l'écran. »
+
+5. « De 15 932 € à 552 324 €, le taux est de 20 %. Article 777 du code général des
+   impôts. »
+
+6. « Quand le décès a lieu en France métropolitaine, la déclaration de succession se
+   dépose dans les 6 mois : article 641 du code général des impôts. Et les droits se
+   paient au moment de ce dépôt : article 1701 du code général des impôts. Des facilités
+   de paiement existent — paiement fractionné, paiement différé : article 1717 du code
+   général des impôts. Elles se demandent au moment de la déclaration, et c'est votre
+   notaire qui les monte. »
+
+7. « Remplir ce fichier ne déclenche rien. Rien n'est envoyé nulle part, nous n'en
+   recevons aucune copie, et aucune administration n'en est informée. Vous ne signez
+   rien, et vous ne changez rien à votre situation. »
+
+8. « Ce que vous venez d'entendre est pédagogique et général. Ce n'est pas un conseil
+   personnalisé, et chaque décision que vous prendrez doit être relue par votre
+   notaire. »
+
+
+------------------------------------------------------------
+5. LES PIÈGES — CE QU'IL NE FAUT SURTOUT PAS DIRE
+------------------------------------------------------------
+
+« Au-delà de 15 932 €, c'est 20 %. »
+  → FAUX au-delà de 552 324 € (30 %, puis 40 %, puis 45 %). Dire, et afficher :
+    « de 15 932 € à 552 324 €, 20 % ».
+
+« L'abattement est de 200 000 €, puisqu'il y a deux parents. »
+  → FAUX dans le calcul de cette vidéo. Au second décès, l'enfant reçoit UN abattement
+    de 100 000 € sur cette succession-là. Le « par parent » de l'article 779 se
+    récupère du vivant des parents, et c'est l'objet des étapes suivantes. Dire :
+    « 100 000 € par parent — ici, au second décès, il en reste un seul à appliquer ».
+
+« Au premier décès, la facture n'apparaît pas : elle est reportée. »
+  → FAUX comme règle générale. Ce n'est vrai que si le conjoint survivant recueille
+    l'ensemble — ce que produit une communauté universelle avec attribution intégrale.
+    Sinon, les enfants reçoivent une part dès le premier décès et y consomment un
+    premier abattement. Dire : « nous nous plaçons dans le cas où le conjoint survivant
+    recueille l'ensemble ».
+
+« De toute façon, tout ira à votre conjoint. »
+  → FAUX en général, et ce n'est pas ce que dit le 796-0 bis : cet article exonère le
+    survivant, il ne dit rien du sort de la part des enfants. Dire : « dans le cas que
+    nous calculons, celui où tout se retrouve sur une seule tête ».
+
+« C'est ce qui rend le chiffre exact. » / « C'est le seul moment qui coûte. »
+  → À SUPPRIMER, les deux. Le premier fait passer une hypothèse pour une certitude —
+    dire : « c'est l'hypothèse qui tient le chiffre, et elle se dit à voix haute ». Le
+    second est faux : une donation du vivant au-delà de l'abattement coûte aussi.
+
+« Un pacsé, c'est comme un marié. »
+  → FAUX en pratique. Le partenaire de PACS n'est pas héritier légal : l'exonération du
+    796-0 bis ne joue que s'il hérite, et il n'hérite que par testament. Dire la
+    condition, et préciser que le calcul de la vidéo est celui d'un couple marié.
+
+« La déclaration se fait dans les 6 mois. »
+  → INCOMPLET. 6 mois si le décès a lieu en France métropolitaine, 12 mois dans les
+    autres cas. La condition se dit à l'oral et s'écrit à l'écran. Ne pas dire « tous
+    les autres cas » : des cas particuliers existent, et ils ne se citent pas tant
+    qu'ils ne sont pas vérifiés en fiche 12.
+
+« Les droits se paient dans les 6 mois, article 641. »
+  → FAUX ARTICLE. Le 641 fixe le délai de dépôt. Le paiement est couvert par le 1701.
+
+« Il faut tout payer d'un coup. »
+  → INCOMPLET et inquiétant sans raison. Des facilités de paiement existent — paiement
+    fractionné, paiement différé, art. 1717 CGI. À dire seulement si 1.5 (3) est levé.
+
+« Le sous-total fait 1 380 €. »
+  → À ÉVITER : il fait 1 380,75 € et le spectateur additionne au crayon. Dire
+    « moins de 1 400 € ». Seul le total est donné sans approximation : 78 194 €, dit
+    une seule fois, sans rien ajouter après.
+
+« 404 €. »
+  → FAUX ICI. Les tranches se disent à l'euro inférieur, jamais arrondies : 403 €,
+    403 €, 573 €, 76 813 €. C'est ce qui produit l'écart annoncé de 2 €.
+
+« Près des deux tiers de l'épargne d'une vie entière partent. »
+  → À SUPPRIMER : 65,2 % n'est pas deux tiers, et la formule cherche l'effet. Dire la
+    raison de la soustraction : les droits se paient en argent, au dépôt — ici les
+    livrets couvrent, il reste 41 806 €.
+
+« 250 € par mois pendant 40 ans. »
+  → À SUPPRIMER. L'origine des 120 000 €, la durée et l'effort qu'ils ont demandé ne
+    servent aucun calcul. C'est un montant de livrets, rien d'autre.
+
+Commenter le mot « invisible » — « celle que personne ne vous a montrée », « celle qui
+ne se voit pas encore ».
+  → À SUPPRIMER. C'est le titre imprimé d'un document, pas une formule à expliquer. À
+    l'oral on dit « le Simulateur », et on ne qualifie jamais le mot « invisible ».
+
+« Notez vos contrats d'assurance-vie dans la colonne de vos biens. »
+  → FAUX et coûteux : ils gonfleraient le chiffre. Dire : « l'assurance-vie ne fait pas
+    partie de la succession au sens civil — les capitaux vont aux bénéficiaires que vous
+    avez désignés, hors partage, article L132-12 du code des assurances. Fiscalement,
+    elle a son propre régime, et il n'est pas le même selon que les versements ont été
+    faits avant ou après 70 ans. C'est l'étape 3. Ici, ne l'inscrivez pas dans la colonne
+    de vos biens : notez-la à part, avec la date des versements. »
+  ⚠️ Ne jamais dire « hors succession » sans le mot « civil » : le carton du 70e
+    anniversaire affiche au même instant les art. 990 I et 757 B, qui sont précisément
+    le régime fiscal.
+
+« Ce simulateur vous donne ce que votre famille paiera. »
+  → Dire « une estimation », et rappeler qu'elle ne tient compte ni de votre contrat de
+    mariage, ni du forfait mobilier de 5 % (art. 764 CGI), ni de l'abattement de 20 % sur
+    la résidence principale quand elle est encore occupée au jour du décès (art. 764 bis
+    CGI), ni de l'assurance-vie, ni des dettes qui ne se déduisent pas — un crédit
+    couvert par une assurance emprunteur, par exemple, s'éteint au décès et ne s'inscrit
+    pas à la ligne B (art. 768 et 773 CGI). Le calcul de référence reste celui du
+    notaire.
+
+« Votre chiffre, c'est celui de l'encadré F. »
+  → INCOMPLET dès qu'il y a plus d'un enfant. L'encadré F est ce que paie UN enfant. Le
+    chiffre qui se reporte en haut du Calendrier est F multiplié par le nombre d'enfants.
+
+« À la fin de chaque étape, vous aurez un document terminé. »
+  → PROMESSE NON TENUE EN L'ÉTAT : 4 étapes sur 8 ne livrent aujourd'hui aucun
+    document. Ne parler que de cette étape-ci : « les 2 documents que vous venez de
+    remplir sont finis, et ils ne dépendent pas de la suite ».
+
+« Personne ne vous a prévenu / il n'existe personne dont ce soit le métier. »
+  → À SUPPRIMER intégralement. C'est l'argument de la vidéo de vente ; il a déjà été
+    entendu et il a déjà convaincu. Il ne fait rien comprendre et n'apaise rien.
+
+« Vous venez de faire le plus difficile », « très peu de familles ont ce document ».
+  → À SUPPRIMER. Flatterie et comparaison non sourcée.
+
+« Vous verrez ce que cette date change », « c'est là que tout se joue », « gardez-la
+en tête ».
+  → À SUPPRIMER. On annonce le rangement, jamais l'intérêt : « chacune de ces 3 dates
+    est traitée dans une étape ».
+
+Nommer un contrat, un assureur, une banque, ou dire « nous vous conseillons de… ».
+  → INTERDIT (statut CIF). Aucune recommandation de placement, jamais, sous aucune
+    forme. On décrit un régime fiscal, on ne recommande aucun produit.
+
+Citer un montant d'émoluments de notaire, un avis client, un témoignage.
+  → INTERDIT. Aucun de ces trois éléments n'existe dans ce produit.
+
+Prononcer un prix, à l'oral, à quelque moment que ce soit.
+  → INTERDIT dans toutes les vidéos internes.
+
+
+------------------------------------------------------------
+6. CE QUE LE SPECTATEUR FAIT
+------------------------------------------------------------
+
+PENDANT LA VIDÉO
+  Il imprime les 3 feuilles de l'étape : le Simulateur, le Calendrier des 3 dates, le
+  Lexique. Il les imprime en une fois, depuis le bloc « MES DOCUMENTS À IMPRIMER ».
+  Il pose à côté de lui : les derniers relevés de ses comptes et livrets · une
+  estimation de son logement · son contrat de mariage ou de PACS s'il en existe un ·
+  ses relevés d'assurance-vie avec la date des versements. Un stylo.
+  S'il n'a rien sous la main, il écoute et il ira chercher après. C'est dit à voix
+  haute au début. Il peut mettre en pause, revenir en arrière et reprendre plus tard :
+  c'est dit une fois, au POINT 1.
+
+À LA PAUSE — 20 minutes, document : LE SIMULATEUR DE FACTURE INVISIBLE
+  Il commence par le tableau du haut : un bien ou un compte par ligne, sa valeur, et
+  qui le détient. La colonne « Détenu par » se remplit « moi », « mon conjoint » ou
+  « nous deux » ; s'il ne sait pas, il écrit « je ne sais pas » et rien ne se bloque.
+  Il additionne la colonne du milieu : c'est A.
+  Puis il remplit les 6 lignes : ce qu'il possède, ce qu'il doit, la masse à partager,
+  la part d'un enfant, la part taxable après abattement, puis le barème.
+  Il écrit son chiffre dans l'encadré F — c'est ce que paie UN enfant. Il le multiplie
+  par son nombre d'enfants : c'est le total famille, et c'est celui-là qu'il reportera
+  sur le Calendrier. Il date la feuille.
+  Ses trois sorties de secours : « je ne sais pas » pour le contrat de mariage — la
+  feuille se remplit quand même, le chiffre reste utile, il est simplement calculé dans
+  l'hypothèse la plus lourde et son contrat peut le faire baisser ; une estimation à
+  10 000 € près pour le logement ; « à vérifier » pour toute date qu'il n'a pas.
+  Il note à part les montants et les dates de versement de ses contrats
+  d'assurance-vie. Il ne les inscrit pas dans le Simulateur.
+
+APRÈS LA PAUSE — 2 minutes, document : LE CALENDRIER DES 3 DATES
+  Il remet la vidéo en pause pour écrire : c'est dit avant la lecture des 3 dates.
+  Il recopie son total famille dans le champ du haut. Il écrit la date de sa dernière
+  donation — ou « jamais » — et cette date + 15 ans. Il écrit son 70e anniversaire,
+  puis son 71e. Il recopie dans l'encadré du bas la plus proche des 3.
+  Il range les 2 feuilles ensemble. Le lexique reste posé à côté : il n'a rien à en
+  faire aujourd'hui, il servira à chaque étape suivante.
+
+
+------------------------------------------------------------
+7. LE RENVOI DE FIN
+------------------------------------------------------------
+
+Vers la VIDÉO 2 (étape 1) — placé après la mention légale, jamais avant.
+
+L'étape suivante traite la première ligne du Calendrier : le compteur des 15 ans — ce
+qu'il permet de transmettre, et à quelle date il se recharge. Ce qu'il faut avoir sous
+la main pour la regarder : le Calendrier des 3 dates, avec la ligne 1 remplie.
+
+Aucun renvoi vers un autre produit dans cette vidéo. Aucun prix prononcé, aucune
+urgence.
+
+
+------------------------------------------------------------
+8. LE LIVRABLE
+------------------------------------------------------------
+
+1. LE SIMULATEUR DE FACTURE INVISIBLE, rempli et daté — son chiffre par enfant écrit
+   dans l'encadré F, et le total famille (F × nombre d'enfants) posé à côté.
+2. LE CALENDRIER DES 3 DATES, complété — le total famille reporté en haut, la date de
+   la dernière donation et son échéance à 15 ans, le 70e anniversaire, le 71e
+   anniversaire, et la prochaine échéance recopiée dans l'encadré du bas.
+3. LE LEXIQUE EN UNE PAGE, imprimé, rangé avec les deux autres.
+
+Les trois feuilles portent le bandeau : contenu pédagogique et général, ne constitue
+pas un conseil personnalisé ; tout modèle d'acte est à faire relire par votre notaire.
+
+Ces deux documents remplis sont finis. Ils ne dépendent pas des étapes suivantes.

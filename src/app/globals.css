@@ -240,3 +240,60 @@
   background: var(--color-blue);
   color: #ffffff;
 }
+
+/* ─── L'IMPRESSION ──────────────────────────────────────────────────
+   Une partie des acheteurs ne lira jamais à l'écran : ils impriment, ils
+   annotent au stylo, ils rangent dans un classeur. Ce bloc est donc un
+   livrable à part entière, et pas une finition.
+
+   ⚠️ Il n'existe aucun PDF sur le serveur. Le document EST cette page, et
+   c'est le moteur d'impression du navigateur qui en fabrique le PDF — ce qui
+   donne au lecteur la boîte de dialogue qu'il connaît déjà, avec le bouton
+   « Enregistrer au format PDF » de son propre système. Un fichier téléchargé,
+   cette cible ne le retrouve pas dans ses dossiers.                    */
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+
+  html {
+    font-size: 12pt;
+  }
+
+  /* Les cartouches d'encre sont un vrai sujet pour cet acheteur : aucun aplat. */
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .feuille {
+    break-before: page;
+  }
+
+  /* Sinon le classeur s'ouvre sur une feuille blanche. */
+  .feuille:first-of-type {
+    break-before: auto;
+  }
+
+  .feuille,
+  .eviter-coupure {
+    break-inside: avoid;
+  }
+
+  /* ⚠️ Sans cette règle, le jeton personnel du membre s'imprime en bas de chaque
+     page et finit dans un classeur qui passe de main en main. */
+  a[href]::after {
+    content: "" !important;
+  }
+
+  table,
+  img {
+    break-inside: avoid;
+  }
+}

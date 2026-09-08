@@ -29,8 +29,21 @@ export function VideoEmbed({
         {minutes && (
           <span className="mt-1 text-[0.85rem] text-white/75">Durée : {minutes} minutes</span>
         )}
-        <span className="absolute bottom-2 right-2 bg-white/15 px-2 py-0.5 text-[0.7rem]">
-          vidéo à intégrer
+        {/*
+          ⚠️ ICI SE TROUVAIT UN BADGE « vidéo à intégrer ».
+
+          C'était une note de chantier, écrite quand ce composant ne servait
+          qu'à construire le funnel. Il est aujourd'hui monté derrière un
+          paywall à 27 €, sur les 8 étapes de La Méthode : un acheteur de 74 ans
+          qui ouvre son étape 0 le soir de sa commande y lisait, en toutes
+          lettres, qu'il venait de payer pour un site inachevé. C'est un
+          remboursement le soir même.
+
+          La phrase ci-dessous est vraie, calme, et elle dit ce qui reste
+          utilisable tout de suite.
+        */}
+        <span className="mt-3 max-w-[36ch] px-4 text-center text-[0.9rem] text-white/80">
+          Cette vidéo arrive très prochainement. Les documents de cette page sont déjà à vous.
         </span>
       </div>
     );

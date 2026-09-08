@@ -1,0 +1,920 @@
+============================================================
+VIDEO 4 — VOTRE ASSURANCE-VIE, ET VOS 70 ANS
+Duree cible : 17 minutes | faceless, voix + ecran
+============================================================
+
+Source : strategie/scripts-videos/03-etape-3-assurance-vie.txt
+Livrable de l'etape : Le Test des 3 Questions (2 pages, a imprimer)
+Deuxieme des 3 dates du Calendrier : le 70e anniversaire.
+
+
+------------------------------------------------------------
+1. CE QUE JE DOIS SAVOIR AVANT DE TOURNER
+------------------------------------------------------------
+
+L'ETAPE TIENT SUR UNE SEULE REGLE
+
+Ce n'est pas l'age du contrat qui decide de la fiscalite. C'est la date de
+chaque versement, prise une par une, et rangee d'un cote ou de l'autre du 70e
+anniversaire de l'assure. Un contrat ouvert a 40 ans et alimente a 72 ans obeit
+donc a deux regimes fiscaux en meme temps, sur le meme contrat, avec le meme
+numero. C'est le point sur lequel la confusion est la plus courante — note de
+tournage, pas une phrase a dire. Chaque versement porte sa propre date, et c'est
+cette date qui compte.
+
+LE VERSEMENT PROGRAMME — LE CAS LE PLUS FREQUENT DE L'AUDIENCE
+
+Le versement programme n'est pas une exception : c'est une suite de versements,
+et chacun porte sa date. Ceux qui tombent avant le 70e anniversaire relevent du
+990 I, ceux qui tombent apres relevent du 757 B, sur le meme contrat et avec le
+meme numero.
+Le spectateur n'a pas a les lister un par un : c'est precisement ce que le
+courrier demande a l'assureur — l'historique date des versements. Sur son
+document, il ecrit « versements programmes depuis [annee] », et « a demander »
+pour le detail.
+Ne jamais lui dire d'arreter ses versements programmes : c'est une
+recommandation personnalisee, elle est interdite. Ce choix se discute avec son
+assureur ou son notaire.
+
+AVANT 70 ANS — ARTICLE 990 I DU CODE GENERAL DES IMPOTS
+
+Les sommes versees avant le 70e anniversaire relevent de l'article 990 I.
+Abattement de 152 500 EUR PAR BENEFICIAIRE, tous les contrats d'un meme assure
+confondus. Au-dela, ce qui reste — la part taxable de ce beneficiaire — supporte
+un prelevement de 20 %, et de 31,25 % pour la fraction de cette part taxable qui
+depasse 700 000 EUR.
+PRECISION A NE JAMAIS PERDRE : le seuil de 700 000 EUR porte sur la part
+TAXABLE, donc apres l'abattement de 152 500 EUR. En capital transmis a un meme
+beneficiaire, la bascule se situe a 852 500 EUR, pas a 700 000 EUR. Dire
+« 700 000 EUR » tout court laisse croire que le seuil porte sur le capital.
+EXCEPTION QUI CONCERNE UNE GRANDE PARTIE DE L'AUDIENCE : le prelevement de
+l'article 990 I ne s'applique pas au beneficiaire qui est exonere de droits de
+mutation a titre gratuit — article 990 I, I, dernier alinea, qui renvoie a
+l'article 796-0 bis. Le conjoint marie survivant et le partenaire de PACS
+beneficiaires ne paient donc rien, quel que soit le montant recu. Or la clause
+standard de cette audience commence par « mon conjoint » : sans cette exception,
+la phrase dite a l'oral est fausse dans le cas le plus frequent du spectateur.
+Point technique a connaitre mais a ne PAS developper a l'oral (il part sur le
+document, voir section 2) : l'abattement de 152 500 EUR porte sur le capital
+transmis, c'est-a-dire les primes versees PLUS les gains produits par le
+contrat. 140 000 EUR verses + 20 000 EUR de gains = 160 000 EUR transmis, donc
+7 500 EUR au-dessus de l'abattement.
+
+APRES 70 ANS — ARTICLE 757 B DU CODE GENERAL DES IMPOTS
+
+Les sommes versees apres le 70e anniversaire relevent de l'article 757 B.
+L'abattement n'est plus de 152 500 EUR par personne : il est de 30 500 EUR, UNE
+SEULE FOIS, tous contrats et tous beneficiaires reunis. Ce qui depasse est
+ajoute a ce que le beneficiaire recoit de la succession pour le calcul des
+droits, et taxe selon le lien de parente, au bareme de l'article 777 pour la
+ligne directe.
+
+  VOCABULAIRE IMPOSE, ET C'EST LE PIEGE PRINCIPAL DE L'ETAPE. L'article 757 B ne
+  fait PAS entrer le capital dans la succession. Il ajoute une fraction des
+  primes a l'assiette des droits, rien de plus. L'argent, lui, continue d'etre
+  verse directement a la personne nommee sur la clause — c'est exactement ce que
+  dit l'article L132-12 affiche au carton 7. Il est taxe, il n'est pas partage :
+  ce ne sont pas les memes mots parce que ce ne sont pas les memes choses.
+  Ne jamais dire « rejoint la succession » ni « rentre dans la succession » a
+  propos du 757 B. Ces mots sont reserves au 3e accident (art. L132-11), ou le
+  capital retombe reellement dans la succession, et ou ils sont vrais.
+
+L'ETAGE QU'ON OUBLIE : avant le bareme de l'article 777, il y a l'abattement
+personnel de l'article 779 — 100 000 EUR par parent et par enfant. La fraction
+ajoutee par le 757 B passe d'abord dessous. Pour un enfant unique qui n'a rien
+recu d'autre, elle peut donc couter 0 EUR. C'est la raison pour laquelle on ne
+chiffre jamais ces droits a l'oral, et pour laquelle le bareme ne doit pas etre
+affiche a cote d'un montant.
+
+Trois nuances qui rassurent, et qui sont exactes :
+  — l'article 757 B ne taxe que les PRIMES VERSEES. Les gains produits par le
+    contrat restent exoneres de DROITS DE SUCCESSION, meme apres 70 ans. Dire
+    les trois mots a chaque fois : « de droits de succession ». Jamais « les
+    gains ne sont pas taxables » : les prelevements sociaux sur les gains, eux,
+    restent dus au deces. On les nomme, sans taux et sans numero d'article.
+  — les 30 500 EUR s'ajoutent aux abattements de la succession — dont
+    l'abattement de 100 000 EUR par enfant de l'article 779 — ils ne s'y
+    substituent pas.
+  — le conjoint marie et le partenaire de PACS beneficiaires sont exoneres de
+    droits de succession dans tous les cas, article 796-0 bis.
+Consequence a dire clairement : passer 70 ans n'est pas une raison de fermer un
+contrat. Les versements faits apres relevent simplement de l'article 757 B.
+
+LE RAPPORT ENTRE LES DEUX — PRECISION QUI EVITE UNE FAUTE
+
+152 500 / 30 500 = 5 exactement, mais les deux abattements ne sont pas de meme
+nature : le premier est par beneficiaire, le second est global. L'ecart reel est
+donc de 5 pour 1 beneficiaire, 10 pour 2, 15 pour 3.
+Ne jamais dire « 5 fois moins transmis ». Le capital transmis ne change pas.
+C'est la part qui passe sans droits qui tombe.
+
+CELUI QUI A DEJA PASSE 70 ANS — A NE JAMAIS COUPER
+
+Une grande partie de l'audience a plus de 70 ans. Les faits, sans detour :
+  — ce qui a ete verse avant les 70 ans est acquis. Ces sommes gardent leurs
+    152 500 EUR par beneficiaire, definitivement. Personne ne peut les reprendre.
+  — ce qui est verse aujourd'hui releve des 30 500 EUR.
+  — la clause beneficiaire, elle, n'a pas d'age. Elle se corrige a 72 comme a
+    85 ans, par courrier, sans frais.
+C'est la partie de l'etape qui rapporte le plus apres 70 ans : le travail porte
+alors sur la clause, pas sur les versements.
+
+POURQUOI CE CONTRAT EST HORS SUCCESSION
+
+Article L132-12 du code des assurances : le capital d'une assurance-vie ne fait
+pas partie de la succession du souscripteur. Il ne se partage pas entre les
+heritiers. Il va aux personnes designees sur la clause beneficiaire.
+Une seule limite, article L132-13 : les primes manifestement exagerees eu egard
+aux FACULTES du souscripteur peuvent etre remises en cause par un juge, a la
+demande des heritiers. « Facultes » est plus large que « patrimoine » : le juge
+regarde l'age, la situation de famille, la situation patrimoniale et l'utilite
+du contrat pour le souscripteur. Et le mecanisme est civil, pas fiscal :
+L132-13 ecarte le rapport et la reduction, sauf primes manifestement exagerees —
+c'est une protection de la reserve des heritiers, pas une requalification par
+l'administration. Une phrase suffit a l'oral : on ne met pas tout son patrimoine
+dans un contrat.
+
+LA CLAUSE BENEFICIAIRE, ET SES 3 ACCIDENTS
+
+La clause beneficiaire est la ligne, souvent pre-imprimee au-dessus de la
+signature, qui designe qui recoit le capital. Formule standard des annees 1990
+et 2000 : « mon conjoint, a defaut mes enfants, a defaut mes heritiers ».
+
+  1. LE DIVORCE. Deux redactions, deux resultats opposes sur le meme divorce.
+     Une clause qui ne designe que le nom et le prenom : en principe cette
+     personne reste beneficiaire apres le divorce, parce que l'assureur lit un
+     nom, pas un lien de famille. Une clause qui dit seulement « mon conjoint » :
+     apres le divorce il n'y a plus de conjoint, et le capital part ailleurs.
+     Une clause qui melange les deux — « mon epouse, Madame Marie X » — ne se
+     tranche pas depuis une video : le juge recherche alors la volonte du
+     souscripteur. C'est exactement le genre de ligne a faire relire.
+  2. LE REMARIAGE. « Mon conjoint » sans nom designe le conjoint du jour du
+     deces, pas celui qu'on avait en tete a la signature.
+  3. LE DECES DANS UN ORDRE NON PREVU. Un beneficiaire s'eteint avant l'assure
+     et personne n'est prevu derriere lui : il ne reste alors plus aucun
+     beneficiaire designe, on retombe dans le cas de l'article L132-11 du code
+     des assurances, et le capital fait partie de la succession. Il perd les
+     152 500 EUR par beneficiaire et il est taxe comme le reste du patrimoine.
+     PRECISION DE TOURNAGE : l'article L132-11 vise litteralement l'assurance
+     « conclue sans designation d'un beneficiaire ». On l'enonce donc comme
+     ci-dessus — plus de beneficiaire designe subsistant, donc L132-11 — et
+     jamais comme un article qui viserait le predeces du beneficiaire.
+
+L'APAISEMENT, QUI SUIT IMMEDIATEMENT LES 3 ACCIDENTS
+
+Article L132-9 du code des assurances : tant que le beneficiaire n'a pas
+officiellement accepte le benefice du contrat, la clause est revocable. Elle se
+change par simple courrier a l'assureur. Sans frais, sans notaire, sans demander
+la permission a personne.
+SEUL CAS PARTICULIER, a dire, parce qu'il est frequent chez les couples maries
+de cette tranche d'age : si le contrat a ete souscrit a deux — co-souscription
+par les deux epoux, denouement au second deces — la modification de la clause
+demande les deux signatures. Sans cette reserve, le spectateur envoie seul son
+courrier et son assureur le lui refuse : c'est exactement l'inverse de l'effet
+recherche.
+Ces trois situations se corrigent toutes de la meme facon : la clause se change.
+REGLE DE TOURNAGE : les 3 accidents et l'article L132-9 se disent dans le meme
+souffle. On ne laisse jamais un plan, une respiration ou un changement de slide
+entre la peur et sa reponse.
+
+LA CLAUSE STANDARD, ET LA QUESTION QU'ELLE POSE
+
+« Mon conjoint, a defaut mes enfants » : tout va au conjoint. Or le conjoint
+marie survivant est exonere de droits de succession dans tous les cas, quel que
+soit le montant — article 796-0 bis du Code general des impots — et il n'est pas
+davantage soumis au prelevement de l'article 990 I. On lui transmet donc sans
+droits ce qui lui serait revenu sans droits de toute facon. Pendant ce temps,
+l'abattement de 152 500 EUR de chaque enfant n'est pas utilise, et il ne se
+reporte pas sur une transmission ulterieure. Au second deces, ce qui reste fait
+partie du patrimoine du conjoint et est taxe dans sa succession.
+LIMITE D'AUTORITE, obligatoire a l'oral : nous ne disons pas de changer la
+clause. Le conjoint a peut-etre besoin de cette somme pour vivre, et cet
+arbitrage n'appartient qu'a celui qui a signe. Nous disons de poser la question,
+et de la poser a son notaire.
+ATTENTION : l'article 796-0 bis exonere aussi le partenaire de PACS. Mais on
+n'ouvre pas ce sujet ici, parce que la difference est ailleurs : sans testament,
+le partenaire de PACS n'herite pas. C'est l'etape 2, pas celle-ci.
+
+LES CONTRATS ANCIENS
+
+Les contrats les plus anciens, et les versements les plus anciens, obeissent a
+des regles anterieures, souvent plus favorables. Rien a calculer soi-meme. Le
+geste se limite a ecrire la date d'ouverture du contrat a cote du numero de
+contrat, et a la faire verifier.
+DECISION DE PRODUCTION, alignee sur la fiche 9 : aucune date de bascule n'est
+prononcee ni affichee dans cette video. Les deux dates ne figurent pas encore
+dans 12-chiffres-succession.md, et la fiche 9 a tranche de la meme facon sur le
+meme point de droit — deux videos du meme produit ne peuvent pas se contredire.
+Les deux dates restent sur le seul tableau de decision 70 ans. Pour les remettre
+a l'oral un jour, il faut d'abord les inscrire et les sourcer dans
+12-chiffres-succession.md.
+
+CE QUE LE SPECTATEUR NE PEUT PAS FAIRE SEUL
+
+La clause demembree — le conjoint recoit l'usage de la somme sa vie durant, les
+enfants la recoivent au second deces — depend du contrat exact, du nom des
+beneficiaires et de l'ordre voulu. Elle ne s'ecrit pas depuis une video. Une
+phrase, et on s'arrete la. Elle se dit dans le point sur la clause beneficiaire,
+pas dans le point des gestes.
+
+LE COURRIER, ET POURQUOI IL NE RISQUE RIEN
+
+Trois demandes, dans cet ordre : la clause beneficiaire en vigueur, l'historique
+date des versements, le recapitulatif des frais de l'annee ecoulee.
+Ce courrier ne modifie rien : ce n'est ni une resiliation, ni un retrait, ni un
+changement de clause.
+Article L132-22 du code des assurances : l'assureur est deja tenu de
+communiquer chaque annee la valeur du contrat et le total des frais preleves. On
+ne demande donc rien d'exceptionnel sur ce point precis — on demande par ecrit
+ce qui est du. ATTENTION : cet article fonde la 3e demande, celle des frais. Il
+ne fonde ni la 1re ni la 2e : sur la clause en vigueur et sur les dates de
+versement, l'assureur repond au titre de son devoir d'information, sans delai
+fixe par la loi. C'est pour cela qu'on note la date d'envoi et qu'on relance au
+bout d'un mois — pas parce qu'un texte imposerait un delai.
+On note la date d'envoi, on garde une copie, et sans reponse au bout d'un mois
+on renvoie le meme courrier.
+Ce qu'on ne sait pas ne se devine pas : la case recoit « a demander », et la
+reponse de l'assureur la remplira.
+L'adresse de l'assureur fait partie du materiel : elle est sur le releve annuel
+ou a la fin des conditions generales. A defaut, l'adresse du service client
+figure sur le site de l'assureur, et une adresse e-mail convient aussi bien.
+
+CONFORMITE — CE QUE NOUS N'AVONS PAS LE DROIT DE FAIRE
+
+Aucune recommandation de contrat, d'assureur, de support ou de placement.
+Recommander un placement ou un contrat d'assurance-vie est reserve aux
+professionnels habilites — conseiller en investissements financiers
+(art. L541-1 du code monetaire et financier) ou distributeur d'assurance
+(art. L511-1 du code des assurances). Nous n'avons pas cette habilitation, et
+nous ne l'exercons pas. Nous apprenons a lire une ligne sur un releve. La
+decision se prend avec un professionnel habilite : l'assureur, ou un conseiller
+inscrit au registre de l'ORIAS.
+Corollaire : au spectateur qui n'a aucun contrat, on ne dit jamais « alors
+ouvrez-en un ». On lui dit que l'etape ne le concerne pas.
+
+CE QUI EST SORTI DE L'ORAL ET PART SUR LE PAPIER (rappel pour le tournage)
+  — le tableau avant / apres 70 ans, avec les taux de 20 % et 31,25 % ;
+  — les deux dates de bascule des contrats anciens ;
+  — primes + gains = capital transmis, et le calcul 140 000 + 20 000 ;
+  — le bareme complet de l'article 777 en ligne directe ;
+  — toute l'illustration des frais et sa mention d'hypothese.
+Ces blocs etaient dits dans le script d'origine. Ils ne se retiennent pas
+a l'ecoute : ils se lisent. Ne pas les reintroduire a la voix pour « faire plein ».
+
+
+------------------------------------------------------------
+2. CE QUE JE MONTRE A L'ECRAN
+------------------------------------------------------------
+
+Bandeau permanent, discret, sur toute la video :
+« Contenu pedagogique et general. Ne constitue pas un conseil personnalise. »
+
+ 1. CARTON TITRE — « Etape 3 — Votre assurance-vie, et vos 70 ans ».
+    Sous-titre : « 2e des 3 dates ». Duree annoncee : 17 minutes.
+    Cette duree doit etre celle du montage final : si le montage change, ce
+    carton change.
+
+ 1bis. PLEIN CADRE TENU — « Mettez la video en pause maintenant », et en
+    dessous la liste du materiel, 6 lignes :
+      · vos contrats d'assurance-vie, meme anciens, meme jaunis
+      · vos releves annuels, si vous les avez gardes
+      · votre carte d'identite, pour la date exacte de votre 70e anniversaire
+      · Le Test des 3 Questions imprime, 2 pages — il est sous la video
+      · un stylo, une enveloppe, un timbre
+      · l'adresse postale de votre assureur
+    Modele de composition : fiche 1, carton 16.
+
+ 2. SLIDE « CE QUI COMPTE, C'EST LA DATE DE CHAQUE VERSEMENT ».
+    Une ligne du temps horizontale, un curseur « 70e anniversaire » au milieu,
+    trois versements poses dessus, deux avant, un apres.
+    Sous-titre : « pas l'age du contrat ».
+
+ 3. SLIDE DEUX COLONNES — le slide central de l'etape. Il revient trois fois :
+    sur le point qui pose les deux regimes, sur le comparatif des 40 000 EUR,
+    et sur le bloc « vous avez deja 70 ans ».
+    Colonne gauche : « Verse AVANT 70 ans — 152 500 EUR par beneficiaire, tous
+    contrats d'un meme assure confondus — puis 20 % sur la part taxable, et
+    31,25 % sur la fraction de cette part taxable qui depasse 700 000 EUR ».
+    En petit, sous la colonne : « part taxable = ce qui reste apres l'abattement
+    de 152 500 EUR ».
+    En bas de la colonne gauche : « conjoint marie et partenaire de PACS
+    beneficiaires : exoneres du prelevement — art. 990 I, I, dernier alinea,
+    renvoyant a l'art. 796-0 bis CGI ».
+    Bas de cadre : art. 990 I CGI.
+    Colonne droite : « Verse APRES 70 ans — 30 500 EUR AU TOTAL, tous contrats
+    et tous beneficiaires reunis ». Bas de cadre : art. 757 B CGI.
+    Le mot « AU TOTAL » en gras. Surbrillance alternee selon la colonne dite.
+
+ 4. SLIDE COMPARATIF 40 000 EUR — deux colonnes, meme somme, meme enfant.
+    Avant 70 ans : « sous l'abattement de 152 500 EUR, si cet abattement n'a pas
+    deja ete entame par un autre contrat du meme assure → 0 EUR de droits ».
+    Apres 70 ans : « 40 000 − 30 500 = 9 500 EUR ajoutes a la part taxable du
+    beneficiaire ».
+    NE PAS chiffrer les droits sur ces 9 500 EUR, et NE PAS afficher le bareme
+    sur ce slide.
+    Bas de cadre, en petit, deux lignes :
+      « ces 9 500 EUR viennent s'ajouter a ce que l'enfant recoit par ailleurs.
+      L'abattement de 100 000 EUR par enfant (art. 779 CGI) s'applique d'abord ;
+      le bareme de l'art. 777 ne s'applique qu'au-dela. Ne calculez pas
+      vous-meme. »
+      « Les prelevements sociaux sur les gains restent dus. »
+    Mention : « cas pedagogique, la famille chiffree en entier a l'etape 4 ».
+    Le bareme detaille de l'art. 777 est renvoye au tableau de decision 70 ans,
+    ou il figure en entier.
+
+ 5. SLIDE « VOUS AVEZ DEJA 70 ANS » — trois lignes qui s'affichent l'une apres
+    l'autre : « ce qui a ete verse avant est acquis, definitivement » /
+    « ce qui est verse aujourd'hui releve des 30 500 EUR » / « votre clause
+    beneficiaire n'a pas d'age ». Bas de cadre : art. 990 I et art. 757 B.
+
+ 6. SLIDE « APRES 70 ANS, LE CONTRAT N'EST PAS INUTILE » — « seules les primes
+    versees entrent dans l'assiette des droits de succession ; les gains
+    produits par le contrat n'y entrent pas (les prelevements sociaux, eux,
+    restent dus) » et « les 30 500 EUR s'ajoutent aux abattements de la
+    succession ». Bas de cadre : art. 757 B CGI, et « art. 779 CGI » sous la
+    ligne des abattements de la succession.
+
+ 7. SLIDE « LE CAPITAL NE PASSE PAS PAR LA SUCCESSION » — art. L132-12 du code
+    des assurances. Bas de cadre, en plus petit : « limite — art. L132-13 :
+    primes manifestement exagerees eu egard aux facultes du souscripteur ».
+
+ 8a. FAC-SIMILE — formulaire ancien, la clause pre-imprimee « mon conjoint, a
+    defaut mes enfants, a defaut mes heritiers » surlignee, au-dessus d'une
+    ligne de signature. Aucun nom d'assureur, aucun logo, aucun montant.
+
+ 8b. PLAN D'ILLUSTRATION — mains seules, filmees de haut, qui ouvrent un
+    classeur. Aucun visage, aucun buste, aucune bague identifiable.
+
+ 9. SLIDE « LES 3 ACCIDENTS » — divorce / remariage / deces dans un ordre non
+    prevu. Trois lignes, apparition successive. Bas de cadre sur la 3e ligne :
+    « s'il ne reste plus aucun beneficiaire designe, on retombe dans le cas de
+    l'art. L132-11 du code des assurances : le capital fait partie de la
+    succession ».
+
+10. SLIDE « UNE CLAUSE SE CHANGE PAR SIMPLE COURRIER » — sans frais, sans
+    notaire, sans demander la permission a personne. Bas de cadre : art. L132-9
+    du code des assurances, avec la reserve « tant que le beneficiaire n'a pas
+    accepte le benefice du contrat ».
+    Deuxieme ligne de bas de cadre : « contrat souscrit a deux (co-souscription
+    par les epoux) : la modification demande les deux signatures ».
+    Ce slide enchaine SANS COUPURE sur le slide 9.
+
+11. SLIDE « MON CONJOINT, A DEFAUT MES ENFANTS — LA QUESTION A SE POSER » —
+    « conjoint marie : exonere dans tous les cas, art. 796-0 bis CGI » et
+    « abattement de 152 500 EUR par enfant : non utilise, non reportable ».
+    NE PAS ecrire « gaspillage ». NE PAS mentionner le PACS sur ce slide.
+
+12. SLIDE « CONTRATS ANCIENS — REGARDEZ LA DATE D'OUVERTURE » — « Les contrats
+    les plus anciens, et les versements les plus anciens, obeissent a des regles
+    anterieures, souvent plus favorables. A faire verifier. Rien a calculer. »
+    AUCUNE DATE DE BASCULE sur ce slide, ni a l'ecran ni a l'oral. Elles sont
+    sur le tableau de decision 70 ans.
+
+13. SLIDE « LE TEST DES 3 QUESTIONS » — les 3 questions, une par ligne :
+    ma clause exacte / la date de chaque versement / les frais de l'an dernier.
+
+14. PLAN DOCUMENT, FILME A PLAT — le Test des 3 Questions, page 1. Un stylo
+    remplit EN DIRECT la case encadree du haut : « Mon 70e anniversaire :
+    __ / __ / __ », puis le premier bloc contrat.
+    VALEURS NEUTRES IMPOSEES, aucune improvisation devant la camera :
+      · case du haut, 70e anniversaire — « 04 / 09 / 2022 »
+      · assureur — « ASSUREUR »
+      · numero de contrat — « 000 000 000 »
+      · date d'ouverture — « 12 / 03 / 1994 »
+    Aucun nom reel, aucun logo, aucun montant. En-tetes masques. Meme regle au
+    carton 15.
+
+15. PLAN DOCUMENT, FILME A PLAT — la page 2, la lettre a l'assureur, avec ses
+    3 demandes numerotees encadrees a l'ecran, et le cadre « Adresse de mon
+    assureur » visible en haut. Valeurs neutres identiques au carton 14.
+
+16. SLIDE « DEMANDER N'EST PAS MODIFIER » — trois negations : ce n'est pas une
+    resiliation / ce n'est pas un retrait d'argent / ce n'est pas un changement
+    de clause.
+    La reference art. L132-22 du code des assurances — information annuelle
+    obligatoire, valeur du contrat et total des frais preleves — n'apparait
+    QU'EN REGARD DE LA 3e DEMANDE, celle des frais. Ne pas la placer sous les
+    trois demandes : elle ne fonde ni la clause en vigueur, ni l'historique des
+    versements.
+
+17. SLIDE CALENDRIER DES 3 DATES — la frise du document de l'etape 0. Ligne 1
+    « le compteur des 15 ans » cochee, ligne 2 « le 70e anniversaire :
+    renseignee ce soir avec ce que vous savez, confirmee au retour du
+    courrier », ligne 3 encore vide. Affiche, non commente.
+
+18. SLIDE RENVOI — « Votre assurance-vie, verifiee en 30 minutes », et en
+    dessous, en clair, ce que l'audit contient : une grille de lecture generale
+    a lire avec sa propre clause sous les yeux, les trois formes de clause les
+    plus courantes commentees, et l'endroit ou lire ses propres frais dans ses
+    conditions generales. AUCUN PRIX, ni a l'ecran ni a l'oral.
+    Bas de cadre, deux lignes : « outil pedagogique et general — il ne comporte
+    aucune analyse de votre situation personnelle » puis « a faire relire par
+    votre notaire avant toute modification ».
+
+19. CARTON DE MENTION LEGALE — fond clair, 8 secondes, muet.
+    ORDRE DE POSE, pour lever toute ambiguite : la mention legale parlee
+    (phrase 8 de la section 4) se dit sur le carton 17. Le renvoi se dit sur le
+    carton 18. Le carton 19, muet, ferme la video.
+
+DOCUMENTS A AVOIR FABRIQUES AVANT DE TOURNER
+  — Le Test des 3 Questions, 2 pages (livrable de l'etape).
+  — Le tableau de decision 70 ans : il porte le tableau avant/apres avec les
+    taux et la mention « part taxable = apres l'abattement de 152 500 EUR », le
+    bareme complet de l'art. 777 en ligne directe, les deux dates de bascule des
+    contrats anciens, primes + gains avec le calcul 140 000 + 20 000 = 160 000,
+    et l'illustration des frais avec sa mention d'hypothese complete.
+  — Le Calendrier des 3 dates, deja imprime a l'etape 0, avec sa case
+    « a confirmer » et sa case « sans objet » sur la ligne 2.
+
+A REGLER AVANT DE TOURNER
+  Les deux dates de bascule des contrats anciens ne sont pas encore inscrites
+  dans 12-chiffres-succession.md. Tant qu'elles n'y sont pas et ne sont pas
+  sourcees, elles ne figurent que sur le tableau de decision 70 ans, jamais
+  dans la video.
+
+
+------------------------------------------------------------
+3. CE QUE JE DIS, DANS L'ORDRE
+------------------------------------------------------------
+
+10 points. Le budget en mots est indicatif et sert a tenir les 17 minutes.
+
+1. OUVERTURE — ce que fait cette etape, ce qu'elle ne fait pas, et ce qu'il
+   faut aller chercher. (~175 mots)
+   Etape 3, la deuxieme des 3 dates : le 70e anniversaire. Ce soir, avec les
+   contrats deja chez soi, on note la date de chaque versement et on demande a
+   son assureur la clause qui est reellement enregistree chez lui.
+   Rien a signer, rien a fermer, pas un euro a retirer.
+   Puis, sur le carton 1bis, la liste et la pause : « Ce qu'il vous faut sous la
+   main : vos contrats d'assurance-vie, meme anciens, meme jaunis ; vos releves
+   annuels si vous les avez gardes ; votre carte d'identite, pour la date exacte
+   de votre 70e anniversaire ; le Test des 3 Questions imprime, 2 pages, il est
+   sous la video ; un stylo ; une enveloppe, un timbre, et l'adresse postale de
+   votre assureur. Mettez la video en pause maintenant, allez chercher tout
+   cela, et revenez. »
+   Puis, avant de reprendre : « Si vous n'avez aucun contrat d'assurance-vie,
+   cette etape ne vous concerne pas : ecrivez « sans objet » sur la ligne 2 de
+   votre Calendrier des 3 dates, et l'etape est finie pour vous. »
+   Enfin : « Cette video se met en pause a tout moment. Si vous ecrivez moins
+   vite que moi, arretez-la, ecrivez, reprenez : rien ne se perd. »
+   > Pas de promesse de duree sur l'etape, pas de « la plus rapide de la
+   > Methode ». La liste et la pause ne sont pas une option : le spectateur
+   > ecrit pendant la video, et le Test doit etre imprime avant, pas apres.
+   > Ne jamais enchainer « alors ouvrez-en un » sur le cas « aucun contrat ».
+
+2. LA REGLE QUI GOUVERNE TOUT — la date du versement, pas l'age du contrat.
+   (~90 mots)
+   Chaque versement porte sa propre date. Un contrat ouvert a 40 ans et alimente
+   a 72 ans obeit a deux regles fiscales en meme temps, sur le meme numero de
+   contrat.
+   Et si le contrat est alimente tous les mois : chaque versement programme
+   porte lui aussi sa date, les uns avant, les autres apres.
+   > Ne pas commenter a l'oral la frequence de l'erreur ni ce que « les gens
+   > croient ». Dire la regle une fois, posement, et laisser la ligne du temps a
+   > l'ecran pendant qu'on la dit.
+
+3. DE PART ET D'AUTRE DU 70e ANNIVERSAIRE — les deux articles, puis les memes
+   40 000 EUR des deux cotes. (~340 mots — cartons 3 puis 4)
+   Avant : article 990 I, 152 500 EUR par beneficiaire, tous les contrats d'un
+   meme assure confondus. Au-dela, 20 % sur la part taxable, et 31,25 % sur la
+   fraction de cette part taxable qui depasse 700 000 EUR. Et tout de suite
+   apres : le conjoint marie, lui, n'est pas concerne par ce prelevement.
+   Apres : article 757 B, 30 500 EUR. Pas 30 500 EUR par personne : 30 500 EUR
+   au total, pour tous les contrats et tous les beneficiaires reunis. Ce qui
+   depasse est taxe aux droits de succession, selon le lien de parente —
+   l'argent, lui, reste verse a la personne nommee sur la clause.
+   Puis le meme argent des deux cotes : 40 000 EUR verses avant 70 ans sur un
+   contrat dont l'enfant est beneficiaire — on est sous 152 500 EUR, et si aucun
+   autre contrat n'a deja consomme cet abattement, il recoit 40 000 EUR sans
+   droits. Les memes 40 000 EUR verses apres : la part sans droits tombe a
+   30 500 EUR, et 9 500 EUR sont ajoutes a sa part taxable.
+   > Le « au total » est le seul mot a appuyer de toute la video. Ne jamais dire
+   > « 5 fois moins transmis » : le capital transmis ne change pas, c'est la
+   > part qui passe sans droits qui tombe.
+   > Les deux taux sont dits une fois et restent affiches. On ne les commente
+   > pas, on ne construit aucun exemple dessus.
+   > On s'arrete apres les 9 500 EUR. On ne chiffre pas les droits : ils
+   > dependent de l'abattement de l'article 779 et du reste de la succession.
+   > Aucune figure de style apres le calcul.
+
+4. SI VOUS AVEZ DEJA PASSE 70 ANS — les trois faits, puis la seule chose qui
+   compte alors. (~250 mots — cartons 5 puis 6, retour du carton 3)
+   Ce qui a ete verse avant est acquis, definitivement, avec ses 152 500 EUR par
+   beneficiaire. Ce qui est verse aujourd'hui releve des 30 500 EUR. Et apres
+   70 ans le contrat n'est pas inutile : l'article 757 B ne taxe que les sommes
+   versees, les gains restent exoneres de droits de succession, et les
+   30 500 EUR s'ajoutent aux abattements de la succession. Passer 70 ans n'est
+   pas une raison de fermer un contrat.
+   Surtout : la clause beneficiaire n'a pas d'age. Elle se corrige ce soir, a
+   72 ans comme a 85 ans.
+   > Bloc a ne jamais couper : une large partie de l'audience est ici. Ton
+   > factuel, aucune consolation.
+   > Toujours les trois mots : « exoneres de droits de succession ». Jamais
+   > « les gains ne sont pas taxables ».
+
+5. CE QUE FAIT LA CLAUSE BENEFICIAIRE — le capital ne passe pas par la
+   succession. (~175 mots — cartons 7, 8a, 8b)
+   Article L132-12 : le capital ne fait pas partie de la succession, il ne se
+   partage pas entre les heritiers, il va aux personnes inscrites sur la clause.
+   Une limite, article L132-13 : les primes manifestement exagerees au regard de
+   vos facultes — votre age, votre situation de famille, votre patrimoine,
+   l'utilite du contrat pour vous — peuvent etre remises en cause par un juge a
+   la demande des heritiers. On ne met pas tout son patrimoine dans un contrat.
+   Montrer alors le fac-simile : « mon conjoint, a defaut mes enfants, a defaut
+   mes heritiers », la formule pre-imprimee standard des contrats des annees
+   1990 et 2000.
+   Puis, une phrase et on s'arrete, la clause demembree : le conjoint recoit
+   l'usage de la somme sa vie durant, les enfants la recoivent au second deces.
+   Sa redaction depend du contrat exact et de l'ordre voulu ; elle ne s'ecrit
+   pas depuis une video.
+   > Le fac-simile se montre, il ne se raconte pas. Aucun personnage, aucune
+   > date de signature, aucun montant.
+
+6. LES 3 ACCIDENTS, ET LEUR REPONSE DANS LE MEME SOUFFLE. (~210 mots —
+   cartons 9 puis 10)
+   Divorce : une clause qui ne designe qu'un nom et un prenom, la personne reste
+   en principe beneficiaire ; une clause qui dit seulement « mon conjoint », il
+   n'y a plus de conjoint et le capital part ailleurs ; une clause qui melange
+   les deux, « mon epouse, Madame Marie X », ne se tranche pas depuis une video
+   et se fait relire. Remariage : « mon conjoint » designe celui du jour du
+   deces. Deces dans un ordre non prevu : personne n'est prevu derriere lui, il
+   n'y a donc plus de beneficiaire designe, l'article L132-11 s'applique, et le
+   capital fait partie de la succession — il y perd les 152 500 EUR par
+   beneficiaire.
+   Puis, sans coupure : article L132-9, tant que le beneficiaire n'a pas accepte
+   le contrat, la clause se change par simple courrier, sans frais, sans
+   notaire, sans demander la permission a personne. Seul cas particulier : si le
+   contrat a ete souscrit a deux, par vous et votre conjoint, la modification
+   demande vos deux signatures.
+   > Interdiction de laisser une respiration, un plan ou un fondu entre le
+   > troisieme accident et l'article L132-9.
+
+7. LA CLAUSE STANDARD POSE UNE QUESTION — et nous ne la tranchons pas.
+   (~240 mots — carton 11)
+   « Mon conjoint, a defaut mes enfants » : tout va au conjoint, qui est deja
+   exonere dans tous les cas, article 796-0 bis, et qui n'est pas non plus
+   soumis au prelevement de l'article 990 I. Pendant ce temps, l'abattement de
+   152 500 EUR de chaque enfant n'est pas utilise, et il ne se reporte pas sur
+   une transmission ulterieure.
+   Puis la limite, dite entierement : nous ne disons pas de changer la clause ;
+   le conjoint a peut-etre besoin de cette somme pour vivre ; cet arbitrage
+   n'appartient qu'a celui qui a signe. Nous disons de poser la question a son
+   notaire.
+   > Ne pas etendre le 796-0 bis au partenaire de PACS ici — l'article le
+   > couvre, mais le sujet du PACS est celui de l'etape 2. Ne pas prononcer le
+   > mot « gaspillage ».
+
+8. GESTE 1 — le tableau. (~175 mots — carton 14)
+   La date exacte du 70e anniversaire dans la case du haut, puis un bloc par
+   contrat : assureur, numero, date d'ouverture, versements connus.
+   Si le contrat est alimente tous les mois, ne pas essayer de tout ecrire :
+   « versements programmes depuis [annee] », et « a demander » pour le detail.
+   Ecrire aussi la date d'ouverture a cote du numero de contrat : sur les
+   contrats les plus anciens elle compte autant que la date des versements — il
+   n'y a rien a calculer, c'est a faire verifier.
+   Ce qu'on ne sait pas ne se devine pas : la case recoit « a demander ».
+   > Aucune date de bascule prononcee. Un exemplaire du document par personne :
+   > la date de reference est celle de l'assure, pas celle du couple.
+
+9. GESTE 2 — le courrier. (~200 mots — cartons 15 puis 16)
+   Le courrier de la page 2, ses 3 demandes : la clause en vigueur, l'historique
+   date des versements, le recapitulatif des frais de l'an dernier. On ajoute ses
+   coordonnees, la date, la signature, l'adresse de l'assureur. On note la date
+   d'envoi sur la feuille, on garde une copie. Sans reponse au bout d'un mois, on
+   renvoie le meme courrier.
+   Le chiffre des frais, on ne le commente pas ce soir : il ne se trouve nulle
+   part ailleurs que dans cette reponse, et le tableau de decision 70 ans dit ce
+   qu'on en fait.
+   Puis : demander n'est pas modifier — ce n'est pas une resiliation, pas un
+   retrait d'argent, pas un changement de clause. Et sur les frais, l'article
+   L132-22 du code des assurances oblige deja votre assureur a vous communiquer
+   chaque annee la valeur du contrat et le total des frais preleves.
+   > L132-22 se dit en regard de la 3e demande seulement. Sur la clause et sur
+   > les dates, l'assureur repond au titre de son devoir d'information, sans
+   > delai fixe par la loi : c'est pour cela qu'on note la date d'envoi.
+
+10. CE QUI NE PEUT PAS MAL TOURNER — et la limite de conformite. (~145 mots)
+    La video se met en pause. On peut s'arreter a la fin de cette video sans
+    rien perdre : les dates notees sont acquises, et il n'y a plus rien a faire
+    jusqu'a la reponse de l'assureur.
+    Ce soir, sur la ligne 2 du Calendrier, on ecrit ce qu'on sait deja : verse
+    avant, verse apres, ou les deux. La reponse de l'assureur viendra confirmer.
+    On n'a pas a attendre ce courrier pour continuer.
+    Enfin, la limite de conformite : nous ne dirons jamais quel contrat ouvrir,
+    ni chez qui, ni dans quoi placer son argent. Nous apprenons a lire une ligne
+    sur un releve. La decision se prend avec l'assureur ou un conseiller inscrit
+    a l'ORIAS.
+    > La limite de conformite se dit juste avant la mention legale, jamais
+    > ailleurs.
+
+Puis la mention legale, une phrase, et le renvoi de la section 7.
+
+VERIFICATION DE DUREE : environ 2 000 mots parles pour les 10 points, plus
+environ 40 mots de mention legale et 90 mots de renvoi. A 120 mots/minute en
+prise reelle, pauses d'ecriture comprises — c'est le debit des fiches 3 et 9
+pour cette audience — la video tient 17 minutes, carton muet de fin non compris.
+Budget par point : 1 ≈ 175 · 2 ≈ 90 · 3 ≈ 340 · 4 ≈ 250 · 5 ≈ 175 · 6 ≈ 210 ·
+7 ≈ 240 · 8 ≈ 175 · 9 ≈ 200 · 10 ≈ 145.
+Si le montage deborde, on ne coupe ni un bloc de droit ni un temps d'ecriture :
+on coupe une reprise du slide 3.
+
+
+------------------------------------------------------------
+4. LES PHRASES A DIRE MOT POUR MOT
+------------------------------------------------------------
+
+1. « Les sommes versees avant votre 70e anniversaire relevent de l'article
+   990 I : 152 500 EUR par beneficiaire, tous vos contrats confondus. Au-dela,
+   la part taxable de chaque beneficiaire supporte un prelevement de 20 %, et de
+   31,25 % pour la fraction de cette part taxable qui depasse 700 000 EUR,
+   c'est-a-dire une fois l'abattement deduit. Votre conjoint marie, lui, n'est
+   pas concerne par ce prelevement : il est exonere, quel que soit le montant. »
+
+2. « Les sommes versees apres votre 70e anniversaire relevent de l'article
+   757 B : 30 500 EUR. Pas 30 500 EUR par personne. 30 500 EUR au total, pour
+   tous vos contrats et tous vos beneficiaires reunis. »
+
+3. « L'article 757 B ne taxe que les sommes que vous avez versees. Les gains
+   produits par le contrat restent exoneres de droits de succession, et les
+   30 500 EUR s'ajoutent aux abattements de la succession. »
+
+4. « Ce qui a ete verse avant vos 70 ans est acquis. Ces sommes gardent leurs
+   152 500 EUR par beneficiaire, et personne ne peut vous les reprendre. »
+
+5. « Article L132-9 du code des assurances : tant que votre beneficiaire n'a pas
+   officiellement accepte le benefice du contrat, vous pouvez changer cette
+   clause quand vous voulez, par un simple courrier a votre assureur, sans frais
+   et sans notaire. Seul cas particulier : si le contrat a ete souscrit a deux,
+   par vous et votre conjoint, la modification demande vos deux signatures. »
+
+6. « Nous ne vous disons pas de changer votre clause. Votre conjoint a peut-etre
+   besoin de cette somme pour vivre, et cet arbitrage n'appartient qu'a vous.
+   Nous vous disons de vous poser la question, et de la poser a votre notaire. »
+
+7. « Nous ne vous dirons jamais quel contrat ouvrir, ni chez qui, ni dans quoi
+   placer votre argent. Ce n'est pas notre metier, et la loi nous l'interdit.
+   C'est vous qui deciderez, avec votre assureur ou un conseiller inscrit au
+   registre de l'ORIAS. »
+
+8. MENTION LEGALE, en fin de video, une fois : « Ce contenu est pedagogique et
+   general. Il ne constitue pas un conseil personnalise, ni une recommandation
+   de placement, ni une recommandation portant sur un contrat d'assurance. »
+
+
+------------------------------------------------------------
+5. LES PIEGES — CE QU'IL NE FAUT SURTOUT PAS DIRE
+------------------------------------------------------------
+
+« Apres 70 ans, on transmet 5 fois moins. »
+  → FAUX. Le capital transmis ne change pas. Dire : « la part qui passe sans
+    droits tombe de 152 500 EUR par beneficiaire a 30 500 EUR au total ».
+
+« Apres 70 ans, l'assurance-vie ne sert plus a rien. »
+  → FAUX et inquietant sans raison. Dire : « les gains restent exoneres de
+    droits de succession, les 30 500 EUR s'ajoutent aux abattements de la
+    succession, et votre clause, elle, n'a pas d'age ».
+
+« Les gains ne sont pas taxables. »
+  → Affirme plus que ce que dit l'article. Les gains sont exoneres de DROITS DE
+    SUCCESSION ; les prelevements sociaux, eux, restent dus au deces. Dire
+    toujours la formule complete, les trois mots compris.
+
+« Ce qui depasse les 30 500 EUR rentre dans la succession » / « rejoint la
+succession ».
+  → FAUX, et c'est le contresens le plus grave de l'etape : le spectateur en
+    deduit que l'argent verse apres 70 ans ira au partage entre heritiers au
+    lieu d'aller a la personne qu'il a nommee. L'article 757 B taxe, il ne
+    partage pas. Dire : « ce qui depasse est ajoute a ce que le beneficiaire
+    recoit de la succession pour le calcul des droits — l'argent, lui, reste
+    verse a la personne nommee sur la clause ». Les mots « retombe dans la
+    succession » sont reserves au 3e accident, art. L132-11, ou ils sont vrais.
+
+« Votre conjoint sera preleve a 20 % au-dela de 152 500 EUR. »
+  → FAUX. Le conjoint marie beneficiaire est exonere du prelevement de
+    l'article 990 I, quel que soit le montant — art. 990 I, I, dernier alinea,
+    renvoyant a l'art. 796-0 bis. Dit tel quel, un spectateur marie modifierait
+    sa clause sur une premisse fausse.
+
+« 31,25 % au-dela de 700 000 EUR. »
+  → Imprecis, donc faux a l'ecran comme a l'oral. Le seuil porte sur la part
+    TAXABLE, apres l'abattement de 152 500 EUR : la bascule se situe a
+    852 500 EUR de capital transmis a ce beneficiaire. Dire : « 31,25 % sur la
+    fraction de la part taxable qui depasse 700 000 EUR ».
+
+« 30 500 EUR par beneficiaire. »
+  → FAUX, et c'est l'erreur la plus facile a commettre en tournant. C'est
+    30 500 EUR au total. Verifier cette phrase au montage, mot par mot.
+
+« Il recoit 40 000 EUR, 0 EUR de droits » — sans reserve.
+  → L'abattement de 152 500 EUR est unique par beneficiaire, tous les contrats
+    du meme assure confondus. Dire : « on est sous 152 500 EUR, et si aucun
+    autre contrat n'a deja consomme cet abattement, il recoit 40 000 EUR sans
+    droits ».
+
+« Il recoit 40 000 EUR, net de tout. »
+  → Dire : « ces 40 000 EUR passent sans droits de succession ; les
+    prelevements sociaux sur les gains, eux, restent dus ».
+
+Chiffrer les droits dus sur les 9 500 EUR de l'exemple.
+  → Impossible sans connaitre l'abattement de l'article 779 deja consomme et le
+    reste de la succession : pour un enfant unique qui n'a rien recu d'autre,
+    ces droits sont de 0 EUR. Dire : « ces 9 500 EUR sont ajoutes a ce que
+    l'enfant recoit de la succession pour le calcul des droits », et renvoyer au
+    tableau de decision 70 ans. Ne pas afficher le bareme a cote du montant.
+
+« Votre contrat est ancien, donc il est bon » — ou l'inverse.
+  → L'age du contrat ne decide de rien, sauf pour les contrats les plus anciens,
+    qui relevent de regles anterieures et sont a faire verifier. Dire : « c'est
+    la date de chaque versement ».
+
+Prononcer ou afficher une date de bascule des contrats anciens.
+  → Interdit dans cette video, alignement sur la fiche 9 : ces dates ne sont pas
+    sourcees dans 12-chiffres-succession.md. Dire : « les contrats les plus
+    anciens obeissent a des regles anterieures, souvent plus favorables — a
+    faire verifier, rien a calculer ».
+
+« Le PACS est exonere, donc c'est pareil que le mariage. »
+  → Le partenaire de PACS est exonere de droits par le meme article 796-0 bis,
+    mais sans testament il n'herite pas. Sur cette video, on ne developpe pas le
+    PACS : c'est l'etape 2.
+
+« Changez votre clause pour mettre vos enfants. »
+  → Recommandation personnalisee interdite. Dire la phrase 6 de la section 4,
+    en entier.
+
+« Arretez vos versements programmes apres 70 ans. »
+  → Recommandation personnalisee interdite. Dire : « ce choix se discute avec
+    votre assureur ou votre notaire ».
+
+« Vous n'avez pas de contrat ? Alors ouvrez-en un. »
+  → Recommandation de souscription interdite : elle suppose une habilitation
+    que nous n'avons pas (CIF, art. L541-1 CMF ; distribution d'assurance,
+    art. L511-1 du code des assurances, immatriculation ORIAS). Dire : « cette
+    etape ne vous concerne pas, ecrivez « sans objet » sur la ligne 2 de votre
+    Calendrier ».
+
+« Vous pouvez changer votre clause sans l'accord de personne » — sans reserve.
+  → Faux pour un contrat souscrit a deux par les epoux : la modification demande
+    les deux signatures. Toujours ajouter le cas particulier, sinon l'assureur
+    opposera un refus au spectateur qui aura envoye le courrier seul.
+
+Citer un assureur, une banque, un contrat, un support, un rendement observe.
+  → Interdit. Aucun nom, aucun logo, aucune performance. Meme sur un plan de
+    document filme a plat : masquer les en-tetes, et n'ecrire devant la camera
+    que les valeurs neutres imposees au carton 14.
+
+Enoncer a l'oral le calcul des frais, ou les 140 000 + 20 000 de primes et
+gains.
+  → Ces deux blocs sont sur le tableau de decision 70 ans. Le premier exige une
+    mention d'hypothese de cinq lignes pour etre honnete, le second est un
+    detail de lecture. Ni l'un ni l'autre ne se retient a l'ecoute.
+
+« Vous n'avez rien fait de travers » / « ce qui est irreparable, c'est de mourir
+sans l'avoir relue » / « cette ligne attend ».
+  → Registre de la video de vente. Le spectateur a deja achete. Supprime.
+
+Presenter le narrateur comme notaire, avocat, conseiller ou expert.
+  → Aucun titre, jamais. On parle en « nous », au nom d'Heritage Intact, et
+    l'autorite vient des articles affiches a l'ecran.
+
+Dire un prix, ou faire une promesse de duree sur cette etape ou sur la Methode,
+du type « c'est l'etape la plus rapide » ou « en 10 minutes c'est plie ».
+  → Aucun prix, a aucun moment, y compris sur le slide du renvoi. Aucune duree
+    annoncee pour ce que le spectateur va faire. Seule exception, et ce n'en est
+    pas vraiment une : « Votre assurance-vie, verifiee en 30 minutes » est le
+    NOM du second produit. On le prononce comme un titre, sans le commenter,
+    sans dire « ca vous prendra 30 minutes ».
+
+
+------------------------------------------------------------
+6. CE QUE LE SPECTATEUR FAIT
+------------------------------------------------------------
+
+AVANT — la liste est donnee au point 1, sur le carton 1bis, et suivie d'une
+pause explicite
+  Ses contrats d'assurance-vie : le document signe a l'ouverture, meme ancien,
+  meme jauni. Les releves annuels des 3 dernieres annees s'il les a gardes. Sa
+  carte d'identite, pour la date exacte de son 70e anniversaire. Le Test des 3
+  Questions imprime, 2 pages — il est sous la video, et c'est pour cela que la
+  pause est demandee avant, pas apres. Un stylo. Une enveloppe et un timbre.
+  L'adresse postale de son assureur : elle est sur son releve annuel, ou a la
+  fin de ses conditions generales. S'il ne la trouve pas, l'adresse du service
+  client figure sur le site de son assureur, et une adresse e-mail convient
+  aussi bien.
+  S'il n'a aucun contrat d'assurance-vie : il ecrit « sans objet » sur la
+  ligne 2 de son Calendrier des 3 dates, et l'etape est finie pour lui.
+
+PENDANT LA VIDEO
+  Il met la video en pause autant de fois qu'il en a besoin pour ecrire.
+  Il ecrit la date de son 70e anniversaire dans la case encadree en haut de la
+  page 1 du Test des 3 Questions.
+  Il remplit un bloc par contrat : assureur, numero, date d'ouverture, et les
+  versements qu'il connait deja. Si le contrat est alimente tous les mois, il
+  ecrit « versements programmes depuis [annee] ».
+  Chaque case dont il n'a pas la reponse recoit la mention « a demander ». Il ne
+  devine jamais un chiffre ni une date.
+  Il coche sur la ligne 2 de son Calendrier ce qu'il sait deja : verse avant,
+  verse apres, ou les deux — avec la case « a confirmer ».
+
+APRES, LE SOIR MEME
+  Il recopie ou imprime la lettre de la page 2, inscrit l'adresse de son
+  assureur dans le cadre prevu, ajoute ses coordonnees, la date, et signe. Il
+  poste. Il note la date d'envoi dans la case prevue, il garde une copie avec
+  ses contrats.
+  Il n'attend pas la reponse pour passer a l'etape suivante.
+
+AU RETOUR DU COURRIER, sous quelques semaines
+  Il recopie sa clause mot pour mot dans le champ prevu, coche « avant » ou
+  « apres » pour chaque versement, et reporte le total des frais. Il confirme la
+  ligne 2 de son Calendrier. L'etape est finie ce jour-la.
+  Sans reponse au bout d'un mois, il renvoie le meme courrier.
+
+DOCUMENTS UTILISES : Le Test des 3 Questions (pages 1 et 2), le Calendrier des
+3 dates, et le tableau de decision 70 ans pour ce qui n'est pas dit a l'oral.
+
+
+------------------------------------------------------------
+7. LE RENVOI DE FIN
+------------------------------------------------------------
+
+VERS : « Votre assurance-vie, verifiee en 30 minutes ».
+PLACE : apres la conclusion et apres la mention legale. Un seul renvoi dans
+toute la video.
+
+L'IDEE A DIRE, factuellement
+  Cette etape etablit deux choses : les dates de vos versements, et la clause
+  reellement enregistree chez votre assureur. Elle n'analyse pas le contenu de
+  la clause une fois qu'elle est arrivee. « Votre assurance-vie, verifiee en
+  30 minutes » fait exactement cela : une grille de lecture generale a lire avec
+  sa propre clause sous les yeux, les trois formes de clause les plus courantes
+  commentees, et l'endroit precis ou lire ses propres frais dans ses conditions
+  generales. Cela se fait avec la reponse de l'assureur sous les yeux, donc
+  apres cette etape. Ce n'est pas necessaire pour continuer la Methode.
+
+NOTE DE MONTAGE
+  Aucun prix, ni a l'oral ni a l'ecran. Aucune urgence, aucune rarete. On
+  prononce le titre du produit, on ne promet aucune duree au spectateur.
+  Le slide 17 (Calendrier) s'affiche pendant la conclusion et n'est PAS
+  commente : il n'y a pas de second renvoi vers l'etape suivante dans cette
+  video.
+
+
+------------------------------------------------------------
+8. LE LIVRABLE
+------------------------------------------------------------
+
+LE TEST DES 3 QUESTIONS — 2 pages imprimables.
+
+Page 1, en tete : « Mon 70e anniversaire : __ / __ / __ — un exemplaire par
+personne. Si vous etes deux, imprimez-en deux : chacun n'inscrit que ses propres
+contrats. » C'est la date de reference de toute l'etape, et c'est la date de
+l'assure, pas celle du couple.
+Juste dessous : « Adresse de mon assureur trouvee : ☐ oui  ☐ a chercher ».
+
+Puis un BLOC PAR CONTRAT, 3 blocs par page, en champs etiquetes sur des lignes
+pleine largeur — pas un tableau a 7 colonnes, qui ne se remplit pas au stylo :
+  Assureur ______________________________________________
+  N° de contrat _________________________________________
+  Date d'ouverture ______________________________________
+  Versements connus (dates ou periodes) _________________
+  Par rapport a mon 70e anniversaire : ☐ avant  ☐ apres  ☐ les deux
+                                       ☐ a demander
+  Clause beneficiaire, recopiee mot pour mot (4 lignes)
+  ______________________________________________________
+  ______________________________________________________
+  ______________________________________________________
+  ______________________________________________________
+  Frais preleves l'an dernier ___________________________
+
+En bas de page : « Courrier poste le : __ / __ / __ » et « Reponse recue le :
+__ / __ / __ », et dessous : « Si rien n'est arrive 1 mois apres l'envoi,
+renvoyez le meme courrier. »
+
+Page 2, la lettre a l'assureur, prete a recopier ou a imprimer. En haut, avant
+le corps de la lettre, un cadre « Adresse de mon assureur ». Puis les 3 demandes
+numerotees : la clause beneficiaire en vigueur, le releve date des versements,
+le recapitulatif annuel des frais. Espace pour les coordonnees, la date et la
+signature. Mention en bas de page : contenu pedagogique et general ; ce courrier
+est une demande d'information et ne modifie pas le contrat ; a faire relire par
+votre notaire avant toute modification de clause.
+
+SUR LE CALENDRIER DES 3 DATES, ligne 2 : prevoir une case « a confirmer » et une
+case « sans objet ».
+
+DOCUMENT COMPAGNON, a fabriquer avec cette video — LE TABLEAU DE DECISION
+70 ANS : le tableau avant / apres avec les taux de 20 % et 31,25 % et la mention
+« part taxable = ce qui reste apres l'abattement de 152 500 EUR », la ligne
+« les prelevements sociaux sur les gains restent dus », le bareme complet de
+l'art. 777 en ligne directe (les 7 tranches, pas un extrait), les deux dates de
+bascule des contrats anciens (a sourcer d'abord dans 12-chiffres-succession.md),
+primes + gains avec le calcul 140 000 + 20 000 = 160 000 et les 7 500 EUR taxes,
+et l'illustration des frais avec sa mention d'hypothese complete.
+
+A LA FIN DE LA VIDEO, LE SPECTATEUR A EN MAIN
+  La date exacte de son 70e anniversaire, ecrite.
+  Un bloc rempli par contrat, avec ce qu'il sait deja et « a demander »
+  partout ailleurs.
+  Un courrier signe, adresse, pret a poster ou deja poste, et sa date d'envoi
+  notee.
+  La 2e des 3 lignes de son Calendrier renseignee avec ce qu'il sait, marquee
+  « a confirmer » — ou « sans objet » s'il n'a aucun contrat.

@@ -61,15 +61,26 @@ export default function CGV() {
           être proposée une fois, portant le prix à {euros(PRIX_RATTRAPAGE)} TTC. Elle n&apos;est
           appliquée que si vous l&apos;acceptez expressément, et le refus est définitif.
         </li>
-        <li>
-          {PRODUCTS.bump.name} : {euros(PRODUCTS.bump.price)} TTC
-        </li>
-        <li>
-          {PRODUCTS.upsell1.name} : {euros(PRODUCTS.upsell1.price)} TTC
-        </li>
-        <li>
-          {PRODUCTS.upsell2.name} : {euros(PRODUCTS.upsell2.price)} TTC
-        </li>
+        {/* ⚠️ LA LISTE EST GÉNÉRÉE, ET ELLE EST FILTRÉE SUR `disponible`.
+
+            Générée, parce qu'un prix pratiqué qui ne figure pas aux CGV n'est
+            pas opposable : le jour où un produit passe en vente, il doit
+            apparaître ici sans que personne ait à y penser.
+
+            Filtrée, parce que l'inverse est pire. Les quatre produits backend
+            sont déclarés dans PRODUCTS — l'espace membre a besoin de leur nom
+            — mais aucun contenu n'existe. Les annoncer au contrat avant de
+            pouvoir les livrer, ce serait s'engager sur du vide.
+
+            `front` est exclu : il a son propre paragraphe, plus haut, avec ses
+            deux conditions tarifaires. */}
+        {Object.values(PRODUCTS)
+          .filter((p) => p.disponible && p.sku !== "front")
+          .map((p) => (
+            <li key={p.sku}>
+              {p.name} : {euros(p.price)} TTC
+            </li>
+          ))}
       </ul>
       <p>Les prix sont indiqués en euros, toutes taxes comprises. {LEGAL.vatNotice}</p>
 
@@ -82,9 +93,15 @@ export default function CGV() {
       </p>
 
       <h2>4. Accès aux contenus</h2>
+      {/* ⚠️ Cet article décrit désormais le mode d'accès RÉELLEMENT exécuté par
+          le code : un lien personnel permanent, sans compte ni mot de passe.
+          Le dire ici n'est pas cosmétique — c'est ce qui rend opposable le fait
+          que le lien ne doive pas être transmis, et c'est ce que l'acheteur
+          relit quand il se demande où sont ses identifiants (il n'y en a pas). */}
       <p>
-        L&apos;accès est délivré immédiatement après paiement, par email, pour une durée illimitée,
-        à titre personnel et non cessible.
+        L&apos;accès est délivré immédiatement après paiement, par un lien personnel envoyé par
+        email, sans mot de passe, pour une durée illimitée. Ce lien est personnel et ne doit pas
+        être transmis.
       </p>
 
       <h2>5. Droit de rétractation</h2>

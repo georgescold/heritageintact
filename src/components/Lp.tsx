@@ -113,7 +113,7 @@ export function Hero({ form }: { form: ReactNode }) {
           <p className="max-w-[37rem] text-[1.02rem] text-white/90 sm:text-[1.12rem]">
             Sur une maison de province et les économies d&apos;une vie, cette part est de{" "}
             <strong className="text-white">82 194 €</strong>. Trois décisions, prises dès maintenant
-            et de votre vivant, la ramènent à <strong className="text-white">13 989 €</strong> —
+            et de votre vivant, la ramènent à <strong className="text-white">13 988 €</strong> —
             sans que vous vous sépariez de quoi que ce soit.
           </p>
         </div>
@@ -136,14 +136,14 @@ export function Hero({ form }: { form: ReactNode }) {
             <div className="flex items-baseline justify-between gap-3 border-b border-white/15 py-2">
               <dt className="text-[0.98rem] text-white/85">Si vous prenez les 3 décisions</dt>
               <dd className="whitespace-nowrap text-[1.35rem] font-bold text-green-bright">
-                13 989 €
+                13 988 €
               </dd>
             </div>
             <div className="flex items-baseline justify-between gap-3 pt-2">
               <dt className="text-[1.02rem] font-bold text-white">
                 Ce que vous coûte le fait d&apos;attendre
               </dt>
-              <dd className="figure-lg whitespace-nowrap text-red-bright">68 205 €</dd>
+              <dd className="figure-lg whitespace-nowrap text-red-bright">68 206 €</dd>
             </div>
           </dl>
           <p className="border-t border-white/20 px-4 py-2 text-[0.85rem] text-white/60">
@@ -349,13 +349,13 @@ export function TheComparison() {
           </div>
           <div className="flex items-baseline justify-between gap-3 border-b border-grey-line py-3">
             <dt className="text-[1.02rem]">Si vous prenez les 3 décisions</dt>
-            <dd className="whitespace-nowrap text-[1.7rem] font-bold text-green">13 989 €</dd>
+            <dd className="whitespace-nowrap text-[1.7rem] font-bold text-green">13 988 €</dd>
           </div>
           <div className="flex items-baseline justify-between gap-3 pt-3">
             <dt className="text-[1.06rem] font-bold text-blue">
               Ce que vous coûte le fait d&apos;attendre
             </dt>
-            <dd className="whitespace-nowrap text-[2rem] font-bold text-red">68 205 €</dd>
+            <dd className="whitespace-nowrap text-[2rem] font-bold text-red">68 206 €</dd>
           </div>
         </dl>
         <p className="border-t border-grey-line bg-grey-bg px-4 py-2 text-[0.88rem] text-text-soft">
@@ -363,7 +363,7 @@ export function TheComparison() {
         </p>
       </div>
       <p className="mt-5 max-w-[38rem] text-[1.06rem]">
-        Ces <strong>68 205 €</strong> ne sont pas une économie qu&apos;on vous promet. C&apos;est la
+        Ces <strong>68 206 €</strong> ne sont pas une économie qu&apos;on vous promet. C&apos;est la
         somme que vos enfants verseront, uniquement parce que rien n&apos;aura été décidé à temps —
         et, s&apos;ils ne l&apos;ont pas, c&apos;est la maison qui part.
       </p>
@@ -451,7 +451,7 @@ export function BeforeAfter() {
           </p>
           <ul className="space-y-2 p-4 text-[1rem]">
             {[
-              "Une facture de 13 989 €, réglée des années plus tôt, de leur vivant",
+              "Une facture de 13 988 €, réglée des années plus tôt, de leur vivant",
               "De quoi la payer, prévu à l'avance",
               "La maison qui reste dans la famille",
               "Les décisions déjà prises, datées, signées",

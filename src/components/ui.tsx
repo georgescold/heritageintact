@@ -34,17 +34,26 @@ export function Button({
   className = "",
   disabled,
   type = "submit",
+  onClick,
 }: {
   children: ReactNode;
   variant?: keyof typeof variants;
   className?: string;
   disabled?: boolean;
   type?: "submit" | "button";
+  /**
+   * Réservé aux boutons qui n'envoient pas de formulaire — le « Réessayer » de
+   * l'écran de secours de l'espace. Tout le reste du site poste un `<form>`,
+   * et c'est délibéré : une action qui dépend de JavaScript est une action de
+   * moins pour qui navigue sur un vieux navigateur.
+   */
+  onClick?: () => void;
 }) {
   return (
     <button
       type={type}
       disabled={disabled}
+      onClick={onClick}
       className={`${base} ${variants[variant]} cursor-pointer disabled:cursor-wait disabled:opacity-70 ${className}`}
     >
       {children}
