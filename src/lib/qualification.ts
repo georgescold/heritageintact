@@ -114,7 +114,14 @@ export type Reponses = {
 };
 
 /** Les trois écrans de vente possibles après le paiement du front. */
-export type Ecran = "plan" | "assurance-vie" | "pack";
+export type Ecran =
+  | "plan"
+  | "assurance-vie"
+  | "pack"
+  /** Les trois écrans qui offrent le Dossier notaire à qui l'a décoché. */
+  | "pack-notaire"
+  | "plan-notaire"
+  | "assurance-vie-notaire";
 
 /**
  * LE CODE S'IL PORTE UNE INFORMATION, `undefined` SINON. Point d'entrée unique
@@ -187,7 +194,7 @@ function ligneCassee(r: Reponses | null): boolean {
  * @param opts.bumpPresent le Dossier notaire à 17 € figure dans `order.items`.
  *   Ce n'est pas une réponse à une question, c'est un fait déjà en base.
  */
-export function sequence(r: Reponses | null, opts: { bumpPresent: boolean }): Ecran[] {
+function sequenceBrute(r: Reponses | null, opts: { bumpPresent: boolean }): Ecran[] {
   const av = codeUtile(r?.av);
   const age = codeUtile(r?.age);
 
@@ -265,12 +272,54 @@ export function sequence(r: Reponses | null, opts: { bumpPresent: boolean }): Ec
  * Dérivée de `sequence`, jamais recalculée en parallèle : deux implémentations
  * de la même règle divergent toujours, et c'est la mesure qui ment en premier.
  */
+/**
+ * L'ÉCRAN ÉQUIVALENT QUI OFFRE LE DOSSIER NOTAIRE.
+ *
+ * Le Dossier notaire est le MODE D'EMPLOI du Plan. Quelqu'un qui l'a décoché au
+ * bon de commande l'a fait sans savoir à quoi il servait — il n'avait pas
+ * encore vu l'écran qui le lui explique. Lui vendre le Plan sans lui, c'est
+ * vendre une notice sans l'outil : il ressort avec douze plans-types et aucune
+ * feuille à remplir, il ne s'en sert pas, et il demande un remboursement six
+ * mois plus tard en ayant raison.
+ *
+ * On l'OFFRE plutôt que de le remiser : 17 € de plus sur un écran à 297 € ne
+ * changent aucune décision, tandis que l'offrir retire la seule raison qu'il
+ * avait de dire non.
+ */
+const AVEC_NOTAIRE: Partial<Record<Ecran, Ecran>> = {
+  plan: "plan-notaire",
+  "assurance-vie": "assurance-vie-notaire",
+  pack: "pack-notaire",
+};
+
+/**
+ * LA SÉQUENCE FINALE. Les quatre règles de décision, puis une seule
+ * substitution : si le Dossier notaire manque, le PREMIER écran l'offre.
+ *
+ * ⚠️ LE PREMIER SEULEMENT, et c'est délibéré. L'offrir sur les deux écrans
+ * ferait une promesse qu'on ne peut pas tenir deux fois — et si l'acheteur
+ * refuse le premier, le second le lui reproposera, ce qui transforme un cadeau
+ * en argument de rattrapage. Un cadeau qu'on répète cesse d'en être un.
+ *
+ * ⚠️ Et JAMAIS à quelqu'un qui a gardé le bump : lui « offrir » ce qu'il vient
+ * de payer 17 € serait la démonstration qu'il a eu tort de le prendre. C'est le
+ * seul endroit du funnel où une gentillesse se retournerait contre nous.
+ */
+export function sequence(r: Reponses | null, opts: { bumpPresent: boolean }): Ecran[] {
+  const seq = sequenceBrute(r, opts);
+  if (opts.bumpPresent || !seq.length) return seq;
+  const premier = AVEC_NOTAIRE[seq[0]];
+  return premier ? [premier, ...seq.slice(1)] : seq;
+}
+
 export function piste(r: Reponses | null, opts: { bumpPresent: boolean }): string {
   const seq = sequence(r, opts);
-  if (seq.length === 1) return "plan-seul";
-  if (seq[0] === "pack") return "pack";
-  if (seq[0] === "assurance-vie") return "av-dabord";
-  return "defaut";
+  const notaire = seq[0]?.endsWith("-notaire") ? "+notaire" : "";
+  if (seq.length === 1) return "plan-seul" + notaire;
+  if (seq[0] === "pack" || seq[0] === "pack-notaire") return "pack" + notaire;
+  if (seq[0] === "assurance-vie" || seq[0] === "assurance-vie-notaire")
+    return "av-dabord" + notaire;
+  return "defaut" + notaire;
 }
 
 /** L'URL de chaque écran de vente. Le pack a sa page propre. */
@@ -278,6 +327,9 @@ export const ROUTE: Record<Ecran, string> = {
   plan: "/plan-complet",
   "assurance-vie": "/kit-assurance-vie",
   pack: "/dossier-complet",
+  "pack-notaire": "/offre/pack3",
+  "plan-notaire": "/offre/pack2",
+  "assurance-vie-notaire": "/offre/pack4",
 };
 
 /**
@@ -292,6 +344,9 @@ export const LIBELLE: Record<Ecran, string> = {
   plan: "Votre plan",
   "assurance-vie": "Votre assurance-vie",
   pack: "Votre dossier",
+  "pack-notaire": "Votre dossier",
+  "plan-notaire": "Votre plan",
+  "assurance-vie-notaire": "Votre assurance-vie",
 };
 
 /**

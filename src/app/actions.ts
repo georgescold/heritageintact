@@ -14,6 +14,7 @@ import {
 } from "@/lib/db";
 import { isTestMode, PRODUCTS, type ProductSku } from "@/lib/config";
 import { possessions } from "@/lib/espace";
+import { palierDe } from "@/lib/palier";
 import { prixFront, prixUpsell } from "@/lib/prix";
 import { stripe, toCents } from "@/lib/stripe";
 import { envoyerLivraison, envoyerRecuAchat } from "@/lib/email";
@@ -304,14 +305,35 @@ export async function chargeUpsell(orderId: string, sku: ProductSku): Promise<Up
    * `possede.has("pack1")` ne verrait pas davantage ses composants. C'est bien
    * sur les DEUX composants qu'il faut tester.
    */
-  if (sku === "pack1" && (possede.has("upsell1") || possede.has("upsell2"))) {
+  const COMPOSANTS: Partial<Record<string, ProductSku[]>> = {
+    pack1: ["upsell1", "upsell2"],
+    pack2: ["upsell1", "bump"],
+    pack3: ["upsell1", "upsell2", "bump"],
+    pack4: ["upsell2", "bump"],
+  };
+  if (COMPOSANTS[sku]?.some((c) => possede.has(c))) {
     return {
       ok: false,
       error: "Ce produit est déjà en partie dans votre commande. Rien n'a été débité.",
     };
   }
 
-  const montant = prixUpsell(sku, possede);
+  /**
+   * LE PALIER DE LANCEMENT, côté SERVEUR et nulle part ailleurs.
+   *
+   * Il se calcule sur `order.createdAt`, une date écrite en base au moment du
+   * paiement : ni un rechargement, ni un nouvel onglet, ni un cookie effacé ne
+   * la déplacent. C'est ce qui distingue une remise dégressive licite d'un
+   * compteur qui se réinitialise — lequel serait une pratique trompeuse
+   * (art. L121-2), quand bien même il afficherait le bon nombre.
+   *
+   * ⚠️ Le même appel doit servir à AFFICHER le prix sur l'écran d'upsell. Le
+   * jour où l'affichage lira autre chose, l'écran annoncera un montant et
+   * Stripe en débitera un autre — c'est le défaut qu'on a déjà corrigé une
+   * fois sur le bon de commande.
+   */
+  const { remise } = palierDe(order.createdAt, Date.now());
+  const montant = prixUpsell(sku, possede, remise);
 
   if (!stripe) {
     await addItem(orderId, sku, undefined, montant);

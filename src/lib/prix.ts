@@ -5,6 +5,7 @@ import {
   REMISE_LIGNE_DUPLIQUEE,
   type ProductSku,
 } from "@/lib/config";
+import { appliquerPalier } from "@/lib/palier";
 
 /**
  * LE PRIX DE LA MÉTHODE POUR CE VISITEUR-CI. Source unique.
@@ -62,7 +63,24 @@ export function prixFront(flash: string | undefined, rattrapage: string | undefi
  * `REMISE_LIGNE_DUPLIQUEE`, pour que le prix affiché et le prix débité ne
  * puissent pas diverger.
  */
-export function prixUpsell(sku: ProductSku, possede: Set<ProductSku>): number {
+/**
+ * @param remise La remise du palier de lancement, en fraction (0,5 = −50 %).
+ *   Elle vient TOUJOURS de `palierDe(order.createdAt, Date.now())`, jamais d'un
+ *   paramètre d'URL ni d'un cookie : c'est une date en base qui la fixe, donc
+ *   ni un rechargement ni un nouvel onglet ne la rouvrent.
+ *
+ *   ⚠️ Elle s'applique à TOUS les chemins, jamais au seul pack. Sinon
+ *   297 + 50 = 347 et pack = 347 deviendraient 297 + 50 = 347 et pack = 173 :
+ *   celui qui prend les produits l'un après l'autre paierait le double de son
+ *   voisin. C'est la propriété que la règle des 47 € existe pour tenir, et le
+ *   palier ne doit pas la casser.
+ */
+export function prixUpsell(sku: ProductSku, possede: Set<ProductSku>, remise = 0): number {
+  return appliquerPalier(prixUpsellPlein(sku, possede), remise);
+}
+
+/** Le prix hors palier. C'est lui qu'on barre à l'écran. */
+export function prixUpsellPlein(sku: ProductSku, possede: Set<ProductSku>): number {
   if (sku === "upsell1") {
     return possede.has("upsell2")
       ? PRODUCTS.upsell1.price - REMISE_LIGNE_DUPLIQUEE
@@ -84,6 +102,22 @@ export function prixUpsell(sku: ProductSku, possede: Set<ProductSku>): number {
   if (sku === "pack1") {
     return PRODUCTS.upsell1.price + PRODUCTS.upsell2.price - REMISE_LIGNE_DUPLIQUEE;
   }
+
+  /**
+   * LES TROIS PACKS « NOTAIRE ». Le Dossier notaire y est OFFERT, donc il
+   * n'entre pas dans l'addition : le prix est exactement celui du ou des
+   * produits payants qu'ils contiennent.
+   *
+   * ⚠️ On ne relit pas `PRODUCTS.packN.price` : le prix du catalogue sert à
+   * l'affichage, celui-ci part chez Stripe, et la seule façon de garantir que
+   * les deux soient le même nombre est de le dériver de ses composants. Si un
+   * jour Le Plan passe à 347 €, ces trois lignes suivent sans qu'on y pense.
+   */
+  if (sku === "pack2") return PRODUCTS.upsell1.price;
+  if (sku === "pack3") {
+    return PRODUCTS.upsell1.price + PRODUCTS.upsell2.price - REMISE_LIGNE_DUPLIQUEE;
+  }
+  if (sku === "pack4") return PRODUCTS.upsell2.price;
 
   return PRODUCTS[sku].price;
 }

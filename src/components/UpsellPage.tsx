@@ -24,6 +24,7 @@ export function UpsellPage({
   rows,
   declineText,
   paymentFailed = false,
+  prix,
 }: {
   step: 2 | 3;
   orderId: string;
@@ -36,6 +37,17 @@ export function UpsellPage({
   videoMinutes: number;
   children: ReactNode;
   rows: { label: string; value: string }[];
+  /**
+   * ⚠️ LE PRIX RÉELLEMENT DÉBITÉ, quand il diffère du catalogue.
+   *
+   * Cette page lisait `product.price` en dur. Le palier de lancement fait
+   * débiter moins que le catalogue par `chargeUpsell` : l'écran annonçait
+   * donc 347 € pendant que Stripe prélevait 173 €. Le sens de l'écart est
+   * favorable au client, mais c'est le MÊME défaut que celui déjà corrigé
+   * sur le bon de commande : un montant affiché qui n'est pas celui débité
+   * n'est pas un détail d'affichage, c'est une information tarifaire fausse.
+   */
+  prix?: number;
   declineText: string;
   /** Le débit de l'offre précédente a échoué : on prévient sans inquiéter. */
   paymentFailed?: boolean;
@@ -74,13 +86,13 @@ export function UpsellPage({
           <ValueStack
             rows={rows}
             total={euros(totalValue)}
-            today={euros(product.price)}
+            today={euros(prix ?? product.price)}
             todayLabel="Aujourd'hui seulement"
           />
 
           <form action={accept} className="mt-6">
             <Button variant="green">
-              OUI, j&apos;ajoute {product.short} à ma commande ({euros(product.price)})
+              OUI, j&apos;ajoute {product.short} à ma commande ({euros(prix ?? product.price)})
             </Button>
             <p className="mt-2 text-center text-[0.9rem] text-text-soft">
               Un seul clic, sans ressaisir votre carte. Garantie 30 jours.

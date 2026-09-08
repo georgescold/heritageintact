@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { UpsellPage } from "@/components/UpsellPage";
 import { getOrder } from "@/lib/db";
 import { PRODUCTS, VIDEO } from "@/lib/config";
+import { appliquerPalier, palierDe } from "@/lib/palier";
 import { etapeTunnel } from "@/lib/tunnel";
 
 /**
@@ -44,11 +45,17 @@ export default async function Upsell1Page({
   });
   if (!etape.afficher) redirect(etape.versOu);
 
+  // Le prix affiché doit être celui que `chargeUpsell` débitera : il applique
+  // le même palier, calculé sur la même date en base.
+  const { remise } = palierDe(order.createdAt, Date.now());
+  const prix = appliquerPalier(PRODUCTS.upsell1.price, remise);
+
   return (
     <UpsellPage
       step={2}
       orderId={order.id}
       sku="upsell1"
+      prix={prix}
       next={etape.suivant}
       kicker="Attendez : votre commande est validée."
       h1={

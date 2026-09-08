@@ -143,6 +143,16 @@ const RESUME: Record<ProductSku, string> = {
   // l'exige, et `disponible: false` l'empêche de s'afficher.
   pack1:
     "Le Plan adapté à votre famille et l'audit de votre assurance-vie, ensemble : les 3 modèles de clause bénéficiaire, communs aux deux, ne sont comptés qu'une fois.",
+  // Les trois packs « notaire » sont, comme pack1, des offres de TUNNEL :
+  // `SKU_TUNNEL_UNIQUEMENT` les empêche d'apparaître ici. Ils figurent dans
+  // ce dictionnaire parce que le type l'exige, et pour qu'une ligne vide ne
+  // s'affiche jamais si l'un d'eux devenait un jour vendable depuis l'espace.
+  pack2:
+    "Le Plan adapté à votre famille, avec les feuilles à remplir avant votre rendez-vous chez le notaire.",
+  pack3:
+    "Le Plan et l'audit de votre assurance-vie, avec les feuilles à remplir avant votre rendez-vous chez le notaire.",
+  pack4:
+    "L'audit de votre contrat, avec les feuilles à remplir avant votre rendez-vous chez le notaire.",
 };
 
 /**

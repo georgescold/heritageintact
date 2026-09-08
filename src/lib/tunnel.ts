@@ -43,6 +43,9 @@ const SKU_DE_L_ECRAN: Record<Ecran, ProductSku> = {
   plan: "upsell1",
   "assurance-vie": "upsell2",
   pack: "pack1",
+  "plan-notaire": "pack2",
+  "pack-notaire": "pack3",
+  "assurance-vie-notaire": "pack4",
 };
 
 export type EtapeTunnel =

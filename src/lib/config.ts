@@ -54,6 +54,9 @@ export type ProductSku =
   | "upsell1"
   | "upsell2"
   | "pack1"
+  | "pack2"
+  | "pack3"
+  | "pack4"
   | "backend1"
   | "backend2"
   | "backend3"
@@ -267,6 +270,57 @@ export const PRODUCTS: Record<ProductSku, Product> = {
   },
 
   /* ═══════════════════════════════════════════════════════════════════
+     LES TROIS AUTRES PACKS — LE DOSSIER NOTAIRE OFFERT
+     ═══════════════════════════════════════════════════════════════════
+
+     Ils s'adressent tous les trois à la même personne : celle qui a DÉCOCHÉ le
+     Dossier notaire au bon de commande. C'est leur seule raison d'exister, et
+     elle est de fond, pas commerciale.
+
+     Le Dossier notaire est le MODE D'EMPLOI du Plan. Sans lui, l'acheteur
+     ressort avec douze plans-types et aucune feuille à remplir : le produit
+     reste sur l'étagère, il ne s'en sert pas, et six mois plus tard il demande
+     un remboursement en disant — à juste titre — qu'il n'a rien fait avec.
+     Lui vendre le Plan sans le Dossier, c'est vendre une notice sans l'outil.
+
+     ⚠️ On l'OFFRE, on ne le remise pas. 17 € de plus sur un écran à 297 € ne
+     changent aucune décision d'achat ; l'offrir, en revanche, retire la seule
+     raison qu'il avait de le refuser — il l'a décoché parce qu'il ne savait pas
+     encore à quoi il servait, et l'écran vient précisément de le lui dire.
+
+     ⚠️ Ces trois SKU ne s'affichent JAMAIS à quelqu'un qui a gardé le bump :
+     il l'a déjà payé, et lui « offrir » ce qu'il vient d'acheter serait la
+     preuve qu'il a eu tort de le prendre.
+  */
+  pack2: {
+    sku: "pack2",
+    name: "Le Plan, et le Dossier notaire offert",
+    short: "Le Plan + Dossier",
+    price: 297,
+    /** 497 (Le Plan) + 47 (Le Dossier notaire) = 544. */
+    anchor: 544,
+    disponible: true,
+  },
+  pack3: {
+    sku: "pack3",
+    name: "Le Dossier complet, et le Dossier notaire offert",
+    short: "Le Dossier complet +",
+    price: 347,
+    /** 647 (Le Dossier complet) + 47 (Le Dossier notaire) = 694. */
+    anchor: 694,
+    disponible: true,
+  },
+  pack4: {
+    sku: "pack4",
+    name: "Votre assurance-vie, et le Dossier notaire offert",
+    short: "L'Assurance-vie + Dossier",
+    price: 97,
+    /** 197 (L'Assurance-vie) + 47 (Le Dossier notaire) = 244. */
+    anchor: 244,
+    disponible: true,
+  },
+
+  /* ═══════════════════════════════════════════════════════════════════
      LES QUATRE PRODUITS BACKEND — CONNUS DU CODE, PAS ENCORE VENDABLES
      ═══════════════════════════════════════════════════════════════════
 
@@ -361,6 +415,15 @@ export const INCLUS_DANS: Partial<Record<ProductSku, ProductSku[]>> = {
    * `possessions()` le donne via `upsell1`.
    */
   pack1: ["upsell1", "upsell2"],
+  /**
+   * Les trois packs « notaire » contiennent le bump. C'est cette ligne qui le
+   * livre : on n'écrit jamais d'article `bump` supplémentaire sur la commande,
+   * sinon `orderTotal` et l'événement Purchase de Meta gonfleraient de 17 €
+   * jamais débités.
+   */
+  pack2: ["upsell1", "bump"],
+  pack3: ["upsell1", "upsell2", "bump"],
+  pack4: ["upsell2", "bump"],
 };
 
 /**
@@ -403,7 +466,7 @@ export const REMISE_LIGNE_DUPLIQUEE = 47;
  * l'écran `/ajouter/[sku]` — parce qu'une server action est une URL, et
  * qu'elle s'appelle sans passer par l'écran qui la précède.
  */
-export const SKU_TUNNEL_UNIQUEMENT: ProductSku[] = ["pack1"];
+export const SKU_TUNNEL_UNIQUEMENT: ProductSku[] = ["pack1", "pack2", "pack3", "pack4"];
 
 /**
  * Le lien personnel d'un membre. Un seul endroit le fabrique : l'email
