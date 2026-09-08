@@ -469,7 +469,7 @@ a) L'écart produit par le don de 100 000 €, une fois les 15 ans révolus :
      AUCUN second total de droits n'est calculé ni affiché pour Jean-Pierre :
      son seul chiffre publié est 78 194 € (fiche 12-chiffres-succession.md).
      La démonstration avant / après appartient au cas Julien, et à lui seul
-     (82 194 € → 13 989 €, écart 68 205 €, « divisé par 6 »).
+     (82 194 € → 13 988 €, écart 68 206 €, « divisé par 6 »).
 
 b) Le coût de la phrase, en ouverture : 100 000 € d'abattement non rechargé
    restent dans la succession et sont taxés dans la marche à 20 %

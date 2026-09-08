@@ -138,11 +138,11 @@ Donnees : maison 480 000 EUR, epargne 40 000 EUR, 1 enfant, 2 parents de
   moins l'abattement de 100 000 EUR
   par parent et par enfant (art. 779) =  44 000 EUR taxables par parent
   bareme de l'art. 777 sur 44 000     =   6 994,35 EUR par parent
-  x 2                                 =  13 988,70 EUR, arrondi 13 989 EUR
+  x 2                                 =  13 988,70 EUR, arrondi 13 988 EUR
 
 REGLE D'ARRONDI, imperative : ne jamais dire ni afficher « 6 994 » sans ses
 decimales des lors que la multiplication par 2 est montree (6 994 x 2 = 13 988,
-et le chiffre canonique est 13 989). L'arrondi se fait a la fin, une seule fois.
+et le chiffre canonique est 13 988). L'arrondi se fait a la fin, une seule fois.
 
 L'abattement de 100 000 EUR se compte PAR PARENT ET PAR ENFANT (art. 779). Ici,
 2 parents et 1 enfant : 2 abattements. Un spectateur qui a 3 enfants n'est pas
@@ -168,14 +168,14 @@ deposer dans les 6 mois d'un deces survenu en France metropolitaine
 trouver ailleurs. La loi prevoit que les droits puissent etre payes de facon
 fractionnee ou differee (art. 1717 CGI et art. 396 et suivants de l'annexe III)
 — c'est une question a poser au notaire. Avec les decisions prises a 65 ans :
-13 989 EUR, regles par les parents de leur vivant. Ecart : 68 205 EUR.
+13 988 EUR, regles par les parents de leur vivant. Ecart : 68 206 EUR.
 
 NE JAMAIS DIRE « et c'est la maison qui part ». C'est une prediction, elle
 n'est adossee a aucun texte, et elle ignore le paiement fractionne ou differe.
 On enonce le montant qui reste a trouver, et on enonce le dispositif prevu par
 la loi pour ce cas. Rien de plus.
 
-POINT DE CONFORMITE, non negociable : les 68 205 EUR ne s'attribuent JAMAIS a
+POINT DE CONFORMITE, non negociable : les 68 206 EUR ne s'attribuent JAMAIS a
 la seule decision de cette etape. Ils resultent des decisions de l'etape 3
 (l'epargne) ET de celle-ci (les murs). Le dire dans la meme phrase que le
 chiffre.
@@ -216,7 +216,7 @@ Meme maison, meme famille, donation faite a 71 ans au lieu de 65 :
 Dire « pour le couple » : tout le calcul precedent etait mene par parent, et
 c'est cette mention qui evite le decrochage de celui qui suit avec un stylo.
 N'enoncer QUE l'ecart, 9 600 EUR. Ne jamais enoncer le total alternatif : un
-second chiffre de cas concurrent de 13 989 EUR n'a pas a circuler.
+second chiffre de cas concurrent de 13 988 EUR n'a pas a circuler.
 
 CE N'EST PAS UN COUT PROPORTIONNEL AU TEMPS. C'est une marche unique, franchie
 le matin du 71e anniversaire : attendre 2 ans ou attendre 6 ans coute
@@ -384,7 +384,7 @@ mention y est de toute facon dite et affichee en entier au carton 20.
       480 000 x 60 % = 288 000 · / 2 = 144 000 par parent
       · - 100 000 par parent et par enfant (art. 779) = 44 000
       · bareme art. 777 = 6 994,35 EUR par parent
-      · x 2 = 13 988,70 EUR -> arrondi 13 989 EUR
+      · x 2 = 13 988,70 EUR -> arrondi 13 988 EUR
     Les centimes s'affichent sur cette ligne, et sur elle seule.
     UN SEUL bandeau bas, affiche AVANT la premiere ligne et tenu jusqu'au bout :
     « cas type · 1 enfant · valeurs constantes · aucune autre donation depuis
@@ -394,8 +394,8 @@ mention y est de toute facon dite et affichee en entier au carton 20.
 10. Carton « Epargne placee avant 70 ans : 0 EUR de droits ».
     Mentions : art. L132-12 code des assurances · art. 990 I CGI, abattement de
     152 500 EUR par beneficiaire, tous contrats du meme assure confondus.
-11. Carton avant/apres : « 82 194 EUR -> 13 989 EUR », fleche, « ecart :
-    68 205 EUR ». Sous-titre imprime sur le carton : « resultat de 2 decisions :
+11. Carton avant/apres : « 82 194 EUR -> 13 988 EUR », fleche, « ecart :
+    68 206 EUR ». Sous-titre imprime sur le carton : « resultat de 2 decisions :
     l'epargne (etape 3) et les murs (etape 4) ».
     Mentions : art. 641 CGI — declaration de succession a deposer dans les
     6 mois d'un deces en France metropolitaine · art. 1701 CGI — droits payes
@@ -539,19 +539,19 @@ Le minutage tient les 14 minutes a 125 mots par minute, pause d'ecriture de
    une question pour le notaire.
    Puis derouler le calcul en suivant l'animation : 480 000 x 60 %, la division
    par 2, l'abattement, les 44 000 EUR taxables, le bareme de l'art. 777, et le
-   total de 13 989 EUR. Rappeler en une phrase que l'abattement se recharge
+   total de 13 988 EUR. Rappeler en une phrase que l'abattement se recharge
    tous les 15 ans et que ce qui a deja ete donne s'impute dessus (art. 784).
    Puis l'epargne : 40 000 EUR places avant 70 ans, enfant beneficiaire, 0 EUR
    (art. L132-12 et 990 I, 152 500 EUR par beneficiaire, tous contrats
    confondus). Enfin les deux chiffres cote a cote : 82 194 EUR sans decision —
    declaration deposee dans les 6 mois (art. 641), droits payes au depot
    (art. 1701), paiement fractionne ou differe possible (art. 1717) — contre
-   13 989 EUR regles du vivant. Ecart : 68 205 EUR, resultat de 2 decisions,
+   13 988 EUR regles du vivant. Ecart : 68 206 EUR, resultat de 2 decisions,
    celle de l'etape 3 et celle-ci. Signaler les frais de l'acte : ils existent,
    ils s'ajoutent aux droits, aucun montant n'est donne ici, et c'est le notaire
    qui les chiffre sur le bien reel avant la signature.
    > Dire les decimales 6 994,35 quand la multiplication par 2 est a l'ecran.
-   > Ne jamais attribuer les 68 205 EUR a la seule decision de cette etape.
+   > Ne jamais attribuer les 68 206 EUR a la seule decision de cette etape.
    > Ne pas dire « c'est la maison qui part ». Dire ce qui reste a trouver, et
      dire l'art. 1717.
    > Ne rien affirmer sur l'assiette des frais d'acte, et ne pas dire que le
@@ -670,8 +670,8 @@ Le minutage tient les 14 minutes a 125 mots par minute, pause d'ecriture de
    sont payes a ce moment-la — article 1701. La loi prevoit qu'ils puissent
    etre payes de facon fractionnee ou differee : article 1717. Avec les 2
    decisions prises a 65 ans, celle de l'etape 3 sur l'epargne et celle de
-   cette etape sur les murs, ils s'elevent a 13 989 EUR, regles du vivant.
-   L'ecart est de 68 205 EUR, et il vient de ces 2 decisions ensemble, pas
+   cette etape sur les murs, ils s'elevent a 13 988 EUR, regles du vivant.
+   L'ecart est de 68 206 EUR, et il vient de ces 2 decisions ensemble, pas
    d'une seule. »
 
 6. « Si vous etes 2 a signer, l'acte peut prevoir que l'usufruit du premier qui
@@ -708,15 +708,15 @@ Le minutage tient les 14 minutes a 125 mots par minute, pause d'ecriture de
 
 2. NE PAS DIRE : « 6 994 EUR par parent » quand la multiplication par 2 est a
    l'ecran (6 994 x 2 = 13 988, faux).
-   DIRE : « 6 994,35 EUR par parent, soit 13 988,70 EUR, arrondi a 13 989 EUR ».
+   DIRE : « 6 994,35 EUR par parent, soit 13 988,70 EUR, arrondi a 13 988 EUR ».
    L'arrondi ne se fait qu'a la fin.
 
-3. NE PAS DIRE : « cette decision fait economiser 68 205 EUR ».
-   DIRE : « 68 205 EUR d'ecart, resultat de 2 decisions : l'epargne a l'etape 3
+3. NE PAS DIRE : « cette decision fait economiser 68 206 EUR ».
+   DIRE : « 68 206 EUR d'ecart, resultat de 2 decisions : l'epargne a l'etape 3
    et les murs a cette etape ».
 
-4. NE PAS DIRE : « 68 205 EUR de gagnes », sans plus.
-   DIRE que les frais de l'acte s'ajoutent aux 13 989 EUR, sans jamais en
+4. NE PAS DIRE : « 68 206 EUR de gagnes », sans plus.
+   DIRE que les frais de l'acte s'ajoutent aux 13 988 EUR, sans jamais en
    chiffrer le montant ni l'ordre de grandeur, et sans rien affirmer sur leur
    assiette de calcul.
 
@@ -900,7 +900,7 @@ Deux feuilles A4, police 14 pt minimum.
      - le bareme de l'art. 669 en 3 lignes, dans la redaction exacte de la loi,
        avec la mention imprimee : « chaque proprietaire a sa propre ligne,
        selon son age » ;
-     - le calcul-modele complet (480 000 x 60 % ... 13 989 EUR), presente comme
+     - le calcul-modele complet (480 000 x 60 % ... 13 988 EUR), presente comme
        un modele a refaire avec ses propres chiffres, avec sous la ligne
        d'abattement la mention imprimee « 100 000 EUR par parent et par
        enfant — art. 779 CGI », et les hypotheses imprimees en entete :

@@ -71,7 +71,21 @@
  *
  * À `false`, tout le dispositif se comporte comme le tunnel actuel.
  */
-export const QUALIFICATION_ACTIVE = false;
+/*
+ * ACTIVÉ le 8 septembre 2026. Les trois conditions ci-dessus sont remplies,
+ * et vérifiées une par une :
+ *   1. les 19 feuilles des deux upsells sont déclarées dans `DOCUMENTS` ;
+ *   2. `profilParEmail` alimente bien les feuilles — la case pré-cochée de
+ *      « Quelle est ma situation ? » et la date surlignée du « Calendrier des
+ *      3 dates » reçoivent le profil, dans la page document comme dans la
+ *      page d'impression ;
+ *   3. `upsell1`, `upsell2` et `pack1` sont à `disponible: true`.
+ *
+ * Pour revenir en arrière : `false`. Rien d'autre à défaire — l'absence de
+ * réponse EST le tunnel d'avant, et les lignes déjà écrites dans `profils`
+ * cessent simplement d'être lues.
+ */
+export const QUALIFICATION_ACTIVE = true;
 
 /**
  * Les quatre réponses, telles qu'elles sortent de la table `profils`.
@@ -212,7 +226,7 @@ export function sequence(r: Reponses | null, opts: { bumpPresent: boolean }): Ec
   /**
    * RÈGLE 3 — LA SEULE INVERSION DE TOUT LE DISPOSITIF.
    *
-   * Entre 65 et 69 ans, la porte de l'article 990 I est à cinq ans au plus :
+   * Entre 65 et 69 ans, la date de l'article 990 I est à cinq ans au plus :
    * sur les primes versées avant 70 ans, chaque bénéficiaire dispose de
    * 152 500 € hors succession ; sur celles versées après, d'un abattement unique
    * de 30 500 € partagé entre tous. C'est la seule bande d'âge où l'urgence est

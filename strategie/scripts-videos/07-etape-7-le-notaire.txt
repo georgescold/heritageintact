@@ -39,12 +39,12 @@ préparé. Vous dites : « je venais voir ce que vous me conseillez. »
 Ce rendez-vous ne vous engage à rien. C'est exactement le problème. Il ne
 produit rien non plus.
 
-[ÉCRAN : 68 205 € — cas Julien, exemple illustratif | art. 777 CGI]
+[ÉCRAN : 68 206 € — cas Julien, exemple illustratif | art. 777 CGI]
 
-68 205 €.
+68 206 €.
 
 C'est l'écart du cas de Julien, celui que nous avons calculé ensemble à l'étape
-4. 82 194 € de droits d'un côté. 13 989 € de l'autre. Une facture divisée par 6.
+4. 82 194 € de droits d'un côté. 13 988 € de l'autre. Une facture divisée par 6.
 Vous, vous avez votre propre chiffre : celui que le Simulateur de Facture
 Invisible vous a donné à l'étape 0.
 
@@ -304,8 +304,8 @@ Visuels, un par [ÉCRAN], dans l'ordre :
 
 1. Carton-titre « Erreur n° 7 — Aller chez le notaire les mains vides ».
    Fond clair, texte noir, police 28 pt minimum.
-2. « 68 205 € » seul au centre. La ligne de calcul apparaît ensuite sous le
-   chiffre : 82 194 € moins 13 989 € égale 68 205 €. Puis, sur une ligne
+2. « 68 206 € » seul au centre. La ligne de calcul apparaît ensuite sous le
+   chiffre : 82 194 € moins 13 988 € égale 68 206 €. Puis, sur une ligne
    séparée et SANS signe égal, la mention « divisé par 6 ». Bandeau bas de
    cadre maintenu pendant tout le plan : « cas Julien — exemple illustratif ·
    art. 777 CGI — barème des droits en ligne directe ».
@@ -416,8 +416,8 @@ d'impression, visuel n° 15.
 
 Vérification des 2 seuls chiffres calculés dans cette étape
 (source : 12-chiffres-succession.md, cas Julien) :
-- écart : 82 194 − 13 989 = 68 205 €
-- rapport : 82 194 ÷ 13 989 = 5,875… arrondi à « divisé par 6 ». À l'écran,
+- écart : 82 194 − 13 988 = 68 206 €
+- rapport : 82 194 ÷ 13 988 = 5,875… arrondi à « divisé par 6 ». À l'écran,
   cet arrondi n'entre jamais dans une chaîne d'égalité : il s'affiche sur une
   ligne séparée, sans signe égal.
 Aucun autre chiffre de cas, ni aucune statistique de marché, n'apparaît dans ce
@@ -429,7 +429,7 @@ témoignage ni avis client ; aucun visage à l'image ; aucun prix prononcé à
 l'oral ; un seul renvoi produit, placé après le récapitulatif des 8 étapes.
 S'y ajoutent, parce que ce sont les 4 endroits où ce script avait dérapé :
 - aucun chiffre de cas n'est présenté comme le résultat du spectateur. 82 194 €,
-  13 989 € et 68 205 € sont ceux de Julien, portent à l'écran la mention « cas
+  13 988 € et 68 206 € sont ceux de Julien, portent à l'écran la mention « cas
   Julien — exemple illustratif », et le chiffre du spectateur reste celui de son
   Simulateur de Facture Invisible de l'étape 0 ;
 - aucune statistique de marché, aucune proportion de familles, aucun

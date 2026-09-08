@@ -28,9 +28,9 @@ SCRIPT — a lire au prompteur
 
 Voici l'erreur qui porte, à elle seule, la plus grosse ligne de la facture. Elle ne fait aucun bruit. Elle ne se voit nulle part. Elle consiste simplement à garder sa maison exactement comme on l'a achetée, jusqu'au dernier jour.
 
-[ECRAN : « 68 205 € », seul, très grand, rien d'autre]
+[ECRAN : « 68 206 € », seul, très grand, rien d'autre]
 
-68 205 €.
+68 206 €.
 
 C'est l'écart, sur une seule maison, entre une famille qui n'a rien décidé et la même famille qui aurait pris à temps les décisions de la Méthode. Pas une maison de riches. Un pavillon de périphérie.
 
@@ -50,9 +50,9 @@ Et maintenant, voici la seule chose qui compte dans cette étape.
 
 Il existait une décision de plus à prendre. Une seule, en plus de celle que nous avons déjà vue ensemble à l'étape 3, sur leur épargne. Ses parents pouvaient la prendre à 65 ans, chez un notaire, de leur vivant. Prise avec l'autre, elle changeait tout : la note fiscale de cette maison ne serait pas tombée sur Julien à 82 194 €.
 
-[ECRAN : « 13 989 € », seul]
+[ECRAN : « 13 988 € », seul]
 
-Elle aurait été de 13 989 €, réglés par ses parents de leur vivant, à 65 ans. Et Julien, lui, n'aurait rien eu à payer du tout.
+Elle aurait été de 13 988 €, réglés par ses parents de leur vivant, à 65 ans. Et Julien, lui, n'aurait rien eu à payer du tout.
 
 Et Julien aurait gardé la maison.
 
@@ -122,17 +122,17 @@ Une réserve, et vous la connaissez déjà : cet abattement ne se compte pas une
 
 On applique le barème de l'article 777 sur ces 44 000 € : cela donne 6 994,35 € pour le père, et 6 994,35 € pour la mère.
 
-À eux 2 : 13 988,70 €. Arrondi : 13 989 €.
+À eux 2 : 13 988,70 €. Arrondi : 13 988 €.
 
 [ECRAN : « Épargne versée avant 70 ans : 0 € de droits » — art. L132-12 code des assurances · art. 990 I CGI, abattement de 152 500 € par bénéficiaire]
 
 Et l'épargne, les 40 000 € ? Nous l'avons vue à l'étape précédente : versée sur une assurance-vie avant 70 ans, avec l'enfant désigné bénéficiaire, elle ne fait pas partie de la succession — c'est l'article L132-12 du code des assurances — et elle reste sous l'abattement de 152 500 € par bénéficiaire de l'article 990 I. Sur 40 000 €, cela fait 0 €.
 
-[ECRAN : « 82 194 € → 13 989 € », flèche, « écart : 68 205 € », « divisé par 6 »]
+[ECRAN : « 82 194 € → 13 988 € », flèche, « écart : 68 206 € », « divisé par 6 »]
 
-Alors regardez les 2 chiffres côte à côte. 82 194 €. 13 989 €. 68 205 € d'écart. La facture est divisée par 6. Et la maison n'est pas vendue.
+Alors regardez les 2 chiffres côte à côte. 82 194 €. 13 988 €. 68 206 € d'écart. La facture est divisée par 6. Et la maison n'est pas vendue.
 
-Une précision d'honnêteté, parce que nous ne vous vendrons jamais un chiffre trop beau. À ces 13 989 € s'ajoutent les frais de l'acte notarié. Nous ne vous en donnerons aucun montant, pas même un ordre de grandeur : seul votre notaire peut les calculer sur votre dossier, et son devis est gratuit. Sachez simplement qu'ils se calculent sur la valeur entière de la maison, et non sur la part transmise. Rapportés aux 68 205 €, ils ne changent pas la démonstration.
+Une précision d'honnêteté, parce que nous ne vous vendrons jamais un chiffre trop beau. À ces 13 988 € s'ajoutent les frais de l'acte notarié. Nous ne vous en donnerons aucun montant, pas même un ordre de grandeur : seul votre notaire peut les calculer sur votre dossier, et son devis est gratuit. Sachez simplement qu'ils se calculent sur la valeur entière de la maison, et non sur la part transmise. Rapportés aux 68 206 €, ils ne changent pas la démonstration.
 
 [ECRAN : « Le prix d'un anniversaire : 9 600 € » — art. 669 CGI et art. 777 CGI]
 
@@ -227,12 +227,12 @@ Les numéros d'articles et les seuils de loi vont en petit, en bas de slide :
  1. Carton titre « ÉTAPE 4 sur 7 — L'erreur n°4 : garder la maison en pleine propriété ».
     Aucun chiffre. Le mot « pleine propriété » n'est pas expliqué sur ce carton : il l'est
     à l'oral 2 minutes plus tard, sur le carton 7, et c'est voulu.
- 2. Carton « 68 205 € » plein écran, seul, tenu 4 secondes en silence.
+ 2. Carton « 68 206 € » plein écran, seul, tenu 4 secondes en silence.
  3. Photographie ou illustration sobre d'un pavillon de périphérie, aucun visage.
     Si une silhouette apparaît, strictement de dos.
  4. Carton « 82 194 € — vous avez 6 mois ». Deux mentions en bas, sur 2 lignes :
     « droits : art. 777 et 779 CGI » et « délai de 6 mois : art. 641 CGI ».
- 5. Carton « 13 989 € » plein écran, seul.
+ 5. Carton « 13 988 € » plein écran, seul.
  6. Carton « Pourquoi personne ne vous l'a dit ».
  7. Deux colonnes vides côte à côte, titrées « L'USAGE » et « LE TITRE ». Elles se
     remplissent à l'oral, puis se referment l'une sur l'autre sur le mot « pleine propriété ».
@@ -250,13 +250,13 @@ Les numéros d'articles et les seuils de loi vont en petit, en bas de slide :
     c'est la ligne d'une partie de l'audience, qui va jusqu'à 85 ans. Elle reste à l'écran.
 11. Le calcul Julien, animé ligne par ligne (une ligne apparaît par phrase dite) :
     480 000 × 60 % = 288 000 · ÷ 2 = 144 000 par parent · − 100 000 (art. 779) = 44 000
-    · barème art. 777 = 6 994,35 € par parent · × 2 = 13 988,70 € → arrondi à 13 989 €.
+    · barème art. 777 = 6 994,35 € par parent · × 2 = 13 988,70 € → arrondi à 13 988 €.
     Afficher les centimes sur cette ligne, et sur elle seule.
     Bandeau bas tenu pendant tout le calcul : « art. 669 · 779 · 784 · 777 CGI ».
 12. Carton « Épargne versée avant 70 ans : 0 € de droits ».
     Mentions : art. L132-12 code des assurances (l'assurance-vie est hors succession civile)
     · art. 990 I CGI (abattement de 152 500 € par bénéficiaire).
-13. Carton avant/après : « 82 194 € → 13 989 € », flèche, « écart 68 205 € », « divisé par 6 ».
+13. Carton avant/après : « 82 194 € → 13 988 € », flèche, « écart 68 206 € », « divisé par 6 ».
 14. Carton « Le prix d'un anniversaire : 9 600 € ». Un seul chiffre en grand.
     Mentions : art. 669 CGI (60 % → 70 %) et art. 777 CGI (tranche à 20 %).
 15. Carton « Et si j'en ai besoin ? », puis 3 sous-titres qui apparaissent un par un :
@@ -307,7 +307,7 @@ ARTICLES DE LOI A AFFICHER, avec leur numéro :
 - art. L132-12 code des assurances — l'assurance-vie est hors succession civile
 
 CHIFFRES ET LEUR ORIGINE — contrôle avant tournage :
-- 480 000 € · 40 000 € · 1 enfant · 82 194 € · 13 989 € · 68 205 € · « divisé par 6 » :
+- 480 000 € · 40 000 € · 1 enfant · 82 194 € · 13 988 € · 68 206 € · « divisé par 6 » :
   chiffres canoniques du cas Julien, `12-chiffres-succession.md`, section « Le cas Julien ».
 - 288 000 € · 144 000 € · 44 000 € · 6 994,35 € · 13 988,70 € : chaîne de calcul canonique
   de la même section.
@@ -318,8 +318,8 @@ CHIFFRES ET LEUR ORIGINE — contrôle avant tournage :
 
   REGLE D'ARRONDI — ne jamais afficher ni prononcer « 6 994 » sans ses décimales dès lors
   que la multiplication par 2 est montrée à l'écran : 6 994 × 2 = 13 988, et le chiffre
-  canonique est 13 989. La chaîne exacte est 6 994,35 × 2 = 13 988,70 → 13 989 €.
-  L'arrondi ne se fait qu'à la fin. 13 989 € est canonique et intouchable ; c'est la ligne
+  canonique est 13 988. La chaîne exacte est 6 994,35 × 2 = 13 988,70 → 13 988 €.
+  L'arrondi ne se fait qu'à la fin. 13 988 € est canonique et intouchable ; c'est la ligne
   « 6 994 » qui devait être corrigée, pas lui.
 
   CHIFFRE CALCULE, absent de la fiche 12 — 9 600 €, le surcoût du 71e anniversaire.
@@ -338,12 +338,12 @@ CHIFFRES ET LEUR ORIGINE — contrôle avant tournage :
   spectateur qui suit avec un stylo.
   Le script n'énonce QUE l'écart, 9 600 €. Il n'énonce jamais le total alternatif
   (23 589 €), pour ne pas mettre en circulation un second chiffre de cas concurrent
-  de 13 989 €. Si la production préfère afficher l'avant/après complet à l'écran,
+  de 13 988 €. Si la production préfère afficher l'avant/après complet à l'écran,
   il faut d'abord faire entrer ce chiffre dans `12-chiffres-succession.md`.
 
 CE QUI NE DOIT PAS ETRE DIT — contrôle de conformité :
 - Aucun montant d'émoluments de notaire, même en ordre de grandeur. Mais le script signale
-  l'EXISTENCE des frais de l'acte — obligatoire, faute de quoi l'écart de 68 205 € est
+  l'EXISTENCE des frais de l'acte — obligatoire, faute de quoi l'écart de 68 206 € est
   présenté comme un gain net, ce qui est une omission trompeuse — et dit explicitement
   qu'il ne donnera aucun chiffre, en renvoyant au devis gratuit du notaire. Vérifier
   qu'aucune prise n'ajoute un montant improvisé.
@@ -367,7 +367,7 @@ CE QUI NE DOIT PAS ETRE DIT — contrôle de conformité :
 - Julien est le fils, seul héritier. Ses deux parents sont morts. Le scénario « après » est
   explicitement un conditionnel : ce que ses parents auraient pu faire à 65 ans, avec la
   décision de cette étape ET celle de l'étape 3 sur l'épargne. Ne jamais attribuer les
-  68 205 € à une décision unique : la fiche 12 titre son bloc « APRÈS (3 décisions) ».
+  68 206 € à une décision unique : la fiche 12 titre son bloc « APRÈS (3 décisions) ».
 - Les nombres se disent et s'écrivent en chiffres, y compris « 2 », « 3 » et « 10 ».
 - Jamais « les 3 portes » ni « les 3 verrous ». Toujours « les 3 dates ».
 - Jamais « le guide », jamais « le programme ». « La Méthode Héritage Intact », et « étape ».

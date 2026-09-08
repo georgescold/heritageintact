@@ -77,7 +77,7 @@ export async function livrer(order: Order): Promise<Acces | null> {
      * achat, donc `reserverEnvoi` perdait et AUCUN email ne partait. Il payait
      * une seconde fois, /merci lui affichait son lien, et le lien lui répondait
      * « votre accès a été clôturé ». Le formulaire de récupération sortait lui
-     * aussi en silence sur `acces.revoque`. Les trois portes d'entrée lui
+     * aussi en silence sur `acces.revoque`. Les trois chemins d'entrée lui
      * mentaient en chœur, et l'écran de révocation l'invitait explicitement
      * dans ce piège (« il suffira de repasser commande »).
      *

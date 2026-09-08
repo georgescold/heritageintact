@@ -6,7 +6,7 @@ paragraphe est provoque par le precedent. Les reperes ci-dessous ne sont pas
 des sections — ils disent seulement quel levier de la structure CEO travaille.
 
 Format faceless : aucun « je » de narrateur. Aucun montant. Julien = le fils,
-enfant unique d'un couple marie « tout au survivant » (82 194 -> 13 989, maison vendue).
+enfant unique d'un couple marie « tout au survivant » (82 194 -> 13 988, maison vendue).
 Bannis : « les 3 portes », « les 3 verrous », « saisir ». Chiffres en chiffres.
 
 Le texte seul, sans annotation : VSL-TEXTE-SEUL.txt
@@ -62,7 +62,7 @@ La troisième, c'est votre 71e anniversaire : avant cette date, vous pouvez donn
 
 — PREUVE — le rejeu chiffre —
 
-Avec ces 3 décisions, prises à 65 ans, la facture des parents de Julien serait passée de 82 194 € à 13 989 €. Divisé par 6. Et un panneau « À vendre » qui n'aurait jamais été planté.
+Avec ces 3 décisions, prises à 65 ans, la facture des parents de Julien serait passée de 82 194 € à 13 988 €. Divisé par 6. Et un panneau « À vendre » qui n'aurait jamais été planté.
 
 
 — LE VERROU — trois phrases, la menace dans la derniere —

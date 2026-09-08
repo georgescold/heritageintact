@@ -117,7 +117,7 @@
     2. Le mot « VERROU » apparaît dans les titres de modules 0 et 7.
        Terme banni (personne ne le comprend à l'oral). Dire « étape ».
     3. Les chiffres sont figés : 480 000 € · 40 000 € · 1 enfant ·
-       82 194 € → 13 989 € · 68 205 € d'écart · « divisé par 6 ».
+       82 194 € → 13 988 € · 68 206 € d'écart · « divisé par 6 ».
        Aucun autre chiffre de cas. Voir 12-chiffres-succession.md.
        Le cas Jean-Pierre (78 194 €) est la SEULE exception, et il ne sert
        que sur la page de vente.
@@ -317,8 +317,8 @@
       C'est ce registre protocolaire qui rassure un lecteur de 70 ans.
 
   CHIFFRES
-    · 480 000 € · 40 000 € · 1 enfant · 82 194 € → 13 989 € ·
-      68 205 € d'écart · « divisé par 6 ». Et rien d'autre.
+    · 480 000 € · 40 000 € · 1 enfant · 82 194 € → 13 988 € ·
+      68 206 € d'écart · « divisé par 6 ». Et rien d'autre.
     · Chaque chiffre s'accompagne de son article du CGI, affiché.
     · Aucun chiffre sans source. Un nombre orphelin sur une page qui cite
       la loi partout ailleurs détruit la crédibilité de tous les autres.

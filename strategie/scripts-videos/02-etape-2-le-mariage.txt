@@ -514,7 +514,7 @@ l'article 777 CGI, arrondi de l'article 1657 CGI.
       droits ................................    59 043,60 €  →  « 59 044 € »
       (arrondi à l'euro le plus proche, art. 1657 CGI — c'est aussi la
        convention d'arrondi du dossier : la fiche 12 écrit 13 988,70 →
-       13 989 €, et 82 194,35 → 82 194 €)
+       13 988 €, et 82 194,35 → 82 194 €)
       reste au concubin .....................    40 956,40 €  →  « 40 956 € »
       contrôle : 59 044 + 40 956 = 100 000 €
 

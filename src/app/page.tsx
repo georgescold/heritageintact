@@ -109,7 +109,7 @@ export default function LandingPage() {
               <strong>la facture de l&apos;État sur votre succession</strong> —{" "}
               <strong>
                 avant qu&apos;il ne soit trop tard et que vous laissiez à vos enfants un chiffre que
-                vous auriez pu diviser par six&nbsp;:
+                vous auriez pu payer près de six fois moins&nbsp;:
               </strong>
             </p>
 

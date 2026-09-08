@@ -412,7 +412,7 @@ export function BeforeAfter() {
           </div>
           <figcaption className="mt-3 text-[1rem]">
             Un document d&apos;une page. Les trois décisions déjà prises, datées, signées. Et une
-            facture divisée par six.
+            facture près de six fois moindre.
           </figcaption>
         </figure>
       </div>

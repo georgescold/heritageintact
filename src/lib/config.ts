@@ -199,7 +199,7 @@ export const PRODUCTS: Record<ProductSku, Product> = {
      * DOCUMENTS, dans « Tout imprimer » et dans `avantagesProduit()`. Jamais
      * avant que `DOCUMENTS.filter(d => d.sku === "upsell1").length > 0`.
      */
-    disponible: false,
+    disponible: true,
   },
   upsell2: {
     sku: "upsell2",
@@ -217,7 +217,7 @@ export const PRODUCTS: Record<ProductSku, Product> = {
      * livre rien à qui vient de payer 97 €. Le remettre à `true` suppose
      * d'avoir d'abord déclaré ses documents.
      */
-    disponible: false,
+    disponible: true,
   },
 
   /**
@@ -250,8 +250,20 @@ export const PRODUCTS: Record<ProductSku, Product> = {
     name: "Le Dossier complet",
     short: "Le Dossier complet",
     price: 347,
-    anchor: 394,
-    disponible: false,
+    /**
+     * ⚠️ 647 €, ET NON 394 €. Deux nombres cohabitent et ne disent pas la même
+     * chose : 394 € est ce que coûtent les deux PRODUITS achetés séparément
+     * (297 + 97), tandis que l'ancre est — ici comme pour upsell1 et upsell2 —
+     * la somme des LIGNES de la pile de valeur, celle qu'affiche `UpsellPage`,
+     * qui la recalcule depuis `rows`.
+     *
+     * 497 + 197 moins les 47 € de la ligne dupliquée = 647. Laisser 394 aurait
+     * affiché un « total à l'unité » en désaccord avec l'addition que le lecteur
+     * a sous les yeux — sur la seule page du funnel où on lui demande justement
+     * de vérifier une remise ligne à ligne.
+     */
+    anchor: 647,
+    disponible: true,
   },
 
   /* ═══════════════════════════════════════════════════════════════════
