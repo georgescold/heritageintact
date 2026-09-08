@@ -1,4 +1,5 @@
 import { Case, Champ, Encadre, Feuille, Source, Titre } from "@/components/documents/Feuille";
+import { SchemaAvantApres70 } from "@/components/documents/Schemas";
 
 /**
  * LE TABLEAU DE DÉCISION AVANT ET APRÈS 70 ANS (étape Assurance-vie).
@@ -187,6 +188,7 @@ export function Decision70Ans() {
         titre="Le tableau de décision — avant 70 ans (feuille 1 sur 2)"
         sousTitre="Notez vos chiffres, puis cochez la ligne qui est la vôtre. Si vous avez déjà eu 70 ans, votre tableau est sur la feuille 2."
       >
+        <SchemaAvantApres70 />
         <Encadre titre="LA DATE QUI COMPTE EST CELLE DU VERSEMENT, PAS CELLE DU CONTRAT">
           <p className="text-[0.93rem]">
             Votre 70e anniversaire coupe votre contrat en deux : ce qui a été versé avant garde son

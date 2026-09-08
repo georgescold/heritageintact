@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Champ, Encadre, Feuille, Source, Titre } from "@/components/documents/Feuille";
+import { SchemaTroisDates } from "@/components/documents/Schemas";
 import type { ProfilDocument } from "@/lib/methode";
 import { codeUtile } from "@/lib/qualification";
 
@@ -95,6 +96,7 @@ export function CalendrierTroisDates({ profil }: { profil?: ProfilDocument }) {
       titre="Le Calendrier des 3 dates"
       sousTitre="Trois échéances qui ne préviennent pas. Écrivez les vôtres et affichez cette feuille."
     >
+      <SchemaTroisDates />
       <Champ label="Ma facture invisible aujourd'hui" indice="reportée du Simulateur" />
 
       <TitreDate surligne={surlignee === "compteur15"}>

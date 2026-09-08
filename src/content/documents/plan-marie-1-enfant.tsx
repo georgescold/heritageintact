@@ -1,4 +1,5 @@
 import { Case, Champ, Encadre, Feuille, Source, Titre } from "@/components/documents/Feuille";
+import { SchemaDemembrement } from "@/components/documents/Schemas";
 
 /**
  * SITUATION 1 — MARIÉ, 1 ENFANT. Le premier des douze plans-types.
@@ -103,6 +104,7 @@ export function PlanMarie1Enfant() {
       titre="Situation 1 — Marié, 1 enfant"
       sousTitre="Plan-type. Le levier prioritaire : le 71e anniversaire. Remplissez-le au stylo, puis emportez-le chez le notaire."
     >
+      <SchemaDemembrement />
       <Titre>1. Vous êtes dans ce cas si…</Titre>
       <ul className="space-y-1">
         <Case>Vous êtes marié, et votre conjoint est vivant.</Case>

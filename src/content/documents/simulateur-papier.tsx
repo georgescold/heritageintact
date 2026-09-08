@@ -7,6 +7,7 @@ import {
   TableauVierge,
   Titre,
 } from "@/components/documents/Feuille";
+import { SchemaBareme } from "@/components/documents/Schemas";
 
 /**
  * LE SIMULATEUR DE FACTURE INVISIBLE — VERSION PAPIER.
@@ -25,6 +26,7 @@ export function SimulateurPapier() {
       titre="Le Simulateur de Facture Invisible"
       sousTitre="Ce que votre famille paierait si la succession s'ouvrait aujourd'hui."
     >
+      <SchemaBareme />
       <p>
         Remplissez les six lignes ci-dessous au stylo. Comptez vingt minutes. À la fin, vous aurez
         un nombre — celui que personne ne vous a jamais donné.

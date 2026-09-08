@@ -458,7 +458,10 @@ const PILOTAGE: FeuilleImprimee[] = [
         </p>
 
         <Champ label="Le contrat concerné" indice="compagnie et numéro du contrat" />
-        <Champ label="La clause écrite dessus aujourd'hui" indice="demandez-en la copie par écrit" />
+        <Champ
+          label="La clause écrite dessus aujourd'hui"
+          indice="demandez-en la copie par écrit"
+        />
         <Champ label="La clause que je retiens" indice="1, 2 ou 3" />
 
         <Titre>Mes primes ont été versées</Titre>
@@ -471,8 +474,8 @@ const PILOTAGE: FeuilleImprimee[] = [
         <Source>
           Primes versées avant votre 70e anniversaire : abattement de 152 500 € par bénéficiaire
           (art. 990 I du CGI). Cet abattement se compare à tout ce que le bénéficiaire touche au
-          décès, gains compris, et non aux sommes que vous avez versées. Primes versées après :
-          30 500 € au total, tous contrats et tous bénéficiaires confondus (art. 757 B du CGI) — et
+          décès, gains compris, et non aux sommes que vous avez versées. Primes versées après : 30
+          500 € au total, tous contrats et tous bénéficiaires confondus (art. 757 B du CGI) — et
           au-delà de ce montant, seules les primes sont taxées, les intérêts produits par le contrat
           ne le sont pas. Ces deux règles ne valent que pour les contrats souscrits depuis le 20
           novembre 1991 et les sommes versées depuis le 13 octobre 1998 : pour un contrat plus
@@ -609,7 +612,10 @@ function feuillesDeClause(c: Clause): FeuilleImprimee[] {
           <div className="eviter-coupure">
             <Encadre titre={titre}>
               {corps.map((paragraphe, i) => (
-                <p key={paragraphe.slice(0, 40)} className={i === 0 ? "text-[0.93rem]" : "mt-2 text-[0.93rem]"}>
+                <p
+                  key={paragraphe.slice(0, 40)}
+                  className={i === 0 ? "text-[0.93rem]" : "mt-2 text-[0.93rem]"}
+                >
                   {paragraphe}
                 </p>
               ))}

@@ -6,6 +6,7 @@ import {
   TableauVierge,
   Titre,
 } from "@/components/documents/Feuille";
+import { SchemaAvantApres70 } from "@/components/documents/Schemas";
 
 /**
  * LA GRILLE D'AUDIT DE VOTRE ASSURANCE-VIE — dix points, un point chacun.
@@ -289,6 +290,7 @@ export function GrilleAuditAssuranceVie() {
         titre="La grille d'audit de votre assurance-vie (feuille 1 sur 3)"
         sousTitre="Le contrat : les versements, les frais, l'année d'ouverture. Quatre points sur dix."
       >
+        <SchemaAvantApres70 />
         <p>
           Comptez trente minutes, contrat en main. Une grille par contrat : comptez ces trois
           feuilles pour chaque contrat, et ne notez jamais deux contrats ensemble.
