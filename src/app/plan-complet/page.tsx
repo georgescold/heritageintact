@@ -35,7 +35,7 @@ export default async function Upsell1Page({
         { label: "12 plans-types, une page par situation familiale", value: "197 €" },
         {
           label:
-            "Le Simulateur Complet (plusieurs héritiers, plusieurs contrats, démembrement, donations passées)",
+            "Le Simulateur Automatique (plusieurs héritiers, plusieurs contrats, démembrement, donations passées)",
           value: "147 €",
         },
         {

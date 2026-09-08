@@ -196,7 +196,7 @@
 
 
 ───────────────────────────────────────────────────────────────────────────
-  PRODUIT 5 — LE GÉNÉRATEUR DE DOSSIER NOTAIRE — 147 €  ≈ 3-4 jours
+  PRODUIT 5 — LE SIMULATEUR AUTOMATIQUE — 147 €             ≈ 3-4 jours
   (backend 1 · VSL 2 · vendu par email à J+10)
 ───────────────────────────────────────────────────────────────────────────
 
@@ -542,7 +542,8 @@
   │  17 │ Le Dossier notaire│ Le Dossier à apporter chez votre notaire   │
   │ 297 │ Le Plan familial  │ Le Plan adapté à votre famille             │
   │  97 │ L'Assurance-vie   │ Votre assurance-vie, vérifiée en 30 minutes│
-  │ 147 │ Le Calculateur    │ Le Calculateur Héritage Intact             │
+  │ 147 │ Le Simulateur     │ Le Simulateur Automatique                  │
+  │     │ Automatique       │                                            │
   │  97 │ L'Autonomie       │ Perdre son autonomie : décider avant       │
   │  67 │ Le Classeur       │ Le Classeur Héritage Intact                │
   │  47 │ Le Testament      │ Votre testament, écrit sans erreur         │
@@ -563,9 +564,19 @@
     30 minutes ». « Kit » ne dit ni ce qu'on reçoit ni ce qu'on en fait.
     Le nouveau nom porte la promesse ET la durée.
 
-  · « Le Générateur de Dossier Notaire » → « Le Calculateur Héritage
-    Intact ». « Générateur » est un mot d'informaticien. « Calculateur »
-    dit ce qu'il fait, et ça rejoint la promesse de la VSL : votre chiffre.
+  · « Le Générateur de Dossier Notaire » → « Le Simulateur Automatique ».
+    « Générateur » est un mot d'informaticien, et « Calculateur » — essayé
+    entre-temps — était indiscernable du Simulateur déjà inclus à 27 €.
+    Le client connaît déjà « le Simulateur » : il l'a rempli à la main. On
+    lui vend le même, automatique. Un seul mot pour un seul objet, et la
+    différence tient dans un adjectif.
+
+  ⚠️ ARBITRAGE EN ATTENTE. Le Plan adapté à votre famille (297 €) annonce
+    dans son contenu « le Simulateur Complet » : c'est le MÊME objet que le
+    backend à 147 €. Vendre 147 € à quelqu'un qui vient de payer 297 € pour
+    l'obtenir est un remboursement annoncé.
+    Recommandation : l'inclure dans le Plan à 297 €, et ne vendre le
+    backend qu'à ceux qui ont refusé l'upsell.
 
   · « Le Kit Dépendance » → « Perdre son autonomie : décider avant ».
     « Dépendance » est le mot administratif ; « perdre son autonomie » est

@@ -4,7 +4,13 @@ import { Footer, Header, TrustRow } from "@/components/Chrome";
 import { ExitPopup } from "@/components/ExitPopup";
 import { PixelEvent } from "@/components/MetaPixel";
 import { StickyCta } from "@/components/StickyCta";
-import { FlashBar, FlashPrice, FlashTrigger } from "@/components/OffreFlash";
+import {
+  EchelleDesPrix,
+  FlashBar,
+  FlashPrice,
+  FlashTrigger,
+  PrixDuJour,
+} from "@/components/OffreFlash";
 import { CtaMethode } from "@/components/Rattrapage";
 import { Statistiques } from "@/components/Statistiques";
 import { VideoEmbed } from "@/components/VideoEmbed";
@@ -276,20 +282,8 @@ export default function VslPage() {
               <span className="text-text-soft">(les 12 questions, le manuel de 40 pages)</span>
             </Check>
           </ul>
-          <ValueStack rows={PACKAGING} total="429 €" today={euros(PRODUCTS.front.price)} />
-          {/* Trois nombres coexistent sur cette page, et le lecteur doit voir
-              lequel est quoi : 429 € = ce que coûteraient les pièces achetées
-              séparément (une valeur, jamais un prix pratiqué) ; 89 € = le prix
-              de la Méthode ; 27 € = le prix pendant le compteur. Sans cette
-              ligne, le « au lieu de 89 € » du bandeau et le « 429 € » barré du
-              tableau se contredisent à l'œil. */}
-          <p className="mt-2 text-[0.95rem] text-text-soft">
-            Les {euros(PRODUCTS.front.anchor)} sont la valeur des pièces achetées séparément, pas un
-            prix de vente. La Méthode se vend{" "}
-            <strong className="whitespace-nowrap">{euros(PRIX_APRES_FLASH)}</strong> — et{" "}
-            <strong className="whitespace-nowrap">{euros(PRODUCTS.front.price)}</strong> tant que
-            votre compteur tourne.
-          </p>
+          <ValueStack rows={PACKAGING} total="429 €" today={<PrixDuJour />} />
+          <EchelleDesPrix />
           {/* La justification du prix n'est plus « les 20 premiers membres » :
               c'est le compteur. Une seule rarété à la fois, sinon aucune des
               deux n'est crue. */}

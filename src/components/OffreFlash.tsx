@@ -280,3 +280,54 @@ export function FlashInlinePrice() {
     </span>
   );
 }
+
+/**
+ * LE PRIX DU JOUR, dans le tableau de valeur.
+ *
+ * Il suit le compteur ET le rattrapage. Sans lui, la ligne « Aujourd'hui »
+ * affichait 27 € en dur, y compris à quelqu'un dont le bandeau venait
+ * d'annoncer que l'offre était terminée. Deux prix différents sur le même
+ * écran, et le lecteur ne sait plus lequel il paiera.
+ */
+export function PrixDuJour() {
+  const { etat } = useFlash();
+  const [rattrapage, setRattrapage] = useState(false);
+
+  useEffect(() => {
+    const relire = () => setRattrapage(/(?:^|;\s*)hi_rattrapage=1/.test(document.cookie));
+    relire();
+    const id = setInterval(relire, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  if (etat !== "expire") return <>{euros(PRODUCTS.front.price)}</>;
+  return <>{euros(rattrapage ? PRIX_RATTRAPAGE : PRIX_APRES_FLASH)}</>;
+}
+
+/**
+ * La phrase qui explique l'échelle des trois nombres, adaptée à l'état du
+ * compteur. « et 27 € tant que votre compteur tourne » n'a aucun sens à
+ * lire quand le compteur est à zéro depuis dix minutes.
+ */
+export function EchelleDesPrix() {
+  const { etat } = useFlash();
+  return (
+    <p className="mt-2 text-[0.95rem] text-text-soft">
+      Les {euros(PRODUCTS.front.anchor)} sont la valeur des pièces achetées séparément, pas un prix
+      de vente.{" "}
+      {etat === "expire" ? (
+        <>
+          La Méthode se vend{" "}
+          <strong className="whitespace-nowrap">{euros(PRIX_APRES_FLASH)}</strong>.
+        </>
+      ) : (
+        <>
+          La Méthode se vend{" "}
+          <strong className="whitespace-nowrap">{euros(PRIX_APRES_FLASH)}</strong> — et{" "}
+          <strong className="whitespace-nowrap">{euros(PRODUCTS.front.price)}</strong> tant que
+          votre compteur tourne.
+        </>
+      )}
+    </p>
+  );
+}

@@ -123,7 +123,14 @@ export function ValueStack({
 }: {
   rows: { label: string; value: string }[];
   total: string;
-  today: string;
+  /**
+   * Un nœud, et non une chaîne : le prix du jour dépend du compteur du
+   * visiteur, donc il doit être rendu côté client. Il valait
+   * `euros(PRODUCTS.front.price)` en dur, et le tableau annonçait donc
+   * « Aujourd'hui : 27 € » à quelqu'un dont le bandeau venait de dire
+   * « offre terminée, la Méthode reste accessible à 89 € ».
+   */
+  today: ReactNode;
   todayLabel?: string;
 }) {
   return (

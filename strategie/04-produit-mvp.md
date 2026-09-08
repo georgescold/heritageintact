@@ -169,7 +169,10 @@ Une vidéo de 15-20 min + un plan-type écrit **par situation** (12) :
 Chaque plan-type = **une page** : la situation → les 3 dates dans l'ordre → les 3 pièges → les 3 questions au notaire → "ce que ça change en euros" (exemple chiffré).
 
 Outils inclus :
-- **Le Simulateur Complet** (multi-héritiers, multi-contrats, démembrement, donations passées)
+- **Le Simulateur Automatique** (multi-héritiers, multi-contrats, démembrement,
+  donations passées) — *le même que le backend 1. Voir l'arbitrage en attente
+  qui y est noté : soit il est inclus ici, soit il n'y est pas, mais il ne peut
+  pas être vendu deux fois.*
 - **Le Calendrier de Transmission sur 15 ans** (quoi faire, quelle année)
 - **3 modèles de clause bénéficiaire** commentés (standard / à options / démembrée) — *à faire valider par le notaire*
 - **Le tableau de bord familial** (qui reçoit quoi, quand, à quel coût)
@@ -201,7 +204,25 @@ Outils inclus :
 > Ordre de construction = ordre de vente : Générateur (semaine 5-6) → Dépendance (sem. 8) → Classeur (sem. 10) → Testament (sem. 12).
 > Détail des pages de vente : `07-vsl-backend.md`.
 
-## BACKEND 1 — 147 € — « Le Générateur de Dossier Notaire » (VSL 2, J+10)
+## BACKEND 1 — 147 € — « Le Simulateur Automatique » (VSL 2, J+10)
+
+> ⚠️ **NOM — troisième et dernier.** Il s'est appelé « Générateur de Dossier
+> Notaire » (mot d'informaticien, et il se confondait avec le Dossier à 17 €),
+> puis « Le Calculateur » (indiscernable du Simulateur déjà inclus à 27 €).
+>
+> **La règle : un seul mot pour un seul objet, et la différence tient dans
+> un adjectif.** Le client connaît déjà « le Simulateur » — il l'a rempli à la
+> main. On lui vend le même, **automatique**. Il comprend en trois mots ce
+> qu'il achète, sans qu'on ait à le lui expliquer.
+>
+> ⚠️ **ARBITRAGE EN ATTENTE — chevauchement avec l'upsell 1.** Le Plan
+> adapté à votre famille (297 €) annonce dans son contenu « Le Simulateur
+> Complet (multi-héritiers, multi-contrats, démembrement) ». C'est le MÊME
+> objet que ce backend. Vendre 147 € à quelqu'un qui a déjà payé 297 € pour
+> l'obtenir est un remboursement annoncé.
+> **Recommandation : le Simulateur Automatique est INCLUS dans le Plan
+> adapté à votre famille.** Le backend à 147 € ne se vend alors qu'à ceux
+> qui ont refusé l'upsell — ce qui est exactement sa fonction.
 
 *Le simulateur complet, interactif, qui produit le dossier tout seul. Le "gros" produit.*
 
