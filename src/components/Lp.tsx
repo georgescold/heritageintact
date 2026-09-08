@@ -121,7 +121,7 @@ export function Hero({ form }: { form: ReactNode }) {
         {/*
           Chaque nombre porte son étiquette. La première version montrait
           « 82 194 € barré → 23 794 € » sans dire de quoi il s'agissait : on
- y lisait une remise sur le prix du programme. Un chiffre qu'on doit
+ y lisait une remise sur le prix de la Méthode. Un chiffre qu'on doit
  expliquer est un chiffre perdu.
         */}
         <div className="order-3 max-w-[34rem] border-l-4 border-orange bg-black/50 lg:col-start-1 lg:row-start-2">

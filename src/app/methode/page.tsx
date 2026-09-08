@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Footer, Header, TrustRow } from "@/components/Chrome";
 import { ExitPopup } from "@/components/ExitPopup";
-import { FoundersCounter } from "@/components/FoundersCounter";
 import { PixelEvent } from "@/components/MetaPixel";
 import { StickyCta } from "@/components/StickyCta";
-import { UrgencyBar } from "@/components/Urgency";
+import { FlashBar, FlashPrice, FlashTrigger } from "@/components/OffreFlash";
+import { CtaMethode } from "@/components/Rattrapage";
+import { Statistiques } from "@/components/Statistiques";
 import { VideoEmbed } from "@/components/VideoEmbed";
-import { ButtonLink, Check, FAQ, Panel, ValueStack } from "@/components/ui";
+import { Check, Cross, FAQ, ValueStack } from "@/components/ui";
 import { BeforeAfter, TheComparison, TheDeadline, TheNumber } from "@/components/Lp";
-import { TheCostOfInaction, TheGuarantee, TheLastWord } from "@/components/LpCeo";
-import { CTA, FOUNDERS_CAP, PRIX_APRES_FONDATEURS, PRODUCTS, VIDEO, euros } from "@/lib/config";
+import { TheCostOfWaiting, TheFailure, TheGuarantee, TheLastWord } from "@/components/LpCeo";
+import { CTA, FLASH_MINUTES, PRIX_APRES_FLASH, PRODUCTS, VIDEO, euros } from "@/lib/config";
 
 export const metadata: Metadata = { title: "Les 3 décisions" };
 
@@ -20,12 +22,11 @@ const PACKAGING = [
     value: "97 €",
   },
   {
-    label:
-      "Les 7 erreurs et comment les corriger, en français simple : le programme complet (8 modules)",
+    label: "La Méthode complète, étape par étape et en français simple : les 8 modules",
     value: "147 €",
   },
   {
-    label: "Vos 3 dates personnelles : savoir quand agir avant que la porte se ferme",
+    label: "Vos 3 dates personnelles : savoir quand agir avant que la date soit passée",
     value: "47 €",
   },
   { label: "Le Plan en 1 Page, à montrer à votre conjoint et à vos enfants", value: "47 €" },
@@ -90,10 +91,11 @@ export default function VslPage() {
   return (
     <>
       <PixelEvent name="Lead" />
-      {/* Le bandeau était absent de la page de vente — c'est-à-dire de la seule
-          page où l'on demande de l'argent. Il est tout en haut, au-dessus de
-          l'en-tête, comme sur les landing pages. */}
-      <UrgencyBar />
+      {/* Le bandeau colle en haut et n'apparaît qu'une fois le compteur lancé,
+          c'est-à-dire quand le visiteur a quitté la vidéo. Avant ça, rien ne
+          presse : il regarde. Le compteur du 31 décembre 2026 n'est plus ici,
+          deux horloges rouges sur le même écran n'en font croire aucune. */}
+      <FlashBar />
       <Header minimal />
       <main className="flex-1">
         {/* ═══ H1 → H2 → VIDÉO → BOUTON ════════════════════════════════
@@ -124,19 +126,22 @@ export default function VslPage() {
             sans quitter votre maison.
           </p>
 
-          <VideoEmbed id={VIDEO.vsl} title="Les 3 décisions" />
+          {/* FlashTrigger observe le lecteur : dès qu'il sort de l'écran —
+              la vidéo est finie, ou le visiteur descend — les dix minutes
+              partent, et elles ne repartiront plus jamais de zéro. */}
+          <FlashTrigger>
+            <VideoEmbed id={VIDEO.vsl} title="Les 3 décisions" />
+          </FlashTrigger>
 
           <div className="mt-5 space-y-3">
-            <ButtonLink href="/commande">{cta}</ButtonLink>
+            <FlashPrice />
+            <CtaMethode label={cta} />
             <p className="text-center text-[0.95rem] text-text-soft">
-              {euros(PRODUCTS.front.price)} au lieu de{" "}
-              <span className="line-through">{euros(PRODUCTS.front.anchor)}</span> · accès immédiat
-              · garantie 30 jours, sans justification
+              Accès immédiat · garantie 30 jours, sans justification
             </p>
-            {/* Le compte à rebours vit dans le bandeau, tout en haut de la
-                page. Le remettre ici affichait deux fois la même horloge sur
-                le même écran : le compteur de places suffit. */}
-            <FoundersCounter />
+            <div className="flex justify-center">
+              <TrustRow />
+            </div>
           </div>
         </section>
 
@@ -153,13 +158,94 @@ export default function VslPage() {
         {/* ═══ Ce que ça donne concrètement, le jour venu ═════════════ */}
         <BeforeAfter />
 
+        {/* ═══ LES DEUX CAS ════════════════════════════════
+            Un chiffre ne fait identifier personne — un cas, oui. Jean-Pierre
+            est l'avatar principal (`02-avatar.md`) : il a tout bien fait, et
+            ça n'a rien changé. Martine est l'avatar secondaire : elle a fait la
+            bonne chose, trois mois trop tard. Les deux disent la même chose —
+            ce n'est pas une faute, c'est une date — mais l'une par l'ignorance
+            et l'autre par le retard, ce qui couvre les deux façons de perdre.
+            Ils encadrent la FAQ : on se reconnaît AVANT de lire l'offre. */}
+        <TheFailure />
+        <TheCostOfWaiting />
+
+        {/* Les cas montrent deux familles. Les chiffres publics montrent
+            qu'elles ne sont pas des exceptions. L'ordre compte : l'histoire
+            d'abord, la statistique ensuite — un chiffre ne fait s'identifier
+            personne, mais il empêche de se dire « ça n'arrive qu'aux autres ». */}
+        <Statistiques />
+
         {/* ═══ L'OFFRE — ce qu'il y a dans la boîte ═══════════════════ */}
         <section className="wrap py-10">
-          {/* Des BÉNÉFICES, pas des fonctionnalités. « 8 modules de 8 à 12
-              minutes » ne déclenche rien : c'est un bordereau de livraison. Ce
-              qui déclenche, c'est ce que le lecteur pourra faire ce soir-là, et
-              ce qu'il cessera de craindre. Le nom du livrable passe derrière. */}
-          <h2 className="mb-4 text-[1.4rem]">Ce que vous saurez ce soir</h2>
+          {/* ⚠️ CETTE SECTION A ÉTÉ RETOURNÉE, et c'est une correction de fond.
+              Elle disait ce que la Méthode CONTIENT, et elle annonçait « sur les
+              sept, trois sont des dates ». Or la vidéo vient de donner ces trois
+              dates : le lecteur lisait donc « trois septièmes de ce que vous
+              allez payer, vous les connaissez déjà ». On dévaluait le produit
+              avec notre propre argument.
+
+              Le principe maintenant : la VSL dit ce qu'il faut savoir, la page
+              dit ce qu'on ÉVITE. Le contenu ne se détaille plus — on ne peut
+              pas vendre ce qu'on vient de donner. */}
+          <h2 className="mb-2 text-[1.4rem]">
+            Ce que vous éviterez en ne faisant pas les 7 erreurs qui donnent votre héritage à
+            l&apos;État
+          </h2>
+          <p className="mb-4 text-[1.06rem]">
+            La Méthode est une suite de <strong>8 étapes, dans un ordre précis</strong>. Vous
+            n&apos;avez rien à décider par vous-même et rien à improviser. Voilà ce qu&apos;elle met
+            hors de portée de votre famille.
+          </p>
+
+          {/* L'image porte l'argument mieux que la phrase. Un panneau « À vendre »
+              devant une maison, c'est la scène que l'avatar redoute et qu'il n'a
+              jamais vue mise en mots. */}
+          <figure className="mb-5">
+            <div className="relative aspect-[16/9] overflow-hidden border border-grey-line">
+              <Image
+                src="/img/maison-a-vendre.jpg"
+                alt="Un panneau « À vendre » planté devant une maison de famille."
+                fill
+                sizes="(min-width: 640px) 42rem, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="mt-2 text-[0.92rem] text-text-soft">
+              {/* ⚠️ Il y avait ici « 1 succession sur 4 ». Retiré : c'était un ordre de
+                  grandeur, pas une statistique sourçable. Sur une page qui affiche un
+                  article de loi en face de chaque nombre, un chiffre orphelin détruit la
+                  crédibilité de tous les autres. N'en remettre un que sourcé (INSEE ou
+                  Conseil supérieur du notariat). */}
+              Quand les héritiers n&apos;ont pas la somme, c&apos;est la maison qui paie. C&apos;est
+              la première chose que la Méthode écarte.
+            </figcaption>
+          </figure>
+
+          <ul className="mb-5 space-y-3 text-[1.05rem]">
+            <Cross>
+              <strong>La vente de la maison pour payer l&apos;État.</strong> Six mois pour trouver
+              la somme, dans l&apos;urgence, au prix qu&apos;on vous en donne.
+            </Cross>
+            <Cross>
+              <strong>Le chiffre découvert trop tard.</strong> Il existe déjà, il est calculable ce
+              soir, et il n&apos;est plus négociable le jour où le notaire l&apos;annonce.
+            </Cross>
+            <Cross>
+              <strong>La date qui se referme sans que personne ne vous prévienne.</strong> Aucune
+              administration n&apos;écrit pour dire qu&apos;une possibilité vient de disparaître.
+            </Cross>
+            <Cross>
+              <strong>Les erreurs que vous êtes en train de commettre.</strong> Il y en a presque
+              toujours au moins deux, et la plus courante se joue sur un document que vous avez
+              signé sans le relire.
+            </Cross>
+            <Cross>
+              <strong>Vos enfants qui décident à votre place, en deuil et sans vous.</strong> Ce que
+              vous n&apos;aurez pas écrit, ils devront le deviner.
+            </Cross>
+          </ul>
+
+          <h3 className="mb-3 text-[1.15rem]">Et ce que vous aurez, ce soir</h3>
           <ul className="mb-5 space-y-3 text-[1.05rem]">
             <Check>
               <strong>Votre chiffre. Le vrai, pas une fourchette.</strong> Ce que l&apos;État
@@ -167,15 +253,16 @@ export default function VslPage() {
               famille. <span className="text-text-soft">(le Simulateur de Facture Invisible)</span>
             </Check>
             <Check>
-              <strong>Laquelle de vos trois portes se ferme en premier.</strong> Elles dépendent de
-              votre âge, et il y en a toujours une beaucoup plus proche que les deux autres.{" "}
+              <strong>
+                Laquelle de vos dates arrive en premier, et ce qu&apos;elle vous coûte.
+              </strong>{" "}
+              Elles ne tombent pas au même moment pour tout le monde.{" "}
               <span className="text-text-soft">(le Calendrier des 3 Dates)</span>
             </Check>
             <Check>
-              <strong>Les erreurs que vous êtes en train de commettre.</strong> Il y en a toujours
-              au moins deux. Souvent quatre. Et celle de l&apos;assurance-vie de votre banque coûte
-              à elle seule des dizaines de milliers d&apos;euros.{" "}
-              <span className="text-text-soft">(le programme, 8 modules)</span>
+              <strong>Les sept erreurs, et la correction de chacune.</strong> Dans l&apos;ordre où
+              il faut s&apos;en occuper, avec ce qu&apos;il faut vérifier et où.{" "}
+              <span className="text-text-soft">(la Méthode, 8 modules)</span>
             </Check>
             <Check>
               <strong>Comment en parler à votre conjoint sans l&apos;inquiéter.</strong> Une feuille
@@ -186,20 +273,29 @@ export default function VslPage() {
             <Check>
               <strong>Quoi demander au notaire — et quoi ne surtout pas lui demander.</strong> Pour
               ressortir avec un acte, pas avec « revenez quand vous saurez ».{" "}
-              <span className="text-text-soft">(les 12 questions, le guide de 40 pages)</span>
+              <span className="text-text-soft">(les 12 questions, le manuel de 40 pages)</span>
             </Check>
           </ul>
           <ValueStack rows={PACKAGING} total="429 €" today={euros(PRODUCTS.front.price)} />
-          <p className="mt-3 text-[0.95rem] text-text-soft">
-            Pourquoi {euros(PRODUCTS.front.price)} pour {euros(PRODUCTS.front.anchor)} de contenu ?
-            Parce que les {FOUNDERS_CAP} premiers membres nous donnent leurs retours pour la version
-            2 du simulateur. En échange, ils ont le prix fondateur à vie, mises à jour comprises. À
-            la {FOUNDERS_CAP}
-            <sup>e</sup> place, le prix passe à {euros(PRIX_APRES_FONDATEURS)} et n&apos;en
-            redescend plus.
+          {/* Trois nombres coexistent sur cette page, et le lecteur doit voir
+              lequel est quoi : 429 € = ce que coûteraient les pièces achetées
+              séparément (une valeur, jamais un prix pratiqué) ; 89 € = le prix
+              de la Méthode ; 27 € = le prix pendant le compteur. Sans cette
+              ligne, le « au lieu de 89 € » du bandeau et le « 429 € » barré du
+              tableau se contredisent à l'œil. */}
+          <p className="mt-2 text-[0.95rem] text-text-soft">
+            Les {euros(PRODUCTS.front.anchor)} sont la valeur des pièces achetées séparément, pas un
+            prix de vente. La Méthode se vend{" "}
+            <strong className="whitespace-nowrap">{euros(PRIX_APRES_FLASH)}</strong> — et{" "}
+            <strong className="whitespace-nowrap">{euros(PRODUCTS.front.price)}</strong> tant que
+            votre compteur tourne.
           </p>
+          {/* La justification du prix n'est plus « les 20 premiers membres » :
+              c'est le compteur. Une seule rarété à la fois, sinon aucune des
+              deux n'est crue. */}
           <div className="mt-5 space-y-3">
-            <ButtonLink href="/commande">{cta}</ButtonLink>
+            <FlashPrice />
+            <CtaMethode label={cta} />
             <div className="flex justify-center">
               <TrustRow />
             </div>
@@ -208,9 +304,6 @@ export default function VslPage() {
 
         {/* ═══ URGENCE — elle précède toujours le dernier appel ═══════ */}
         <TheDeadline />
-
-        {/* ═══ LE COÛT DE L'INACTION — le vrai risque n'est pas d'acheter ══ */}
-        <TheCostOfInaction />
 
         {/* ═══ GARANTIE — trois lignes, à sa place ═══════════════════ */}
         <TheGuarantee />
@@ -228,7 +321,7 @@ export default function VslPage() {
             items={[
               {
                 q: "« J'ai le temps, je suis en forme. »",
-                a: "C'est exactement ce que pensait tout le monde, la veille. Mais ce n'est même pas le sujet : les portes ne se ferment pas à votre mort, elles se ferment à vos anniversaires. Le compteur des quinze ans court à partir du jour de la signature, pas du jour du décès. À 67 ans, une donation faite ce soir arrive à terme à 82 ans. Faite dans deux ans, à 84. Vous n'attendez pas la mort, vous perdez des années d'avance.",
+                a: "C'est exactement ce que pensait tout le monde, la veille. Mais ce n'est même pas le sujet : ces 3 dates ne tombent pas à votre mort, elles se ferment à vos anniversaires. Le compteur des quinze ans court à partir du jour de la signature, pas du jour du décès. À 67 ans, une donation faite ce soir arrive à terme à 82 ans. Faite dans deux ans, à 84. Vous n'attendez pas la mort, vous perdez des années d'avance.",
               },
               {
                 q: "« Il faut de toute façon aller chez le notaire, alors autant y aller directement. »",
@@ -260,7 +353,7 @@ export default function VslPage() {
               },
               {
                 q: "« Et si la loi change ? »",
-                a: "Elle change. La loi de finances 2026 vient de modifier deux dispositifs. C'est précisément pourquoi les mises à jour sont incluses à vie, et pourquoi une des trois portes — la fenêtre des 100 000 € exonérés — ferme le 31 décembre 2026 et n'a pas été prolongée à ce jour.",
+                a: "Elle change. La loi de finances 2026 vient de modifier deux dispositifs. C'est précisément pourquoi les mises à jour sont incluses à vie, et pourquoi une fenêtre supplémentaire — les 100 000 € exonérés pour un logement — se referme le 31 décembre 2026 et n'a pas été prolongée à ce jour. Elle vient en plus de vos 3 dates, elle ne les remplace pas.",
               },
             ]}
           />
@@ -275,19 +368,30 @@ export default function VslPage() {
 
       <StickyCta href="/commande" label={CTA.urgence} />
 
-      <ExitPopup
-        storageKey="vsl"
-        title="Vous hésitez ? C'est normal. Regardez d'abord le module 1."
-      >
-        <Panel tone="grey">
-          <p>
-            « Je verrai ça plus tard », le compteur des 15 ans. En accès libre pendant 24 heures.
-            Regardez-le, puis décidez.
-          </p>
-        </Panel>
-        <ButtonLink href="/module-1" variant="blue">
-          Voir le module 1 gratuitement
-        </ButtonLink>
+      {/* La fenêtre de sortie ne donne plus rien — elle ne fait que nommer
+          ce qui reste sur la table. Offrir un module gratuit à quelqu'un qui
+          part, c'est lui donner une raison de partir. */}
+      <ExitPopup storageKey="vsl" title="Ce que vous risquez si vous fermez cette page">
+        <ul className="space-y-2 text-[1.03rem]">
+          {[
+            "Vous ne saurez toujours pas votre chiffre. Il existe déjà, il est calculé sur votre maison et votre épargne, et vous ne l'aurez jamais vu.",
+            "Vous ne saurez pas laquelle de vos 3 dates arrive en premier. Elle arrivera quand même.",
+            "L'offre à 27 € ne se rouvre pas. Ce compteur ne repart pas de zéro au prochain passage.",
+            "Et si rien ne change, ce sont vos enfants qui l'apprendront — dans le bureau d'un notaire, avec six mois pour payer.",
+          ].map((t) => (
+            <li key={t} className="flex gap-2 border-l-4 border-red bg-red-bg p-3">
+              <span aria-hidden className="shrink-0 font-bold text-red">
+                ✕
+              </span>
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="text-[1rem] font-bold text-blue">
+          Il vous reste {FLASH_MINUTES} minutes de décision, et une soirée de travail. C&apos;est
+          tout ce que ça demande.
+        </p>
+        <CtaMethode label={cta} />
       </ExitPopup>
     </>
   );

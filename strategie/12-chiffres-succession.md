@@ -262,6 +262,37 @@ notaire non déduits. Un cas **illustratif**, pas une promesse.
 **82 194 €** · **13 989 €** · **68 205 € d'écart** · « divisé par 6 ». Tout autre chiffre de cas
 (38 389, 54 194, 23 794, 58 400, 500, 0…) est périmé.
 
+### La seule exception autorisée — le cas Jean-Pierre (bloc « l'échec » de la page de vente)
+
+Jean-Pierre est l'avatar principal, **pas** le père de Julien. Deux familles distinctes,
+deux patrimoines, deux factures : leur donner le même chiffre reviendrait à raconter un
+seul cas deux fois, et un lecteur attentif y verrait une coquille.
+
+```
+Jean-Pierre, 67 ans, Nantes. Marié. Un fils : Nicolas.
+  Maison (pavillon de périphérie, 4 chambres)      380 000 €
+  Livrets et comptes (250 €/mois x 40 ans)          120 000 €
+  PATRIMOINE AU SECOND DECES                        500 000 €
+  Abattement, un enfant (art. 779)                 -100 000 €
+  PART TAXABLE                                      400 000 €
+
+  Bareme art. 777, ligne directe :
+         8 072 x  5 %                                   403,60
+         4 037 x 10 %                                   403,70
+         3 823 x 15 %                                   573,45
+       384 068 x 20 %                                76 813,60
+  DROITS                                          = 78 194,35 €  ->  « 78 194 € »
+```
+
+**Le seul chiffre publié pour ce cas est 78 194 €.** Il n'a pas d'« après » : le bloc
+Jean-Pierre sert à montrer qu'un homme prévoyant reçoit quand même la facture, pas à
+démontrer l'économie. La démonstration avant/après reste celle de Julien, et elle seule.
+
+Les 120 000 € sont sur des **livrets**, pas sur l'assurance-vie — sinon ils sortiraient de
+la succession (art. 990 I) et le calcul serait faux. Le contrat d'assurance-vie de
+Jean-Pierre existe dans le récit (ouvert en 2003, clause bénéficiaire jamais relue :
+c'est l'erreur n° 3), mais **aucun montant ne lui est jamais attribué**.
+
 **Nouvelle variante à écrire — famille recomposée :** avec l'abattement beaux-enfants du § 2, un bel-enfant élevé par le défunt paie 60 % au-delà de 15 932 €, là où l'enfant biologique paie 20 % au-delà de 100 000 €. Sur une part de 100 000 € : environ **50 440 €** de droits pour le bel-enfant, **0 €** pour l'enfant biologique. C'est le contraste le plus fort du projet après les 60 % du concubin. À chiffrer proprement une fois l'article 788 III bis confirmé sur source officielle.
 
 ---

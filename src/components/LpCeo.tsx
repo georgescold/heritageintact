@@ -107,7 +107,9 @@ export function TheFailure() {
             />
           </div>
           <figcaption className="mt-2 border-l-4 border-blue bg-white px-3 py-2 text-[0.9rem]">
-            <strong className="block text-blue">Jean-Pierre, 67 ans — Nantes</strong>
+            <strong className="block text-blue">
+              Jean-Pierre, 67 ans — Nantes · marié, un fils unique : Nicolas
+            </strong>
             <span className="text-text-soft">
               Cas type, reconstitué à partir du barème officiel et de situations courantes.
             </span>
@@ -123,13 +125,13 @@ export function TheFailure() {
             <p>
               Jean-Pierre a 67 ans. Un pavillon en périphérie de Nantes, quatre chambres, un garage
               avec un établi. Il l&apos;a remboursé en vingt-deux ans. Ancien technicien dans
-              l&apos;industrie, retraité depuis quatre ans. Deux enfants, trois petits-enfants, un
-              épagneul, et un camping-car qui part trois semaines en juin.
+              l&apos;industrie, retraité depuis quatre ans. Un fils unique, Nicolas, deux
+              petits-enfants, un épagneul, et un camping-car qui part trois semaines en juin.
             </p>
             <p>
               Il a fait <em>exactement</em> ce qu&apos;on lui a dit de faire. Il a ouvert une
               assurance-vie à sa banque en 2003, parce que le conseiller la lui a proposée. Il est
-              allé chez le notaire en 2015 faire un testament, parce que ça se fait. Il a mis 400 €
+              allé chez le notaire en 2015 faire un testament, parce que ça se fait. Il a mis 250 €
               de côté tous les mois pendant quarante ans, sans exception, y compris les années où
               c&apos;était difficile.
             </p>
@@ -137,8 +139,19 @@ export function TheFailure() {
               Il n&apos;a rien raté. Il n&apos;a rien dépensé bêtement. Il a fait ce qu&apos;un
               homme prévoyant fait.
             </p>
+            {/* ⚠️ Ce chiffre n'est PAS celui de Julien (82 194 €), et c'est voulu :
+                deux familles différentes, deux patrimoines différents, deux
+                factures différentes. Les faire coïncider donnerait un seul cas
+                raconté deux fois. Le calcul de celui-ci est dans
+                `12-chiffres-succession.md` § Le cas Jean-Pierre. */}
             <p className="border-l-4 border-red bg-red-bg p-4 text-[1.15rem] font-bold text-blue">
-              Et le jour venu, ses enfants recevront quand même une facture de 82 194 €.
+              Et le jour venu, son fils Nicolas recevra quand même une facture de 78 194 €.
+            </p>
+            <p className="text-[0.95rem] text-text-soft">
+              La maison vaut 380 000 €, les livrets 120 000 €. Au second décès, Nicolas, son fils
+              unique, hérite de 500 000 €, il en déduit son abattement de 100 000 €, et l&apos;État
+              applique son barème sur les 400 000 € restants. Article 777 du Code général des impôts
+              — vérifiable en cinq minutes.
             </p>
             <p>
               Ce n&apos;est pas parce qu&apos;il a mal géré. Ce n&apos;est pas parce qu&apos;il
@@ -446,12 +459,12 @@ export function TheCostOfInaction() {
             "Un enfant qui n'a pas 10 000 € d'économies ne sort pas 82 194 € en six mois — même avec les 40 000 € que ses parents ont laissés. Alors on vend la maison — dans l'urgence, au prix qu'on en donne.",
           ],
           [
-            "Chaque année qui passe ferme une porte, définitivement.",
+            "Chaque année qui passe referme une de vos 3 dates, définitivement.",
             "Le compteur des quinze ans ne se rattrape pas. Vos 70 ans et vos 71 ans n'arrivent qu'une fois. Attendre deux ans ne coûte pas deux ans : ça coûte un abattement entier.",
           ],
           [
             "Vous ne serez pas là pour arbitrer.",
-            "Ce que vous n'aurez pas écrit, ils devront le deviner. À trois, en six mois, en deuil. C'est comme ça que des frères et sœurs cessent de se parler.",
+            "Ce que vous n'aurez pas écrit, ils devront le deviner. En six mois, en deuil, et sans plus personne à qui poser la question.",
           ],
         ].map(([titre, corps]) => (
           <li key={titre} className="border-l-4 border-red bg-white p-4">
@@ -534,13 +547,14 @@ export function TheLastWord() {
             Une dernière chose
           </p>
           <h2 className="text-on-photo mb-4 max-w-[32rem] text-[1.45rem] leading-tight text-white sm:text-[2rem]">
-            Un jour, quelqu&apos;un ouvrira un tiroir chez vous.
+            Un jour, votre fils ou votre fille ouvrira un tiroir chez vous.
           </h2>
           <div className="max-w-[34rem] space-y-3 text-[1.02rem] text-white/90 sm:text-[1.1rem]">
             <p>
-              Ce qu&apos;il y trouvera dira ce que vous aviez prévu pour lui. Une pile de courriers
-              qu&apos;il faudra six mois à démêler, ou une page écrite par vous, qui commence
-              par&nbsp;: «&nbsp;voilà ce que j&apos;ai décidé, et pourquoi&nbsp;».
+              Il cherchera des papiers, quelques jours après vos obsèques. Ce qu&apos;il trouvera
+              dira ce que vous aviez prévu pour lui. Une pile de courriers qu&apos;il faudra six
+              mois à démêler, ou une page écrite par vous, qui commence par&nbsp;: «&nbsp;voilà ce
+              que j&apos;ai décidé, et pourquoi&nbsp;».
             </p>
             <p className="font-bold text-white">
               Ce ne sont pas des papiers que vous laissez. C&apos;est la preuve que vous y aviez

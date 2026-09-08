@@ -1,0 +1,574 @@
+═══════════════════════════════════════════════════════════════════════════
+        HÉRITAGE INTACT — BRIEF DE PRODUCTION
+        Ce qu'il reste à produire, produit par produit
+        Établi le 8 septembre 2026, après audit du site déployé
+═══════════════════════════════════════════════════════════════════════════
+
+
+╔═════════════════════════════════════════════════════════════════════════╗
+║  À LIRE AVANT TOUT LE RESTE                                             ║
+║                                                                         ║
+║  Le site encaisse. Il ne livre rien.                                    ║
+║                                                                         ║
+║  Aujourd'hui, quelqu'un qui paie 27 € sur heritageintact.fr :           ║
+║    — ne reçoit AUCUN email après son paiement ;                         ║
+║    — arrive sur /espace, qui affiche « en construction » ;              ║
+║    — n'a accès à aucune vidéo, aucun PDF, aucun simulateur.             ║
+║                                                                         ║
+║  Ce n'est pas un manque de finition : c'est un défaut de délivrance.    ║
+║  Juridiquement, c'est un manquement contractuel, et sur un produit      ║
+║  garanti 30 jours ça se termine en remboursements à 100 %.              ║
+║                                                                         ║
+║  ⚠️ NE PAS LANCER DE PUBLICITÉ AVANT que le bloc « ÉTAPE 0 » ci-dessous ║
+║  soit terminé. Tout le reste peut attendre. Pas celui-là.               ║
+╚═════════════════════════════════════════════════════════════════════════╝
+
+
+───────────────────────────────────────────────────────────────────────────
+  ÉTAT DES LIEUX — CE QUI EXISTE VRAIMENT
+───────────────────────────────────────────────────────────────────────────
+
+  ✅ FAIT
+     · Le site complet : landing page, page de vente, bon de commande,
+       pages d'upsell, pages légales. Déployé, responsive vérifié à
+       375 / 768 / 1265 px, zéro lien mort, zéro image sans alt.
+     · Le paiement Stripe (clé de TEST branchée).
+     · La capture de leads + la séquence de 7 emails J0→J7.
+     · L'offre à 27 € pendant 10 min, opposable au serveur, avec le
+       rattrapage à −30 %.
+     · Le script de la VSL front (VSL-TEXTE-SEUL.txt), prêt à tourner.
+     · La marque : logo, icônes, couverture Facebook.
+     · 60 posts Facebook pour 6 mois.
+
+  ❌ N'EXISTE PAS
+     · AUCUNE vidéo. Les 4 identifiants vidéo sont vides dans .env.local
+       (VSL front, upsell 1, upsell 2, module 1).
+     · AUCUN module, AUCUN PDF, AUCUN simulateur.
+     · L'espace membre (page vide).
+     · L'email de livraison après achat (la fonction `envoyerLivraison`
+       existe mais n'est appelée qu'à la capture du lead, jamais après un
+       paiement — vérifié : aucun appel dans le webhook Stripe).
+     · Les 4 VSL backend.
+
+  Autrement dit : la machine de vente est finie à ~90 %, le produit à 0 %.
+
+
+───────────────────────────────────────────────────────────────────────────
+  ÉTAPE 0 — LA DÉLIVRANCE (bloquant absolu)          ≈ 1,5 jour de dev
+───────────────────────────────────────────────────────────────────────────
+
+  Sans ça, rien d'autre ne compte.
+
+  0.1  L'email de livraison après paiement
+       Écrire `envoyerAcces(order)` dans lib/email.ts, et l'appeler depuis
+       le webhook Stripe (pas depuis l'action client : un client qui ferme
+       l'onglet doit quand même être livré).
+       Contenu : le lien vers /espace + le code d'accès + « ajoutez cette
+       adresse à vos contacts » + le rappel de la garantie 30 jours.
+
+  0.2  L'espace membre
+       Connexion sans mot de passe : un lien signé envoyé par email
+       (l'avatar a 65 ans, il ne retiendra aucun mot de passe — et un
+       formulaire de connexion est le premier endroit où on le perd).
+       Contenu minimum : la liste des modules, chacun avec sa vidéo et
+       son PDF, dans l'ordre. Une seule colonne, gros caractères.
+
+  0.3  Le webhook Stripe
+       `STRIPE_WEBHOOK_SECRET` est dans .env.local mais le webhook n'a
+       jamais été enregistré côté Stripe. Sans lui, une commande payée
+       peut rester « pending » si le client ferme son navigateur.
+
+  0.4  Passer Stripe en LIVE
+       La clé actuelle est `sk_test_`. Aucun euro réel ne peut être
+       encaissé aujourd'hui.
+
+
+───────────────────────────────────────────────────────────────────────────
+  PRODUIT 1 — LA MÉTHODE HÉRITAGE INTACT — 27 €      ≈ 4 jours
+  (produit d'appel · c'est lui qui doit exister en premier)
+───────────────────────────────────────────────────────────────────────────
+
+  À PRODUIRE : 8 modules vidéo + 5 bonus PDF.
+
+  ┌────┬──────────────────────────────────────────────┬───────┬─────────┐
+  │ M0 │ Bienvenue + Votre Facture Invisible          │ 12min │ + tableur│
+  │ M1 │ Erreur 1 — « je verrai ça plus tard »        │ 10min │         │
+  │ M2 │ Erreur 2 — ne pas être marié, ou l'être mal  │  9min │         │
+  │ M3 │ Erreur 3 — l'assurance-vie jamais relue      │ 11min │         │
+  │ M4 │ Erreur 4 — la maison gardée en pleine prop.  │ 12min │         │
+  │ M5 │ Erreur 5 — le don de la main à la main       │  8min │         │
+  │ M6 │ Erreur 6 — oublier les petits-enfants        │  8min │         │
+  │ M7 │ Erreur 7 — le notaire, les mains vides       │ 10min │ + les 12│
+  └────┴──────────────────────────────────────────────┴───────┴─────────┘
+
+  Bonus PDF : lexique 1 page · les 12 questions au notaire · la lettre aux
+  enfants · la Règle de Mise à Jour · la fiche « combien garder pour soi ».
+
+  Livrables techniques :
+    · Le Simulateur de Facture Invisible — Google Sheet + Excel + version
+      papier. C'est LUI qui tient la promesse de la VSL (« votre chiffre »).
+      À faire en premier, avant même les vidéos.
+    · Le Calendrier des 3 Dates — PDF 1 page.
+
+  ⚠️ TROIS CORRECTIONS À APPLIQUER AVANT DE TOURNER
+    1. Le produit s'appelle « La Méthode Héritage Intact ». Le document
+       04-produit-mvp.md dit encore « Les 7 Erreurs », « le guide »,
+       « le programme ». Ne jamais prononcer ces mots à l'écran.
+    2. Le mot « VERROU » apparaît dans les titres de modules 0 et 7.
+       Terme banni (personne ne le comprend à l'oral). Dire « étape ».
+    3. Les chiffres sont figés : 480 000 € · 40 000 € · 1 enfant ·
+       82 194 € → 13 989 € · 68 205 € d'écart · « divisé par 6 ».
+       Aucun autre chiffre de cas. Voir 12-chiffres-succession.md.
+       Le cas Jean-Pierre (78 194 €) est la SEULE exception, et il ne sert
+       que sur la page de vente.
+
+  Format de tournage : faceless. Aucun visage, jamais. Les personnes de dos
+  uniquement. Voix + slides.
+
+
+───────────────────────────────────────────────────────────────────────────
+  PRODUIT 2 — LE DOSSIER NOTAIRE PRÊT-À-SIGNER — 17 €   ≈ 0,5 jour
+  (bump, pré-coché sur le bon de commande)
+───────────────────────────────────────────────────────────────────────────
+
+  Le meilleur rapport effort / revenu de tout le catalogue : une demi-
+  journée, et il se vend à ~40 % des commandes sans aucun argumentaire.
+
+  À produire :
+    · L'inventaire patrimonial à remplir (tableur + papier)
+    · La fiche famille (arbre, régimes, donations passées)
+    · La check-list des 12 pièces à apporter
+    · Le mail-type de prise de rendez-vous
+    · Le compte-rendu à trous, à remplir après le rendez-vous
+    · 1 vidéo de 6 min : « comment remplir tout ça en une heure »
+
+  À FAIRE EN DEUXIÈME, juste après la Méthode. Il est déjà vendu sur le
+  bon de commande : tout acheteur d'aujourd'hui l'attend.
+
+
+───────────────────────────────────────────────────────────────────────────
+  PRODUIT 3 — LE PLAN TRANSMISSION COMPLET — 297 €      ≈ 3 jours
+  (upsell 1, page /plan-complet — déjà en ligne)
+───────────────────────────────────────────────────────────────────────────
+
+  12 plans-types, un par situation familiale. Chacun tient sur UNE page :
+  la situation → les étapes dans l'ordre → les 3 pièges → les 3 questions
+  au notaire → ce que ça change en euros.
+
+  Les 12 situations : marié 1 enfant · marié 2+ · famille recomposée ·
+  veuf/veuve · concubins-PACS · sans enfant · avec une entreprise · avec
+  du locatif · un enfant à l'étranger · un enfant vulnérable ·
+  patrimoine > 1 M€ · donations déjà faites.
+
+  + Le Simulateur Complet · Le Calendrier sur 15 ans · 3 modèles de clause
+  bénéficiaire commentés · Le tableau de bord familial.
+
+  LIVRAISON PROGRESSIVE AUTORISÉE, et c'est ce qu'il faut faire : les 4
+  plans les plus fréquents au lancement (marié 1 enfant, marié 2+, veuf,
+  concubins), les 8 autres sous 30 jours. À écrire noir sur blanc sur la
+  page d'upsell — une livraison échelonnée annoncée est honnête, une
+  livraison échelonnée découverte est un litige.
+
+  ⚠️ Le texte de la page dit encore « les trois verrous ». À corriger en
+     « les 3 dates », comme partout ailleurs.
+
+
+───────────────────────────────────────────────────────────────────────────
+  PRODUIT 4 — LE KIT ASSURANCE-VIE — 97 €              ≈ 1,5 jour
+  (upsell 2, page /kit-assurance-vie — déjà en ligne)
+───────────────────────────────────────────────────────────────────────────
+
+  Le levier n°1 : tout l'avatar en possède une, et la plupart l'ont mal
+  réglée. C'est l'upsell le plus facile à vendre du catalogue.
+
+  À produire :
+    · 1 vidéo 12 min : lire son contrat (frais, support, clause, dates)
+    · La grille d'audit, notée sur 10
+    · 3 clauses bénéficiaires rédigées et commentées ligne par ligne
+    · Le tableau de décision avant/après 70 ans
+    · Le multi-contrats : pourquoi un second contrat plutôt qu'alimenter
+    · La lettre-type de modification de clause
+    · Le comparatif de frais — SANS NOMMER AUCUN CONTRAT (cf. 11-legal)
+
+  ⚠️ Interdiction absolue de recommander un placement ou un assureur.
+     Ce serait du conseil en investissement financier, réglementé (statut
+     CIF, obligatoire). On explique comment lire, jamais quoi acheter.
+
+
+───────────────────────────────────────────────────────────────────────────
+  PRODUIT 5 — LE GÉNÉRATEUR DE DOSSIER NOTAIRE — 147 €  ≈ 3-4 jours
+  (backend 1 · VSL 2 · vendu par email à J+10)
+───────────────────────────────────────────────────────────────────────────
+
+  Le plus gros morceau, et le plus rentable à long terme : c'est une
+  application web, donc zéro coût marginal et zéro délivrance humaine.
+
+  Entrées : âge · régime matrimonial · enfants et leur situation ·
+  petits-enfants · patrimoine bien par bien · contrats d'assurance-vie
+  (montants, versements avant/après 70 ans, bénéficiaires) · donations
+  passées.
+
+  Sorties :
+    1. La Facture Invisible d'aujourd'hui, par héritier, tranche par
+       tranche, avec l'article du CGI en face de chaque ligne
+    2. Les 3 dates du client, en clair
+    3. Les scénarios activables un par un, avant/après en direct
+    4. Le Plan en 1 Page (PDF)
+    5. Le Dossier Notaire pré-rempli (PDF)
+    6. Les questions au notaire selon la situation détectée
+    7. Le disclaimer + « chiffres vérifiés le … »
+
+  ⚠️ LES DONNÉES RESTENT DANS LE NAVIGATEUR (localStorage). Rien n'est
+     envoyé nulle part. C'est l'argument n°1 sur cet avatar — il ne
+     confiera jamais son patrimoine à un site — et ça supprime tout le
+     sujet RGPD d'un coup.
+
+  À tester sur les 3 cas types avant mise en vente.
+
+
+───────────────────────────────────────────────────────────────────────────
+  PRODUIT 6 — LE KIT DÉPENDANCE — 97 €                 ≈ 2 jours
+  (backend 2 · VSL 3 · J+31)
+───────────────────────────────────────────────────────────────────────────
+
+  Le problème voisin que tout l'avatar a en tête et que personne ne traite.
+
+  5 modules de 8-10 min :
+    1. Le mandat de protection future
+    2. Habilitation familiale vs tutelle
+    3. L'EHPAD et le patrimoine — obligation alimentaire, aide sociale et
+       récupération sur succession (le piège que personne n'explique)
+    4. Protéger ce qui a été transmis
+    5. Directives anticipées et personne de confiance
+
+  + modèles : mandat de protection future (Cerfa commenté), directives
+  anticipées, lettre à la personne de confiance.
+
+
+───────────────────────────────────────────────────────────────────────────
+  PRODUIT 7 — LE CLASSEUR HÉRITAGE INTACT — 67 €       ≈ 3 jours
+  (backend 3 · VSL 4 · J+52)
+───────────────────────────────────────────────────────────────────────────
+
+  PDF prêt à imprimer. Zéro produit physique — décision actée : plus de
+  délai de livraison, plus de retours, marge de 67 € au lieu de 45 €.
+
+  Contenu : le manuel de 40 pages + les fiches à remplir + les 12 plans-
+  types + les questions au notaire + 6 intercalaires à découper + une page
+  de garde personnalisable « Pour [prénom du conjoint] — tout est là ».
+
+  ⚠️ LA MISE EN PAGE EST LE PRODUIT. Un PDF vendu 67 € doit s'imprimer
+     sans réfléchir : A4, recto simple, marges qui survivent à une
+     imprimante domestique, aucun aplat de couleur qui vide une cartouche,
+     numérotation claire pour reprendre une page ratée.
+     Page 1 = « comment imprimer ce classeur », en trois lignes.
+     Prévoir la variante « à donner à l'imprimeur du coin » (~8 €).
+
+
+───────────────────────────────────────────────────────────────────────────
+  PRODUIT 8 — LE KIT TESTAMENT — 47 €                  ≈ 1 jour
+  (backend 4 · VSL 5 · J+73)
+───────────────────────────────────────────────────────────────────────────
+
+  3 modules de 8 min :
+    1. Le testament olographe — les 4 conditions de validité, ce qui
+       l'annule, où le déposer (fichier central FCDDV)
+    2. Ce qu'on peut décider et ce qu'on ne peut pas — réserve
+       héréditaire, quotité disponible, legs
+    3. La donation au dernier vivant, et le testament pour concubins
+
+  + modèles commentés, chacun portant « à faire relire par votre notaire ».
+
+
+═══════════════════════════════════════════════════════════════════════════
+  L'ORDRE DE PRODUCTION
+═══════════════════════════════════════════════════════════════════════════
+
+  L'ordre de construction est l'ordre de vente. On ne produit jamais un
+  produit avant celui qui le précède dans le funnel.
+
+   SEM. 1   Étape 0 (délivrance) + le Simulateur + la Méthode (8 modules)
+            → le funnel devient honnête. On peut encaisser.
+   SEM. 2   Le Dossier Notaire (bump) + le Kit Assurance-Vie (upsell 2)
+            → les deux ventes additionnelles sont couvertes.
+   SEM. 3   Le Plan Transmission Complet — 4 plans-types sur 12
+            → l'upsell à 297 € devient livrable.
+   SEM. 4   Tournage de la VSL front + mise en ligne + premières pubs.
+   SEM. 5-6 Le Générateur (backend 1) + sa VSL
+   SEM. 8   Le Kit Dépendance + sa VSL
+   SEM. 10  Le Classeur + sa VSL
+   SEM. 12  Le Kit Testament + sa VSL
+   ENSUITE  La newsletter du jeudi 17 h, un CTA en rotation sur les 4
+            backends. Chaque décembre : la loi de finances réactive
+            toute la base.
+
+  Total ≈ 18 à 19 jours de production, hors VSL et hors développement.
+
+
+═══════════════════════════════════════════════════════════════════════════
+  LES RÈGLES QUI S'APPLIQUENT À TOUT CE QUI SERA PRODUIT
+═══════════════════════════════════════════════════════════════════════════
+
+  VOCABULAIRE
+    · Le produit s'appelle « La Méthode ». Jamais « programme », jamais
+      « guide ». Les 7 erreurs sont ce que la Méthode permet d'éviter.
+    · « les 3 dates ». Jamais « les 3 portes », jamais « les 3 verrous ».
+    · Une Méthode se SUIT : des étapes, dans un ordre, rien à improviser.
+      C'est ce registre protocolaire qui rassure un lecteur de 70 ans.
+
+  CHIFFRES
+    · 480 000 € · 40 000 € · 1 enfant · 82 194 € → 13 989 € ·
+      68 205 € d'écart · « divisé par 6 ». Et rien d'autre.
+    · Chaque chiffre s'accompagne de son article du CGI, affiché.
+    · Aucun chiffre sans source. Un nombre orphelin sur une page qui cite
+      la loi partout ailleurs détruit la crédibilité de tous les autres.
+
+  INTERDITS
+    · Aucun faux avis client, aucun témoignage inventé (art. L121-2).
+    · Aucune recommandation de placement ni d'assureur (statut CIF).
+    · Aucun montant d'émoluments de notaire cité.
+    · Jamais « marque déposée » ni ® : aucun dépôt INPI n'existe.
+    · Jamais « vous » + un attribut personnel dans une publicité Meta
+      (âge, patrimoine, santé, situation familiale).
+    · Format faceless : aucun visage, jamais. Les personnes strictement
+      de dos.
+
+  JURIDIQUE
+    · Disclaimer sur chaque livrable : contenu pédagogique, ne constitue
+      pas un conseil personnalisé.
+    · Tout modèle d'acte porte « à faire relire par votre notaire ».
+    · Garantie 30 jours honorée sans discussion, un email suffit.
+
+
+═══════════════════════════════════════════════════════════════════════════
+  LA DETTE TECHNIQUE À SOLDER EN PARALLÈLE
+═══════════════════════════════════════════════════════════════════════════
+
+  URGENT
+   1. Le projet n'est PAS dans git. Aucune sauvegarde, aucun historique.
+      Un disque qui lâche et tout est perdu — le site, les scripts, les
+      60 posts, les documents de stratégie.
+   2. Six identifiants ont été exposés et ne sont toujours pas tournés :
+      Stripe (live et test), fal.ai, Resend, Vercel, Supabase.
+   3. Stripe est en mode TEST. Aucun euro réel n'est encaissable.
+   4. Le webhook Stripe n'est pas enregistré.
+
+  À FAIRE AVANT LA PUB
+   5. Durcir le DMARC de la racine en p=quarantine.
+   6. Clé Resend « All domains » pour info.heritageintact.fr.
+   7. Q7 sans réponse : aucune autorité nommée ne cautionne la Méthode.
+      Il faut un notaire ou un juriste retraité, réel. N'en inventer
+      aucun sous aucun prétexte.
+   8. Revérifier l'art. 790 A bis après le 30 septembre 2026 (rapport au
+      Parlement) — le compteur du 31 décembre 2026 en dépend.
+   9. Propager la durée réelle de la VSL une fois tournée.
+
+  PLUS TARD
+  10. Construire /generateur, /dependance, /classeur, /testament.
+  11. Trancher : trois mécaniques de prix coexistent (20 places, 10
+      minutes, −30 %). Une seule rareté serait plus crédible que trois.
+
+═══════════════════════════════════════════════════════════════════════════
+  L'ARCHITECTURE DE DÉLIVRANCE
+  Comment on livre — arbitré le 8 septembre 2026
+═══════════════════════════════════════════════════════════════════════════
+
+  LA CONTRAINTE, D'ABORD
+  L'acheteur a entre 65 et 85 ans. Il n'est pas incompétent — il gère ses
+  comptes en ligne — mais il n'a aucune tolérance à l'échec. Un mot de passe
+  oublié, un lien mort, une page qui demande de « créer un compte », et il
+  n'essaie pas deux fois : il écrit un email, ou il demande un remboursement.
+
+  Chaque friction supprimée vaut plus qu'une fonctionnalité ajoutée.
+
+
+  ─────────────────────────────────────────────────────────────────────
+  DÉCISION 1 — AUCUN MOT DE PASSE. JAMAIS.
+  ─────────────────────────────────────────────────────────────────────
+
+  Pas de « email + mot de passe ». C'est le point d'abandon numéro un sur
+  cette tranche d'âge, et chaque oubli devient un email de support à
+  traiter à la main.
+
+  À la place : UN LIEN PERSONNEL PERMANENT.
+    · À l'achat, on génère un jeton aléatoire et on l'envoie par email.
+    · Le lien est du type  heritageintact.fr/espace/a7f3k9x2...
+    · Un clic, il est chez lui. Rien à retenir, rien à taper.
+    · Il peut le mettre en favori, ou simplement rouvrir l'email.
+
+  ⚠️ CE LIEN NE DOIT PAS EXPIRER. La pratique habituelle (15 minutes)
+     est faite pour des utilisateurs qui relèvent leurs mails en continu.
+     Le nôtre les relève le mardi et le samedi. Un lien expiré, c'est un
+     client perdu et un remboursement. Jeton long et aléatoire, pas
+     d'expiration, révocable à la demande.
+
+  Le risque assumé : quelqu'un peut transmettre son lien. Sur un produit
+  à 27 €, ça coûte moins cher que la friction d'un mot de passe.
+
+  Une ligne à écrire dans l'email, en gras :
+     « Gardez cet email. C'est votre clé. Il n'y a pas de mot de passe. »
+
+
+  ─────────────────────────────────────────────────────────────────────
+  DÉCISION 2 — UNE SEULE PAGE. PAS SEPT.
+  ─────────────────────────────────────────────────────────────────────
+
+  Aujourd'hui le funnel prévoit /espace, /plan-complet, /kit-assurance-vie,
+  plus quatre backends à venir. Sept destinations. Pour cet acheteur, il
+  n'en faut qu'UNE : « Mon espace ».
+
+  Tout ce qu'il possède y est. Tout ce qu'il ne possède pas encore y est
+  aussi — visible, avec son prix.
+
+  ┌──────────────────────────────────────────────────────────────────┐
+  │  MON ESPACE                                                       │
+  │                                                                   │
+  │  ▸ REPRENDRE OÙ J'EN ÉTAIS        ← un seul gros bouton, en haut  │
+  │       Étape 3 — L'assurance-vie jamais relue                      │
+  │                                                                   │
+  │  ▸ MES ÉTAPES                     ← 0 à 7, avec une case cochée   │
+  │       ✔ 0. Votre facture invisible                                │
+  │       ✔ 1. « Je verrai ça plus tard »                             │
+  │       ▸ 3. L'assurance-vie jamais relue                           │
+  │         4. La maison en pleine propriété                          │
+  │                                                                   │
+  │  ▸ MES DOCUMENTS À IMPRIMER       ← + un bouton « Tout imprimer » │
+  │                                                                   │
+  │  ▸ CE QUE JE N'AI PAS ENCORE      ← LES UPSELLS, ICI              │
+  │       Le Plan adapté à votre famille .............. 297 €         │
+  │       Votre assurance-vie vérifiée ................  97 €         │
+  └──────────────────────────────────────────────────────────────────┘
+
+  L'ESPACE MEMBRE EST LA BOUTIQUE. C'est le point le plus rentable de
+  toute cette architecture, et il est contre-intuitif : sur cet avatar, un
+  module verrouillé qu'il VOIT chaque fois qu'il vient travailler vaut
+  davantage qu'une campagne d'emails qu'il n'ouvrira pas. Il revient dix
+  fois pendant qu'il suit la Méthode ; à chaque passage il lit « ce que je
+  n'ai pas encore ».
+
+  Règles de la page : une seule colonne, jamais deux. Corps de texte à
+  18 px minimum. Cibles cliquables de 44 px. Aucun menu déroulant, aucun
+  onglet, aucun accordéon — tout est déplié, tout est visible.
+
+
+  ─────────────────────────────────────────────────────────────────────
+  DÉCISION 3 — L'EMAIL EST LE CANAL PRINCIPAL, PAS LE SITE
+  ─────────────────────────────────────────────────────────────────────
+
+  Cet avatar vit dans sa boîte mail, pas dans un navigateur. Donc :
+    · Chaque étape franchie, chaque nouveau document → un email avec un
+      LIEN DIRECT vers la page exacte. Jamais « connectez-vous pour voir ».
+    · Un rappel à J+3 si l'étape 0 n'est pas ouverte : c'est là qu'on perd
+      les gens, et c'est là qu'on les rattrape.
+    · Le lien personnel est répété au bas de CHAQUE email. S'il perd un
+      message, le suivant le ramène.
+
+
+  ─────────────────────────────────────────────────────────────────────
+  DÉCISION 4 — TOUT DOIT POUVOIR S'IMPRIMER
+  ─────────────────────────────────────────────────────────────────────
+
+  Une partie des acheteurs ne lira pas à l'écran : ils impriment, ils
+  annotent au stylo, ils rangent dans un classeur. C'est d'ailleurs
+  exactement ce que vend le produit n° 7.
+
+  Donc : chaque PDF au format A4, recto simple, marges généreuses, aucun
+  aplat de couleur qui vide une cartouche. Et un bouton « Tout imprimer »
+  dans l'espace, qui produit un seul PDF assemblé.
+
+
+  ─────────────────────────────────────────────────────────────────────
+  OÙ SE VENDENT LES UPSELLS — LES QUATRE MOMENTS
+  ─────────────────────────────────────────────────────────────────────
+
+   1. LE BUMP, sur le bon de commande, pré-coché.  ← déjà en place
+      Le meilleur taux de prise du funnel, aucun argumentaire nécessaire.
+
+   2. JUSTE APRÈS LE PAIEMENT, en un clic, carte déjà enregistrée.
+      ← déjà en place (/plan-complet puis /kit-assurance-vie)
+      C'est là que se fait l'essentiel du chiffre d'affaires.
+
+   3. DANS L'ESPACE MEMBRE, en permanence.  ← À CONSTRUIRE
+      Rattrape ceux qui ont dit non au moment du paiement et qui se
+      réchauffent en utilisant le produit. C'est ce qui manque aujourd'hui.
+
+   4. PAR EMAIL, pour les 4 backends, séquencés à J+10, J+31, J+52, J+73.
+
+  ⚠️ Ne JAMAIS proposer un upsell à quelqu'un qui n'a pas encore ouvert
+     l'étape 0. On vend la suite à quelqu'un qui a commencé, jamais à
+     quelqu'un qui n'a rien lu — sinon on transforme un acheteur satisfait
+     en demande de remboursement.
+
+
+  ─────────────────────────────────────────────────────────────────────
+  CE QUE ÇA COÛTE À CONSTRUIRE
+  ─────────────────────────────────────────────────────────────────────
+
+    Jeton d'accès + email de livraison ..................... 0,5 jour
+    La page /espace/[jeton] (liste, progression, upsells) ... 1 jour
+    Le suivi de progression (case cochée par étape) ......... 0,5 jour
+    Le bouton « Tout imprimer » ............................. 0,5 jour
+                                                             ─────────
+                                                              2,5 jours
+
+  À faire AVANT toute publicité. C'est l'étape 0 du présent brief.
+
+
+═══════════════════════════════════════════════════════════════════════════
+  LE NOMMAGE DES PRODUITS
+═══════════════════════════════════════════════════════════════════════════
+
+  LA RÈGLE : un nom doit dire CE QU'ON AURA, pas ce que c'est. On emploie
+  les mots que l'acheteur emploie déjà — dossier, plan, classeur,
+  testament, assurance-vie — et on bannit le vocabulaire de conseiller :
+  « kit », « générateur », « transmission », « optimisation », « solution ».
+
+  Chaque produit a un NOM COURT (celui qu'on dit, celui qui s'affiche dans
+  les listes) et un NOM COMPLET (celui de la page de vente et des CGV).
+
+  ┌─────┬───────────────────┬────────────────────────────────────────────┐
+  │  €  │ NOM COURT         │ NOM COMPLET                                │
+  ├─────┼───────────────────┼────────────────────────────────────────────┤
+  │  27 │ La Méthode        │ La Méthode Héritage Intact                 │
+  │  17 │ Le Dossier notaire│ Le Dossier à apporter chez votre notaire   │
+  │ 297 │ Le Plan familial  │ Le Plan adapté à votre famille             │
+  │  97 │ L'Assurance-vie   │ Votre assurance-vie, vérifiée en 30 minutes│
+  │ 147 │ Le Calculateur    │ Le Calculateur Héritage Intact             │
+  │  97 │ L'Autonomie       │ Perdre son autonomie : décider avant       │
+  │  67 │ Le Classeur       │ Le Classeur Héritage Intact                │
+  │  47 │ Le Testament      │ Votre testament, écrit sans erreur         │
+  └─────┴───────────────────┴────────────────────────────────────────────┘
+
+  CE QUI A CHANGÉ, ET POURQUOI
+
+  · « Le Dossier Notaire Prêt-à-Signer » → « Le Dossier à apporter chez
+    votre notaire ». « Prêt-à-signer » promettait ce que le produit ne
+    fait pas : on ne signe rien, on apporte.
+
+  · « Le Plan Transmission Complet : les 12 situations familiales » →
+    « Le Plan adapté à votre famille ». « Transmission » et « complet »
+    sont des mots de conseiller. « Votre famille » fait le travail de
+    « sur mesure » sans employer le mot.
+
+  · « Le Kit Assurance-Vie » → « Votre assurance-vie, vérifiée en
+    30 minutes ». « Kit » ne dit ni ce qu'on reçoit ni ce qu'on en fait.
+    Le nouveau nom porte la promesse ET la durée.
+
+  · « Le Générateur de Dossier Notaire » → « Le Calculateur Héritage
+    Intact ». « Générateur » est un mot d'informaticien. « Calculateur »
+    dit ce qu'il fait, et ça rejoint la promesse de la VSL : votre chiffre.
+
+  · « Le Kit Dépendance » → « Perdre son autonomie : décider avant ».
+    « Dépendance » est le mot administratif ; « perdre son autonomie » est
+    la phrase que les gens emploient réellement entre eux.
+
+  · « Le Kit Testament » → « Votre testament, écrit sans erreur ». La
+    peur réelle n'est pas de ne pas avoir de testament : c'est d'en écrire
+    un qui sera annulé.
+
+  ✅ APPLIQUÉ dans src/lib/config.ts pour les 4 produits déjà en vente.
+     Se propage automatiquement aux CGV, aux libellés Stripe et au
+     récapitulatif de commande.
+  ⏳ RESTE À FAIRE : reprendre les titres et le corps des pages /plan-complet
+     et /kit-assurance-vie, qui portent encore les anciens noms dans leur
+     texte, ainsi que 04-produit-mvp.md et 07-vsl-backend.md.
