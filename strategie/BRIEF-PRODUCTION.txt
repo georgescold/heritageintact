@@ -345,9 +345,18 @@
 ═══════════════════════════════════════════════════════════════════════════
 
   URGENT
-   1. Le projet n'est PAS dans git. Aucune sauvegarde, aucun historique.
-      Un disque qui lâche et tout est perdu — le site, les scripts, les
-      60 posts, les documents de stratégie.
+   1. ✅ CORRIGÉ — le site EST dans git, et il est poussé.
+      github.com/georgescold/heritageintact, branche main. Le dépôt est
+      dans `site/`, pas dans `PROJET-HERITAGE-INTACT/` : c'est pour ça
+      qu'il avait été déclaré absent à tort dans la première version de ce
+      brief. Vercel redéploie automatiquement à chaque push sur main.
+      ⚠️ Le dépôt est PUBLIC, et il contient `strategie/` — donc toute la
+      base de connaissance, le script de la VSL, les prix et la mécanique
+      du funnel sont lisibles par n'importe qui. Le passer en privé prend
+      dix secondes et ne casse rien : le lien Vercel survit.
+      ⚠️ Ce qui reste hors de git : le dossier Bureau
+      Heritage-Intact-Marque (logo, 60 posts Facebook, prompts d'images).
+      Aucune sauvegarde à ce jour.
    2. Six identifiants ont été exposés et ne sont toujours pas tournés :
       Stripe (live et test), fal.ai, Resend, Vercel, Supabase.
    3. Stripe est en mode TEST. Aucun euro réel n'est encaissable.
