@@ -86,9 +86,9 @@ export function UrgencyBand() {
     <div className="border-2 border-yellow-line bg-yellow-bg p-3">
       <p className="mb-1 font-bold text-blue">Pourquoi ce n&apos;est pas un sujet pour plus tard</p>
       <p className="text-[0.95rem]">
-        Trois portes se ferment avec le temps sur une succession : le compteur des 15 ans, votre
+        Trois dates se referment avec le temps sur une succession : le compteur des 15 ans, votre
         soixante-dixième anniversaire, votre soixante et onzième.{" "}
-        <strong>Aucune ne se rouvre.</strong> L&apos;une d&apos;elles se ferme plus vite que les
+        <strong>Aucune ne se rouvre.</strong> L&apos;une d&apos;elles arrive bien plus vite que les
         autres, et la vidéo vous dit laquelle.
       </p>
     </div>

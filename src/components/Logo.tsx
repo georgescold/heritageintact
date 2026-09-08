@@ -28,7 +28,7 @@ export function Mark({ size = 40, className = "" }: { size?: number; className?:
         strokeWidth="3.4"
         strokeLinejoin="miter"
       />
-      {/* Les trois verrous */}
+      {/* Les 3 dates */}
       <rect x="13" y="26" width="22" height="3.2" fill="#ffffff" />
       <rect x="13" y="31.4" width="22" height="3.2" fill="var(--color-orange)" />
       <rect x="13" y="36.8" width="22" height="3.2" fill="#ffffff" />

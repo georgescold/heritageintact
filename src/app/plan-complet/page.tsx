@@ -25,7 +25,7 @@ export default async function Upsell1Page({
       h1={
         <>
           Avant d&apos;accéder à votre espace, une seule question : dans <em>votre</em> situation
-          familiale, lequel des 3 verrous en premier&nbsp;?
+          familiale, laquelle de vos 3 dates en premier&nbsp;?
         </>
       }
       h2="Le Plan Transmission Complet : les 12 situations familiales, chacune avec son plan d'action dans l'ordre, ses 3 pièges, ses 3 questions au notaire, et le Simulateur Complet."
@@ -66,9 +66,9 @@ export default async function Upsell1Page({
       </p>
       <p>
         C&apos;est pour ça que le Plan Transmission Complet existe : douze situations familiales, et
-        pour chacune, <strong>une page</strong>. Les trois verrous dans le bon ordre, les trois
-        pièges à éviter, les trois questions à poser au notaire, et ce que ça change en euros sur un
-        cas concret.
+        pour chacune, <strong>une page</strong>. Les 3 dates dans le bon ordre, les trois pièges à
+        éviter, les trois questions à poser au notaire, et ce que ça change en euros sur un cas
+        concret.
       </p>
       <p className="text-[0.95rem] text-text-soft">
         Quatre plans-types sont disponibles immédiatement (situations 1, 2, 4 et 5, les plus

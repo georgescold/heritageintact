@@ -84,7 +84,7 @@ export function Panel({
   );
 }
 
-export function Guarantee({ product = "le programme" }: { product?: string }) {
+export function Guarantee({ product = "la Méthode" }: { product?: string }) {
   return (
     <Panel tone="green" title="Garantie 30 jours : satisfait ou remboursé">
       <p>
@@ -161,6 +161,18 @@ export function Check({ children }: { children: ReactNode }) {
     <li className="flex gap-2">
       <span aria-hidden className="shrink-0 font-bold text-green">
         ✔
+      </span>
+      <span>{children}</span>
+    </li>
+  );
+}
+
+/** Le jumeau négatif de Check : ce qu'on écarte, pas ce qu'on obtient. */
+export function Cross({ children }: { children: ReactNode }) {
+  return (
+    <li className="flex gap-2">
+      <span aria-hidden className="shrink-0 font-bold text-red">
+        ✕
       </span>
       <span>{children}</span>
     </li>

@@ -29,9 +29,17 @@
 ---
 
 # ═══ PRODUIT FRONT — 27 € ═══
-# « Les 7 Erreurs qui Offrent Votre Héritage à l'État »
+# « La Méthode Héritage Intact »
+# *les 8 étapes qui évitent les 7 erreurs qui offrent votre héritage à l'État*
 
-## Module 0 — Bienvenue + Votre Facture Invisible (VERROU 1)  — 12 min
+> ⚠️ **LE PRODUIT S'APPELLE « LA MÉTHODE HÉRITAGE INTACT ».** Les 7 erreurs sont ce
+> qu'elle permet d'éviter — une promesse, pas une étiquette. Ne jamais dire
+> « le guide » ni « le programme », ni à l'écran ni dans un PDF.
+>
+> ⚠️ **Ne jamais dire « verrou » ni « porte ».** Personne ne les comprend à l'oral.
+> On dit **« les 3 dates »** pour les échéances, et **« étape »** pour un module.
+
+## Étape 0 — Bienvenue + Votre Facture Invisible — 12 min
 
 **Objectif :** que le client ait **son chiffre** avant la fin de la première vidéo. C'est la preuve par la démonstration. C'est aussi ce qui le fera regarder la suite.
 
@@ -99,14 +107,14 @@ Livrables : Simulateur (Google Sheet + version Excel + version papier), Calendri
 - Les mineurs : compte ouvert au nom de l'enfant, administration légale — les points d'attention.
 - Action : noter les 3 petits-enfants et ce qu'on voudrait pour chacun.
 
-## Module 7 — Erreur n°7 : Aller chez le notaire les mains vides (VERROU 3) — 10 min
+## Étape 7 — Erreur n°7 : Aller chez le notaire les mains vides — 10 min
 
 - Le notaire est payé à l'acte. Il **acte ce que vous demandez**. Sans dossier, il pose 3 questions et vous ressortez avec "revenez quand vous saurez".
-- Ce qu'il faut apporter : inventaire, valeurs, contrats, situation familiale, **vos choix déjà faits** (verrou 2).
+- Ce qu'il faut apporter : inventaire, valeurs, contrats, situation familiale, **vos choix déjà faits** (étape 2).
 - Les 12 questions à lui poser (bonus). Les 3 à ne jamais poser (*"vous me conseillez quoi ?"* sans dossier).
 - Combien coûte un acte de donation (émoluments — ordre de grandeur) vs ce qu'il économise.
 - **La grille "Quelle est ma situation ?"** → 12 cases (marié 1 enfant, marié 2+, recomposée, veuf/veuve, concubin, sans enfant, avec entreprise, avec immobilier locatif, enfant à l'étranger, enfant vulnérable, patrimoine > 1 M€, déjà des donations faites) → *"Votre plan-type détaillé est dans le Plan Transmission Complet"* (pont upsell 1).
-- **Le Plan en 1 Page** : le client remplit ses 3 Verrous.
+- **Le Plan en 1 Page** : le client remplit ses 3 dates.
 - Fin : *"Vous avez maintenant ce que 9 familles sur 10 n'ont jamais : votre chiffre, vos dates, votre plan. Et quand vous voudrez tester « et si je donne la maison ? et si j'attends 71 ans ? » sans refaire trois tableurs — le Générateur le fait en direct et imprime votre dossier. Onglet Outils & Kits."*
 
 ## Bonus (PDF, dans l'espace membre)
@@ -158,7 +166,7 @@ Une vidéo de 15-20 min + un plan-type écrit **par situation** (12) :
 | 11 | Patrimoine > 1 M€ | L'ordre des leviers change ; combinaison AV + démembrement + donation-partage ; quand un CGP devient indispensable |
 | 12 | Déjà des donations faites | Recalculer le compteur ; le rapport à succession ; rééquilibrer |
 
-Chaque plan-type = **une page** : la situation → les 3 verrous dans l'ordre → les 3 pièges → les 3 questions au notaire → "ce que ça change en euros" (exemple chiffré).
+Chaque plan-type = **une page** : la situation → les 3 dates dans l'ordre → les 3 pièges → les 3 questions au notaire → "ce que ça change en euros" (exemple chiffré).
 
 Outils inclus :
 - **Le Simulateur Complet** (multi-héritiers, multi-contrats, démembrement, donations passées)
@@ -232,7 +240,7 @@ Modules vidéo (5 × 8-10 min) + PDF :
 
 > **Zéro produit physique (décision du 6 septembre 2026).** Ce produit était prévu imprimé et expédié. Il devient un PDF prêt à imprimer. Ce qu'on perd : l'objet qui arrive tout fait. Ce qu'on gagne : la marge passe de 45 € à 67 €, il n'y a plus de délai de livraison à tenir, plus de retours à gérer, et le droit de rétractation redevient renonçable.
 
-Contenu : le guide des 7 Erreurs (40 p.) + les fiches à remplir (inventaire, famille, 3 dates, plan en 1 page) + les 12 plans-types en fiches + les questions au notaire + **6 intercalaires à imprimer et découper** (Titres de propriété / Assurance-vie / Donations / Testament / Notaire / Divers) + une page de garde "Pour [prénom du conjoint] — tout est là", personnalisable avant impression.
+Contenu : le manuel de la Méthode (40 p.) + les fiches à remplir (inventaire, famille, 3 dates, plan en 1 page) + les 12 plans-types en fiches + les questions au notaire + **6 intercalaires à imprimer et découper** (Titres de propriété / Assurance-vie / Donations / Testament / Notaire / Divers) + une page de garde "Pour [prénom du conjoint] — tout est là", personnalisable avant impression.
 
 **La mise en page est le produit.** Un PDF vendu 67 € doit être imprimable sans réfléchir : format A4, recto simple, marges qui survivent à une imprimante domestique, aucun aplat de couleur qui vide une cartouche, numérotation claire pour reprendre une page ratée. Prévoir une page 1 « Comment imprimer ce classeur » en trois lignes, et une variante « à donner à l'imprimeur du coin » (≈ 8 € en boutique).
 **Production :** mise en page (Canva ou Affinity, 3 jours — un jour de plus qu'avant, parce que la qualité d'impression n'est plus assurée par un imprimeur professionnel). Coût marginal : 0 €. **Marge : 67 €.**

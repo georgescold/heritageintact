@@ -42,7 +42,7 @@ export function Footer() {
     <footer className="mt-auto border-t border-grey-line bg-grey-bg">
       <div className="wrap-wide py-7 text-[0.85rem] leading-relaxed text-text-soft">
         <p className="mb-4">
-          <strong className="text-text">{BRAND}</strong> est un programme pédagogique
+          <strong className="text-text">{BRAND}</strong> est une méthode pédagogique
           d&apos;information générale sur la transmission de patrimoine en France. Il ne constitue
           ni une consultation juridique, ni un conseil fiscal, financier ou en investissement
           personnalisé, et ne se substitue pas à l&apos;intervention d&apos;un notaire, d&apos;un
@@ -53,11 +53,23 @@ export function Footer() {
         <div className="mb-4">
           <MetaDisclaimer />
         </div>
-        <nav className="flex flex-wrap gap-x-5 gap-y-2">
-          <Link href="/mentions-legales">Mentions légales</Link>
-          <Link href="/cgv">Conditions générales de vente</Link>
-          <Link href="/confidentialite">Confidentialité</Link>
-          <a href={`mailto:${CONTACT_EMAIL}`}>Nous contacter</a>
+        {/* Cibles de 44 px minimum : c'est la recommandation d'accessibilité,
+            et sur ce site elle n'est pas théorique. Le lecteur a 65 ans ou plus,
+            il lit sur téléphone, et il cherche les CGV parce qu'il se méfie —
+            c'est le pire moment pour lui faire rater un lien de 25 px. */}
+        <nav className="flex flex-wrap items-center gap-x-4">
+          {[
+            { href: "/mentions-legales", t: "Mentions légales" },
+            { href: "/cgv", t: "Conditions générales de vente" },
+            { href: "/confidentialite", t: "Confidentialité" },
+          ].map((l) => (
+            <Link key={l.href} href={l.href} className="flex min-h-[44px] items-center">
+              {l.t}
+            </Link>
+          ))}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="flex min-h-[44px] items-center">
+            Nous contacter
+          </a>
         </nav>
         <p className="mt-4">
           © {new Date().getFullYear()} {BRAND}. Tous droits réservés.
@@ -102,19 +114,100 @@ export function EphemeralStorageBanner() {
   );
 }
 
-/** Ligne de réassurance paiement, style e-commerce classique. */
+/**
+ * Ligne de réassurance paiement.
+ *
+ * Les marques sont dessinées en SVG plutôt qu'écrites en toutes lettres :
+ * un lecteur de 70 ans ne lit pas « Mastercard », il **reconnaît** les deux
+ * disques rouge et orange. C'est un repère visuel, pas une information, et
+ * c'est exactement ce qui rassure sur un site qu'on ne connaît pas.
+ * Tout est tracé en local : aucune image externe, rien à charger.
+ */
+function CarteVisa() {
+  return (
+    <svg viewBox="0 0 48 30" className="h-[26px] w-auto" role="img" aria-label="Visa">
+      <rect width="48" height="30" rx="3" fill="#fff" stroke="#d5dae1" />
+      <text
+        x="24"
+        y="21"
+        textAnchor="middle"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="14"
+        fontStyle="italic"
+        fontWeight="bold"
+        fill="#1a1f71"
+      >
+        VISA
+      </text>
+    </svg>
+  );
+}
+
+function CarteMastercard() {
+  return (
+    <svg viewBox="0 0 48 30" className="h-[26px] w-auto" role="img" aria-label="Mastercard">
+      <rect width="48" height="30" rx="3" fill="#fff" stroke="#d5dae1" />
+      <circle cx="20" cy="15" r="8.5" fill="#eb001b" />
+      <circle cx="28" cy="15" r="8.5" fill="#f79e1b" fillOpacity="0.9" />
+      <path d="M24 8.7a8.5 8.5 0 0 0 0 12.6 8.5 8.5 0 0 0 0-12.6Z" fill="#ff5f00" />
+    </svg>
+  );
+}
+
+function CarteCb() {
+  return (
+    <svg viewBox="0 0 48 30" className="h-[26px] w-auto" role="img" aria-label="Carte Bancaire">
+      <rect width="48" height="30" rx="3" fill="#fff" stroke="#d5dae1" />
+      <rect x="5" y="7" width="38" height="16" rx="2" fill="#0b4ea2" />
+      <text
+        x="24"
+        y="19"
+        textAnchor="middle"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="11"
+        fontWeight="bold"
+        fill="#fff"
+      >
+        CB
+      </text>
+    </svg>
+  );
+}
+
+function Cadenas() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[20px] w-[20px]" aria-hidden focusable="false">
+      <path
+        d="M7 10V7.5a5 5 0 0 1 10 0V10"
+        fill="none"
+        stroke="#1a7f4b"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
+      <rect x="4" y="10" width="16" height="11" rx="2" fill="#1a7f4b" />
+      <circle cx="12" cy="15" r="1.7" fill="#fff" />
+      <rect x="11.2" y="15" width="1.6" height="3.4" fill="#fff" />
+    </svg>
+  );
+}
+
 export function TrustRow() {
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.85rem] text-text-soft">
-      <span>
-        <span aria-hidden>🔒</span> Paiement sécurisé
-      </span>
-      <span className="border border-grey-line bg-white px-2 py-0.5 font-bold text-blue">CB</span>
-      <span className="border border-grey-line bg-white px-2 py-0.5 font-bold text-blue">Visa</span>
-      <span className="border border-grey-line bg-white px-2 py-0.5 font-bold text-blue">
-        Mastercard
-      </span>
-      <span>Garantie 30 jours</span>
+    <div className="flex flex-col items-center gap-2">
+      <p className="flex items-center gap-2 text-[1.02rem] font-bold text-green">
+        <Cadenas />
+        Paiement 100&nbsp;% sécurisé
+      </p>
+      <div className="flex items-center gap-2">
+        <CarteCb />
+        <CarteVisa />
+        <CarteMastercard />
+      </div>
+      <p className="text-center text-[0.88rem] text-text-soft">
+        Paiement traité par Stripe. Nous ne voyons jamais votre numéro de carte.
+        <br />
+        Garantie 30 jours, sans justification.
+      </p>
     </div>
   );
 }

@@ -139,7 +139,7 @@ ${ps ? `      <p style="margin:22px 0 0;padding-top:16px;border-top:1px solid #e
     <tr><td style="padding:16px 24px;background:#f0f3f6;font:13px/1.6 Arial,Helvetica,sans-serif;color:#555555;">
       Vous recevez ce message parce que vous avez demandé la vidéo sur heritageintact.fr.<br>
       <a href="${desinscription}" style="color:#0b5aa8;">Me désinscrire en un clic</a> — c'est immédiat et définitif.<br><br>
-      Héritage Intact est un programme pédagogique d'information générale. Il ne constitue ni une
+      Héritage Intact est une méthode pédagogique d'information générale. Elle ne constitue ni une
       consultation juridique, ni un conseil fiscal personnalisé.
     </td></tr>
   </table>
