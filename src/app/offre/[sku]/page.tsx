@@ -23,11 +23,19 @@ import type { Ecran } from "@/lib/qualification";
 
 const OFFRES: Record<
   string,
-  { ecran: Ecran; h1: string; contenu: string[]; visuel: string; seul: ProductSku }
+  {
+    ecran: Ecran;
+    h1: string;
+    contenu: string[];
+    visuel: string;
+    visuelSeul: string;
+    seul: ProductSku;
+  }
 > = {
   pack2: {
     ecran: "plan-notaire",
-    visuel: "plan-familial",
+    visuel: "pack2",
+    visuelSeul: "plan-familial",
     seul: "upsell1",
     h1: "Le plan de votre situation, et de quoi vous en servir dès demain.",
     contenu: [
@@ -41,7 +49,8 @@ const OFFRES: Record<
   },
   pack3: {
     ecran: "pack-notaire",
-    visuel: "dossier-complet",
+    visuel: "pack3",
+    visuelSeul: "dossier-complet",
     seul: "pack1",
     h1: "Vos deux urgences traitées ensemble, et de quoi vous en servir dès demain.",
     contenu: [
@@ -59,7 +68,8 @@ const OFFRES: Record<
   },
   pack4: {
     ecran: "assurance-vie-notaire",
-    visuel: "assurance-vie",
+    visuel: "pack4",
+    visuelSeul: "assurance-vie",
     seul: "upsell2",
     h1: "Votre contrat relu, et de quoi préparer le rendez-vous qui suivra.",
     contenu: [
@@ -146,7 +156,7 @@ export default async function OffrePage({
               titre: `${PRODUCTS[offre.seul].name} seul`,
               contenu: "Sans les cinq feuilles à remplir avant votre rendez-vous chez le notaire.",
               prix: appliquerPalier(PRODUCTS[offre.seul].price, palier.remise),
-              visuel: offre.visuel,
+              visuel: offre.visuelSeul,
               href: `/offre/${sku}?o=${encodeURIComponent(order.id)}`,
             },
             {
