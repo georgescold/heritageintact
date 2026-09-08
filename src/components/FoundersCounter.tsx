@@ -80,8 +80,9 @@ export async function FoundersCounter() {
       </p>
 
       <p className="mt-1.5 text-[1.02rem] leading-snug">
-        Ensuite, le prix passe à <strong>{euros(PRIX_APRES_FONDATEURS)}</strong> et n&apos;en
-        redescend plus. Les places déjà prises ne se rouvrent pas.
+        Ensuite, l&apos;offre s&apos;arrête et le prix passe à{" "}
+        <strong>{euros(PRIX_APRES_FONDATEURS)}</strong>, et n&apos;en redescend plus. Les places
+        déjà prises ne se rouvrent pas.
         {count > 0 ? (
           <>
             {" "}

@@ -15,12 +15,21 @@ const stripePromise = PK ? loadStripe(PK) : null;
 export function CheckoutForm({
   defaults,
   testMode,
+  prixFront,
 }: {
   defaults: { firstName?: string; email?: string };
   testMode: boolean;
+  /**
+   * Le prix de la Méthode pour CE visiteur, calculé par le serveur à partir
+   * de ses cookies (`lib/prix.ts`). Il valait `PRODUCTS.front.price` en dur :
+   * le bouton annonçait alors 27 € à quelqu'un que Stripe allait débiter de
+   * 89 €. Un montant affiché qui n'est pas celui débité n'est pas un détail
+   * d'affichage, c'est une information tarifaire fausse.
+   */
+  prixFront: number;
 }) {
   const [bump, setBump] = useState(true);
-  const total = PRODUCTS.front.price + (bump ? PRODUCTS.bump.price : 0);
+  const total = prixFront + (bump ? PRODUCTS.bump.price : 0);
 
   // Sans clé publique, on garde le parcours simulé : aucun appel à Stripe.
   // Inner ne doit alors appeler AUCUN hook Stripe, d'où le passage par props.

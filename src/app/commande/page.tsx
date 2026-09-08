@@ -6,8 +6,10 @@ import { ExitPopup } from "@/components/ExitPopup";
 import { PixelEvent } from "@/components/MetaPixel";
 import { ButtonLink, Guarantee, FAQ, Panel } from "@/components/ui";
 import { FoundersCounter } from "@/components/FoundersCounter";
+import { BandeauRattrapage } from "@/components/Rattrapage";
 import { UrgencyUnderButton } from "@/components/Urgency";
 import { isTestMode, stripeEnModeTest } from "@/lib/config";
+import { prixFront } from "@/lib/prix";
 
 export const metadata: Metadata = { title: "Votre accès immédiat" };
 
@@ -19,6 +21,10 @@ export default async function CheckoutPage() {
     if (raw) defaults = JSON.parse(raw);
   } catch {}
 
+  // Même source que `prepareCheckout` : le prix affiché ne peut pas
+  // diverger du prix débité.
+  const prix = prixFront(jar.get("hi_flash")?.value, jar.get("hi_rattrapage")?.value);
+
   return (
     <>
       <PixelEvent name="InitiateCheckout" params={{ value: 27, currency: "EUR" }} />
@@ -27,9 +33,12 @@ export default async function CheckoutPage() {
       <main className="flex-1">
         <div className="wrap-wide py-6 sm:py-8">
           <h1 className="mb-1 text-[1.5rem] sm:text-[1.9rem]">
-            Votre accès immédiat aux 7 Erreurs et aux 3 décisions
+            Votre accès immédiat à la Méthode Héritage Intact
           </h1>
-          <p className="mb-4 text-text-soft">Deux minutes. Ce soir, vous avez votre chiffre.</p>
+          <p className="mb-4 text-text-soft">
+            Les 8 étapes qui évitent les 7 erreurs. Deux minutes pour y accéder, et ce soir vous
+            avez votre chiffre.
+          </p>
 
           {/*
             L'urgence AVANT le formulaire, pas après.
@@ -40,12 +49,16 @@ export default async function CheckoutPage() {
             déjà prise ou déjà perdue. Les deux compteurs sont réels — les 500
             places sont en base, le 31 décembre est voté.
           */}
+          {/* Quelqu'un qui vient d'accepter les −30 % doit retrouver sa
+              remise ici, en haut, avant le formulaire. Sinon il arrive sur un
+              prix qui ne dit nulle part ce qu'il vient de décider. */}
           <div className="mb-5 space-y-3">
+            <BandeauRattrapage />
             <FoundersCounter />
             <UrgencyUnderButton />
           </div>
 
-          <CheckoutForm defaults={defaults} testMode={isTestMode} />
+          <CheckoutForm defaults={defaults} testMode={isTestMode} prixFront={prix} />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[3fr_2fr] lg:gap-8">
             <div className="space-y-6">
@@ -60,7 +73,7 @@ export default async function CheckoutPage() {
                     },
                     {
                       q: "Est-ce un conseil personnalisé ?",
-                      a: "Non : c'est un programme pédagogique. Pour un conseil sur votre situation, le Dossier Notaire vous prépare au rendez-vous avec votre notaire.",
+                      a: "Non : c'est une méthode pédagogique. Pour un conseil sur votre situation, le Dossier Notaire vous prépare au rendez-vous avec votre notaire.",
                     },
                     {
                       q: "Je ne suis pas à l'aise avec le paiement en ligne.",
@@ -72,7 +85,7 @@ export default async function CheckoutPage() {
                     },
                     {
                       q: "Et si la loi change ?",
-                      a: "La Règle de Mise à Jour est incluse, et les mises à jour du programme sont à vie.",
+                      a: "La Règle de Mise à Jour est incluse, et les mises à jour de la Méthode sont à vie.",
                     },
                   ]}
                 />
@@ -89,13 +102,23 @@ export default async function CheckoutPage() {
       </main>
       <Footer />
 
-      <ExitPopup
-        storageKey="bdc"
-        title="Vous hésitez ? C'est normal. Voici le module 1 en accès libre."
-      >
-        <p>Regardez « Je verrai ça plus tard », le compteur des 15 ans, puis décidez.</p>
-        <ButtonLink href="/module-1" variant="blue">
-          Voir le module 1
+      <ExitPopup storageKey="bdc" title="Ce que vous risquez si vous fermez cette page">
+        <ul className="space-y-2 text-[1.03rem]">
+          {[
+            "Vous êtes à deux minutes de connaître votre chiffre. En fermant, vous repartez sans.",
+            "Le prix affiché est celui de votre compteur. Il ne se rouvre pas.",
+            "Rien n'est engagé : garantie 30 jours, un email suffit.",
+          ].map((t) => (
+            <li key={t} className="flex gap-2 border-l-4 border-red bg-red-bg p-3">
+              <span aria-hidden className="shrink-0 font-bold text-red">
+                ✕
+              </span>
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+        <ButtonLink href="/commande" variant="blue">
+          Reprendre ma commande
         </ButtonLink>
       </ExitPopup>
     </>

@@ -70,20 +70,40 @@ export const PRODUCTS: Record<ProductSku, Product> = {
    * 429 € est le total des lignes du packaging, à l'euro près. C'est le seul
    * ancrage défendable : chaque euro est justifié par une ligne à l'écran.
    *
-   * Les 67 € restent — mais à leur vraie place : le prix APRÈS les places
-   * fondatrices (`PRIX_APRES_FONDATEURS`), pas la valeur du produit.
+   * Les 67 € ont ensuite disparu : le prix après les places fondatrices est
+   * aligné sur celui d'après le compteur, soit `PRIX_APRES_FLASH`. Un seul
+   * prix « d'après » dans tout le funnel.
    */
   front: {
     sku: "front",
-    name: "Les 7 Erreurs qui Offrent Votre Héritage à l'État",
-    short: "Les 7 Erreurs",
+    /**
+     * ⚠️ LE PRODUIT S'APPELLE « LA MÉTHODE », ET RIEN D'AUTRE.
+     *
+     * Il s'est appelé « Les 7 Erreurs qui Offrent Votre Héritage à l'État »,
+     * et la page parlait tantôt de « programme », tantôt de « guide ». Trois
+     * mots pour une seule chose : le lecteur ne sait plus ce qu'il achète.
+     *
+     * Les 7 erreurs ne sont plus le nom du produit — elles sont ce que la
+     * Méthode permet d'éviter. C'est une promesse, pas une étiquette, et ça
+     * change le registre : un guide s'achète et se lit, une méthode se suit.
+     * Un lecteur de 70 ans qui a peur de mal faire veut un protocole — des
+     * étapes, dans l'ordre, sans rien à improviser.
+     *
+     * Ne jamais réécrire « programme » ni « guide » pour désigner le produit.
+     */
+    name: "La Méthode Héritage Intact",
+    short: "La Méthode",
     price: 27,
     anchor: 429,
   },
   bump: {
     sku: "bump",
-    name: "Le Dossier Notaire Prêt-à-Signer",
-    short: "Dossier Notaire",
+    /*
+     * « Prêt-à-signer » promettait ce que le produit ne fait pas : on ne signe
+     * rien, on apporte. Le nom dit maintenant l'usage, et rien d'autre.
+     */
+    name: "Le Dossier à apporter chez votre notaire",
+    short: "Le Dossier notaire",
     price: 17,
     anchor: 47,
   },
@@ -117,15 +137,25 @@ export const PRODUCTS: Record<ProductSku, Product> = {
    */
   upsell1: {
     sku: "upsell1",
-    name: "Le Plan Transmission Complet : les 12 situations familiales",
-    short: "Plan Transmission Complet",
+    /*
+     * « Plan Transmission Complet » est du vocabulaire de conseiller. « Le Plan
+     * adapté à votre famille » dit la même chose avec des mots que l'acheteur
+     * emploie lui-même — et « votre famille » fait le travail de « sur mesure »
+     * sans le mot.
+     */
+    name: "Le Plan adapté à votre famille",
+    short: "Le Plan familial",
     price: 297,
     anchor: 497,
   },
   upsell2: {
     sku: "upsell2",
-    name: "Le Kit Assurance-Vie",
-    short: "Kit Assurance-Vie",
+    /*
+     * « Kit » ne dit ni ce qu'on reçoit ni ce qu'on en fait. Le nom porte
+     * désormais la promesse complète, durée comprise.
+     */
+    name: "Votre assurance-vie, vérifiée en 30 minutes",
+    short: "L'Assurance-vie",
     price: 97,
     anchor: 197,
   },
@@ -152,11 +182,6 @@ export const VARIANTES: Record<string, string> = {
 };
 
 /**
- * Le prix une fois les places fondatrices épuisées.
- * À ne pas confondre avec l'ancrage : 429 € est ce que vaut le programme,
- * 67 € est ce qu'il coûtera demain.
- */
-/**
  * LES DEUX SEULS APPELS À L'ACTION DU SITE.
  *
  * Il y en avait dix, tous différents. Trois problèmes : le lecteur ne retient
@@ -177,9 +202,9 @@ export const VARIANTES: Record<string, string> = {
  */
 export const CTA = {
   /** Page de vente, haut : on donne envie. */
-  benefice: "Calculez votre facture maintenant",
+  benefice: "Accéder à la méthode",
   /** Page de vente, bas : après l'échéance, il ne reste qu'à décider. */
-  urgence: `Réservez votre place à ${euros(PRODUCTS.front.price)}`,
+  urgence: "Accéder à la méthode",
   /**
    * Landing page : l'action n'est pas la même — on ne vend rien, on débloque.
    * Un seul libellé, partout, y compris dans le pop-up de sortie.
@@ -195,7 +220,68 @@ export const CTA = {
   optin: "Voir laquelle se ferme en premier",
 } as const;
 
-export const PRIX_APRES_FONDATEURS = 67;
+/**
+ * Durée de l'offre flash de la page de vente, en minutes.
+ *
+ * Le compteur démarre quand le visiteur quitte la vidéo (cf.
+ * `components/OffreFlash.tsx`), il est persisté en cookie, et il est
+ * **opposé au serveur** : passé ce délai, `prepareCheckout` facture
+ * réellement `PRIX_APRES_FLASH`. C'est ce qui le distingue d'un faux
+ * compteur, interdit par l'art. L121-2 du code de la consommation.
+ */
+export const FLASH_MINUTES = 10;
+
+/**
+ * Le prix de la Méthode une fois l'offre flash expirée.
+ *
+ * ⚠️ Ce n'est PAS `PRODUCTS.front.anchor`. Les 429 € sont la valeur du
+ * contenu — le total des lignes du packaging, barré à l'écran — et le
+ * Méthode n'est jamais vendue à ce prix. Or le compteur débite réellement
+ * ce montant-ci quand il tombe à zéro : il doit donc être un prix qu'on
+ * pratique vraiment, sans quoi l'annonce serait mensongère (art. L121-2).
+ * 89 € est ce prix.
+ */
+export const PRIX_APRES_FLASH = 89;
+
+/** La remise de rattrapage, en pourcentage, pour qui a laissé filer le compteur. */
+export const REDUCTION_RATTRAPAGE = 30;
+
+/**
+ * Le prix de rattrapage : 89 € moins 30 %, arrondi à l'euro inférieur.
+ *
+ * 89 x 0,70 = 62,30 €. On facture 62 €, jamais 63 : quand on annonce « −30 % »,
+ * l'arrondi doit toujours aller dans le sens du client, sinon le pourcentage
+ * affiché est supérieur à la remise réelle. Ici la remise vaut 30,3 %.
+ * (`euros()` n'affiche pas les centimes : un prix à virgule serait de toute
+ * façon tronqué à l'écran et ne correspondrait plus au débit.)
+ *
+ * ⚠️ Ce prix n'est PAS une seconde chance permanente. Il n'est proposé
+ * qu'une fois, au clic qui suit l'expiration du compteur, et le refus est
+ * définitif (cookie `hi_rattrapage`). Sans cette règle, l'annonce « passé ce
+ * délai, la Méthode repasse à 89 € » deviendrait fausse, et c'est exactement
+ * ce que l'art. L121-2 sanctionne.
+ */
+export const PRIX_RATTRAPAGE = Math.floor((PRIX_APRES_FLASH * (100 - REDUCTION_RATTRAPAGE)) / 100);
+
+/**
+ * Le prix une fois les places fondatrices épuisées.
+ *
+ * ⚠️ C'est **le même nombre** que `PRIX_APRES_FLASH`, et l'alias est
+ * délibéré : les deux raretés du funnel — le compteur de 10 minutes sur la
+ * page de vente, les {FOUNDERS_CAP} places sur le bon de commande — doivent
+ * retomber sur le même prix.
+ *
+ * Il valait 67 € jusqu'ici, et c'était un piège : quelqu'un qui laissait
+ * expirer son compteur voyait 89 €, puis arrivait sur le bon de commande où
+ * le compteur de places annonçait 67 € — moins cher que ce qu'il venait de
+ * perdre. Deux prix « d'après » qui se contredisent ne rendent aucune des
+ * deux raretés crédible.
+ *
+ * Une seule idée à retenir pour le lecteur : la Méthode vaut 89 €, elle est
+ * à 27 € maintenant. À ne pas confondre avec l'ancrage à 429 €, qui est la
+ * valeur du contenu acheté à l'unité et n'est jamais un prix pratiqué.
+ */
+export const PRIX_APRES_FONDATEURS = PRIX_APRES_FLASH;
 
 /**
  * Places au prix fondateur. **Le compteur est réel** : il lit le nombre de
@@ -205,7 +291,7 @@ export const PRIX_APRES_FONDATEURS = 67;
  * « Il reste 500 places » ne crée aucune urgence — personne ne se dépêche pour
  * une place sur cinq cents. « Il reste 20 places » en crée une, et la
  * différence est qu'elle est **vraie** : le compteur descend pour de bon à
- * chaque vente, et le prix passera réellement à 67 € à la 20ᵉ.
+ * chaque vente, et le prix passera réellement à 89 € à la 20ᵉ.
  *
  * Une rareté réelle et petite est plus forte qu'une rareté large — et elle ne
  * se retourne pas contre la marque le jour où quelqu'un recharge la page.

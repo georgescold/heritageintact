@@ -12,6 +12,7 @@ import {
   markOrderPaid,
 } from "@/lib/db";
 import { isTestMode, PRODUCTS, type ProductSku } from "@/lib/config";
+import { prixFront } from "@/lib/prix";
 import { stripe, toCents } from "@/lib/stripe";
 import { envoyerLivraison } from "@/lib/email";
 
@@ -86,7 +87,7 @@ export async function prepareCheckout(input: {
     return {
       ok: false,
       error:
-        "Pour accéder immédiatement au programme, cochez la case concernant le droit de rétractation.",
+        "Pour accéder immédiatement à la Méthode, cochez la case concernant le droit de rétractation.",
     };
   }
 
@@ -102,7 +103,13 @@ export async function prepareCheckout(input: {
   // Mode test simulé : aucune clé Stripe, aucun débit.
   if (!stripe) return { ok: true, clientSecret: "", orderId: order.id };
 
-  const amount = PRODUCTS.front.price + (input.withBump ? PRODUCTS.bump.price : 0);
+  // Le prix dû par CE visiteur, même fonction que celle qui l'affiche sur le
+  // bon de commande. C'est la seule façon de garantir que l'écran et le débit
+  // disent la même chose.
+  const jar = await cookies();
+  const amount =
+    prixFront(jar.get("hi_flash")?.value, jar.get("hi_rattrapage")?.value) +
+    (input.withBump ? PRODUCTS.bump.price : 0);
 
   try {
     const customer = await stripe.customers.create({

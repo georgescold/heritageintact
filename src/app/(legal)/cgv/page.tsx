@@ -4,7 +4,10 @@ import {
   CONTACT_EMAIL,
   FOUNDERS_CAP,
   LEGAL,
+  FLASH_MINUTES,
   PRIX_APRES_FONDATEURS,
+  PRIX_RATTRAPAGE,
+  REDUCTION_RATTRAPAGE,
   PRODUCTS,
   euros,
 } from "@/lib/config";
@@ -22,7 +25,7 @@ export default function CGV() {
       <p>
         Les présentes conditions régissent la vente, par {LEGAL.operatorName} ({LEGAL.legalForm},
         SIRET {LEGAL.siret}), sous le nom commercial « {BRAND} », de contenus numériques
-        pédagogiques accessibles en ligne : programmes vidéo, documents téléchargeables et outils de
+        pédagogiques accessibles en ligne : méthodes vidéo, documents téléchargeables et outils de
         calcul.
       </p>
 
@@ -31,11 +34,32 @@ export default function CGV() {
         <li>
           {/* ⚠️ Le prix ultérieur est PRIX_APRES_FONDATEURS, jamais l'ancrage.
               L'ancrage (429 €) est la valeur du contenu ; le prix ultérieur
-              (67 €) est ce qui sera réellement facturé après les places
-              fondatrices. Les confondre dans un document contractuel serait
-              une information tarifaire fausse. */}
-          {PRODUCTS.front.name} : {euros(PRODUCTS.front.price)} TTC (prix fondateur, limité aux{" "}
-          {FOUNDERS_CAP} premiers membres ; prix ultérieur : {euros(PRIX_APRES_FONDATEURS)} TTC)
+              ({euros(PRIX_APRES_FONDATEURS)}) est ce qui sera réellement
+              facturé. Les confondre dans un document contractuel serait une
+              information tarifaire fausse.
+
+              Et les DEUX conditions du prix fondateur doivent être écrites
+              ici, pas seulement les places : depuis l'ajout du compteur de
+              {" "}{FLASH_MINUTES} minutes, un acheteur peut perdre le prix
+              fondateur par le temps aussi bien que par le rang. Une condition
+              tarifaire qui s'applique réellement et qui ne figure pas aux CGV
+              n'est pas opposable. */}
+          {PRODUCTS.front.name} : {euros(PRODUCTS.front.price)} TTC (offre de lancement), sous
+          réserve des deux conditions cumulatives suivantes : l&apos;offre est réservée aux{" "}
+          {FOUNDERS_CAP} premiers membres, et elle est valable {FLASH_MINUTES} minutes à compter du
+          moment où elle vous est présentée sur la page de vente. Au-delà de l&apos;une ou
+          l&apos;autre de ces limites, le prix est de {euros(PRIX_APRES_FONDATEURS)} TTC. Le délai
+          de {FLASH_MINUTES} minutes court une seule fois et n&apos;est pas réinitialisé par un
+          rechargement de la page.
+        </li>
+        <li>
+          {/* ⚠️ Le rattrapage change le prix réellement débité : il doit donc
+              figurer ici, avec son caractère unique. C'est aussi ce
+              caractère unique qui empêche l'annonce du prix plein
+              d'être trompeuse. */}
+          À l&apos;expiration du délai ci-dessus, une remise de {REDUCTION_RATTRAPAGE} % peut vous
+          être proposée une fois, portant le prix à {euros(PRIX_RATTRAPAGE)} TTC. Elle n&apos;est
+          appliquée que si vous l&apos;acceptez expressément, et le refus est définitif.
         </li>
         <li>
           {PRODUCTS.bump.name} : {euros(PRODUCTS.bump.price)} TTC
