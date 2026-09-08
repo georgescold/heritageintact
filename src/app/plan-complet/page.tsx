@@ -56,6 +56,10 @@ export default async function Upsell1Page({
       orderId={order.id}
       sku="upsell1"
       prix={prix}
+      visuel={{
+        src: "/img/produits/plan-familial.jpg",
+        alt: "Les 12 plans-types imprimés, posés sur une table.",
+      }}
       next={etape.suivant}
       kicker="Attendez : votre commande est validée."
       h1={

@@ -20,9 +20,10 @@ import type { Ecran } from "@/lib/qualification";
  * cette démonstration ne se paramètre pas.
  */
 
-const OFFRES: Record<string, { ecran: Ecran; h1: string; contenu: string[] }> = {
+const OFFRES: Record<string, { ecran: Ecran; h1: string; contenu: string[]; visuel: string }> = {
   pack2: {
     ecran: "plan-notaire",
+    visuel: "plan-familial",
     h1: "Le plan de votre situation, et de quoi vous en servir dès demain.",
     contenu: [
       "12 plans-types, une page par situation familiale|197 €",
@@ -35,6 +36,7 @@ const OFFRES: Record<string, { ecran: Ecran; h1: string; contenu: string[] }> = 
   },
   pack3: {
     ecran: "pack-notaire",
+    visuel: "dossier-complet",
     h1: "Vos deux urgences traitées ensemble, et de quoi vous en servir dès demain.",
     contenu: [
       "12 plans-types, une page par situation familiale|197 €",
@@ -51,6 +53,7 @@ const OFFRES: Record<string, { ecran: Ecran; h1: string; contenu: string[] }> = 
   },
   pack4: {
     ecran: "assurance-vie-notaire",
+    visuel: "assurance-vie",
     h1: "Votre contrat relu, et de quoi préparer le rendez-vous qui suivra.",
     contenu: [
       "L'audit de votre contrat en 30 minutes : la grille notée sur 10|67 €",
@@ -119,6 +122,10 @@ export default async function OffrePage({
         return { label, value };
       })}
       prix={produit.price - credit}
+      visuel={{
+        src: `/img/produits/${offre.visuel}.jpg`,
+        alt: "Les feuilles de cette offre, imprimées et posées sur une table.",
+      }}
       declineText="Non merci, je continue sans"
     >
       {credit > 0 && (

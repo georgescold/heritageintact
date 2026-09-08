@@ -68,6 +68,10 @@ export default async function PackPage({
       orderId={order.id}
       sku="pack1"
       prix={prix}
+      visuel={{
+        src: "/img/produits/dossier-complet.jpg",
+        alt: "Les deux ensembles de feuilles, réunis par un bandeau.",
+      }}
       next={etape.suivant}
       kicker="Attendez : votre commande est validée."
       h1={

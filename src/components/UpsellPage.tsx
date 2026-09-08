@@ -4,6 +4,7 @@ import { acceptUpsell } from "@/app/actions";
 import { PRODUCTS, euros, type ProductSku } from "@/lib/config";
 import { Header, Footer } from "./Chrome";
 import { VideoEmbed } from "./VideoEmbed";
+import Image from "next/image";
 import { Button, ValueStack } from "./ui";
 
 /**
@@ -25,6 +26,7 @@ export function UpsellPage({
   declineText,
   paymentFailed = false,
   prix,
+  visuel,
 }: {
   step: 2 | 3;
   orderId: string;
@@ -48,6 +50,16 @@ export function UpsellPage({
    * n'est pas un détail d'affichage, c'est une information tarifaire fausse.
    */
   prix?: number;
+  /**
+   * Le visuel du produit, sous /img/produits. Du PAPIER photographié, jamais
+   * un mockup 3D : l'acheteur a 75 ans, et ce qui le rassure est un objet
+   * qu'il pourrait toucher. Un rendu brillant sent la publicité, et sur cette
+   * cible la publicité est un signal de méfiance, pas de qualité.
+   *
+   * ⚠️ Aucun texte dans l'image : les modèles déforment les accents français,
+   * et une faute sur un visuel produit se lit comme une arnaque.
+   */
+  visuel?: { src: string; alt: string };
   declineText: string;
   /** Le débit de l'offre précédente a échoué : on prévient sans inquiéter. */
   paymentFailed?: boolean;
@@ -83,6 +95,23 @@ export function UpsellPage({
           <div className="mt-6 space-y-4">{children}</div>
 
           <h2 className="mb-3 mt-8 text-[1.3rem]">Ce que vous recevez</h2>
+          {visuel && (
+            <figure className="mb-5">
+              <div className="relative aspect-square w-full max-w-[22rem] overflow-hidden border border-grey-line">
+                <Image
+                  src={visuel.src}
+                  alt={visuel.alt}
+                  fill
+                  sizes="(min-width: 640px) 22rem, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-2 text-[0.9rem] text-text-soft">
+                Tout se télécharge et s’imprime chez vous. Rien ne vous est expédié.
+              </figcaption>
+            </figure>
+          )}
+
           <ValueStack
             rows={rows}
             total={euros(totalValue)}

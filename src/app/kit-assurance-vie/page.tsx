@@ -52,6 +52,10 @@ export default async function Upsell2Page({
       orderId={order.id}
       sku="upsell2"
       prix={prix}
+      visuel={{
+        src: "/img/produits/assurance-vie.jpg",
+        alt: "Un contrat d’assurance-vie ouvert à côté de la grille d’audit à remplir.",
+      }}
       next={etape.suivant}
       kicker="Dernière chose avant votre espace."
       h1={
