@@ -121,7 +121,13 @@ export type Ecran =
   /** Les trois écrans qui offrent le Dossier notaire à qui l'a décoché. */
   | "pack-notaire"
   | "plan-notaire"
-  | "assurance-vie-notaire";
+  | "assurance-vie-notaire"
+  /**
+   * LE REPLI. Proposé à qui refuse Le Plan à 297 € : le Simulateur seul, qui
+   * en est une pièce, à 147 €. Ce n'est pas un pack, c'est un sous-ensemble
+   * honnête — celui qui ne veut pas des 12 situations peut vouloir le calcul.
+   */
+  | "simulateur";
 
 /**
  * LE CODE S'IL PORTE UNE INFORMATION, `undefined` SINON. Point d'entrée unique
@@ -330,6 +336,7 @@ export const ROUTE: Record<Ecran, string> = {
   "pack-notaire": "/offre/pack3",
   "plan-notaire": "/offre/pack2",
   "assurance-vie-notaire": "/offre/pack4",
+  simulateur: "/simulateur-seul",
 };
 
 /**
@@ -347,6 +354,7 @@ export const LIBELLE: Record<Ecran, string> = {
   "pack-notaire": "Votre dossier",
   "plan-notaire": "Votre plan",
   "assurance-vie-notaire": "Votre assurance-vie",
+  simulateur: "Le calcul",
 };
 
 /**

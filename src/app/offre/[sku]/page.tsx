@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
+import { ChoixOffre } from "@/components/ChoixOffre";
 import { UpsellPage } from "@/components/UpsellPage";
 import { PRODUCTS, VIDEO, euros, type ProductSku } from "@/lib/config";
 import { getOrder } from "@/lib/db";
-import { creditDe, palierDe, resteEnClair } from "@/lib/palier";
+import { appliquerPalier, creditDe, palierDe, resteEnClair } from "@/lib/palier";
 import { etapeTunnel } from "@/lib/tunnel";
 import type { Ecran } from "@/lib/qualification";
 
@@ -20,10 +21,14 @@ import type { Ecran } from "@/lib/qualification";
  * cette démonstration ne se paramètre pas.
  */
 
-const OFFRES: Record<string, { ecran: Ecran; h1: string; contenu: string[]; visuel: string }> = {
+const OFFRES: Record<
+  string,
+  { ecran: Ecran; h1: string; contenu: string[]; visuel: string; seul: ProductSku }
+> = {
   pack2: {
     ecran: "plan-notaire",
     visuel: "plan-familial",
+    seul: "upsell1",
     h1: "Le plan de votre situation, et de quoi vous en servir dès demain.",
     contenu: [
       "12 plans-types, une page par situation familiale|197 €",
@@ -37,6 +42,7 @@ const OFFRES: Record<string, { ecran: Ecran; h1: string; contenu: string[]; visu
   pack3: {
     ecran: "pack-notaire",
     visuel: "dossier-complet",
+    seul: "pack1",
     h1: "Vos deux urgences traitées ensemble, et de quoi vous en servir dès demain.",
     contenu: [
       "12 plans-types, une page par situation familiale|197 €",
@@ -54,6 +60,7 @@ const OFFRES: Record<string, { ecran: Ecran; h1: string; contenu: string[]; visu
   pack4: {
     ecran: "assurance-vie-notaire",
     visuel: "assurance-vie",
+    seul: "upsell2",
     h1: "Votre contrat relu, et de quoi préparer le rendez-vous qui suivra.",
     contenu: [
       "L'audit de votre contrat en 30 minutes : la grille notée sur 10|67 €",
@@ -128,6 +135,35 @@ export default async function OffrePage({
       }}
       declineText="Non merci, je continue sans"
     >
+      {/* LE CHOIX À DEUX LIGNES, en tête : c'est lui qui produit le déclic.
+          La ligne du haut contient moins et coûte plus — le lecteur relit,
+          cherche l'erreur, ne la trouve pas, et coche celle du bas. */}
+      <div className="mb-5">
+        <ChoixOffre
+          options={[
+            {
+              sku: offre.seul,
+              titre: `${PRODUCTS[offre.seul].name} seul`,
+              contenu: "Sans les cinq feuilles à remplir avant votre rendez-vous chez le notaire.",
+              prix: appliquerPalier(PRODUCTS[offre.seul].price, palier.remise),
+              visuel: offre.visuel,
+              href: `/offre/${sku}?o=${encodeURIComponent(order.id)}`,
+            },
+            {
+              sku: sku as ProductSku,
+              titre: produit.name,
+              contenu:
+                "Tout ce qui précède, plus les cinq feuilles à remplir au stylo avant votre rendez-vous.",
+              prix: produit.price - credit,
+              visuel: offre.visuel,
+              recommandee: true,
+              href: `/offre/${sku}?o=${encodeURIComponent(order.id)}`,
+            },
+          ]}
+          pourquoi="Sans ces feuilles, vous ne vous servez pas de ce que vous venez d'acheter : vous ressortez avec des documents et aucun rendez-vous préparé. Cela finit en remboursement, et un remboursement nous coûte bien davantage que ces quelques euros. L'écart achète la probabilité que vous vous en serviez — c'est un calcul, pas une faveur."
+        />
+      </div>
+
       {credit > 0 && (
         <div className="mb-4 border-2 border-green bg-green-bg p-4">
           <p className="text-[1.08rem] font-bold text-blue">

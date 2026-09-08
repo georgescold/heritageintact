@@ -292,11 +292,34 @@ export const PRODUCTS: Record<ProductSku, Product> = {
      il l'a déjà payé, et lui « offrir » ce qu'il vient d'acheter serait la
      preuve qu'il a eu tort de le prendre.
   */
+  /**
+   * ⚠️ CES TROIS PACKS COÛTENT MOINS CHER QUE L'OFFRE SEULE. C'est délibéré, et
+   * ce n'est ni une erreur ni un ancrage de façade.
+   *
+   *   Le Plan seul .................. 297 €
+   *   Le Plan + le Dossier notaire .. 279 €   ← plus de contenu, moins cher
+   *
+   * LES DEUX PRIX SONT RÉELS ET HONORÉS : celui qui choisit Le Plan seul le
+   * paie 297 € et le reçoit. Ce n'est donc pas un prix de référence inventé
+   * (art. L121-4), c'est un prix d'appel volontairement moins attractif — une
+   * pratique licite, et la seule qui produise le déclic « attendez, j'ajoute un
+   * produit et je paie moins ? ».
+   *
+   * ET LA RAISON EST VRAIE, ce qui est le point : sans le Dossier notaire,
+   * l'acheteur ne se sert pas du Plan. Il ressort avec douze plans-types et
+   * aucune feuille à remplir, il ne fait rien, et il demande un remboursement
+   * sous trente jours. Ce remboursement nous coûte 297 €. Les 18 € d'écart
+   * achètent la probabilité qu'il s'en serve — c'est un calcul, pas une faveur.
+   *
+   * On l'écrit à l'écran, en toutes lettres. Un prix qui surprend et qu'on
+   * n'explique pas se lit comme une erreur ; expliqué, il se lit comme une
+   * maison qui sait ce qu'elle fait.
+   */
   pack2: {
     sku: "pack2",
     name: "Le Plan, et le Dossier notaire offert",
     short: "Le Plan + Dossier",
-    price: 297,
+    price: 279,
     /** 497 (Le Plan) + 47 (Le Dossier notaire) = 544. */
     anchor: 544,
     disponible: true,
@@ -305,7 +328,7 @@ export const PRODUCTS: Record<ProductSku, Product> = {
     sku: "pack3",
     name: "Le Dossier complet, et le Dossier notaire offert",
     short: "Le Dossier complet +",
-    price: 347,
+    price: 329,
     /** 647 (Le Dossier complet) + 47 (Le Dossier notaire) = 694. */
     anchor: 694,
     disponible: true,
@@ -314,7 +337,7 @@ export const PRODUCTS: Record<ProductSku, Product> = {
     sku: "pack4",
     name: "Votre assurance-vie, et le Dossier notaire offert",
     short: "L'Assurance-vie + Dossier",
-    price: 97,
+    price: 89,
     /** 197 (L'Assurance-vie) + 47 (Le Dossier notaire) = 244. */
     anchor: 244,
     disponible: true,
@@ -343,7 +366,7 @@ export const PRODUCTS: Record<ProductSku, Product> = {
      * (`strategie/04-produit-mvp.md:242`).
      */
     anchor: 678,
-    disponible: false,
+    disponible: true,
   },
   backend2: {
     sku: "backend2",

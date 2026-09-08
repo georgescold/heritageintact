@@ -46,6 +46,7 @@ const SKU_DE_L_ECRAN: Record<Ecran, ProductSku> = {
   "plan-notaire": "pack2",
   "pack-notaire": "pack3",
   "assurance-vie-notaire": "pack4",
+  simulateur: "backend1",
 };
 
 export type EtapeTunnel =
@@ -80,7 +81,30 @@ export async function etapeTunnel(
     return { afficher: false, versOu: seq.length ? urlEcran(seq[0], orderId, 1) : versMerci };
   }
 
-  const suivant = i + 1 < seq.length ? urlEcran(seq[i + 1], orderId, i + 2) : versMerci;
+  /**
+   * LE REPLI, intercalé après un refus du Plan.
+   *
+   * `next` est l'URL du bouton « non merci ». Quand l'écran qu'on quitte
+   * contenait Le Plan et que le Simulateur est vendable, on l'insère à cet
+   * endroit et à cet endroit seulement : celui qui refuse 297 € refuse souvent
+   * le montant, pas le produit, et le Simulateur en est un sous-ensemble réel
+   * à son prix réel. Ce n'est pas la même offre moins chère — ce serait
+   * apprendre au client qu'il suffit de dire non.
+   *
+   * ⚠️ Une seule fois, et jamais après le dernier écran d'un parcours qui
+   * n'a pas proposé le Plan : on ne vend pas une pièce détachée à quelqu'un à
+   * qui on n'a jamais montré la machine.
+   */
+  const contenaitLePlan = ["plan", "plan-notaire", "pack", "pack-notaire"].includes(ecran);
+  const repliPossible = contenaitLePlan && PRODUCTS.backend1.disponible && i + 1 >= seq.length;
+  const versRepli = `/simulateur-seul?o=${encodeURIComponent(orderId)}`;
+
+  const suivant =
+    i + 1 < seq.length
+      ? urlEcran(seq[i + 1], orderId, i + 2)
+      : repliPossible
+        ? versRepli
+        : versMerci;
   return { afficher: true, suivant, position: i + 1, total: seq.length };
 }
 

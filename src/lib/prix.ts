@@ -113,11 +113,14 @@ export function prixUpsellPlein(sku: ProductSku, possede: Set<ProductSku>): numb
    * les deux soient le même nombre est de le dériver de ses composants. Si un
    * jour Le Plan passe à 347 €, ces trois lignes suivent sans qu'on y pense.
    */
-  if (sku === "pack2") return PRODUCTS.upsell1.price;
-  if (sku === "pack3") {
-    return PRODUCTS.upsell1.price + PRODUCTS.upsell2.price - REMISE_LIGNE_DUPLIQUEE;
-  }
-  if (sku === "pack4") return PRODUCTS.upsell2.price;
+  /**
+   * ⚠️ CES TROIS-LÀ LISENT LE CATALOGUE, contrairement aux autres, et c'est
+   * voulu : leur prix n'est PAS dérivable de leurs composants, puisqu'ils
+   * coûtent volontairement MOINS que l'offre seule qu'ils contiennent. Le
+   * nombre est un choix commercial, pas le résultat d'une addition — le
+   * dériver reviendrait à réinventer la remise à chaque lecture.
+   */
+  if (sku === "pack2" || sku === "pack3" || sku === "pack4") return PRODUCTS[sku].price;
 
   return PRODUCTS[sku].price;
 }
