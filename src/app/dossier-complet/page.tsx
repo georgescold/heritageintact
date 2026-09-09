@@ -83,7 +83,14 @@ export default async function PackPage({
           </>
         )
       }
-      h2={`${PRODUCTS.pack1.name} : ${PRODUCTS.upsell1.name} et ${PRODUCTS.upsell2.name}, ensemble et en une seule fois.`}
+      /* ⚠️ LE NOM DU PACK NOMME DÉJÀ SES DEUX COMPOSANTS depuis le renommage
+         du 9 septembre 2026 (« Le Dossier complet » → « Le Plan et
+         l'Assurance-vie »). Reprendre ici les deux noms complets écrivait
+         quatre fois la même chose en une ligne : « Le Plan et l'Assurance-vie :
+         Le Plan adapté à votre famille et Votre assurance-vie, vérifiée en
+         30 minutes, ensemble ». Le titre dit maintenant ce que le nom ne dit
+         pas — un seul paiement, une seule fois. */
+      h2={`${PRODUCTS.pack1.name}, ensemble et en une seule fois.`}
       videoId={VIDEO.upsell1}
       videoMinutes={4}
       rows={[

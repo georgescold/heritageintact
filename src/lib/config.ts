@@ -224,7 +224,24 @@ export const PRODUCTS: Record<ProductSku, Product> = {
   },
 
   /**
-   * LE DOSSIER COMPLET — Le Plan et l'Assurance-vie en un seul débit.
+   * LE PLAN ET L'ASSURANCE-VIE — les deux offres en un seul débit.
+   *
+   * ⚠️ RENOMMÉ LE 9 SEPTEMBRE 2026. Ce SKU s'appelait « Le Dossier complet ».
+   *
+   * Trois produits portaient alors le mot « Dossier » : celui à 17 € (les cinq
+   * feuilles du rendez-vous), celui-ci à 347 €, et `pack3` à 329 €. Or ce
+   * pack-ci NE CONTIENT PAS le Dossier notaire — il contient Le Plan et
+   * l'Assurance-vie. Un acheteur qui venait de prendre « Le Dossier » à 17 €
+   * et qui lisait « Le Dossier complet » à 347 € croyait donc acheter la
+   * version complète de sa propre feuille. Le nom mentait sur le contenu.
+   *
+   * LA RÈGLE QUI EN DÉCOULE, et elle vaut pour tout pack futur : un pack se
+   * nomme PAR SES COMPOSANTS, jamais par un adjectif. « Complet », « intégral »,
+   * « premium » ne disent rien de ce qu'il y a dedans et laissent croire qu'ils
+   * contiennent le reste du catalogue. « Le Plan et l'Assurance-vie » se lit
+   * sans explication, avec deux noms que l'acheteur vient de voir à l'écran.
+   *
+   * Voir `strategie/CARTE-PRODUIT.md` — source de vérité de l'architecture.
    *
    * 347 € = 297 + 97 − 47. Les 47 € ne sont pas un ancrage : c'est la ligne
    * « 3 modèles de clause bénéficiaire commentés », qui figure dans les DEUX
@@ -250,8 +267,8 @@ export const PRODUCTS: Record<ProductSku, Product> = {
    */
   pack1: {
     sku: "pack1",
-    name: "Le Dossier complet",
-    short: "Le Dossier complet",
+    name: "Le Plan et l'Assurance-vie",
+    short: "Le Plan + l'Assurance-vie",
     price: 347,
     /**
      * ⚠️ 647 €, ET NON 394 €. Deux nombres cohabitent et ne disent pas la même
@@ -324,12 +341,17 @@ export const PRODUCTS: Record<ProductSku, Product> = {
     anchor: 544,
     disponible: true,
   },
+  /**
+   * ⚠️ RENOMMÉ LE 9 SEPTEMBRE 2026, pour la même raison que `pack1` : il
+   * s'appelait « Le Dossier complet, et le Dossier notaire offert », soit deux
+   * fois le mot « Dossier » dans un seul nom, pour deux choses différentes.
+   */
   pack3: {
     sku: "pack3",
-    name: "Le Dossier complet, et le Dossier notaire offert",
-    short: "Le Dossier complet +",
+    name: "Le Plan et l'Assurance-vie, avec le Dossier notaire offert",
+    short: "Le Plan + l'Assurance-vie + Dossier",
     price: 329,
-    /** 647 (Le Dossier complet) + 47 (Le Dossier notaire) = 694. */
+    /** 647 (Le Plan et l'Assurance-vie) + 47 (Le Dossier notaire) = 694. */
     anchor: 694,
     disponible: true,
   },
