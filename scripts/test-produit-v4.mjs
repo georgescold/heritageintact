@@ -19,5 +19,5 @@ const sale=fs.readFileSync("src/app/methode/page.tsx","utf8");
 // V6 : CTA sous la VSL ; preuve et objection restent présentes avant le CTA final.
 const premier=sale.indexOf('id="premier-cta"'), dernier=sale.indexOf('id="dernier-cta"');
 ok(premier>sale.indexOf("<VslPresentation") && sale.indexOf("<VslPresentation")>=0);
-for(const bloc of ["Mon réflexe","<PreuvePreparation"])ok(sale.indexOf(bloc)>premier && sale.indexOf(bloc)<dernier);
+for(const bloc of ["Il faut de toute façon aller chez le notaire","<CalculHistorique"])ok(sale.indexOf(bloc)>premier && sale.indexOf(bloc)<dernier);
 console.log(n+" contrôles produit réussis : ouvertures, guides, supports existants, filtrage des achats, VSL et preuves conservées. Sans réseau ni base.");

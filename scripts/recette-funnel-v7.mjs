@@ -25,8 +25,8 @@ try {
     }
   }
   await go("/methode");
-  ok(await page.getByRole("heading",{name:"« Mon réflexe, c’est de prendre rendez-vous chez le notaire. »"}).isVisible());
-  ok(await page.evaluate(()=>document.querySelector("#preuve-preparation").getBoundingClientRect().top>document.querySelector("#premier-cta").getBoundingClientRect().top));
+  ok(await page.getByText("Il faut de toute façon aller chez le notaire, alors autant y aller directement.",{exact:false}).isVisible());
+  ok(await page.evaluate(()=>document.querySelector("#exemple-chiffre").getBoundingClientRect().top>document.querySelector("#premier-cta").getBoundingClientRect().top));
   await go("/apercu");
   ok(await page.getByText("Deux éléments illustratifs seulement.",{exact:false}).isVisible());
   ok(!(await page.content()).includes("Bonjour, nous souhaitons préparer notre transmission"));
@@ -50,7 +50,11 @@ try {
     await page.reload({waitUntil:"networkidle"});
     ok(await page.locator("h1").innerText()===headline);
     await page.screenshot({path:".build-refonte/v6-vente-"+width+".png",fullPage:true});
-    await page.screenshot({path:".build-refonte/v8-vente-haut-"+width+".png"});
+    await page.screenshot({path:".build-refonte/v11-vente-haut-"+width+".png"});
+    for(const [id,nom] of [["#avant-apres","avant-apres"],["#jean-pierre","jean-pierre"],["#martine","martine"],["#la-methode","methode"]]){const bloc=page.locator(id);for(const img of await bloc.locator("img").all()){await img.scrollIntoViewIfNeeded();await img.evaluate(el=>el.decode());ok(await img.evaluate(el=>el.naturalWidth>0));}await bloc.screenshot({path:".build-refonte/v11-"+nom+"-"+width+".jpg",quality:72,style:".fixed { visibility: hidden !important; }"});}
+    ok(await page.getByRole("heading",{name:"Le jour où ils chercheront les réponses, pourrez-vous encore les leur donner ?",exact:true}).count()===1);
+    ok(await page.getByText("Un exemple chiffré, pas une promesse d’économie",{exact:true}).count()===1);
+    ok(await page.locator("#avant-apres img").count()===2);
     await page.locator("#jean-pierre").scrollIntoViewIfNeeded();
     await page.screenshot({path:".build-refonte/v6-recit-"+width+".png"});
     await go("/apercu");
@@ -136,7 +140,7 @@ try {
   await page.getByRole("heading",{name:"Ce que vous allez comprendre",exact:true}).scrollIntoViewIfNeeded();
   await page.screenshot({path:".build-refonte/v9-chapitre-mobile.png"});
   await page.setViewportSize({width:1440,height:1000});await go("/methode");
-  await page.getByRole("heading",{name:"« Mon réflexe, c’est de prendre rendez-vous chez le notaire. »"}).scrollIntoViewIfNeeded();
+  await page.getByText("Il faut de toute façon aller chez le notaire, alors autant y aller directement.",{exact:false}).scrollIntoViewIfNeeded();
   await page.screenshot({path:".build-refonte/v4-preuve-desktop.png"});
   await page.setViewportSize({width:390,height:1000});await go("/espace/bbbbbbbbbbbbbbbbbbbb/demarrer");
   await page.screenshot({path:".build-refonte/v9-guides-mobile.png"});
@@ -161,6 +165,7 @@ try {
     await page.evaluate(()=>document.dispatchEvent(new MouseEvent("mouseout",{clientY:0,bubbles:true})));
     await page.locator("dialog[open]").waitFor();
     ok(await page.getByRole("heading",{name:"Ce que vous risquez si vous fermez cette page",exact:true}).isVisible());
+    if(p==="/methode"){ok(await page.locator("dialog[open] li").count()===4);await page.locator("dialog[open]").screenshot({path:".build-refonte/v11-popup-vente.png"});}
     await page.keyboard.press("Escape");
     ok(await page.locator("dialog[open]").count()===0);
   }
