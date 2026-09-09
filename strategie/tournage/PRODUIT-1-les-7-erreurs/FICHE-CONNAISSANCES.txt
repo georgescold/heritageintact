@@ -1,0 +1,544 @@
+============================================================
+PRODUIT 1 — CE QUE VOUS DEVEZ AVOIR COMPRIS
+Les 7 erreurs qui offrent votre héritage à l'État — 27 €
+============================================================
+
+Cette fiche est pour VOUS. Elle ne se lit pas devant la caméra.
+
+Elle est écrite pour être comprise du premier coup, sans rien connaître au
+départ. Une idée par paragraphe. Chaque mot difficile est expliqué au moment
+où il apparaît, et jamais avant.
+
+⚠️ UN SEUL JEU DE CHIFFRES DANS TOUTE LA FICHE. Tous les exemples portent
+sur la même famille, du début à la fin. C'est volontaire : deux familles
+différentes dans un même produit, et celui qui suit avec un stylo croit à
+une erreur de calcul. Les chiffres viennent de
+`strategie/12-chiffres-succession.md`, vérifié le 5 septembre 2026.
+
+Les articles de loi sont entre parenthèses. Vous n'avez pas à les apprendre :
+ils servent à ce que quelqu'un puisse vérifier. Suivez le raisonnement, pas
+les numéros.
+
+
+╔══════════════════════════════════════════════════════════╗
+║  PARTIE 1 — LE MÉCANISME, EN PARTANT DE ZÉRO             ║
+╚══════════════════════════════════════════════════════════╝
+
+
+1.1 — QUATRE CHOSES SE PASSENT, TOUJOURS DANS CET ORDRE
+────────────────────────────────────────────────────────
+
+Quelqu'un meurt. Voici ce qui arrive, dans l'ordre.
+
+  ÉTAPE 1 — ON FAIT LE TOTAL.
+  On additionne tout ce que la personne possédait : la maison, les comptes,
+  les livrets, la voiture. Puis on retire ce qu'elle devait encore — le
+  crédit en cours, les dettes. (art. 768 CGI)
+
+  Ce qui reste, appelons-le LE TAS. C'est ce qui va se partager.
+
+  ÉTAPE 2 — ON PARTAGE LE TAS.
+  Selon la loi si la personne n'a rien écrit. Selon son testament si elle en
+  a écrit un.
+
+  ÉTAPE 3 — CHACUN PAIE SUR SA PART. PAS SUR LE TAS.
+  C'est le point que presque tout le monde rate, et c'est le plus important
+  de toute la fiche.
+
+  L'impôt ne se calcule pas une fois sur le tas entier. Il se calcule
+  séparément, pour chaque héritier, sur ce que cet héritier reçoit.
+
+  Conséquence : plus il y a d'héritiers, moins chacun paie. Pas seulement
+  parce qu'ils se partagent la facture — parce que chacun repart du début
+  du calcul.
+
+  ÉTAPE 4 — AVANT DE CALCULER, ON EFFACE UNE PREMIÈRE TRANCHE.
+  Sur la part de chacun, on efface les premiers euros. Cette tranche effacée
+  s'appelle un ABATTEMENT, et c'est le mot suivant.
+
+C'est tout. Les sept erreurs du produit ne sont que sept façons de faire
+baisser l'étape 3, ou d'agrandir l'étape 4.
+
+
+1.2 — LE MOT LE PLUS IMPORTANT : ABATTEMENT
+────────────────────────────────────────────
+
+Un abattement, ce sont les premiers euros que l'État ne regarde pas.
+
+L'IMAGE À EMPLOYER, ET ELLE MARCHE : c'est une gomme. On passe la gomme sur
+le début de la somme, et on calcule l'impôt sur ce qui reste écrit.
+
+Pour un enfant, cette gomme vaut 100 000 €. (art. 779 CGI)
+
+Elle se compte PAR PARENT ET PAR ENFANT. Autrement dit :
+
+  · un enfant a une gomme de 100 000 € sur son père,
+  · et une autre gomme de 100 000 € sur sa mère.
+
+Un couple avec deux enfants dispose donc de QUATRE gommes de 100 000 €.
+Deux parents, multipliés par deux enfants.
+
+⚠️ CE N'EST PAS UN PLAFOND, ET C'EST L'ERREUR DE COMPRÉHENSION N° 1.
+Beaucoup entendent « 100 000 € » et comprennent « je n'ai pas le droit de
+donner plus ». C'est faux. On peut donner autant qu'on veut : ce qui dépasse
+la gomme est simplement taxé.
+
+→ Le mot « abattement » ne se sépare JAMAIS de son chiffre. Ni à l'oral, ni
+  sur une slide, ni sur une feuille imprimée.
+
+
+1.3 — L'ESCALIER : COMMENT L'IMPÔT SE CALCULE VRAIMENT
+───────────────────────────────────────────────────────
+
+Une fois la gomme passée, il reste une somme. C'est sur elle que l'impôt se
+calcule — et il ne se calcule pas d'un seul coup.
+
+L'IMAGE À EMPLOYER : une rangée de seaux, du plus petit au plus grand. On
+verse la somme dans le premier. Quand il déborde, ça coule dans le deuxième.
+Quand le deuxième déborde, dans le troisième. Et chaque seau a son propre
+taux d'impôt.
+
+Voici les seaux, de parent à enfant. (art. 777 CGI)
+
+    SEAU 1 · contient 8 072 € .......................... taxé à  5 %
+    SEAU 2 · contient 4 037 € de plus .................. taxé à 10 %
+    SEAU 3 · contient 3 823 € de plus .................. taxé à 15 %
+    SEAU 4 · contient tout le reste jusqu'à 552 324 € ... taxé à 20 %
+
+    (Trois seaux existent encore au-dessus — 30 %, 40 %, 45 % — mais ils ne
+     commencent qu'à partir de 552 324 €. Ils s'affichent en gris et ne se
+     prononcent pas à l'oral.)
+
+DEUX CHOSES À COMPRENDRE, ET ELLES SUFFISENT.
+
+PREMIÈRE : on ne paie jamais le taux du dernier seau sur toute la somme.
+Chaque seau garde son taux. C'est exactement le fonctionnement de l'impôt
+sur le revenu — l'analogie à sortir si quelqu'un bloque.
+
+DEUXIÈME, ET C'EST LE CŒUR DU PRODUIT : les trois premiers seaux sont
+minuscules. Mis bout à bout, ils font moins de 1 400 € d'impôt. Autant dire
+rien.
+
+C'est le quatrième seau qui fait toute la facture. Il commence à 15 932 € et
+monte jusqu'à 552 324 €, à 20 %.
+
+Or dès qu'on possède un logement, on est dans le quatrième seau. Toujours.
+
+→ D'où la phrase qui résume tout le produit : chaque tranche de 100 000 €
+  qu'on sort du calcul, c'est 20 000 € d'impôt en moins.
+
+⚠️ Cette phrase a DEUX conditions, et elle ne se dit jamais sans elles :
+  · elle vaut pour UN enfant, sur UNE gomme de 100 000 € ;
+  · et pour une donation, elle ne vaut qu'une fois les 15 ans écoulés
+    (erreur 1). Avant, le don est encore recompté.
+
+
+1.4 — QUI NE PAIE RIEN, JAMAIS
+───────────────────────────────
+
+Le mari ou la femme qui reste ne paie AUCUN droit de succession. Zéro. Pas
+de plafond, pas de condition de durée, pas de barème. (art. 796-0 bis CGI)
+
+Le partenaire de PACS non plus — MAIS avec un piège énorme, qui est
+l'erreur 2 : le PACS supprime l'impôt, il ne donne pas le droit de recevoir.
+Sans testament, un partenaire de PACS ne reçoit rien du tout.
+
+La formule à retenir : le PACS efface l'impôt, le testament ouvre la porte.
+Il faut les deux.
+
+
+1.5 — POURQUOI C'EST LE SECOND DÉCÈS QUI COÛTE
+───────────────────────────────────────────────
+
+C'est le point le moins intuitif du produit, et sans lui personne ne retombe
+sur nos chiffres. Prenez le temps.
+
+Un couple. Un enfant. Le père meurt en premier.
+
+  · Tout revient à la mère. Elle ne paie rien (voir 1.4).
+  · L'enfant, lui, ne reçoit rien à ce moment-là.
+  · Donc il n'utilise PAS sa gomme de 100 000 € sur son père.
+  · Et cette gomme ne se garde pas pour plus tard. Elle disparaît.
+
+Puis la mère meurt.
+
+  · L'enfant reçoit TOUT, d'un seul coup.
+  · Avec UNE SEULE gomme de 100 000 € au lieu des deux que la loi prévoyait.
+
+Voilà pourquoi la facture tombe au second décès, et pourquoi elle est plus
+lourde qu'on ne l'imagine.
+
+⚠️ CE RAISONNEMENT SUPPOSE UN CONTRAT DE MARIAGE PRÉCIS — la communauté
+universelle avec attribution intégrale au survivant, ce fameux « tout au
+survivant » que les notaires conseillaient à cette génération. C'est lui qui
+fait que l'enfant ne reçoit rien au premier décès.
+
+Avec un autre régime, l'enfant reçoit déjà quelque chose au premier décès,
+il y consomme une première gomme, et le total final est plus bas — environ
+25 000 € au lieu de 82 194 € sur notre cas.
+
+→ CONSÉQUENCE POUR LE TOURNAGE : notre chiffre est une ESTIMATION HAUTE,
+  celle du moment le plus coûteux. L'hypothèse se dit à voix haute AVANT le
+  chiffre, à chaque fois. Ne JAMAIS dire « c'est ce qui rend le chiffre
+  exact » : c'est l'hypothèse qui tient le chiffre.
+
+  Et c'est aussi, en soi, l'erreur n° 2 : ce contrat protège le conjoint, et
+  il coûte une gomme de 100 000 € à l'enfant.
+
+
+╔══════════════════════════════════════════════════════════╗
+║  PARTIE 2 — LE CAS, ET IL N'Y EN A QU'UN                 ║
+╚══════════════════════════════════════════════════════════╝
+
+  Jean-Pierre et sa femme, mariés. Un fils : Julien.
+  (Personnages fictifs — mention permanente à l'écran.)
+
+  La maison ......................... 480 000 €
+  L'épargne (livrets, comptes) ......  40 000 €
+  TOTAL .............................. 520 000 €
+
+⚠️ C'EST LE CAS DÉJÀ IMPRIMÉ SUR LA FEUILLE QUE LE CLIENT A SOUS LES YEUX
+   (`src/content/documents/simulateur-papier.tsx`). Les scripts s'alignent
+   sur le papier, jamais l'inverse.
+
+
+A · SANS RIEN FAIRE
+───────────────────
+
+L'hypothèse d'abord, à voix haute (c'est le 1.5) : au premier décès tout va
+au conjoint, qui ne paie rien. Julien reçoit donc tout au second décès, avec
+une seule gomme.
+
+    520 000 − 100 000 (la gomme)  =  420 000 € à taxer
+
+    On verse 420 000 € dans les seaux :
+        seau 1 :   8 072 € à  5 %  ........      403,60 €
+        seau 2 :   4 037 € à 10 %  ........      403,70 €
+        seau 3 :   3 823 € à 15 %  ........      573,45 €
+        seau 4 : 404 068 € à 20 %  ........   80 813,60 €
+                                             ────────────
+    À PAYER                                    82 194,35 €  →  82 194 €
+
+    Délai : 6 mois. (art. 641 pour la déclaration, art. 1701 pour le
+    paiement)
+    Julien hérite de 40 000 € d'épargne. Il lui manque 42 194 €.
+
+⚠️ ON S'ARRÊTE LÀ. Ne JAMAIS dire « et la maison part en vente ». C'est une
+prédiction qu'aucun texte ne porte, et elle ignore le paiement fractionné ou
+différé que la loi prévoit justement pour ce cas (art. 1717 CGI, et art. 396
+et suivants de l'annexe III).
+
+On énonce le montant qui manque. On dit que la loi prévoit des facilités, et
+que c'est une question pour le notaire. Le spectateur tire la conclusion
+lui-même — et elle est alors la sienne, ce qui vaut infiniment mieux.
+
+
+B · AVEC LES DÉCISIONS, PRISES À 65 ANS
+────────────────────────────────────────
+
+DÉCISION 1 — les deux parents donnent les murs de la maison à Julien, et
+gardent l'usage à vie. (erreur 4)
+
+    À 65 ans, on est « à moins de 71 ans » : les murs comptent pour 60 % de
+    la valeur du bien. (art. 669 CGI)
+
+        480 000 × 60 %  ..................  288 000 € de murs
+        ÷ 2 (chacun donne sa moitié)  ....  144 000 € par parent
+        − 100 000 € de gomme, par parent .   44 000 € à taxer, chacun
+        dans les seaux  ..................    6 994,35 € par parent
+        × 2 parents  .....................   13 988,70 €  →  13 988 €
+
+    Aux décès : l'usage s'éteint tout seul, Julien devient plein
+    propriétaire SANS RIEN PAYER de plus. (art. 1133 CGI)
+
+DÉCISION 2 — les 40 000 € d'épargne vont sur une assurance-vie avant 70 ans,
+avec Julien nommé dessus. (erreur 3)
+
+    Très en dessous de l'abattement de 152 500 € par bénéficiaire :
+    0 € de droits. (art. 990 I CGI)
+
+    TOTAL ..............................   13 988 €
+    ÉCART AVEC 82 194 € ................   68 206 €
+
+⚠️ TROIS RÈGLES SUR CE BLOC.
+
+1. L'ARRONDI SE FAIT À LA FIN, UNE SEULE FOIS. On dit 6 994,35 € par parent,
+   puis 13 988 € au total. Jamais « 6 994 × 2 ».
+
+2. LES 68 206 € VIENNENT DES DEUX DÉCISIONS ENSEMBLE, pas d'une seule. Ça se
+   dit dans la même phrase que le chiffre, à chaque fois.
+
+3. LES FRAIS DE L'ACTE EXISTENT, et il faut le dire — sinon on présente
+   l'écart comme un gain net, ce qui est une omission trompeuse. Mais AUCUN
+   montant, pas même un ordre de grandeur. Ce qui se dit : les tarifs des
+   notaires sont réglementés (art. L444-1 et suivants du code de commerce),
+   et c'est le notaire qui chiffre l'acte avant la signature.
+   ⚠️ Et jamais « son devis est gratuit ». Rien ne le garantit.
+
+
+C · SI LA DONATION EST FAITE À 71 ANS AU LIEU DE 65
+────────────────────────────────────────────────────
+
+    480 000 × 70 %  =  336 000 € au lieu de 288 000 €
+    soit 48 000 € de plus à transmettre, POUR LE COUPLE
+    entièrement dans le quatrième seau, à 20 %
+    →  9 600 € de droits en plus.
+
+⚠️ CE N'EST PAS UN COÛT QUI COURT AVEC LE TEMPS. C'est UNE marche, et elle se
+franchit le matin du 71e anniversaire. Attendre deux ans ou six ans coûte
+exactement la même chose : 9 600 €.
+
+Ne jamais dire « le prix de six ans d'attente ». Un spectateur de 69 ans
+ferait la division et croirait que sa marche à lui vaut 3 200 €. C'est faux,
+et il prendrait une mauvaise décision à cause de nous.
+
+Et on n'annonce QUE l'écart de 9 600 €. Jamais un total alternatif : un
+second chiffre concurrent de 13 988 € n'a pas à circuler.
+
+
+╔══════════════════════════════════════════════════════════╗
+║  PARTIE 3 — LES 3 DATES                                  ║
+╚══════════════════════════════════════════════════════════╝
+
+Tout le produit tient sur trois dates que le client écrit de sa main. Trois.
+Pas trente. C'est ce qui rend la Méthode tenable.
+
+
+DATE 1 · LA DERNIÈRE DONATION, PLUS 15 ANS
+───────────────────────────────────────────
+La gomme de 100 000 € se refait à neuf une fois 15 ans écoulés.
+(art. 784 CGI)
+
+Concrètement : quelqu'un qui donne à 65 ans et qui redonne après 80 ans a
+transmis 200 000 € par enfant sans un euro d'impôt. Celui qui attend
+n'utilise qu'une gomme, une seule fois, au décès.
+
+DEUX PRÉCISIONS QUI CHANGENT LA DATE À ÉCRIRE :
+
+  · Le texte dit « plus de quinze ans ». Le jour même du quinzième
+    anniversaire, on n'y est pas encore : c'est le LENDEMAIN.
+  · Le compteur ne part pas du don. Il part du PAPIER — la date de l'acte
+    chez le notaire, ou le jour de la déclaration pour un don d'argent.
+    Sans papier, aucun compteur n'a jamais démarré.
+
+
+DATE 2 · LE 70e ANNIVERSAIRE
+─────────────────────────────
+Ce qu'on met sur une assurance-vie AVANT : abattement de 152 500 € par
+bénéficiaire, tous contrats confondus. (art. 990 I CGI)
+APRÈS : 30 500 €, une seule fois, pour tout le monde. (art. 757 B CGI)
+
+Le repère est le jour exact de l'anniversaire, pas l'année. Et ce n'est pas
+l'âge du contrat qui compte : c'est la date de chaque versement.
+
+
+DATE 3 · LE 71e ANNIVERSAIRE
+─────────────────────────────
+Avant : les murs du logement comptent pour 60 % de sa valeur.
+De 71 à 80 ans : 70 %. De 81 à 90 ans : 80 %. (art. 669 CGI)
+
+⚠️ La ligne 81-90 reste à l'écran. Une partie de l'audience a 85 ans, et
+c'est SA ligne. Ne jamais dire « 70 % à partir de 71 ans » sans borne.
+
+Le client recopie la plus proche des trois dates en bas de sa feuille. C'est
+le dernier geste de la vidéo 0, et c'est tout le produit tenu dans une ligne.
+
+⚠️ La feuille du Calendrier n'est pas muette : chaque date porte déjà un
+paragraphe avec ses chiffres. Le client les lit pendant qu'on lui dit qu'on
+n'explique rien. Il faut l'anticiper d'une phrase, sinon il croit avoir raté
+quelque chose.
+
+
+╔══════════════════════════════════════════════════════════╗
+║  PARTIE 4 — LES 7 ERREURS, UNE LIGNE CHACUNE             ║
+╚══════════════════════════════════════════════════════════╝
+
+  1 · ATTENDRE.
+      La gomme se refait tous les 15 ans. Qui attend n'en utilise qu'une.
+
+  2 · LE COUPLE MAL RÉGLÉ.
+      Marié : 0 %. Pacsé : 0 %, mais seulement avec un testament. Ni l'un ni
+      l'autre : 60 % après 1 594 € d'abattement. Et le contrat « tout au
+      survivant » coûte une gomme de 100 000 € à l'enfant.
+
+  3 · L'ASSURANCE-VIE JAMAIS RELUE.
+      Ce n'est pas l'âge du contrat qui compte, c'est la date de chaque
+      versement. Et la ligne qui dit qui reçoit l'argent n'a pas été relue
+      depuis vingt ans.
+
+  4 · LA MAISON GARDÉE ENTIÈRE JUSQU'AU BOUT.
+      On peut donner les murs et garder l'usage à vie. Avant 71 ans, les
+      murs comptent pour 60 % au lieu de 100 %.
+
+  5 · LE DON DE LA MAIN À LA MAIN.
+      Un don non déclaré n'a pas de date, donc aucun compteur n'a démarré.
+      Et au partage entre enfants, il revient dans les comptes pour ce qu'il
+      est DEVENU, pas pour ce qu'il valait.
+
+  6 · OUBLIER LES PETITS-ENFANTS.
+      De son vivant : 31 865 € par grand-parent et par petit-enfant. Au
+      décès, du vivant de leur parent : 1 594 €, et seulement s'il y a un
+      testament.
+
+  7 · ALLER CHEZ LE NOTAIRE LES MAINS VIDES.
+      Il pose toujours les trois mêmes questions au début. Sans les
+      réponses, le rendez-vous se termine par une liste de papiers.
+
+
+╔══════════════════════════════════════════════════════════╗
+║  PARTIE 5 — CE QUE LA FEUILLE NE CALCULE PAS             ║
+╚══════════════════════════════════════════════════════════╝
+
+⚠️ AJOUTÉ LE 9 SEPTEMBRE 2026. C'EST UNE EXIGENCE DE JUSTESSE, PAS UN
+   ARGUMENT DE VENTE, ET ÇA NE SE RETIRE PAS.
+
+Le Simulateur papier applique UN seul abattement (100 000 €) et UN seul
+barème (celui de parent à enfant). C'est juste tant que les héritiers sont
+les enfants du défunt — le cas le plus fréquent, et celui pour lequel la
+feuille est faite.
+
+Elle devient FAUSSE dès qu'un héritier relève d'un autre régime. Et elle est
+fausse DANS LE SENS RASSURANT, ce qui est le sens qui coûte cher : le client
+conclut qu'il n'est pas concerné, et il le découvre le jour où plus rien ne
+peut changer.
+
+LES QUATRE CAS QUI SORTENT DE LA FEUILLE :
+
+  1. UN HÉRITIER QUI N'EST PAS UN ENFANT. Chacun a son propre abattement et
+     son propre taux :
+         petit-enfant .............  31 865 €
+         frère ou sœur ............  15 932 €
+         neveu ou nièce ...........   7 967 €, puis 55 %
+         toute autre personne .....   1 594 €, puis 60 %
+
+     LE CAS LE PLUS DOULOUREUX, et il faut savoir le dire : l'enfant du
+     conjoint qu'on n'a PAS adopté n'est pas un héritier en ligne directe.
+     C'est 1 594 € d'abattement et 60 % au-delà — là où la feuille
+     compterait 100 000 € et 20 %. Sur une part de 100 000 €, l'écart
+     dépasse 50 000 €.
+
+  2. UN CONTRAT D'ASSURANCE-VIE. Il obéit à des règles entièrement à part.
+     C'est la raison pour laquelle on demande de ne PAS le mettre dans
+     l'addition de la vidéo 0.
+
+  3. UNE DONATION DÉJÀ DÉCLARÉE IL Y A MOINS DE 15 ANS. Elle s'impute sur la
+     gomme, et la feuille ne le sait pas.
+
+  4. UN ENFANT EN SITUATION DE HANDICAP. Son abattement est plus élevé —
+     159 325 €, et il se cumule avec les autres.
+
+CE QUI SE DIT À L'ORAL, ET DANS CET ORDRE :
+   d'abord que la feuille est juste pour le cas le plus fréquent ;
+   ensuite les quatre cas qui en sortent ;
+   enfin : dans ces cas-là, le chiffre reste un point de départ utile à
+   apporter au notaire, mais ce n'est pas le chiffre définitif.
+
+⚠️ ON NE VEND RIEN À CET ENDROIT. Le client vient de payer, il n'a encore
+rien lu. La règle du projet est qu'on ne propose aucun produit supplémentaire
+avant qu'il ait fini l'étape 0 — c'est écrit dans
+`src/components/espace/Boutique.tsx`, et c'est ce qui évite de transformer un
+acheteur content en demande de remboursement. On dit la limite, on renvoie au
+notaire, et on s'arrête.
+
+
+╔══════════════════════════════════════════════════════════╗
+║  PARTIE 6 — LES 15 PIÈGES DE VOCABULAIRE                 ║
+╚══════════════════════════════════════════════════════════╝
+
+Chacun de ces pièges rend une phrase FAUSSE. Ce ne sont pas des questions de
+style. Relisez-les une fois avant chaque tournage.
+
+ 1. « au bout de 15 ans » → c'est LE LENDEMAIN du 15e anniversaire. Un acte
+    signé le jour même tombe encore sous l'ancienne règle.
+
+ 2. « 100 000 € » sans le mot abattement → se comprend comme un plafond.
+
+ 3. « chaque parent donne 100 000 € » sur un livret commun → NON. Si
+    100 000 € sortent du livret, c'est 50 000 € du père et 50 000 € de la
+    mère. Il sort 100 000 €, pas 200 000 €.
+
+ 4. « l'enfant n'hérite de rien » (contrat tout au survivant) → dire « il ne
+    se transmet EN PRINCIPE rien ». L'article 1526 réserve les biens propres
+    par nature : l'article affiché dirait le contraire de la voix.
+
+ 5. « le testament donne 1/2, 1/3, 1/4 aux enfants » → c'est l'INVERSE.
+    L'article 913 donne ce qu'on peut donner LIBREMENT : la moitié avec
+    1 enfant, le tiers avec 2, le quart avec 3 et plus. Le reste va aux
+    enfants.
+
+ 6. « l'assurance-vie rentre dans la succession » après 70 ans → NON.
+    L'article 757 B ajoute une fraction des primes à l'assiette de l'impôt.
+    L'argent, lui, va directement à la personne nommée. Il est TAXÉ, il
+    n'est pas PARTAGÉ.
+
+ 7. « 30 500 € par personne » → NON. 30 500 € en tout, tous contrats et tous
+    bénéficiaires réunis.
+
+ 8. « 152 500 € par contrat » → NON. Par bénéficiaire, tous contrats du même
+    assuré confondus.
+
+ 9. « après 70 ans, l'assurance-vie ne sert plus à rien » → FAUX. Les gains
+    échappent aux droits de succession, et les 30 500 € s'ajoutent aux autres
+    abattements. C'est moins avantageux. Ce n'est pas rien.
+
+10. « 5 fois moins transmis » (152 500 ÷ 30 500) → NON. Le capital transmis
+    ne change pas. C'est la part qui passe sans droits qui tombe. Et les deux
+    abattements ne sont pas de même nature : l'un est par bénéficiaire,
+    l'autre est global.
+
+11. « il redevient plein propriétaire » (au décès de l'usufruitier) → il ne
+    l'a jamais été. Il DEVIENT plein propriétaire.
+
+12. « art. 621 » affiché sous « l'enfant ne peut pas vous faire partir » →
+    l'article ne dit pas ça. C'est l'article 599 alinéa 1 du code civil.
+
+13. « 70 % à partir de 71 ans », sans borne → l'audience va jusqu'à 85 ans.
+    C'est 70 % de 71 à 80 ans, et 80 % de 81 à 90.
+
+14. « la donation-partage fige les valeurs au jour de la donation » → un
+    homme de 75 ans entend « au jour du don d'origine ». C'est le contresens
+    exact. On dit « au jour de l'acte », c'est-à-dire le jour où on le signe.
+
+15. « le notaire acte ce que vous lui demandez » → interdit. Il reçoit une
+    décision et lui donne la forme d'un acte, et il a un devoir de conseil
+    qui existe dès le premier rendez-vous.
+
+
+╔══════════════════════════════════════════════════════════╗
+║  PARTIE 7 — CE QU'ON N'A PAS LE DROIT DE FAIRE           ║
+╚══════════════════════════════════════════════════════════╝
+
+  · Aucun conseil personnalisé. On dit ce que la loi fait, jamais ce que le
+    spectateur devrait faire de son argent.
+  · Aucune recommandation de contrat, d'assureur, de banque, de support ou
+    de placement. C'est réservé aux professionnels immatriculés (art. L541-1
+    du code monétaire et financier, art. L511-1 du code des assurances), et
+    nous ne le sommes pas.
+  · Aucun montant de frais de notaire, pas même un ordre de grandeur.
+  · Jamais « son devis est gratuit ».
+  · À celui qui n'a aucun contrat d'assurance-vie, on ne dit JAMAIS « alors
+    ouvrez-en un ». On lui dit que l'étape ne le concerne pas.
+  · Aucune promesse chiffrée personnalisée. On montre un cas type avec son
+    calcul vérifiable. Jamais « vous économiserez X euros ».
+  · Aucun visage. Personnes de dos uniquement. Le narrateur ne revendique
+    aucun titre : son autorité vient des articles affichés.
+  · Carton de mention légale à la fin de chaque vidéo : contenu pédagogique
+    et général, ne constitue pas un conseil juridique, fiscal ou patrimonial
+    personnalisé.
+
+
+LES TROIS PHRASES DE RÉASSURANCE, À RÉPÉTER SANS COMPTER
+─────────────────────────────────────────────────────────
+
+Elles valent plus que n'importe quelle démonstration. La peur principale de
+cet homme n'est pas de payer trop : c'est de casser quelque chose sans le
+vouloir.
+
+  « Écrire une date sur une feuille, ce n'est pas signer un acte. »
+
+  « Une donation de logement n'existe que devant notaire (art. 931 du code
+   civil). Personne ne peut donner sa maison par erreur, par courrier ou par
+   téléphone. »
+
+  « Vous pouvez mettre la vidéo sur pause pour écrire, et la reprendre quand
+   vous voulez. »

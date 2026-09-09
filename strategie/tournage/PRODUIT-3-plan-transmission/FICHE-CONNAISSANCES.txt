@@ -1,0 +1,146 @@
+============================================================
+PRODUIT 3 — CE QUE VOUS DEVEZ AVOIR COMPRIS
+Le Plan adapté à votre famille — les 12 situations — 297 €
+============================================================
+
+Cette fiche est pour VOUS. Elle ne se lit pas devant la caméra.
+
+
+CE QUE VEND CE PRODUIT, ET CE QU'IL NE VEND PAS
+-----------------------------------------------
+
+Le client a fini La Méthode. Il a son chiffre, ses trois dates, sa liste de
+dons. Et il se retrouve devant un problème NEUF, qui n'existait pas avant
+d'avoir compris : « dans MA situation, quoi, et dans quel ordre ? »
+
+Ce produit ne vend pas plus de droit. Il vend un ORDRE.
+
+Conséquence directe sur la vidéo : elle ne ré-explique RIEN. Pas les
+100 000 €, pas les 15 ans, pas les 70 ans, pas le démembrement. Le client
+les connaît, il vient de payer 297 € pour ne pas les réentendre.
+
+⚠️ Une vidéo d'upsell qui recommence le front est la meilleure façon de
+déclencher un remboursement. Elle explique COMMENT SE SERVIR de vingt-sept
+pages, et rien d'autre.
+
+
+CE QU'IL Y A DANS LE PRODUIT
+----------------------------
+
+  · 12 plans-types, un par situation familiale
+  · 3 feuilles transversales, qui servent les douze
+  · cette vidéo
+
+LES 12 SITUATIONS, dans l'ordre où elles sont livrées :
+
+   1. Marié, 1 enfant
+   2. Marié, 2 enfants ou plus
+   3. Famille recomposée
+   4. Veuf ou veuve
+   5. Concubins ou pacsés
+   6. Sans enfant
+   7. Avec une entreprise ou des parts
+   8. Avec de l'immobilier locatif
+   9. Un enfant à l'étranger
+  10. Un enfant vulnérable
+  11. Patrimoine supérieur à un million
+  12. Des donations déjà faites
+
+LES 3 FEUILLES TRANSVERSALES, et leur ordre de travail — il n'est pas
+décoratif, il est celui du remplissage réel :
+
+  1. Le tableau de bord familial     (se remplit au stylo, en premier)
+  2. Les abattements de chacun       (se garde ouverte À CÔTÉ pendant qu'on
+                                      remplit le tableau de bord)
+  3. Le calendrier sur 15 ans        (se remplit EN DERNIER, une fois qu'on
+                                      sait qui reçoit quoi)
+
+⚠️ Ne pas les séparer et ne pas inverser l'ordre à l'oral : ce serait faire
+tourner les pages à un lecteur de 78 ans au milieu d'une colonne.
+
+
+LA STRUCTURE D'UN PLAN-TYPE — SEPT SECTIONS, TOUJOURS LES MÊMES
+---------------------------------------------------------------
+
+C'est le vrai contenu de la vidéo : le client doit reconnaître ces sept
+sections sur n'importe laquelle des douze feuilles.
+
+  1. Vous êtes dans ce cas si…
+  2. Ce qui se passe si vous ne faites rien
+  3. Les 3 dates, dans VOTRE ordre
+  4. Les 3 pièges de cette situation
+  5. Les 4 questions à poser à votre notaire
+  6. Ce que ça change, en euros
+  7. Ce que je décide aujourd'hui
+
+La section 3 est le cœur du produit. Les trois dates sont les mêmes pour
+tout le monde. C'est leur ORDRE qui change d'une situation à l'autre, et
+c'est exactement ce qu'on vend.
+
+
+LE PROBLÈME QUE LA VIDÉO DOIT RÉSOUDRE, ET QUI N'EST PAS DANS LES FEUILLES
+--------------------------------------------------------------------------
+
+« Je suis dans plusieurs cases. »
+
+C'est le cas de la majorité des clients : marié avec deux enfants, dont un
+à l'étranger, et des donations déjà faites. Trois plans-types.
+
+LA RÈGLE À DONNER, et elle doit être simple : on prend le plan de sa
+situation de COUPLE d'abord — c'est-à-dire l'une des situations 1 à 6, et
+il n'y en a jamais qu'une. C'est le plan principal. Les autres (7 à 12) ne
+sont pas des plans concurrents : ce sont des couches qui s'ajoutent
+par-dessus, et elles n'apportent que leurs sections 4 et 5 — les pièges et
+les questions.
+
+Sans cette règle, le client lit vingt-sept pages, trouve des ordres
+différents, et n'agit pas.
+
+
+LES QUATRE SITUATIONS OÙ ON ENVOIE VERS UN PROFESSIONNEL, SANS HÉSITER
+----------------------------------------------------------------------
+
+Le dire dans la vidéo est un argument de sérieux, pas un aveu de faiblesse.
+
+  · Situation 7, l'entreprise. Le pacte Dutreil vient de bouger : par la loi
+    de finances 2026, l'engagement individuel de conservation est passé de
+    4 à 6 ans pour les transmissions à compter du 21 février 2026, et six
+    catégories de biens somptuaires sont exclues de l'exonération. C'est le
+    dispositif le plus technique et le plus contrôlé du droit français.
+    Le plan-type donne le principe et les conditions. Il ne remplace pas
+    l'expert, et il le dit.
+  · Situation 9, l'enfant à l'étranger. Résidence fiscale et conventions
+    internationales : le plan donne les questions, pas les réponses.
+  · Situation 10, l'enfant vulnérable.
+  · Situation 11, patrimoine supérieur à un million : le plan dit à partir
+    de quand un professionnel devient indispensable.
+
+
+CE QUI EST INTERDIT, ET C'EST LE MÊME CADRE QUE PARTOUT
+-------------------------------------------------------
+
+  · Aucun conseil personnalisé. Un plan-type est un plan TYPE : on le dit
+    au moins une fois à l'oral, en toutes lettres.
+  · Aucune recommandation de placement, d'assureur ou de contrat.
+  · Aucun montant d'émoluments de notaire.
+  · Aucun chiffre qui ne soit pas dans `12-chiffres-succession.md`.
+  · Les trois modèles de clause bénéficiaire du produit portent leur
+    mention : à faire valider par le notaire. Elle se dit aussi à l'oral.
+
+
+⚠️ ARBITRAGE À TRANCHER AVANT DE TOURNER
+----------------------------------------
+
+`04-produit-mvp.md` annonce dans ce produit « Le Simulateur Automatique
+(multi-héritiers, multi-contrats, démembrement) ». C'est le MÊME objet que
+le backend 1, vendu 147 €. Vendre 147 € à quelqu'un qui a payé 297 € pour
+l'obtenir est un remboursement annoncé.
+
+Recommandation notée au dossier : le Simulateur Automatique est INCLUS ici,
+et le backend à 147 € ne se vend qu'à ceux qui ont refusé cet upsell.
+
+→ Tant que ce n'est pas tranché, LA VIDÉO NE LE MENTIONNE PAS. On ne promet
+  pas à l'oral un outil dont on ne sait pas s'il est dans le paquet.
+
+⚠️ `PRODUCTS.upsell1.disponible` : vérifier son état avant de tourner. On ne
+  tourne pas une vidéo de délivrance pour un produit qui n'est pas livrable.

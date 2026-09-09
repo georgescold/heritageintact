@@ -1,0 +1,350 @@
+============================================================
+VIDÉO 7 — ERREUR N° 7 : ALLER CHEZ LE NOTAIRE LES MAINS VIDES
+Durée : 12 minutes à l'image · voix + écran
+============================================================
+
+Documents sous la vidéo : Quelle est ma situation ? · Les 12 questions à
+poser à votre notaire · Mon plan en une page · La règle de mise à jour.
+
+CE QUE LE SPECTATEUR EMPORTE : son plan en une page, rempli. Et une
+pochette prête.
+
+⚠️ TROIS PHRASES SONT ENCORE EN PRODUCTION ET CONTREDISENT CETTE VIDÉO.
+   `src/content/documents/questions-notaire.tsx` (l. 58), `src/lib/methode.ts`
+   (ETAPES[7].resume) et `src/lib/sequence.ts` (l. 95, email j4) portent
+   « le notaire est payé à l'acte, et il acte ce que vous lui demandez ».
+   Les deux affirmations sont interdites ici. Le spectateur aura la feuille
+   sous les yeux PENDANT que vous parlez.
+   → À corriger avant que cette vidéo sorte. Correction proposée : « Le
+     notaire ne devine pas votre projet : ces douze questions le lui donnent
+     en vingt minutes. »
+
+─────────────────────────────────────────────────────────────
+[1] OUVERTURE — 40 s
+─────────────────────────────────────────────────────────────
+
+Dernière vidéo.
+
+Vous avez maintenant un chiffre, trois dates, une liste de vos dons, votre
+situation de famille et vos contrats. Il reste une chose : savoir poser tout
+ça sur un bureau.
+
+Parce que la septième erreur, c'est celle-là. Ce n'est pas de ne pas aller
+chez le notaire. C'est d'y aller les mains vides.
+
+Prenez vos quatre feuilles, elles sont sous cette vidéo.
+
+─────────────────────────────────────────────────────────────
+[2] CE QUE FAIT UN NOTAIRE, EXACTEMENT — 1 min 45
+─────────────────────────────────────────────────────────────
+
+D'abord, mettons les choses au clair sur son métier, parce qu'on raconte
+beaucoup de bêtises dessus.
+
+Un notaire est un officier public. Sa fonction tient en trois gestes : il
+reçoit la décision que vous lui apportez, il lui donne la forme d'un acte
+authentique, et il en conserve l'original.
+
+L'acte authentique, ça veut dire que ce que le notaire a personnellement
+constaté — la date, votre présence, votre signature — fait foi de façon
+renforcée.
+
+⚠️ TEL QUEL — Et je vais être honnête avec vous, parce qu'on vous dira le
+contraire : ça ne veut pas dire que plus personne ne pourra jamais rien
+contester. Cette force renforcée couvre ce que le notaire a constaté, pas la
+véracité de tout ce que les parties ont déclaré. Un acte régulier reste
+attaquable par d'autres voies. L'authenticité protège la forme et la date.
+Pas le fond de votre décision.
+
+Ensuite, une chose qu'il faut que vous sachiez : le notaire est tenu à un
+devoir de conseil. Et ce devoir existe dès le premier rendez-vous. Il ne
+dépend pas de l'existence d'un dossier.
+
+Simplement — et c'est tout le sujet de cette vidéo — sans votre régime
+matrimonial, sans vos valeurs, et sans les dates de vos donations, il ne
+peut vous répondre que par des généralités. Pas par mauvaise volonté : parce
+que la réponse change d'une famille à l'autre.
+
+Ce qu'il ne fera pas, en revanche : il ne réunira pas vos papiers à votre
+place, et il ne vous appellera pas pour vous dire qu'un anniversaire
+approche. C'est à vous d'écrire la date.
+
+Et il y a des choses qui ne peuvent pas se faire sans lui. Toute donation
+passe devant notaire, à peine de nullité — article 931 du code civil. Pour
+donner les murs d'un logement, sans notaire, la donation n'existe pas. La
+donation-partage, le changement de régime matrimonial : pareil.
+
+Une exception, et une seule : les dons d'argent remis de la main à la main.
+Ceux-là se déclarent, on l'a vu à la vidéo 5. Si vous avez donné 10 000 € à
+votre fils sans passer chez un notaire, ce don n'est pas nul. Il est
+seulement à déclarer.
+
+─────────────────────────────────────────────────────────────
+[3] LES TROIS QUESTIONS DU DÉBUT — 1 min 30
+─────────────────────────────────────────────────────────────
+
+[ÉCRAN : les trois questions, numérotées]
+
+Voici ce qui se passe au début de tout premier rendez-vous. Le notaire pose
+toujours les mêmes trois questions, parce que rien ne peut être calculé
+avant.
+
+Un : sous quel régime êtes-vous marié ?
+Deux : combien vaut votre logement aujourd'hui ?
+Trois : avez-vous déjà donné quelque chose, à qui, et à quelle date ?
+
+Sans réponse aux trois, le rendez-vous ne peut produire aucun chiffre et
+aucun acte. Il se termine par une liste de pièces à réunir, et vous
+revenez dans six mois.
+
+Avec les réponses aux trois, le même rendez-vous démarre au calcul. Et il
+peut se terminer par une date de signature.
+
+C'est tout. La différence entre les deux rendez-vous, ce n'est pas le
+notaire. Ce n'est pas vous non plus. C'est ce qui est posé sur la table.
+
+Et ces trois réponses, vous les avez. Vous les avez écrites dans les six
+vidéos précédentes.
+
+─────────────────────────────────────────────────────────────
+[4] LES CINQ BLOCS DE LA POCHETTE — 2 min
+─────────────────────────────────────────────────────────────
+
+[ÉCRAN : les cinq blocs s'empilent, un par un]
+
+Cinq blocs. Une pochette. Vous les empilez dans cet ordre.
+
+Bloc un, l'inventaire. Ce que vous possédez, bien par bien, avec une valeur
+en face — et le montant que votre famille paierait aujourd'hui. C'est la
+première page de votre Simulateur, celui de la vidéo 0.
+
+Bloc deux, la famille. Votre livret de famille. Votre contrat de mariage si
+vous en avez un. Et votre donation au dernier vivant si elle existe. Ce sont
+vos papiers personnels, il n'y a rien à imprimer.
+
+Bloc trois, les donations déjà faites. La feuille que vous avez remplie à la
+vidéo 5 : montant, date, bénéficiaire, déclaré ou non. C'est ce bloc qui dit
+où en est votre compteur des quinze ans.
+
+Bloc quatre, l'assurance-vie. Vos contrats, la date de chaque versement, et
+la dernière clause bénéficiaire que vous avez signée.
+
+⚠️ TEL QUEL — Deux précisions sur ce bloc, et elles concernent beaucoup
+d'entre vous. Les deux règles des 70 ans qu'on a vues concernent les
+contrats ouverts depuis le 20 novembre 1991, et les versements faits depuis
+le 13 octobre 1998. Si votre contrat est plus ancien, la règle n'est pas la
+même : c'est une question à poser au rendez-vous. Et si votre bénéficiaire
+est votre conjoint ou votre partenaire de PACS, il est exonéré dans tous les
+cas — vous n'avez pas à courir après une date de 70 ans qui ne vous concerne
+pas.
+
+Bloc cinq, les choix. Pas les questions : les choix. Ce que vous voulez
+donner, à qui, et quand. C'est votre Calendrier des 3 dates.
+
+Voilà. Cinq blocs, une pochette. C'est ce qui transforme un rendez-vous
+d'information en rendez-vous de travail.
+
+─────────────────────────────────────────────────────────────
+[5] LES DOUZE QUESTIONS — 1 min 15
+─────────────────────────────────────────────────────────────
+
+[ÉCRAN : les cinq familles de questions]
+
+Vous avez une feuille avec douze questions numérotées, et une ligne de
+réponse sous chacune.
+
+Je ne vais pas vous les lire. Vous les avez sous les yeux, ce serait vous
+faire perdre trois minutes. Vous ne les apprenez pas non plus : vous posez
+la feuille sur le bureau, vous les lisez, et vous notez la réponse à côté.
+
+Je vous donne juste comment elle est organisée, pour que vous vous y
+retrouviez.
+
+Les questions 1 à 3 : le couple, et la part de chacun.
+La question 4 : la confirmation du chiffre que vous apportez.
+Les questions 5 à 7 : les murs de votre logement.
+Les questions 8 à 10 : ce qui est déjà parti — les dons, la
+donation-partage, la clause d'assurance-vie.
+Les questions 11 et 12 : le coût des actes, et l'ordre dans lequel les
+faire.
+
+Cinq familles.
+
+Un mot de vocabulaire, parce que sans lui les questions 5 à 7 ne sont pas
+lisibles. On l'a vu à la vidéo 4 : l'usufruit, c'est ce que vous gardez —
+l'usage du bien et ses revenus. La nue-propriété, c'est ce que vous donnez :
+les murs. Vous restez chez vous.
+
+⚠️ TEL QUEL — En revanche, vendre le logement demandera ensuite l'accord de
+ceux qui ont reçu les murs. C'est la question 6 de votre feuille.
+
+Et sur le barème de l'âge, redisons-le en entier parce qu'il y a des
+tranches : 60 % de 61 à 70 ans, 70 % de 71 à 80 ans, 80 % de 81 à 90 ans.
+Si vous avez 82 ans, votre ligne est la troisième.
+
+─────────────────────────────────────────────────────────────
+[6] LES TROIS QUESTIONS À REFORMULER — 1 min 45
+─────────────────────────────────────────────────────────────
+
+[ÉCRAN : chaque question, immédiatement suivie de sa version répondable]
+
+Et maintenant, trois questions qui ne peuvent pas recevoir de réponse utile
+telles qu'elles sont posées. Ce ne sont pas des questions interdites : ce
+sont des questions à reformuler.
+
+La première : « vous me conseillez quoi ? »
+
+Le devoir de conseil existe, on l'a dit. Mais sans votre régime, vos valeurs
+et vos dates, il ne peut répondre que par des généralités. La version qui
+marche : vous posez la pochette, vous dites ce que vous voulez faire, et
+vous demandez si c'est possible.
+
+La deuxième : « combien je vais payer ? »
+
+Ce n'est pas vous qui paierez. Ce sont vos enfants, chacun sur sa part. La
+version qui marche : demandez ce que paiera chaque enfant.
+
+Le coût des actes, c'est autre chose, et c'est une vraie question — elle est
+sur votre feuille, à la question 11. Elle se pose à la fin, par écrit, avant
+toute signature.
+
+La troisième : « est-ce qu'on peut éviter les impôts ? »
+
+La loi ne les fait pas disparaître par une astuce. Elle prévoit des
+abattements et des exonérations, et c'est exactement ce qu'on a passé sept
+vidéos à regarder : l'article 779 pour les donations, l'article 990 I pour
+l'assurance-vie, l'article 669 pour les murs, l'article 796-0 bis pour le
+conjoint et le partenaire de PACS.
+
+La version qui marche : « qu'est-ce que la loi prévoit dans ma situation, et
+qu'est-ce que je peux utiliser ? »
+
+─────────────────────────────────────────────────────────────
+[7] VOTRE PLAN EN UNE PAGE — 45 s
+─────────────────────────────────────────────────────────────
+
+[ÉCRAN : le plan en une page, filmé à plat]
+
+Dernière feuille, et dernier geste.
+
+Votre plan en une page. Vos trois dates, ce que vous voulez faire, et dans
+quel ordre. Une page. C'est celle que vous poserez en premier sur le bureau,
+et c'est celle que votre conjoint pourra lire si vous n'êtes pas là.
+
+Mettez la vidéo en pause, et remplissez-la maintenant. Tout ce dont vous
+avez besoin est déjà écrit sur les feuilles précédentes.
+
+[ÉCRAN, plein cadre, tenu 6 secondes]
+
+─────────────────────────────────────────────────────────────
+[8] FERMETURE — 1 min
+─────────────────────────────────────────────────────────────
+
+Voilà. C'est fini.
+
+Vous avez maintenant ce que neuf familles sur dix n'ont jamais : votre
+chiffre, vos dates, et votre plan. Écrits de votre main, sur des feuilles que
+vous pouvez poser sur un bureau.
+
+Maintenant, deux choses qui existent si vous en avez besoin, et seulement
+dans ce cas. Je vous les dis en une minute, et je vous laisse.
+
+⚠️ PONT 1 — LE DOSSIER NOTAIRE. À dire seulement pour ceux qui ne l'ont pas.
+Ceux qui l'ont coché au bon de commande ont déjà les cinq feuilles.
+
+La première : les cinq feuilles à remplir avant le rendez-vous. L'inventaire
+de ce que vous possédez, votre fiche famille, la liste des douze pièces à
+emporter, le message de prise de rendez-vous, et le compte-rendu à remplir en
+sortant.
+
+Je vous ai dit tout à l'heure que le notaire pose toujours les mêmes trois
+questions au début. Ces feuilles sont les réponses, écrites, prêtes à poser
+sur son bureau. Une heure de travail chez vous, et un rendez-vous qui démarre
+au calcul au lieu de démarrer par une liste de papiers à réunir. C'est
+« Le Dossier à apporter chez votre notaire », dans l'onglet Outils et Kits.
+
+⚠️ PONT 2 — LE PLAN. Pour tout le monde.
+
+La seconde, c'est la feuille « Quelle est ma situation ? ». Vous y trouverez
+douze cases : marié avec un enfant, marié avec deux enfants ou plus, famille
+recomposée, veuf ou veuve, concubins, sans enfant, avec une entreprise, avec
+de l'immobilier locatif, un enfant à l'étranger, un enfant vulnérable, un
+patrimoine important, des donations déjà faites.
+
+Cochez la vôtre. Et écoutez bien pourquoi cette case compte.
+
+Ce que vous venez d'apprendre vaut pour tout le monde. Les trois dates sont
+les mêmes pour tout le monde. Mais l'ORDRE dans lequel on s'y prend, lui,
+change d'une famille à l'autre — et ce n'est pas un détail de confort.
+
+Un exemple, et il est vérifiable dans ce que vous venez de voir. Le compteur
+des quinze ans ne démarre qu'au jour de l'acte ou de la déclaration. Le
+soixante-dixième anniversaire, lui, ne se rattrape pas. Quelqu'un qui a
+soixante-neuf ans et qui commence par la donation au lieu de commencer par
+l'assurance-vie ne perd pas du temps : il perd une porte, et elle ne se
+rouvre jamais. L'ordre, c'est ça.
+
+Ce classement-là, vous ne pouviez pas le faire seul, parce qu'il dépend de
+votre configuration familiale. C'est « Le Plan adapté à votre famille » :
+douze plans-types, celui qui vous correspond en une page, le calendrier des
+quinze prochaines années, et le simulateur qui refait le calcul à votre place
+à chaque hypothèse.
+
+⚠️ PHRASE DE SORTIE, OBLIGATOIRE. Elle n'est pas une politesse : c'est elle
+qui rend tout ce qui précède crédible.
+
+Ni l'un ni l'autre n'est obligatoire, et rien de ce que vous venez de faire
+n'est incomplet sans eux. Vous avez votre chiffre, vos dates et votre plan :
+c'est déjà plus que ce que la plupart des familles auront jamais. Rien ne
+presse : ces deux compléments restent disponibles, au même prix, aussi
+longtemps que vous voudrez.
+
+Et la loi bouge. Chaque automne, la loi de finances peut modifier un
+chiffre. La feuille « La règle de mise à jour » vous dit ce qui bouge et ce
+qui ne bouge pas. Gardez-la avec les autres.
+
+Merci de m'avoir suivi jusqu'ici.
+
+[CARTON MUET, 8 secondes : mention légale.]
+
+─────────────────────────────────────────────────────────────
+LES PHRASES QUI NE SE REFORMULENT PAS
+─────────────────────────────────────────────────────────────
+
+1. « Il reçoit la décision que vous lui apportez, il lui donne la forme
+   d'un acte authentique, et il en conserve l'original. »
+2. « L'authenticité protège la forme et la date. Pas le fond de votre
+   décision. »
+3. « Le notaire est tenu à un devoir de conseil, et ce devoir existe dès le
+   premier rendez-vous. »
+4. « Ce qu'il ne fera pas : il ne réunira pas vos papiers à votre place, et
+   il ne vous appellera pas pour vous dire qu'un anniversaire approche. »
+5. Les deux bornes de dates de l'assurance-vie (20 novembre 1991,
+   13 octobre 1998) et l'exonération conjoint / PACS qui les écarte.
+6. « Vendre le logement demandera ensuite l'accord de ceux qui ont reçu les
+   murs. »
+7. Le barème de l'art. 669 avec ses trois bornes. Jamais « 70 % à partir de
+   71 ans » tout court : l'audience va jusqu'à 85 ans.
+
+CE QU'IL EST INTERDIT DE DIRE
+  · « Le notaire acte ce que vous lui demandez. » — faux et interdit.
+  · « Il ne construit pas la stratégie à votre place. » — faux (c'est le
+    cœur du métier) et dénigrant pour une profession réglementée.
+  · « Personne ne pourra le contester après vous. » — faux.
+  · « Son devis est gratuit. » — affirmation non vérifiée sur une
+    profession tierce. Les émoluments d'actes sont tarifés, mais la
+    consultation est rémunérée par des honoraires librement négociés.
+  · AUCUN montant d'émoluments, sous aucune forme, pas même un ordre de
+    grandeur.
+  · Ne pas rejouer la scène de la vidéo de vente (l'homme qui ne sait pas,
+    la liste qui dort six mois sur la table). Elle a déjà servi.
+
+À VÉRIFIER AVANT D'ENREGISTRER
+  · Que le libellé des cinq familles dit à l'oral correspond bien à la
+    numérotation de la feuille livrée
+    (`src/content/documents/questions-notaire.tsx`). Si la feuille change,
+    la voix change.
+  · Que les trois questions à reformuler sont EXACTEMENT les trois de la
+    feuille. Si la voix en cite une quatrième, le spectateur perd confiance
+    dans l'une ou dans l'autre.
+  · Les trois phrases fautives en production (en tête de fiche).

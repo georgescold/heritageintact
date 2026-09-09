@@ -1,0 +1,204 @@
+============================================================
+PRODUIT 4 — CE QUE VOUS DEVEZ AVOIR COMPRIS
+Votre assurance-vie, vérifiée en 30 minutes — 97 €
+============================================================
+
+Cette fiche est pour VOUS. Elle ne se lit pas devant la caméra.
+
+
+CE QUE VEND CE PRODUIT
+----------------------
+
+Le client sort de La Méthode en sachant qu'il DOIT lire son contrat. Il
+ouvre l'enveloppe, il tombe sur quarante pages en corps 7, et il referme.
+
+Ce produit ne vend pas du droit. Il vend une lecture guidée : le client
+doit sortir de la vidéo en sachant lire SON contrat. Pas un contrat en
+général. Le sien, avec ses propres taux, ses propres dates, sa propre
+clause.
+
+QUATRE INFORMATIONS À TROUVER, et tout le reste sert à ça :
+  1. le taux de frais sur versement
+  2. le taux de frais de gestion annuels
+  3. la date de chaque versement
+  4. le texte exact de la clause bénéficiaire
+
+
+⚠️ LA LIMITE D'AUTORITÉ — À INTÉGRER AVANT TOUT LE RESTE
+-------------------------------------------------------
+
+Nous n'avons aucun contrat à proposer, aucun assureur à recommander, aucun
+placement à conseiller.
+
+Ce n'est pas de la modestie. Une recommandation, MÊME NON NOMINATIVE, sur
+l'opportunité de souscrire un contrat d'assurance relève de la distribution
+d'assurances (art. L511-1 du code des assurances) et suppose une
+immatriculation ORIAS que le narrateur n'a pas.
+
+On explique comment LIRE. Jamais quoi ACHETER.
+
+Conséquences concrètes au tournage :
+  · aucun assureur, aucun établissement, aucun contrat, aucun support et
+    aucun placement n'est nommé — ni à l'oral, ni à l'écran, ni sur les
+    documents filmés ;
+  · tous les documents filmés portent « ASSUREUR », « 000 000 000 »,
+    « NOM PRÉNOM » ;
+  · AUCUN TAUX DE FRAIS n'est prononcé ni imprimé. Aucun taux n'est sourcé
+    dans `12-chiffres-succession.md` — vérifié, il n'y en a pas. Prononcé,
+    un taux serait entendu comme une moyenne de marché, ce qu'il ne serait
+    pas. Aucune addition d'exemple non plus.
+    Le livrable utile, c'est : OÙ lire son taux à soi, dans SES conditions
+    générales, et l'écrire.
+
+
+LES TROIS DOCUMENTS DU CLIENT, ET CE QU'ON Y CHERCHE
+----------------------------------------------------
+
+1. LE BULLETIN D'ADHÉSION (que l'assureur appelle aussi « conditions
+   particulières ») : 2 à 4 pages, avec son nom, la date, sa signature.
+   C'est là que la clause bénéficiaire se trouve le plus souvent.
+   ⚠️ RÉSERVE QUI NE SE COUPE PAS : ou sur le dernier avenant signé —
+   l'avenant est la feuille signée pour changer la clause, et c'est ce
+   papier-là qui fait foi, pas le bulletin d'origine. La clause peut aussi
+   avoir été écrite dans un testament, ou dans un courrier à l'assureur.
+   Sans cette réserve, un client qui a rédigé sa clause chez son notaire
+   auditerait une clause qui n'est plus la sienne — et pourrait la
+   « corriger » en révoquant sans le savoir une désignation postérieure.
+
+2. LES CONDITIONS GÉNÉRALES : le livret épais. Il ne le lit pas. Il y
+   cherche UNE rubrique, en général vers la fin, intitulée « frais » ou
+   « tarification ». Le tableau figure parfois dans les conditions
+   particulières ou en annexe.
+
+3. LE RELEVÉ DE SITUATION ANNUEL : le plus utile des trois. Valeur du
+   contrat, frais prélevés dans l'année, liste des supports, et très
+   souvent l'historique daté des versements.
+
+
+LES DEUX TYPES DE FRAIS — LE MÉCANISME, JAMAIS LES CHIFFRES
+-----------------------------------------------------------
+
+Frais sur versement : prélevés à l'entrée, à chaque fois que de l'argent
+est mis sur le contrat. Cette part n'entre jamais dans le contrat. Ce n'est
+pas une perte de marché : c'est un montant qui n'est jamais arrivé.
+
+Frais de gestion annuels : prélevés chaque année sur ce que contient le
+contrat, que les marchés montent ou descendent. Ils s'appliquent à
+l'encours, pas au versement.
+
+
+LE CŒUR JURIDIQUE — LA DATE DU VERSEMENT
+----------------------------------------
+
+Ce n'est pas l'âge du contrat. C'est la date de CHAQUE versement. Le repère
+est le jour exact du 70e anniversaire, pas l'année.
+
+AVANT 70 ANS — art. 990 I CGI : abattement de 152 500 € PAR BÉNÉFICIAIRE,
+tous contrats du même assuré confondus. Au-delà : 20 % jusqu'à 700 000 €
+TAXABLES par bénéficiaire, 31,25 % ensuite.
+⚠️ Le mot « taxables » ne se supprime nulle part. Le seuil s'apprécie APRÈS
+l'abattement : en capital transmis, la bascule est à 852 500 €, pas à
+700 000 €.
+⚠️ Sous 990 I, l'abattement porte sur le CAPITAL TRANSMIS — primes ET gains.
+
+APRÈS 70 ANS — art. 757 B CGI : 30 500 € une seule fois, tous bénéficiaires
+et tous contrats confondus, et ce seuil porte sur les PRIMES VERSÉES, pas
+sur ce que les bénéficiaires recevront. Au-delà, la fraction excédentaire
+entre dans l'assiette des droits de succession.
+⚠️ L'argent reste hors succession civile : il ne se partage pas. Il est
+TAXÉ, il n'est pas PARTAGÉ.
+⚠️ RÉSERVE À DIRE, pas à sous-entendre : cela suppose qu'une personne
+vivante soit nommée dans la clause. Si la clause ne désigne plus personne,
+le capital rejoint la succession et se partage comme le reste. On énonce
+cette réserve SANS citer d'article — celui qui la fonde n'est pas dans la
+fiche 12.
+⚠️ Ne jamais prêter à l'art. 757 B les mots « abattement global » : le texte
+vise « la fraction des primes versées après l'âge de soixante-dix ans qui
+excède 30 500 € ». « Abattement global » est du vocabulaire de doctrine
+administrative, pas de la loi.
+
+L'EXEMPLE CHIFFRÉ NE SE PRONONCE PAS EN ENTIER. Sur 40 000 € versés : avant
+70 ans, on est sous 152 500 €, donc 0 € de droits ; après 70 ans,
+40 000 − 30 500 = 9 500 € entrent dans l'assiette. Ce que ces 9 500 €
+coûtent dépend du reste de la succession, et le dire suppose DEUX
+hypothèses cumulatives (abattement de 100 000 € de l'art. 779 déjà consommé
+ET part nette taxable déjà supérieure à 15 932 €). Un chiffre qui exige deux
+hypothèses cumulatives ne se donne pas à l'oral : il s'imprime.
+→ À l'oral on s'arrête à « 9 500 € entrent dans l'assiette ».
+
+CONTRATS ANCIENS : les règles ont changé plusieurs fois. Les dates de
+bascule ne figurent pas dans la fiche 12 : on n'en prononce aucune, on n'en
+affiche aucune, et on ne donne ni décennie ni ordre de grandeur. On ne dit
+pas non plus dans quel sens la différence joue — l'affirmer supposerait la
+date qu'on vient de refuser de prononcer.
+La consigne tient en une phrase : noter la date de souscription en haut de
+la feuille, ou noter qu'on ne la connaît pas, et poser la question au
+notaire.
+
+
+LES TROIS NUANCES — À NE JAMAIS COUPER
+--------------------------------------
+
+1. Avant 70 ans, les 152 500 € portent sur tout ce qui est transmis, gains
+   compris. Le détail chiffré est sur la pièce, il ne se prononce pas.
+2. Après 70 ans, tout n'est pas perdu : les gains échappent aux droits de
+   succession, et les 30 500 € s'ajoutent aux abattements de la succession.
+   C'est moins avantageux. Ce n'est pas rien.
+3. Si le bénéficiaire est le conjoint marié ou le partenaire de PACS, il
+   est exonéré de droits dans tous les cas — art. 796-0 bis CGI.
+   ⚠️ Un mot accompagne obligatoirement cette nuance : dans une clause
+   standard, « mon conjoint » désigne un époux. Un partenaire de PACS n'est
+   pas couvert par ce mot, et il n'est pas non plus héritier. Pour qu'il
+   reçoive, il doit être NOMMÉ dans la clause.
+
+C'est le seul endroit de la vidéo où l'on dit qu'après 70 ans tout n'est pas
+perdu, et le seul où l'on dit que le conjoint et le partenaire de PACS sont
+exonérés. Sans ce bloc, un client marié repart en croyant que les 30 500 €
+le concernent.
+
+⚠️ VOCABULAIRE IMPOSÉ : on ne dit jamais « exonéré » seul à propos des
+droits sur les versements. On dit « 0 € de droits », et on ajoute que les
+prélèvements sociaux restent dus sur les gains du contrat au décès. Ce sont
+deux choses différentes. On les nomme, sans taux et sans numéro d'article.
+
+
+LA CLAUSE BÉNÉFICIAIRE
+----------------------
+
+LE GESTE : la lire à voix haute, et poser UNE seule question — les personnes
+nommées dans cette clause sont-elles celles que je veux aujourd'hui ?
+
+La clause standard : « mon conjoint, à défaut mes enfants nés ou à naître, à
+défaut mes héritiers ». Elle n'est pas fausse. Elle est générique : elle ne
+tient compte ni des petits-enfants, ni d'un divorce, ni d'un remariage.
+
+TROIS FORMES existent, rédigées et commentées dans le produit : standard, à
+options, démembrée. Toutes portent la même mention, et elle se dit aussi à
+l'oral : à faire valider par le notaire avant envoi.
+
+LE BÉNÉFICIAIRE ACCEPTANT : tant que le bénéficiaire n'a pas officiellement
+accepté le bénéfice du contrat, la clause est révocable (art. L132-9). Une
+fois qu'il a accepté, elle ne se change plus sans son accord. C'est le seul
+point du produit où une porte peut être déjà fermée.
+⚠️ Cas fréquent chez les couples mariés : contrat souscrit à deux → la
+modification demande les deux signatures.
+
+
+LES PIÈCES DU PRODUIT
+---------------------
+
+  · La grille d'audit (10 lignes, note sur 10)
+  · Les 3 clauses bénéficiaires rédigées et commentées
+  · Le tableau de décision 70 ans
+  · La lettre A — demande d'informations à l'assureur
+  · La lettre B — demande de modification de clause
+
+⚠️ ORDRE DE TRAVAIL, celui de la pile de valeur : on note d'abord ce qu'on a
+(la grille), on choisit ensuite la clause qui convient, on regarde ce que la
+date des versements change, et on écrit la lettre EN DERNIER — parce qu'une
+lettre postée avant d'avoir choisi sa clause est une lettre à réécrire.
+
+⚠️ IL MANQUE « Le comparatif des frais » (annoncé 19 € dans la pile de
+valeur du site) : aucun fichier de contenu n'existe pour lui. Soit il est
+produit, soit il sort de la pile — mais la vidéo ne l'annonce pas.
+⚠️ `PRODUCTS.upsell2.disponible` est à `false` : vérifier avant de tourner.

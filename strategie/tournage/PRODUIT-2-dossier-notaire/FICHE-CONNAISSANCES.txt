@@ -1,0 +1,156 @@
+============================================================
+PRODUIT 2 — CE QUE VOUS DEVEZ AVOIR COMPRIS
+Le Dossier à apporter chez votre notaire — 17 €
+============================================================
+
+Cette fiche est pour VOUS. Elle ne se lit pas devant la caméra.
+
+
+CE QUE VEND CE PRODUIT
+----------------------
+
+Il ne vend pas du savoir. Il vend le travail que le client n'a pas envie de
+faire : remplir cinq feuilles.
+
+Conséquence sur le ton : ce n'est pas un cours. C'est quelqu'un assis à côté
+de lui, qui lui passe les feuilles dans l'ordre et lui dit quoi écrire dans
+chaque case. On explique une règle uniquement quand elle change ce qu'il
+écrit dans la case.
+
+
+QUI REGARDE CETTE VIDÉO
+-----------------------
+
+⚠️ ATTENTION, C'EST LE PIÈGE PRINCIPAL DU PRODUIT. Le Dossier est un bump,
+coché sur le bon de commande. Une partie des spectateurs a acheté La Méthode
+en même temps. Une autre partie ne l'a PAS.
+
+Donc :
+  · on ne suppose jamais qu'il a le Simulateur, le Calendrier des 3 dates,
+    ou le Plan en une page ;
+  · à chaque fois qu'on renvoie à une feuille de La Méthode, on ajoute
+    « si vous l'avez » ;
+  · et on n'explique jamais un mécanisme en disant « comme on l'a vu ».
+
+
+LES CINQ FEUILLES, DANS L'ORDRE OÙ IL LES REMPLIT
+-------------------------------------------------
+
+  1. L'inventaire patrimonial       6 rubriques
+  2. La fiche famille               7 rubriques
+  3. La check-list des 12 pièces
+  4. Le message de prise de rendez-vous  (2 versions : mail et téléphone)
+  5. Le compte-rendu de rendez-vous  (se remplit APRÈS, pas ce soir)
+
+Il met environ une heure. La vidéo dure un quart d'heure. Il la met en
+pause, ou il la revoit. Ça se dit à l'oral, au début.
+
+
+LES DEUX SEULES COLONNES QUI DEMANDENT UNE EXPLICATION
+------------------------------------------------------
+
+Tout le reste se remplit sans réfléchir. Ces deux-là, non — et ce sont
+justement les deux informations que le notaire ne peut PAS aller chercher
+tout seul.
+
+A) « VERSÉ AVANT / APRÈS 70 ANS » (rubrique assurance-vie de l'inventaire)
+
+   Ce n'est pas l'âge du contrat qui compte. C'est la date de CHAQUE
+   versement. Un même contrat peut relever des deux régimes en même temps.
+
+   Avant le 70e anniversaire — art. 990 I CGI : abattement de 152 500 €
+   PAR BÉNÉFICIAIRE, tous les contrats du même assuré confondus, sur le
+   capital transmis.
+
+   Après le 70e anniversaire — art. 757 B CGI : abattement de 30 500 €,
+   tous contrats et tous bénéficiaires du même assuré confondus, et il ne
+   porte que sur les primes versées. Les gains produits par ces primes
+   restent hors champ.
+
+   ⚠️ Ces deux règles valent pour les contrats ouverts à partir du
+   20 novembre 1991. Plus ancien : on porte la date d'ouverture dans la
+   colonne, et le notaire tranchera.
+
+   ⚠️ Le mot « abattement » se prononce ET s'affiche dans les deux cas. Lu
+   seul, « 152 500 € par bénéficiaire » se comprend comme un plafond de
+   transmission. C'est faux.
+   ⚠️ Les 152 500 € ne se multiplient pas par le nombre de contrats.
+   ⚠️ Jamais « 30 500 € par personne ».
+
+   COMMENT ON REMPLIT : tous les versements du même côté → une ligne.
+   Contrat alimenté des deux côtés → deux lignes, une par régime, avec le
+   montant de chaque côté. C'est la seule difficulté de la feuille. La
+   rubrique n'a que 4 lignes et un contrat mixte en consomme deux : on
+   continue au dos.
+   Où sont les dates : sur les relevés de situation annuels. Sinon,
+   « dates à demander ». Une ligne « à demander » est une ligne remplie.
+
+B) « DATE EXACTE » (rubrique donations de la fiche famille)
+
+   Art. 779 CGI — chaque parent peut donner 100 000 € à chaque enfant sans
+   que cet enfant paie de droits. C'est un abattement, le même mot que pour
+   l'assurance-vie. Ce n'est pas un plafond : on peut donner plus, ce qui
+   dépasse est simplement taxé.
+
+   Art. 784 CGI — cet abattement se remet à neuf quinze ans après, et le
+   compteur part de la date du don.
+
+   C'est pour ça que la colonne « Date exacte » pèse plus lourd que la
+   colonne « Montant ».
+
+   OÙ RETROUVER UNE DATE : donation notariée → sur l'acte, ou via le nom de
+   l'étude. Don de la main à la main → sur le relevé bancaire du mois, ou
+   sur la déclaration si elle a été faite. Sinon → le mois et l'année,
+   suivis de « à vérifier ».
+
+
+LES CINQ PIÈGES DE CETTE VIDÉO
+------------------------------
+
+1. « MASSE À TRANSMETTRE » N'EST PAS UNE BASE D'IMPÔT.
+   C'est un total de patrimoine. Aucun abattement n'y est retranché, et
+   l'exonération du conjoint n'y figure pas. Si la question se pose :
+   « ce total sert à ce que le notaire voie l'ensemble d'un coup, ce n'est
+   pas une base de calcul d'impôt ».
+
+2. NE JAMAIS FAIRE DÉDUIRE UN NOM DE RÉGIME AU SPECTATEUR.
+   Un régime porte des conséquences ; c'est le notaire qui le nomme, à
+   partir de la date du mariage et de l'existence ou non d'un contrat.
+   Faire écrire « communauté » à quelqu'un qui l'a supposé, c'est mettre
+   une erreur dans un dossier qui sera lu.
+   → Sans contrat de mariage : on écrit « sans contrat », et rien d'autre.
+     C'est une réponse complète, et c'est le cas le plus fréquent.
+   → Même règle sur le mode de détention d'un bien : dans le doute,
+     « à confirmer », seul.
+
+3. NE JAMAIS LAISSER CROIRE QUE LA FICHE FAMILLE RESTE À LA MAISON.
+   Elle part dans la pochette et elle est lue à l'étude. Obtenir un « non »
+   dans la colonne « déclarée ? » en promettant que le papier ne sortira
+   pas de la maison serait faux. C'est le seul endroit de la vidéo où cette
+   faute est possible.
+
+4. AUCUNE MENTION DE LA FAÇON DONT UN NOTAIRE EST RÉMUNÉRÉ.
+   Aucun montant d'émoluments, aucun pourcentage, aucun ordre de grandeur.
+   Et jamais « il acte ce que vous demandez » : il reçoit une décision, lui
+   donne la forme d'un acte, et il peut déconseiller — le compte-rendu a
+   une rubrique exprès pour ça.
+
+5. LE MAIL-TYPE LIVRÉ ANNONCE UNE PIÈCE QUE LE CLIENT N'A PEUT-ÊTRE PAS.
+   Il annonce « une estimation des droits qui seraient dus aujourd'hui ».
+   Cette estimation vient du Simulateur, qui appartient à La Méthode.
+   → Tant que le document n'est pas corrigé, la vidéo dit de barrer cette
+     mention avant de recopier.
+
+
+CE QU'IL FAUT FAIRE CORRIGER AVANT DE TOURNER
+---------------------------------------------
+
+  · `src/content/documents/questions-notaire.tsx` : la feuille imprime
+    « Le notaire est payé à l'acte, et il acte ce que vous lui demandez. »
+    Les deux affirmations sont interdites, et le client aura cette feuille
+    en main juste après.
+  · `src/content/documents/mail-rendez-vous.tsx` : la mention de
+    l'estimation des droits (piège 5).
+  · `src/content/documents/compte-rendu.tsx` : il manque une ligne « où se
+    trouve ce dossier dans la maison ». Solution retenue en attendant : on
+    la fait ajouter à la main.

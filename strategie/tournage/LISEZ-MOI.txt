@@ -1,0 +1,210 @@
+============================================================
+CE QUE VOUS TOURNEZ — LES SCRIPTS, PRODUIT PAR PRODUIT
+============================================================
+
+Écrit le 9 septembre 2026.
+Remplace, pour le tournage, le dossier `fiches-tournage/`.
+
+
+UN DOSSIER = UN PRODUIT
+-----------------------
+
+  PRODUIT-1-les-7-erreurs/       27 €   8 vidéos    ~89 min
+                                        (14 · 10 · 11 · 12 · 12 · 9 · 9 · 12)
+  PRODUIT-2-dossier-notaire/     17 €   1 vidéo     ~14 min
+  PRODUIT-3-plan-transmission/  297 €   1 vidéo     ~15 min
+  PRODUIT-4-kit-assurance-vie/   97 €   1 vidéo     ~17 min
+
+Les durées incluent le pont de fin vers le produit suivant (voir LES PONTS).
+
+Dans chaque dossier :
+
+  FICHE-CONNAISSANCES.txt   ce que VOUS devez avoir compris avant d'ouvrir
+                            la bouche. Expliqué à ras du sol, sans jargon.
+                            Elle ne se lit pas devant la caméra.
+
+  ..-SCRIPT-...txt          le texte oral, mot pour mot, dans l'ordre où il
+                            se dit. C'est ça que vous lisez ou que vous
+                            apprenez.
+
+
+COMMENT ON S'EN SERT
+--------------------
+
+1. Vous lisez la FICHE-CONNAISSANCES du produit. En entier. Une fois.
+2. Vous lisez le script de la vidéo à tourner.
+3. Vous tournez.
+
+Le script est écrit pour être dit tel quel. Si une phrase ne vous vient pas
+naturellement, changez les mots — mais gardez les chiffres, les articles de
+loi et les phrases marquées ⚠️ TEL QUEL. Celles-là ne se reformulent pas :
+elles sont écrites ainsi parce qu'une autre formulation serait fausse.
+
+
+RYTHME DE LECTURE
+-----------------
+
+Les durées sont calculées à 135 mots par minute. C'est lent. C'est voulu :
+le spectateur a entre 65 et 85 ans, il écoute avec un stylo à la main.
+Si vous lisez à 170 mots/minute, vos vidéos feront 20 % de moins et la
+moitié des gens décrocheront.
+
+
+CE QUI A CHANGÉ PAR RAPPORT AUX ANCIENNES FICHES
+------------------------------------------------
+
+1. UN SEUL CAS CHIFFRÉ DANS TOUT LE PRODUIT 1.
+   L'ancienne fiche 1 déroulait le cas « Jean-Pierre » (500 000 € → 78 194 €),
+   puis la fiche 5 déroulait un autre cas (520 000 € → 82 194 € → 13 988 €).
+   Deux familles, deux factures, dans le même produit : un homme qui suit
+   avec un stylo croit à une erreur de calcul.
+   → On garde le second, et lui seul. C'est le seul qui a un « après », donc
+     le seul qui démontre quelque chose. Chiffres canoniques de
+     `12-chiffres-succession.md`.
+   ⚠️ Le cas Jean-Pierre à 78 194 € reste valable AILLEURS : c'est le bloc
+     « l'échec » de la page de vente. Il ne rentre pas dans le produit.
+
+2. L'ERREUR 5 ET L'ERREUR 6 SONT SÉPARÉES.
+   L'ancienne fiche 6 traitait les deux dans une seule vidéo. Le produit
+   s'appelle « Les 7 erreurs » : il faut sept vidéos d'erreur, sinon le
+   client compte et n'en trouve que six. `src/lib/methode.ts` porte déjà
+   huit étapes séparées — c'est cette structure-là qui fait foi.
+
+3. LE TITRE DU PRODUIT.
+   `BRIEF-PRODUIT.txt` dit « Les 7 Erreurs qui Offrent Votre Héritage à
+   l'État ». `04-produit-mvp.md` dit « LE PRODUIT S'APPELLE LA MÉTHODE
+   HÉRITAGE INTACT » et interdit d'employer le nom des 7 erreurs comme
+   étiquette. Les deux fichiers se contredisent.
+   → Les scripts disent « La Méthode » quand ils nomment le produit dans
+     une phrase, et « les sept erreurs » quand ils nomment le parcours.
+     Les deux fonctionnent avec le nom commercial que vous trancherez.
+     À trancher avant de fabriquer les cartons-titres, pas avant de tourner.
+
+
+CHAQUE PRODUIT RÉPOND À UNE QUESTION, ET À UNE SEULE
+----------------------------------------------------
+
+C'est la règle qui empêche les produits de se répéter. Un produit qui
+n'a pas sa propre question n'est pas un produit : c'est une redite
+payante, et une redite payante est un remboursement.
+
+  1 · La Méthode ............ « Combien, et quand ? »
+  2 · Le Dossier notaire .... « Qu'est-ce que j'apporte au rendez-vous ? »
+  3 · Le Plan familial ...... « Dans MA situation, dans quel ordre ? »
+  4 · L'Assurance-vie ....... « Qu'est-ce qu'il y a dans mon contrat ? »
+  5 · Le Simulateur ......... « Et si je fais autrement ? »
+
+LA MATRICE ANTI-RÉPÉTITION. Chaque sujet a UN propriétaire. Ailleurs, on
+y renvoie — on ne le réexplique jamais.
+
+  Le calcul, l'abattement, le barème ....... Méthode, vidéo 0
+  Le compteur des 15 ans ................... Méthode, vidéo 1
+  Les régimes matrimoniaux ................. Méthode, vidéo 2
+  Le mécanisme 152 500 / 30 500 ............ Méthode, vidéo 3
+  Le démembrement, l'article 669 ........... Méthode, vidéo 4
+  Le rapport des donations ................. Méthode, vidéo 5
+  Les enveloppes petits-enfants ............ Méthode, vidéo 6
+  Le rôle du notaire ....................... Méthode, vidéo 7
+  Remplir l'inventaire, la fiche famille ... Dossier notaire
+  L'ORDRE des 3 dates selon la famille ..... Plan familial
+  Lire SON contrat, trouver ses 4 infos .... Assurance-vie
+  Tester une hypothèse en direct ........... Simulateur
+
+Le détail complet est dans `strategie/CARTE-PRODUIT.md`, qui est la
+source de vérité de l'architecture produit.
+
+
+LES PONTS — COMMENT ON DONNE ENVIE DU SUIVANT
+---------------------------------------------
+
+Chaque script se termine par un pont vers le produit suivant. Trois
+règles, et elles tiennent en une page.
+
+RÈGLE 1 — ON NOMME UN PROBLÈME NEUF, PAS UN PRODUIT.
+Le bon pont ne vante rien : il décrit la situation dans laquelle le
+spectateur va se retrouver dans dix minutes, une fois qu'il aura fait ce
+qu'on vient de lui demander. S'il la reconnaît, il a déjà envie. S'il ne
+la reconnaît pas, c'est que le produit ne lui sert pas — et on ne veut
+pas le lui vendre.
+
+RÈGLE 2 — L'ARGUMENT EST UN FAIT VÉRIFIABLE, JAMAIS UNE PROMESSE.
+« Vous allez économiser des milliers d'euros » est invérifiable et
+interdit. « La clause qui fait foi n'est pas forcément celle du bulletin :
+elle peut être sur un avenant, dans un testament, ou dans un courrier »
+est un fait, il fait peur à juste titre, et il vend tout seul.
+
+RÈGLE 3 — AUCUNE PRESSION, JAMAIS, SUR QUELQU'UN QUI A DÉJÀ PAYÉ.
+Pas de compte à rebours, pas de « plus que 2 places », pas de prix qui
+monte. Les deux seules urgences réelles du projet — le compteur des
+places fondatrices et le 31 décembre 2026 — s'adressent à quelqu'un qui
+n'a PAS encore acheté. Sur un client payant, une pression inventée ne
+fait pas vendre : elle fait douter de ce qu'il vient d'acheter. C'est
+écrit dans `src/components/espace/Boutique.tsx`, et l'art. L121-2 du code
+de la consommation sanctionne le reste.
+
+→ Chaque pont se termine donc par sa phrase de sortie : « rien ne presse,
+  c'est là quand vous en aurez besoin ». Elle n'est pas une politesse,
+  elle est ce qui rend le reste crédible.
+
+LA CARTE DES PONTS
+
+  Méthode, vidéo 3  ──→  L'Assurance-vie (97 €)
+  Méthode, vidéo 7  ──→  Le Dossier notaire (17 €) puis Le Plan (297 €)
+  Dossier notaire   ──→  Le Plan (297 €)
+  Le Plan           ──→  L'Assurance-vie (97 €), si non possédée
+  L'Assurance-vie   ──→  Le Plan (297 €), si non possédé
+
+⚠️ Les deux derniers ponts sont RÉCIPROQUES, et c'est voulu : l'ordre
+d'achat n'est pas imposé. `prixUpsell` fait que 297 + 50 = 97 + 250 = 347
+— la ligne « 3 clauses bénéficiaires » figure dans les deux offres et
+n'est facturée qu'une fois. Aucun ordre n'est puni, et le script peut
+donc renvoyer dans les deux sens sans mentir.
+
+⚠️ Le Simulateur personnalisé (147 €) n'a AUCUN pont dédié : il est
+compris dans Le Plan. En faire la promotion auprès d'un acheteur du Plan
+reviendrait à lui vendre ce qu'il possède déjà.
+
+
+LES SIX RÈGLES QUI NE SE NÉGOCIENT PAS
+--------------------------------------
+
+Elles reviennent dans tous les scripts. Les connaître évite de les relire.
+
+1. ON N'A PAS LE DROIT DE CONSEILLER.
+   Aucune phrase du type « vous devriez », « je vous conseille de »,
+   « faites ceci ». On dit ce que la loi fait. Le spectateur décide.
+   Recommander un placement est réservé aux professionnels habilités
+   (art. L541-1 code monétaire et financier, art. L511-1 code des
+   assurances). Nous ne le sommes pas.
+
+2. AUCUN MONTANT DE FRAIS DE NOTAIRE. Jamais. Pas même un ordre de
+   grandeur. Et on ne dit JAMAIS « son devis est gratuit ».
+
+3. AUCUN NOM D'ASSUREUR, DE BANQUE, DE CONTRAT OU DE PLACEMENT.
+
+4. LE MOT « ABATTEMENT » ACCOMPAGNE TOUJOURS SON CHIFFRE.
+   « 100 000 € » seul se comprend comme un plafond — c'est faux, on peut
+   donner plus, ce qui dépasse est simplement taxé.
+
+5. CHAQUE CHIFFRE SORT DE `12-chiffres-succession.md`. Aucun autre.
+
+6. LE NOTAIRE NE « FAIT PAS CE QU'ON LUI DEMANDE ».
+   Il reçoit une décision et lui donne la forme d'un acte. Il a un devoir
+   de conseil, et il peut déconseiller.
+   ⚠️ Cette phrase fautive est encore en production à trois endroits :
+   `src/content/documents/questions-notaire.tsx`, `src/lib/methode.ts`
+   (ETAPES[7].resume) et `src/lib/sequence.ts` (email j4).
+   À corriger AVANT que la vidéo 7 sorte, sinon le document que le client
+   a sous les yeux contredit votre voix.
+
+
+CE QU'IL RESTE À VÉRIFIER AVANT D'ALLUMER LA CAMÉRA
+---------------------------------------------------
+
+  · Art. 790 A bis CGI (le don logement, fenêtre 15 février 2025 →
+    31 décembre 2026). Un rapport au Parlement était attendu avant le
+    30 septembre 2026. Non prorogé : on tourne tel quel. Prorogé ou
+    modifié : la vidéo 6 se retourne.
+  · La déclaration de don en ligne sur impots.gouv.fr : relever le libellé
+    exact de la rubrique le jour du tournage.
+  · Les trois phrases fautives sur le notaire (règle 6 ci-dessus).
