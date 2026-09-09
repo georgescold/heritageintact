@@ -10,7 +10,7 @@ import {
 import { SchemaBareme } from "@/components/documents/Schemas";
 
 /**
- * LE SIMULATEUR DE FACTURE INVISIBLE — VERSION PAPIER.
+ * LA FEUILLE DE VOTRE FACTURE INVISIBLE — VERSION PAPIER.
  *
  * C'est le document qui tient la promesse de la page de vente : « votre
  * chiffre ». Il existe en trois formes (tableur, Excel, papier) et c'est la
@@ -23,7 +23,7 @@ import { SchemaBareme } from "@/components/documents/Schemas";
 export function SimulateurPapier() {
   return (
     <Feuille
-      titre="Le Simulateur de Facture Invisible"
+      titre="La Feuille de votre Facture Invisible"
       sousTitre="Ce que votre famille paierait si la succession s'ouvrait aujourd'hui."
     >
       <SchemaBareme />

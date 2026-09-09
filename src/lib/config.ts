@@ -357,8 +357,8 @@ export const PRODUCTS: Record<ProductSku, Product> = {
 
   backend1: {
     sku: "backend1",
-    name: "Le Simulateur Automatique",
-    short: "Le Simulateur",
+    name: "Le Calcul Automatique de votre facture",
+    short: "Le Calcul Automatique",
     price: 147,
     /**
      * 678 € est le seul ancrage backend justifié ligne à ligne :
@@ -415,7 +415,7 @@ export const PRODUCTS: Record<ProductSku, Product> = {
 /**
  * LES PRODUITS QU'UN ACHAT EN CONTIENT D'AUTRES.
  *
- * Le Plan adapté à votre famille (297 €) CONTIENT Le Simulateur Automatique.
+ * Le Plan adapté à votre famille (297 €) CONTIENT Le Calcul Automatique de votre facture.
  * Facturer 147 € le Simulateur à quelqu'un qui vient de payer 297 € pour
  * l'obtenir, c'est un remboursement annoncé.
  *

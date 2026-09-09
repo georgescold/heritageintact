@@ -75,7 +75,7 @@ export default async function Upsell1Page({
         { label: "12 plans-types, une page par situation familiale", value: "197 €" },
         {
           label:
-            "Le Simulateur Automatique — votre feuille à remplir au stylo, en version qui calcule seule (plusieurs héritiers, plusieurs contrats, démembrement, donations passées)",
+            "Le Calcul Automatique : votre Feuille de Facture Invisible, remplie toute seule (plusieurs héritiers, plusieurs contrats, démembrement, donations passées)",
           value: "147 €",
         },
         {
@@ -110,22 +110,26 @@ export default async function Upsell1Page({
         éviter, les trois questions à poser au notaire, et ce que ça change en euros sur un cas
         concret.
       </p>
-      {/* ⚠️ LA DISTINCTION ENTRE LES DEUX SIMULATEURS SE DIT ICI, ET EN PREMIER.
-          La Méthode à 27 € contient déjà un simulateur : Le Simulateur de Facture
-          Invisible, la feuille à remplir au stylo. Vendre « Le Simulateur
-          Automatique » sans le rappeler, c'est laisser l'acheteur croire qu'on
-          lui refacture ce qu'il vient d'acheter — et sur cette cible, ce
-          soupçon-là ne se dissipe pas, il se transforme en demande de
-          remboursement. Le dire, au contraire, prouve deux choses d'un coup :
-          que le produit à 27 € tient sa promesse, et que celui-ci fait autre
-          chose. */}
+      {/* ⚠️ DEUX OUTILS, DEUX NOMS QUI NE PARTAGENT PAS UN MOT.
+          La Méthode à 27 € contient déjà de quoi calculer sa facture : La Feuille
+          de votre Facture Invisible, qu'on remplit au stylo. Tant que les deux
+          s'appelaient « Simulateur », vendre le second quinze secondes après
+          l'achat du premier ne s'entendait que d'une façon : on me refacture ce
+          que je viens d'acheter. Sur un acheteur de 74 ans, ce soupçon-là ne se
+          dissipe pas, il devient une demande de remboursement.
+
+          Les noms font désormais le travail à eux seuls — une feuille qu'on
+          remplit, un calcul qui se fait tout seul — et ce paragraphe n'a plus
+          qu'à le confirmer. Il reste quand même, parce qu'il prouve deux choses
+          d'un coup : que le produit à 27 € tenait sa promesse, et que celui-ci
+          fait autre chose. */}
       <p>
-        Un mot sur le Simulateur, pour qu&apos;il n&apos;y ait aucune ambiguïté : vous avez déjà{" "}
-        <strong>Le Simulateur de Facture Invisible</strong> dans votre Méthode, la feuille à remplir
-        au stylo. Gardez-la, elle donne le bon chiffre. Le Simulateur Automatique compris ici est la
-        même chose en dix minutes au lieu d&apos;une heure, et il sait traiter ce que la feuille ne
-        sait pas : plusieurs héritiers, plusieurs contrats, un démembrement, des donations déjà
-        faites.
+        Un mot pour qu&apos;il n&apos;y ait aucune ambiguïté : vous avez déjà{" "}
+        <strong>La Feuille de votre Facture Invisible</strong> dans votre Méthode, celle qu&apos;on
+        remplit au stylo. Gardez-la, elle donne le bon chiffre. Ce que vous ajoutez ici, c&apos;est{" "}
+        <strong>Le Calcul Automatique</strong> : la même chose, mais remplie toute seule, en dix
+        minutes au lieu d&apos;une heure — et il sait traiter ce que la feuille ne sait pas :
+        plusieurs héritiers, plusieurs contrats, un démembrement, des donations déjà faites.
       </p>
     </UpsellPage>
   );

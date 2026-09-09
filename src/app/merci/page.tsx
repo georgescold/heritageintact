@@ -9,7 +9,7 @@ import { etapeParNumero } from "@/lib/methode";
 
 export const metadata: Metadata = { title: "Bienvenue" };
 
-/** Page de remerciement : elle vend aussi (Le Simulateur Automatique, produit backend n°1). */
+/** Page de remerciement : elle vend aussi (Le Calcul Automatique de votre facture, produit backend n°1). */
 export default async function ThankYouPage({
   searchParams,
 }: {

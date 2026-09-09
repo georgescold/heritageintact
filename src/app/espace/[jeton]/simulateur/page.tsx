@@ -5,7 +5,7 @@ import { Simulateur } from "@/components/simulateur/Simulateur";
 import { chargerEspace } from "@/lib/espace";
 import { estJetonValide } from "@/lib/jeton";
 
-export const metadata: Metadata = { title: "Le Simulateur Automatique" };
+export const metadata: Metadata = { title: "Le Calcul Automatique de votre facture" };
 
 /**
  * LE SIMULATEUR AUTOMATIQUE — la version qui calcule à la place du client.
@@ -37,14 +37,14 @@ export default async function SimulateurPage({ params }: { params: Promise<{ jet
   if (!aDroit) {
     return (
       <div className="wrap py-12">
-        <h1 className="mb-3 text-[1.5rem]">Le Simulateur Automatique</h1>
+        <h1 className="mb-3 text-[1.5rem]">Le Calcul Automatique de votre facture</h1>
         <p className="mb-4 text-[1.05rem]">
           Cet outil ne fait pas partie de ce que vous avez. Vous le trouverez dans votre espace,
           avec son prix, si vous souhaitez l&apos;ajouter.
         </p>
         <p className="mb-6 text-[1.05rem]">
-          En attendant, le <strong>Simulateur de Facture Invisible</strong> est dans vos documents :
-          il donne le même chiffre, rempli à la main.
+          En attendant, le <strong>Feuille de votre Facture Invisible</strong> est dans vos
+          documents : il donne le même chiffre, rempli à la main.
         </p>
         <Link
           href={`/espace/${jeton}`}

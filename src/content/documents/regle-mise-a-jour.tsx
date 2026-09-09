@@ -59,7 +59,7 @@ export function RegleMiseAJour() {
       <ul className="space-y-1">
         <Case>
           J&apos;ai vérifié l&apos;abattement par enfant et le barème sur impots.gouv.fr, et je les
-          ai corrigés sur le Simulateur si besoin.
+          ai corrigés sur la Feuille si besoin.
         </Case>
         <Case>
           J&apos;ai vérifié les deux abattements de l&apos;assurance-vie (avant et après 70 ans).

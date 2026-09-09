@@ -173,7 +173,7 @@ export function AbattementsDeChacun() {
 
       <Encadre titre="LES LIGNES QUE LE SIMULATEUR NE CALCULE PAS">
         <p className="text-[0.93rem]">
-          Le Simulateur de Facture Invisible ne traite que la ligne directe : les enfants et les
+          La Feuille de votre Facture Invisible ne traite que la ligne directe : les enfants et les
           petits-enfants. Pour un frère, une sœur, un neveu, une nièce ou une personne sans lien de
           parenté, le calcul se fait à la main avec ce tableau — ce qu’elle reçoit, moins son
           abattement, puis le taux de la colonne « Au-delà, il paie ». Faites confirmer le résultat

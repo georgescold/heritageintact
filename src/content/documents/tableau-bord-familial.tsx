@@ -110,16 +110,16 @@ export function TableauBordFamilial() {
         </li>
         <li>
           <strong>Colonne 4, pour un enfant ou un petit-enfant</strong> — refaites les points 5
-          (l’abattement) et 6 (le barème) du Simulateur de Facture Invisible sur la part de cette
+          (l’abattement) et 6 (le barème) du Feuille de votre Facture Invisible sur la part de cette
           personne-là, avec SON abattement. Si tous vos enfants reçoivent la même part, le chiffre
-          de l’encadré F du Simulateur vaut pour chacun d’eux.
+          de l’encadré F de la Feuille vaut pour chacun d’eux.
         </li>
-        {/* Le point 6 du Simulateur EST le barème de la ligne directe. Appliqué à
+        {/* Le point 6 de la Feuille EST le barème de la ligne directe. Appliqué à
             un neveu, il écrit 16 601 € là où l’art. 777 en réclame 50 618 sur
             100 000 € reçus : 34 000 € d’écart sur la feuille montrée au notaire. */}
         <li>
           <strong>Colonne 4, pour tous les autres</strong> — frère, sœur, neveu, nièce, personne
-          sans lien : le barème du Simulateur ne vaut pas. Calcul à la main avec la colonne «
+          sans lien : le barème de la Feuille ne vaut pas. Calcul à la main avec la colonne «
           Au-delà, il paie » de la feuille des abattements, confirmé par le notaire.
         </li>
       </ul>
@@ -131,7 +131,7 @@ export function TableauBordFamilial() {
       <Champ label="Total, pour toute la famille, aujourd’hui" indice="additionnez la colonne 4" />
       <Source>
         Abattements : art. 779 du CGI. Rappel des donations de moins de quinze ans : art. 784.
-        Barème en ligne directe, celui du Simulateur : art. 777.
+        Barème en ligne directe, celui de la Feuille : art. 777.
       </Source>
 
       {/* Sans intertitre, ces deux champs se lisent à l’impression comme une
@@ -158,9 +158,9 @@ export function TableauBordFamilial() {
         <Case>Chaque ligne du tableau porte un prénom, pas seulement « les enfants ».</Case>
         <Case>La colonne 4 est remplie pour chacun, même quand le montant est 0 €.</Case>
         <Case>
-          La feuille « Les abattements de chacun » et le Simulateur de Facture Invisible sont rangés
-          juste derrière celle-ci, et une copie des trois avec le Plan en une page, en tête de
-          classeur.
+          La feuille « Les abattements de chacun » et la Feuille de votre Facture Invisible sont
+          rangés juste derrière celle-ci, et une copie des trois avec le Plan en une page, en tête
+          de classeur.
         </Case>
         <Case>J’ai dit à mes enfants où est ce classeur, et c’est écrit au point 2.</Case>
       </ul>

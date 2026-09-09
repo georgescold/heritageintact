@@ -33,7 +33,7 @@
  * traiter `VIDEO.etapes[videoIndex]` comme éventuellement absent et afficher
  * la feuille seule plutôt qu'un lecteur vide. L'espace ne doit pas être ouvert
  * au public, et surtout aucune publicité ne doit tourner, tant que l'étape 0
- * et le Simulateur de Facture Invisible ne sont pas livrés.
+ * et la Feuille de votre Facture Invisible ne sont pas livrés.
  */
 import type { ReactNode } from "react";
 import type { ProductSku } from "./config";
@@ -177,7 +177,7 @@ export const ETAPES: EtapeMethode[] = [
     resume:
       "Comment se calcule une succession en France, et le montant exact que votre famille paierait si elle s'ouvrait aujourd'hui.",
     ceSoir:
-      "Remplissez le Simulateur de Facture Invisible avec vos vrais montants, puis reportez votre chiffre en haut du Calendrier des 3 dates.",
+      "Remplissez la Feuille de votre Facture Invisible avec vos vrais montants, puis reportez votre chiffre en haut du Calendrier des 3 dates.",
     videoIndex: 0,
     documents: ["simulateur-papier", "calendrier-3-dates", "lexique"],
   },
@@ -297,7 +297,7 @@ export const ETAPE_PRODUIT: Record<string, ProductSku | undefined> = {
 export const DOCUMENTS: DocumentImprimable[] = [
   {
     cle: "simulateur-papier",
-    titre: "Le Simulateur de Facture Invisible",
+    titre: "La Feuille de votre Facture Invisible",
     sku: "front",
     ordre: 1,
     corps: SimulateurPapier,

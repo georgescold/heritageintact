@@ -113,13 +113,15 @@ export default async function HubPage({
           {/* LE SIMULATEUR AUTOMATIQUE, quand il est possédé.
               Il ne vit pas dans « MES DOCUMENTS » : ce n'est pas une feuille à
               imprimer mais un outil qui calcule, et le confondre avec le
-              Simulateur de Facture Invisible — celui qu'on remplit au stylo —
+              Feuille de votre Facture Invisible — celui qu'on remplit au stylo —
               ferait croire au client qu'il l'a déjà vu. */}
           {(etat.possede.has("backend1") ||
             etat.possede.has("upsell1") ||
             etat.possede.has("pack1")) && (
             <section>
-              <h2 className="mb-3 text-[1.3rem] text-blue">Le Simulateur Automatique</h2>
+              <h2 className="mb-3 text-[1.3rem] text-blue">
+                Le Calcul Automatique de votre facture
+              </h2>
               <p className="mb-3 text-[1.05rem]">
                 Il fait le calcul à votre place, et il refait les 3 dates à chaque changement. Ce
                 que vous y saisissez reste sur votre ordinateur.
@@ -128,7 +130,7 @@ export default async function HubPage({
                 href={`/espace/${jeton}/simulateur`}
                 className="flex min-h-[56px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-5 text-[1.1rem] font-bold text-white no-underline sm:w-auto sm:px-8"
               >
-                Ouvrir le Simulateur
+                Ouvrir le Calcul Automatique
               </Link>
             </section>
           )}

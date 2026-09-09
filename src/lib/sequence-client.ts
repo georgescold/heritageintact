@@ -103,7 +103,7 @@ export const SEQUENCE_CLIENT: EtapeClient[] = [
       `Bonjour ${p},`,
       "Votre espace est ouvert depuis trois jours, et l'étape 0 n'a pas encore été ouverte. Ce n'est pas un reproche&nbsp;: c'est souvent qu'on ne sait pas par où commencer.",
       "Alors voilà, en une phrase&nbsp;: <strong>l'étape 0 dure douze minutes, et à la fin vous connaissez votre chiffre</strong> — ce que votre famille paierait aujourd'hui si rien ne changeait.",
-      "Vous n'avez rien à préparer, rien à calculer, rien à imprimer. Une vidéo, et le Simulateur de Facture Invisible juste en dessous.",
+      "Vous n'avez rien à préparer, rien à calculer, rien à imprimer. Une vidéo, et la Feuille de votre Facture Invisible juste en dessous.",
       "Le bouton ci-dessous vous emmène directement à cette étape, sans passer par l'accueil.",
       `Et votre lien personnel, toujours le même&nbsp;:<br><strong>${lien}</strong>`,
     ],

@@ -47,7 +47,7 @@ export function TroisPoches() {
       <Champ label="POCHE 2 = ce que je veux garder disponible" />
 
       <Titre>Poche 3 — transmettre</Titre>
-      <Champ label="D. Mon patrimoine total" indice="reporté du Simulateur, ligne C" />
+      <Champ label="D. Mon patrimoine total" indice="reporté de la Feuille, ligne C" />
       <Encadre titre="POCHE 3 = D − POCHE 1 − POCHE 2">
         <div className="min-h-[44px] border-b border-black" />
         <p className="mt-2 text-[0.9rem]">
