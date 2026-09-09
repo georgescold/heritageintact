@@ -238,7 +238,34 @@ function Inner({
 
         <Panel title="2. Paiement sécurisé">
           {stripe ? (
-            <PaymentElement options={{ layout: "tabs" }} />
+            <PaymentElement
+              options={{
+                layout: "tabs",
+                /**
+                 * ═══ LINK EST COUPÉ, PAS REPLIÉ ═══
+                 *
+                 * Stripe insérait ici « Enregistrer mes informations pour un
+                 * paiement plus rapide » : un second formulaire, réclamant un
+                 * NUMÉRO DE TÉLÉPHONE PORTABLE, au nom d’une marque tierce que
+                 * l’acheteur n’a jamais vue, avec ses propres conditions
+                 * d’utilisation et sa propre politique de confidentialité — le
+                 * tout à la seconde où il saisit sa carte.
+                 *
+                 * Sur un acheteur de 74 ans, ce bloc pose la question qui tue :
+                 * « pourquoi ce site veut-il mon numéro de portable, et qui est
+                 * ce Link à qui je crée un compte ? »
+                 *
+                 * Et il ne nous apporte RIEN. Link sert à accélérer un futur
+                 * paiement ; les nôtres sont déjà en un clic, parce que
+                 * `setup_future_usage: "off_session"` conserve la carte côté
+                 * Stripe et que `chargeUpsell` débite sans ressaisie. Un
+                 * dispositif qui coûte de la confiance sans rien rendre se
+                 * retire ; le replier laisserait une décision de plus à prendre
+                 * sur l’écran où chaque décision se paie le plus cher.
+                 */
+                wallets: { link: "never" },
+              }}
+            />
           ) : (
             <div className="border border-dashed border-grey-line bg-grey-bg p-3 text-[0.95rem] text-text-soft">
               <p className="font-bold text-text">Emplacement du formulaire de carte bancaire.</p>
