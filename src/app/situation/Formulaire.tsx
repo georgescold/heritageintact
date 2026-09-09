@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { enregistrerReponses } from "@/app/profil";
 import { QualificationBloc } from "@/components/QualificationBloc";
-import { Button } from "@/components/ui";
 import type { Reponses } from "@/lib/qualification";
 
 /**
@@ -13,14 +12,12 @@ import type { Reponses } from "@/lib/qualification";
  * ═══ POURQUOI ELLES ONT DÉMÉNAGÉ DU BON DE COMMANDE ═══
  *
  * Sur le bon de commande, elles étaient placées entre un homme de 74 ans et sa
- * carte bancaire. Facultatives, sans astérisque, sans blocage — et malgré tout
- * quatre blocs de texte à traverser avant de payer. Chaque point de friction à
- * cet endroit-là se paie sur 100 % du revenu : un acheteur perdu au bon de
- * commande ne coûte pas le prix de La Méthode, il coûte La Méthode PLUS son
- * upsell PLUS son backend.
+ * carte bancaire. Chaque point de friction à cet endroit-là se paie sur 100 %
+ * du revenu : un acheteur perdu au bon de commande ne coûte pas le prix de La
+ * Méthode, il coûte La Méthode PLUS son upsell PLUS son backend.
  *
- * Ici, elles ne coûtent plus rien du tout : il a payé, il ne peut plus être
- * perdu. Et elles gagnent ce qu'elles n'avaient pas — elles RASSURENT.
+ * Ici, elles ne coûtent plus cela : il a payé, et il a déjà reçu ce qu'il a
+ * payé. Et elles gagnent ce qu'elles n'avaient pas — elles RASSURENT.
  * L'instant qui suit un paiement en ligne est le plus anxieux de tout le
  * parcours : « est-ce que c'est passé, est-ce que j'ai été prélevé, est-ce que
  * je vais recevoir quelque chose ». Une page qui répond aux trois questions
@@ -31,68 +28,78 @@ import type { Reponses } from "@/lib/qualification";
  * paiement est passé. L'ordre de cette page n'est pas une mise en page, c'est
  * la règle.
  *
- * ═══ POURQUOI LES DEUX BOUTONS MÈNENT AU MÊME ENDROIT ═══
+ * ═══ REFONTE DU 9 SEPTEMBRE 2026 : PLUS DE BOUTON DE SORTIE ═══
+ *
+ * Il y avait ici deux échappatoires — un bouton « Continuer sans répondre » et
+ * un lien « Passer cette étape ». Elles ont été retirées : les quatre questions
+ * sont maintenant obligatoires pour atteindre les écrans suivants.
+ *
+ * ⚠️ CE QUI REND CETTE OBLIGATION TENABLE, ET IL FAUT QUE ÇA LE RESTE :
+ * l'acheteur a DÉJÀ son produit quand il arrive ici. `livrer()` s'exécute dans
+ * `confirmCheckout`, donc avant le rendu de cette page ; le lien de son espace
+ * est écrit au-dessus de ce formulaire, en clair, et il s'ouvre dans un onglet
+ * à part ; l'email est parti. Quelqu'un qui ferme l'onglet à cet instant ne
+ * perd rien de ce qu'il a payé — il ne verra simplement pas les offres.
+ *
+ * Le jour où l'un de ces trois filets tombe, l'obligation devient un péage sur
+ * un produit déjà payé, et ce n'est plus la même page. Ne pas rendre ces
+ * questions obligatoires AVANT le bloc de livraison, ni sur un écran où
+ * l'accès ne serait pas déjà donné.
+ *
+ * ═══ POURQUOI IL N'Y A PLUS DE BOUTON « CONTINUER » DU TOUT ═══
+ *
+ * L'écran avance au choix, et la dernière réponse déclenche l'envoi. Un bouton
+ * de validation en plus des quatre réponses, ce serait un cinquième clic qui
+ * n'apporte aucune information — et sur cette cible, un bouton qui ne sert à
+ * rien est un bouton devant lequel on hésite.
+ *
+ * ═══ AUCUNE RÉPONSE NE TRANSITE PAR L'URL ═══
+ *
+ * Elles partent par une server action, sont écrites en base sous l'identifiant
+ * de commande, et relues à l'arrivée. Une URL finit dans les journaux du
+ * serveur, dans le `Referer` envoyé à des tiers, et dans l'historique de
+ * l'ordinateur familial — celui-là même où les enfants dont il est question ici
+ * lisent leurs mails.
  *
  * `/plan-complet` est l'entrée du tunnel, et le tunnel se redirige lui-même
  * vers le bon premier écran (`etapeTunnel`). Écrire ici la destination calculée
  * serait la recalculer une seconde fois, à un second endroit — et deux calculs
- * de routage finissent toujours par diverger. La destination reste donc
- * littéralement celle d'avant ce fichier.
- *
- * Corollaire de sécurité : aucune réponse ne transite par l'URL. Elles partent
- * par une server action, sont écrites en base sous l'identifiant de commande,
- * et relues à l'arrivée. Une URL finit dans les journaux du serveur, dans le
- * `Referer` envoyé à des tiers, et dans l'historique de l'ordinateur familial —
- * celui-là même où les enfants dont il est question ici lisent leurs mails.
- *
- * ═══ POURQUOI « PASSER » EST UN VRAI BOUTON ═══
- *
- * Il est écrit en clair, au même endroit, sans grisé et sans culpabilisation.
- * Un bouton d'échappement visible fait répondre PLUS de monde qu'un formulaire
- * qui paraît obligatoire : le lecteur qui sait qu'il peut sortir prend le temps
- * de lire. Et il ne perd rien — sans réponse, il suit le parcours par défaut.
+ * de routage finissent toujours par diverger.
  */
 export function FormulaireSituation({ orderId, email }: { orderId: string; email: string }) {
   const router = useRouter();
-  const [reponses, setReponses] = useState<Reponses>({});
   const [pending, setPending] = useState(false);
 
   const suite = `/plan-complet?o=${encodeURIComponent(orderId)}`;
-  const aRepondu = Boolean(reponses.vie || reponses.enfants || reponses.av || reponses.age);
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  async function onTermine(reponses: Reponses) {
     setPending(true);
     try {
-      if (aRepondu) await enregistrerReponses(orderId, email, reponses);
+      await enregistrerReponses(orderId, email, reponses);
     } catch {
-      // Silence volontaire, et il est de même nature qu'au bon de commande :
-      // ces réponses sont un confort de routage. Aucune d'elles ne vaut de
-      // laisser un homme qui vient de payer devant un message d'erreur rouge.
+      // Silence volontaire : ces réponses sont un confort de routage. Aucune
+      // d'elles ne vaut de laisser un homme qui vient de payer devant un
+      // message d'erreur rouge — il conclurait que son paiement a échoué.
     } finally {
       // Volontairement HORS du `catch` : qu'on ait écrit ou non, il continue.
+      // Une panne d'écriture ne doit jamais l'enfermer sur cet écran.
       router.push(suite);
     }
   }
 
-  return (
-    <form onSubmit={onSubmit}>
-      <QualificationBloc valeurs={reponses} onChange={setReponses} />
+  // L'écran d'attente remplace le bloc plutôt que de s'y ajouter : voir
+  // apparaître un message SOUS quatre questions déjà répondues donne
+  // l'impression qu'il en reste à faire.
+  if (pending) {
+    return (
+      <p
+        role="status"
+        className="border-2 border-blue bg-grey-bg px-4 py-5 text-center text-[1.15rem] font-bold text-blue"
+      >
+        Merci. Nous préparons la suite…
+      </p>
+    );
+  }
 
-      <div className="mt-5 space-y-3">
-        <Button type="submit" disabled={pending} variant="green" className="w-full">
-          {pending ? "Un instant..." : aRepondu ? "Continuer" : "Continuer sans répondre"}
-        </Button>
-
-        {/* Le lien de sortie est un vrai lien, pas un bouton fantôme : il doit
-            rester utilisable si le JavaScript de la page n'a pas démarré — ce
-            qui arrive, sur de vieilles machines et des connexions lentes. */}
-        <p className="text-center">
-          <a href={suite} className="text-[1.02rem] text-text-soft underline">
-            Passer cette étape
-          </a>
-        </p>
-      </div>
-    </form>
-  );
+  return <QualificationBloc onTermine={onTermine} />;
 }

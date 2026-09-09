@@ -2,8 +2,11 @@
  * LA TABLE DE ROUTAGE DU TUNNEL — module pur, sans base, sans React, sans effet
  * de bord.
  *
- * Quatre questions facultatives posées au bon de commande décident QUELS écrans
- * de vente sont montrés après le paiement, et DANS QUEL ORDRE. Ce fichier ne
+ * Quatre questions posées APRÈS le paiement, sur /situation, décident QUELS
+ * écrans de vente sont montrés ensuite, et DANS QUEL ORDRE. Elles étaient au
+ * bon de commande, et facultatives ; elles sont depuis le 9 septembre 2026
+ * après le paiement, et obligatoires — voir `QualificationBloc`, qui porte les
+ * trois garanties rendant cette obligation tenable. Ce fichier ne
  * décide que de cela. Le titre du premier écran est dans `accroches.ts`, le prix
  * est calculé côté serveur ailleurs, et les réponses elles-mêmes sont lues par
  * un autre lot dans une table dédiée.
@@ -133,11 +136,15 @@ export type Ecran =
  * LE CODE S'IL PORTE UNE INFORMATION, `undefined` SINON. Point d'entrée unique
  * de la règle « X ≡ absent », et il n'y en a pas d'autre dans le projet.
  *
- * `X` est le libellé « Je préfère ne pas répondre ». Il sert aussi de bouton
- * d'annulation : sur une cible de 74 ans, un radio coché par erreur et
- * impossible à décocher est une raison de fermer l'onglet. Une fois ce rôle
- * assumé, `X` ne peut plus rien signifier d'autre qu'une absence — sans quoi le
- * lecteur qui se ravise se retrouverait dans un segment qu'il n'a pas choisi.
+ * `X` était le libellé « Je préfère ne pas répondre ». IL N'EST PLUS PROPOSÉ
+ * depuis le 9 septembre 2026 : les questions sont obligatoires, et son rôle de
+ * bouton d'annulation est tenu par le retour arrière du stepper.
+ *
+ * ⚠️ CETTE BRANCHE NE SE SUPPRIME PAS POUR AUTANT. Des réponses « X » sont
+ * déjà écrites en base, et les documents imprimables de ces acheteurs-là
+ * (`calendrier-3-dates`, `ma-situation`) les relisent à chaque impression. Les
+ * traiter comme un code inconnu au lieu d'une absence changerait leurs feuilles
+ * sous leurs yeux, des mois après l'achat.
  *
  * La chaîne vide est traitée pareil : une colonne texte revenue vide de la base
  * n'est pas une réponse.
