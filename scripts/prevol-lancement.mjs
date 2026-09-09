@@ -23,7 +23,9 @@ const checks = {
   resendWebhook: present("RESEND_WEBHOOK_SECRET"),
   cronProtege: (env.CRON_SECRET?.length ?? 0) >= 32,
   pilotageProtege: (env.PILOTAGE_SECRET?.length ?? 0) >= 32,
-  vslDeclareeValidee: env.VSL_VALIDEE === "true",
+  vslLocaleIntegree:
+    fs.existsSync("public/videos/vsl-heritage-intact.mp4") &&
+    fs.existsSync("public/img/vsl-heritage-intact.jpg"),
   marketingDeclareActif: env.EMAIL_MARKETING_ACTIVE === "true",
   ltvDeclareActive: env.EMAIL_LTV_ACTIVE === "true",
   interfaceConsentementDeclareeActive: env.NEXT_PUBLIC_META_SERVER_MEASUREMENT === "true",

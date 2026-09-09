@@ -35,7 +35,7 @@ export default async function VslPage() {
     <Header minimal />
     <main className="flex-1" data-version-vente="historique-v11">
       <section className="wrap pt-6 sm:pt-10">
-        <h1 className="mb-3 text-[1.5rem] leading-[1.14] sm:text-[2.1rem]">Vous avez une maison payée et des enfants&nbsp;?<br /><span className="text-orange">Si vous ne faites rien, l’État peut en prendre une part à votre mort.</span></h1>
+        <h1 className="mb-3 text-[1.5rem] leading-[1.14] sm:text-[2.1rem]">Vous avez une maison payée et des enfants&nbsp;?<br /><span className="text-orange">Si vous ne faites rien, l’État en prendra une part à votre mort.</span></h1>
         <p className="mb-5 text-[1.12rem] leading-snug">Sur une maison de province et les économies d’une vie, le cas expliqué ci-dessous passe d’environ <strong className="whitespace-nowrap text-red">82 194 €</strong> de droits à <strong className="whitespace-nowrap text-green">13 988 €</strong> après les opérations prises de son vivant — sans vendre ni quitter la maison. Soit <strong className="whitespace-nowrap">68 206 €</strong> d’écart dans cet exemple.</p>
         <VslPresentation />
         <div id="premier-cta" className="mt-5 space-y-3">
