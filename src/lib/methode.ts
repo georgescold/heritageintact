@@ -87,13 +87,47 @@ export type EtapeMethode = {
   minutes: number;
   /** Une phrase, affichée sous le titre. */
   resume: string;
-  /** L'encadré « Ce soir, faites ceci » : une seule action, jamais deux. */
-  ceSoir: string;
+  /**
+   * L'encadré « Ce qu'il y a à faire maintenant » : une seule action,
+   * jamais deux.
+   *
+   * ⚠️ « CE SOIR » A ÉTÉ ABANDONNÉ le 9 septembre 2026, et le champ a été
+   * renommé avec. Le libellé supposait que le membre regarde le soir. Une
+   * partie de cette audience est à la retraite et travaille le matin, avec
+   * un café et ses papiers étalés sur la table : lire « ce soir » à 9 h,
+   * c'est s'entendre dire que ce n'est pas encore le moment. Sur quelqu'un
+   * qui hésite déjà à commencer, une consigne qui reporte est une consigne
+   * qu'on ne suit pas.
+   *
+   * « Ce soir » reste légitime AILLEURS, et il n'y est pas touché : sur la
+   * page de vente et sur /merci, il annonce un DÉLAI (« ce soir vous avez
+   * votre chiffre »), pas une consigne. Promettre un résultat pour le soir
+   * même est une promesse ; ordonner d'agir le soir même est un frein.
+   */
+  aFaire: string;
+  /**
+   * CE QUE VOIT CELUI QUE L'ÉTAPE NE CONCERNE PAS. Optionnel, et rare.
+   *
+   * Deux étapes ne s'appliquent pas à tout le monde : l'assurance-vie pour
+   * qui n'a aucun contrat, le logement pour qui n'est propriétaire de rien.
+   * Les vidéos le disent dès la première phrase — l'écran, lui, continuait
+   * d'afficher une action impossible à faire.
+   *
+   * Quelqu'un qui ne peut pas exécuter la consigne affichée ne conclut pas
+   * « cette étape n'est pas pour moi ». Il conclut qu'il a mal compris, il
+   * relit, et il finit par ne pas cocher — donc par rester bloqué sur une
+   * étape qu'il a pourtant terminée.
+   *
+   * ⚠️ Cette phrase donne une PERMISSION, jamais une excuse : « il n'y a
+   * rien à faire ici, et vous ne manquez rien ». Elle nomme la condition
+   * exacte, sinon chacun s'y reconnaît et personne ne fait l'étape.
+   */
+  siNonConcerne?: string;
   /**
    * CE QUE LE MEMBRE SAIT MAINTENANT — trois lignes, jamais plus.
    *
    * ⚠️ C'EST UN GAIN, PAS UN SOMMAIRE. La page d'étape disait ce qu'il y
-   * avait à FAIRE (« ce soir ») et jamais ce qui venait d'être ACQUIS.
+   * avait à FAIRE et jamais ce qui venait d'être ACQUIS.
    * Quelqu'un qui termine une vidéo de douze minutes et qui ne voit
    * s'afficher qu'une tâche de plus ne se sent pas avancer : il se sent
    * en retard. Sur un parcours de huit étapes, c'est comme ça qu'on
@@ -202,7 +236,7 @@ export const ETAPES: EtapeMethode[] = [
     minutes: 14,
     resume:
       "Comment se calcule une succession en France, et le montant exact que votre famille paierait si elle s'ouvrait aujourd'hui.",
-    ceSoir:
+    aFaire:
       "Remplissez la Facture Invisible avec vos vrais montants, puis reportez votre chiffre en haut du Calendrier des 3 dates.",
     acquis: [
       "Comment une succession se calcule : le total, le partage, l'abattement, puis le barème",
@@ -219,7 +253,7 @@ export const ETAPES: EtapeMethode[] = [
     minutes: 10,
     resume:
       "L'abattement de 100 000 € par parent et par enfant se reconstitue tous les 15 ans. Attendre, c'est en perdre un.",
-    ceSoir:
+    aFaire:
       "Écrivez la date de votre dernière donation sur le Calendrier des 3 dates — ou le mot « jamais », qui est une réponse aussi.",
     acquis: [
       "L'abattement de 100 000 € se refait à neuf tous les 15 ans, et le compteur part du papier, pas du don",
@@ -236,7 +270,7 @@ export const ETAPES: EtapeMethode[] = [
     minutes: 11,
     resume:
       "Le conjoint marié ou pacsé ne paie aucun droit de succession. Le concubin en paie 60 % au-delà de 1 594 €.",
-    ceSoir:
+    aFaire:
       "Vérifiez deux choses sur votre contrat de mariage : votre régime, et l'existence d'une donation au dernier vivant.",
     acquis: [
       "Ce que le mariage, le PACS et le concubinage changent : 0 %, 0 %, ou 60 %",
@@ -253,8 +287,10 @@ export const ETAPES: EtapeMethode[] = [
     minutes: 12,
     resume:
       "C'est le premier levier de transmission, et le plus souvent mal réglé : la clause bénéficiaire et la date des versements décident de tout.",
-    ceSoir:
+    aFaire:
       "Sortez vos contrats et répondez à trois questions : quelle est ma clause, quand ai-je versé, combien de frais.",
+    siNonConcerne:
+      "Si vous n'avez aucun contrat d'assurance-vie, il n'y a rien à faire ici. Passez à l'étape suivante : vous ne manquez rien.",
     acquis: [
       "Que c'est la date de chaque versement qui compte, jamais l'âge du contrat",
       "Ce que votre 70e anniversaire change : 152 500 € par bénéficiaire avant, 30 500 € pour tout le monde après",
@@ -270,8 +306,10 @@ export const ETAPES: EtapeMethode[] = [
     minutes: 12,
     resume:
       "Donner les murs en gardant l'usage à vie : vous restez chez vous, et la valeur transmise est comptée à 60 % tant que vous n'avez pas 71 ans.",
-    ceSoir:
+    aFaire:
       "Notez la valeur de votre maison et votre âge, puis lisez votre ligne du barème de l'article 669 du CGI.",
+    siNonConcerne:
+      "Si vous n'êtes propriétaire d'aucun bien immobilier, il n'y a rien à faire ici. Passez à l'étape suivante : vous ne manquez rien.",
     acquis: [
       "Qu'on peut donner les murs de son logement et en garder l'usage, les loyers et la clé jusqu'au bout",
       "Ce que votre 71e anniversaire change : les murs comptent pour 60 % de la valeur, puis 70 %",
@@ -287,7 +325,7 @@ export const ETAPES: EtapeMethode[] = [
     minutes: 9,
     resume:
       "Un don non déclaré reste un don : il se découvre au décès, il se recompte, et il divise les héritiers.",
-    ceSoir:
+    aFaire:
       "Listez tous les dons que vous avez faits depuis 15 ans, avec leur date exacte et leur montant.",
     acquis: [
       "Qu'un don remis sans papier n'a jamais démarré son compteur de 15 ans",
@@ -304,7 +342,7 @@ export const ETAPES: EtapeMethode[] = [
     minutes: 9,
     resume:
       "Chaque grand-parent dispose d'un abattement propre par petit-enfant, tous les 15 ans, cumulable avec le don familial de sommes d'argent.",
-    ceSoir:
+    aFaire:
       "Écrivez le nom de chaque petit-enfant, et en face, ce que vous voudriez pour lui. Une ligne par enfant, pas davantage.",
     acquis: [
       "Ce que vous pouvez donner à un petit-enfant de votre vivant : 31 865 €, et 31 865 € de plus s'il est majeur",
@@ -321,7 +359,7 @@ export const ETAPES: EtapeMethode[] = [
     minutes: 12,
     resume:
       "Le notaire acte ce que vous lui demandez. Sans dossier, il pose trois questions et vous ressortez avec « revenez quand vous saurez ».",
-    ceSoir:
+    aFaire:
       "Cochez votre situation sur la grille, et écrivez la première question que vous poserez. Puis prenez le rendez-vous.",
     acquis: [
       "Les trois questions que le notaire pose toujours en premier, et vos réponses écrites",

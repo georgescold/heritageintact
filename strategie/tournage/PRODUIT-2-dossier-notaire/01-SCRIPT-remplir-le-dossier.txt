@@ -218,7 +218,7 @@ mois et l'année, suivis de « à vérifier ». La question se reposera au
 rendez-vous.
 
 Dernière colonne : déclarée, oui ou non. C'est une question de fait. Écrire
-« non » ne déclenche aucune démarche de votre part ce soir.
+« non » ne déclenche aucune démarche de votre part aujourd'hui.
 
 ⚠️ TEL QUEL — Et je vous le dis franchement, parce que vous avez le droit de
 le savoir : cette feuille n'est pas faite pour rester dans votre tiroir.
@@ -285,7 +285,7 @@ complet sans elle.
 [7] FEUILLE 5 — LE COMPTE-RENDU — 1 min
 ─────────────────────────────────────────────────────────────
 
-Cinquième feuille : elle ne se remplit pas ce soir. Elle se remplit dans la
+Cinquième feuille : elle ne se remplit pas maintenant. Elle se remplit dans la
 voiture, en sortant du rendez-vous.
 
 Un rendez-vous chez le notaire dure une heure et il s'y dit beaucoup de

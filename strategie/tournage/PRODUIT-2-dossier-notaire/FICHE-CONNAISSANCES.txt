@@ -40,7 +40,7 @@ LES CINQ FEUILLES, DANS L'ORDRE OÙ IL LES REMPLIT
   2. La fiche famille               7 rubriques
   3. La check-list des 12 pièces
   4. Le message de prise de rendez-vous  (2 versions : mail et téléphone)
-  5. Le compte-rendu de rendez-vous  (se remplit APRÈS, pas ce soir)
+  5. Le compte-rendu de rendez-vous  (se remplit APRÈS le rendez-vous)
 
 Il met environ une heure. La vidéo dure un quart d'heure. Il la met en
 pause, ou il la revoit. Ça se dit à l'oral, au début.

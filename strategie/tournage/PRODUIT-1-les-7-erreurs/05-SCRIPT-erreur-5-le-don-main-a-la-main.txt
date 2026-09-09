@@ -200,12 +200,12 @@ Et vous savez que ce qui se joue ici n'est pas l'impôt : c'est ce que vos
 enfants se diront le jour du partage.
 
 ─────────────────────────────────────────────────────────────
-[6] CE SOIR — 1 min
+[6] CE QU'IL Y A À FAIRE MAINTENANT — 1 min
 ─────────────────────────────────────────────────────────────
 
 [ÉCRAN : le tableau vide, pleine largeur]
 
-Une seule chose ce soir, et elle prend une demi-heure : la liste de vos
+Une seule chose, et elle prend une demi-heure : la liste de vos
 dons.
 
 Cinq colonnes. À qui. Quoi. Combien. La date exacte. Et : déclaré, oui ou
@@ -219,7 +219,7 @@ l'acte ; à défaut, le nom de l'étude suffit à la retrouver. Si c'est un don
 de la main à la main, regardez le relevé bancaire du mois. Et si vous ne
 retrouvez rien : écrivez le mois et l'année, suivis de « à vérifier ».
 
-Écrire « non » dans la dernière colonne ne déclenche rien ce soir. Aucune
+Écrire « non » dans la dernière colonne ne déclenche rien du tout. Aucune
 démarche. C'est une information, et c'est exactement celle dont un notaire a
 besoin avant de rédiger quoi que ce soit.
 

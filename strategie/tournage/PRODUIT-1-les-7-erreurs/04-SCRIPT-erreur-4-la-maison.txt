@@ -288,12 +288,23 @@ Trois. Ce que vous perdez en le faisant — vendre seul — et ce que vous garde
 Et votre Calendrier des 3 dates est complet.
 
 ─────────────────────────────────────────────────────────────
-[10] CE SOIR — 1 min
+[10] CE QU'IL Y A À FAIRE MAINTENANT — 1 min
 ─────────────────────────────────────────────────────────────
 
 [ÉCRAN : trois lignes numérotées — la date · la valeur · l'échéance]
 
-Trois choses, et on s'arrête.
+⚠️ LA SORTIE POUR CELUI QUE L'ÉTAPE NE CONCERNE PAS. Elle se dit ICI, à la
+fin, et pas seulement au début. Celui qui a quand même regardé les douze
+minutes doit s'entendre dire qu'il a fini — sinon il reste devant une
+consigne qu'il ne peut pas exécuter, il croit avoir mal compris, et il ne
+coche pas son étape. Le même texte est affiché à l'écran
+(`methode.ts`, champ `siNonConcerne`).
+
+Si vous n'êtes propriétaire d'aucun bien immobilier : il n'y a rien à
+faire ici. Vous pouvez cocher cette étape et passer à la suivante. Vous ne
+manquez rien.
+
+Pour les autres, trois choses, et on s'arrête.
 
 Un. Sur votre Calendrier, ligne numéro trois : écrivez la date de votre
 soixante-et-onzième anniversaire. Et celle de votre conjoint.

@@ -315,6 +315,17 @@ Récapitulons ce que vous venez de faire : vous avez rempli un tableau, et
 vous allez poster une lettre qui demande des informations. Rien n'est
 résilié, rien n'est retiré, rien n'est signé.
 
+⚠️ LA SORTIE POUR CELUI QUE L'ÉTAPE NE CONCERNE PAS. Elle se dit ICI, à la
+fin, et pas seulement au début. Celui qui a quand même regardé les douze
+minutes doit s'entendre dire qu'il a fini — sinon il reste devant une
+consigne qu'il ne peut pas exécuter, il croit avoir mal compris, et il ne
+coche pas son étape. Le même texte est affiché à l'écran
+(`methode.ts`, champ `siNonConcerne`).
+
+Et si vous n'avez aucun contrat d'assurance-vie : il n'y a rien à faire
+ici. Vous pouvez cocher cette étape et passer à la suivante. Vous ne
+manquez rien.
+
 Reprenez maintenant votre Calendrier des 3 dates, et regardez la ligne
 numéro deux : votre soixante-dixième anniversaire. Vous savez maintenant ce
 qu'elle veut dire.

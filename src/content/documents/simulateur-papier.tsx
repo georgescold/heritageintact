@@ -180,7 +180,7 @@ export function SimulateurPapier() {
         <strong>13 988 €</strong> — 68 206 € de moins, près de six fois moins.
       </p>
 
-      <Titre>Ce soir, avant de ranger cette feuille</Titre>
+      <Titre>Avant de ranger cette feuille</Titre>
       <ul className="space-y-1">
         <Case>J&apos;ai écrit mon chiffre dans l&apos;encadré F.</Case>
         <Case>Je l&apos;ai reporté en haut du Calendrier des 3 dates.</Case>

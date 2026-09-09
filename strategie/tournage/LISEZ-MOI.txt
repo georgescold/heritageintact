@@ -121,7 +121,7 @@ Toutes les vidéos se terminent pareil, dans cet ordre, et l'ordre est la
 seule chose qui compte ici.
 
   1. CE QUE VOUS SAVEZ MAINTENANT   le gain      ~25 s
-  2. CE SOIR                        une action   ~1 min
+  2. CE QU'IL Y A À FAIRE MAINTENANT une action   ~1 min
   3. LE PONT                        le suivant   ~1 min
   4. CARTON DE MENTION LÉGALE       muet          8 s
 
@@ -139,7 +139,7 @@ et quatre ne se retient pas.
 ⚠️ LES TROIS LIGNES SONT LES MÊMES À L'ORAL ET À L'ÉCRAN.
 Elles sont écrites dans `src/lib/methode.ts`, champ `acquis`, et la page
 de l'étape les affiche dans un panneau vert placé JUSTE APRÈS la vidéo et
-JUSTE AVANT « Ce soir, faites ceci ».
+JUSTE AVANT « Ce qu'il y a à faire maintenant ».
 
 Le spectateur a donc l'écran sous les yeux pendant que vous parlez.
 Entendre une formulation et en lire une autre au même instant est

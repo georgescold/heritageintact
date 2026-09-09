@@ -22,7 +22,7 @@ export const metadata: Metadata = { title: "Mon étape" };
  * UNE ÉTAPE DE LA MÉTHODE.
  *
  * Une colonne, dans l'ordre où on s'en sert : ce qu'on va apprendre, la vidéo,
- * l'action de ce soir, les feuilles à imprimer, la case à cocher, l'étape
+ * l'action à faire, les feuilles à imprimer, la case à cocher, l'étape
  * suivante. Rien d'autre, et surtout aucune vente : on ne vend pas à quelqu'un
  * qui est en train de travailler.
  *
@@ -128,11 +128,29 @@ export default async function EtapePage({
             </Panel>
           </div>
 
-          {/* L'action de ce soir : UNE seule, jamais deux. C'est ce qui
-              transforme une vidéo regardée en étape réellement faite. */}
+          {/* L'action : UNE seule, jamais deux. C'est ce qui transforme une
+              vidéo regardée en étape réellement faite.
+
+              ⚠️ Le titre disait « Ce soir, faites ceci ». Une partie de cette
+              audience est à la retraite et travaille le matin : lire « ce
+              soir » à 9 h, c'est s'entendre dire que ce n'est pas encore le
+              moment. Sur quelqu'un qui hésite déjà à commencer, une consigne
+              qui reporte est une consigne qu'on ne suit pas.
+
+              ⚠️ Et `siNonConcerne` n'est pas un détail de confort. Deux
+              étapes ne s'appliquent pas à tout le monde ; sans cette ligne,
+              celui qui n'a pas de contrat d'assurance-vie lit une consigne
+              qu'il ne peut pas exécuter, en conclut qu'il a mal compris, et
+              ne coche pas — donc reste bloqué sur une étape qu'il a pourtant
+              terminée. */}
           <div className="mb-8">
-            <Panel tone="yellow" title="Ce soir, faites ceci">
-              <p className="text-[1.15rem]">{etape.ceSoir}</p>
+            <Panel tone="yellow" title="Ce qu'il y a à faire maintenant">
+              <p className="text-[1.15rem]">{etape.aFaire}</p>
+              {etape.siNonConcerne && (
+                <p className="mt-3 border-t border-yellow-line pt-3 text-[1.05rem] text-text-soft">
+                  {etape.siNonConcerne}
+                </p>
+              )}
             </Panel>
           </div>
 
