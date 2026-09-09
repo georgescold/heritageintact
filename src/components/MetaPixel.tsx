@@ -1,62 +1,155 @@
 "use client";
+import { useEffect, useRef, useState, useTransition } from "react";
+import { mesurerAchatConfirme } from "@/app/publicite";
+import { TEXTE_CONSENTEMENT } from "@/lib/texte-consentement";
+const ACTIF = process.env.NEXT_PUBLIC_META_SERVER_MEASUREMENT === "true";
 
-import Script from "next/script";
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
-
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
-
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void;
-  }
-}
-
-/**
- * Pixel Meta : ne charge rien tant que NEXT_PUBLIC_META_PIXEL_ID n'est pas défini.
- *
- * ⚠️ ET RIEN DU TOUT SOUS /espace, QUELLE QUE SOIT LA CONFIGURATION.
- *
- * Le pixel est monté dans le layout racine, donc sur toutes les pages. Or il
- * envoie à Meta l'URL COMPLÈTE de la page consultée : sur l'espace membre, cette
- * URL contient le jeton, c'est-à-dire la clé unique d'un compte sans mot de
- * passe. Ce serait donner à un tiers publicitaire de quoi entrer chez chacun de
- * nos acheteurs. Et la mesure n'y perd rien : il n'y a aucune conversion à
- * suivre derrière le paiement.
- *
- * ⚠️ `usePathname()` est appelé AVANT le garde sur PIXEL_ID : un hook React
- * doit s'exécuter à chaque rendu, sans condition. L'inverse casserait le
- * composant le jour où la variable d'environnement apparaît en cours de route.
- */
+/** Nom historique conservé : aucun SDK ou traceur Meta n'est chargé dans le navigateur. */
 export function MetaPixel() {
-  const chemin = usePathname();
-  if (!PIXEL_ID) return null;
-  if (chemin.startsWith("/espace")) return null;
+  const [choix, setChoix] = useState("inconnu");
+  const [ouvert, setOuvert] = useState(false);
+  const [attente, setAttente] = useState(false);
+  const [erreur, setErreur] = useState("");
+  const bouton = useRef<HTMLButtonElement>(null);
+  const verrou = useRef(false);
+  useEffect(() => {
+    if (!ACTIF) return;
+    const abort = new AbortController();
+    void fetch("/api/confidentialite/preferences", { cache: "no-store", signal: abort.signal })
+      .then(async (r) => {
+        if (!r.ok) throw new Error();
+        const p = await r.json();
+        if (!abort.signal.aborted) {
+          setChoix(p.choix);
+          setOuvert(p.choix === "inconnu");
+        }
+      })
+      .catch(() => {
+        if (!abort.signal.aborted) setOuvert(true);
+      });
+    return () => abort.abort();
+  }, []);
+  function fermer() {
+    setOuvert(false);
+    bouton.current?.focus();
+  }
+  async function choisir(accord: boolean) {
+    if (verrou.current) return;
+    verrou.current = true;
+    setAttente(true);
+    setErreur("");
+    try {
+      const r = await fetch("/api/confidentialite/preferences", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ accord }),
+      });
+      if (!r.ok) throw new Error();
+      const p = await r.json();
+      setChoix(p.choix);
+      fermer();
+      window.dispatchEvent(new Event("hi-mesure-preference"));
+    } catch {
+      setChoix("inconnu");
+      setErreur(
+        "Votre choix n’a pas pu être enregistré. Aucune nouvelle autorisation n’est retenue. Vous pouvez continuer votre visite.",
+      );
+    } finally {
+      setAttente(false);
+      verrou.current = false;
+    }
+  }
+  if (!ACTIF) return null;
   return (
-    <Script id="meta-pixel" strategy="afterInteractive">
-      {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','${PIXEL_ID}');fbq('track','PageView');`}
-    </Script>
+    <aside
+      aria-label="Préférences publicitaires"
+      className="border-t border-grey-line px-5 py-3 text-center text-sm"
+    >
+      <button
+        ref={bouton}
+        type="button"
+        onClick={() => setOuvert(!ouvert)}
+        aria-expanded={ouvert}
+        className="min-h-[44px] underline"
+      >
+        Mes préférences publicitaires
+        {choix === "oui" ? " : autorisées" : choix === "non" ? " : refusées" : ""}
+      </button>
+      {ouvert && (
+        <section
+          aria-labelledby="consentement-titre"
+          className="fixed inset-x-0 bottom-0 z-50 mx-auto max-h-[70dvh] max-w-[850px] overflow-y-auto border-2 border-blue bg-white p-5 text-left text-base shadow-xl sm:p-6"
+        >
+          <div className="mb-3 flex items-center justify-between gap-4">
+            <h2 id="consentement-titre" className="text-[1.2rem]">
+              Votre choix pour la mesure publicitaire
+            </h2>
+            <button
+              type="button"
+              disabled={attente}
+              onClick={fermer}
+              aria-label="Fermer sans donner d’accord"
+              className="min-h-[44px] min-w-[44px] border border-grey-line"
+            >
+              ×
+            </button>
+          </div>
+          <p>{TEXTE_CONSENTEMENT}</p>
+          <p className="mt-3 text-sm">
+            Ce choix est distinct des emails commerciaux, mémorisé 180 jours dans ce navigateur et
+            modifiable ici.{" "}
+            <a href="/confidentialite#mesure-publicitaire" className="underline">
+              Détails et retrait du consentement
+            </a>
+            .
+          </p>
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              disabled={attente}
+              onClick={() => void choisir(false)}
+              className="min-h-[48px] border-2 border-blue bg-white px-4 py-2 font-bold text-blue disabled:opacity-60"
+            >
+              Refuser
+            </button>
+            <button
+              type="button"
+              disabled={attente}
+              onClick={() => void choisir(true)}
+              className="min-h-[48px] border-2 border-blue bg-white px-4 py-2 font-bold text-blue disabled:opacity-60"
+            >
+              Autoriser
+            </button>
+          </div>
+          {erreur && (
+            <p role="alert" className="mt-3">
+              {erreur}
+            </p>
+          )}
+        </section>
+      )}
+    </aside>
   );
 }
-
-type EventName = "Lead" | "InitiateCheckout" | "Purchase" | "ViewContent";
-
-/** Déclenche un événement standard au montage de la page. */
-export function PixelEvent({
-  name,
-  params,
-}: {
-  name: EventName;
+/** Les anciens événements navigateur sont neutralisés, y compris Purchase. */
+export function PixelEvent(_props: {
+  name: "Lead" | "InitiateCheckout" | "Purchase" | "ViewContent";
   params?: Record<string, string | number>;
 }) {
+  void _props;
+  return null;
+}
+export function MesurerAchat({ id, membre = false }: { id: string; membre?: boolean }) {
+  const [, transition] = useTransition();
   useEffect(() => {
-    if (!PIXEL_ID || typeof window.fbq !== "function") return;
-    window.fbq("track", name, params);
-  }, [name, params]);
+    if (!ACTIF) return;
+    const mesurer = () =>
+      transition(async () => {
+        await mesurerAchatConfirme(id, membre);
+      });
+    mesurer();
+    window.addEventListener("hi-mesure-preference", mesurer);
+    return () => window.removeEventListener("hi-mesure-preference", mesurer);
+  }, [id, membre]);
   return null;
 }

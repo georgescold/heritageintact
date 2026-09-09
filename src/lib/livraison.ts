@@ -162,7 +162,7 @@ export async function renvoyerAcces(email: string): Promise<void> {
     // Resend met du temps à répondre.
     await marquerLienRenvoye(acces.email);
 
-    const r = await envoyerAcces(acces);
+    const r = await envoyerAcces(acces, `renvoi-v3/${acces.jeton}/${Math.floor(Date.now() / 120000)}`);
 
     // Le lien vient de partir de toute façon : on pose la clé "acces" pour que
     // le rattrapage du cron ne renvoie pas un second email demain matin. Le

@@ -97,10 +97,10 @@ export function Guarantee({ product = "la Méthode" }: { product?: string }) {
   return (
     <Panel tone="green" title="Garantie 30 jours : satisfait ou remboursé">
       <p>
-        Regardez {product}, faites votre simulation. Si vous n&apos;avez pas découvert au moins une
-        erreur que vous étiez en train de commettre, écrivez-nous dans les 30 jours. Un email
-        suffit, sans justification. Nous vous remboursons intégralement.{" "}
-        <strong>Et vous gardez le simulateur.</strong>
+        Découvrez {product} à votre rythme. Si vous n&apos;êtes pas satisfait, demandez
+        votre remboursement par email dans les 30 jours suivant votre achat, sans justification.
+        Consultez les <Link href="/cgv">conditions de la garantie</Link>. La fiche de calcul
+        pédagogique reste accessible après remboursement ; l&apos;application des packs est distincte.
       </p>
     </Panel>
   );

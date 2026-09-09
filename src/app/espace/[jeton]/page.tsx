@@ -1,258 +1,172 @@
-import type { Metadata } from "next";
-import { AchatValide } from "@/components/AchatValide";
-import { Footer, Header } from "@/components/Chrome";
 import Link from "next/link";
-import { Boutique } from "@/components/espace/Boutique";
+import { Header, Footer } from "@/components/Chrome";
 import { LienInvalide } from "@/components/espace/LienInvalide";
-import { ListeEtapes } from "@/components/espace/ListeEtapes";
 import { MesDocuments } from "@/components/espace/MesDocuments";
+import { Boutique } from "@/components/espace/Boutique";
 import { MonLien } from "@/components/espace/MonLien";
 import { ButtonLink } from "@/components/ui";
-import { PRODUCTS, type ProductSku } from "@/lib/config";
-import { marquerVu } from "@/lib/db";
-import { chargerEspace, type EtatEspace } from "@/lib/espace";
+import { chargerEspace } from "@/lib/espace";
 import { estJetonValide } from "@/lib/jeton";
-import { ETAPES } from "@/lib/methode";
-
-export const metadata: Metadata = { title: "Mon espace" };
-
-/**
- * LE HUB — LA SEULE DESTINATION DU MEMBRE.
- *
- * Une page, une colonne, tout déplié, la même à chaque visite. Il reviendra dix
- * ou quinze fois pendant qu'il suit La Méthode, et il ne doit jamais avoir à
- * réapprendre où sont les choses : c'est toujours le même ordre, du haut vers
- * le bas, et le seul geste demandé est de faire défiler.
- *
- * ⚠️ L'ORDRE DES BLOCS N'EST PAS UNE MISE EN PAGE, C'EST UNE RÉPONSE. La seule
- * question qu'il se pose en arrivant est « qu'est-ce que je fais maintenant ».
- * Elle est traitée en premier, par UN bouton, et pas par un choix à faire :
- *
- *   1. son prénom             — il est au bon endroit, c'est bien chez lui
- *   2. UN gros bouton orange  — la seule action, jamais une liste d'options
- *   3. ses 8 étapes           — où il en est
- *   4. ses documents          — ce qu'il a payé, sous forme de papier
- *   5. ce qu'il n'a pas       — le rayon, et jamais avant d'avoir ouvert l'étape 0
- *   6. son lien personnel     — le garde-fou, écrit en clair
- *
- * ⚠️ AUCUN `<details>`, AUCUN ONGLET, AUCUN MENU. Ne jamais utiliser le
- * composant `FAQ` de `ui.tsx` sur cette page : il repose sur `<details>`, donc
- * sur un contenu fermé. Un menu fermé est une porte fermée, et ce qu'il ne voit
- * pas, il croit qu'il ne l'a pas acheté.
- */
-export default async function HubPage({
+import { CONTACT_EMAIL, PRODUCTS } from "@/lib/config";
+import { PrioriteActuelle } from "@/components/espace/PrioriteActuelle";
+import { MesurerAchat } from "@/components/MetaPixel";
+export const metadata = { title: "Mon parcours" };
+export default async function Page({
   params,
   searchParams,
 }: {
   params: Promise<{ jeton: string }>;
-  searchParams: Promise<{ ajoute?: string }>;
+  searchParams: Promise<{ vue?: string; ajoute?: string }>;
 }) {
   const { jeton } = await params;
-  const { ajoute } = await searchParams;
-
-  // La forme du jeton se vérifie sans ouvrir la base : une URL tronquée par un
-  // client mail est le scénario nominal, pas l'exception.
+  const { vue = "parcours", ajoute } = await searchParams;
   if (!estJetonValide(jeton)) return <LienInvalide />;
-
   const etat = await chargerEspace(jeton);
-
-  // ⚠️ JAMAIS UNE 404, JAMAIS LE MOT « ERREUR », JAMAIS UN CODE TECHNIQUE.
-  // `LienInvalide` porte le formulaire de récupération : c'est la seule chose
-  // utile à montrer à quelqu'un dont le lien ne fonctionne pas.
   if (!etat) return <LienInvalide />;
-
-  // Accès fermé : l'écran poli, et le seul document que le contrat lui laisse
-  // (CGV art. 6 — « le client conserve l'accès au simulateur »). `documents`
-  // est déjà réduit à cette feuille par `chargerEspace`.
-  if (etat.acces.revoque) {
-    const feuille = etat.documents[0];
+  if (etat.acces.revoque)
     return (
       <LienInvalide
         revoque
-        simulateur={feuille ? `/espace/${jeton}/document/${feuille.cle}` : undefined}
+        simulateur={
+          etat.documents[0] ? `/espace/${jeton}/document/${etat.documents[0].cle}` : undefined
+        }
       />
     );
-  }
-
-  // La visite, notée sans bloquer le rendu : `vu_le` ne sert qu'au support et à
-  // la relance, il ne vaut pas une milliseconde d'attente — ni, surtout, une
-  // page en panne si la base tousse au mauvais moment.
-  void marquerVu(jeton).catch((e) => console.error("[espace] marquerVu", e));
-
-  const { firstName } = etat.acces;
-
+  const hub = `/espace/${jeton}`;
+  const onglets = [
+    ["parcours", "Mon parcours"],
+    ["dossier", "Mon dossier"],
+    ["outils", "Mes outils"],
+    ["aide", "Aide"],
+  ];
   return (
     <>
       <Header minimal />
-      <main className="flex-1">
-        <div className="wrap space-y-10 py-8">
-          {ajoute && <BandeauAjout sku={ajoute} jeton={jeton} />}
-
-          <section>
-            <h1 className="mb-2 text-[1.6rem] sm:text-[1.9rem]">
-              Bonjour {firstName || "et bienvenue"}.
-            </h1>
-            <p className="text-[1.1rem]">
-              Vous êtes chez vous. Tout ce que vous avez acheté est sur cette page, et cette page ne
-              change jamais d&apos;adresse.
-            </p>
-          </section>
-
-          <ProchaineAction etat={etat} />
-
-          <section>
-            <h2 className="mb-2 text-[1.35rem]">MES ÉTAPES</h2>
-            {/* ⚠️ Un compte en clair, jamais un pourcentage et jamais une barre
-                seule. « 37 % » ne dit rien à qui veut savoir combien il lui
-                reste de soirées de travail ; « 3 étapes sur 8 » le dit. */}
-            <p className="mb-4 text-[1.15rem] font-bold text-blue">
-              {etat.nbFaites} étape{etat.nbFaites > 1 ? "s" : ""} sur {ETAPES.length}
-            </p>
-            <ListeEtapes etat={etat} />
-          </section>
-
-          {/* LE SIMULATEUR AUTOMATIQUE, quand il est possédé.
-              Il ne vit pas dans « MES DOCUMENTS » : ce n'est pas une feuille à
-              imprimer mais un outil qui calcule, et le confondre avec le
-              Facture Invisible — celle qu'on remplit au stylo —
-              ferait croire au client qu'il l'a déjà vu. */}
-          {(etat.possede.has("backend1") ||
-            etat.possede.has("upsell1") ||
-            etat.possede.has("pack1")) && (
-            <section>
-              <h2 className="mb-3 text-[1.3rem] text-blue">Le Simulateur personnalisé</h2>
-              <p className="mb-3 text-[1.05rem]">
-                Il fait le calcul à votre place, et il refait les 3 dates à chaque changement. Ce
-                que vous y saisissez reste sur votre ordinateur.
-              </p>
-              <Link
-                href={`/espace/${jeton}/simulateur`}
-                className="flex min-h-[56px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-5 text-[1.1rem] font-bold text-white no-underline sm:w-auto sm:px-8"
-              >
-                Ouvrir le Simulateur
-              </Link>
-            </section>
-          )}
-
-          <MesDocuments etat={etat} />
-
-          {/* ⚠️ La boutique se conditionne toute seule : elle ne rend rien tant
-              que l'étape 0 n'a pas été ouverte. On ne double pas cette règle
-              ici — on écrit seulement ce qui prend sa place à l'écran, parce
-              qu'un blanc en bas de page se lit comme une page inachevée. */}
-          <Boutique etat={etat} />
-          {!etat.etape0Ouverte && (
-            <p className="text-[1.1rem] text-text-soft">
-              Commencez par l&apos;étape 0. Le reste viendra après.
-            </p>
-          )}
-
-          <MonLien jeton={jeton} email={etat.acces.email} />
-
-          <p className="text-[0.95rem] text-text-soft">
-            {PRODUCTS.front.name} est un contenu pédagogique d&apos;information générale. Elle ne
-            constitue pas un conseil personnalisé et ne remplace pas votre notaire.
+      <MesurerAchat id={jeton} membre />
+      <main className="wrap-wide flex-1 py-8">
+        <h1 className="text-[1.8rem]">Bonjour {etat.acces.firstName || "et bienvenue"}</h1>
+        <nav
+          aria-label="Mon espace"
+          className="my-6 flex flex-wrap gap-2 border-b border-grey-line pb-3"
+        >
+          {onglets.map(([cle, titre]) => (
+            <Link
+              key={cle}
+              href={`${hub}?vue=${cle}`}
+              aria-current={vue === cle ? "page" : undefined}
+              className={`flex min-h-[48px] items-center px-4 no-underline ${vue === cle ? "bg-blue font-bold text-white" : "bg-grey-bg"}`}
+            >
+              {titre}
+            </Link>
+          ))}
+        </nav>
+        {ajoute && etat.possede.has(ajoute as never) && (
+          <p role="status" className="mb-6 border-l-4 border-green bg-green-bg p-4">
+            Votre complément est accessible dans Mon dossier et Mes outils.
           </p>
+        )}
+        <div className="max-w-[760px]">
+          <p className="mb-6"><Link href={`${hub}/demarrer`}>Bien utiliser mes achats : le guide pas à pas</Link></p>
+          {(vue === "parcours" || vue === "outils") && etat.etapes.some(e => e.etape.cle === "e0" && e.faite) && <PrioriteActuelle jeton={jeton} objectif={etat.profil?.objectif} av={etat.profil?.av} />}
+          {!["dossier", "outils", "aide"].includes(vue) && !etat.possede.has("front") && (
+            <section><h2 className="mb-3 text-[1.5rem]">Vos contenus restent accessibles</h2><p className="mb-4">Retrouvez les supports et modules correspondant à vos achats actifs.</p><ButtonLink href={`${hub}?vue=outils`}>Ouvrir mes outils</ButtonLink></section>
+          )}
+          {!["dossier", "outils", "aide"].includes(vue) && etat.possede.has("front") && (
+            <>
+              <section className="mb-9 bg-grey-bg p-6">
+                <p className="font-bold text-orange-dark">
+                  {etat.nbFaites} étape{etat.nbFaites > 1 ? "s" : ""} terminée
+                  {etat.nbFaites > 1 ? "s" : ""} sur 8
+                </p>
+                {etat.reprendre ? (
+                  <>
+                    <h2 className="my-3 text-[1.6rem]">
+                      Votre prochaine étape : {etat.reprendre.titre}
+                    </h2>
+                    <p className="mb-5">{etat.reprendre.resume}</p>
+                    <ButtonLink href={`${hub}/etape/${etat.reprendre.numero}`}>
+                      Continuer ma préparation
+                    </ButtonLink>
+                  </>
+                ) : (
+                  <>
+                    <h2 className="my-3 text-[1.5rem]">Votre parcours écrit est terminé</h2>
+                    <p>
+                      Relisez vos questions et préparez votre rendez-vous. Avoir suivi le parcours
+                      ne signifie pas que vos décisions ont été validées.
+                    </p>
+                    <Link href={`${hub}?vue=dossier`}>Retrouver mon dossier</Link>
+                  </>
+                )}
+              </section>
+              <h2 className="mb-4 text-[1.4rem]">Les étapes, à votre rythme</h2>
+              <ol className="space-y-3">
+                {etat.etapes.map(({ etape, faite }) => (
+                  <li key={etape.cle}>
+                    <Link
+                      className="flex min-h-[56px] items-center justify-between gap-4 border-b border-grey-line py-3"
+                      href={`${hub}/etape/${etape.numero}`}
+                    >
+                      <span>
+                        {etape.numero + 1}. {etape.titre}
+                      </span>
+                      <span className="shrink-0 whitespace-nowrap text-text-soft">
+                        {faite ? "Terminée" : `≈ ${etape.minutes} min`}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-6 text-text-soft">
+                Les durées comprennent la préparation. Les vidéos sont facultatives : toutes les
+                explications sont écrites.
+              </p>
+            </>
+          )}
+          {vue === "dossier" && <MesDocuments etat={etat} />}
+          {vue === "outils" && (
+            <div className="space-y-8">
+              <h2 className="text-[1.5rem]">Mes outils et compléments</h2>
+              {etat.possede.has("backend1") && (
+                <section>
+                  <h3 className="mb-2 text-[1.3rem]">{PRODUCTS.backend1.name}</h3>
+                  <p className="mb-3">
+                    Explorez des hypothèses explicites. Un résultat pédagogique ne valide ni une
+                    succession ni une décision.
+                  </p>
+                  <Link href={`${hub}/simulateur`}>Ouvrir mon atelier</Link>
+                </section>
+              )}
+              {etat.possede.has("upsell2") && (
+                <section>
+                  <h3 className="mb-2 text-[1.3rem]">Mon module assurance-vie</h3>
+                  <Link href={`${hub}/assurance-vie`}>
+                    Préparer la vérification de mes contrats
+                  </Link>
+                </section>
+              )}
+              <Boutique etat={etat} />
+            </div>
+          )}
+          {vue === "aide" && (
+            <div className="space-y-6">
+              <h2 className="text-[1.5rem]">Une question sur votre préparation ?</h2>
+              <p>
+                Écrivez à <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> pour une question
+                d’accès, une consigne ou une demande de remboursement. N’envoyez pas de relevé
+                bancaire ni de données sensibles de vos proches.
+              </p>
+              <p>
+                Pour une décision juridique, fiscale ou patrimoniale individuelle, contactez le
+                professionnel compétent. En cas de délai urgent, n’attendez pas de réponse de notre
+                support.
+              </p>
+              <MonLien jeton={jeton} email={etat.acces.email} />
+            </div>
+          )}
         </div>
       </main>
       <Footer />
     </>
-  );
-}
-
-/**
- * LE SEUL GROS BOUTON DE LA PAGE, ET IL N'Y EN A QU'UN.
- *
- * ⚠️ Une action à exécuter, jamais un choix à faire. « Par où commencer » est
- * exactement la question qu'on ne veut pas lui poser : il a payé pour un
- * protocole, des étapes dans l'ordre, sans rien à improviser. Le bouton dit
- * quelle étape, ce qu'elle contient, et combien de temps elle prend — les trois
- * informations qui décident s'il s'y met ce soir ou jamais.
- *
- * C'est aussi le seul orange de la page : le jour où un second bouton orange
- * apparaît ici, il n'y a plus de premier geste évident.
- */
-function ProchaineAction({ etat }: { etat: EtatEspace }) {
-  const suivante = etat.reprendre;
-
-  // Les 8 étapes sont terminées. On ne fabrique pas une action de plus : on le
-  // dit, et on le renvoie vers ce qui reste à faire dans la vraie vie.
-  if (!suivante) {
-    return (
-      <section className="border-2 border-green bg-green-bg p-5">
-        <h2 className="mb-2 text-[1.35rem] text-green">Vous avez terminé les 8 étapes.</h2>
-        <p className="text-[1.1rem]">
-          Il vous reste le plus important, et il ne se passe pas sur cet écran : imprimez vos
-          documents, remplissez-les au stylo, et prenez rendez-vous chez votre notaire. Vos étapes
-          restent ici, vous pouvez les revoir autant de fois que vous voulez.
-        </p>
-      </section>
-    );
-  }
-
-  // « COMMENCER » tant qu'il n'a ouvert aucune étape, « REPRENDRE » ensuite.
-  // C'est l'OUVERTURE qui fait la différence, pas la coche : quelqu'un qui a
-  // regardé l'étape 0 sans la cocher n'est plus en train de commencer.
-  const rienOuvert = etat.etapes.every((e) => !e.ouverte);
-
-  return (
-    <section>
-      <ButtonLink href={`/espace/${etat.acces.jeton}/etape/${suivante.numero}`}>
-        {rienOuvert ? "COMMENCER" : "REPRENDRE"} — Étape {suivante.numero} : {suivante.titre} (
-        {suivante.minutes} minutes)
-      </ButtonLink>
-      <p className="mt-3 text-[1.05rem] text-text-soft">{suivante.resume}</p>
-    </section>
-  );
-}
-
-/**
- * LE RETOUR D'ACHAT — « c'est validé, et voici où c'est ».
- *
- * ⚠️ Il dit OÙ EST LA CHOSE ACHETÉE, pas seulement qu'elle est achetée. « C'est
- * ajouté » tout seul laisse quelqu'un de 74 ans devant un écran qui ressemble
- * en tout point à celui d'avant, en train de chercher ce qu'il vient de payer —
- * et c'est un email au support dans l'heure.
- *
- * ⚠️ ET « OÙ » N'EST PAS LE MÊME ENDROIT SELON LE PRODUIT. Les feuilles vont
- * dans MES DOCUMENTS ; Le Simulateur personnalisé, lui, n'y est pas — ce n'est
- * pas un papier à imprimer mais un outil qui calcule, et il a son propre bloc.
- * Envoyer son acheteur chercher une feuille qui n'existera jamais est
- * exactement la promesse non tenue qu'on veut éviter ici.
- *
- * Le SKU vient de l'URL : il est vérifié avant d'être lu dans le catalogue, un
- * paramètre inventé n'affiche simplement rien.
- */
-function BandeauAjout({ sku, jeton }: { sku: string; jeton: string }) {
-  if (!Object.prototype.hasOwnProperty.call(PRODUCTS, sku)) return null;
-  const produit = PRODUCTS[sku as ProductSku];
-
-  // Le Simulateur seul ne livre aucune feuille : son unique destination est son
-  // propre bloc, plus haut sur la page.
-  const outilSeul = sku === "backend1";
-  // Le Plan livre les deux : ses douze plans-types ET le Simulateur, compris.
-  const outilEtFeuilles = sku === "upsell1" || sku === "pack1";
-
-  return (
-    <AchatValide titre={`C'est validé : ${produit.name}`}>
-      {outilSeul ? (
-        <>
-          Vous le trouverez plus haut sur cette page, dans{" "}
-          <Link href={`/espace/${jeton}/simulateur`}>Le Simulateur personnalisé</Link>. Rien
-          d&apos;autre à faire.
-        </>
-      ) : outilEtFeuilles ? (
-        <>
-          Vos nouvelles feuilles sont dans <a href="#mes-documents">MES DOCUMENTS</a>, plus bas, et{" "}
-          <Link href={`/espace/${jeton}/simulateur`}>Le Simulateur personnalisé</Link> est ouvert
-          plus haut. Rien d&apos;autre à faire.
-        </>
-      ) : (
-        <>
-          Vous le trouverez dans <a href="#mes-documents">MES DOCUMENTS</a>, plus bas sur cette
-          page. Rien d&apos;autre à faire.
-        </>
-      )}
-    </AchatValide>
   );
 }

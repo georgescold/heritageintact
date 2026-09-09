@@ -28,7 +28,7 @@ export function CheckoutForm({
    */
   prixFront: number;
 }) {
-  const [bump, setBump] = useState(true);
+  const [bump, setBump] = useState(false);
   const total = prixFront + (bump ? PRODUCTS.bump.price : 0);
 
   // Sans clé publique, on garde le parcours simulé : aucun appel à Stripe.
@@ -282,7 +282,7 @@ function Inner({
           </p>
         </Panel>
 
-        {/* Le bump : case pré-cochée, mise en évidence pour rester décochable sans effort */}
+        {/* Option payante uniquement sur choix explicite. */}
         <label className="block cursor-pointer border-2 border-orange bg-yellow-bg p-3 sm:p-4">
           <span className="flex items-start gap-3">
             <input
@@ -297,20 +297,22 @@ function Inner({
                   renommé, et deux noms pour une seule chose sur le bon de
                   commande, c'est un acheteur qui doute au moment de payer. */}
               <span className="block text-[1.05rem] font-bold text-blue">
-                OUI, ajoutez {PRODUCTS.bump.name} pour {euros(PRODUCTS.bump.price)} seulement{" "}
-                <span className="font-normal text-text-soft line-through">
-                  (au lieu de {euros(PRODUCTS.bump.anchor)})
-                </span>
+                Ajouter {PRODUCTS.bump.name} · +{euros(PRODUCTS.bump.price)} (facultatif)
               </span>
               <span className="mt-1 block text-[0.95rem]">
-                L&apos;inventaire patrimonial, la fiche famille, la liste des 12 pièces à apporter
-                et le mail qui fait que le notaire prépare votre rendez-vous. Une heure de travail,
-                déjà faite. Une vidéo de 6 minutes vous montre comment tout remplir.
+                Préparez les pièces et le message pour votre rendez-vous sans partir d’une page
+                blanche. L’exemple rempli et le mode d’emploi vous guident jusqu’au compte rendu.
+                La méthode à 27 € reste utilisable sans cette option.
               </span>
             </span>
           </span>
         </label>
-
+        <details className="border border-grey-line bg-white p-4">
+          <summary className="cursor-pointer font-bold text-blue">Voir à quoi sert le Dossier avant de l’ajouter</summary>
+          <p className="mt-3">Pour votre rendez-vous : un inventaire guidé, les pièces à réunir et un modèle de message. Après : un compte rendu pour conserver les réponses. Un exemple rempli vous montre comment commencer.</p>
+          <a href="/apercu" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-[44px] items-center">Ouvrir l’exemple dans un nouvel onglet →</a>
+          <p className="mt-2 text-sm text-text-soft">Le Dossier est inclus dans les packs. Les 17 € effectivement payés seront déduits d’un pack qui l’inclut.</p>
+        </details>
         <label className="flex items-start gap-3 text-[0.9rem] text-text-soft">
           <input
             type="checkbox"
@@ -336,7 +338,7 @@ function Inner({
         </Button>
         <p className="text-center text-[0.9rem] text-text-soft">
           Accès immédiat après validation. Une question ?{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> (réponse sous 24 h).
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
         </p>
       </div>
 
@@ -367,12 +369,12 @@ function Inner({
               // parfaitement admis à l'intérieur du produit, où le client sait déjà
               // ce qu'il a acheté. Le mot
               // change ce que l'acheteur croit avoir acheté.
-              "8 étapes vidéo, accès immédiat et à vie",
-              "La Facture Invisible",
-              "Le Calendrier de vos 3 Dates",
-              "Le Plan en 1 Page",
-              "5 bonus (valeur 135 €)",
-              "Mises à jour à vie",
+              "8 étapes entièrement lisibles",
+              "Ma fiche de situation et mes repères",
+              "Les questions à préparer au notaire",
+              "Mon plan en une page",
+              "Supports de base imprimables",
+              "Paiement unique, aucun abonnement",
               "Garantie 30 jours",
             ].map((t) => (
               <li key={t} className="flex gap-2">

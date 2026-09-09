@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { AchatValide } from "@/components/AchatValide";
 import { Header, Footer } from "@/components/Chrome";
-import { PixelEvent } from "@/components/MetaPixel";
+import { MesurerAchat } from "@/components/MetaPixel";
 import { ButtonLink, Panel } from "@/components/ui";
 import { accesParEmail, getOrder, orderTotal } from "@/lib/db";
 import { CONTACT_EMAIL, PRODUCTS, SITE_URL, euros, urlEspace } from "@/lib/config";
@@ -27,7 +27,7 @@ export default async function ThankYouPage({
 }) {
   const { o, err } = await searchParams;
   const order = o ? await getOrder(o) : null;
-  if (!order) redirect("/commande");
+  if (!order || order.status !== "paid") redirect("/commande");
   const total = orderTotal(order);
 
   /**
@@ -39,7 +39,7 @@ export default async function ThankYouPage({
 
   return (
     <>
-      <PixelEvent name="Purchase" params={{ value: total, currency: "EUR" }} />
+      <MesurerAchat id={order.id} />
       <Header minimal />
       <main className="flex-1">
         <div className="wrap py-8 sm:py-12">
@@ -83,8 +83,8 @@ export default async function ThankYouPage({
 
           <ol className="space-y-4 text-[1.05rem]">
             <Step n={1}>
-              Votre lien personnel vient d&apos;être envoyé à <strong>{order.email}</strong>.
-              Vérifiez les indésirables, et ajoutez {CONTACT_EMAIL} à vos contacts. Vous pouvez
+              Votre adresse d&apos;accès est <strong>{order.email}</strong>.
+              Pour retrouver nos emails, vérifiez les indésirables et ajoutez {CONTACT_EMAIL} à vos contacts. Vous pouvez
               aussi ouvrir votre espace tout de suite, ci-dessous.
             </Step>
             {/* ⚠️ La durée se DÉRIVE du catalogue de contenu, elle ne s'écrit
@@ -93,12 +93,12 @@ export default async function ThankYouPage({
                 annonçaient 12 : trois écrans vus dans le même quart d'heure,
                 deux chiffres pour la même chose. */}
             <Step n={2}>
-              Ce soir : <strong>l&apos;étape 0, votre chiffre.</strong> Prévoyez{" "}
+              Commencez par <strong>votre fiche de situation.</strong> Prévoyez environ{" "}
               {etapeParNumero(0)?.minutes ?? 12} minutes, vos relevés, et un café.
             </Step>
             <Step n={3}>
-              Notez vos 3 dates sur le Calendrier. C&apos;est la seule chose à faire
-              aujourd&apos;hui.
+              Notez une information à retrouver et une question à faire vérifier.
+              Vous pouvez ensuite reprendre le parcours à votre rythme.
             </Step>
           </ol>
 
@@ -123,8 +123,8 @@ export default async function ThankYouPage({
               </p>
               <p className="mb-4 text-[1.05rem]">
                 Notez-le, ou mettez cette page dans vos favoris.{" "}
-                <strong>Il n&apos;y a pas de mot de passe.</strong> Ce lien est votre clé, et il ne
-                s&apos;arrêtera jamais de fonctionner.
+                <strong>Il n&apos;y a pas de mot de passe.</strong> Ce lien est votre clé personnelle :
+                ne le partagez pas.
               </p>
               <ButtonLink href={urlEspace(acces.jeton)} variant="blue">
                 Ouvrir mon espace
@@ -167,8 +167,8 @@ export default async function ThankYouPage({
                 <span>{euros(total)}</span>
               </p>
               <p className="mt-2 text-[0.9rem] text-text-soft">
-                Un reçu vous est envoyé par email. Libellé sur votre relevé bancaire : HERITAGE
-                INTACT.
+                Conservez ce récapitulatif. Pour toute question sur votre commande,
+                contactez-nous à {CONTACT_EMAIL}.
               </p>
             </Panel>
           </div>

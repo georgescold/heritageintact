@@ -1,391 +1,175 @@
+import { cookies } from "next/headers";
+import { MesureFunnel } from "@/components/MesureFunnel";
+import Link from "next/link";
+import { ApercuProduit } from "@/components/ApercuProduit";
+import { PreuvePreparation } from "@/components/PreuvePreparation";
+import { AideDecision } from "@/components/AideDecision";
+import { objectifValide } from "@/lib/positionnement";
 import type { Metadata } from "next";
-import Image from "next/image";
-import { Footer, Header, TrustRow } from "@/components/Chrome";
-import { ExitPopup } from "@/components/ExitPopup";
-import { PixelEvent } from "@/components/MetaPixel";
-import { StickyCta } from "@/components/StickyCta";
-import {
-  EchelleDesPrix,
-  FlashBar,
-  FlashPrice,
-  FlashTrigger,
-  PrixDuJour,
-} from "@/components/OffreFlash";
-import { CtaMethode } from "@/components/Rattrapage";
-import { Statistiques } from "@/components/Statistiques";
+import { Header, Footer } from "@/components/Chrome";
+import { ButtonLink, FAQ, Guarantee, Panel } from "@/components/ui";
 import { VideoEmbed } from "@/components/VideoEmbed";
-import { Check, Cross, FAQ, ValueStack } from "@/components/ui";
-import { BeforeAfter, TheComparison, TheDeadline, TheNumber } from "@/components/Lp";
-import { TheCostOfWaiting, TheFailure, TheGuarantee, TheLastWord } from "@/components/LpCeo";
-import { CTA, FLASH_MINUTES, PRIX_APRES_FLASH, PRODUCTS, VIDEO, euros } from "@/lib/config";
-
-export const metadata: Metadata = { title: "Les 3 décisions" };
-
-const PACKAGING = [
-  {
-    label: "Savoir exactement ce que l'État prendra sur votre succession : la Facture Invisible",
-    value: "97 €",
-  },
-  {
-    label: "La Méthode complète, étape par étape et en français simple : les 8 étapes",
-    value: "147 €",
-  },
-  {
-    label: "Vos 3 dates personnelles : savoir quand agir avant que la date soit passée",
-    value: "47 €",
-  },
-  { label: "Le Plan en 1 Page, à montrer à votre conjoint et à vos enfants", value: "47 €" },
-  {
-    label: "Bonus : les 12 questions à poser à votre notaire (et les 3 à ne jamais poser)",
-    value: "37 €",
-  },
-  { label: "Bonus : la lettre pour ouvrir le sujet avec vos enfants, sans drame", value: "27 €" },
-  {
-    label: "Bonus : que faire si la loi change, la Règle de Mise à Jour, mises à jour à vie",
-    value: "27 €",
-  },
-];
-
-/**
- * LA PAGE DE VENTE.
- *
- * ═══ Pourquoi elle a été raccourcie le 6 septembre 2026 ═══
- *
- * Elle portait les onze blocs de la structure CEO, en texte, sous la vidéo :
- * 38 écrans sur téléphone. C'était un doublon, et pas une question de goût —
- * `05-vsl-front.md` organise le script de la VSL exactement comme ça :
- *
- *     LEAD (20 %)     le récit : Jean-Pierre, le notaire, 82 194 €
- *     BODY (65 %)     la structure CEO
- *     CLOSING (15 %)  trois outils de closing
- *
- * **La structure CEO est le travail de la VIDÉO.** La page racontait la même
- * histoire juste en dessous. Rien n'est perdu : ce texte EST le script, il vit
- * dans `05-vsl-front.md`, et les composants restent dans `LpCeo.tsx` si on veut
- * un jour tester une variante longue.
- *
- * ═══ Le gabarit, tel qu'il est écrit ═══
- *
- *     [H1][H2][VIDÉO][BOUTON][+ preuves / bonus / garantie / FAQ][CGV]
- *
- * ⚠️ Jamais de prix ni de bouton AU-DESSUS de la vidéo.
- *
- * Ce qui reste sous la vidéo entre dans les cases prévues, et rien d'autre :
- *   — preuve    TheNumber (d'où sortent les 82 194 €) et BeforeAfter
- *   — bonus     le packaging et sa pile de valeur
- *   — urgence   TheDeadline, avant le dernier appel
- *   — garantie  TheGuarantee
- *   — FAQ       les six objections
- *
- * La checklist d'optimisation le confirme de son côté : « ajouter des preuves
- * sous la vidéo » est un levier du CTR de la VSL. Des preuves — pas un second
- * récit.
- */
-export default function VslPage() {
-  // ⚠️ Un CTA est un VERBE D'ACTION, à l'impératif. C'est le seul exemple
-  // rédigé du repo — « Cliquez sur le bouton ci-dessous pour découvrir… »
-  // (`05-funnel/landing-pages.md`) — et « Agressivité du CTA » est un levier
-  // nommé de la checklist d'optimisation.
-  //
-  // Deux versions ont été écartées : « Je veux mon chiffre et les 3 décisions :
-  // 27 € » (un bordereau de livraison), puis « Je veux mon chiffre » (correct,
-  // mais au présent de l'indicatif : ça décrit une envie, ça n'ordonne pas un
-  // geste). Le prix et la garantie vivent sur la ligne d'en dessous.
-  const cta = CTA.benefice;
+import { PRODUCTS, VIDEO, euros } from "@/lib/config";
+import { LECONS } from "@/lib/lecons";
+export const metadata: Metadata = { title: "Comprendre ma transmission · 27 €" };
+export default async function Page() {
+  const objectif = objectifValide((await cookies()).get("hi_objectif")?.value);
+  const angle = objectif === "preparer" ? "Arrivez chez le notaire avec vos priorités, vos pièces et vos questions." : objectif === "assurance-vie" ? "Vos contrats sont signés. Savez-vous quelles questions poser pour les vérifier ?" : "Ce que vous avez construit mérite mieux que « on verra plus tard ».";
 
   return (
     <>
-      <PixelEvent name="Lead" />
-      {/* Le bandeau colle en haut et n'apparaît qu'une fois le compteur lancé,
-          c'est-à-dire quand le visiteur a quitté la vidéo. Avant ça, rien ne
-          presse : il regarde. Le compteur du 31 décembre 2026 n'est plus ici,
-          deux horloges rouges sur le même écran n'en font croire aucune. */}
-      <FlashBar />
-      <Header minimal />
-      <main className="flex-1">
-        {/* ═══ H1 → H2 → VIDÉO → BOUTON ════════════════════════════════
-            La H1 reprend la ligne qui portait l'ancienne page : qualification
-            puis coût de l'inaction, dans la proposition principale. La H2 tient
-            le format du gabarit — bénéfice, sans douleur, délai, puis l'appel à
-            regarder la vidéo. */}
-        <section className="wrap pt-6 sm:pt-10">
-          <h1 className="mb-3 text-[1.5rem] leading-[1.14] sm:text-[2.1rem]">
-            Vous avez une maison payée et des enfants&nbsp;?
-            <br />
-            <span className="text-orange">
-              Si vous ne faites rien, l&apos;État en prendra une part à votre mort.
-            </span>
-          </h1>
-          {/* ⚠️ La sous-headline ANNONCE les deux chiffres.
-              Sans ça, la première section sous la vidéo — « D'où sortent les
-              82 194 € » — tombait sur un chiffre dont la page n'avait jamais
-              parlé. Elle répondait à une question que personne ne s'était
-              posée. Le raisonnement se tient maintenant de bout en bout :
-              l'État prend une part → cette part vaut 82 194 € → trois
-              décisions la ramènent à 13 988 € → et voici le calcul. */}
-          <p className="mb-5 text-[1.12rem] leading-snug">
-            Sur une maison de province et les économies d&apos;une vie, cette part est de{" "}
-            <strong className="whitespace-nowrap text-red">82 194 €</strong>. Trois décisions,
-            prises de votre vivant, la ramènent à{" "}
-            <strong className="whitespace-nowrap text-green">13 988 €</strong> — sans rien vendre et
-            sans quitter votre maison.
-          </p>
-
-          {/* FlashTrigger observe le lecteur : dès qu'il sort de l'écran —
-              la vidéo est finie, ou le visiteur descend — les dix minutes
-              partent, et elles ne repartiront plus jamais de zéro. */}
-          <FlashTrigger>
-            <VideoEmbed id={VIDEO.vsl} title="Les 3 décisions" />
-          </FlashTrigger>
-
-          <div className="mt-5 space-y-3">
-            <FlashPrice />
-            <CtaMethode label={cta} />
-            <p className="text-center text-[0.95rem] text-text-soft">
-              Accès immédiat · garantie 30 jours, sans justification
-            </p>
-            <div className="flex justify-center">
-              <TrustRow />
-            </div>
-          </div>
+      <MesureFunnel evenement="vue_vente" />
+      <Header />
+      <main className="wrap flex-1 pb-28 pt-10">
+        <p className="mb-3 font-bold text-orange-dark">
+          Une première étape, pas une décision irréversible
+        </p>
+        <h1 className="mb-5 text-[2rem] leading-tight sm:text-[2.6rem]">
+          {angle}
+        </h1>
+        <p className="mb-6 text-[1.2rem]">
+          Vous n’avez pas besoin de devenir fiscaliste. Vous avez besoin de comprendre votre
+          situation, de repérer ce qui reste à vérifier et de savoir quoi demander au notaire.
+        </p>
+        {objectif && <p className="mb-5 border-l-4 border-orange bg-grey-bg p-4">Présentation adaptée à votre priorité. <Link href="/#orientation">Modifier mon choix</Link>. La méthode conserve le même contenu et le même prix.</p>}
+        <p className="mb-6 text-[1.1rem]">Imaginez votre prochain rendez-vous : vous ouvrez votre fiche, vous dites ce qui compte pour vous et vous savez quelles réponses demander. C’est ce passage du flou à une préparation concrète que nous vous aidons à faire.</p>
+        {VIDEO.vsl && process.env.VSL_VALIDEE === "true" && (
+          <VideoEmbed id={VIDEO.vsl} title="Présentation de la méthode" />
+        )}
+        <section className="my-7 border-l-4 border-blue bg-grey-bg p-5">
+          <h2 className="mb-3 text-[1.4rem]">« Mon réflexe, c’est de prendre rendez-vous chez le notaire. »</h2>
+          <p className="mb-3">C’est une bonne première démarche. La méthode vous aide à préparer cet échange : dire ce que vous souhaitez préserver, retrouver les informations utiles et formuler vos questions.</p>
+          <p>Vous pouvez prendre rendez-vous dès maintenant. Pendant votre préparation, vous avancez à votre rythme, avec des explications écrites, des exemples et une action à chaque étape. Le notaire examine votre situation et vous conseille sur les décisions.</p>
         </section>
-
-        {/* ═══ PREUVE — le chiffre, ligne par ligne ════════════════════ */}
-        <TheNumber />
-
-        {/* ═══ PREUVE — le second chiffre, celui qu'on promettait ═════
-            La sous-headline annonce 82 194 € ramenés à 13 988 €. Le bloc
-            précédent prouve le premier ; celui-ci montre le second et l'écart
-            entre les deux. Sans lui, la moitié de la promesse restait à
-            croire sur parole. */}
-        <TheComparison />
-
-        {/* ═══ Ce que ça donne concrètement, le jour venu ═════════════ */}
-        <BeforeAfter />
-
-        {/* ═══ LES DEUX CAS ════════════════════════════════
-            Un chiffre ne fait identifier personne — un cas, oui. Jean-Pierre
-            est l'avatar principal (`02-avatar.md`) : il a tout bien fait, et
-            ça n'a rien changé. Martine est l'avatar secondaire : elle a fait la
-            bonne chose, trois mois trop tard. Les deux disent la même chose —
-            ce n'est pas une faute, c'est une date — mais l'une par l'ignorance
-            et l'autre par le retard, ce qui couvre les deux façons de perdre.
-            Ils encadrent la FAQ : on se reconnaît AVANT de lire l'offre. */}
-        <TheFailure />
-        <TheCostOfWaiting />
-
-        {/* Les cas montrent deux familles. Les chiffres publics montrent
-            qu'elles ne sont pas des exceptions. L'ordre compte : l'histoire
-            d'abord, la statistique ensuite — un chiffre ne fait s'identifier
-            personne, mais il empêche de se dire « ça n'arrive qu'aux autres ». */}
-        <Statistiques />
-
-        {/* ═══ L'OFFRE — ce qu'il y a dans la boîte ═══════════════════ */}
-        <section className="wrap py-10">
-          {/* ⚠️ CETTE SECTION A ÉTÉ RETOURNÉE, et c'est une correction de fond.
-              Elle disait ce que la Méthode CONTIENT, et elle annonçait « sur les
-              sept, trois sont des dates ». Or la vidéo vient de donner ces trois
-              dates : le lecteur lisait donc « trois septièmes de ce que vous
-              allez payer, vous les connaissez déjà ». On dévaluait le produit
-              avec notre propre argument.
-
-              Le principe maintenant : la VSL dit ce qu'il faut savoir, la page
-              dit ce qu'on ÉVITE. Le contenu ne se détaille plus — on ne peut
-              pas vendre ce qu'on vient de donner. */}
-          <h2 className="mb-2 text-[1.4rem]">
-            Ce que vous éviterez en ne faisant pas les 7 erreurs qui donnent votre héritage à
-            l&apos;État
-          </h2>
-          <p className="mb-4 text-[1.06rem]">
-            La Méthode est une suite de <strong>8 étapes, dans un ordre précis</strong>. Vous
-            n&apos;avez rien à décider par vous-même et rien à improviser. Voilà ce qu&apos;elle met
-            hors de portée de votre famille.
+        <PreuvePreparation />
+        <Panel title="Votre premier résultat concret">
+          <p>
+            Une fiche de situation, une priorité et trois questions à faire valider. Commencez par
+            une dizaine de minutes, puis avancez à votre rythme. Aucun don ni changement de contrat
+            n’est nécessaire pour suivre la formation.
           </p>
-
-          {/* L'image porte l'argument mieux que la phrase. Un panneau « À vendre »
-              devant une maison, c'est la scène que l'avatar redoute et qu'il n'a
-              jamais vue mise en mots. */}
-          <figure className="mb-5">
-            <div className="relative aspect-[16/9] overflow-hidden border border-grey-line">
-              <Image
-                src="/img/maison-a-vendre.jpg"
-                alt="Un panneau « À vendre » planté devant une maison de famille."
-                fill
-                sizes="(min-width: 640px) 42rem, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <figcaption className="mt-2 text-[0.92rem] text-text-soft">
-              {/* ⚠️ Il y avait ici « 1 succession sur 4 ». Retiré : c'était un ordre de
-                  grandeur, pas une statistique sourçable. Sur une page qui affiche un
-                  article de loi en face de chaque nombre, un chiffre orphelin détruit la
-                  crédibilité de tous les autres. N'en remettre un que sourcé (INSEE ou
-                  Conseil supérieur du notariat). */}
-              Quand les héritiers n&apos;ont pas la somme, c&apos;est la maison qui paie. C&apos;est
-              la première chose que la Méthode écarte.
-            </figcaption>
-          </figure>
-
-          <ul className="mb-5 space-y-3 text-[1.05rem]">
-            <Cross>
-              <strong>La vente de la maison pour payer l&apos;État.</strong> Six mois pour trouver
-              la somme, dans l&apos;urgence, au prix qu&apos;on vous en donne.
-            </Cross>
-            <Cross>
-              <strong>Le chiffre découvert trop tard.</strong> Il existe déjà, il est calculable ce
-              soir, et il n&apos;est plus négociable le jour où le notaire l&apos;annonce.
-            </Cross>
-            <Cross>
-              <strong>La date qui se referme sans que personne ne vous prévienne.</strong> Aucune
-              administration n&apos;écrit pour dire qu&apos;une possibilité vient de disparaître.
-            </Cross>
-            <Cross>
-              <strong>Les erreurs que vous êtes en train de commettre.</strong> Il y en a presque
-              toujours au moins deux, et la plus courante se joue sur un document que vous avez
-              signé sans le relire.
-            </Cross>
-            <Cross>
-              <strong>Vos enfants qui décident à votre place, en deuil et sans vous.</strong> Ce que
-              vous n&apos;aurez pas écrit, ils devront le deviner.
-            </Cross>
-          </ul>
-
-          <h3 className="mb-3 text-[1.15rem]">Et ce que vous aurez, ce soir</h3>
-          <ul className="mb-5 space-y-3 text-[1.05rem]">
-            <Check>
-              <strong>Votre chiffre. Le vrai, pas une fourchette.</strong> Ce que l&apos;État
-              prendrait si ça arrivait cette année — calculé sur votre maison, votre épargne, votre
-              famille. <span className="text-text-soft">(la Facture Invisible)</span>
-            </Check>
-            <Check>
-              <strong>
-                Laquelle de vos dates arrive en premier, et ce qu&apos;elle vous coûte.
-              </strong>{" "}
-              Elles ne tombent pas au même moment pour tout le monde.{" "}
-              <span className="text-text-soft">(le Calendrier des 3 Dates)</span>
-            </Check>
-            <Check>
-              <strong>Les sept erreurs, et la correction de chacune.</strong> Dans l&apos;ordre où
-              il faut s&apos;en occuper, avec ce qu&apos;il faut vérifier et où.{" "}
-              <span className="text-text-soft">(la Méthode, 8 étapes)</span>
-            </Check>
-            <Check>
-              <strong>Comment en parler à votre conjoint sans l&apos;inquiéter.</strong> Une feuille
-              qu&apos;il comprend en deux minutes, et qu&apos;il pourra sortir le jour où vous ne
-              serez plus là pour l&apos;expliquer.{" "}
-              <span className="text-text-soft">(le Plan en 1 Page, la lettre aux enfants)</span>
-            </Check>
-            <Check>
-              <strong>Quoi demander au notaire — et quoi ne surtout pas lui demander.</strong> Pour
-              ressortir avec un acte, pas avec « revenez quand vous saurez ».{" "}
-              <span className="text-text-soft">(les 12 questions, le manuel de 40 pages)</span>
-            </Check>
-          </ul>
-          <ValueStack rows={PACKAGING} total="429 €" today={<PrixDuJour />} />
-          <EchelleDesPrix />
-          {/* La justification du prix n'est plus « les 20 premiers membres » :
-              c'est le compteur. Une seule rarété à la fois, sinon aucune des
-              deux n'est crue. */}
-          <div className="mt-5 space-y-3">
-            <FlashPrice />
-            <CtaMethode label={cta} />
-            <div className="flex justify-center">
-              <TrustRow />
-            </div>
-          </div>
+        </Panel>
+        <div id="premier-cta" data-mesure="clic_commande" className="my-6">
+          <ButtonLink href="/commande">Commencer pour {euros(PRODUCTS.front.price)}</ButtonLink>
+          <p className="mt-2 text-center text-text-soft">
+            Paiement unique · Aucun abonnement · Garantie 30 jours
+          </p>
+        </div>
+        <ApercuProduit />
+        <section className="my-7 border border-grey-line p-5">
+          <h2 className="mb-4 text-[1.4rem]">Après votre achat, vous savez où commencer</h2>
+          <ol className="list-decimal space-y-3 pl-6">
+            <li><strong>Retrouvez votre accès personnel</strong> sur la confirmation et dans l’email d’accès.</li>
+            <li><strong>Ouvrez « Mon parcours ».</strong> Commencez par la première fiche : une priorité, les informations connues et trois questions.</li>
+            <li><strong>Reprenez à votre rythme.</strong> Les étapes cochées restent repérées ; les supports de base se lisent à l’écran ou s’impriment.</li>
+          </ol>
+          <p className="mt-4">Vous n’avez pas à regarder toutes les vidéos avant d’avancer. Les explications sont écrites et les vidéos complémentaires.</p>
         </section>
-
-        {/* ═══ URGENCE — elle précède toujours le dernier appel ═══════ */}
-        <TheDeadline />
-
-        {/* ═══ GARANTIE — trois lignes, à sa place ═══════════════════ */}
-        <TheGuarantee />
-
-        {/* ═══ FAQ — les objections réelles de `02-avatar.md` ═══════
-            Les six questions d'avant étaient polies et théoriques. Celles-ci
-            sont copiées de la liste des douze objections de l'avatar, dans ses
-            mots à lui, et les réponses ne s'excusent pas : chacune retourne
-            l'objection en raison d'agir. */}
-        <section className="wrap py-10">
-          <h2 className="mb-3 text-[1.4rem]">
-            Ce que vous êtes en train de vous dire — et la réponse
-          </h2>
+        <AideDecision />
+        <section className="my-10">
+          <h2 className="mb-4 text-[1.6rem]">« J’ai peur de donner trop tôt… et de regretter. »</h2>
+          <p className="mb-4">
+            C’est précisément pour cela que nous commençons par ce dont vous avez besoin pour vivre.
+            Une économie d’impôt n’est pas une bonne affaire si elle vous prive de votre sécurité,
+            de votre liberté ou de ressources utiles.
+          </p>
+          <p>
+            La méthode distingue trois sujets souvent mélangés : ce qui vous appartient, les droits
+            de votre famille et les règles fiscales. Elle vous aide à préparer une discussion
+            éclairée, sans vous dicter un montage.
+          </p>
+        </section>
+        <section className="my-10">
+          <h2 className="mb-4 text-[1.6rem]">Ce que vous recevez pour 27 €</h2>
+          <p className="mb-5">
+            Huit étapes entièrement lisibles. Pour chacune : l’explication, un exercice en trois
+            gestes, un exemple et une question pour vérifier votre compréhension. Les supports de
+            base sont imprimables ; les vidéos restent complémentaires.
+          </p>
+          <ol className="space-y-3">
+            {LECONS.map((l, i) => (
+              <li key={l.cle} className="border border-grey-line p-4">
+                <h3 className="font-bold">
+                  {i + 1}. {l.titre}
+                </h3>
+                <p className="mt-1 text-text-soft">{l.resume}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+        <section className="my-10 bg-grey-bg p-6">
+          <h2 className="mb-3 text-[1.5rem]">Les repères ne sont pas des ordres d’agir</h2>
+          <p>
+            Les donations passées, l’âge lors des versements en assurance-vie et l’âge lors d’une
+            donation avec réserve d’usufruit peuvent modifier le calcul. Un anniversaire n’oblige
+            jamais à donner. La formation explique les distinctions et les vérifications à demander.
+          </p>
+        </section>
+        <details className="my-10 border border-grey-line p-5">
+          <summary className="min-h-[44px] cursor-pointer text-[1.3rem] font-bold">Existe-t-il des compléments ? Voir les offres et leurs prix</summary>
+          <p className="mb-4">
+            La méthode à 27 € est autonome. Le dossier notaire à 17 € est facultatif. Le pack
+            Préparation à 197 € au total rassemble la méthode, le dossier, les parcours familiaux et
+            l’atelier de simulation pédagogique. Avec le module assurance-vie : 247 € au total. Le
+            module assurance-vie seul coûte 67 €.
+          </p>
+          <p>
+            Les achats inclus déjà payés sont déduits lors d’un complément. Exemple : après la
+            méthode à 27 €, le pack Préparation revient à 170 € supplémentaires. Aucun complément
+            n’est nécessaire pour terminer la méthode.
+          </p>
+        </details>
+        <section className="my-10 border-y border-grey-line py-7">
+          <h2 className="mb-4 text-[1.5rem]">Attendre peut changer la facture. Vérifier maintenant vous permet de décider en connaissance de cause.</h2>
+          <p className="mb-5">Vous pouvez remettre cette préparation à plus tard. Mais certaines règles dépendent de dates qui continuent d’avancer. Si un projet de transmission vous concerne, voici trois raisons de ne pas attendre le dernier moment pour le faire examiner.</p>
+          <ol className="list-decimal space-y-5 pl-6">
+            <li><strong>Une donation reportée peut décaler le renouvellement d’un abattement.</strong> Le délai de quinze ans s’apprécie pour les donations concernées, entre un même donateur et un même bénéficiaire. Attendre pour engager un projet adapté peut donc repousser une prochaine possibilité de transmission. L’historique et les dates d’enregistrement sont à vérifier.</li>
+            <li><strong>Un seuil d’âge peut augmenter la valeur soumise aux droits.</strong> Pour une donation de nue-propriété avec usufruit viager, la valeur fiscale passe de 60 % à 70 % au 71e anniversaire de l’usufruitier. L’effet sur l’impôt dépend du bien, des bénéficiaires et des abattements disponibles.</li>
+            <li><strong>En assurance-vie, la date des versements compte.</strong> Le régime applicable peut changer selon que les primes sont versées avant ou après 70 ans. Ce n’est pas la fermeture du contrat ni la disparition de tout avantage : c’est une raison de faire examiner un projet de versement avant, pas après son exécution.</li>
+          </ol>
+          <p className="mt-5">La première démarche peut être de contacter votre notaire dès aujourd’hui. Si vous souhaitez être guidé pour préparer les informations et les questions, commencez la Méthode. Son achat ne déclenche aucun délai fiscal et ne garantit aucune économie.</p>
+          <p className="mt-3">Vos besoins et votre sécurité restent prioritaires. Si un seuil est proche, n’attendez pas d’avoir terminé le parcours pour consulter.</p>
+          <p className="mt-4 text-sm text-text-soft">Repères vérifiés le 9 septembre 2026 : <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">donations et abattements</a>, <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934">barème de l’usufruit</a>, <a href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer">assurance-vie</a>. Leur application à votre situation doit être vérifiée.</p>
+        </section>
+        <section className="my-10">
+          <h2 className="mb-3 text-[1.5rem]">Qui prépare ce parcours ?</h2>
+          <p>Héritage Intact est édité par Loys Coquelle EI. Notre rôle est de rendre la préparation plus claire : organiser les notions, les documents et les questions. Nous ne remplaçons pas le professionnel qui examine votre situation.</p>
+          <p className="mt-3"><Link href="/apercu">Essayez le premier exercice et regardez les supports</Link>, puis consultez nos <Link href="/mentions-legales">informations d’éditeur</Link>. Vous pouvez juger la pédagogie avant de choisir.</p>
+        </section>
+        <Guarantee />
+        <section className="my-10">
+          <h2 className="mb-4 text-[1.6rem]">Vos questions, sans détour</h2>
           <FAQ
             items={[
               {
-                q: "« J'ai le temps, je suis en forme. »",
-                a: "C'est exactement ce que pensait tout le monde, la veille. Mais ce n'est même pas le sujet : ces 3 dates ne tombent pas à votre mort, elles se ferment à vos anniversaires. Le compteur des quinze ans court à partir du jour de la signature, pas du jour du décès. À 67 ans, une donation faite ce soir arrive à terme à 82 ans. Faite dans deux ans, à 84. Vous n'attendez pas la mort, vous perdez des années d'avance.",
+                q: "Est-ce adapté si je n’y connais rien ?",
+                a: "Oui : chaque notion est expliquée avec une action simple. Vous pouvez suivre le parcours à l’écrit et n’imprimer que vos supports utiles.",
               },
               {
-                q: "« Il faut de toute façon aller chez le notaire, alors autant y aller directement. »",
-                a: "Allez-y. Le notaire a un devoir de conseil, et il existe dès le premier rendez-vous. Mais sans votre régime, vos valeurs et les dates de vos donations, il ne peut répondre que par des généralités — la réponse change d'une famille à l'autre. Arrivez les mains vides, vous ressortez avec une liste de pièces à réunir, et un rendez-vous à deux mois. Arrivez avec votre chiffre, vos trois dates et douze questions écrites, et le même rendez-vous démarre au calcul. C'est la même consultation, ce n'est pas le même résultat.",
+                q: "Vais-je connaître le montant exact de ma succession ?",
+                a: "Non. Une succession dépend d’éléments civils et fiscaux qu’un questionnaire ne suffit pas à établir. Les calculs sont des illustrations sous hypothèses, à faire vérifier.",
               },
               {
-                q: "« Je ne veux pas me déposséder de mon vivant. Et si j'en ai besoin pour l'EHPAD ? »",
-                a: "La bonne objection, et personne ne vous demande ça. Le troisième levier transmet les murs de la maison en vous gardant l'usage à vie : vous y habitez, vous la louez si vous voulez, vous en encaissez les loyers. Elle ne sort de votre patrimoine fiscal qu'à votre décès. Et la règle vaut pour le reste : on ne donne jamais ce dont on n'est pas certain de pouvoir se passer. L'étape 4 chiffre précisément ce que vous devez garder.",
+                q: "Pourquoi payer si le notaire peut m’expliquer ?",
+                a: "Vous pouvez consulter votre notaire directement. La formation sert à préparer vos informations et vos questions, à votre rythme. Si vous êtes déjà à l’aise et bien accompagné, elle n’est peut-être pas nécessaire.",
               },
               {
-                q: "« Mon assurance-vie est déjà faite, c'est réglé. »",
-                a: "C'est l'erreur la plus chère des sept, et la plus répandue. Deux questions : vos versements ont-ils été faits avant ou après vos 70 ans ? Et qu'y a-t-il exactement écrit dans votre clause bénéficiaire ? Neuf personnes sur dix ne savent pas répondre. Avant 70 ans, 152 500 € par bénéficiaire passent sans droits. Après, c'est 30 500 € au total, tous contrats et tous bénéficiaires confondus. Même somme, même contrat, cinq fois moins transmis.",
+                q: "Après 70 ans, est-ce trop tard ?",
+                a: "Non. Les règles et les possibilités changent selon les opérations. La préparation familiale, la vérification des contrats et le rendez-vous professionnel restent utiles.",
               },
               {
-                q: "« 27 € pour un truc que je peux trouver gratuitement sur YouTube. »",
-                a: "Vous trouverez tout, gratuitement, et contradictoire. Ce que vous ne trouverez nulle part, c'est VOTRE chiffre, VOS trois dates et l'ordre dans lequel agir sur VOTRE situation. Le prix n'est pas la question : la question est de savoir ce que coûte une soirée de vidéos YouTube qui vous laisse exactement là où vous étiez. Vos enfants, eux, ont 82 194 € en jeu.",
-              },
-              {
-                q: "« Sur internet, c'est des arnaques. Qui êtes-vous pour parler de ça ? »",
-                a: "Personne, et c'est volontaire. Héritage Intact n'est pas un gourou : rien ici n'est une opinion. Chaque chiffre est un article du Code général des impôts, affiché à l'écran, vérifiable sur impots.gouv.fr en cinq minutes. Ne nous croyez pas : vérifiez. Et le paiement passe par Stripe, comme sur des milliers de sites marchands — nous ne voyons jamais votre numéro de carte.",
-              },
-              {
-                q: "« C'est compliqué, je ne vais rien comprendre. »",
-                a: "Le sujet a été rendu illisible, et pas par hasard : usufruit, nue-propriété, clause démembrée, rapport à succession. Personne ne parle comme ça à table. Ici, zéro jargon : vous remplissez un tableau avec ce que vous possédez, il vous rend un chiffre et trois dates. Si vous savez remplir une feuille d'impôts, vous saurez faire ça.",
-              },
-              {
-                q: "« Ma situation est particulière. »",
-                a: "Elle l'est. Je n'en ai jamais vu qui ne le soit pas — famille recomposée, enfant en concubinage, studio locatif, donation de la main à la main jamais déclarée. C'est pour ça que la méthode ne commence pas par une théorie mais par VOTRE chiffre, et que l'étape 7 vous oriente parmi douze situations familiales. Trouvez la vôtre, suivez le plan.",
-              },
-              {
-                q: "« Et si la loi change ? »",
-                a: "Elle change. La loi de finances 2026 vient de modifier deux dispositifs. C'est précisément pourquoi les mises à jour sont incluses à vie, et pourquoi une fenêtre supplémentaire — les 100 000 € exonérés pour un logement — se referme le 31 décembre 2026 et n'a pas été prolongée à ce jour. Elle vient en plus de vos 3 dates, elle ne les remplace pas.",
+                q: "Pour qui n’est-ce pas suffisant ?",
+                a: "Succession déjà ouverte, conflit familial, patrimoine à l’étranger, entreprise ou montage complexe : sollicitez un professionnel. La formation ne fournit pas de conseil juridique ou fiscal personnalisé.",
               },
             ]}
           />
         </section>
-
-        {/* ═══ LE DERNIER MOT, puis le bouton ════════════════════════ */}
-        {/* Le dernier mot porte son propre bouton : plus de section CTA
-            orpheline collée sous la découpe du bloc sombre. */}
-        <TheLastWord />
+        <div id="dernier-cta" data-mesure="clic_commande"><ButtonLink href="/commande">Préparer ma première fiche · 27 €</ButtonLink></div>
+        <p className="mt-4 text-center text-text-soft">
+          Votre prochaine étape : clarifier. Pas vous engager à donner.
+        </p>
       </main>
       <Footer />
-
-      <StickyCta href="/commande" label={CTA.urgence} />
-
-      {/* La fenêtre de sortie ne donne plus rien — elle ne fait que nommer
-          ce qui reste sur la table. Offrir un module gratuit à quelqu'un qui
-          part, c'est lui donner une raison de partir. */}
-      <ExitPopup storageKey="vsl" title="Ce que vous risquez si vous fermez cette page">
-        <ul className="space-y-2 text-[1.03rem]">
-          {[
-            "Vous ne saurez toujours pas votre chiffre. Il existe déjà, il est calculé sur votre maison et votre épargne, et vous ne l'aurez jamais vu.",
-            "Vous ne saurez pas laquelle de vos 3 dates arrive en premier. Elle arrivera quand même.",
-            "L'offre à 27 € ne se rouvre pas. Ce compteur ne repart pas de zéro au prochain passage.",
-            "Et si rien ne change, ce sont vos enfants qui l'apprendront — dans le bureau d'un notaire, avec six mois pour payer.",
-          ].map((t) => (
-            <li key={t} className="flex gap-2 border-l-4 border-red bg-red-bg p-3">
-              <span aria-hidden className="shrink-0 font-bold text-red">
-                ✕
-              </span>
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="text-[1rem] font-bold text-blue">
-          Il vous reste {FLASH_MINUTES} minutes de décision, et une soirée de travail. C&apos;est
-          tout ce que ça demande.
-        </p>
-        <CtaMethode label={cta} />
-      </ExitPopup>
     </>
   );
 }

@@ -1,16 +1,5 @@
 import type { Metadata } from "next";
-import {
-  BRAND,
-  CONTACT_EMAIL,
-  FOUNDERS_CAP,
-  LEGAL,
-  FLASH_MINUTES,
-  PRIX_APRES_FONDATEURS,
-  PRIX_RATTRAPAGE,
-  REDUCTION_RATTRAPAGE,
-  PRODUCTS,
-  euros,
-} from "@/lib/config";
+import { BRAND, CONTACT_EMAIL, LEGAL, PRODUCTS, euros } from "@/lib/config";
 
 export const metadata: Metadata = { title: "Conditions générales de vente" };
 
@@ -19,70 +8,43 @@ export default function CGV() {
   return (
     <>
       <h1>Conditions générales de vente</h1>
-      <p>Dernière mise à jour : {LEGAL.updatedAt}</p>
+      <p>Version de travail mise à jour le 9 septembre 2026</p>
 
       <h2>1. Objet</h2>
       <p>
         Les présentes conditions régissent la vente, par {LEGAL.operatorName} ({LEGAL.legalForm},
         SIRET {LEGAL.siret}), sous le nom commercial « {BRAND} », de contenus numériques
-        pédagogiques accessibles en ligne : méthodes vidéo, documents téléchargeables et outils de
-        calcul.
+        pédagogiques accessibles en ligne : parcours écrits, vidéos complémentaires, documents et
+        outils de calcul.
       </p>
 
       <h2>2. Produits et prix</h2>
       <ul>
-        <li>
-          {/* ⚠️ Le prix ultérieur est PRIX_APRES_FONDATEURS, jamais l'ancrage.
-              L'ancrage (429 €) est la valeur du contenu ; le prix ultérieur
-              ({euros(PRIX_APRES_FONDATEURS)}) est ce qui sera réellement
-              facturé. Les confondre dans un document contractuel serait une
-              information tarifaire fausse.
-
-              Et les DEUX conditions du prix fondateur doivent être écrites
-              ici, pas seulement les places : depuis l'ajout du compteur de
-              {" "}{FLASH_MINUTES} minutes, un acheteur peut perdre le prix
-              fondateur par le temps aussi bien que par le rang. Une condition
-              tarifaire qui s'applique réellement et qui ne figure pas aux CGV
-              n'est pas opposable. */}
-          {PRODUCTS.front.name} : {euros(PRODUCTS.front.price)} TTC (offre de lancement), sous
-          réserve des deux conditions cumulatives suivantes : l&apos;offre est réservée aux{" "}
-          {FOUNDERS_CAP} premiers membres, et elle est valable {FLASH_MINUTES} minutes à compter du
-          moment où elle vous est présentée sur la page de vente. Au-delà de l&apos;une ou
-          l&apos;autre de ces limites, le prix est de {euros(PRIX_APRES_FONDATEURS)} TTC. Le délai
-          de {FLASH_MINUTES} minutes court une seule fois et n&apos;est pas réinitialisé par un
-          rechargement de la page.
-        </li>
-        <li>
-          {/* ⚠️ Le rattrapage change le prix réellement débité : il doit donc
-              figurer ici, avec son caractère unique. C'est aussi ce
-              caractère unique qui empêche l'annonce du prix plein
-              d'être trompeuse. */}
-          À l&apos;expiration du délai ci-dessus, une remise de {REDUCTION_RATTRAPAGE} % peut vous
-          être proposée une fois, portant le prix à {euros(PRIX_RATTRAPAGE)} TTC. Elle n&apos;est
-          appliquée que si vous l&apos;acceptez expressément, et le refus est définitif.
-        </li>
-        {/* ⚠️ LA LISTE EST GÉNÉRÉE, ET ELLE EST FILTRÉE SUR `disponible`.
-
-            Générée, parce qu'un prix pratiqué qui ne figure pas aux CGV n'est
-            pas opposable : le jour où un produit passe en vente, il doit
-            apparaître ici sans que personne ait à y penser.
-
-            Filtrée, parce que l'inverse est pire. Les quatre produits backend
-            sont déclarés dans PRODUCTS — l'espace membre a besoin de leur nom
-            — mais aucun contenu n'existe. Les annoncer au contrat avant de
-            pouvoir les livrer, ce serait s'engager sur du vide.
-
-            `front` est exclu : il a son propre paragraphe, plus haut, avec ses
-            deux conditions tarifaires. */}
         {Object.values(PRODUCTS)
-          .filter((p) => p.disponible && p.sku !== "front")
+          .filter((p) => p.disponible)
           .map((p) => (
             <li key={p.sku}>
               {p.name} : {euros(p.price)} TTC
             </li>
           ))}
       </ul>
-      <p>Les prix sont indiqués en euros, toutes taxes comprises. {LEGAL.vatNotice}</p>
+      <p>
+        Les packs sont affichés en prix total. Le pack Préparation inclut la méthode, le dossier et
+        l’atelier de simulation pédagogique. Le pack avec assurance-vie inclut également le module
+        assurance-vie. Le dossier à 17 € est une option non précochée. L’atelier n’est pas vendu
+        séparément.
+      </p>
+      <p>
+        Lors d’un complément, les sommes effectivement payées pour les contenus inclus, non
+        remboursés, sont déduites du prix total. Le complément est affiché avant validation. Le
+        total Préparation et assurance-vie est de 247 € quel que soit l’ordre de ces achats. Le
+        crédit ne produit pas de somme négative ni de remboursement automatique des achats
+        antérieurs. Les droits acquis antérieurement sont conservés.
+      </p>
+      <p>
+        Paiements uniques, sans abonnement. Aucun compte à rebours ne modifie ces prix. Les prix
+        sont en euros, toutes taxes comprises. {LEGAL.vatNotice}
+      </p>
 
       <h2>3. Commande et paiement</h2>
       <p>
@@ -118,7 +80,8 @@ export default function CGV() {
         Indépendamment de ce qui précède, {BRAND} accorde une garantie contractuelle de 30 jours
         calendaires à compter de l&apos;achat : sur simple demande par email à {CONTACT_EMAIL}, sans
         justification, le client est intégralement remboursé sous 7 jours. Le client conserve
-        l&apos;accès au simulateur.
+        l&apos;accès à la fiche de calcul pédagogique. L’atelier interactif des packs est distinct.
+        Cette précision ne réduit pas les droits expressément accordés lors d’un achat antérieur.
       </p>
 
       <h2>7. Nature des contenus</h2>

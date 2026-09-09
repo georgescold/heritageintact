@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { DATE_ESPACE_EN_LIGNE } from "@/lib/config";
 import {
   accesEnSequence,
+  accesParEmail,
+  leadsClientsRecents,
+  profilParEmail,
   commandesSansAcces,
   leadsActifs,
   marquerEnvoye,
@@ -9,8 +12,15 @@ import {
   reserverEnvoi,
 } from "@/lib/db";
 import { envoyerEtape, envoyerEtapeClient, etapeDue } from "@/lib/email";
+import { envoyerComplement } from "@/lib/email";
+import { possessions } from "@/lib/espace";
+import { devisPour } from "@/lib/devis";
+import { etapeLtvDue, offreLtv } from "@/lib/sequence-ltv";
+import { verrouCron, libererCron } from "@/lib/mail-journal";
 import { livrer } from "@/lib/livraison";
 import { SEQUENCE_CLIENT, etapeClientDue } from "@/lib/sequence-client";
+import { capaciteEmail, reserveComplements } from "@/lib/capacite-email";
+import { purgerJournalMeta } from "@/lib/meta-conversions";
 
 /**
  * Le passage quotidien des emails.
@@ -47,7 +57,8 @@ import { SEQUENCE_CLIENT, etapeClientDue } from "@/lib/sequence-client";
  *      parce qu'elle départage deux appelants concurrents — et qui est libérée
  *      si l'envoi échoue (voir `livraison.ts`).
  */
-const PLAFOND_PAR_PASSAGE = 150;
+export const maxDuration = 300;
+const PLAFOND_PAR_PASSAGE = capaciteEmail(process.env);
 
 export async function GET(req: Request) {
   const secret = process.env.CRON_SECRET;
@@ -66,7 +77,7 @@ export async function GET(req: Request) {
    * `.env.example`, sans quoi un environnement reconstruit depuis l'exemple
    * repart sans secret.
    */
-  if (process.env.VERCEL && !secret) {
+  if (!secret) {
     console.error("[cron] CRON_SECRET absent en production : route non servie");
     return NextResponse.json(
       { error: "CRON_SECRET absent : la route de cron n'est pas servie sans secret." },
@@ -78,36 +89,49 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "non autorisé" }, { status: 401 });
   }
 
-  const maintenant = Date.now();
-  let budget = PLAFOND_PAR_PASSAGE;
-  let livres = 0;
-  let rassurances = 0;
-  let envoyes = 0;
-  let echecs = 0;
+  // Pas d’envoi ni de faux succès dans un environnement incomplet.
+  if (!process.env.RESEND_API_KEY || !(process.env.POSTGRES_URL || process.env.DATABASE_URL))
+    return NextResponse.json({ error: "services email non configurés" }, { status: 503 });
+  let lease: string | null = null;
+  try {
+    lease = await verrouCron();
+    if (!lease) return NextResponse.json({ occupe: true }, { status: 409 });
+    // La rétention continue même lorsque les transmissions publicitaires sont suspendues.
+    try {
+      await purgerJournalMeta();
+    } catch {
+      console.error("[meta] purge technique non confirmée");
+    }
+    const maintenant = Date.now();
+    let budget = PLAFOND_PAR_PASSAGE;
+    let livres = 0;
+    let rassurances = 0;
+    let envoyes = 0;
+    let echecs = 0;
 
-  /* ─── PASSE 1 — RATTRAPAGE DE LIVRAISON ───────────────────────────
+    /* ─── PASSE 1 — RATTRAPAGE DE LIVRAISON ───────────────────────────
      ⚠️ `DATE_ESPACE_EN_LIGNE` EST CE QUI EMPÊCHE LE PREMIER PASSAGE DE
      RÉVEILLER TOUT L'HISTORIQUE. Sans cette borne, toutes les commandes
      payées existantes — commandes de test comprises — recevraient l'email
      d'accès d'un coup. La constante doit être postérieure à la dernière
      commande de test présente en base. */
-  const commandes = await commandesSansAcces(DATE_ESPACE_EN_LIGNE, budget);
-  // Deux commandes d'un même acheteur ne valent qu'un seul email d'accès : la
-  // seconde perdrait la réservation atomique, et compter le budget dessus
-  // priverait un vrai destinataire de son envoi.
-  const servis = new Set<string>();
-  for (const commande of commandes) {
-    if (budget <= 0) break;
-    if (servis.has(commande.email)) continue;
-    servis.add(commande.email);
+    const commandes = await commandesSansAcces(DATE_ESPACE_EN_LIGNE, budget);
+    // Deux commandes d'un même acheteur ne valent qu'un seul email d'accès : la
+    // seconde perdrait la réservation atomique, et compter le budget dessus
+    // priverait un vrai destinataire de son envoi.
+    const servis = new Set<string>();
+    for (const commande of commandes) {
+      if (budget <= 0 || Date.now() - maintenant > 240000) break;
+      if (servis.has(commande.email)) continue;
+      servis.add(commande.email);
 
-    const acces = await livrer(commande);
-    if (acces) livres++;
-    else echecs++;
-    budget--;
-  }
+      const acces = await livrer(commande);
+      if (acces) livres++;
+      else echecs++;
+      budget--;
+    }
 
-  /* ─── PASSE 2 — SÉQUENCE DE RASSURANCE ────────────────────────────
+    /* ─── PASSE 2 — SÉQUENCE DE RASSURANCE ────────────────────────────
      ⚠️ LA FENÊTRE D'EXAMEN NE SE TRIE PLUS SUR L'ANCIENNETÉ SEULE.
      `accesActifs(budget)` prenait les 150 accès les PLUS ANCIENS : ceux-là
      n'ont plus d'étape due, ils ne consommaient donc pas le budget d'envoi
@@ -116,68 +140,138 @@ export async function GET(req: Request) {
      bilan affichait `rassurances: 0`, ce qui ressemble à une journée normale.
      `accesEnSequence` écarte en base les accès hors fenêtre et ceux qui ont
      déjà tout reçu. */
-  const membres =
-    budget > 0
-      ? await accesEnSequence(
-          SEQUENCE_CLIENT.map((e) => e.cle),
-          budget,
-        )
-      : [];
-  for (const acces of membres) {
-    if (budget <= 0) break;
+    const membres =
+      budget > 0
+        ? await accesEnSequence(
+            SEQUENCE_CLIENT.map((e) => e.cle),
+            budget,
+          )
+        : [];
+    for (const acces of membres) {
+      if (budget <= 0 || Date.now() - maintenant > 240000) break;
+      if (!(await possessions(acces.email)).has("front")) continue;
 
-    const progression = await progressionDe(acces.email);
-    const etat = {
-      // C'est l'OUVERTURE de l'étape 0 qui compte, pas son achèvement : c2
-      // s'adresse à celui qui n'a jamais rien affiché.
-      etape0Ouverte: progression.some((p) => p.etape === "e0"),
-      nbFaites: progression.filter((p) => p.faiteLe).length,
-    };
+      const progression = await progressionDe(acces.email);
+      const etat = {
+        // C'est l'OUVERTURE de l'étape 0 qui compte, pas son achèvement : c2
+        // s'adresse à celui qui n'a jamais rien affiché.
+        etape0Ouverte: progression.some((p) => p.etape === "e0"),
+        nbFaites: progression.filter((p) => p.faiteLe).length,
+      };
 
-    const etape = etapeClientDue(acces, etat, maintenant);
-    if (!etape) continue;
-
-    const r = await envoyerEtapeClient(acces, etape);
-    if (r.ok) {
-      // ⚠️ Ici la trace vient APRÈS l'envoi, contrairement à l'email d'accès.
-      // Il n'y a pas deux appelants concurrents sur cette séquence, et on
-      // préfère un doublon improbable à une étape perdue en silence.
-      await reserverEnvoi(acces.email, etape.cle);
-      rassurances++;
+      const etape = etapeClientDue(acces, etat, maintenant);
+      if (!etape || servis.has(acces.email)) continue;
+      servis.add(acces.email);
       budget--;
-    } else {
-      echecs++;
-    }
-  }
 
-  /* ─── PASSE 3 — SÉQUENCE PROSPECT ─────────────────────────────────
+      const r = await envoyerEtapeClient(acces, etape);
+      if (r.ok) {
+        // ⚠️ Ici la trace vient APRÈS l'envoi, contrairement à l'email d'accès.
+        // Il n'y a pas deux appelants concurrents sur cette séquence, et on
+        // préfère un doublon improbable à une étape perdue en silence.
+        await reserverEnvoi(acces.email, etape.cle);
+        rassurances++;
+      } else {
+        echecs++;
+      }
+    }
+
+    /* ─── PASSE 3 — SÉQUENCE PROSPECT ─────────────────────────────────
      Inchangée. `leadsActifs()` exclut désormais les acheteurs : quelqu'un
      qui a acheté à J2 ne doit plus recevoir « l'offre à 27 € » à J6. */
-  const leads = await leadsActifs();
-  for (const lead of leads) {
-    if (budget <= 0) break;
-    const etape = etapeDue(lead, maintenant);
-    if (!etape) continue;
+    const leads = process.env.EMAIL_MARKETING_ACTIVE === "true" ? await leadsActifs() : [];
+    const ltvActive =
+      process.env.EMAIL_MARKETING_ACTIVE === "true" && process.env.EMAIL_LTV_ACTIVE === "true";
+    const reserveLtv = reserveComplements(budget, ltvActive);
+    async function prospecter(reserve: number) {
+      for (const lead of leads) {
+        if (budget <= reserve || Date.now() - maintenant > 240000) break;
+        const etape = etapeDue(lead, maintenant);
+        if (!etape || servis.has(lead.email)) continue;
+        servis.add(lead.email);
+        budget--;
+        const r = await envoyerEtape(lead, etape);
+        if (r.ok) {
+          await marquerEnvoye(lead.id, etape.cle);
+          envoyes++;
+        } else {
+          echecs++;
+        }
+      }
+    }
+    // Livraison et accompagnement restent prioritaires. Les prospects ne consomment
+    // pas tout le reliquat avant que les compléments éligibles aient été examinés.
+    await prospecter(reserveLtv);
 
-    const r = await envoyerEtape(lead, etape);
-    if (r.ok) {
-      await marquerEnvoye(lead.id, etape.cle);
-      envoyes++;
-      budget--;
-    } else {
-      echecs++;
+    // Compléments : un besoin déclaré, une première étape terminée, deux messages maximum.
+    let complements = 0;
+    if (
+      budget > 0 &&
+      process.env.EMAIL_MARKETING_ACTIVE === "true" &&
+      process.env.EMAIL_LTV_ACTIVE === "true"
+    ) {
+      for (const lead of await leadsClientsRecents()) {
+        if (budget <= 0 || Date.now() - maintenant > 240000) break;
+        if (servis.has(lead.email)) continue;
+        const acces = await accesParEmail(lead.email);
+        if (!acces) continue;
+        const progression = await progressionDe(lead.email);
+        const cle = etapeLtvDue(lead, acces, progression, maintenant);
+        if (!cle) continue;
+        const sku = offreLtv(await profilParEmail(lead.email), await possessions(lead.email));
+        if (!sku) continue;
+        const devis = await devisPour(lead.email, sku);
+        if (devis.dejaPossede || devis.montant <= 0) continue;
+        // Le rappel ne suit pas un premier envoi rattrapé la veille.
+        if (cle.endsWith("-2")) {
+          const premier = acces.envoyes.find((k) => k.startsWith("ltv-v3-date:"));
+          if (
+            !premier ||
+            maintenant - Date.parse(premier.slice("ltv-v3-date:".length)) < 7 * 86400000
+          )
+            continue;
+        }
+        servis.add(lead.email);
+        budget--;
+        const r = await envoyerComplement(lead, acces, sku, cle, devis.credit, devis.montant);
+        if (r.ok) {
+          await reserverEnvoi(lead.email, cle);
+          if (cle.endsWith("-1"))
+            await reserverEnvoi(lead.email, "ltv-v3-date:" + new Date(maintenant).toISOString());
+          complements++;
+        } else echecs++;
+      }
+    }
+    // Une réserve inutilisée revient aux prospects, sans deuxième tentative le même jour.
+    if (budget > 0) await prospecter(0);
+    const bilan = {
+      complements,
+      livres,
+      rassurances,
+      inscrits: leads.length,
+      envoyes,
+      echecs,
+      plafond: PLAFOND_PAR_PASSAGE,
+      restant: budget,
+      plafondAtteint: budget === 0,
+      dureeLimiteAtteinte: Date.now() - maintenant > 240000,
+      aVerifier:
+        budget === 0
+          ? "Examiner le retard des séquences et la réputation d’envoi avant tout relèvement du plafond."
+          : null,
+    };
+    console.log("[cron] emails", bilan);
+    return NextResponse.json(bilan);
+  } catch {
+    console.error("[cron] exécution non confirmée");
+    return NextResponse.json({ error: "exécution non confirmée" }, { status: 503 });
+  } finally {
+    if (lease) {
+      try {
+        await libererCron(lease);
+      } catch {
+        console.error("[cron] bail non libéré");
+      }
     }
   }
-
-  const bilan = {
-    livres,
-    rassurances,
-    inscrits: leads.length,
-    envoyes,
-    echecs,
-    plafond: PLAFOND_PAR_PASSAGE,
-    restant: budget,
-  };
-  console.log("[cron] emails", bilan);
-  return NextResponse.json(bilan);
 }

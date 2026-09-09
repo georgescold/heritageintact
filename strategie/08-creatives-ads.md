@@ -1,3 +1,6 @@
+> DOCUMENT HISTORIQUE — NE PAS UTILISER TEL QUEL POUR UNE NOUVELLE DIFFUSION.
+> Les promesses chiffrées et témoignages reconstitués ci-dessous ne sont pas validés pour le produit actuel. Utiliser [les scripts alignés V4](refonte-v2/11-CREATIVES-ALIGNEES-V4.md) et les reprises VSL. Le contenu historique est conservé pour traçabilité.
+
 # 08 — Créatives & ad copies (Phase 4)
 
 > Méthode 10×10×10 : 10 hooks, 10 bodies, 10 closings → monte chaque segment séparément → combine.

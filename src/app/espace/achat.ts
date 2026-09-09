@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { isTestMode, PRODUCTS, SKU_TUNNEL_UNIQUEMENT, type ProductSku } from "@/lib/config";
+import { isTestMode, stripeEnModeTest, PRODUCTS, SKU_TUNNEL_UNIQUEMENT, type ProductSku } from "@/lib/config";
 import {
   commandeAvecCarte,
   commandeEspaceEnCours,
@@ -15,7 +15,7 @@ import {
 import { envoyerRecuAchat } from "@/lib/email";
 import { chargerEspace } from "@/lib/espace";
 import { estJetonValide } from "@/lib/jeton";
-import { prixUpsell } from "@/lib/prix";
+import { devisPour } from "@/lib/devis";
 import { stripe, toCents } from "@/lib/stripe";
 
 /**
@@ -45,7 +45,7 @@ import { stripe, toCents } from "@/lib/stripe";
  * un vieux `/merci?o=…` rouvert des mois plus tard rejouerait l'événement
  * Purchase de Meta avec un montant jamais débité en une fois.
  */
-export async function acheterDepuisEspace(jeton: string, sku: ProductSku): Promise<void> {
+export async function acheterDepuisEspace(jeton: string, sku: ProductSku, formulaire?: FormData): Promise<void> {
   const hub = `/espace/${jeton}`;
 
   // La forme du jeton se vérifie sans ouvrir la base. Un jeton malformé ne
@@ -95,7 +95,11 @@ export async function acheterDepuisEspace(jeton: string, sku: ProductSku): Promi
    * `etat.possede` vient de `possessions(email)`, donc de la base, jamais de
    * l'URL.
    */
-  const prix = prixUpsell(sku, etat.possede);
+  const { montant: prix } = await devisPour(etat.acces.email, sku);
+  const affiche = formulaire?.get("montantAffiche");
+  if (typeof affiche !== "string" || affiche.trim() === "" || Number(affiche) !== prix) {
+    redirect(`${hub}/ajouter/${sku}?err=prix`);
+  }
 
   // La carte du membre : celle de sa commande payée la plus récente qui porte
   // un moyen de paiement mémorisé. C'est elle, et elle seule, qui autorise un
@@ -136,13 +140,16 @@ export async function acheterDepuisEspace(jeton: string, sku: ProductSku): Promi
    * TEMPS 3 — la seconde tentative d'écriture après le débit, plus bas.
    */
   const enCours = await commandeEspaceEnCours(email, sku);
+  if (enCours && enCours.items.reduce((s, i) => s + i.price, 0) !== prix) {
+    redirect(`${hub}/ajouter/${sku}?err=prix`);
+  }
   const order =
     enCours ??
     (await creerCommandeEspace({
       email,
       firstName,
       sku,
-      mode: isTestMode ? "test" : "live",
+      mode: isTestMode || stripeEnModeTest ? "test" : "live",
       stripeCustomerId: commandeCarte?.stripeCustomerId,
       stripePaymentMethodId: commandeCarte?.stripePaymentMethodId,
     }));
@@ -151,9 +158,12 @@ export async function acheterDepuisEspace(jeton: string, sku: ProductSku): Promi
   // chemin, tout le parcours d'achat depuis l'espace serait intestable en
   // local — et c'est précisément le parcours qu'on ne peut pas se permettre de
   // découvrir en production.
-  if (!stripe) {
+  if (order.items.reduce((s, i) => s + i.price, 0) !== prix) {
+    redirect(`${hub}/ajouter/${sku}?err=prix`);
+  }
+  if (!stripe || prix === 0) {
     await markOrderPaid(order.id, {});
-    await recu(etat.acces, sku, prix);
+    await recu(etat.acces, sku, prix, order.id);
     revalidatePath(hub);
     redirect(`${hub}?ajoute=${sku}`);
   }
@@ -244,7 +254,7 @@ export async function acheterDepuisEspace(jeton: string, sku: ProductSku): Promi
         console.error("[achat-espace] débit encaissé sans écriture en base", order.id, sku, e);
       }
     }
-    await recu(etat.acces, sku, prix);
+    await recu(etat.acces, sku, prix, order.id);
     revalidatePath(hub);
     redirect(`${hub}?ajoute=${sku}`);
   }
@@ -267,9 +277,9 @@ export async function acheterDepuisEspace(jeton: string, sku: ProductSku): Promi
  * un envoi non attendu ne part pas — mais il ne peut pas faire échouer
  * l'achat : le membre a payé, il a son produit.
  */
-async function recu(acces: Acces, sku: ProductSku, montant: number): Promise<void> {
+async function recu(acces: Acces, sku: ProductSku, montant: number, operation: string): Promise<void> {
   try {
-    await envoyerRecuAchat(acces, sku, montant);
+    await envoyerRecuAchat(acces, sku, montant, operation);
   } catch (e) {
     console.error("[achat-espace] reçu non envoyé", acces.email, sku, e);
   }
@@ -370,7 +380,7 @@ export async function confirmerAchatEspace(
    * accepter un prix, comme `addItem` le fait déjà. Ce fichier n'en est pas
    * propriétaire.
    */
-  await recu(etat.acces, sku, prixUpsell(sku, etat.possede));
+  await recu(etat.acces, sku, order.items.reduce((s, i) => s + i.price, 0), order.id);
 }
 
 /**
@@ -469,7 +479,7 @@ export async function preparerPaiementEspace(
       // règle des 47 € dit 50 €. Le chemin nominal (`acheterDepuisEspace`) et
       // le repli DSP2 doivent débiter le même montant, sinon le membre paie
       // plus cher parce que sa banque a demandé une confirmation.
-      amount: toCents(prixUpsell(sku, etat.possede)),
+      amount: toCents(order.items.reduce((s, i) => s + i.price, 0)),
       currency: "eur",
       customer: order.stripeCustomerId,
       setup_future_usage: "off_session",

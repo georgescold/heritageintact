@@ -233,6 +233,9 @@ export function assurerSchema(): Promise<void> {
       `;
 
       // Le compteur « membres fondateurs » filtre là-dessus à chaque affichage.
+      await s`alter table profils add column if not exists objectif text`;
+      await s`alter table leads add column if not exists marketing_consent boolean not null default false`;
+      await s`alter table leads add column if not exists marketing_consent_at timestamptz`;
       await s`create index if not exists orders_status_idx on orders (status)`;
       // L'espace retrouve les commandes d'un membre PAR SON EMAIL à chaque
       // affichage (calcul des possessions), et le cron y fait une jointure pour

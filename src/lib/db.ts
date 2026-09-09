@@ -30,6 +30,8 @@ import { nouveauJeton } from "./jeton";
 import { assurerSchema, sql, sqlActif } from "./sql";
 
 export type Lead = {
+  marketingConsent?: boolean;
+  marketingConsentAt?: string;
   id: string;
   email: string;
   firstName: string;
@@ -122,6 +124,7 @@ export type Progression = {
  * TEXTE LIBRE NI UNE DONNÉE DE SANTÉ. Voir le commentaire de la table (sql.ts).
  */
 export type Profil = {
+  objectif?: string;
   orderId: string;
   email: string;
   /** M marié(e) · P pacsé(e) · U en couple · V veuf/veuve · S seul(e) · X refus. */
@@ -183,6 +186,8 @@ async function write(db: Db): Promise<void> {
    ═══════════════════════════════════════════════════════════════ */
 
 type LigneLead = {
+  marketing_consent?: boolean;
+  marketing_consent_at?: Date | null;
   id: string;
   email: string;
   first_name: string;
@@ -206,6 +211,8 @@ type LigneOrder = {
 };
 
 const versLead = (r: LigneLead): Lead => ({
+  marketingConsent: r.marketing_consent === true,
+  marketingConsentAt: r.marketing_consent_at?.toISOString(),
   id: r.id,
   email: r.email,
   firstName: r.first_name,
@@ -265,6 +272,7 @@ const versProgression = (r: LigneProgression): Progression => ({
 });
 
 type LigneProfil = {
+  objectif?: string | null;
   order_id: string;
   email: string;
   vie: string | null;
@@ -281,6 +289,7 @@ type LigneProfil = {
 // deux modes ne routeraient pas pareil — un parcours déroulé à la main en local
 // ne prouverait plus rien sur la production.
 const versProfil = (r: LigneProfil): Profil => ({
+  objectif: r.objectif ?? undefined,
   orderId: r.order_id,
   email: r.email,
   vie: r.vie ?? undefined,
@@ -318,6 +327,7 @@ export async function addLead(input: {
   email: string;
   firstName: string;
   source?: string;
+  marketingConsent?: boolean;
 }): Promise<Lead> {
   const email = input.email.trim().toLowerCase();
   const firstName = input.firstName.trim();
@@ -329,9 +339,12 @@ export async function addLead(input: {
     // deux lignes. Le `do update` est un no-op — il ne sert qu'à obtenir la
     // ligne existante en retour, `do nothing` ne renvoyant rien.
     const [r] = await s<LigneLead[]>`
-      insert into leads (id, email, first_name, source)
-      values (${id("lead")}, ${email}, ${firstName}, ${input.source ?? null})
-      on conflict (email) do update set email = excluded.email
+      insert into leads (id, email, first_name, source, marketing_consent, marketing_consent_at)
+      values (${id("lead")}, ${email}, ${firstName}, ${input.source ?? null},
+              ${input.marketingConsent === true}, ${input.marketingConsent === true ? new Date().toISOString() : null})
+      on conflict (email) do update set
+        marketing_consent = leads.marketing_consent or excluded.marketing_consent,
+        marketing_consent_at = coalesce(leads.marketing_consent_at, excluded.marketing_consent_at)
       returning *
     `;
     return versLead(r);
@@ -339,13 +352,22 @@ export async function addLead(input: {
 
   const db = await read();
   const existing = db.leads.find((l) => l.email === email);
-  if (existing) return existing;
+  if (existing) {
+    if (input.marketingConsent === true && !existing.marketingConsent) {
+      existing.marketingConsent = true;
+      existing.marketingConsentAt = new Date().toISOString();
+      await write(db);
+    }
+    return existing;
+  }
   const lead: Lead = {
     id: id("lead"),
     email,
     firstName,
     createdAt: new Date().toISOString(),
     source: input.source,
+    marketingConsent: input.marketingConsent === true,
+    marketingConsentAt: input.marketingConsent === true ? new Date().toISOString() : undefined,
   };
   db.leads.push(lead);
   await write(db);
@@ -541,12 +563,25 @@ export async function marquerEnvoye(id: string, etape: string): Promise<void> {
  * créé que sur commande payée, et c'est la seule table qui suive le client
  * plutôt que la transaction.
  */
+/** Clients consentants récents uniquement ; aucune réactivation de l’historique. */
+export async function leadsClientsRecents(): Promise<Lead[]> {
+  const debut = new Date(Date.now() - 35 * 86400000).toISOString();
+  if (sqlActif) {
+    const s = await pg();
+    const rows = await s<LigneLead[]>`select l.* from leads l join acces a on a.email=l.email
+      where l.marketing_consent=true and l.desabonne=false and a.revoque=false and a.created_at > ${debut}
+      and not (a.envoyes @> ${s.json(["ltv-v3-1","ltv-v3-2"])}) order by a.created_at asc limit 500`;
+    return rows.map(versLead);
+  }
+  const db=await read();
+  return db.leads.filter(l=>l.marketingConsent && !l.desabonne && db.acces.some(a=>a.email===l.email && !a.revoque && a.createdAt>debut && !a.envoyes.includes("ltv-v3-2"))).slice(0,500);
+}
 export async function leadsActifs(): Promise<Lead[]> {
   if (sqlActif) {
     const s = await pg();
     const r = await s<LigneLead[]>`
       select l.* from leads l
-      where l.desabonne = false
+      where l.desabonne = false and l.marketing_consent = true
         and not exists (select 1 from acces a where a.email = l.email)
       order by l.created_at asc
     `;
@@ -556,7 +591,7 @@ export async function leadsActifs(): Promise<Lead[]> {
   // Le miroir exact du `not exists` : les deux modes doivent se comporter à
   // l'identique, sinon un test passé en local ne prouve rien sur la production.
   const acheteurs = new Set(db.acces.map((a) => a.email));
-  return db.leads.filter((l) => !l.desabonne && !acheteurs.has(l.email));
+  return db.leads.filter((l) => l.marketingConsent === true && !l.desabonne && !acheteurs.has(l.email));
 }
 
 export async function getOrder(orderId: string): Promise<Order | null> {
@@ -1161,7 +1196,12 @@ export async function creerCommandeEspace(input: {
   stripeCustomerId?: string;
   stripePaymentMethodId?: string;
 }): Promise<Order> {
-  const items: OrderItem[] = [{ sku: input.sku, price: PRODUCTS[input.sku].price }];
+  // Le prix ne vient jamais de l’appelant : relire les achats payés côté serveur.
+  const { devis } = await import("./prix");
+  const commandes = await commandesPayeesParEmail(input.email);
+  const prix = devis(input.sku, commandes.flatMap(c => c.items)).montant;
+  if (!Number.isFinite(prix) || prix < 0) throw new Error("Prix de commande invalide");
+  const items: OrderItem[] = [{ sku: input.sku, price: prix }];
   const base = {
     id: id("ord"),
     email: normaliserEmail(input.email),
@@ -1383,6 +1423,7 @@ export async function marquerRembourse(
  * valeur, pas la laisser en place.
  */
 export async function enregistrerProfil(input: {
+  objectif?: string;
   orderId: string;
   email: string;
   vie?: string;
@@ -1400,22 +1441,24 @@ export async function enregistrerProfil(input: {
     if (sqlActif) {
       const s = await pg();
       await s`
-        insert into profils (order_id, email, vie, enfants, av, age, piste)
+        insert into profils (order_id, email, vie, enfants, av, age, piste, objectif)
         values (${input.orderId}, ${email}, ${input.vie ?? null}, ${input.enfants ?? null},
-                ${input.av ?? null}, ${input.age ?? null}, ${input.piste ?? null})
+                ${input.av ?? null}, ${input.age ?? null}, ${input.piste ?? null}, ${input.objectif ?? null})
         on conflict (order_id) do update set
           email   = excluded.email,
           vie     = excluded.vie,
           enfants = excluded.enfants,
           av      = excluded.av,
           age     = excluded.age,
-          piste   = excluded.piste
+          piste   = excluded.piste,
+          objectif = excluded.objectif
       `;
       return;
     }
 
     const db = await read();
     const profil: Profil = {
+      objectif: input.objectif,
       orderId: input.orderId,
       email,
       vie: input.vie,
@@ -1475,4 +1518,17 @@ export async function profilParEmail(email: string): Promise<Profil | null> {
       .filter((p) => p.email === adresse)
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0] ?? null
   );
+}
+
+/** Lecture réservée au pilotage serveur protégé. La limite est explicite, jamais un total tronqué silencieux. */
+export async function commandesPourPilotage(): Promise<{ commandes: Order[]; tronque: boolean }> {
+  const limite = 50000;
+  if (sqlActif) {
+    const s = await pg();
+    const lignes = await s<LigneOrder[]>`select * from orders where status = 'paid' and mode = 'live' order by created_at asc limit ${limite + 1}`;
+    return { commandes: lignes.slice(0, limite).map(versOrder), tronque: lignes.length > limite };
+  }
+  const db = await read();
+  const lignes = db.orders.filter(c => c.status === "paid" && c.mode === "live");
+  return { commandes: lignes.slice(0, limite), tronque: lignes.length > limite };
 }

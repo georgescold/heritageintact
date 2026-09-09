@@ -5,7 +5,7 @@ import { Simulateur } from "@/components/simulateur/Simulateur";
 import { chargerEspace } from "@/lib/espace";
 import { estJetonValide } from "@/lib/jeton";
 
-export const metadata: Metadata = { title: "Le Simulateur personnalisé" };
+export const metadata: Metadata = { title: "Atelier de simulation pédagogique" };
 
 /**
  * LE SIMULATEUR AUTOMATIQUE — la version qui calcule à la place du client.
@@ -29,7 +29,7 @@ export default async function SimulateurPage({ params }: { params: Promise<{ jet
 
   if (!estJetonValide(jeton)) return <LienInvalide />;
   const etat = await chargerEspace(jeton);
-  if (!etat) return <LienInvalide />;
+  if (!etat || etat.acces.revoque) return <LienInvalide />;
 
   const aDroit =
     etat.possede.has("backend1") || etat.possede.has("upsell1") || etat.possede.has("pack1");
@@ -37,14 +37,14 @@ export default async function SimulateurPage({ params }: { params: Promise<{ jet
   if (!aDroit) {
     return (
       <div className="wrap py-12">
-        <h1 className="mb-3 text-[1.5rem]">Le Simulateur personnalisé</h1>
+        <h1 className="mb-3 text-[1.5rem]">Atelier de simulation pédagogique</h1>
         <p className="mb-4 text-[1.05rem]">
-          Cet outil ne fait pas partie de ce que vous avez. Vous le trouverez dans votre espace,
-          avec son prix, si vous souhaitez l&apos;ajouter.
+          Cet outil est inclus dans les packs Préparation. Consultez votre espace
+          pour voir les contenus et votre éventuel complément de prix.
         </p>
         <p className="mb-6 text-[1.05rem]">
-          En attendant, la <strong>Facture Invisible</strong> est dans vos documents : elle donne le
-          même chiffre, remplie à la main.
+          En attendant, la fiche de calcul pédagogique est dans vos documents :
+          elle explique le barème sur un exemple fictif.
         </p>
         <Link
           href={`/espace/${jeton}`}

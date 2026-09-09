@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useActionState } from "react";
 import { optin, type FormState } from "@/app/actions";
-import { NoSpamLine } from "./LpExtras";
 import { Button } from "./ui";
 
 export function OptinForm({ cta = "Accéder à la vidéo" }: { cta?: string }) {
@@ -32,10 +31,10 @@ export function OptinForm({ cta = "Accéder à la vidéo" }: { cta?: string }) {
       </label>
       {/* Case CGV : exigée par Meta sur toute landing page recevant du trafic publicitaire. */}
       <label className="flex items-start gap-2 text-[0.85rem] text-text-soft">
-        <input type="checkbox" name="cgv" className="mt-1 h-5 w-5 shrink-0 accent-blue-mid" />
+        <input type="checkbox" name="marketingConsent" className="mt-1 h-5 w-5 shrink-0 accent-blue-mid" />
         <span>
-          J&apos;accepte les <Link href="/cgv">conditions générales</Link> et la{" "}
-          <Link href="/confidentialite">politique de confidentialité</Link>.
+          Je souhaite aussi recevoir la série de conseils et les offres Héritage Intact
+          par email. Facultatif, désinscription à tout moment.
         </span>
       </label>
 
@@ -45,7 +44,8 @@ export function OptinForm({ cta = "Accéder à la vidéo" }: { cta?: string }) {
         </p>
       )}
       <Button disabled={pending}>{pending ? "Un instant..." : cta}</Button>
-      <NoSpamLine />
+      <p className="text-[0.85rem] text-text-soft">Votre email sert à envoyer le lien demandé.
+      Sans cette case, vous ne recevez pas la séquence commerciale. <Link href="/confidentialite">Confidentialité</Link>.</p>
     </form>
   );
 }

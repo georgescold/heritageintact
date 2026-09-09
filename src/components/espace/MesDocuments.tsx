@@ -1,81 +1,65 @@
 import Link from "next/link";
-import { ButtonLink } from "@/components/ui";
 import type { EtatEspace } from "@/lib/espace";
-
-/**
- * LE RAYON PAPIER DE L'ESPACE MEMBRE.
- *
- * Une partie de ces acheteurs ne lira jamais à l'écran : ils impriment, ils
- * annotent au stylo, ils rangent dans un classeur — c'est exactement ce que
- * vend Le Classeur Héritage Intact. « Tout imprimer » n'est donc pas une
- * commodité posée en bas de page, c'est le livrable qu'ils attendent.
- *
- * ⚠️ AUCUN ACCORDÉON, AUCUN ONGLET : tout est déplié, une seule colonne. Une
- * liste repliée sur cette cible n'est pas une liste compacte, c'est une liste
- * qui n'existe pas.
- *
- * ⚠️ CE COMPOSANT N'HABILITE RIEN. `etat.documents` est déjà filtré sur ce que
- * le membre possède, et vidé si son accès est révoqué. Ne jamais s'appuyer sur
- * cette liste comme sur une protection : l'URL d'un document est devinable, et
- * la garde qui compte est celle de la page elle-même.
- */
+import { selectionParDefaut, planPrincipal } from "@/lib/documents-pertinents";
 export function MesDocuments({ etat }: { etat: EtatEspace }) {
-  const { jeton } = etat.acces;
-  const documents = etat.documents;
-
-  if (documents.length === 0) {
-    // Cas anormal (accès révoqué, ou catalogue de documents vide pour ce SKU) :
-    // un bloc vide se lit comme une panne. Une phrase calme, et rien à faire.
-    return (
-      <section id="mes-documents" className="scroll-mt-4">
-        <Titre />
-        <p className="text-[1.05rem]">
-          Vos documents à imprimer apparaîtront ici. Il n&apos;y a rien à faire de votre côté : ils
-          s&apos;ajoutent tout seuls à mesure que vous avancez.
-        </p>
-      </section>
-    );
-  }
-
-    /* L'ancre du bandeau de confirmation d'achat : « vous le trouverez ici »
-       est un lien, pas une indication de direction. `scroll-mt` empeche le
-       titre de finir colle au bord haut de la fenetre apres le saut. */
+  const hub = `/espace/${etat.acces.jeton}`;
+  const selection = selectionParDefaut(
+    etat.documents.map((d) => d.cle),
+    etat.profil,
+  );
+  const principal = planPrincipal(etat.profil);
+  const utiles = etat.documents.filter((d) => selection.includes(d.cle));
+  const autres = etat.documents.filter((d) => !selection.includes(d.cle));
+  const ligne = (d: EtatEspace["documents"][number]) => (
+    <div key={d.cle} className="flex items-center gap-3 border-b border-grey-line py-3">
+      <label className="flex min-h-[44px] items-center">
+        <input
+          type="checkbox"
+          name="cle"
+          value={d.cle}
+          defaultChecked={selection.includes(d.cle)}
+          className="h-6 w-6"
+          aria-label={`Imprimer ${d.titre}`}
+        />
+      </label>
+      <Link href={`${hub}/document/${d.cle}`}>{d.titre}</Link>
+    </div>
+  );
   return (
-    <section id="mes-documents" className="scroll-mt-4">
-      <Titre />
-
-      <p className="mb-4 text-[1.05rem]">
-        {documents.length} document{documents.length > 1 ? "s" : ""} à imprimer, à remplir au stylo,
-        et à emporter chez votre notaire. Vous pouvez les imprimer un par un, ou tous ensemble.
+    <section id="mes-documents">
+      <h2 className="mb-3 text-[1.5rem]">Mon dossier</h2>
+      <p className="mb-5 border-l-4 border-blue bg-grey-bg p-4"><Link href={`${hub}/demarrer`}>Quel document ouvrir et comment le remplir ? Suivre le mode d’emploi de mes achats.</Link></p>
+      <p className="mb-5">
+        Commencez par cette sélection courte. Les fiches se remplissent ; les références se lisent.
+        Vous n’avez pas besoin de tout imprimer.
       </p>
-
-      {/* Le bouton est AVANT la liste : c'est l'action que ce lecteur cherche,
-          et la faire descendre sous quatorze lignes revient à la cacher.
-          Bleu et non orange — l'orange reste au bouton principal du hub, sinon
-          la page n'a plus de premier geste évident. */}
-      <div className="mb-6">
-        <ButtonLink href={`/espace/${jeton}/imprimer`} variant="blue">
-          Tout imprimer ({documents.length} document{documents.length > 1 ? "s" : ""})
-        </ButtonLink>
-      </div>
-
-      <ul className="space-y-2">
-        {documents.map((doc) => (
-          <li key={doc.cle}>
-            <Link
-              href={`/espace/${jeton}/document/${doc.cle}`}
-              className="flex min-h-[56px] items-center border border-grey-line bg-white px-4 py-3 text-[1.1rem] font-bold no-underline hover:bg-grey-bg"
-            >
-              {doc.titre}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {principal && etat.documents.some((d) => d.cle === principal) && (
+        <p className="mb-5 border-l-4 border-orange p-4">
+          Point de départ d’après vos réponses :{" "}
+          <Link href={`${hub}/document/${principal}`}>
+            {etat.documents.find((d) => d.cle === principal)?.titre}
+          </Link>
+          . Une orientation de lecture, pas un diagnostic.
+        </p>
+      )}
+      <form action={`${hub}/imprimer`} method="get">
+        <h3 className="text-[1.2rem]">Pour ma préparation</h3>
+        <div className="space-y-2">{utiles.map(ligne)}</div>
+        {autres.length > 0 && (
+          <details className="mt-6 border border-grey-line p-4">
+            <summary className="min-h-[44px] cursor-pointer font-bold">
+              Mes autres supports inclus ({autres.length})
+            </summary>
+            <p className="my-3 text-text-soft">
+              À ouvrir selon vos questions. Une fiche non sélectionnée reste accessible.
+            </p>
+            {autres.map(ligne)}
+          </details>
+        )}
+        <button className="mt-6 min-h-[56px] w-full bg-blue px-5 font-bold text-white">
+          Préparer l’impression de ma sélection
+        </button>
+      </form>
     </section>
   );
-}
-
-/** Le titre du rayon. Sorti pour être écrit une seule fois, y compris dans le cas vide. */
-function Titre() {
-  return <h2 className="mb-3 text-[1.35rem]">MES DOCUMENTS À IMPRIMER</h2>;
 }

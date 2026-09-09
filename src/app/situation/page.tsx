@@ -1,3 +1,5 @@
+import { cookies } from "next/headers";
+import { objectifValide } from "@/lib/positionnement";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { FormulaireSituation } from "./Formulaire";
@@ -67,9 +69,10 @@ export default async function SituationPage({
 }: {
   searchParams: Promise<{ o?: string }>;
 }) {
+  const objectif = objectifValide((await cookies()).get("hi_objectif")?.value);
   const { o } = await searchParams;
   const order = o ? await getOrder(o) : null;
-  if (!order) redirect("/commande");
+  if (!order || order.status !== "paid") redirect("/commande");
 
   const suite = `/plan-complet?o=${encodeURIComponent(order.id)}`;
 
@@ -99,9 +102,9 @@ export default async function SituationPage({
             </p>
             <p className="mt-2 text-[1.05rem]">
               {PRODUCTS.front.name} est à vous
-              {bumpPresent && <>, avec {PRODUCTS.bump.name}</>}. Un email vient de partir à{" "}
-              <strong className="break-words">{order.email}</strong> : il contient votre lien
-              d&apos;accès personnel, et il ne périme pas.
+              {bumpPresent && <>, avec {PRODUCTS.bump.name}</>}. Votre adresse d&apos;accès est{" "}
+              <strong className="break-words">{order.email}</strong>.
+              Vous pouvez ouvrir votre espace ci-dessous.
             </p>
             {/* ⚠️ RIEN ICI SUR LE LIBELLÉ DU RELEVÉ BANCAIRE, ET C'EST VOLONTAIRE.
                 Le nom qui s'affichera sur le relevé est le `statement descriptor`
@@ -113,7 +116,7 @@ export default async function SituationPage({
                 vaut la peine d'être écrite : elle supprime un motif de litige. */}
             <p className="mt-2 text-[1.02rem] text-text-soft">
               Si vous ne voyez pas l&apos;email d&apos;ici quelques minutes, regardez dans vos
-              courriers indésirables — c&apos;est là qu&apos;il se met le plus souvent.
+              courriers indésirables. Votre lien est aussi disponible ci-dessous.
             </p>
           </Panel>
 
@@ -124,8 +127,8 @@ export default async function SituationPage({
                 {PRODUCTS.front.name} est déjà en ligne. Vous pouvez la voir tout de suite.
               </p>
               <p className="mt-1 text-[1.05rem]">
-                Rien à installer, aucun mot de passe à retenir : ce lien est le vôtre, il fonctionne
-                aujourd&apos;hui et dans dix ans.
+                Rien à installer, aucun mot de passe à retenir : conservez votre lien personnel
+                et ne le partagez pas.
               </p>
               <a
                 href={urlEspace(acces.jeton)}
@@ -145,7 +148,7 @@ export default async function SituationPage({
 
           {/* ═══ 3. SEULEMENT MAINTENANT, LES QUESTIONS. ═══ */}
           <div className="mt-6">
-            <FormulaireSituation orderId={order.id} email={order.email} />
+            <FormulaireSituation orderId={order.id} email={order.email} objectif={objectif} />
           </div>
         </div>
       </main>

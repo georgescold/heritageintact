@@ -1,220 +1,89 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { Footer, Header } from "@/components/Chrome";
-import { CaseEtape } from "@/components/espace/CaseEtape";
-import { LienInvalide } from "@/components/espace/LienInvalide";
-import { Check, Panel } from "@/components/ui";
+import { Header, Footer } from "@/components/Chrome";
 import { VideoEmbed } from "@/components/VideoEmbed";
-import { VIDEO } from "@/lib/config";
-import { ouvrirEtape } from "@/lib/db";
+import { LienInvalide } from "@/components/espace/LienInvalide";
+import { CaseEtape } from "@/components/espace/CaseEtape";
 import { chargerEspace } from "@/lib/espace";
+import { ouvrirEtape } from "@/lib/db";
 import { estJetonValide } from "@/lib/jeton";
-import {
-  documentParCle,
-  etapeParNumero,
-  type DocumentImprimable,
-  type EtapeMethode,
-} from "@/lib/methode";
-
-export const metadata: Metadata = { title: "Mon étape" };
-
-/**
- * UNE ÉTAPE DE LA MÉTHODE.
- *
- * Une colonne, dans l'ordre où on s'en sert : ce qu'on va apprendre, la vidéo,
- * l'action à faire, les feuilles à imprimer, la case à cocher, l'étape
- * suivante. Rien d'autre, et surtout aucune vente : on ne vend pas à quelqu'un
- * qui est en train de travailler.
- *
- * ⚠️ ON DIT « ÉTAPE » DANS L'ESPACE. Le mot n'est pas décoratif : un
- * lecteur de 74 ans qui a peur de mal faire veut un protocole. « Module » est
- * du vocabulaire de formation en ligne, et il ne lui dit rien.
- */
-export default async function EtapePage({
-  params,
-}: {
-  params: Promise<{ jeton: string; n: string }>;
-}) {
+import { LECONS } from "@/lib/lecons";
+import { VIDEO } from "@/lib/config";
+import { documentParCle } from "@/lib/methode";
+import { ExerciceGuide } from "@/components/ExerciceGuide";
+export default async function Page({ params }: { params: Promise<{ jeton: string; n: string }> }) {
   const { jeton, n } = await params;
-
   if (!estJetonValide(jeton)) return <LienInvalide />;
-
-  // Le numéro arrive de l'URL. `Number("")` vaut 0 et `Number("2abc")` vaut
-  // NaN : les deux mènent au même endroit qu'un /etape/12, c'est-à-dire à
-  // l'écran de secours, jamais à une 404.
-  const numero = Number(n);
-  const etape = Number.isInteger(numero) ? etapeParNumero(numero) : null;
-  if (!etape) return <LienInvalide />;
-
   const etat = await chargerEspace(jeton);
-  if (!etat) return <LienInvalide />;
-  if (etat.acces.revoque) return <LienInvalide revoque />;
-
-  /**
-   * ⚠️ L'ÉCRITURE QUI DÉVERROUILLE LA BOUTIQUE, ET ELLE EST FAITE AU RENDU.
-   *
-   * C'est un écart assumé — on écrit pendant le rendu d'un composant serveur —
-   * et il est justifié : l'alternative sans JavaScript n'existe pas, ce public
-   * bloque parfois les scripts, et l'insert porte `on conflict do nothing`,
-   * donc un rechargement ou un double rendu est un no-op exact.
-   *
-   * NE JAMAIS LE TRANSFORMER en effet client dans un `useEffect` : la boutique
-   * ne s'ouvrirait plus pour une partie des membres, sans que rien ne le
-   * signale nulle part.
-   */
-  await ouvrirEtape(etat.acces.email, etape.cle);
-
+  if (!etat || etat.acces.revoque || !etat.possede.has("front")) return <LienInvalide revoque={etat?.acces.revoque} />;
+  const lecon = LECONS.find((l) => String(l.numero) === n);
+  if (!lecon) return <LienInvalide />;
+  await ouvrirEtape(etat.acces.email, lecon.cle);
   const hub = `/espace/${jeton}`;
-  const faite = etat.etapes.find((e) => e.etape.cle === etape.cle)?.faite ?? false;
-  const suivante = etapeParNumero(etape.numero + 1);
-
-  // Les feuilles de cette étape, réduites à ce que le membre possède vraiment.
-  // La liste est écrite dans `methode.ts` ; l'habilitation, elle, se vérifie à
-  // chaque affichage — et de nouveau sur la page du document, dont l'URL est
-  // devinable.
-  const feuilles = etape.documents
-    .map(documentParCle)
-    .filter((d): d is DocumentImprimable => d !== null)
-    .filter((d) => etat.possede.has(d.sku));
-
-  // ⚠️ Peut être absent : aucune vidéo n'est tournée à ce jour, et `VIDEO.etapes`
-  // est plus court que 8 tant qu'elles ne le sont pas. `VideoEmbed` affiche
-  // alors son cadre d'attente — c'est normal, ce n'est pas une panne.
-  const videoId = VIDEO.etapes[etape.videoIndex] || undefined;
-
+  const faite = etat.etapes.find((e) => e.etape.cle === lecon.cle)?.faite ?? false;
+  const video = lecon.videoIndex >= 0 ? VIDEO.etapes[lecon.videoIndex] : undefined;
+  const docs = lecon.documents.map(documentParCle).filter((d) => d && etat.possede.has(d.sku));
   return (
     <>
       <Header minimal />
-      <main className="flex-1">
-        <div className="wrap py-8">
-          <p className="mb-5 text-[1.05rem]">
-            <Link href={hub}>← Revenir à mon espace</Link>
-          </p>
-
-          {/* « Étape 3 sur 8 » serait faux : les étapes sont numérotées de 0 à
-              7. On annonce donc le numéro et la durée, et le compte total reste
-              au hub, là où il mesure une progression. */}
-          <p className="mb-1 text-[1.05rem] font-bold text-orange">
-            Étape {etape.numero} · {etape.minutes} minutes
-          </p>
-          <h1 className="mb-3 text-[1.5rem] leading-snug sm:text-[1.8rem]">{etape.titre}</h1>
-          <p className="mb-6 text-[1.15rem]">{etape.resume}</p>
-
-          <div className="mb-8">
-            {/* `dejaPossede` : c'est le seul des trois appels de ce composant où
-                la possession est vraie. La page est derrière le jeton, et les
-                feuilles listées plus bas sont filtrées sur ce que le membre a
-                réellement acheté. */}
-            <VideoEmbed
-              id={videoId}
-              title={`Étape ${etape.numero} — ${etape.titre}`}
-              minutes={etape.minutes}
-              dejaPossede
-            />
-          </div>
-
-          {/* ⚠️ LE GAIN AVANT LA TÂCHE, ET L'ORDRE N'EST PAS NÉGOCIABLE.
-              Cette page ne disait que ce qu'il restait à FAIRE. Quelqu'un qui
-              vient de donner douze minutes et qui ne voit s'afficher qu'une
-              consigne de plus ne se sent pas avancer : il se sent en retard.
-              Sur huit étapes, c'est comme ça qu'on décroche à la troisième.
-
-              Il lit donc d'abord ce qu'il vient d'acquérir — trois lignes
-              concrètes, au vert de ce qui est acquis — et seulement ensuite ce
-              qu'il a à faire. Inverser les deux blocs suffit à retransformer
-              un parcours en liste de corvées. */}
-          <div className="mb-8">
-            <Panel tone="green" title="Ce que vous savez maintenant">
-              <ul className="space-y-2 text-[1.1rem]">
-                {etape.acquis.map((a) => (
-                  <Check key={a}>{a}</Check>
-                ))}
-              </ul>
-            </Panel>
-          </div>
-
-          {/* L'action : UNE seule, jamais deux. C'est ce qui transforme une
-              vidéo regardée en étape réellement faite.
-
-              ⚠️ Le titre disait « Ce soir, faites ceci ». Une partie de cette
-              audience est à la retraite et travaille le matin : lire « ce
-              soir » à 9 h, c'est s'entendre dire que ce n'est pas encore le
-              moment. Sur quelqu'un qui hésite déjà à commencer, une consigne
-              qui reporte est une consigne qu'on ne suit pas.
-
-              ⚠️ Et `siNonConcerne` n'est pas un détail de confort. Deux
-              étapes ne s'appliquent pas à tout le monde ; sans cette ligne,
-              celui qui n'a pas de contrat d'assurance-vie lit une consigne
-              qu'il ne peut pas exécuter, en conclut qu'il a mal compris, et
-              ne coche pas — donc reste bloqué sur une étape qu'il a pourtant
-              terminée. */}
-          <div className="mb-8">
-            <Panel tone="yellow" title="Ce qu'il y a à faire maintenant">
-              <p className="text-[1.15rem]">{etape.aFaire}</p>
-              {etape.siNonConcerne && (
-                <p className="mt-3 border-t border-yellow-line pt-3 text-[1.05rem] text-text-soft">
-                  {etape.siNonConcerne}
-                </p>
-              )}
-            </Panel>
-          </div>
-
-          {feuilles.length > 0 && (
-            <section className="mb-8">
-              <h2 className="mb-3 text-[1.35rem]">LES DOCUMENTS DE CETTE ÉTAPE</h2>
-              <ul className="space-y-2">
-                {feuilles.map((doc) => (
-                  <li key={doc.cle}>
-                    <Link
-                      href={`${hub}/document/${doc.cle}`}
-                      className="flex min-h-[56px] items-center border border-grey-line bg-white px-4 py-3 text-[1.1rem] font-bold no-underline hover:bg-grey-bg"
-                    >
-                      {doc.titre}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-3 text-[0.95rem] text-text-soft">
-                Chaque feuille s&apos;imprime seule, et vous les retrouverez toutes ensemble dans
-                votre espace.
-              </p>
+      <main className="wrap flex-1 py-8">
+        <Link href={hub}>Revenir à mon parcours</Link>
+        <p className="mt-6 font-bold text-orange-dark">
+          Étape {lecon.numero + 1} sur 8 · environ {lecon.minutes} minutes de préparation
+        </p>
+        <h1 className="my-4 text-[1.9rem] leading-tight">{lecon.titre}</h1>
+        <p className="mb-6 text-[1.2rem]">{lecon.resume}</p>
+        {video && <VideoEmbed id={video} title={lecon.titre} dejaPossede />}
+        <p className="my-6 text-text-soft">
+          Vous pouvez suivre toute cette étape à l’écrit. Les exemples sont fictifs et ne
+          constituent pas une consultation.
+        </p>
+        <article className="space-y-7">
+          {lecon.blocs.map(([titre, texte]) => (
+            <section key={titre}>
+              <h2 className="mb-2 text-[1.35rem]">{titre}</h2>
+              <p className="text-[1.1rem] leading-relaxed">{texte}</p>
             </section>
+          ))}
+        </article>
+        <section className="my-8 border-l-4 border-orange bg-yellow-bg p-5">
+          <h2 className="mb-2 text-[1.3rem]">Votre action</h2>
+          <p>{lecon.aFaire}</p>
+          {"siNonConcerne" in lecon && <p className="mt-3">{lecon.siNonConcerne}</p>}
+        </section>
+        {docs.length > 0 && (
+          <section className="mb-8">
+            <h2 className="mb-3 text-[1.3rem]">Vos supports</h2>
+            <ul className="space-y-3">
+              {docs.map(
+                (d) =>
+                  d && (
+                    <li key={d.cle}>
+                      <Link href={`${hub}/document/${d.cle}`}>{d.titre}</Link>
+                    </li>
+                  ),
+              )}
+            </ul>
+          </section>
+        )}
+        <ExerciceGuide cle={lecon.cle} />
+        <CaseEtape jeton={jeton} numero={lecon.numero} faite={faite} />
+        <p className="mt-6">
+          {lecon.numero < 7 ? (
+            <Link href={`${hub}/etape/${lecon.numero + 1}`}>Passer à l’étape suivante</Link>
+          ) : (
+            <Link href={`${hub}?vue=dossier`}>Retrouver mon dossier</Link>
           )}
-
-          <div className="mb-8">
-            <CaseEtape jeton={jeton} numero={etape.numero} faite={faite} />
-          </div>
-
-          <SuivanteOuFin jeton={jeton} suivante={suivante} />
-        </div>
+        </p>
+        <p className="mt-8 text-[0.95rem] text-text-soft">
+          Repères pédagogiques datés du 9 septembre 2026. Vérifiez votre situation avec un
+          professionnel avant toute décision. Sources :{" "}
+          <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2529">
+            Service-Public
+          </a>{" "}
+          et <a href="https://www.impots.gouv.fr/particulier">impots.gouv.fr</a>.
+        </p>
       </main>
       <Footer />
     </>
-  );
-}
-
-/**
- * LE PAS D'APRÈS.
- *
- * Un lien discret, et non un second gros bouton : le geste principal de cette
- * page est la case à cocher juste au-dessus. Deux boutons de même poids l'un
- * sous l'autre, et il coche l'un pour l'autre.
- */
-function SuivanteOuFin({ jeton, suivante }: { jeton: string; suivante: EtapeMethode | null }) {
-  if (!suivante) {
-    return (
-      <p className="text-[1.1rem]">
-        C&apos;est la dernière étape.{" "}
-        <Link href={`/espace/${jeton}`}>Revenir à mon espace pour imprimer mes documents</Link>.
-      </p>
-    );
-  }
-
-  return (
-    <p className="text-[1.1rem]">
-      <Link href={`/espace/${jeton}/etape/${suivante.numero}`}>
-        Étape suivante : {suivante.titre} ({suivante.minutes} minutes) →
-      </Link>
-    </p>
   );
 }

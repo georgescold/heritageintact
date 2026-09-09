@@ -31,7 +31,7 @@ export const metadata: Metadata = { title: "Votre classeur" };
  * propre `div` ferait de chacun un premier de type, et les quatorze feuilles
  * sortiraient collées les unes aux autres.
  */
-export default async function ImprimerPage({ params }: { params: Promise<{ jeton: string }> }) {
+export default async function ImprimerPage({ params, searchParams }: { params: Promise<{ jeton: string }>; searchParams: Promise<{ cle?: string | string[] }> }) {
   const { jeton } = await params;
 
   if (!estJetonValide(jeton)) return <LienInvalide />;
@@ -40,7 +40,10 @@ export default async function ImprimerPage({ params }: { params: Promise<{ jeton
   if (!etat) return <LienInvalide />;
   if (etat.acces.revoque) return <LienInvalide revoque />;
 
-  const documents = etat.documents;
+  const choix = (await searchParams).cle;
+  const cles = new Set(Array.isArray(choix) ? choix : choix ? [choix] : []);
+  // Les paramètres ne donnent aucun droit : intersection avec les documents acquis.
+  const documents = etat.documents.filter(d => cles.has(d.cle));
 
   // Cas anormal, mais il ne doit surtout pas produire une page de garde suivie
   // de rien : une feuille blanche qui sort de l'imprimante se lit comme une
@@ -90,8 +93,8 @@ export default async function ImprimerPage({ params }: { params: Promise<{ jeton
           sousTitre={`Imprimé le ${aujourdhui}`}
         >
           <p>
-            Ces feuilles se remplissent au stylo. Prenez votre temps, une par une : elles sont
-            faites pour être relues avec votre notaire, et pour rester dans un classeur après vous.
+            Cette sélection réunit vos supports de préparation et vos fiches de référence.
+            Complétez uniquement les champs utiles et notez les informations qui restent à vérifier.
           </p>
 
           <p className="font-bold">Ce que contient ce classeur :</p>
@@ -126,8 +129,7 @@ function RienAImprimer({ jeton }: { jeton: string }) {
       <div className="wrap py-10">
         <h1 className="mb-4 text-[1.6rem]">Vos documents à imprimer</h1>
         <p className="mb-6 text-[1.15rem]">
-          Vous n&apos;avez pas encore de document à imprimer. Ils s&apos;ajouteront ici tout seuls,
-          à mesure que vous avancez dans La Méthode Héritage Intact.
+          Aucun document n&apos;est sélectionné. Revenez dans Mon dossier et cochez les supports utiles.
         </p>
         <p>
           <Link href={`/espace/${jeton}`}>← Revenir à mon espace</Link>

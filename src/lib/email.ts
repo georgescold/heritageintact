@@ -1,40 +1,17 @@
+import { empreinte, reserverEmail, terminerEmail } from "./mail-journal";
+import { accesParEmail, getLead } from "./db";
 import { CONTACT_EMAIL, PRODUCTS, SITE_URL, euros, urlEspace, type ProductSku } from "./config";
 import type { Acces, Lead } from "./db";
 import { SEQUENCE, lien, type Etape } from "./sequence";
 import type { EtapeClient } from "./sequence-client";
 
-/**
- * Envoi d'emails via Resend.
- *
- * Pas de SDK : l'API tient en un POST, et une dépendance de moins est une
- * dépendance qui ne casse pas au prochain build.
- *
- * ⚠️ La clé est une clé « sending only » : elle peut envoyer, elle ne peut ni
- * lire les domaines ni créer d'autres clés. C'est le bon réglage, on le garde.
- */
+/** L’acceptation fournisseur ne prouve pas le placement en boîte de réception. */
 const API = "https://api.resend.com/emails";
 
 /** Sans clé (développement local), on n'envoie rien et on ne casse rien. */
 const CLE = process.env.RESEND_API_KEY;
 
-/**
- * L'expéditeur.
- *
- * Le nom affiché est « un prénom — une marque », comme tranché dans
- * `09-emails.md` : les emails sont écrits à la première personne, un expéditeur
- * impersonnel les contredirait, et l'expéditeur pèse autant que l'objet dans la
- * décision d'ouvrir.
- *
- * Les réponses partent ailleurs : `reply_to` pointe sur CONTACT_EMAIL, la boîte
- * réellement relevée (Zoho).
- *
- * ⚠️ L'adresse devrait être sur le **sous-domaine d'envoi**
- * `info.heritageintact.fr` : une séquence qui prend des plaintes abîmerait alors
- * la réputation de `info.` seulement, et le courrier humain de la racine
- * continuerait d'arriver. Le DNS du sous-domaine est complet et vérifié, mais
- * Resend refuse encore d'y envoyer (403). Le détail du diagnostic et la marche à
- * suivre sont dans `.env.local`, et `pnpm emails:verifier` dit où on en est.
- */
+/** L’acceptation fournisseur ne prouve pas le placement en boîte de réception. */
 export const EXPEDITEUR =
   process.env.EMAIL_FROM ?? "Loys — Héritage Intact <loys@heritageintact.fr>";
 
@@ -46,6 +23,7 @@ const adresseLisible = SITE_URL.replace(/^https?:\/\//, "");
 
 type Envoi = {
   to: string;
+  cle?: string;
   subject: string;
   html: string;
   text: string;
@@ -55,14 +33,7 @@ type Envoi = {
    * et il n'existe aucune ligne `leads` derrière lui.
    */
   leadId?: string;
-  /**
-   * ⚠️ « marketing » par défaut, donc les deux appelants historiques
-   * (`envoyerLivraison`, `envoyerEtape`) ne changent pas d'un iota.
-   *
-   * « transactionnel » = ses accès, son reçu, sa rassurance post-achat. On ne
-   * propose à personne de se désabonner de ce qu'il vient de payer, et le
-   * drapeau `desabonne` d'un lead ne bloque JAMAIS ce type d'envoi.
-   */
+  /** L’acceptation fournisseur ne prouve pas le placement en boîte de réception. */
   type?: "marketing" | "transactionnel";
 };
 
@@ -71,49 +42,49 @@ type Envoi = {
  * échouer une inscription, ni annuler une livraison, ni interrompre le passage
  * du cron.
  */
-export async function envoyer(e: Envoi): Promise<{ ok: boolean; id?: string }> {
+export async function envoyer(e: Envoi): Promise<{ ok: boolean; id?: string; simule?: boolean }> {
+  // Une absence de configuration ne doit jamais être consignée comme un envoi réussi.
   if (!CLE) {
-    console.log(`[email] pas de clé, envoi simulé vers ${e.to} — « ${e.subject} »`);
-    return { ok: true };
+    console.info("[email] envoi non effectué : service absent");
+    return { ok: false, simule: !process.env.VERCEL && process.env.NODE_ENV !== "production" };
   }
-  // Les deux en-têtes de désinscription vont ENSEMBLE, et seulement sur du
-  // marketing. Sur un email transactionnel, ils proposeraient au client de se
-  // couper de ses propres accès.
-  const enTetes =
-    e.type === "transactionnel" || !e.leadId
-      ? undefined
-      : {
-          // Désinscription en un clic. Les deux en-têtes vont ensemble : sans
-          // le -Post, Gmail affiche un lien ordinaire ; avec, il affiche son
-          // propre bouton « Se désabonner » à côté de l'expéditeur. C'est le
-          // meilleur rempart contre le bouton « Spam », qui lui coûte cher.
-          // Exigé par Gmail et Yahoo dès 5 000 envois par jour.
-          "List-Unsubscribe": `<${lienDesinscription(e.leadId)}>, <mailto:${CONTACT_EMAIL}?subject=Desinscription>`,
-          "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-        };
+  const marketing = e.type !== "transactionnel";
   try {
+  if (marketing) {
+    if (!e.leadId) return { ok: false };
+    const actuel = await getLead(e.leadId);
+    if (!actuel || actuel.desabonne || actuel.marketingConsent !== true || actuel.email !== e.to) return { ok: false };
+  }
+  } catch { return {ok:false}; }
+  const headers = marketing && e.leadId ? {
+    "List-Unsubscribe": `<${SITE_URL}/api/desinscription?id=${encodeURIComponent(e.leadId)}>`,
+    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+  } : undefined;
+  const body = JSON.stringify({ from: EXPEDITEUR, to: [e.to], reply_to: CONTACT_EMAIL,
+    subject: e.subject, html: e.html, text: e.text, ...(headers ? {headers} : {}) });
+  const cle = empreinte(e.cle ?? `demande/${Math.floor(Date.now()/120000)}/${body}`);
+  try {
+    const reservation = await reserverEmail(cle, e.to, body, marketing);
+    if (reservation === "deja") return {ok:true};
+    if (reservation !== "envoyer") return {ok:false};
     const r = await fetch(API, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${CLE}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from: EXPEDITEUR,
-        to: [e.to],
-        reply_to: CONTACT_EMAIL,
-        subject: e.subject,
-        html: e.html,
-        text: e.text,
-        ...(enTetes ? { headers: enTetes } : {}),
-      }),
+      method:"POST", signal: AbortSignal.timeout(12000),
+      headers:{ Authorization:`Bearer ${CLE}`, "Content-Type":"application/json", "Idempotency-Key":cle },
+      body,
     });
     const data = await r.json();
-    if (!r.ok) {
-      console.error("[email] refus de Resend", data);
-      return { ok: false };
+    if (!r.ok || typeof data.id !== "string") {
+      await terminerEmail(cle, r.status === 429 || r.status >= 500 ? "reessayer" : "refuse");
+      console.error("[email] refus fournisseur", {status:r.status, cle});
+      return {ok:false};
     }
-    return { ok: true, id: data.id };
-  } catch (err) {
-    console.error("[email] envoi impossible", err);
-    return { ok: false };
+    await terminerEmail(cle,"accepte",data.id);
+    return {ok:true,id:data.id};
+  } catch {
+    // Résultat ambigu : même clé et même corps au prochain essai ; arrêt après 23 h.
+    try { await terminerEmail(cle,"reessayer"); } catch {}
+    console.error("[email] envoi non confirmé", {cle});
+    return {ok:false};
   }
 }
 
@@ -148,14 +119,15 @@ type Contenu = {
   ps?: string;
 } & Pied;
 
+function echapper(v: string) { return v.replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]!)); }
 function gabarit(o: Contenu): string {
   const { titre, paragraphes, bouton, ps } = o;
   const corps = paragraphes.map((t) => `      <p style="margin:0 0 16px;">${t}</p>`).join("\n");
   const provenance =
     o.pied === "prospect"
-      ? `Vous recevez ce message parce que vous avez demandé la vidéo sur ${adresseLisible}.<br>
+      ? `Vous recevez ce message après votre demande sur ${adresseLisible}.<br>
       <a href="${lienDesinscription(o.leadId)}" style="color:#0b5aa8;">Me désinscrire en un clic</a> — c'est immédiat et définitif.`
-      : "Vous recevez ce message parce que vous avez commandé La Méthode Héritage Intact.";
+      : "Ce message concerne votre achat Héritage Intact et son utilisation.";
 
   return `<!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
@@ -193,10 +165,10 @@ function versionTexte(o: Contenu) {
   const provenance =
     o.pied === "prospect"
       ? [
-          `Vous recevez ce message parce que vous avez demandé la vidéo sur ${adresseLisible}.`,
+          `Vous recevez ce message après votre demande sur ${adresseLisible}.`,
           `Me désinscrire : ${lienDesinscription(o.leadId)}`,
         ]
-      : ["Vous recevez ce message parce que vous avez commandé La Méthode Héritage Intact."];
+      : ["Ce message concerne votre achat Héritage Intact et son utilisation."];
   return [
     ...o.paragraphes.map(nettoyer),
     `${o.bouton.texte} :\n${o.bouton.lien}`,
@@ -211,19 +183,19 @@ function versionTexte(o: Contenu) {
    J0 — la livraison. Part à la seconde où l'inscription est faite.
    ───────────────────────────────────────────────────────────── */
 export async function envoyerLivraison(lead: Lead) {
-  const p = lead.firstName.trim() || "Bonjour";
-  const bouton = { texte: "Regarder la vidéo", lien: lien("/methode") };
+  const p = echapper(lead.firstName.trim()) || "";
+  const bouton = { texte: "Ouvrir la présentation", lien: lien("/methode") };
   const paragraphes = [
     `Bonjour ${p},`,
     "Voici votre lien vers la présentation. Elle est accessible tout de suite, et elle le restera.",
-    "Elle montre les trois décisions que les familles averties prennent de leur vivant pour transmettre intact ce qu'elles ont construit — et pourquoi personne ne vous les a jamais expliquées.",
-    "Un conseil&nbsp;: regardez-la au calme, avec votre conjoint si possible. Elle contient un chiffre, <strong>82&nbsp;194&nbsp;€</strong>, et trois dates. L'une des trois vous concerne plus que les deux autres. Vous saurez laquelle à la fin.",
+    "Vous y trouverez le parcours proposé, ses contenus, ses limites et son prix. Vous pouvez lire la présentation à votre rythme.",
+    "Commencez par votre objectif : protéger votre sécurité, clarifier les informations de votre famille ou préparer un rendez-vous.",
   ];
   const ps =
-    "<strong>P.-S.</strong> Ajoutez cette adresse à vos contacts. Les prochains messages contiennent les trois dates, et sans ça ils finissent parfois dans les indésirables.";
+    "La série de conseils et d’offres est envoyée uniquement si vous avez coché la case facultative. Vous pouvez vous désinscrire à tout moment.";
 
   const contenu: Contenu = {
-    titre: "Votre accès à la vidéo",
+    titre: "Votre présentation Héritage Intact",
     paragraphes,
     bouton,
     ps,
@@ -234,7 +206,9 @@ export async function envoyerLivraison(lead: Lead) {
   return envoyer({
     to: lead.email,
     leadId: lead.id,
-    subject: `Votre accès à la vidéo, ${p}`,
+    type: "transactionnel",
+    cle: `presentation-v3/${lead.id}`,
+    subject: `Votre présentation, ${p}`,
     html: gabarit(contenu),
     text: versionTexte(contenu),
   });
@@ -244,7 +218,8 @@ export async function envoyerLivraison(lead: Lead) {
    J1 à J7 — une étape de la séquence.
    ───────────────────────────────────────────────────────────── */
 export async function envoyerEtape(lead: Lead, etape: Etape) {
-  const p = lead.firstName.trim() || "Bonjour";
+  if (lead.marketingConsent !== true || lead.desabonne || await accesParEmail(lead.email)) return { ok: false };
+  const p = echapper(lead.firstName.trim()) || "";
   const bouton = { texte: etape.bouton.texte, lien: lien(etape.bouton.chemin) };
   const paragraphes = etape.corps(p);
 
@@ -260,6 +235,7 @@ export async function envoyerEtape(lead: Lead, etape: Etape) {
   return envoyer({
     to: lead.email,
     leadId: lead.id,
+    cle: `prospect-v3/${lead.id}/${etape.cle}`,
     subject: etape.objet(p),
     html: gabarit(contenu),
     text: versionTexte(contenu),
@@ -273,6 +249,7 @@ export async function envoyerEtape(lead: Lead, etape: Etape) {
  */
 export function etapeDue(lead: Lead, maintenant = Date.now()): Etape | null {
   const jours = Math.floor((maintenant - new Date(lead.createdAt).getTime()) / 86_400_000);
+  if (!Number.isFinite(jours) || jours < 0 || jours > 21) return null;
   const faites = new Set(lead.envoyes ?? []);
   return SEQUENCE.find((e) => e.jour <= jours && !faites.has(e.cle)) ?? null;
 }
@@ -296,6 +273,7 @@ async function envoyerAuClient(
   acces: Acces,
   o: {
     objet: string;
+    cle?: string;
     paragraphes: string[];
     bouton: { texte: string; lien: string };
     ps?: string;
@@ -311,43 +289,29 @@ async function envoyerAuClient(
   return envoyer({
     to: acces.email,
     type: "transactionnel",
+    cle: o.cle,
     subject: o.objet,
     html: gabarit(contenu),
     text: versionTexte(contenu),
   });
 }
 
-/**
- * L'EMAIL LE PLUS IMPORTANT DU PROJET.
- *
- * Un acheteur de 74 ans qui ne le reçoit pas, ou qui le reçoit et n'y comprend
- * rien, demande un remboursement le jour même. Trois décisions en découlent :
- *
- *   — un seul bouton, et rien d'autre à décider ;
- *   — le lien écrit AUSSI en toutes lettres, parce qu'il lit sur le téléphone
- *     et travaille sur l'ordinateur, et qu'il va le recopier à la main ;
- *   — la phrase « il n'y a pas de mot de passe » en gras, parce que c'est la
- *     première question qu'il se posera, et que la chercher le fera renoncer.
- *
- * ⚠️ Cet email n'est jamais le seul filet : le lien est également affiché en
- * clair sur /merci. Sans `RESEND_API_KEY`, `envoyer()` renvoie `{ ok: true }`
- * sans rien expédier — et c'est l'écran de /merci, lui seul, qui sauve alors
- * l'accès.
- */
-export async function envoyerAcces(acces: Acces): Promise<{ ok: boolean }> {
-  const p = acces.firstName.trim() || "Bonjour";
+/** L’acceptation fournisseur ne prouve pas le placement en boîte de réception. */
+export async function envoyerAcces(acces: Acces, demande?: string): Promise<{ ok: boolean }> {
+  const p = echapper(acces.firstName.trim()) || "";
   const url = urlEspace(acces.jeton);
   const paragraphes = [
     `Bonjour ${p},`,
     "Votre espace est ouvert. Tout ce que vous avez commandé s'y trouve, sur une seule page, et vous pouvez y revenir autant de fois que vous le souhaitez.",
-    "<strong>Il n'y a pas de mot de passe. Ce lien est votre clé, et il ne s'arrêtera jamais de fonctionner.</strong>",
-    "Commencez par l'étape 0&nbsp;: votre facture invisible, en 12 minutes. Le reste viendra après, dans l'ordre.",
+    "<strong>Votre lien personnel est votre clé d’accès : conservez-le sans le partager.</strong>",
+    "Ouvrez les contenus acquis dans votre espace. Si vous avez la Méthode, commencez par votre fiche de situation. Les explications sont accessibles à l’écrit.",
   ];
   // Le lien en toutes lettres est placé APRÈS le bouton, dans le bloc du bas :
   // c'est là que regarde quelqu'un pour qui le bouton n'a pas fonctionné.
-  const ps = `Votre lien, écrit en toutes lettres, si le bouton ne fonctionne pas&nbsp;:<br><strong>${url}</strong><br><br><strong>P.-S.</strong> Si vous perdez cet email un jour, ce n'est pas grave&nbsp;: allez sur ${adresseLisible}/espace et indiquez votre adresse, le lien repart tout de suite.`;
+  const ps = `Votre lien, écrit en toutes lettres, si le bouton ne fonctionne pas&nbsp;:<br><strong>${url}</strong><br><br><strong>P.-S.</strong> Si vous perdez cet email un jour, ce n'est pas grave&nbsp;: allez sur ${adresseLisible}/espace et indiquez votre adresse, vous pourrez demander le renvoi de votre lien.`;
 
   return envoyerAuClient(acces, {
+    cle: demande ?? `acces-v3/${acces.jeton}`,
     objet: `Votre accès, ${p} — gardez cet email`,
     paragraphes,
     bouton: { texte: "Ouvrir mon espace", lien: url },
@@ -360,8 +324,9 @@ export async function envoyerEtapeClient(
   acces: Acces,
   etape: EtapeClient,
 ): Promise<{ ok: boolean }> {
-  const p = acces.firstName.trim() || "Bonjour";
+  const p = echapper(acces.firstName.trim()) || "";
   return envoyerAuClient(acces, {
+    cle: `service-v3/${acces.jeton}/${etape.cle}`,
     objet: etape.objet(p),
     paragraphes: etape.corps(p, urlEspace(acces.jeton)),
     bouton: { texte: etape.bouton.texte, lien: lien(etape.bouton.chemin(acces.jeton)) },
@@ -383,18 +348,20 @@ export async function envoyerRecuAchat(
   acces: Acces,
   sku: ProductSku,
   montant: number,
+  operation?: string,
 ): Promise<{ ok: boolean }> {
-  const p = acces.firstName.trim() || "Bonjour";
+  const p = echapper(acces.firstName.trim()) || "";
   const produit = PRODUCTS[sku];
   const paragraphes = [
     `Bonjour ${p},`,
     `C'est ajouté à votre espace&nbsp;: <strong>${produit.name}</strong>, ${euros(montant)}.`,
-    "Vous le retrouverez dans votre espace, plus bas sur la page, avec le reste de vos documents.",
+    "Retrouvez vos supports dans « Mon dossier » et vos applications ou modules dans « Mes outils ».",
     "Garantie 30 jours&nbsp;: si cela ne vous sert pas, un message suffit et vous êtes remboursé, sans justification à fournir.",
     "<strong>Vous n'êtes pas à l'origine de cet achat&nbsp;?</strong> Répondez simplement à ce message&nbsp;: nous l'annulons et nous vous remboursons, sans discussion.",
   ];
 
   return envoyerAuClient(acces, {
+    cle: operation ? `recu-v3/${operation}/${sku}` : undefined,
     objet: `Votre reçu — ${produit.name}`,
     paragraphes,
     bouton: { texte: "Ouvrir mon espace", lien: urlEspace(acces.jeton) },
@@ -402,3 +369,26 @@ export async function envoyerRecuAchat(
 }
 
 export const _SITE_URL = SITE_URL;
+
+/** Campagne client distincte des emails d’accès. Montant indicatif recalculé au clic. */
+export async function envoyerComplement(lead: Lead, acces: Acces, sku: ProductSku, cle: string, credit: number, montant: number) {
+  const actuel = await accesParEmail(acces.email);
+  if (!actuel || actuel.revoque || actuel.envoyes.includes("ltv-pause")) return {ok:false};
+  const p = echapper(acces.firstName.trim());
+  const rappel = cle.endsWith("-2");
+  const contenu: Contenu = {
+    titre: rappel ? "Votre préparation, si vous souhaitez la compléter" : "La prochaine étape de votre préparation",
+    paragraphes: [
+      `Bonjour ${p},`,
+      rappel ? "Un dernier rappel pour ce complément. Votre achat actuel reste utilisable et aucune décision n’est attendue de vous." : "Vous avez commencé votre fiche. Si vous souhaitez maintenant approfondir votre préparation, voici le complément correspondant aux informations que vous nous avez indiquées.",
+      sku === "upsell2" ? "Vos contrats d’assurance-vie méritent une lecture organisée : clause en vigueur, informations manquantes et réponse de l’assureur. Le module vous guide pour préparer cette vérification sans modifier un contrat à l’aveugle." : "Le pack réunit vos supports, les fiches de situations familiales et l’atelier pédagogique. L’objectif : préparer le rendez-vous à partir de vos priorités, puis conserver les réponses au même endroit.",
+      `Le complément proposé est « ${PRODUCTS[sku].name} ». ${credit > 0 ? `Vos ${euros(credit)} d’achats inclus déjà payés sont déduits automatiquement. ` : ""}Le montant à ajouter, calculé aujourd’hui, est de ${euros(montant)}.`,
+      "Vous ne repartez pas de zéro et vous ne repayez pas les contenus inclus déjà achetés. Cette déduction ne constitue pas un avoir à réclamer et n’expire pas ce soir.",
+      "La page de confirmation affiche le montant à jour avant tout paiement. Cliquer dans cet email ne déclenche aucun débit.",
+      "Si votre achat actuel suffit, continuez simplement votre parcours. Aucun produit supplémentaire n’est nécessaire pour terminer la Méthode.",
+    ],
+    bouton: {texte:"Voir mon complément et son contenu",lien:urlEspace(acces.jeton)+"/ajouter/"+sku},
+    pied:"prospect",leadId:lead.id,
+  };
+  return envoyer({to:lead.email,leadId:lead.id,cle:`client-v3/${acces.jeton}/${cle}`,subject:contenu.titre,html:gabarit(contenu),text:versionTexte(contenu)});
+}

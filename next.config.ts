@@ -47,7 +47,15 @@ const nextConfig: NextConfig = {
        * page de commande offerte à qui la cherche.
        */
       {
-        source: "/:chemin(plan-complet|kit-assurance-vie|merci)",
+        source: "/:chemin(plan-complet|kit-assurance-vie|dossier-complet|situation|merci)",
+        headers: [
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "Cache-Control", value: "private, no-store, max-age=0" },
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+        ],
+      },
+      {
+        source: "/offre/:path*",
         headers: [
           { key: "Referrer-Policy", value: "no-referrer" },
           { key: "Cache-Control", value: "private, no-store, max-age=0" },

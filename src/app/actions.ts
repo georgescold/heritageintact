@@ -12,10 +12,10 @@ import {
   getOrder,
   markOrderPaid,
 } from "@/lib/db";
-import { isTestMode, PRODUCTS, type ProductSku } from "@/lib/config";
+import { isTestMode, stripeEnModeTest, PRODUCTS, type ProductSku } from "@/lib/config";
 import { possessions } from "@/lib/espace";
-import { palierDe } from "@/lib/palier";
-import { prixFront, prixUpsell } from "@/lib/prix";
+import { devisPour } from "@/lib/devis";
+import { prixFront } from "@/lib/prix";
 import { stripe, toCents } from "@/lib/stripe";
 import { envoyerLivraison, envoyerRecuAchat } from "@/lib/email";
 import { livrer } from "@/lib/livraison";
@@ -32,18 +32,14 @@ function clean(v: FormDataEntryValue | null): string {
 export async function optin(_prev: FormState, formData: FormData): Promise<FormState> {
   const firstName = clean(formData.get("firstName"));
   const email = clean(formData.get("email"));
-  const cgv = formData.get("cgv") === "on";
+  const marketingConsent = formData.get("marketingConsent") === "on";
   // D'où vient ce lead : c'est ce qui rend l'A/B test mesurable après l'opt-in.
   const source = clean(formData.get("source")).slice(0, 60) || undefined;
 
   if (firstName.length < 2) return { error: "Indiquez votre prénom." };
   if (!EMAIL_RE.test(email))
     return { error: "Vérifiez votre adresse email : elle semble incomplète." };
-  if (!cgv) {
-    return { error: "Cochez la case pour accepter les conditions générales avant de continuer." };
-  }
-
-  const lead = await addLead({ email, firstName, source });
+  const lead = await addLead({ email, firstName, source, marketingConsent });
 
   // L'email de livraison part tout de suite. On l'attend : sans ça, la fonction
   // se termine avec la redirection et l'envoi peut être coupé net sur Vercel.
@@ -111,7 +107,7 @@ export async function prepareCheckout(input: {
     firstName,
     withBump: input.withBump,
     consentImmediateAccess: input.consent,
-    mode: isTestMode ? "test" : "live",
+    mode: isTestMode || stripeEnModeTest ? "test" : "live",
     status: isTestMode ? "paid" : "pending",
     prixFront: prix,
   });
@@ -257,17 +253,17 @@ const FENETRE_UPSELL_MS = 30 * 60 * 1000;
  * forte, même sur une carte enregistrée. Stripe renvoie alors `authentication_required`.
  * On le traite explicitement plutôt que d'afficher une erreur générique.
  */
-export async function chargeUpsell(orderId: string, sku: ProductSku): Promise<UpsellResult> {
+export async function chargeUpsell(orderId: string, sku: ProductSku, montantAffiche?: number): Promise<UpsellResult> {
   // ⚠️ Le drapeau se vérifie DANS L'ACTION, pas seulement à l'affichage :
   // un SKU connu du type devient facturable dès que quelqu'un écrit son prix,
   // et l'URL qui mène ici est devinable. Encaisser 147 € pour un contenu qui
   // n'existe pas, sur une garantie de 30 jours, c'est un remboursement annoncé.
-  if (!PRODUCTS[sku].disponible) {
+  if (!Object.prototype.hasOwnProperty.call(PRODUCTS, sku) || !PRODUCTS[sku].disponible) {
     return { ok: false, error: "Ce produit n'est pas encore disponible à la vente." };
   }
 
   const order = await getOrder(orderId);
-  if (!order) return { ok: false, error: "Commande introuvable." };
+  if (!order || order.status !== "paid") return { ok: false, error: "Commande réglée introuvable." };
   if (order.items.some((i) => i.sku === sku)) return { ok: true }; // déjà acheté
 
   // ⚠️ HORS DE LA FENÊTRE, ON NE DÉBITE PLUS EN UN CLIC. Voir FENETRE_UPSELL_MS :
@@ -295,6 +291,7 @@ export async function chargeUpsell(orderId: string, sku: ProductSku): Promise<Up
    * Le Plan coûte 250 € à qui possède déjà l'Assurance-vie. Voir `prixUpsell`.
    */
   const possede = await possessions(order.email);
+  if (possede.has(sku)) return { ok: true };
 
   /**
    * LA GARDE DU PACK. Le Dossier complet ne contient QUE Le Plan et
@@ -311,7 +308,7 @@ export async function chargeUpsell(orderId: string, sku: ProductSku): Promise<Up
     pack3: ["upsell1", "upsell2", "bump"],
     pack4: ["upsell2", "bump"],
   };
-  if (COMPOSANTS[sku]?.some((c) => possede.has(c))) {
+  if (COMPOSANTS[sku]?.every((c) => possede.has(c))) {
     return {
       ok: false,
       error: "Ce produit est déjà en partie dans votre commande. Rien n'a été débité.",
@@ -332,13 +329,15 @@ export async function chargeUpsell(orderId: string, sku: ProductSku): Promise<Up
    * Stripe en débitera un autre — c'est le défaut qu'on a déjà corrigé une
    * fois sur le bon de commande.
    */
-  const { remise } = palierDe(order.createdAt, Date.now());
-  const montant = prixUpsell(sku, possede, remise);
+  const { montant } = await devisPour(order.email, sku);
+  if (montantAffiche !== undefined && (!Number.isFinite(montantAffiche) || montantAffiche !== montant)) {
+    return { ok: false, expire: true, error: "Votre récapitulatif a changé. Confirmez le montant actualisé depuis votre espace." };
+  }
 
-  if (!stripe) {
+  if (!stripe || montant === 0) {
     await addItem(orderId, sku, undefined, montant);
     await offrirDossierNotaire(orderId, sku, possede);
-    await recuUpsell(order.email, sku, montant);
+    await recuUpsell(order.email, sku, montant, order.id);
     return { ok: true };
   }
 
@@ -389,7 +388,7 @@ export async function chargeUpsell(orderId: string, sku: ProductSku): Promise<Up
 
     await addItem(orderId, sku, intent.id, montant);
     await offrirDossierNotaire(orderId, sku, possede);
-    await recuUpsell(order.email, sku, montant);
+    await recuUpsell(order.email, sku, montant, order.id);
     return { ok: true };
   } catch (e) {
     const err = e as { code?: string; message?: string };
@@ -447,7 +446,7 @@ async function offrirDossierNotaire(
   sku: ProductSku,
   possede: Set<ProductSku>,
 ): Promise<void> {
-  if (sku !== "upsell1" && sku !== "upsell2" && sku !== "pack1") return;
+  if (sku !== "upsell1" && sku !== "pack1") return;
   if (possede.has("bump")) return;
 
   try {
@@ -471,19 +470,20 @@ async function offrirDossierNotaire(
  * Ne lève jamais : le client a payé, il a son produit. Un incident chez Resend
  * ne doit pas transformer une vente réussie en écran d'échec.
  */
-async function recuUpsell(email: string, sku: ProductSku, montant: number): Promise<void> {
+async function recuUpsell(email: string, sku: ProductSku, montant: number, operation: string): Promise<void> {
   try {
     const acces = await accesParEmail(email);
     if (!acces) return;
-    await envoyerRecuAchat(acces, sku, montant);
+    await envoyerRecuAchat(acces, sku, montant, operation);
   } catch (e) {
     console.error("[upsell] reçu non envoyé", email, sku, e);
   }
 }
 
 /** Acceptation d'un upsell : on débite, puis on avance dans le funnel. */
-export async function acceptUpsell(orderId: string, sku: ProductSku, next: string): Promise<void> {
-  const result = await chargeUpsell(orderId, sku);
+export async function acceptUpsell(orderId: string, sku: ProductSku, next: string, formData?: FormData): Promise<void> {
+  const montantAffiche = formData?.has("montantAffiche") ? Number(formData.get("montantAffiche")) : undefined;
+  const result = await chargeUpsell(orderId, sku, montantAffiche);
 
   // Hors fenêtre : on n'affiche pas un échec, on emmène vers le seul endroit
   // où cet achat reste possible — l'espace et son écran de confirmation. Sans

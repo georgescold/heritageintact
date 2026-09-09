@@ -24,10 +24,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr" className="h-full">
       <body className="min-h-full flex flex-col">
-        <MetaPixel />
         {/* Garde-fou : voir `stockageEphemere` dans lib/config.ts. */}
         {stockageEphemere && <EphemeralStorageBanner />}
         {children}
+        <MetaPixel />
       </body>
     </html>
   );

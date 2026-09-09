@@ -57,6 +57,7 @@ import { piste, type Reponses } from "@/lib/qualification";
  * peur. En dessous de 40 % de réponses, on le réécrit ou on le retire.
  */
 const CODES = {
+  objectif: ["comprendre", "preparer", "assurance-vie", "X"],
   vie: ["M", "P", "U", "V", "S", "X"],
   enfants: ["1", "2", "R", "0", "X"],
   av: ["O", "N", "?", "X"],
@@ -73,10 +74,11 @@ function valider(code: string | undefined, admis: readonly string[]): string | u
 export async function enregistrerReponses(
   orderId: string,
   email: string,
-  reponses: { vie?: string; enfants?: string; av?: string; age?: string },
+  reponses: Reponses,
 ): Promise<void> {
   try {
     const propres: Reponses = {
+      objectif: valider(reponses.objectif, CODES.objectif),
       vie: valider(reponses.vie, CODES.vie),
       enfants: valider(reponses.enfants, CODES.enfants),
       av: valider(reponses.av, CODES.av),
@@ -89,7 +91,7 @@ export async function enregistrerReponses(
     // aussi ce qui rend le premier chiffre de mesure honnête (la proportion de
     // commandes portant au moins une réponse se lit par le simple nombre de
     // lignes de la table).
-    if (!propres.vie && !propres.enfants && !propres.av && !propres.age) return;
+    if (!propres.objectif && !propres.vie && !propres.enfants && !propres.av && !propres.age) return;
 
     // La commande est relue en base pour deux raisons, et aucune n'est du
     // confort :
@@ -102,7 +104,7 @@ export async function enregistrerReponses(
     // Commande introuvable = rien à décrire : on n'écrit pas. C'est aussi ce
     // qui empêche un curieux de remplir la table avec des identifiants inventés.
     const order = await getOrder(orderId);
-    if (!order) return;
+    if (!order || order.status !== "paid") return;
 
     const bumpPresent = order.items.some((i) => i.sku === "bump");
 

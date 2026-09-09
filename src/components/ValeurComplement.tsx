@@ -1,0 +1,8 @@
+export function ValeurComplement({ av = false, complet = false }: { av?: boolean; complet?: boolean }) {
+  return <section className="my-7 border-l-4 border-orange bg-grey-bg p-5">
+    <h2 className="mb-3 text-[1.4rem]">{av ? "Vous avez le contrat. Construisez maintenant le suivi de ses vérifications." : "Les bases vous donnent le point de départ. Le pack organise la suite."}</h2>
+    {av ? <><p className="mb-3">La Méthode explique les repères généraux. Ce module vous fait travailler contrat par contrat : une grille de documents, des questions de lecture, une demande à adapter et le suivi de la réponse.</p><p>Vous terminez votre séance en sachant ce qui est retrouvé, ce qui a été demandé et ce qui reste à faire expliquer. Aucun changement de placement n’est nécessaire.</p></> :
+    <><p className="mb-3"><strong>Avec la Méthode :</strong> vous comprenez les repères et formulez vos premières questions. <strong>Avec le Dossier :</strong> vous organisez les pièces et le rendez-vous.</p><p className="mb-3"><strong>Le pack ajoute :</strong> des fiches pour les particularités de votre famille, un historique à documenter, un atelier pour comparer les scénarios couverts et un tableau de suivi. Son mode d’emploi relie les supports dans l’ordre où les utiliser.</p><p>Votre préparation ne se résume plus à une liste de questions : vous reliez chaque sujet aux pièces disponibles, aux hypothèses et à la prochaine démarche.</p></>}
+    {complet && <p className="mt-3"><strong>Dans cette version :</strong> les séances et les supports de lecture de vos contrats d’assurance-vie sont également inclus.</p>}
+  </section>;
+}

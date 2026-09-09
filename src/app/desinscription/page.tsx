@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header, Footer } from "@/components/Chrome";
 import { Section, SectionTitle } from "@/components/Lp";
-import { desabonner } from "@/lib/db";
+import { desabonner, getLead } from "@/lib/db";
 import { CONTACT_EMAIL } from "@/lib/config";
 
 export const metadata: Metadata = { title: "Désinscription", robots: { index: false } };
@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Désinscription", robots: { index: f
 /**
  * Désinscription en un clic depuis le lien du pied d'email.
  *
- * Elle se fait à l'ouverture de la page, sans bouton à cliquer ni case à
+ * Le GET affiche une confirmation : un scanner de liens ne désinscrit pas. Le POST API reste en un clic, sans case à
  * cocher. Une désinscription qui demande un effort finit en signalement de
  * spam, et un signalement coûte infiniment plus cher qu'un désabonné.
  */
@@ -20,7 +20,13 @@ export default async function DesinscriptionPage({
   searchParams: Promise<{ id?: string }>;
 }) {
   const { id } = await searchParams;
-  const lead = id ? await desabonner(id) : null;
+  const lead = id ? await getLead(id) : null;
+  async function confirmer() {
+    "use server";
+    if (id) await desabonner(id);
+    const { redirect } = await import("next/navigation");
+    redirect("/desinscription?id=" + encodeURIComponent(id ?? ""));
+  }
 
   return (
     <>
@@ -29,11 +35,11 @@ export default async function DesinscriptionPage({
         <Section tone="grey">
           {lead ? (
             <>
-              <SectionTitle>C&apos;est fait. Vous ne recevrez plus rien.</SectionTitle>
+              <SectionTitle>{lead.desabonne ? "Votre désinscription commerciale est enregistrée." : "Ne plus recevoir les conseils et offres"}</SectionTitle>
               <div className="space-y-4 text-[1.06rem]">
+                {!lead.desabonne && <form action={confirmer}><button className="min-h-[48px] bg-blue p-4 font-bold text-white">Confirmer ma désinscription</button></form>}
                 <p>
-                  L&apos;adresse <strong>{lead.email}</strong> est désinscrite. Aucun message ne
-                  partira plus, et il n&apos;y a rien d&apos;autre à faire.
+                  {lead.desabonne ? "Vous ne recevrez plus de messages commerciaux. Les emails nécessaires à vos achats et à votre accès restent distincts." : "Confirmez votre choix ci-dessous. Cela n’annule aucun achat et ne ferme pas votre espace."}
                 </p>
                 <p>
                   Si c&apos;était une erreur, écrivez-nous simplement à{" "}
@@ -41,8 +47,8 @@ export default async function DesinscriptionPage({
                   sur la liste.
                 </p>
                 <p className="border-l-4 border-blue bg-white p-4">
-                  La vidéo, elle, reste accessible. Vous n&apos;avez pas besoin d&apos;être inscrit
-                  pour la revoir&nbsp;: <Link href="/methode">la revoir maintenant</Link>.
+                  La présentation reste accessible. Vous n&apos;avez pas besoin d&apos;être inscrit
+                  pour la lire&nbsp;: <Link href="/methode">la lire maintenant</Link>.
                 </p>
               </div>
             </>
@@ -53,7 +59,7 @@ export default async function DesinscriptionPage({
                 <p>
                   Il est peut-être incomplet, ou la désinscription a déjà été faite. Dans le doute,
                   écrivez-nous à <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> avec le mot
-                  «&nbsp;stop&nbsp;» : nous nous en occupons le jour même.
+                  «&nbsp;stop&nbsp;» : nous traiterons votre demande.
                 </p>
                 <p>
                   <Link href="/">Retour à l&apos;accueil</Link>

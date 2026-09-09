@@ -19,7 +19,7 @@
  * sans conséquence — un lecteur qui écrit, non.
  */
 import { INCLUS_DANS, PRODUCTS, type ProductSku } from "./config";
-import { accesParJeton, commandesPayeesParEmail, progressionDe, type Acces } from "./db";
+import { accesParJeton, commandesPayeesParEmail, progressionDe, profilParEmail, type Profil, type Acces } from "./db";
 import {
   DOCUMENTS,
   ETAPES,
@@ -37,6 +37,7 @@ export type EtatEtape = {
 };
 
 export type EtatEspace = {
+  profil: Profil | null;
   acces: Acces;
   /** Habilitation globale : tous les achats de cette adresse, expansion comprise. */
   possede: Set<ProductSku>;
@@ -83,6 +84,7 @@ export type EtatEspace = {
 const CLE_SIMULATEUR = "simulateur-papier";
 
 const ORDRE_BOUTIQUE: ProductSku[] = [
+  "pack1",
   "upsell1",
   "upsell2",
   "bump",
@@ -161,14 +163,15 @@ export async function chargerEspace(jeton: string): Promise<EtatEspace | null> {
   const acces = await accesParJeton(jeton);
   if (!acces) return null;
 
-  const [possede, progression] = await Promise.all([
+  const [possede, progression, profil] = await Promise.all([
     possessions(acces.email),
     progressionDe(acces.email),
+    profilParEmail(acces.email),
   ]);
 
   const parEtape = new Map(progression.map((p) => [p.etape, p]));
 
-  const etapes: EtatEtape[] = ETAPES.map((etape) => {
+  const etapes: EtatEtape[] = (possede.has("front") ? ETAPES : []).map((etape) => {
     const ligne = parEtape.get(etape.cle);
     return { etape, ouverte: Boolean(ligne), faite: Boolean(ligne?.faiteLe) };
   });
@@ -203,17 +206,21 @@ export async function chargerEspace(jeton: string): Promise<EtatEspace | null> {
   const epingle = acces.revoque ? null : produitEpingle(progression, possede);
 
   const boutique =
-    acces.revoque || !etape0Ouverte
+    acces.revoque || !parEtape.get("e0")?.faiteLe
       ? []
       : [
           ...(epingle ? [epingle.sku] : []),
           ...ORDRE_BOUTIQUE.filter(
-            (sku) => PRODUCTS[sku].disponible && !possede.has(sku) && sku !== epingle?.sku,
+            (sku) => PRODUCTS[sku].disponible && !possede.has(sku) && sku !== epingle?.sku
+              && !(profil?.av !== "O" && (sku === "upsell2" || sku === "pack1"))
+              && !(profil?.av === "O" && sku === "upsell1" && !possede.has("upsell2"))
+              && !(sku === "pack1" && possede.has("upsell1")),
           ),
         ];
 
   return {
     acces,
+    profil,
     possede,
     etapes,
     etape0Ouverte,

@@ -10,8 +10,10 @@ import { PRODUCTS, SKU_TUNNEL_UNIQUEMENT, euros, type ProductSku } from "@/lib/c
 import { commandeAvecCarte } from "@/lib/db";
 import { chargerEspace } from "@/lib/espace";
 import { estJetonValide } from "@/lib/jeton";
-import { prixUpsell } from "@/lib/prix";
+import { devisPour } from "@/lib/devis";
 import { stripe } from "@/lib/stripe";
+import { BilanComplement } from "@/components/BilanComplement";
+import { DemonstrationPack } from "@/components/DemonstrationPack";
 
 export const metadata: Metadata = {
   title: "Ajouter à mon espace",
@@ -103,7 +105,8 @@ export default async function AjouterPage({
    *
    * `etat.possede` vient de la base (`possessions`), jamais de l'URL.
    */
-  const prix = prixUpsell(sku, etat.possede);
+  const devis = await devisPour(etat.acces.email, sku);
+  const prix = devis.montant;
 
   return (
     <>
@@ -135,10 +138,8 @@ export default async function AjouterPage({
             </div>
           )}
 
-          <div className="mb-6 border-2 border-blue bg-grey-bg p-4 text-center">
-            <p className="text-[1.05rem]">Prix, une seule fois</p>
-            <p className="text-[2.6rem] font-bold leading-tight text-blue">{euros(prix)}</p>
-          </div>
+          {(sku === "upsell1" || sku === "pack1") && <DemonstrationPack />}
+          <BilanComplement sku={sku} possede={etat.possede} montant={devis} />
 
           {/* ⚠️ La garantie est réécrite ici plutôt que reprise de `Guarantee` :
               le texte partagé parle de la simulation et du simulateur, ce qui
@@ -180,8 +181,9 @@ export default async function AjouterPage({
 
           {/* DEUX CIBLES, ET RIEN D'AUTRE. */}
           <form action={acheter} className="mt-6">
+            <input type="hidden" name="montantAffiche" value={prix}/>
             <Button variant="green">
-              Oui, débiter ma carte {carte ? `${carte.marque} ••${carte.fin} ` : ""}de {euros(prix)}
+              {prix === 0 ? "Activer sans paiement" : `Confirmer mon achat : ${euros(prix)}`}
             </Button>
           </form>
 
@@ -274,7 +276,13 @@ function marqueLisible(brand: string): string {
 function BandeauEchec({ motif }: { motif: string }) {
   return (
     <p role="alert" className="mb-6 border-2 border-red bg-red-bg px-4 py-3 text-[1.05rem]">
-      {motif === "sca" ? (
+      {motif === "prix" ? (
+        <>
+          Le montant ou votre commande en attente doit être revérifié. Actualisez cette page
+          avant de confirmer. Si le message persiste, contactez-nous depuis votre espace.
+          Votre commande précédente reste enregistrée.
+        </>
+      ) : motif === "sca" ? (
         <>
           Votre banque demande une confirmation pour ce paiement. Rien n&apos;a été débité.{" "}
           <strong>Votre commande précédente reste bien enregistrée</strong>, et vous pouvez
