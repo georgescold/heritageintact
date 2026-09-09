@@ -158,22 +158,47 @@ export function UpsellPage({
   );
 }
 
+/**
+ * LA BARRE DU TUNNEL.
+ *
+ * ⚠️ « ACCÈS » A ÉTÉ RETIRÉ DE LA DERNIÈRE ÉTAPE LE 9 SEPTEMBRE 2026, ET IL NE
+ * REVIENT PAS.
+ *
+ * La barre annonçait : Commande validée · Votre plan · Votre assurance-vie ·
+ * Accès. Elle disait donc à l'acheteur que son accès se trouve APRÈS les deux
+ * offres — c'est-à-dire qu'il doit les traverser pour obtenir ce qu'il vient de
+ * payer.
+ *
+ * C'est faux : `livrer()` s'exécute dans `confirmCheckout`, son espace est
+ * ouvert, et l'écran précédent vient de lui en donner le lien en clair. Et
+ * c'est le pire mensonge possible à cet endroit, parce qu'il transforme deux
+ * propositions en péage. Un homme de 74 ans qui croit son produit retenu
+ * derrière deux écrans de vente ne clique ni sur oui ni sur non : il appelle sa
+ * banque.
+ *
+ * L'état acquis est donc affiché POUR CE QU'IL EST — en vert, à part, au même
+ * niveau que la barre. Il ne numérote rien : ce n'est pas une étape à franchir,
+ * c'est un fait.
+ */
 function Progress({ step }: { step: 2 | 3 }) {
-  const steps = ["Commande validée", "Votre plan", "Votre assurance-vie", "Accès"];
+  const steps = ["Commande validée", "Votre plan", "Votre assurance-vie"];
   return (
     <div className="border-b border-grey-line bg-grey-bg">
-      <ol className="wrap flex flex-wrap gap-x-5 gap-y-1 py-2 text-[0.85rem] text-text-soft">
-        {steps.map((s, i) => {
-          const n = i + 1;
-          const done = n < step;
-          const current = n === step;
-          return (
-            <li key={s} className={current ? "font-bold text-blue" : done ? "text-green" : ""}>
-              {done ? "✔" : `${n}.`} {s}
-            </li>
-          );
-        })}
-      </ol>
+      <div className="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-2">
+        <ol className="flex flex-wrap gap-x-5 gap-y-1 text-[0.85rem] text-text-soft">
+          {steps.map((s, i) => {
+            const n = i + 1;
+            const done = n < step;
+            const current = n === step;
+            return (
+              <li key={s} className={current ? "font-bold text-blue" : done ? "text-green" : ""}>
+                {done ? "✔" : `${n}.`} {s}
+              </li>
+            );
+          })}
+        </ol>
+        <p className="text-[0.85rem] font-bold text-green">✔ Votre espace est déjà ouvert</p>
+      </div>
     </div>
   );
 }

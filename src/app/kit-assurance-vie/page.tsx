@@ -58,7 +58,7 @@ export default async function Upsell2Page({
       }}
       next={etape.suivant}
       motifSecond={etape.accroche?.h2}
-      kicker={etape.accroche?.chapeau ?? "Dernière chose avant votre espace."}
+      kicker={etape.accroche?.chapeau ?? "Une dernière proposition, et c'est tout."}
       h1={
         etape.accroche?.h1 ?? (
           <>

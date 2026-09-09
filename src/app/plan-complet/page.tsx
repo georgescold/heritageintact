@@ -66,8 +66,8 @@ export default async function Upsell1Page({
       h1={
         etape.accroche?.h1 ?? (
           <>
-            Avant d&apos;accéder à votre espace, une seule question : dans <em>votre</em> situation
-            familiale, laquelle de vos 3 dates en premier&nbsp;?
+            Une seule question, pendant que vous y êtes : dans <em>votre</em> situation familiale,
+            laquelle de vos 3 dates se referme en premier&nbsp;?
           </>
         )
       }

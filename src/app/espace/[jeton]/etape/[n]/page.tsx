@@ -101,10 +101,15 @@ export default async function EtapePage({
           <p className="mb-6 text-[1.15rem]">{etape.resume}</p>
 
           <div className="mb-8">
+            {/* `dejaPossede` : c'est le seul des trois appels de ce composant où
+                la possession est vraie. La page est derrière le jeton, et les
+                feuilles listées plus bas sont filtrées sur ce que le membre a
+                réellement acheté. */}
             <VideoEmbed
               id={videoId}
               title={`Étape ${etape.numero} — ${etape.titre}`}
               minutes={etape.minutes}
+              dejaPossede
             />
           </div>
 

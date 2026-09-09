@@ -183,8 +183,17 @@ export function accroches(r: Reponses | null): Accroche {
    * casse : la page l'écrit en `<em>`, et une chaîne ne peut pas porter d'italique
    * — mais des capitales, sur cette cible, ne mettent pas en valeur, elles crient.
    */
+  /**
+   * ⚠️ CE TITRE COMMENÇAIT PAR « Avant d'accéder à votre espace ». Retiré le
+   * 9 septembre 2026 : la phrase conditionnait l'accès au produit DÉJÀ PAYÉ à
+   * la traversée de cet écran de vente. C'est faux — l'espace est ouvert
+   * depuis `confirmCheckout`, et la page précédente vient d'en donner le lien
+   * en clair — et c'est ce qui fait lire une proposition comme une rançon.
+   *
+   * Ne jamais réintroduire de conditionnelle d'accès dans un titre d'upsell.
+   */
   const A11 =
-    "Avant d’accéder à votre espace, une seule question : dans votre situation familiale, laquelle de vos 3 dates en premier\u00A0?";
+    "Une seule question, pendant que vous y êtes : dans votre situation familiale, laquelle de vos 3 dates se referme en premier\u00A0?";
 
   /**
    * LES SURIMPRESSIONS. Elles s'ajoutent AU-DESSUS du titre retenu, elles n'en

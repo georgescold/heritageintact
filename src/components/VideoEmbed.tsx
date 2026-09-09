@@ -8,10 +8,30 @@ export function VideoEmbed({
   id,
   title,
   minutes,
+  dejaPossede = false,
 }: {
   id?: string;
   title: string;
   minutes?: number;
+  /**
+   * LE SPECTATEUR POSSÈDE-T-IL DÉJÀ CE QUE CETTE PAGE DÉCRIT ?
+   *
+   * ⚠️ LE DÉFAUT EST `false`, ET C'EST LE CAS PRUDENT. La phrase d'attente
+   * affirmait « Les documents de cette page sont déjà à vous » PARTOUT. Elle
+   * n'était vraie que sur un des trois appels — la page d'étape de l'espace
+   * membre. Sur la page de vente et sur les deux écrans d'upsell, elle disait
+   * à quelqu'un qui n'a rien acheté que le contenu lui appartient déjà.
+   *
+   * Deux dégâts, et le second coûte cher : elle est fausse, et elle retire la
+   * raison d'acheter. Pire, sur un acheteur qui vient de payer 27 € et à qui
+   * on propose 297 €, lire « c'est déjà à vous » fait naître exactement le
+   * soupçon qu'on passe la page à éviter : « on me refacture ce que j'ai
+   * déjà ».
+   *
+   * Un composant partagé qui affirme une possession doit donc se la faire
+   * dire. Le défaut ne promet rien.
+   */
+  dejaPossede?: boolean;
 }) {
   if (!id) {
     return (
@@ -43,7 +63,10 @@ export function VideoEmbed({
           utilisable tout de suite.
         */}
         <span className="mt-3 max-w-[36ch] px-4 text-center text-[0.9rem] text-white/80">
-          Cette vidéo arrive très prochainement. Les documents de cette page sont déjà à vous.
+          Cette vidéo arrive très prochainement.{" "}
+          {dejaPossede
+            ? "Les documents de cette page sont déjà à vous."
+            : "Tout ce qui est décrit sur cette page est livré immédiatement."}
         </span>
       </div>
     );
