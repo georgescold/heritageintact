@@ -173,7 +173,7 @@ const RESUME: Record<ProductSku, string> = {
 const AVANTAGES: Partial<Record<ProductSku, string[]>> = {
   upsell1: [
     "12 plans-types : celui qui correspond à votre situation familiale, en une page",
-    "Le Simulateur Automatique, compris — plusieurs héritiers, plusieurs contrats, démembrement, donations passées",
+    "Le Simulateur Automatique, compris — votre feuille à remplir au stylo, en version qui calcule seule",
     "Le Calendrier de Transmission sur 15 ans : quoi faire, et quelle année",
     "3 modèles de clause bénéficiaire, commentés ligne par ligne",
     "Le tableau de bord familial : qui reçoit quoi, quand, et à quel coût",

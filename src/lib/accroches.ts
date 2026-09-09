@@ -63,12 +63,16 @@ export type Accroche = {
 /**
  * LA FEUILLE EST-ELLE RÉELLEMENT LIVRÉE ?
  *
- * ⚠️ C'EST UN VERROU, PAS UNE COMMODITÉ. /plan-complet annonce elle-même que
- * huit des douze plans-types arrivent « sous 30 jours ». Un titre qui nomme la
- * situation d'un plan non encore livré — « famille recomposée », « sans
- * enfant » — promet nommément ce qui n'est pas dans le colis, sur une garantie
- * de 30 jours et devant un acheteur de 74 ans. C'est un remboursement à 100 %,
- * et le pire genre : celui qu'on a écrit soi-même.
+ * ⚠️ C'EST UN VERROU, PAS UNE COMMODITÉ. Un titre qui nomme la situation d'un
+ * plan non encore livré — « famille recomposée », « sans enfant » — promet
+ * nommément ce qui n'est pas dans le colis, sur une garantie de 30 jours et
+ * devant un acheteur de 74 ans. C'est un remboursement à 100 %, et le pire
+ * genre : celui qu'on a écrit soi-même.
+ *
+ * À ce jour les douze plans-types sont tous déclarés dans `DOCUMENTS`, donc le
+ * verrou ne bloque plus rien — et c'est exactement l'état prévu. Il reste, parce
+ * qu'il coûte une ligne et qu'il redeviendra vrai au premier plan-type ajouté à
+ * cette liste avant d'être écrit.
  *
  * La condition n'est donc pas une date dans un commentaire, c'est un test de
  * code évalué à chaque rendu. Le gel de A5 et A6 se lève tout seul le jour où la
