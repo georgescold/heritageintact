@@ -27,7 +27,7 @@ export function MesDocuments({ etat }: { etat: EtatEspace }) {
     // Cas anormal (accès révoqué, ou catalogue de documents vide pour ce SKU) :
     // un bloc vide se lit comme une panne. Une phrase calme, et rien à faire.
     return (
-      <section>
+      <section id="mes-documents" className="scroll-mt-4">
         <Titre />
         <p className="text-[1.05rem]">
           Vos documents à imprimer apparaîtront ici. Il n&apos;y a rien à faire de votre côté : ils
@@ -37,8 +37,11 @@ export function MesDocuments({ etat }: { etat: EtatEspace }) {
     );
   }
 
+    /* L'ancre du bandeau de confirmation d'achat : « vous le trouverez ici »
+       est un lien, pas une indication de direction. `scroll-mt` empeche le
+       titre de finir colle au bord haut de la fenetre apres le saut. */
   return (
-    <section>
+    <section id="mes-documents" className="scroll-mt-4">
       <Titre />
 
       <p className="mb-4 text-[1.05rem]">

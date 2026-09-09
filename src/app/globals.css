@@ -211,6 +211,98 @@
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   LA CONFIRMATION D'ACHAT — « c'est validé, et voici où c'est »
+   ═══════════════════════════════════════════════════════════════════
+
+   Un bandeau vert immobile se lit comme un élément de décor : l'œil le
+   range avec le reste de la page et passe à côté. Or c'est LA phrase que
+   l'acheteur cherche, et quand il ne la voit pas il écrit au support pour
+   demander si son paiement est passé.
+
+   Le mouvement sert donc à une chose et une seule : dire QUAND. Il arrive
+   après le chargement, il attire l'œil une fois, et il s'arrête. Rien ne
+   clignote, rien ne boucle, rien ne bouge une seconde fois.
+
+   ⚠️ TROIS CONTRAINTES DE CETTE CIBLE, et elles gouvernent chaque valeur
+   ci-dessous :
+     · LENT. 0,5 à 0,9 s. Une animation vive sur un écran de 74 ans se lit
+       comme un défaut d'affichage, pas comme une confirmation.
+     · AUCUN REBOND, aucun `cubic-bezier` qui dépasse puis revient. Un
+       élément qui dépasse sa position finale donne l'impression que la
+       page a bougé toute seule.
+     · TOUT S'ANNULE sous `prefers-reduced-motion`. Ce réglage est très
+       présent chez les personnes sujettes au vertige, et c'est exactement
+       notre public. Sans mouvement, l'état FINAL doit rester correct :
+       chaque règle ci-dessous pose donc son résultat, jamais son départ.
+*/
+
+/* Le bandeau entre : fondu et 6 px de descente. Six pixels, pas vingt —
+   assez pour que l'œil enregistre l'arrivée, pas assez pour qu'on ait
+   l'impression d'avoir raté quelque chose. */
+@keyframes entree-confirmation {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Le disque vert grandit depuis 85 %. Il ne part pas de zéro : un point qui
+   grossit attire l'œil sur le point, pas sur la phrase à côté. */
+@keyframes pastille-confirmation {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* La coche se DESSINE, d'un trait, comme une main qui la trace. C'est la
+   seule partie réellement lisible comme un geste — et c'est elle qui fait
+   comprendre « c'est fait » sans lire le texte.
+   `stroke-dashoffset` va de la longueur du tracé à 0 ; la longueur est
+   posée en dur dans le composant (`pathLength={1}`), donc l'unité est 1. */
+@keyframes trace-coche {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@utility confirmation-entree {
+  animation: entree-confirmation 0.5s ease-out both;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@utility confirmation-pastille {
+  animation: pastille-confirmation 0.45s ease-out both;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@utility confirmation-coche {
+  stroke-dasharray: 1;
+  /* L'état final, écrit ici et pas seulement dans l'animation : sans
+     mouvement, la coche doit être ENTIÈREMENT tracée. */
+  stroke-dashoffset: 0;
+  animation: trace-coche 0.55s 0.25s ease-out backwards;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
 /* Le filet orange de la marque, sous un titre ou un bandeau. */
 @utility rule-orange {
   display: block;

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { AchatValide } from "@/components/AchatValide";
 import { Header, Footer } from "@/components/Chrome";
 import { PixelEvent } from "@/components/MetaPixel";
 import { ButtonLink, Panel } from "@/components/ui";
@@ -63,8 +64,18 @@ export default async function ThankYouPage({
             </p>
           )}
 
-          <div className="mb-5 border border-green/40 bg-green-bg px-4 py-3 font-bold text-green">
-            ✔ Votre commande est confirmée.
+          {/* ⚠️ LE MONTANT EST DANS LA CONFIRMATION, ET C'EST VOLONTAIRE.
+              Le tunnel peut avoir enchaîné jusqu'à trois débits en deux
+              minutes. Quelqu'un qui vient d'en accepter deux et d'en refuser un
+              ne sait plus ce qu'il a pris : il ouvre son application bancaire
+              avant de lire la page. Le total écrit ici, à côté de la coche, est
+              la seule chose qui l'en dispense — et `orderTotal` est la même
+              source que le débit réel. */}
+          <div className="mb-6">
+            <AchatValide titre={`Votre commande est confirmée — ${euros(total)}`}>
+              Tout est déjà ouvert dans votre espace, et il n&apos;y a ni mot de passe ni compte à
+              créer.
+            </AchatValide>
           </div>
           <h1 className="mb-5 text-[1.6rem] sm:text-[2rem]">
             Bienvenue dans Héritage Intact, {order.firstName}. Voici vos 3 prochaines étapes.

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AchatValide } from "@/components/AchatValide";
 import { Footer, Header } from "@/components/Chrome";
 import Link from "next/link";
 import { Boutique } from "@/components/espace/Boutique";
@@ -85,7 +86,7 @@ export default async function HubPage({
       <Header minimal />
       <main className="flex-1">
         <div className="wrap space-y-10 py-8">
-          {ajoute && <BandeauAjout sku={ajoute} />}
+          {ajoute && <BandeauAjout sku={ajoute} jeton={jeton} />}
 
           <section>
             <h1 className="mb-2 text-[1.6rem] sm:text-[1.9rem]">
@@ -206,26 +207,52 @@ function ProchaineAction({ etat }: { etat: EtatEspace }) {
 }
 
 /**
- * LE BANDEAU VERT DU RETOUR D'ACHAT.
+ * LE RETOUR D'ACHAT — « c'est validé, et voici où c'est ».
  *
  * ⚠️ Il dit OÙ EST LA CHOSE ACHETÉE, pas seulement qu'elle est achetée. « C'est
  * ajouté » tout seul laisse quelqu'un de 74 ans devant un écran qui ressemble
  * en tout point à celui d'avant, en train de chercher ce qu'il vient de payer —
  * et c'est un email au support dans l'heure.
  *
+ * ⚠️ ET « OÙ » N'EST PAS LE MÊME ENDROIT SELON LE PRODUIT. Les feuilles vont
+ * dans MES DOCUMENTS ; Le Simulateur personnalisé, lui, n'y est pas — ce n'est
+ * pas un papier à imprimer mais un outil qui calcule, et il a son propre bloc.
+ * Envoyer son acheteur chercher une feuille qui n'existera jamais est
+ * exactement la promesse non tenue qu'on veut éviter ici.
+ *
  * Le SKU vient de l'URL : il est vérifié avant d'être lu dans le catalogue, un
  * paramètre inventé n'affiche simplement rien.
  */
-function BandeauAjout({ sku }: { sku: string }) {
+function BandeauAjout({ sku, jeton }: { sku: string; jeton: string }) {
   if (!Object.prototype.hasOwnProperty.call(PRODUCTS, sku)) return null;
   const produit = PRODUCTS[sku as ProductSku];
 
+  // Le Simulateur seul ne livre aucune feuille : son unique destination est son
+  // propre bloc, plus haut sur la page.
+  const outilSeul = sku === "backend1";
+  // Le Plan livre les deux : ses douze plans-types ET le Simulateur, compris.
+  const outilEtFeuilles = sku === "upsell1" || sku === "pack1";
+
   return (
-    <p
-      role="status"
-      className="border-2 border-green bg-green-bg px-4 py-3 text-[1.1rem] font-bold text-green"
-    >
-      ✔ C&apos;est ajouté : {produit.name}. Vous le trouverez dans vos documents, plus bas.
-    </p>
+    <AchatValide titre={`C'est validé : ${produit.name}`}>
+      {outilSeul ? (
+        <>
+          Vous le trouverez plus haut sur cette page, dans{" "}
+          <Link href={`/espace/${jeton}/simulateur`}>Le Simulateur personnalisé</Link>. Rien
+          d&apos;autre à faire.
+        </>
+      ) : outilEtFeuilles ? (
+        <>
+          Vos nouvelles feuilles sont dans <a href="#mes-documents">MES DOCUMENTS</a>, plus bas, et{" "}
+          <Link href={`/espace/${jeton}/simulateur`}>Le Simulateur personnalisé</Link> est ouvert
+          plus haut. Rien d&apos;autre à faire.
+        </>
+      ) : (
+        <>
+          Vous le trouverez dans <a href="#mes-documents">MES DOCUMENTS</a>, plus bas sur cette
+          page. Rien d&apos;autre à faire.
+        </>
+      )}
+    </AchatValide>
   );
 }
