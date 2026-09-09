@@ -172,7 +172,7 @@ export function PlanMarie1Enfant() {
         surtout immobilière, avec intérêts (art. 1717 du même code) : demandez-le à votre notaire.
         Reste qu’un enfant sans trésorerie finit le plus souvent par vendre.
       </p>
-      <Champ label="Ce que paierait mon enfant aujourd’hui" indice="Feuille, encadré F" />
+      <Champ label="Ce que paierait mon enfant aujourd’hui" indice="Facture Invisible, encadré F" />
 
       <Titre>3. Les 3 dates, dans VOTRE ordre</Titre>
       <ol className="eviter-coupure space-y-2">

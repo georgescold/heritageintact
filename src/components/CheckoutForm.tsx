@@ -368,7 +368,7 @@ function Inner({
               // ce qu'il a acheté. Le mot
               // change ce que l'acheteur croit avoir acheté.
               "8 étapes vidéo, accès immédiat et à vie",
-              "La Feuille de votre Facture Invisible",
+              "La Facture Invisible",
               "Le Calendrier de vos 3 Dates",
               "Le Plan en 1 Page",
               "5 bonus (valeur 135 €)",

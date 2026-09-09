@@ -97,7 +97,7 @@ export function CalendrierTroisDates({ profil }: { profil?: ProfilDocument }) {
       sousTitre="Trois échéances qui ne préviennent pas. Écrivez les vôtres et affichez cette feuille."
     >
       <SchemaTroisDates />
-      <Champ label="Ma facture invisible aujourd'hui" indice="reportée de la Feuille" />
+      <Champ label="Ma facture invisible aujourd'hui" indice="reportée de La Facture Invisible" />
 
       <TitreDate surligne={surlignee === "compteur15"}>
         Date n° 1 — le compteur des 15 ans

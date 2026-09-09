@@ -87,7 +87,7 @@ export default async function PackPage({
         { label: "12 plans-types, une page par situation familiale", value: "197 €" },
         {
           label:
-            "Le Calcul Automatique : votre Feuille de Facture Invisible, remplie toute seule (plusieurs héritiers, plusieurs contrats, démembrement, donations passées)",
+            "Le Simulateur personnalisé : votre Facture Invisible, calculée toute seule (plusieurs héritiers, plusieurs contrats, démembrement, donations passées)",
           value: "147 €",
         },
         {

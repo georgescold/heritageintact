@@ -8,7 +8,7 @@ import { appliquerPalier, palierDe } from "@/lib/palier";
 export const metadata: Metadata = { title: PRODUCTS.backend1.name };
 
 /**
- * LE REPLI — Le Calcul Automatique de votre facture seul, à qui vient de refuser Le Plan.
+ * LE REPLI — Le Simulateur personnalisé seul, à qui vient de refuser Le Plan.
  *
  * ═══ Pourquoi un repli, et pourquoi celui-ci ═══
  *
@@ -93,9 +93,9 @@ export default async function SimulateurSeulPage({
       </p>
       <p className="text-[1.02rem] text-text-soft">
         Ce que vous saisissez reste sur votre ordinateur. Rien n&apos;est envoyé, rien n&apos;est
-        enregistré chez nous. Et si vous préférez en rester là, la Feuille de votre Facture
-        Invisible — la version à remplir au stylo — est déjà dans vos documents, sans supplément. Il
-        donne le même chiffre, en une heure au lieu de dix minutes. Prix de cet outil&nbsp;:{" "}
+        enregistré chez nous. Et si vous préférez en rester là, la Facture Invisible — la version à
+        remplir au stylo — est déjà dans vos documents, sans supplément. Elle donne le même chiffre,
+        en une heure au lieu de dix minutes. Prix de cet outil&nbsp;:{" "}
         {euros(PRODUCTS.backend1.price)}.
       </p>
     </UpsellPage>

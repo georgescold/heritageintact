@@ -70,7 +70,9 @@ export function LettreAuxEnfants() {
       <Titre>Le déroulé de la conversation, en cinq temps</Titre>
       <ol className="list-decimal space-y-1 pl-5">
         <li>Redire que vous allez bien, et que rien n&apos;est décidé contre personne.</li>
-        <li>Donner votre chiffre — celui de la Feuille. C&apos;est lui qui fait comprendre.</li>
+        <li>
+          Donner votre chiffre — celui de La Facture Invisible. C&apos;est lui qui fait comprendre.
+        </li>
         <li>Dire ce que vous voulez, vous, avant de demander ce qu&apos;ils veulent, eux.</li>
         <li>Écouter les inquiétudes sans y répondre tout de suite. Notez-les.</li>
         <li>Fixer la seule chose à décider ce jour-là : la date du rendez-vous chez le notaire.</li>

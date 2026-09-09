@@ -28,7 +28,7 @@ export function LienInvalide({
   revoque?: boolean;
   depuis?: string;
   /**
-   * Le lien vers La Feuille de votre Facture Invisible, que le client rembourse
+   * Le lien vers La Facture Invisible, que le client rembourse
    * conserve (CGV art. 6). Seul le hub le passe : les autres écrans de
    * l'espace n'ont pas à rouvrir un chemin de lecture.
    */
@@ -114,11 +114,11 @@ function AccesFerme({ depuis, simulateur }: { depuis?: string; simulateur?: stri
         <div className="mb-6">
           <Panel title="Ce que vous gardez">
             <p className="mb-4 text-[1.05rem]">
-              Comme annoncé, La Feuille de votre Facture Invisible reste le vôtre. Vous pouvez le
-              consulter et l&apos;imprimer autant de fois que vous le souhaitez.
+              Comme annoncé, La Facture Invisible reste la vôtre. Vous pouvez la consulter et
+              l&apos;imprimer autant de fois que vous le souhaitez.
             </p>
             <ButtonLink href={simulateur} variant="blue">
-              Ouvrir La Feuille de votre Facture Invisible
+              Ouvrir La Facture Invisible
             </ButtonLink>
           </Panel>
         </div>

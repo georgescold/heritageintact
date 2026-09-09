@@ -23,7 +23,7 @@ import { SchemaBareme } from "@/components/documents/Schemas";
 export function SimulateurPapier() {
   return (
     <Feuille
-      titre="La Feuille de votre Facture Invisible"
+      titre="La Facture Invisible"
       sousTitre="Ce que votre famille paierait si la succession s'ouvrait aujourd'hui."
     >
       <SchemaBareme />

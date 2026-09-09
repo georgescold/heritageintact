@@ -122,7 +122,7 @@ export const SEQUENCE: Etape[] = [
       "Je serai bref.",
       `La Méthode complète vaut ${euros(PRODUCTS.front.anchor)}. Elle est à ${euros(PRODUCTS.front.price)} pour les ${FOUNDERS_CAP} premiers membres, puis à ${euros(PRIX_APRES_FONDATEURS)}. Le compteur est réel, il est affiché sur la page de commande, et il ne se réinitialise pas.`,
       "La raison est simple et je préfère la dire : j'ai besoin des retours des premiers membres pour améliorer le simulateur. En échange, ils gardent ce prix à vie, mises à jour comprises.",
-      "Ce que vous recevez, dans l'ordre où il faut le faire : les 7 erreurs et leurs corrections, la Feuille de votre Facture Invisible, le Calendrier de vos 3 dates, le Plan en 1 page, les 12 questions au notaire, et la lettre pour en parler à vos enfants. Garantie 30 jours, et vous gardez le simulateur.",
+      "Ce que vous recevez, dans l'ordre où il faut le faire : les 7 erreurs et leurs corrections, la Facture Invisible, le Calendrier de vos 3 dates, le Plan en 1 page, les 12 questions au notaire, et la lettre pour en parler à vos enfants. Garantie 30 jours, et vous gardez le simulateur.",
       "Mais la vraie urgence n'est pas le prix. C'est celle de vos 3 dates qui arrive le plus vite — et à ce stade, vous ne savez toujours pas laquelle c'est.",
     ],
     bouton: { texte: "Accéder à la méthode", chemin: COMMANDE },

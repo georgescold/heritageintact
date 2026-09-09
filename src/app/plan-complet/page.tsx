@@ -75,7 +75,7 @@ export default async function Upsell1Page({
         { label: "12 plans-types, une page par situation familiale", value: "197 €" },
         {
           label:
-            "Le Calcul Automatique : votre Feuille de Facture Invisible, remplie toute seule (plusieurs héritiers, plusieurs contrats, démembrement, donations passées)",
+            "Le Simulateur personnalisé : votre Facture Invisible, calculée toute seule (plusieurs héritiers, plusieurs contrats, démembrement, donations passées)",
           value: "147 €",
         },
         {
@@ -111,25 +111,24 @@ export default async function Upsell1Page({
         concret.
       </p>
       {/* ⚠️ DEUX OUTILS, DEUX NOMS QUI NE PARTAGENT PAS UN MOT.
-          La Méthode à 27 € contient déjà de quoi calculer sa facture : La Feuille
-          de votre Facture Invisible, qu'on remplit au stylo. Tant que les deux
+          La Méthode à 27 € contient déjà de quoi calculer sa facture : La Facture Invisible, qu'on remplit au stylo. Tant que les deux
           s'appelaient « Simulateur », vendre le second quinze secondes après
           l'achat du premier ne s'entendait que d'une façon : on me refacture ce
           que je viens d'acheter. Sur un acheteur de 74 ans, ce soupçon-là ne se
           dissipe pas, il devient une demande de remboursement.
 
-          Les noms font désormais le travail à eux seuls — une feuille qu'on
-          remplit, un calcul qui se fait tout seul — et ce paragraphe n'a plus
-          qu'à le confirmer. Il reste quand même, parce qu'il prouve deux choses
+          Les noms font désormais le travail à eux seuls — La Facture Invisible
+          d'un côté, Le Simulateur personnalisé de l'autre — et ce paragraphe
+          n'a plus qu'à le confirmer. Il reste quand même, parce qu'il prouve deux choses
           d'un coup : que le produit à 27 € tenait sa promesse, et que celui-ci
           fait autre chose. */}
       <p>
         Un mot pour qu&apos;il n&apos;y ait aucune ambiguïté : vous avez déjà{" "}
-        <strong>La Feuille de votre Facture Invisible</strong> dans votre Méthode, celle qu&apos;on
-        remplit au stylo. Gardez-la, elle donne le bon chiffre. Ce que vous ajoutez ici, c&apos;est{" "}
-        <strong>Le Calcul Automatique</strong> : la même chose, mais remplie toute seule, en dix
-        minutes au lieu d&apos;une heure — et il sait traiter ce que la feuille ne sait pas :
-        plusieurs héritiers, plusieurs contrats, un démembrement, des donations déjà faites.
+        <strong>La Facture Invisible</strong> dans votre Méthode, celle qu&apos;on remplit au stylo.
+        Gardez-la, elle donne le bon chiffre. Ce que vous ajoutez ici, c&apos;est{" "}
+        <strong>Le Simulateur personnalisé</strong> : la même chose, mais remplie toute seule, en
+        dix minutes au lieu d&apos;une heure — et il sait traiter ce que la feuille papier ne sait
+        pas : plusieurs héritiers, plusieurs contrats, un démembrement, des donations déjà faites.
       </p>
     </UpsellPage>
   );

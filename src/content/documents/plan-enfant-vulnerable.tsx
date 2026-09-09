@@ -398,12 +398,12 @@ export function PlanEnfantVulnerable() {
       <Titre>7. Mon cas, et ma décision</Titre>
       {/* Deux montants à six chiffres ne rentrent pas sur une ligne de 44 px, écrits
           à la main : quatre Champ, comme plan-en-1-page pour ces mêmes chiffres. Et
-          chaque indice nomme l'encadré d'où sort le nombre — la Feuille est posé
+          chaque indice nomme l'encadré d'où sort le nombre — la Facture Invisible est posée
           à côté sur la table, le lecteur ne doit pas avoir à deviner lequel lire. */}
       <div className="eviter-coupure grid gap-3">
-        <Champ label="Le patrimoine à partager" indice="Feuille, encadré C" />
-        <Champ label="La part de mon enfant vulnérable" indice="Feuille, encadré D" />
-        <Champ label="Ce qu'il paierait aujourd'hui" indice="Feuille, encadré F" />
+        <Champ label="Le patrimoine à partager" indice="Facture Invisible, encadré C" />
+        <Champ label="La part de mon enfant vulnérable" indice="Facture Invisible, encadré D" />
+        <Champ label="Ce qu'il paierait aujourd'hui" indice="Facture Invisible, encadré F" />
         <Champ
           label="Ce qu'il paierait après ce plan"
           indice="à recalculer sur le modèle du point 6"

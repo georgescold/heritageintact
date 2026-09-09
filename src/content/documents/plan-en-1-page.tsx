@@ -30,7 +30,7 @@ export function PlanEnUnePage() {
       </div>
 
       <Titre>1. Mon chiffre</Titre>
-      <Champ label="Ce que ma famille paierait aujourd'hui" indice="Feuille, encadré F" />
+      <Champ label="Ce que ma famille paierait aujourd'hui" indice="Facture Invisible, encadré F" />
       <Champ
         label="Ce qu'elle paierait après mon plan"
         indice="à recalculer une fois les décisions prises"

@@ -347,7 +347,7 @@ export function PlanSansEnfant() {
         <Champ label="Qui doit recevoir, et quoi" indice="nom par nom" />
       </div>
 
-      {/* ⚠️ AUCUN RENVOI AU SIMULATEUR ICI. La Feuille de votre Facture Invisible est
+      {/* ⚠️ AUCUN RENVOI AU SIMULATEUR ICI. La Facture Invisible est
           bâti exclusivement en ligne directe : « la part de chaque enfant », un
           abattement de 100 000 €, le barème de l'art. 777 tableau I. Y envoyer le
           lecteur sans enfant — celui à qui le point 2 vient précisément
@@ -357,10 +357,10 @@ export function PlanSansEnfant() {
           promesse de La Méthode. Le calcul est donc refait sur place, sur le
           modèle de plan-concubins-pacs.tsx. */}
       <p className="text-[0.93rem]">
-        La Feuille de votre Facture Invisible est calculé pour des enfants : il retire un abattement
-        de 100 000 € à l&apos;étape 5, puis applique à l&apos;étape 6 le barème de la ligne directe
-        (art. 777, tableau I, du CGI). Ce ne sont pas vos chiffres. Faites le calcul ci-dessous, une
-        fois par personne que vous voulez nommer.
+        La Facture Invisible est calculée pour des enfants : elle retire un abattement de 100 000 €
+        à l&apos;étape 5, puis applique à l&apos;étape 6 le barème de la ligne directe (art. 777,
+        tableau I, du CGI). Ce ne sont pas vos chiffres. Faites le calcul ci-dessous, une fois par
+        personne que vous voulez nommer.
       </p>
       <div className="eviter-coupure grid gap-3">
         <Champ label="A. Ce que je veux lui laisser" />

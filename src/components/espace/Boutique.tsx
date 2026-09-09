@@ -121,11 +121,10 @@ function LigneProduit({ sku, jeton }: { sku: ProductSku; jeton: string }) {
  * une ligne vide.
  */
 const RESUME: Record<ProductSku, string> = {
-  front:
-    "La Méthode elle-même : les 8 étapes, la Feuille de votre Facture Invisible et le Calendrier des 3 dates.",
+  front: "La Méthode elle-même : les 8 étapes, la Facture Invisible et le Calendrier des 3 dates.",
   bump: "Les cinq feuilles à remplir au stylo avant votre rendez-vous, pour que le notaire travaille sur votre dossier au lieu de vous poser des questions.",
   upsell1:
-    "Votre situation familiale traitée à part : le plan qui correspond à votre configuration, le calendrier des 15 prochaines années, et Le Calcul Automatique de votre facture compris.",
+    "Votre situation familiale traitée à part : le plan qui correspond à votre configuration, le calendrier des 15 prochaines années, et Le Simulateur personnalisé compris.",
   upsell2:
     "Votre contrat relu en trente minutes : la clause bénéficiaire, la date de vos versements et les frais réels, avec la lettre à envoyer à votre assureur.",
   backend1:
@@ -173,7 +172,7 @@ const RESUME: Record<ProductSku, string> = {
 const AVANTAGES: Partial<Record<ProductSku, string[]>> = {
   upsell1: [
     "12 plans-types : celui qui correspond à votre situation familiale, en une page",
-    "Le Calcul Automatique, compris : votre Feuille de Facture Invisible, remplie toute seule",
+    "Le Simulateur personnalisé, compris : votre Facture Invisible, calculée toute seule",
     "Le Calendrier de Transmission sur 15 ans : quoi faire, et quelle année",
     "3 modèles de clause bénéficiaire, commentés ligne par ligne",
     "Le tableau de bord familial : qui reçoit quoi, quand, et à quel coût",

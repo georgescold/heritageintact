@@ -75,7 +75,7 @@ export default async function AjouterPage({
   if (!produit.disponible) redirect(hub);
 
   // GARDE 4 — habilitation GLOBALE, expansion `INCLUS_DANS` comprise : qui a
-  // payé 297 € pour Le Plan possède déjà Le Calcul Automatique de votre facture, et on ne
+  // payé 297 € pour Le Plan possède déjà Le Simulateur personnalisé, et on ne
   // le lui refacture jamais 147 €.
   if (etat.possede.has(sku)) redirect(hub);
 

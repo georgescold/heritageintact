@@ -6,7 +6,7 @@
  * règles du produit ne tiennent que si elles sont écrites une seule fois.
  *
  *   1. Un article remboursé ne donne plus accès à rien.
- *   2. Posséder Le Plan (297 €), c'est posséder Le Calcul Automatique de votre facture :
+ *   2. Posséder Le Plan (297 €), c'est posséder Le Simulateur personnalisé :
  *      on ne le refacture jamais 147 €.
  *   3. Aucune offre n'est montrée à qui n'a pas ouvert l'étape 0.
  *

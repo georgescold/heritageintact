@@ -503,7 +503,7 @@ export function PlanMarie2Enfants() {
         sousTitre="Vos chiffres et votre décision. Remplissez-la au stylo, puis emportez-la chez le notaire."
       >
         <Titre>7. Nos chiffres, et notre décision</Titre>
-        {/* L'encadré F de la Feuille s'intitule « VOTRE FACTURE
+        {/* L'encadré F de La Facture Invisible s'intitule « VOTRE FACTURE
             INVISIBLE, PAR ENFANT » : la case qui le recopie doit donc être au
             singulier, et la multiplication demandée sur sa propre ligne. */}
         <div className="eviter-coupure grid gap-3">
@@ -512,7 +512,10 @@ export function PlanMarie2Enfants() {
             label="Nos abattements encore ouverts"
             indice="2 parents × nombre d’enfants × 100 000 € — art. 779 du CGI"
           />
-          <Champ label="Ce que paierait chaque enfant aujourd’hui" indice="Feuille, encadré F" />
+          <Champ
+            label="Ce que paierait chaque enfant aujourd’hui"
+            indice="Facture Invisible, encadré F"
+          />
           <Champ label="× notre nombre d’enfants = pour la famille" />
           <Champ label="Ce que paierait chaque enfant après la donation-partage" />
           <Champ

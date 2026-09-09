@@ -40,7 +40,7 @@ const OFFRES: Record<
     h1: "Le plan de votre situation, et de quoi vous en servir dès demain.",
     contenu: [
       "12 plans-types, une page par situation familiale|197 €",
-      "Le Calcul Automatique : votre Feuille de Facture Invisible, remplie toute seule (plusieurs héritiers, plusieurs contrats, démembrement)|147 €",
+      "Le Simulateur personnalisé : votre Facture Invisible, calculée toute seule (plusieurs héritiers, plusieurs contrats, démembrement)|147 €",
       "Le Calendrier de Transmission sur 15 ans : quoi faire, quelle année|67 €",
       "3 modèles de clause bénéficiaire commentés|47 €",
       "Le tableau de bord familial : qui reçoit quoi, quand, à quel coût|39 €",
@@ -55,7 +55,7 @@ const OFFRES: Record<
     h1: "Vos deux urgences traitées ensemble, et de quoi vous en servir dès demain.",
     contenu: [
       "12 plans-types, une page par situation familiale|197 €",
-      "Le Calcul Automatique : votre Feuille de Facture Invisible, remplie toute seule (plusieurs héritiers, plusieurs contrats, démembrement)|147 €",
+      "Le Simulateur personnalisé : votre Facture Invisible, calculée toute seule (plusieurs héritiers, plusieurs contrats, démembrement)|147 €",
       "Le Calendrier de Transmission sur 15 ans : quoi faire, quelle année|67 €",
       "Le tableau de bord familial : qui reçoit quoi, quand, à quel coût|39 €",
       "L'audit de votre contrat en 30 minutes : la grille notée sur 10|67 €",

@@ -23,8 +23,7 @@ export const metadata: Metadata = { title: "Les 3 décisions" };
 
 const PACKAGING = [
   {
-    label:
-      "Savoir exactement ce que l'État prendra sur votre succession : la Feuille de votre Facture Invisible",
+    label: "Savoir exactement ce que l'État prendra sur votre succession : la Facture Invisible",
     value: "97 €",
   },
   {
@@ -256,8 +255,7 @@ export default function VslPage() {
             <Check>
               <strong>Votre chiffre. Le vrai, pas une fourchette.</strong> Ce que l&apos;État
               prendrait si ça arrivait cette année — calculé sur votre maison, votre épargne, votre
-              famille.{" "}
-              <span className="text-text-soft">(la Feuille de votre Facture Invisible)</span>
+              famille. <span className="text-text-soft">(la Facture Invisible)</span>
             </Check>
             <Check>
               <strong>
