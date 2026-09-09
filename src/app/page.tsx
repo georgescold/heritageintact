@@ -3,6 +3,7 @@ import { Header, Footer } from "@/components/Chrome";
 import { OptinForm } from "@/components/OptinForm";
 import { ExitPopup } from "@/components/ExitPopup";
 import { ExempleHeadline } from "@/components/ExempleHeadline";
+import { UrgencyBar, UrgencyUnderButton, UrgencyCountdown, ConditionsExoneration } from "@/components/Urgency";
 
 export const metadata: Metadata = {
   title: "Et si vos enfants héritaient de 68 206 € de plus ? — exemple fictif",
@@ -12,9 +13,7 @@ export const metadata: Metadata = {
 /** LP #2 : une promesse, un mécanisme court, un formulaire visible. */
 export default function Page() {
   return <>
-    <div className="border-b border-red bg-red px-4 py-2 text-center text-sm font-bold text-white">
-      Votre maison est payée. Votre transmission ne se règle pas toute seule.
-    </div>
+    <UrgencyBar />
     <Header minimal />
     <main className="flex-1">
       <section className="wrap pb-8 pt-5 sm:pt-9">
@@ -22,19 +21,15 @@ export default function Page() {
         <h1 className="text-[1.7rem] leading-[1.12] sm:text-[2.6rem]">
           Et si vos enfants héritaient de <span className="whitespace-nowrap text-orange-dark">68 206 €</span> de plus ?
         </h1>
-        <p className="mt-2 text-sm text-text-soft">Écart de droits dans un exemple fictif à deux enfants, hors frais. Pas une économie promise. <a href="#exemple-chiffre">Hypothèses ci-dessous.</a></p>
         <p className="mt-3 text-[1.1rem] font-bold text-blue">Comprenez ce qui peut changer avant de donner quoi que ce soit — sans vendre votre maison ni signer de placement pour suivre le guide.</p>
-        <p className="mt-3 text-[1.02rem]">Vous avez payé votre maison pour eux. Découvrez les 3 repères de temps qui peuvent changer ce qu’ils recevront — et les erreurs à regarder pendant que vous pouvez encore en parler ensemble.</p>
+        <p className="mt-3 text-[1.02rem]">À votre mort, vos enfants ne pourront plus vous demander ce que vous vouliez pour la maison. Découvrez les 3 repères de temps à connaître — pendant que vous pouvez encore préparer la suite avec eux.</p>
         <div id="inscription" className="mt-5 border-2 border-blue bg-white p-4 sm:p-5">
           <p className="mb-3 font-bold text-blue">Avant de vous dire « je m’en occuperai plus tard », découvrez ce qu’il faut vérifier.</p>
           <OptinForm cta="Découvrir maintenant les 7 erreurs" />
         </div>
-        <section aria-labelledby="pourquoi-maintenant" className="mt-5 border-l-4 border-red bg-red-bg p-4">
-          <h2 id="pourquoi-maintenant" className="mb-2 text-[1.12rem]">Pourquoi vérifier maintenant plutôt que « plus tard » ?</h2>
-          <p className="text-[0.98rem]">Le régime d’un versement ou la valeur fiscale d’une donation peuvent changer avec l’âge. Reporter une donation peut aussi décaler le renouvellement d’un abattement. C’est avant un projet qu’il faut regarder les dates, pas une fois les actes signés.</p>
-          <p className="mt-2 text-sm text-text-soft">Ces repères ne constituent pas une échéance d’achat. Leur effet dépend de votre situation ; aucune économie n’est garantie.</p>
-        </section>
+        <section id="pourquoi-maintenant" className="mt-5"><UrgencyUnderButton /></section>
         <ExempleHeadline compact />
+        <ConditionsExoneration />
         <section className="mt-6">
           <h2 className="mb-3 text-[1.25rem]">Ce que vous allez pouvoir mettre au clair</h2>
           <ul className="space-y-3 text-[1.02rem]">
@@ -48,6 +43,8 @@ export default function Page() {
     </main>
     <Footer />
     <ExitPopup storageKey="lp-v7" title="Ce que vous risquez si vous fermez cette page">
+      <div className="mb-4"><UrgencyCountdown /></div>
+      <p className="mb-3 font-bold">Le temps que vous laissez passer ne pourra pas être ajouté après votre mort. Reporter une donation, c’est aussi décaler le repère de ses 15 ans.</p>
       <p>La page se ferme. Pas les questions que vos enfants pourraient un jour devoir résoudre sans vous : où sont les documents ? Que vouliez-vous pour la maison ? Qu’aurait-il fallu vérifier plus tôt ? Gardez le lien et commencez aujourd’hui par les 7 erreurs.</p>
       <OptinForm cta="Recevoir mon lien de présentation" />
     </ExitPopup>

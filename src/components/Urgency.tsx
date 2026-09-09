@@ -1,137 +1,71 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { FIN_EXONERATION_LOGEMENT, secondesExonerationRestantes } from "@/lib/urgence-fiscale";
 
-/**
- * L'urgence du projet, rendue visible.
- *
- * Le compte à rebours est honnête, et c'est ce qui fait sa force : le dispositif
- * de l'article 790 A bis du CGI s'arrête le 31 décembre 2026, la date est votée,
- * elle est vérifiable sur legifrance.gouv.fr, et elle ne se réinitialise jamais
- * au rechargement de la page. Aucun faux compteur (cf. 12-chiffres-succession.md § 5).
- *
- * ⚠️ À revoir après le 30 septembre 2026 : un rapport d'évaluation doit être
- * remis au Parlement, et c'est lui qui décidera d'une prorogation. Si le
- * dispositif est prolongé, changer la date ici. S'il expire, le compteur tombe
- * à zéro tout seul et le bandeau devient un rappel des 3 dates.
- */
-const FIN = new Date("2026-12-31T23:59:59+01:00");
-
-/**
- * Le compteur bat à la seconde. On renvoie un entier de secondes : la valeur
- * est stable à l'intérieur d'une seconde, donc React ne re-rend pas en boucle.
- */
+// Échéance fiscale vérifiée le 9 septembre 2026. Ce compteur ne représente pas une promotion.
+// Réexaminer la date uniquement si un texte légal modifie le dispositif.
 const battre = (cb: () => void) => {
   const id = setInterval(cb, 1000);
   return () => clearInterval(id);
 };
-const secondesRestantes = () => Math.max(0, Math.floor((FIN.getTime() - Date.now()) / 1000));
-
-/**
- * Le rendu serveur renvoie null : la page est prérendue, une valeur figée au
- * build serait fausse dès le lendemain, et un écart d'hydratation ferait
- * clignoter le compteur au chargement.
- */
 function useCompteur() {
-  const s = useSyncExternalStore(battre, secondesRestantes, () => null);
+  const s = useSyncExternalStore(battre, secondesExonerationRestantes, () => null);
   if (s === null) return null;
-  return {
-    j: Math.floor(s / 86400),
-    h: Math.floor((s % 86400) / 3600),
-    m: Math.floor((s % 3600) / 60),
-    s: s % 60,
-  };
+  return { j: Math.floor(s / 86400), h: Math.floor((s % 86400) / 3600), m: Math.floor((s % 3600) / 60), s: s % 60, expire: s === 0 };
 }
-
 const deuxChiffres = (n: number) => String(n).padStart(2, "0");
-
-/**
- * Une case du compteur.
- *
- * Largeur FIXE et identique pour les quatre : « 117 » prend une place et demie
- * de plus que « 02 », et des cases dimensionnées par leur contenu donnent une
- * rangée bancale, avec le nombre des jours collé à ses bordures. Elle est
- * calibrée sur trois chiffres, donc rien ne bouge quand le compte passera
- * sous les cent jours.
- */
 function Case({ n, u }: { n: string; u: string }) {
-  return (
-    <span className="flex w-[3.1rem] flex-col items-center justify-center border border-white/35 bg-black/25 py-1 leading-none sm:w-[3.6rem] sm:py-1.5">
-      <span className="text-[1.2rem] font-bold tabular-nums sm:text-[1.45rem]">{n}</span>
-      <span className="mt-1 text-[0.6rem] uppercase tracking-wide text-white/75 sm:text-[0.66rem]">
-        {u}
-      </span>
-    </span>
-  );
+  return <span className="flex w-[3.1rem] flex-col items-center justify-center border border-white/35 bg-black/25 py-1 leading-none sm:w-[3.6rem] sm:py-1.5">
+    <span className="text-[1.2rem] font-bold tabular-nums sm:text-[1.45rem]">{n}</span>
+    <span className="mt-1 text-[0.65rem] uppercase tracking-wide text-white/90">{u}</span>
+  </span>;
 }
-
-/** Les quatre cases, avec un gabarit stable avant l'hydratation. */
 function Cases({ c }: { c: ReturnType<typeof useCompteur> }) {
-  return (
-    <>
-      <Case n={c ? String(c.j) : "—"} u="jours" />
-      <Case n={c ? deuxChiffres(c.h) : "—"} u="h" />
-      <Case n={c ? deuxChiffres(c.m) : "—"} u="min" />
-      <Case n={c ? deuxChiffres(c.s) : "—"} u="sec" />
-    </>
-  );
+  return <span className="flex items-center justify-center gap-1.5" role="timer" aria-label="Temps restant jusqu’au 31 décembre 2026" aria-live="off" data-echeance-fiscale={FIN_EXONERATION_LOGEMENT}>
+    <Case n={c ? String(c.j) : "—"} u="jours" />
+    <Case n={c ? deuxChiffres(c.h) : "—"} u="h" />
+    <Case n={c ? deuxChiffres(c.m) : "—"} u="min" />
+    <Case n={c ? deuxChiffres(c.s) : "—"} u="sec" />
+  </span>;
 }
-
-/** Bandeau haut de page, au-dessus de l'en-tête. Visible dès la première seconde. */
 export function UrgencyBar() {
   const c = useCompteur();
-  return (
-    <div className="border-b-[3px] border-[#8d1f1f] bg-red text-white">
-      <div className="wrap-wide py-2 sm:py-2.5">
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-x-6">
-          <p className="text-center text-[0.95rem] font-bold leading-snug sm:text-left sm:text-[1.08rem]">
-            <span className="sm:hidden">
-              Fin du dispositif à <span className="whitespace-nowrap">100 000 € exonérés</span>
-            </span>
-            <span className="hidden sm:inline">
-              Le dispositif qui permet de donner{" "}
-              <span className="whitespace-nowrap">100 000 € exonérés</span> se termine le 31
-              décembre 2026
-            </span>
-          </p>
-          <span className="flex items-center gap-1.5">
-            <Cases c={c} />
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/**
- * Ligne d'urgence sous un bouton. Levier n°2 des landing pages
- * (05-funnel/landing-pages.md § Les 4 améliorations).
- */
-export function UrgencyUnderButton() {
-  const c = useCompteur();
-  return (
-    <p className="border-l-4 border-orange bg-yellow-bg px-3 py-2 text-[0.92rem]">
-      <strong className="text-orange-dark">
-        Pourquoi maintenant plutôt que dans six mois&nbsp;:
-      </strong>{" "}
-      la fenêtre des 100 000 € exonérés ferme le 31 décembre 2026
-      {c && <> — il reste {c.j} jours</>}, et une donation met quinze ans à s&apos;effacer
-      fiscalement. Ces deux compteurs tournent déjà.
-    </p>
-  );
-}
-
-/** Le compteur en grand, pour le pop-up de sortie. */
-export function UrgencyCountdown() {
-  const c = useCompteur();
-  return (
-    <div className="border-2 border-red bg-red text-white">
-      <p className="border-b border-white/25 px-3 py-1.5 text-center text-[0.75rem] font-bold uppercase tracking-[0.12em]">
-        Fin du dispositif à 100 000 € · 31 décembre 2026
-      </p>
-      <div className="flex items-center justify-center gap-2 px-3 py-3">
+  if (c?.expire) return <div className="bg-red px-4 py-3 text-center font-bold text-white" data-urgence-expiree>La fenêtre prévue jusqu’au 31 décembre 2026 est terminée. Vérifiez les règles applicables avant un don.</div>;
+  return <div className="border-b-[3px] border-[#8d1f1f] bg-red text-white">
+    <div className="wrap-wide py-2 sm:py-2.5">
+      <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+        <p className="text-center text-[0.95rem] font-bold leading-snug sm:text-[1.08rem]">Jusqu’à <span className="whitespace-nowrap">100 000 € exonérés</span> pour un don familial destiné au logement :<br />la fenêtre se ferme le <span className="whitespace-nowrap">31 décembre 2026.</span></p>
         <Cases c={c} />
       </div>
+      <p className="mt-2 text-center text-xs leading-relaxed text-white">Logement neuf ou rénovation énergétique, sous conditions. Exonération distincte de l’abattement parent-enfant. <a className="font-bold text-white underline" href="#conditions-exoneration">Voir les conditions</a>.</p>
     </div>
-  );
+  </div>;
+}
+export function UrgencyUnderButton() {
+  return <div className="border-l-4 border-orange bg-yellow-bg px-4 py-3">
+    <p className="font-bold text-orange-dark">Attendre deux ans, c’est aussi repousser de deux ans le compteur des 15 ans.</p>
+    <p className="mt-2 text-[0.98rem]">Une donation à 67 ans : le repère des 15 ans arrive à 82 ans. La même donation à 69 ans : à 84 ans. Vous pouvez remettre la question à plus tard. Vous ne pourrez pas antidater la donation.</p>
+    <p className="mt-2 text-sm text-text-soft">Le renouvellement de l’abattement dépend des donations antérieures. Acheter le guide ne lance pas ce délai : il vous aide à préparer les vérifications avant de décider.</p>
+  </div>;
+}
+export function UrgencyCountdown() {
+  const c = useCompteur();
+  if (c?.expire) return <p className="font-bold text-red">L’échéance du dispositif temporaire était le 31 décembre 2026. Faites vérifier les règles actuelles.</p>;
+  return <div className="border-2 border-red bg-red p-3 text-white">
+    <p className="mb-3 text-center text-sm font-bold">Dons familiaux pour logement neuf ou rénovation énergétique : fin prévue le 31 décembre 2026.</p>
+    <Cases c={c} />
+    <p className="mt-3 text-center text-xs">Jusqu’à 100 000 € par donateur et bénéficiaire, sous conditions. Ce n’est pas la fin de l’abattement général.</p>
+  </div>;
+}
+export function ConditionsExoneration() {
+  return <details id="conditions-exoneration" className="my-6 border border-line bg-grey-bg p-4 scroll-mt-4">
+    <summary className="cursor-pointer font-bold text-blue">Le compteur de décembre : quels dons sont concernés ?</summary>
+    <div className="mt-3 space-y-3 text-sm">
+      <p>L’article 790 A bis concerne certains dons familiaux de sommes d’argent versées du 15 février 2025 au 31 décembre 2026 : jusqu’à 100 000 € par donateur à un même bénéficiaire, et 300 000 € reçus au total par bénéficiaire.</p>
+      <p>Les fonds doivent financer un logement neuf ou en VEFA, ou des travaux de rénovation énergétique éligibles, dans le délai prévu de six mois. Des conditions d’affectation ou de conservation pendant cinq ans s’appliquent. Le lien familial, le projet et les autres conditions doivent être vérifiés avant le don.</p>
+      <p>Cette exonération temporaire est distincte de l’abattement parent-enfant de 100 000 € renouvelable selon le délai de 15 ans : cet abattement général ne se termine pas le 31 décembre 2026.</p>
+      <p>Le compte à rebours indique une date fiscale, pas la durée du prix du guide. L’achat ne réserve aucun droit fiscal. <a href="https://www.impots.gouv.fr/particulier/dons-exoneres">Conditions officielles sur impots.gouv.fr</a>.</p>
+    </div>
+  </details>;
 }

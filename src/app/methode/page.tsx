@@ -5,6 +5,7 @@ import { AvantageDemarrage } from "@/components/AvantageDemarrage";
 import { SortieOffre } from "@/components/SortieOffre";
 import { ExempleSeuil } from "@/components/ExempleSeuil";
 import { ExempleHeadline } from "@/components/ExempleHeadline";
+import { UrgencyBar, UrgencyUnderButton, ConditionsExoneration } from "@/components/Urgency";
 import { MesureFunnel } from "@/components/MesureFunnel";
 import { Header, Footer } from "@/components/Chrome";
 import { ButtonLink, FAQ, Guarantee } from "@/components/ui";
@@ -20,13 +21,12 @@ export default async function Page() {
   const d = await devisFront(jar.get("hi_offre")?.value);
   return <>
     <MesureFunnel evenement="vue_vente" />
-    <div className="bg-red px-4 py-2 text-center text-sm font-bold text-white">La maison est payée. Ne laissez pas sa transmission au hasard.</div>
+    <UrgencyBar />
     <Header minimal />
     <main className="wrap flex-1 pb-16 pt-6 sm:pt-9">
       <p className="mb-3 text-sm font-bold uppercase tracking-wide text-orange-dark">Parents propriétaires · Vous avez construit pour eux</p>
-      <h1 className="mb-4 text-[1.9rem] leading-tight sm:text-[2.6rem]">Et si vos enfants héritaient de <span className="whitespace-nowrap text-orange-dark">68 206 €</span> de plus ?</h1>
-      <p className="mb-4 text-sm text-text-soft">Écart de droits dans un exemple fictif à deux enfants, hors frais. Pas une économie promise. <a href="#exemple-chiffre">Voir les hypothèses.</a></p>
-      <p className="mb-5 text-[1.15rem] font-bold text-blue">Découvrez les 7 erreurs à vérifier pour préparer votre transmission — sans commencer par vendre votre maison, donner votre argent ou signer un placement.</p>
+      <h1 className="mb-4 text-[1.7rem] leading-tight sm:text-[2.35rem]">Vous avez une maison payée et des enfants ?<br /><span className="text-orange-dark">Si vous ne faites rien, l’État peut en prendre une part à votre mort.</span></h1>
+      <p className="mb-5 text-[1.15rem] font-bold text-blue">Et si vos enfants héritaient de <span className="whitespace-nowrap text-orange-dark">68 206 €</span> de plus ? Découvrez les 7 erreurs à vérifier de votre vivant — sans vendre votre maison ni la quitter pour suivre le guide.</p>
       <VslPresentation />
 
       <div id="premier-cta" data-mesure="clic_commande" className="mb-7 mt-4">
@@ -34,6 +34,7 @@ export default async function Page() {
         <p className="mt-2 text-center text-sm text-text-soft">Paiement unique · Aucun abonnement · Accès dès le paiement · Garantie 30 jours</p>
         <AvantageDemarrage promotion={d.promotion} base={d.total} />
       </div>
+      <UrgencyUnderButton />
       <section id="presentation-ecrite" className="my-8">
         <h2 className="mb-4 text-[1.55rem]">Un jour, vous aimeriez qu’ils se disent : « Ils avaient pensé à nous. »</h2>
         <p className="mb-4">Imaginez un dimanche autour de la table. Les enfants parlent de leurs projets. Les petits-enfants jouent dans le jardin. Cette maison, ce n’est pas une ligne sur un relevé : c’est une partie de votre vie. Vous aimeriez qu’elle reste un souvenir heureux, pas le début d’une discussion tendue sur des papiers que personne ne comprend.</p>
@@ -96,7 +97,7 @@ export default async function Page() {
         <h2 className="mb-4 text-[1.55rem]">Ce qui coûte, ce n’est pas seulement l’impôt. C’est parfois d’avoir regardé trop tard.</h2>
         <p className="mb-4">Fermer cette page ne règle aucune des questions que vous vous posiez en arrivant. Et certaines dates, elles, continuent d’avancer.</p>
         <ul className="space-y-4">
-          <li><strong>Le délai de 15 ans.</strong> Reporter une donation peut décaler le renouvellement d’un abattement pour le même donateur et le même bénéficiaire. L’historique doit être vérifié.</li>
+          <li><strong>Le compteur des 15 ans ne se lance pas avec une bonne intention.</strong> Une donation à 67 ans atteint ce repère à 82 ans. La repousser à 69 ans le décale à 84 ans. Pour un même parent et un même enfant, le renouvellement de l’abattement dépend des donations antérieures. Ce que vous ne pouvez pas faire : attendre deux ans, puis antidater le don.</li>
           <li><strong>Les versements avant ou après 70 ans.</strong> Le régime fiscal de l’assurance-vie peut différer. Il reste des possibilités après 70 ans : mieux vaut examiner un projet avant son exécution.</li>
           <li><strong>Le seuil de 71 ans.</strong> Pour une donation de nue-propriété avec usufruit viager, la valeur fiscale passe de 60 % à 70 % au 71e anniversaire de l’usufruitier. L’effet sur l’impôt dépend ensuite du bien et des abattements disponibles.</li>
         </ul>
@@ -104,6 +105,7 @@ export default async function Page() {
         <p className="mt-3 text-sm text-text-soft">L’achat ne déclenche aucun délai fiscal et ne garantit aucune économie. Si une échéance est proche, contactez un professionnel sans attendre la fin du parcours.</p>
         <p className="mt-3 text-sm text-text-soft">Repères : <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">donations et abattements</a>, <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934">barème de l’usufruit</a>, <a href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer">assurance-vie</a>.</p>
       </section>
+      <ConditionsExoneration />
       <ExempleSeuil />
       <Guarantee />
       <section className="my-8">
