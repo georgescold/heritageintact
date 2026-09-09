@@ -6,7 +6,7 @@ import { useActionState } from "react";
 import { optin, type FormState } from "@/app/actions";
 import { Button } from "./ui";
 
-export function OptinForm({ cta = "Accéder à la vidéo" }: { cta?: string }) {
+export function OptinForm({ cta = "Accéder à la présentation" }: { cta?: string }) {
   const [state, action, pending] = useActionState<FormState, FormData>(optin, undefined);
   const pathname = usePathname();
 
@@ -29,7 +29,7 @@ export function OptinForm({ cta = "Accéder à la vidéo" }: { cta?: string }) {
           className="field"
         />
       </label>
-      {/* Case CGV : exigée par Meta sur toute landing page recevant du trafic publicitaire. */}
+      {/* Consentement commercial distinct de la demande du lien, jamais précoché. */}
       <label className="flex items-start gap-2 text-[0.85rem] text-text-soft">
         <input type="checkbox" name="marketingConsent" className="mt-1 h-5 w-5 shrink-0 accent-blue-mid" />
         <span>

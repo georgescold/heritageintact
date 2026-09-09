@@ -1,5 +1,6 @@
 import { empreinte, reserverEmail, terminerEmail } from "./mail-journal";
-import { accesParEmail, getLead } from "./db";
+import { accesParEmail, getLead, promotionParEmail } from "./db";
+import { palier, appliquerRemise } from "./promotions";
 import { CONTACT_EMAIL, PRODUCTS, SITE_URL, euros, urlEspace, type ProductSku } from "./config";
 import type { Acces, Lead } from "./db";
 import { SEQUENCE, lien, type Etape } from "./sequence";
@@ -184,7 +185,8 @@ function versionTexte(o: Contenu) {
    ───────────────────────────────────────────────────────────── */
 export async function envoyerLivraison(lead: Lead) {
   const p = echapper(lead.firstName.trim()) || "";
-  const bouton = { texte: "Ouvrir la présentation", lien: lien("/methode") };
+  const offre = await promotionParEmail(lead.email,"front");
+  const bouton = { texte: "Ouvrir la présentation", lien: offre ? lien("/reprendre/"+offre.id) : lien("/methode") };
   const paragraphes = [
     `Bonjour ${p},`,
     "Voici votre lien vers la présentation. Elle est accessible tout de suite, et elle le restera.",
@@ -220,8 +222,14 @@ export async function envoyerLivraison(lead: Lead) {
 export async function envoyerEtape(lead: Lead, etape: Etape) {
   if (lead.marketingConsent !== true || lead.desabonne || await accesParEmail(lead.email)) return { ok: false };
   const p = echapper(lead.firstName.trim()) || "";
-  const bouton = { texte: etape.bouton.texte, lien: lien(etape.bouton.chemin) };
+  const offre = await promotionParEmail(lead.email,"front");
+  const tarif = palier(offre);
+  const prix = appliquerRemise(PRODUCTS.front.price,tarif.pourcent);
+  const bouton = { texte: "Commencer les 7 erreurs maintenant · "+euros(prix), lien: offre ? lien("/reprendre/"+offre.id+(etape.bouton.chemin==="/commande"?"?destination=commande":"")) : lien(etape.bouton.chemin) };
   const paragraphes = etape.corps(p);
+  paragraphes.push(tarif.pourcent && tarif.fin
+    ? "Votre avantage au moment de cet envoi : −"+tarif.pourcent+"% sur le prix hors avantage de 27 €, soit "+euros(prix)+". Ce palier prend fin le "+new Date(tarif.fin).toLocaleString("fr-FR",{timeZone:"Europe/Paris",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})+" (Paris). Le lien conserve votre date de départ ; le récapitulatif affichera le montant à jour avant tout paiement."
+    : "Votre accès au guide complet : 27 €, en paiement unique, sans abonnement. Garantie commerciale de 30 jours selon les CGV. Cliquez pour ouvrir votre première fiche aujourd’hui.");
 
   const contenu: Contenu = {
     titre: etape.objet(p),
@@ -373,21 +381,21 @@ export const _SITE_URL = SITE_URL;
 /** Campagne client distincte des emails d’accès. Montant indicatif recalculé au clic. */
 export async function envoyerComplement(lead: Lead, acces: Acces, sku: ProductSku, cle: string, credit: number, montant: number) {
   const actuel = await accesParEmail(acces.email);
-  if (!actuel || actuel.revoque || actuel.envoyes.includes("ltv-pause")) return {ok:false};
+  if (!actuel || actuel.revoque || actuel.envoyes.includes("ltv-pause") || !lead.marketingConsent || lead.desabonne) return {ok:false};
   const p = echapper(acces.firstName.trim());
   const rappel = cle.endsWith("-2");
   const contenu: Contenu = {
-    titre: rappel ? "Votre préparation, si vous souhaitez la compléter" : "La prochaine étape de votre préparation",
+    titre: rappel ? "Ne laissez pas votre première avancée sans suite" : "Vous avez commencé pour eux. Préparez maintenant la suite.",
     paragraphes: [
       `Bonjour ${p},`,
-      rappel ? "Un dernier rappel pour ce complément. Votre achat actuel reste utilisable et aucune décision n’est attendue de vous." : "Vous avez commencé votre fiche. Si vous souhaitez maintenant approfondir votre préparation, voici le complément correspondant aux informations que vous nous avez indiquées.",
+      rappel ? "Votre première fiche a posé ce qui compte pour vous. La prochaine avancée peut être tout aussi concrète : retrouver les pièces, poser les bonnes questions, conserver les réponses. Ne laissez pas ce premier élan redevenir un dossier « à reprendre un jour »." : "Imaginez votre prochain échange : vous n’ouvrez plus trois tiroirs pour retrouver une information. Vous ouvrez votre préparation, avec ce qui est connu, ce qui manque et les questions propres à votre famille. C’est la suite de votre première fiche.",
       sku === "upsell2" ? "Vos contrats d’assurance-vie méritent une lecture organisée : clause en vigueur, informations manquantes et réponse de l’assureur. Le module vous guide pour préparer cette vérification sans modifier un contrat à l’aveugle." : "Le pack réunit vos supports, les fiches de situations familiales et l’atelier pédagogique. L’objectif : préparer le rendez-vous à partir de vos priorités, puis conserver les réponses au même endroit.",
       `Le complément proposé est « ${PRODUCTS[sku].name} ». ${credit > 0 ? `Vos ${euros(credit)} d’achats inclus déjà payés sont déduits automatiquement. ` : ""}Le montant à ajouter, calculé aujourd’hui, est de ${euros(montant)}.`,
       "Vous ne repartez pas de zéro et vous ne repayez pas les contenus inclus déjà achetés. Cette déduction ne constitue pas un avoir à réclamer et n’expire pas ce soir.",
       "La page de confirmation affiche le montant à jour avant tout paiement. Cliquer dans cet email ne déclenche aucun débit.",
-      "Si votre achat actuel suffit, continuez simplement votre parcours. Aucun produit supplémentaire n’est nécessaire pour terminer la Méthode.",
+      "Vous n’avez pas besoin de devenir spécialiste ni de tout décider maintenant. Les guides PDF donnent le mode d’emploi, un exemple et les étapes. La garantie commerciale de 30 jours permet de découvrir cette préparation selon les CGV. Ouvrez votre proposition et choisissez votre prochaine avancée ; la Méthode de base reste autonome.",
     ],
-    bouton: {texte:"Voir mon complément et son contenu",lien:urlEspace(acces.jeton)+"/ajouter/"+sku},
+    bouton: {texte:"Préparer la suite · "+euros(montant),lien:urlEspace(acces.jeton)+"/ajouter/"+sku},
     pied:"prospect",leadId:lead.id,
   };
   return envoyer({to:lead.email,leadId:lead.id,cle:`client-v3/${acces.jeton}/${cle}`,subject:contenu.titre,html:gabarit(contenu),text:versionTexte(contenu)});

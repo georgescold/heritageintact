@@ -26,7 +26,7 @@ export default function Confidentialite() {
           rapprochée d&apos;un compte Meta ; ce n&apos;est pas une anonymisation.
         </li>
         <li>
-          Quatre réponses <strong>facultatives</strong>, si vous choisissez de les donner dans le parcours : votre situation de couple, la présence d&apos;enfants, l&apos;existence
+          Quatre réponses <strong>obligatoires pour terminer la qualification après achat</strong> : votre situation de couple, la présence d&apos;enfants, l&apos;existence
           d&apos;une assurance-vie et votre objectif de préparation. Les anciennes réponses de tranche d’âge peuvent être conservées dans l’historique. Elles servent uniquement à choisir
           les documents et les offres qui vous sont présentés ensuite. Elles ne modifient ni le prix
           de votre commande ni le contenu de votre Méthode, ne sont transmises à aucun tiers ni à
@@ -36,7 +36,8 @@ export default function Confidentialite() {
       </ul>
 
       <h2>Orientation et fiabilité des envois</h2>
-      <p>Votre priorité facultative peut être choisie avant l’achat. Elle est conservée 7 jours dans un cookie de fonctionnement pour adapter la présentation et éviter de vous la redemander. Elle ne change pas le prix et n’est pas transmise aux outils publicitaires.</p>
+      <p>Le produit de base est commun à tous. La qualification intervient après paiement pour ordonner les documents et présenter une suite pertinente. Vous pouvez indiquer une situation à préciser ou « Je ne sais pas » sans communiquer de détail familial. Une réponse incertaine n’empêche pas de continuer. L’accès déjà acquis et l’assistance restent disponibles en cas de difficulté. Ces réponses ne valent pas consentement aux emails commerciaux ni à la publicité.</p>
+      <p>Les avantages de démarrage utilisent une date enregistrée avec l’adresse email et la gamme d’offre. Le cookie de fonctionnement « hi_offre » conserve pendant 30 jours une clé aléatoire permettant de retrouver le palier de prix, sans contenir l’adresse email. Il ne sert pas à vous suivre sur des sites tiers. Une nouvelle visite ne relance pas une offre expirée. Voir les <a href="/conditions-offres">conditions des offres</a>.</p>
       <p>Un journal technique conserve des identifiants et états d’envoi, des empreintes et les réponses de rejet ou plainte nécessaires pour limiter les doublons et cesser les envois vers les adresses concernées. Il ne contient ni vos réponses familiales ni le corps des emails. Les empreintes sont des données pseudonymisées, pas une anonymisation.</p>
       <p>Des compteurs internes peuvent mesurer des vues et clics agrégés, sans identifiant visiteur ni réponses au questionnaire. Ils ne constituent pas un suivi individuel.</p>
       <h2>Finalités et bases légales</h2>

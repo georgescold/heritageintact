@@ -1,25 +1,12 @@
 import { Champ, Encadre, Feuille, Titre } from "@/components/documents/Feuille";
 
-/**
- * LES 12 QUESTIONS À POSER À VOTRE NOTAIRE (bonus B2), et les 3 à ne pas poser.
- *
- * ⚠️ Chaque question est fermée et porte sur SA situation. Une question ouverte
- * — « vous me conseillez quoi ? » — appelle une réponse générale, et c'est
- * exactement ce qui fait ressortir le lecteur avec « revenez quand vous
- * saurez ».
- *
- * ⚠️ AUCUN MONTANT D'ÉMOLUMENTS N'EST ÉCRIT ICI. Le barème est réglementé,
- * révisé par arrêté, et l'assiette d'une donation de nue-propriété est la
- * pleine propriété du bien : un ordre de grandeur imprimé aujourd'hui serait
- * faux dans un an et cité contre nous. On fait poser la question au notaire,
- * qui est la seule personne habilitée à chiffrer son acte.
- */
+/** Douze questions à sélectionner et préciser avec le notaire, selon les pièces disponibles. */
 
 const QUESTIONS: string[] = [
   "Compte tenu de mon régime matrimonial, qu'est-ce qui appartient à mon conjoint et qu'est-ce qui m'appartient en propre ?",
   "Avons-nous une donation au dernier vivant ? Si non, qu'est-ce qu'elle changerait dans notre cas ?",
   "Quelle serait la part de chacun de mes enfants si la succession s'ouvrait aujourd'hui ?",
-  "D'après le calcul que j'ai apporté, mes enfants devraient payer ce montant. Le confirmez-vous ?",
+  "Quelles hypothèses faut-il vérifier pour estimer les droits de chacun, et quels frais faut-il distinguer ?",
   "Ai-je intérêt à donner la nue-propriété de ma résidence principale, et à quelle valeur serait-elle comptée à mon âge ?",
   "Si je fais cette donation, que se passe-t-il si je dois entrer en maison de retraite ? Puis-je louer le bien ?",
   "Une clause de retour et une interdiction d'aliéner sont-elles utiles dans mon cas, et que coûtent-elles ?",
@@ -34,17 +21,17 @@ const A_EVITER: { question: string; pourquoi: string }[] = [
   {
     question: "« Vous me conseillez quoi ? »",
     pourquoi:
-      "Sans dossier sous les yeux, il ne peut répondre que par des généralités. Apportez vos chiffres et la question devient répondable.",
+      "Précisez votre objectif et ce qui manque : « Je souhaite protéger mon conjoint sans déséquilibrer les enfants ; quels points faut-il examiner ? »",
   },
   {
     question: "« Combien je vais payer ? »",
     pourquoi:
-      "Ce n'est pas vous qui paierez : ce sont vos héritiers, chacun sur sa part. Demandez plutôt ce que paiera chaque enfant.",
+      "Distinguez les droits de chaque bénéficiaire, les frais d’acte et les honoraires éventuels. Demandez qui peut ou doit prendre chaque somme en charge dans votre projet.",
   },
   {
     question: "« Est-ce qu'on peut éviter les impôts ? »",
     pourquoi:
-      "La question ferme la conversation. On n'évite pas l'impôt, on utilise ce que la loi prévoit — et il y a beaucoup à utiliser.",
+      "Demandez quels dispositifs légaux sont adaptés à votre situation, avec leurs conditions, leurs coûts et leurs conséquences. Une réduction d’impôt ne suffit pas à rendre une décision souhaitable.",
   },
 ];
 
@@ -55,16 +42,9 @@ export function QuestionsNotaire() {
       sousTitre="Emportez cette feuille. Cochez au fur et à mesure, et notez la réponse à côté."
     >
       <p>
-        {/* ⚠️ CETTE PHRASE DISAIT « Le notaire est payé à l'acte, et il acte ce
-            que vous lui demandez ». Les deux affirmations sont fausses, et la
-            seconde est dénigrante pour une profession réglementée (art. 1240 du
-            code civil) : le notaire a un devoir de conseil, qui existe dès le
-            premier rendez-vous, et il peut refuser un acte illégal.
-
-            Elle était surtout contredite mot pour mot par la vidéo de
-            l'étape 7, que le membre regarde AVEC cette feuille sous les yeux. */}
         Le notaire a un devoir de conseil, et il existe dès le premier rendez-vous. Mais il ne
-        devine pas votre projet : ces douze questions le lui donnent en vingt minutes.
+        devine pas votre projet : choisissez les questions pertinentes et signalez les informations
+        qui restent à retrouver. Il peut en faire apparaître d’autres.
       </p>
 
       <ol className="divide-y divide-black border-y border-black">
@@ -84,7 +64,7 @@ export function QuestionsNotaire() {
         ))}
       </ol>
 
-      <Titre>Les 3 questions à ne pas poser</Titre>
+      <Titre>Trois questions à rendre plus précises</Titre>
       <div className="space-y-2">
         {A_EVITER.map((a) => (
           <Encadre key={a.question} titre={a.question}>

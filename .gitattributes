@@ -1,0 +1,2 @@
+# Preserve generated PDF bytes on Windows and GitHub.
+*.pdf binary

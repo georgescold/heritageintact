@@ -1,11 +1,15 @@
-# La méthode — contenu écrit de production
-Complément V4 intégré à chaque étape : [exercices en trois gestes, exemples et contrôles de compréhension](10-GUIDES-ET-VALEUR-V4.md). Les leçons ci-dessous restent la base explicative.
+# Les 7 erreurs — contenu écrit de production V9
 
-Source : src/lib/lecons.ts. Huit étapes intégrées à l’espace membre. Vidéos facultatives.
+Export du 9 septembre 2026 depuis src/lib/lecons.ts. Aucun tournage pédagogique. Le guide PDF ajoute les introductions et les fiches utiles ; l’espace utilise ces mêmes textes. Les huit blocs de quiz ont été retirés.
 
-## 1. Faire le point, sans rien décider
+## Faire le point, sans rien décider
 
-Une fiche pour distinguer vos priorités, vos informations connues et ce qui reste à vérifier.
+Vous pensez à votre conjoint, à vos enfants, à ce qu’ils trouveraient dans vos tiroirs. Tout semble important. Commencez par ce que vous voulez leur épargner : cette priorité donnera un sens à toute la lecture.
+
+Ce que vous allez comprendre :
+
+- Une priorité formulée avec vos mots
+- Les informations à retrouver avant de décider
 
 ### Votre premier résultat
 
@@ -27,9 +31,14 @@ Action : Remplissez votre fiche de situation. Une information manquante peut êt
 
 Supports : ma-situation, trois-poches.
 
-## 2. Préserver ce dont vous avez besoin
+## Erreur 1 - Attendre sans regarder vos besoins ni les dates
 
-Avant de penser à transmettre, clarifiez vos besoins et retrouvez les donations déjà effectuées.
+Vous voulez aider vos enfants sans devenir dépendant d’eux demain. Ce n’est pas égoïste : préserver vos besoins fait partie de leur protection. Regardez les dates, mais ne laissez pas un plafond fiscal décider à votre place.
+
+Ce que vous allez comprendre :
+
+- Préparer ne signifie pas donner
+- Les donations antérieures demandent un historique par donateur et bénéficiaire
 
 ### Commencer par votre sécurité
 
@@ -51,9 +60,14 @@ Action : Complétez la fiche de vos besoins. Notez séparément les donations pa
 
 Supports : trois-poches, calendrier-3-dates.
 
-## 3. Comprendre qui possède et qui peut recevoir
+## Erreur 2 - Croire que tout revient automatiquement à l’autre
 
-Distinguer la propriété actuelle, les droits des proches et la fiscalité.
+« Nous avons toujours tout partagé. » Cette phrase raconte votre vie à deux. Elle ne dit pas encore quels droits chacun aurait si l’autre disparaissait. Ici, vous allez séparer votre souhait des règles à vérifier.
+
+Ce que vous allez comprendre :
+
+- Exonération fiscale et droit d’hériter sont deux sujets distincts
+- Votre situation familiale doit être examinée avant tout calcul
 
 ### Trois questions différentes
 
@@ -75,9 +89,14 @@ Action : Rédigez une question sur les droits de votre conjoint ou des personnes
 
 Supports : ma-situation, lexique.
 
-## 4. Retrouver les informations de votre assurance-vie
+## Erreur 3 - Croire qu’un contrat signé n’a plus besoin d’être vérifié
 
-Savoir ce qui est écrit dans vos contrats, sans modifier une clause à l’aveugle.
+Le contrat est signé, le relevé arrive chaque année : vous pourriez croire le sujet clos. Pourtant, savoir combien il contient ne dit pas tout sur les personnes désignées. Retrouvez ce qui est écrit, aujourd’hui.
+
+Ce que vous allez comprendre :
+
+- Le bénéficiaire d’un contrat n’est pas nécessairement un enfant
+- Une information absente se demande à l’assureur
 
 ### Un contrat à retrouver
 
@@ -87,21 +106,24 @@ Identifiez l’assureur, la référence du contrat et les documents disponibles.
 
 Quel est le contrat ? Qui sont les bénéficiaires désignés et selon quelle répartition ? Quel est l’historique des versements ? Quelles informations l’assureur peut-il confirmer par écrit ? Les règles fiscales varient notamment selon les dates du contrat et des versements, l’âge de l’assuré lors de ceux-ci et la situation du bénéficiaire.
 
-### La limite des trente minutes
+### Une demande, pas une modification à l’aveugle
 
-Vous pouvez préparer une demande en une courte séance. Cela ne signifie pas que l’assureur aura répondu, que la clause sera validée ou que le contrat sera modifié. Ne présentez pas une grille remplie comme un audit juridique.
-
-### La suite si vous avez le module
-
-Le module assurance-vie comprend une grille de lecture et un modèle de demande. Vous pourrez classer les réponses et préparer les points à revoir avec le professionnel compétent. Aucun changement de placement n’est recommandé par ce parcours.
+Demandez la clause bénéficiaire en vigueur, ses avenants et l’historique des versements par le canal habituel de votre assureur. Conservez sa réponse ; si vous envisagez un changement, faites d’abord examiner ses conséquences. Une grille remplie n’est pas un audit juridique.
 
 Action : Retrouvez le dernier relevé et demandez une copie de la clause bénéficiaire actuellement en vigueur.
 
 Supports : lexique.
 
-## 5. La maison : usage, propriété et questions utiles
+Sans assurance-vie, passez à la suite. Vous n’avez aucun contrat à ouvrir pour suivre le parcours.
 
-Comprendre ce que les droits sur un logement permettent, avant d’envisager une donation.
+## Erreur 4 - Confondre maison payée et transmission préparée
+
+La dernière mensualité est payée. Ce soulagement, vous l’avez mérité. Mais protéger l’avenir de cette maison pose une autre question : quels droits voulez-vous garder et que pourraient recevoir vos proches ?
+
+Ce que vous allez comprendre :
+
+- Donner un droit sur un bien mérite une décision éclairée
+- Un pourcentage fiscal ne décrit pas toute la conséquence d’une donation
 
 ### Partir de l’acte
 
@@ -123,9 +145,14 @@ Action : Retrouvez l’acte de propriété et notez ce que vous voulez préserve
 
 Supports : lexique, ma-situation.
 
-## 6. Les donations déjà faites
+## Erreur 5 - Oublier l’histoire des dons déjà faits
 
-Retrouver une histoire vérifiable, sans confondre tous les transferts familiaux.
+Vous vous souvenez d’avoir aidé un enfant. Lui aussi. Mais vous ne retrouvez plus la date ni le document. N’attendez pas que les souvenirs de chacun deviennent les seules pièces du dossier.
+
+Ce que vous allez comprendre :
+
+- Un historique clair aide la vérification
+- Vous pouvez avancer même si certains justificatifs manquent
 
 ### Ce qu’il faut relever
 
@@ -147,9 +174,14 @@ Action : Créez une ligne d’historique pour chaque donation connue et marquez 
 
 Supports : calendrier-3-dates.
 
-## 7. Enfants, petits-enfants et équilibre familial
+## Erreur 6 - Confondre bonnes intentions et équilibre familial
 
-Exprimer vos souhaits sans annoncer trop tôt une répartition ou un résultat fiscal.
+Vous voulez être juste. Vos enfants peuvent pourtant comprendre différemment une aide, un silence ou une intention. Quelques mots clairs aujourd’hui peuvent éviter de leur laisser tout à interpréter.
+
+Ce que vous allez comprendre :
+
+- Une intention familiale n’est pas encore un acte
+- Il est possible d’ouvrir la conversation sans annoncer des montants
 
 ### Partir de votre intention
 
@@ -171,9 +203,14 @@ Action : Écrivez ce que vous voulez expliquer à vos proches et une question su
 
 Supports : lettre-aux-enfants.
 
-## 8. Préparer et suivre le rendez-vous
+## Erreur 7 - Arriver sans questions, repartir sans suivi
 
-Transformer vos notes en questions précises, puis conserver les réponses.
+Imaginez sortir du rendez-vous en sachant ce qui a été confirmé et qui fait quoi ensuite. Ce dernier chapitre sert à cela : ne pas laisser une conversation importante redevenir un souvenir flou.
+
+Ce que vous allez comprendre :
+
+- Un rendez-vous peut être préparé sans dossier parfait
+- Une réponse et une prochaine démarche peuvent être notées après l’échange
 
 ### Votre minimum utile
 

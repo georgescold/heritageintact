@@ -29,6 +29,8 @@ import { PRODUCTS, type ProductSku } from "./config";
 import { nouveauJeton } from "./jeton";
 import { assurerSchema, sql, sqlActif } from "./sql";
 
+export type Promotion = { id: string; email: string; gamme: "front" | "suite"; commenceLe: string };
+
 export type Lead = {
   marketingConsent?: boolean;
   marketingConsentAt?: string;
@@ -141,6 +143,7 @@ export type Profil = {
 };
 
 type Db = {
+  promotions?: Promotion[];
   leads: Lead[];
   orders: Order[];
   acces: Acces[];
@@ -170,9 +173,10 @@ async function read(): Promise<Db> {
       acces: db.acces ?? [],
       progression: db.progression ?? [],
       profils: db.profils ?? [],
+      promotions: db.promotions ?? [],
     };
   } catch {
-    return { leads: [], orders: [], acces: [], progression: [], profils: [] };
+    return { leads: [], orders: [], acces: [], progression: [], profils: [], promotions: [] };
   }
 }
 
@@ -1199,7 +1203,10 @@ export async function creerCommandeEspace(input: {
   // Le prix ne vient jamais de l’appelant : relire les achats payés côté serveur.
   const { devis } = await import("./prix");
   const commandes = await commandesPayeesParEmail(input.email);
-  const prix = devis(input.sku, commandes.flatMap(c => c.items)).montant;
+  const { appliquerRemise, palier } = await import("./promotions");
+  const prixBase = devis(input.sku, commandes.flatMap(c => c.items)).montant;
+  const reduction = palier(["upsell1","upsell2","pack1"].includes(input.sku) ? await promotionParEmail(input.email,"suite") : null);
+  const prix = appliquerRemise(prixBase, reduction.pourcent);
   if (!Number.isFinite(prix) || prix < 0) throw new Error("Prix de commande invalide");
   const items: OrderItem[] = [{ sku: input.sku, price: prix }];
   const base = {
@@ -1531,4 +1538,52 @@ export async function commandesPourPilotage(): Promise<{ commandes: Order[]; tro
   const db = await read();
   const lignes = db.orders.filter(c => c.status === "paid" && c.mode === "live");
   return { commandes: lignes.slice(0, limite), tronque: lignes.length > limite };
+}
+
+/** Une seule fenêtre par email et gamme. Un refresh, une réinscription ou un nouvel onglet ne la réinitialise pas. */
+export async function commencerPromotion(email: string, gamme: Promotion["gamme"]): Promise<Promotion> {
+  const adresse = normaliserEmail(email);
+  if (sqlActif) {
+    const s = await pg();
+    await assurerPromotions();
+    const [r] = await s<{id:string;email:string;gamme:Promotion["gamme"];commence_le:Date}[]> `
+      insert into promotions (id,email,gamme) values (${id("promo")},${adresse},${gamme})
+      on conflict (email,gamme) do update set email=excluded.email returning *
+    `;
+    return {id:r.id,email:r.email,gamme:r.gamme,commenceLe:r.commence_le.toISOString()};
+  }
+  const db = await read();
+  const existante = db.promotions?.find(p=>p.email===adresse && p.gamme===gamme);
+  if (existante) return existante;
+  const p:Promotion={id:id("promo"),email:adresse,gamme,commenceLe:new Date().toISOString()};
+  db.promotions=[...(db.promotions??[]),p]; await write(db); return p;
+}
+let promotionsPretes:Promise<void>|null=null;
+async function assurerPromotions() {
+  if(!promotionsPretes)promotionsPretes=(async()=>{
+    const s=await pg();
+    await s`create table if not exists promotions (
+      id text primary key, email text not null, gamme text not null check (gamme in ('front','suite')),
+      commence_le timestamptz not null default now(), unique(email,gamme)
+    )`;
+  })().catch(e=>{promotionsPretes=null;throw e;});
+  await promotionsPretes;
+}
+export async function promotionParEmail(email:string,gamme:Promotion["gamme"]):Promise<Promotion|null> {
+  const adresse=normaliserEmail(email);
+  if(sqlActif){
+    await assurerPromotions(); const s=await pg();
+    const [r]=await s<{id:string;email:string;gamme:Promotion["gamme"];commence_le:Date}[]>`select * from promotions where email=${adresse} and gamme=${gamme}`;
+    return r?{id:r.id,email:r.email,gamme:r.gamme,commenceLe:r.commence_le.toISOString()}:null;
+  }
+  return (await read()).promotions?.find(p=>p.email===adresse&&p.gamme===gamme)??null;
+}
+export async function promotionParId(identifiant:string):Promise<Promotion|null> {
+  if(!/^promo_[a-zA-Z0-9]+$/.test(identifiant))return null;
+  if(sqlActif){
+    await assurerPromotions();const s=await pg();
+    const [r]=await s<{id:string;email:string;gamme:Promotion["gamme"];commence_le:Date}[]>`select * from promotions where id=${identifiant}`;
+    return r?{id:r.id,email:r.email,gamme:r.gamme,commenceLe:r.commence_le.toISOString()}:null;
+  }
+  return (await read()).promotions?.find(p=>p.id===identifiant)??null;
 }

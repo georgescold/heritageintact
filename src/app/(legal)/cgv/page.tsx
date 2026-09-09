@@ -14,7 +14,7 @@ export default function CGV() {
       <p>
         Les présentes conditions régissent la vente, par {LEGAL.operatorName} ({LEGAL.legalForm},
         SIRET {LEGAL.siret}), sous le nom commercial « {BRAND} », de contenus numériques
-        pédagogiques accessibles en ligne : parcours écrits, vidéos complémentaires, documents et
+        pédagogiques accessibles en ligne : parcours écrits, guides PDF, documents et
         outils de calcul.
       </p>
 
@@ -37,12 +37,12 @@ export default function CGV() {
       <p>
         Lors d’un complément, les sommes effectivement payées pour les contenus inclus, non
         remboursés, sont déduites du prix total. Le complément est affiché avant validation. Le
-        total Préparation et assurance-vie est de 247 € quel que soit l’ordre de ces achats. Le
+        prix catalogue total Préparation et assurance-vie est de 247 €, avant éventuelles réductions de démarrage. Le
         crédit ne produit pas de somme négative ni de remboursement automatique des achats
         antérieurs. Les droits acquis antérieurement sont conservés.
       </p>
       <p>
-        Paiements uniques, sans abonnement. Aucun compte à rebours ne modifie ces prix. Les prix
+        Paiements uniques, sans abonnement. Des réductions personnelles à paliers peuvent s’appliquer selon les <a href="/conditions-offres">conditions des avantages de démarrage</a>. Le prix et sa date de fin sont affichés ; un changement avant paiement nécessite une nouvelle confirmation. Les prix
         sont en euros, toutes taxes comprises. {LEGAL.vatNotice}
       </p>
 

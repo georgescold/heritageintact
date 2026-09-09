@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  outputFileTracingIncludes: {"/espace/*/pdf/*":["./output/pdf/*.pdf"]},
   /**
    * L'ÉTANCHÉITÉ DU JETON, POSÉE AU NIVEAU DE LA RÉPONSE HTTP.
    *
@@ -47,7 +48,7 @@ const nextConfig: NextConfig = {
        * page de commande offerte à qui la cherche.
        */
       {
-        source: "/:chemin(plan-complet|kit-assurance-vie|dossier-complet|situation|merci)",
+        source: "/:chemin(plan-complet|kit-assurance-vie|dossier-complet|situation|bienvenue|merci|methode|commande)",
         headers: [
           { key: "Referrer-Policy", value: "no-referrer" },
           { key: "Cache-Control", value: "private, no-store, max-age=0" },

@@ -1,48 +1,50 @@
+# Version courante : produits narratifs V9
+
+[Lire la structure, les 67 pages et les contrôles V9](19-PRODUITS-NARRATIFS-V9.md). Les quiz et les huit exercices ont été retirés ; les fiches utiles sont conservées. Push et redéploiement de test autorisés, dépôt public maintenu à la demande de Loys. Les informations ci-dessous décrivent le socle V7/V8 ; la V9 prévaut pour la pédagogie et la publication.
+
 # Héritage Intact — commencer ici
-Publication pour test demandée le 9 septembre 2026 : [périmètre V5, destination et liens Loys](15-PUBLICATION-V5.md). Les mentions de non-publication ci-dessous et dans les audits décrivent leur état historique avant cette demande.
 
-Dernière passe V5 : [compléments, déductions réelles, consentement et pilotage](13-LIVRAISON-V5.md). [Recette Meta et retrait du consentement](14-RECETTE-CONSENTEMENT-META.md). Code local testé ; mesure et campagnes non activées, aucun push ou redéploiement.
+[Dernière passe marketing V8 : headline et copy réécrites](18-AUDIT-COPY-VALERE-BRUNSON.md).
 
-Passe produit V4 : [les guides, exercices et différences entre offres](10-GUIDES-ET-VALEUR-V4.md), intégrés localement. [Scripts publicitaires alignés](11-CREATIVES-ALIGNEES-V4.md), non diffusés.
-Mise à jour conversion V3 : [améliorations intégrées, emails et prérequis d’activation](08-LIVRAISON-CONVERSION-V3.md). Cette livraison actualise l’audit 07 : l’orientation en amont, les aperçus, l’aide à l’hésitation et le code des campagnes complémentaires sont désormais intégrés, non publiés.
+Version actuelle : [livraison V7](17-LIVRAISON-V7.md), locale non publiée, 9 septembre 2026.
 
-Refonte locale du 9 septembre 2026. Les tarifs et inclusions ont été confirmés par Loys. Rien n’a été publié, aucun paiement réel ni email client n’a été déclenché.
+Pour toi : [checklist Loys](a-faire-loys/00-CHECKLIST.md). **Aucune vidéo pédagogique à tourner.** Seule la VSL de vente reste à fournir, corriger si nécessaire et intégrer.
 
-## Ce qui est préparé
-Le funnel propose une méthode autonome, une option non précochée et une seule recommandation complémentaire selon l’objectif et les réponses. L’espace sépare parcours, dossier, outils et aide. Les huit étapes sont écrites ; trois vidéos seulement viennent les compléter.
-Les anciens achats sont pris en compte dans les inclusions et les crédits. Le simulateur est inclus dans les packs, sans vente autonome. Son modèle a été restreint à des calculs qu’il explicite : pas de « facture exacte » prétendue.
+## Le parcours actuel
 
-## Ordre de lecture
-Pour tes actions personnelles : [checklist Loys](a-faire-loys/00-CHECKLIST.md). Pour distinguer ce qui est intégré de ce qui reste à optimiser : [audit conversion](07-AUDIT-CONVERSION.md).
+Email et prénom → présentation/VSL → guide de base commun → paiement → quatre réponses obligatoires → livraison explicite → une proposition adaptée → espace et approfondissements au fil de l’utilisation.
 
-1. [Avatar et stratégie](01-AVATAR-ET-STRATEGIE.md) : motivations, objections, offres et mesure.
-2. [Pages et parcours](02-PAGES-ET-PARCOURS.md) : architecture éditoriale et règles de qualification. Les fichiers src/app font foi pour la copie effectivement intégrée.
-3. [Produit écrit](03-PRODUIT-ECRIT.md) : les huit étapes lisibles.
-4. [Dossier et familles](04-DOSSIER-ET-PARCOURS-FAMILIAUX.md) : méthode de préparation, exemple rempli et douze situations.
-5. [Emails](05-EMAILS.md) : sept emails de vente intégrés, accompagnement et campagnes LTV préparées.
-6. [Recette et lancement](06-RECETTE-ET-LANCEMENT.md) : contrôles, limites et travaux préalables à la publication.
+Le consentement marketing est facultatif et distinct du questionnaire. La qualification ne change pas le contenu déjà acheté ; « je ne sais pas » est une réponse recevable. Une panne d’enregistrement ne valide pas silencieusement le questionnaire.
 
-## Pour tourner
-- [V1 — Première fiche](scripts/V1-PREMIERE-FICHE.md), environ 4 minutes avec pauses.
-- [V2 — Propriété et transmission](scripts/V2-PROPRIETE-TRANSMISSION.md), environ 5–6 minutes.
-- [V3 — Assurance-vie](scripts/V3-ASSURANCE-VIE.md), environ 4–5 minutes.
-- [PowerPoint modifiable](visuels/Fonds-formation-Heritage-Intact.pptx) et dix PNG 1920 × 1080 dans visuels/.
-Chaque script contient ce qu’il faut comprendre, le texte parlé et les indications de fond. Durées indicatives : mesurer les exports, ne pas annoncer une durée de vidéo non tournée.
-Le skill Presentations a servi à créer et vérifier les diapositives éditables. Import Canva à vérifier dans votre compte, non utilisé ici.
+## Le produit livré
 
-## VSL existante
-Le texte fourni a été examiné. Aucun fichier vidéo reçu, aucun timecode inventé. Utiliser [les reprises ciblées](scripts/VSL-REPRISES-CIBLEES.md) pour conserver les plans utiles, retirer les comparaisons non démontrées et corriger les passages concernés.
-La diffusion de la VSL nécessite VSL_VALIDEE=true après validation. Son identifiant existant n’est pas effacé.
-Les vidéos de formation V2 utilisent NEXT_PUBLIC_FORMATION_V2_VIDEO_IDS dans l’ordre V1,V2,V3. Les anciens identifiants ne sont pas repris automatiquement.
+- Guide Les 7 erreurs : huit étapes écrites, huit exercices, neuf fiches.
+- Dossier : exemple rempli, inventaire, famille, pièces, demande de rendez-vous et compte-rendu.
+- Préparation : douze fiches familiales, tableau de bord et suivi des donations ; atelier inclus dans les packs.
+- Assurance-vie : six repères expliqués, mode d’emploi et quatre fiches.
 
-## Tarifs approuvés
-Méthode 27 € ; dossier facultatif 17 € ; Préparation 197 € au total ; Préparation avec assurance-vie 247 € au total ; assurance-vie seule 67 €.
-Déduire les achats inclus effectivement payés et non remboursés, jamais une remise fictivement « payée ». Exemples : méthode → Préparation = 170 € ; méthode + dossier → Préparation = 153 € ; Préparation → assurance-vie = 50 €. Total combiné 247 € quel que soit l’ordre. Crédit plafonné : pas de remboursement rétroactif automatique.
+Ces contenus existent à l’écran et dans quatre PDF protégés par les droits d’achat. Les anciens scripts pédagogiques et fonds de présentation sont historiques ; ils ne sont plus des livrables à produire par Loys.
 
-## Avant mise en ligne
-Le tournage n’est pas la seule condition restante : correction/validation de la VSL, relecture juridique du produit et des conditions, recette Stripe de préproduction et vérification des emails sont indispensables. Les nouvelles campagnes LTV sont écrites mais non activées au cron. Aucun abonnement ou accompagnement humain non organisé n’est vendu.
-Ne pas mélanger les anciens scripts avec la V2. L’historique Git conserve les anciennes versions.
+## Prix et remises
 
-## Sources des repères
-Sources officielles consultées le 9 septembre 2026 : [héritiers](https://www.service-public.gouv.fr/particuliers/vosdroits/F2529), [donations et barème](https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits), [assurance-vie](https://www.impots.gouv.fr/je-suis-beneficiaire-dune-assurance-vie), [usufruit](https://www.service-public.gouv.fr/particuliers/vosdroits/F33076), [prospection et consentement](https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique-sms-mms-et-automate-dappel).
-Cette consultation documentaire ne remplace pas une validation professionnelle du produit.
+Tarifs hors avantage : guide 27 € ; Dossier facultatif non précoché 17 € ; Préparation 197 € au total ; pack avec assurance-vie 247 € au total ; assurance-vie seule 67 €.
+
+Guide : réduction de 20 % pendant 20 minutes après inscription, puis 10 % jusqu’au septième jour. Compléments : 25 % pendant 20 minutes après la qualification, puis 10 % jusqu’à 48 heures. Départ unique enregistré par email ; une visite ne relance pas le délai.
+
+Les achats inclus effectivement payés sont d’abord déduits ; la remise porte ensuite sur le complément restant. Un prix périmé demande une nouvelle confirmation, jamais un débit plus élevé automatique. Le Dossier à 17 € n’a pas de réduction. Voir les conditions intégrées dans le site.
+
+## Documents de référence
+
+1. [Livraison, critères et limites V7](17-LIVRAISON-V7.md).
+2. [Produit écrit synchronisé avec les leçons](03-PRODUIT-ECRIT.md).
+3. [Emails de production et logique CEO](05-EMAILS.md).
+4. [Actions Loys](a-faire-loys/00-CHECKLIST.md).
+5. [Reprises VSL](scripts/VSL-REPRISES-CIBLEES.md).
+
+Le process Valère guide l’architecture et la progression commerciale. Cela ne signifie pas une approbation de sa part, ni une conversion démontrée. Les récits fictifs, les exemples chiffrés et les limites restent identifiés.
+
+## Publication
+
+La V5 a été publiée pour test ; les dossiers V2 à V6 conservent l’historique. Le présent état V7 n’est ni commité ni publié. Aucun paiement réel, email client, campagne ou migration distante n’a été lancé durant cette recette.
+
+Avant publication : traiter le dépôt public qui expose le contenu payant, intégrer la VSL validée, obtenir les relectures et terminer les contrôles réels des services. Pas de redéploiement via le CLI Vercel.

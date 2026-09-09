@@ -1,175 +1,131 @@
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
+import { devisFront } from "@/lib/prix-front";
+import { AvantageDemarrage } from "@/components/AvantageDemarrage";
+import { SortieOffre } from "@/components/SortieOffre";
+import { ExempleSeuil } from "@/components/ExempleSeuil";
+import { ExempleHeadline } from "@/components/ExempleHeadline";
 import { MesureFunnel } from "@/components/MesureFunnel";
-import Link from "next/link";
+import { Header, Footer } from "@/components/Chrome";
+import { ButtonLink, FAQ, Guarantee } from "@/components/ui";
+import { VslPresentation } from "@/components/VslPresentation";
+import { RecitJeanPierre, RecitMartine } from "@/components/RecitsFamilles";
 import { ApercuProduit } from "@/components/ApercuProduit";
 import { PreuvePreparation } from "@/components/PreuvePreparation";
-import { AideDecision } from "@/components/AideDecision";
-import { objectifValide } from "@/lib/positionnement";
-import type { Metadata } from "next";
-import { Header, Footer } from "@/components/Chrome";
-import { ButtonLink, FAQ, Guarantee, Panel } from "@/components/ui";
-import { VideoEmbed } from "@/components/VideoEmbed";
-import { PRODUCTS, VIDEO, euros } from "@/lib/config";
-import { LECONS } from "@/lib/lecons";
-export const metadata: Metadata = { title: "Comprendre ma transmission · 27 €" };
+import { euros } from "@/lib/config";
+export const metadata: Metadata = { title: "Les 7 erreurs qui offrent votre héritage à l’État" };
+/** Même promesse et contenu pour tous ; avantage personnel horodaté, qualification après achat. */
 export default async function Page() {
-  const objectif = objectifValide((await cookies()).get("hi_objectif")?.value);
-  const angle = objectif === "preparer" ? "Arrivez chez le notaire avec vos priorités, vos pièces et vos questions." : objectif === "assurance-vie" ? "Vos contrats sont signés. Savez-vous quelles questions poser pour les vérifier ?" : "Ce que vous avez construit mérite mieux que « on verra plus tard ».";
+  const jar = await cookies();
+  const d = await devisFront(jar.get("hi_offre")?.value);
+  return <>
+    <MesureFunnel evenement="vue_vente" />
+    <div className="bg-red px-4 py-2 text-center text-sm font-bold text-white">La maison est payée. Ne laissez pas sa transmission au hasard.</div>
+    <Header minimal />
+    <main className="wrap flex-1 pb-16 pt-6 sm:pt-9">
+      <p className="mb-3 text-sm font-bold uppercase tracking-wide text-orange-dark">Parents propriétaires · Vous avez construit pour eux</p>
+      <h1 className="mb-4 text-[1.9rem] leading-tight sm:text-[2.6rem]">Et si vos enfants héritaient de <span className="whitespace-nowrap text-orange-dark">68 206 €</span> de plus ?</h1>
+      <p className="mb-4 text-sm text-text-soft">Écart de droits dans un exemple fictif à deux enfants, hors frais. Pas une économie promise. <a href="#exemple-chiffre">Voir les hypothèses.</a></p>
+      <p className="mb-5 text-[1.15rem] font-bold text-blue">Découvrez les 7 erreurs à vérifier pour préparer votre transmission — sans commencer par vendre votre maison, donner votre argent ou signer un placement.</p>
+      <VslPresentation />
 
-  return (
-    <>
-      <MesureFunnel evenement="vue_vente" />
-      <Header />
-      <main className="wrap flex-1 pb-28 pt-10">
-        <p className="mb-3 font-bold text-orange-dark">
-          Une première étape, pas une décision irréversible
-        </p>
-        <h1 className="mb-5 text-[2rem] leading-tight sm:text-[2.6rem]">
-          {angle}
-        </h1>
-        <p className="mb-6 text-[1.2rem]">
-          Vous n’avez pas besoin de devenir fiscaliste. Vous avez besoin de comprendre votre
-          situation, de repérer ce qui reste à vérifier et de savoir quoi demander au notaire.
-        </p>
-        {objectif && <p className="mb-5 border-l-4 border-orange bg-grey-bg p-4">Présentation adaptée à votre priorité. <Link href="/#orientation">Modifier mon choix</Link>. La méthode conserve le même contenu et le même prix.</p>}
-        <p className="mb-6 text-[1.1rem]">Imaginez votre prochain rendez-vous : vous ouvrez votre fiche, vous dites ce qui compte pour vous et vous savez quelles réponses demander. C’est ce passage du flou à une préparation concrète que nous vous aidons à faire.</p>
-        {VIDEO.vsl && process.env.VSL_VALIDEE === "true" && (
-          <VideoEmbed id={VIDEO.vsl} title="Présentation de la méthode" />
-        )}
-        <section className="my-7 border-l-4 border-blue bg-grey-bg p-5">
-          <h2 className="mb-3 text-[1.4rem]">« Mon réflexe, c’est de prendre rendez-vous chez le notaire. »</h2>
-          <p className="mb-3">C’est une bonne première démarche. La méthode vous aide à préparer cet échange : dire ce que vous souhaitez préserver, retrouver les informations utiles et formuler vos questions.</p>
-          <p>Vous pouvez prendre rendez-vous dès maintenant. Pendant votre préparation, vous avancez à votre rythme, avec des explications écrites, des exemples et une action à chaque étape. Le notaire examine votre situation et vous conseille sur les décisions.</p>
-        </section>
-        <PreuvePreparation />
-        <Panel title="Votre premier résultat concret">
-          <p>
-            Une fiche de situation, une priorité et trois questions à faire valider. Commencez par
-            une dizaine de minutes, puis avancez à votre rythme. Aucun don ni changement de contrat
-            n’est nécessaire pour suivre la formation.
-          </p>
-        </Panel>
-        <div id="premier-cta" data-mesure="clic_commande" className="my-6">
-          <ButtonLink href="/commande">Commencer pour {euros(PRODUCTS.front.price)}</ButtonLink>
-          <p className="mt-2 text-center text-text-soft">
-            Paiement unique · Aucun abonnement · Garantie 30 jours
-          </p>
-        </div>
-        <ApercuProduit />
-        <section className="my-7 border border-grey-line p-5">
-          <h2 className="mb-4 text-[1.4rem]">Après votre achat, vous savez où commencer</h2>
-          <ol className="list-decimal space-y-3 pl-6">
-            <li><strong>Retrouvez votre accès personnel</strong> sur la confirmation et dans l’email d’accès.</li>
-            <li><strong>Ouvrez « Mon parcours ».</strong> Commencez par la première fiche : une priorité, les informations connues et trois questions.</li>
-            <li><strong>Reprenez à votre rythme.</strong> Les étapes cochées restent repérées ; les supports de base se lisent à l’écran ou s’impriment.</li>
-          </ol>
-          <p className="mt-4">Vous n’avez pas à regarder toutes les vidéos avant d’avancer. Les explications sont écrites et les vidéos complémentaires.</p>
-        </section>
-        <AideDecision />
-        <section className="my-10">
-          <h2 className="mb-4 text-[1.6rem]">« J’ai peur de donner trop tôt… et de regretter. »</h2>
-          <p className="mb-4">
-            C’est précisément pour cela que nous commençons par ce dont vous avez besoin pour vivre.
-            Une économie d’impôt n’est pas une bonne affaire si elle vous prive de votre sécurité,
-            de votre liberté ou de ressources utiles.
-          </p>
-          <p>
-            La méthode distingue trois sujets souvent mélangés : ce qui vous appartient, les droits
-            de votre famille et les règles fiscales. Elle vous aide à préparer une discussion
-            éclairée, sans vous dicter un montage.
-          </p>
-        </section>
-        <section className="my-10">
-          <h2 className="mb-4 text-[1.6rem]">Ce que vous recevez pour 27 €</h2>
-          <p className="mb-5">
-            Huit étapes entièrement lisibles. Pour chacune : l’explication, un exercice en trois
-            gestes, un exemple et une question pour vérifier votre compréhension. Les supports de
-            base sont imprimables ; les vidéos restent complémentaires.
-          </p>
-          <ol className="space-y-3">
-            {LECONS.map((l, i) => (
-              <li key={l.cle} className="border border-grey-line p-4">
-                <h3 className="font-bold">
-                  {i + 1}. {l.titre}
-                </h3>
-                <p className="mt-1 text-text-soft">{l.resume}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-        <section className="my-10 bg-grey-bg p-6">
-          <h2 className="mb-3 text-[1.5rem]">Les repères ne sont pas des ordres d’agir</h2>
-          <p>
-            Les donations passées, l’âge lors des versements en assurance-vie et l’âge lors d’une
-            donation avec réserve d’usufruit peuvent modifier le calcul. Un anniversaire n’oblige
-            jamais à donner. La formation explique les distinctions et les vérifications à demander.
-          </p>
-        </section>
-        <details className="my-10 border border-grey-line p-5">
-          <summary className="min-h-[44px] cursor-pointer text-[1.3rem] font-bold">Existe-t-il des compléments ? Voir les offres et leurs prix</summary>
-          <p className="mb-4">
-            La méthode à 27 € est autonome. Le dossier notaire à 17 € est facultatif. Le pack
-            Préparation à 197 € au total rassemble la méthode, le dossier, les parcours familiaux et
-            l’atelier de simulation pédagogique. Avec le module assurance-vie : 247 € au total. Le
-            module assurance-vie seul coûte 67 €.
-          </p>
-          <p>
-            Les achats inclus déjà payés sont déduits lors d’un complément. Exemple : après la
-            méthode à 27 €, le pack Préparation revient à 170 € supplémentaires. Aucun complément
-            n’est nécessaire pour terminer la méthode.
-          </p>
-        </details>
-        <section className="my-10 border-y border-grey-line py-7">
-          <h2 className="mb-4 text-[1.5rem]">Attendre peut changer la facture. Vérifier maintenant vous permet de décider en connaissance de cause.</h2>
-          <p className="mb-5">Vous pouvez remettre cette préparation à plus tard. Mais certaines règles dépendent de dates qui continuent d’avancer. Si un projet de transmission vous concerne, voici trois raisons de ne pas attendre le dernier moment pour le faire examiner.</p>
-          <ol className="list-decimal space-y-5 pl-6">
-            <li><strong>Une donation reportée peut décaler le renouvellement d’un abattement.</strong> Le délai de quinze ans s’apprécie pour les donations concernées, entre un même donateur et un même bénéficiaire. Attendre pour engager un projet adapté peut donc repousser une prochaine possibilité de transmission. L’historique et les dates d’enregistrement sont à vérifier.</li>
-            <li><strong>Un seuil d’âge peut augmenter la valeur soumise aux droits.</strong> Pour une donation de nue-propriété avec usufruit viager, la valeur fiscale passe de 60 % à 70 % au 71e anniversaire de l’usufruitier. L’effet sur l’impôt dépend du bien, des bénéficiaires et des abattements disponibles.</li>
-            <li><strong>En assurance-vie, la date des versements compte.</strong> Le régime applicable peut changer selon que les primes sont versées avant ou après 70 ans. Ce n’est pas la fermeture du contrat ni la disparition de tout avantage : c’est une raison de faire examiner un projet de versement avant, pas après son exécution.</li>
-          </ol>
-          <p className="mt-5">La première démarche peut être de contacter votre notaire dès aujourd’hui. Si vous souhaitez être guidé pour préparer les informations et les questions, commencez la Méthode. Son achat ne déclenche aucun délai fiscal et ne garantit aucune économie.</p>
-          <p className="mt-3">Vos besoins et votre sécurité restent prioritaires. Si un seuil est proche, n’attendez pas d’avoir terminé le parcours pour consulter.</p>
-          <p className="mt-4 text-sm text-text-soft">Repères vérifiés le 9 septembre 2026 : <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">donations et abattements</a>, <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934">barème de l’usufruit</a>, <a href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer">assurance-vie</a>. Leur application à votre situation doit être vérifiée.</p>
-        </section>
-        <section className="my-10">
-          <h2 className="mb-3 text-[1.5rem]">Qui prépare ce parcours ?</h2>
-          <p>Héritage Intact est édité par Loys Coquelle EI. Notre rôle est de rendre la préparation plus claire : organiser les notions, les documents et les questions. Nous ne remplaçons pas le professionnel qui examine votre situation.</p>
-          <p className="mt-3"><Link href="/apercu">Essayez le premier exercice et regardez les supports</Link>, puis consultez nos <Link href="/mentions-legales">informations d’éditeur</Link>. Vous pouvez juger la pédagogie avant de choisir.</p>
-        </section>
-        <Guarantee />
-        <section className="my-10">
-          <h2 className="mb-4 text-[1.6rem]">Vos questions, sans détour</h2>
-          <FAQ
-            items={[
-              {
-                q: "Est-ce adapté si je n’y connais rien ?",
-                a: "Oui : chaque notion est expliquée avec une action simple. Vous pouvez suivre le parcours à l’écrit et n’imprimer que vos supports utiles.",
-              },
-              {
-                q: "Vais-je connaître le montant exact de ma succession ?",
-                a: "Non. Une succession dépend d’éléments civils et fiscaux qu’un questionnaire ne suffit pas à établir. Les calculs sont des illustrations sous hypothèses, à faire vérifier.",
-              },
-              {
-                q: "Pourquoi payer si le notaire peut m’expliquer ?",
-                a: "Vous pouvez consulter votre notaire directement. La formation sert à préparer vos informations et vos questions, à votre rythme. Si vous êtes déjà à l’aise et bien accompagné, elle n’est peut-être pas nécessaire.",
-              },
-              {
-                q: "Après 70 ans, est-ce trop tard ?",
-                a: "Non. Les règles et les possibilités changent selon les opérations. La préparation familiale, la vérification des contrats et le rendez-vous professionnel restent utiles.",
-              },
-              {
-                q: "Pour qui n’est-ce pas suffisant ?",
-                a: "Succession déjà ouverte, conflit familial, patrimoine à l’étranger, entreprise ou montage complexe : sollicitez un professionnel. La formation ne fournit pas de conseil juridique ou fiscal personnalisé.",
-              },
-            ]}
-          />
-        </section>
-        <div id="dernier-cta" data-mesure="clic_commande"><ButtonLink href="/commande">Préparer ma première fiche · 27 €</ButtonLink></div>
-        <p className="mt-4 text-center text-text-soft">
-          Votre prochaine étape : clarifier. Pas vous engager à donner.
-        </p>
-      </main>
-      <Footer />
-    </>
-  );
+      <div id="premier-cta" data-mesure="clic_commande" className="mb-7 mt-4">
+        <ButtonLink href="/commande">Oui, je commence pour mes enfants · {euros(d.montant)}</ButtonLink>
+        <p className="mt-2 text-center text-sm text-text-soft">Paiement unique · Aucun abonnement · Accès dès le paiement · Garantie 30 jours</p>
+        <AvantageDemarrage promotion={d.promotion} base={d.total} />
+      </div>
+      <section id="presentation-ecrite" className="my-8">
+        <h2 className="mb-4 text-[1.55rem]">Un jour, vous aimeriez qu’ils se disent : « Ils avaient pensé à nous. »</h2>
+        <p className="mb-4">Imaginez un dimanche autour de la table. Les enfants parlent de leurs projets. Les petits-enfants jouent dans le jardin. Cette maison, ce n’est pas une ligne sur un relevé : c’est une partie de votre vie. Vous aimeriez qu’elle reste un souvenir heureux, pas le début d’une discussion tendue sur des papiers que personne ne comprend.</p>
+        <p>Vous n’avez pas travaillé toutes ces années pour leur laisser des cartons de papiers, des interrogations… et la crainte de découvrir trop tard ce qu’il était possible d’anticiper.</p>
+      </section>
+      <ExempleHeadline />
+      <RecitJeanPierre />
+      <section className="my-8">
+        <h2 className="mb-4 text-[1.55rem]">Si vous avez repoussé ce sujet, ce n’est pas par manque d’amour.</h2>
+        <p className="mb-4">On vous parle d’usufruit, d’abattements, de clauses bénéficiaires. Vous cherchez une réponse sur internet ; vous repartez avec trois nouvelles questions. Alors vous refermez la page : « Je regarderai quand j’aurai le temps. »</p>
+        <p className="mb-4">Le vrai piège, c’est de croire que <strong>« ma maison est payée » signifie « ma transmission est prête ».</strong> Posséder, protéger son conjoint et transmettre sont trois sujets différents.</p>
+        <p>Ce qui manque n’est pas une pile d’articles supplémentaires. C’est un chemin simple pour relier les règles à vos préoccupations, sans décider seul d’un acte qui vous engage.</p>
+      </section>
+      <RecitMartine />
+      <section className="my-8 border-l-4 border-red bg-red-bg p-5">
+        <h2 className="mb-3 text-[1.5rem]">Le jour où ils chercheront les réponses, pourrez-vous encore les leur donner ?</h2>
+        <p className="mb-3">« Où est le contrat ? Est-ce que la maison appartenait aux deux ? Est-ce que papa avait déjà donné quelque chose ? » Ce sont des questions ordinaires. Posées au milieu d’un deuil, elles prennent une tout autre place.</p>
+        <p className="mb-3">Vous ne pouvez pas supprimer toutes les difficultés d’une succession. Mais vous pouvez commencer à regarder ce qui dépend encore de vous : les documents, les volontés à exprimer, les dates et les décisions à faire examiner.</p>
+        <p className="font-bold">Le piège, c’est le silence : aimer ses enfants, penser à leur avenir… et croire que, puisque rien ne presse aujourd’hui, tout sera clair demain.</p>
+      </section>
+      <section className="my-8 border-l-4 border-blue bg-grey-bg p-5">
+        <h2 className="mb-3 text-[1.4rem]">« Mon réflexe, c’est de prendre rendez-vous chez le notaire. »</h2>
+        <p className="mb-3">Oui. Et imaginez la différence entre « Que dois-je faire ? » et « Je veux préserver mon logement, protéger mon conjoint et comprendre les droits de mes enfants. Voici ce que j’ai retrouvé. Voici mes trois questions. »</p>
+        <p className="mb-3">Vous achetez cette préparation : des explications à reprendre chez vous, des exemples et une première fiche pour ne pas tout garder dans votre tête. Le notaire examine votre cas et vous conseille sur les décisions.</p>
+        <p>Réservez le rendez-vous. Et en attendant, ne laissez pas cette démarche redevenir « je m’en occuperai ». Le guide vous donne les mots et les premiers supports pour commencer chez vous. Le tarif d’un échange chez le notaire dépend de la prestation : nous ne vous vendons pas une prétendue économie sur une consultation forcément payante.</p>
+      </section>
+      <section className="my-8">
+        <p className="mb-2 text-sm font-bold uppercase tracking-wide text-orange-dark">La Méthode Héritage Intact · Les 7 erreurs</p>
+        <h2 className="mb-4 text-[1.6rem]">Passez de « j’espère que tout ira bien » à « je sais ce qu’il faut vérifier ».</h2>
+        <p className="mb-5">Un même parcours de base pour tous. Votre première fiche, puis sept erreurs expliquées en langage courant. Vous n’avez pas besoin de tout apprendre avant de commencer.</p>
+        <ol className="list-decimal space-y-4 pl-6">
+          <li><strong>Posez votre situation.</strong> Ce que vous voulez protéger, ce que vous savez déjà et ce qui reste inconnu.</li>
+          <li><strong>Repérez les points sensibles.</strong> Maison, couple, enfants, donations et assurance-vie : vous distinguez les sujets au lieu de les mélanger.</li>
+          <li><strong>Préparez vos questions.</strong> Vous repartez avec une priorité et les vérifications à demander au professionnel.</li>
+        </ol>
+      </section>
+      <section className="my-7 border-l-4 border-orange bg-yellow-bg p-5"><h2 className="mb-3 text-[1.4rem]">Ce soir, une première fiche. Au prochain échange, quelque chose de concret à ouvrir.</h2><p className="mb-3"><strong>Pour commencer :</strong> votre priorité, une information retrouvée, une question précise. <strong>Puis :</strong> les sept erreurs pour repérer les points à examiner. <strong>Au rendez-vous :</strong> votre préparation pour expliquer ce qui compte, sans tout garder dans votre tête.</p><p>Pas « toute ma succession est réglée ». Mais enfin : « J’ai commencé, et je sais quelle question poser ensuite. »</p></section>
+      <PreuvePreparation />
+      <ApercuProduit />
+      <section className="my-8 border-2 border-blue p-5 sm:p-6">
+        <h2 className="mb-4 text-[1.6rem]">Pour {euros(d.montant)}, ne repartez pas seulement avec de bonnes intentions.</h2>
+        <ul className="space-y-4">
+          <li><strong>Vous voulez protéger votre famille, sans vous mettre en difficulté ?</strong> Apprenez à séparer votre sécurité personnelle des objectifs de transmission.</li>
+          <li><strong>Vous avez peur de laisser passer quelque chose ?</strong> Parcourez les sept erreurs et notez les dates et documents à faire vérifier.</li>
+          <li><strong>Vous redoutez de ne rien comprendre au rendez-vous ?</strong> Retrouvez les notions expliquées simplement, des exemples et les questions à préparer.</li>
+          <li><strong>Vous n’avez pas envie d’une formation interminable ?</strong> Tout le parcours de base se lit à votre rythme ; les supports sont imprimables. Les guides PDF, les exemples et les fiches utiles remplacent les vidéos pédagogiques.</li>
+        </ul>
+        <p className="mt-5 font-bold">La Méthode est autonome. Vous n’avez pas à acheter une autre offre pour la terminer.</p>
+        <div data-mesure="clic_commande" className="mt-5"><ButtonLink href="/commande">Je prépare ma transmission maintenant · {euros(d.montant)}</ButtonLink></div>
+      </section>
+      <section className="my-8">
+        <h2 className="mb-4 text-[1.5rem]">Après le paiement : une suite simple, sans surprise</h2>
+        <ol className="list-decimal space-y-3 pl-6">
+          <li><strong>Quatre questions obligatoires</strong> pour connaître votre priorité et orienter la suite. Elles ne changent ni le contenu ni le prix de la Méthode achetée.</li>
+          <li><strong>Votre Méthode prête à ouvrir</strong> et un point de départ clair. Votre accès est créé dès le paiement et reste acquis. « Je ne sais pas » est une réponse acceptée lorsque proposée.</li>
+          <li><strong>Un complément adapté, si utile.</strong> Vous voyez ce qu’il apporte et le montant exact avant de décider. Vous pouvez rester avec la Méthode seule.</li>
+        </ol>
+      </section>
+      <section id="pourquoi-maintenant" className="my-9 border-l-4 border-red bg-red-bg p-5">
+        <h2 className="mb-4 text-[1.55rem]">Ce qui coûte, ce n’est pas seulement l’impôt. C’est parfois d’avoir regardé trop tard.</h2>
+        <p className="mb-4">Fermer cette page ne règle aucune des questions que vous vous posiez en arrivant. Et certaines dates, elles, continuent d’avancer.</p>
+        <ul className="space-y-4">
+          <li><strong>Le délai de 15 ans.</strong> Reporter une donation peut décaler le renouvellement d’un abattement pour le même donateur et le même bénéficiaire. L’historique doit être vérifié.</li>
+          <li><strong>Les versements avant ou après 70 ans.</strong> Le régime fiscal de l’assurance-vie peut différer. Il reste des possibilités après 70 ans : mieux vaut examiner un projet avant son exécution.</li>
+          <li><strong>Le seuil de 71 ans.</strong> Pour une donation de nue-propriété avec usufruit viager, la valeur fiscale passe de 60 % à 70 % au 71e anniversaire de l’usufruitier. L’effet sur l’impôt dépend ensuite du bien et des abattements disponibles.</li>
+        </ul>
+        <p className="mt-4 font-bold">Vous ne pouvez pas refaire hier. Vous pouvez commencer à mettre vos questions au clair aujourd’hui.</p>
+        <p className="mt-3 text-sm text-text-soft">L’achat ne déclenche aucun délai fiscal et ne garantit aucune économie. Si une échéance est proche, contactez un professionnel sans attendre la fin du parcours.</p>
+        <p className="mt-3 text-sm text-text-soft">Repères : <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">donations et abattements</a>, <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934">barème de l’usufruit</a>, <a href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer">assurance-vie</a>.</p>
+      </section>
+      <ExempleSeuil />
+      <Guarantee />
+      <section className="my-8">
+        <h2 className="mb-4 text-[1.5rem]">Les dernières questions avant de commencer</h2>
+        <FAQ items={[
+          {q:"Est-ce adapté si je n’y connais rien ?",a:"Oui. Les notions sont expliquées à l’écrit, avec des exemples et des actions simples. Vous pouvez commencer par une première fiche et reprendre ensuite à votre rythme."},
+          {q:"Pourquoi faire confiance à Héritage Intact ?",a:"Vous pouvez examiner l’exemple, ses hypothèses et les sources avant d’acheter. L’offre porte sur des guides et des supports de préparation déjà écrits, pas sur un résultat fiscal promis. L’éditeur est identifié dans les mentions légales ; aucun titre de notaire ou d’expert n’est revendiqué. La garantie commerciale de 30 jours est décrite dans les CGV."},
+          {q:"Vais-je devoir donner ma maison ?",a:"Non. Suivre la Méthode ne vous engage à aucun don, placement ou changement de contrat. Votre sécurité et vos besoins restent prioritaires."},
+          {q:"Vais-je connaître le montant exact des droits à payer ?",a:"Non. La formation aide à comprendre et à préparer ; elle ne constitue pas un audit juridique ou fiscal personnalisé. Les calculs pédagogiques reposent sur des hypothèses à faire vérifier."},
+          {q:"Après 70 ans, est-ce trop tard ?",a:"Non. Les règles diffèrent selon les opérations. Organiser les informations, vérifier les contrats et préparer un rendez-vous restent utiles."},
+          {q:"Y a-t-il d’autres achats obligatoires ?",a:"Non. La Méthode à 27 € est autonome. Le Dossier à 17 € est facultatif. Les packs Préparation à 197 € au total ou avec assurance-vie à 247 € au total incluent la Méthode et le Dossier ; les achats inclus déjà payés sont déduits. Le module assurance-vie seul coûte 67 €."},
+          {q:"Pour qui ce parcours n’est-il pas suffisant ?",a:"Une succession déjà ouverte, un conflit, une entreprise ou un patrimoine international nécessitent un professionnel. Ne retardez pas cette démarche pour suivre une formation."}
+        ]} />
+      </section>
+      <section className="my-8 text-center">
+        <h2 className="mb-4 text-[1.7rem]">Vous avez pris soin d’eux toute votre vie.<br />Commencez à préparer ce qu’ils n’auront pas à deviner.</h2>
+        <p className="mb-5">Ce soir, vous pouvez encore vous dire « j’y penserai ». Ou ouvrir votre première fiche et mettre des mots sur ce que vous voulez préserver.</p>
+        <div id="dernier-cta" data-mesure="clic_commande"><ButtonLink href="/commande">Oui, je commence maintenant · {euros(d.montant)}</ButtonLink></div>
+        <p className="mt-3 text-sm text-text-soft">Paiement unique · Méthode complète à l’écrit · Garantie 30 jours</p>
+      </section>
+    </main>
+    <SortieOffre produit="front" href="/commande" montant={d.montant} promotion={d.promotion} />
+    <Footer />
+  </>;
 }

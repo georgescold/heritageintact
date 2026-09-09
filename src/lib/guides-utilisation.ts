@@ -1,5 +1,5 @@
 import type { ProductSku } from "./config";
-export type GuideUtilisation = { sku: ProductSku; titre: string; resultat: string; seances: string[][] };
+export type GuideUtilisation = { sku: "front"|"bump"|"upsell1"|"upsell2"; titre: string; resultat: string; seances: string[][] };
 export const GUIDES_UTILISATION: GuideUtilisation[] = [
   {
     "sku": "front",
@@ -14,12 +14,12 @@ export const GUIDES_UTILISATION: GuideUtilisation[] = [
       ],
       [
         "2. Suivez les notions à votre rythme",
-        "Reprenez les huit étapes dans l’ordre. Chaque exercice montre les gestes à faire, un exemple fictif et une explication pour contrôler votre compréhension. Une séance peut s’arrêter sur une information à demander : vous n’avez pas besoin d’avoir déjà toutes les réponses.",
+        "Lisez les sept erreurs et leurs exemples. Chaque chapitre annonce ce que vous allez comprendre, explique l’essentiel et indique un prochain pas utile. Gardez les fiches nécessaires à votre situation : aucun test ni devoir à rendre.",
         "Vous distinguez un fait connu, un souhait et une vérification.",
         "questions-notaire"
       ],
       [
-        "3. Rassemblez vos questions",
+        "3. Gardez vos questions pour le rendez-vous",
         "Reportez sur le plan en une page votre objectif et vos trois questions principales. Prenez rendez-vous dès que cela vous est utile, sans attendre la fin du parcours en cas de délai ou de difficulté. Vous gardez votre feuille pour préparer l’échange et noter la prochaine action.",
         "Votre plan indique ce que vous voulez clarifier et le prochain interlocuteur.",
         "plan-en-1-page"

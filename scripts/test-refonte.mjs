@@ -30,9 +30,10 @@ for(const sku of ["pack1","pack2","pack3","upsell1"])for(const c of ["front","bu
 for(const sku of ["pack1","pack3","pack4"])truth(composants(sku).has("upsell2"));
 equal(PRODUCTS.backend1.disponible,false);
 const {sequence}=mod("src/lib/qualification.ts");
-for(const objectif of ["comprendre","preparer","assurance-vie","X",undefined])for(const av of ["O","N","?","X",undefined])for(const enfants of ["0","1","2","R","X"])for(const vie of ["M","P","V","U","S"]){const r=sequence({objectif,av,enfants,vie},{bumpPresent:false});truth(r.length<=1);if(objectif==="comprendre")equal(r.length,0);if(av!=="O")truth(!r.includes("pack")&&!r.includes("assurance-vie"));}
+// V7 : chaque profil reçoit une seule proposition pertinente, y compris « comprendre ».
+for(const objectif of ["comprendre","preparer","assurance-vie","X",undefined])for(const av of ["O","N","?","X",undefined])for(const enfants of ["0","1","2","R","X"])for(const vie of ["M","P","V","U","S"]){const r=sequence({objectif,av,enfants,vie},{bumpPresent:false});equal(r.length,1);if(objectif==="comprendre")equal(r.length,1);if(av!=="O")truth(!r.includes("pack")&&!r.includes("assurance-vie"));}
 const {planPrincipal}=mod("src/lib/documents-pertinents.ts");equal(planPrincipal({enfants:"R",vie:"M"}),"plan-famille-recomposee");equal(planPrincipal({enfants:"0",vie:"P"}),"plan-sans-enfant");
-const {LECONS}=mod("src/lib/lecons.ts");equal(LECONS.length,8);equal(LECONS.filter(l=>l.videoIndex>=0).length,2);equal(new Set(LECONS.map(l=>l.cle)).size,8);
+const {LECONS}=mod("src/lib/lecons.ts");equal(LECONS.length,8);equal(LECONS.filter(l=>l.videoIndex>=0).length,0);equal(new Set(LECONS.map(l=>l.cle)).size,8);
 const {calculerAtelier}=mod("src/lib/simulateur/atelier.ts");
 const s={valeur:520000,enfants:1,parents:1,age:65,mode:"succession",confirme:true};
 function amount(o){const r=calculerAtelier({...s,...o});truth(r.ok);return Math.round(r.total*100)/100;}

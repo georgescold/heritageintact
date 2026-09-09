@@ -1,46 +1,56 @@
-# Séquences email — version renforcée V3
-9 septembre 2026. Cette version remplace les sept textes V2. Les clés j1 à j7 sont conservées pour ne pas recommencer une séquence déjà reçue.
+# Emails de production — V8
 
-## Structure Valère effectivement appliquée
-J1 rêve ; J2 excuser les échecs ; J3 réduire les peurs ; J4 confirmer les doutes avec preuve visible ; J5 obstacle commun réel (informations dispersées et raccourcis) ; J6 closing ; J7 closing final.
-L’adaptation porte sur l’urgence : aucune échéance commerciale réelle n’ayant été définie, la fin de la série n’est pas présentée comme une fermeture du prix. Un message par étape ; pas de trois relances artificielles le dernier soir.
-Le CTA mène vers la présentation pour expliquer, vers les aperçus pour prouver, et vers le checkout lorsque le prix et le contenu sont déjà exposés.
-Le prénom inséré dans le HTML est échappé.
+9 septembre 2026. Les sept corps ci-dessous sont exportés de src/lib/sequence.ts. Leur envoi, leur prix et leur lien sont construits par src/lib/email.ts. Aucune campagne activée ou envoyée durant la recette.
 
-## J0 — présentation demandée
-Email de service immédiat : accès à la présentation, distinct du consentement aux conseils et offres. Le site reste accessible si l’envoi échoue. Un défaut de clé n’est plus enregistré comme un succès.
+## Architecture CEO
+
+J1 rêve ; J2 excuser le blocage ; J3 réduire la peur ; J4 répondre aux doutes avec une preuve d’usage ; J5 obstacle réel ; J6 valeur, objection, risque et action ; J7 clôture de la série. Chaque email commercial mène à un achat possible ; les messages de service délivrent l’accès sans y cacher une vente. Adaptation du process Valère, pas une validation de sa part.
+
+## Prix et urgence réellement injectés
+
+Le pied de chaque email commercial est calculé au moment de l’envoi : pourcentage encore actif, prix actuel et fin exacte du palier en heure de Paris. Le lien personnel reprend la date de départ enregistrée, même dans un autre navigateur ; il ne relance pas l’offre. Un email lu plus tard peut afficher un ancien prix : le site réaffiche le prix actuel avant confirmation.
+
+Guide : 21,60 € pendant les 20 premières minutes après inscription, puis 24,30 € jusqu’à J7, puis 27 €. La séquence quotidienne commence à J1 : elle ne prétend donc pas que le premier palier de 20 minutes court encore. J7 clôt la série, pas automatiquement une promotion encore active. Les liens J3/J6/J7 rejoignent directement le checkout via la route personnelle avec destination=commande ; les autres rejoignent la présentation. Le bouton final est remplacé par « Commencer les 7 erreurs maintenant · [prix actuel] ». Aucun faux compte à rebours dans un email figé.
+
+Les prix de 27 € dans les textes désignent le tarif hors avantage. Les mentions de remise n’apparaissent que si une date valide existe. Le prix de référence et la présentation des pourcentages restent à faire relire avant publication.
+
+## J0 — lien de présentation demandé
+
+Message de service immédiat, distinct du consentement commercial. Il conserve le lien personnel sans rallumer le compteur. L’email d’accès au contenu acheté ne dépend pas du consentement marketing.
 
 ## J1 — Rêve
-Objet : Le jour où vous ouvrirez ce dossier ensemble
+
+Objet : « Papa, maman… vous aviez pensé à nous. »
 
 Bonjour [Prénom],
 
-Imaginez une conversation calme, à la table du salon. Pas un rendez-vous pris dans l’urgence, pas une pile de courriers à comprendre après un décès. Simplement votre famille, une feuille et cette phrase : « Voilà ce qui compte pour nous. »
+Un dimanche, autour de la table. Les enfants parlent de leurs projets, les petits-enfants jouent dans le jardin. Vous regardez cette maison que vous avez mis des années à payer. Ce que vous voulez leur laisser n’est pas une énigme fiscale. C’est une histoire de famille qui continue.
 
 Ce que vous aimeriez transmettre ne tient pas seulement dans un montant. Il y a la maison, bien sûr. Mais aussi la possibilité pour vos proches de retrouver les informations et de savoir à qui poser leurs questions.
 
-Vous ne pouvez pas tout prévoir. Vous pouvez commencer à rendre les choses plus claires.
+Imaginez pouvoir leur dire : « J’ai commencé à préparer les choses. Voilà où sont les informations, voilà ce que je veux faire vérifier. » Pas une promesse de tout maîtriser. La fierté d’avoir fait un premier pas pour eux.
 
 C’est le point de départ d’Héritage Intact : faire le point, préparer, puis faire vérifier. La première étape vous aide à noter une priorité, les informations disponibles et vos premières questions.
 
 Pas besoin d’être fiscaliste. Pas besoin de décider d’une donation. Et pas besoin de regarder des heures de vidéo : les huit étapes sont écrites.
 
-La méthode coûte 27 €, une seule fois. Ce soir, votre première avancée peut être une fiche commencée — un support que vous pourrez reprendre, plutôt qu’une nouvelle inquiétude laissée de côté.
+Le prix hors avantage du guide est de 27 €, une seule fois. Ce soir, votre première avancée peut être une fiche commencée — un support que vous pourrez reprendre, plutôt qu’une nouvelle inquiétude laissée de côté.
 
-Bouton : Découvrir mon point de départ → /methode
+CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /methode.
 
 ## J2 — Excuser les échecs
-Objet : Ce n’est pas un manque de volonté
+
+Objet : Maison payée ne veut pas dire transmission préparée
 
 Bonjour [Prénom],
 
-Vous avez peut-être déjà enregistré un article sur les donations. Puis un autre sur l’assurance-vie. Et, au moment de vous y mettre, une nouvelle question est apparue.
+Vous avez su travailler, rembourser la maison et aider vos enfants. Pourtant, ce dossier reste au fond du tiroir. Un article sur la donation, une vidéo sur l’assurance-vie, puis cette phrase : « Je vais attendre de mieux comprendre. »
 
 Qui possède vraiment quoi ? Quels documents retrouver ? Par quel sujet commencer avec le notaire ?
 
 Repousser un sujet qui mélange l’argent, la famille et la disparition n’est pas forcément manquer de volonté. Quand tout semble lié, il est difficile de choisir le premier geste.
 
-Notre parti pris : ne pas commencer par un montage. Commencer par votre situation.
+Le piège n’est pas votre manque de volonté. C’est de collectionner des réponses générales sans savoir quelle question poser pour commencer. Les 7 erreurs vous donnent cet ordre : repérer, rassembler, faire vérifier.
 
 Une priorité. Ce que vous savez déjà. Ce qui reste à faire confirmer. Ensuite seulement, les repères et les supports pour préparer la discussion.
 
@@ -48,10 +58,11 @@ Vous n’achetez pas des règles secrètes : les sources officielles sont publiq
 
 Si vous souhaitez arrêter de collectionner les onglets sans savoir quoi en faire, regardez les étapes du parcours. Le premier achat reste autonome : aucun pack n’est nécessaire pour le terminer.
 
-Bouton : Voir comment commencer → /methode
+CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /methode.
 
 ## J3 — Réduire les peurs
-Objet : Préparer ne veut pas dire vous déposséder
+
+Objet : Protéger vos enfants, oui. Vous démunir, non.
 
 Bonjour [Prénom],
 
@@ -63,37 +74,39 @@ Héritage Intact ne vous demande ni de donner, ni de signer, ni de modifier un c
 
 Vous distinguez ensuite ce qui vous appartient, les questions de votre famille et les repères fiscaux à faire vérifier. Comprendre n’est pas s’engager.
 
-Si les vidéos vous découragent, vous pouvez tout lire. Si une information manque, vous notez « à vérifier ». Si vous avez besoin de temps, vous reprenez à votre rythme.
+Tout est expliqué à l’écrit, avec les guides PDF et des exercices. Si une information manque, vous notez « à vérifier ». Si vous avez besoin de temps, vous reprenez à votre rythme.
 
-Pour 27 €, vous disposez des huit étapes et des supports de base. La garantie commerciale de 30 jours vous permet de découvrir le parcours et de demander le remboursement selon les conditions présentées.
+Au tarif hors avantage de 27 €, vous disposez des huit étapes et des supports de base. La garantie commerciale de 30 jours vous permet de découvrir le parcours et de demander le remboursement selon les conditions présentées.
 
-Vous pensez plutôt prendre rendez-vous directement chez le notaire ? Vous pouvez le faire dès maintenant. La méthode vous aide à préparer l’échange : formuler vos priorités, retrouver les documents et distinguer vos questions des décisions à faire vérifier. Vous gardez la main sur la suite.
+Vous pensez plutôt prendre rendez-vous directement chez le notaire ? Vous pouvez le faire dès maintenant. Le guide Les 7 erreurs vous aide à préparer l’échange : formuler vos priorités, retrouver les documents et distinguer vos questions des décisions à faire vérifier. Vous gardez la main sur la suite.
 
-Bouton : Commencer par ma sécurité · 27 € → /commande
+CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commande.
 
 ## J4 — Confirmer les doutes et prouver
-Objet : « Pour 27 €, qu’est-ce que je reçois vraiment ? »
+
+Objet : « Encore une formation… et après ? »
 
 Bonjour [Prénom],
 
-Vous avez raison de vouloir voir ce qu’il y a derrière une page de vente.
+Une belle page ne prépare pas votre transmission. Et acheter des dizaines de vidéos pour les laisser de côté ne vous avancerait pas davantage. Vous avez raison d’exiger autre chose : savoir ce que vous pourrez faire dès l’ouverture du guide.
 
-Une promesse de tranquillité ne suffit pas. Avant de choisir, il faut pouvoir juger le support que vous allez utiliser.
+Imaginez la différence entre « je ne sais pas par où commencer » et « je veux protéger notre logement ; voici la pièce à retrouver et la question à poser ». C’est le premier pas proposé dans la Méthode.
 
-Le lien ci-dessous ouvre la véritable fiche de situation, le premier exercice guidé de la Méthode et un exemple rempli du Dossier facultatif. Essayez les trois gestes de l’exercice, puis ouvrez son explication pour vérifier votre compréhension. Aucun email n’est demandé.
+La présentation ci-dessous montre cette différence avec un exemple fictif. Elle explique les étapes et ce que vous pourrez préparer : votre situation, les points sensibles et vos questions au professionnel.
 
-Dans l’exemple fictif de Claire et Marc, leur priorité est de comprendre comment chacun pourrait rester dans le logement. Ils ne prétendent pas connaître la réponse : ils distinguent les documents retrouvés de ceux qui manquent, puis formulent leurs questions.
+Vous n’avez pas besoin de connaître déjà les règles. Le parcours de base est le même pour tous : votre première fiche et les sept erreurs, expliquées à l’écrit avec des exercices. Aucun tournage pédagogique n’est à attendre.
 
-C’est cela que le parcours cherche à rendre possible : une discussion préparée, pas un verdict fiscal automatique.
+Le prix hors avantage du guide est de 27 €, une seule fois. Vous ouvrez votre première fiche, puis les sept erreurs expliquées, avec un exemple et un exercice à chaque étape. Les PDF sont déjà prêts. Vous n’achetez ni une promesse de tournage ni un accès vide.
 
-La Méthode coûte 27 €. Le Dossier à 17 € ajoute des trames de préparation ; il est facultatif. Les packs réunissent une préparation plus approfondie et l’atelier pédagogique.
+Votre premier achat est autonome. Aucun pack n’est nécessaire pour le terminer ; la garantie commerciale de 30 jours vous permet de découvrir la pédagogie à votre rythme.
 
-Regardez d’abord les supports. Vous pourrez décider sur du concret, et pas seulement sur mes mots.
+Ce soir, vous pouvez encore garder tout cela dans votre tête. Ou commencer à poser ce que vous voulez préserver pour vous et pour vos proches.
 
-Bouton : Ouvrir les vrais supports → /apercu
+CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /methode.
 
 ## J5 — Ennemi réel : informations dispersées et raccourcis
-Objet : Le piège : connaître une règle sans connaître son contexte
+
+Objet : Le piège tient en quatre mots : « On verra plus tard »
 
 Bonjour [Prénom],
 
@@ -103,26 +116,27 @@ Une phrase paraît simple. Mais que devient-elle si vous avez déjà donné, si 
 
 Le problème n’est pas votre intelligence. C’est une information détachée de ce qui permet de l’interpréter.
 
-Votre notaire n’est pas un adversaire. Le vrai obstacle, c’est le mélange : un article d’un côté, un contrat oublié de l’autre, et des suppositions qui finissent par ressembler à des certitudes.
+Notre adversaire, c’est ce silence qui rassure à tort : la maison est payée, le contrat est signé, donc tout serait réglé. Pendant ce temps, les questions restent sans réponse. Le notaire peut vous conseiller ; encore faut-il remettre le sujet sur la table.
 
 La méthode remet trois choses dans l’ordre : faire le point sur votre situation, préparer les informations, puis faire vérifier les décisions.
 
 Une question précise vaut mieux qu’une règle appliquée à l’aveugle. C’est pourquoi les repères de donation et d’assurance-vie sont présentés avec leurs distinctions, et non comme des ordres d’agir.
 
-Si vous voulez transformer vos lectures dispersées en une préparation suivie, vous pouvez commencer aujourd’hui. Aucun compte à rebours ne remplace cette démarche.
+Ne laissez pas un article de plus rejoindre les autres sans suite. Ouvrez les 7 erreurs maintenant et transformez votre première inquiétude en question écrite. C’est une petite action ; c’est déjà la fin du « je ne sais pas par où commencer ».
 
-Bouton : Remettre les repères dans l’ordre → /methode
+CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /methode.
 
 ## J6 — Closing : valeur, risque et première action
-Objet : Attendre peut changer les conditions de votre transmission
+
+Objet : 9 600 € d’écart pour la même maison : le seuil à regarder
 
 Bonjour [Prénom],
 
 Remettre une préparation à plus tard ne change pas seulement la date de votre rendez-vous. Si un projet de transmission vous concerne, l’attente peut aussi en modifier les conditions fiscales.
 
-Pour 27 €, en paiement unique, vous recevez huit étapes lisibles, des actions guidées et les supports de base à imprimer. Votre première tâche : noter votre priorité et les informations à retrouver.
+Au tarif hors avantage de 27 €, en paiement unique, vous recevez huit étapes lisibles, des actions guidées et les supports de base à imprimer. Votre première tâche : noter votre priorité et les informations à retrouver.
 
-Par exemple, pour une donation de nue-propriété avec usufruit viager, la valeur fiscale passe de 60 % à 70 % au 71e anniversaire de l’usufruitier. Une même opération peut alors entraîner davantage de droits, selon les abattements et les autres paramètres. C’est un seuil à faire examiner, pas un ordre de donner.
+Exemple fictif : un parent seul donne à un enfant la nue-propriété d’une maison de 480 000 €, avec usufruit viager conservé, aucun don antérieur et l’abattement de 100 000 € disponible. À 70 ans : environ 35 794 € de droits. À 71 ans : environ 45 394 €. Écart : 9 600 €, hors frais. Même bien, même enfant ; seul l’âge au moment de donner change. Le calcul et ses sources officielles sont détaillés sur la présentation.
 
 Le parcours ne remplace pas une consultation individuelle. Il ne calcule pas une facture successorale certifiée. Si une succession est déjà ouverte ou qu’un délai court, contactez directement un professionnel.
 
@@ -130,60 +144,56 @@ Pour commencer, les huit étapes et les supports de base suffisent. Vous trouver
 
 La garantie commerciale de 30 jours reste applicable. Si cette manière d’avancer vous convient, ouvrez votre accès et commencez par la fiche. Pas toute votre transmission à régler : une première action utile.
 
-Bouton : Commencer maintenant · 27 € → /commande
+CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commande.
 
-## J7 — Closing final de la série, sans fausse fin d’offre
-Objet : Le bon moment pour vérifier, c’est avant de laisser passer le sujet
+## J7 — Closing final : passage à l’action, conditions de prix relues au moment de l’envoi
+
+Objet : Avant de remettre ce sujet à l’année prochaine
 
 Bonjour [Prénom],
 
-La question n’est pas de tout décider ce soir. C’est de savoir si vous allez vérifier maintenant les dates et les informations qui peuvent compter pour votre famille.
+Il serait facile de fermer cet email et de se dire : « Je m’en occuperai après les vacances. » Puis après les fêtes. Puis l’année prochaine. La maison serait toujours là. Les questions aussi. Et certaines dates, elles, auraient avancé.
 
-Vous pouvez prendre directement rendez-vous avec votre notaire. Vous pouvez rassembler seul les premiers documents. Ou vous pouvez suivre Héritage Intact pour être guidé étape par étape.
+Prenez rendez-vous avec votre notaire si nécessaire. En attendant cet échange, vous pouvez déjà ouvrir votre guide et préparer une priorité, les documents utiles et vos trois questions.
 
-Si vous choisissez la méthode, les 27 € donnent accès au parcours écrit et aux supports de base. Votre première fiche vous aidera à séparer une priorité, une information connue et une question à vérifier.
+Le guide Les 7 erreurs, à 27 € hors avantage, donne accès au parcours écrit et aux supports de base. Votre première fiche vous aidera à séparer une priorité, une information connue et une question à vérifier.
 
 Imaginez simplement la différence : au prochain échange en famille, vous ne dites plus seulement « il faudrait qu’on s’en occupe ». Vous pouvez ouvrir ce que vous avez commencé.
 
 Une donation reportée peut repousser le renouvellement d’un abattement utilisé. Un projet de versement en assurance-vie mérite aussi d’être examiné avant son exécution, notamment autour de 70 ans. Les effets dépendent de votre situation : commencer par les vérifier permet de ne pas décider à l’aveugle.
 
-Le prix ne disparaît pas ce soir. Les dates qui peuvent compter sont celles de votre situation, pas celles d’une promotion. Si un seuil est proche, contactez directement votre notaire sans attendre de finir la Méthode. Sinon, vous pouvez choisir dès maintenant votre première séance de préparation.
+Une réduction commerciale ne change pas vos droits fiscaux. Sa date et son montant, lorsqu’elle est encore active pour vous, figurent en bas de cet email. Les dates de votre situation méritent une vérification distincte. Si un seuil est proche, contactez directement votre notaire sans attendre de finir la Méthode. Sinon, vous pouvez choisir dès maintenant votre première séance de préparation.
 
-Et si vous commencez autrement, gardez ce premier geste : écrivez ce que vous souhaitez préserver pour vous et clarifier pour vos proches.
+Vous n’avez pas besoin de régler toute votre succession ce soir. Mais vous pouvez décider de ne pas repousser encore le premier pas. Ouvrez les 7 erreurs maintenant. Posez votre priorité, retrouvez une information, écrivez votre première question. Faites-le pendant que vous pouvez encore en parler ensemble.
 
-Bouton : Ouvrir mon accès · 27 € → /commande
+CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commande.
 
-## Après l’achat
-La séquence prospect s’arrête. Les emails c1/c2/c3 concernent l’accès, le démarrage et la reprise ; aucune offre commerciale n’est cachée dans un message de service.
-La séquence complémentaire est maintenant codée dans sequence-ltv.ts et le cron. Activation séparée après recette : EMAIL_MARKETING_ACTIVE=true ET EMAIL_LTV_ACTIVE=true.
+## Après achat : livraison et accompagnement
 
-### Conditions et rythme des compléments
-- Consentement marketing explicite, non désinscrit, accès non révoqué.
-- Première étape terminée ; client entre J10 et J35 de son accès.
-- Offre liée à l’objectif et à l’AV déclarée, non déjà possédée ; complément strictement positif.
-- Un premier message et un rappel maximum. Rappel à partir de J17 ET au moins sept jours après l’envoi effectif du premier.
-- Service client prioritaire ; aucune relance commerciale le même passage qu’un email de service.
-- Un refus ou une plainte ne provoque pas de nouvelle cascade.
+Les prospects ayant un accès acheté sortent de la séquence J1–J7. Reçu, accès et aide à la première fiche restent des messages de service, pas des emplacements publicitaires. Les achats et remboursements sont revérifiés avant recommandation.
 
-### Texte du premier complément
-Objet : La prochaine étape de votre préparation
-Bonjour [Prénom],
-Vous avez commencé votre fiche. Si vous souhaitez maintenant approfondir votre préparation, voici le complément correspondant aux informations que vous nous avez indiquées.
-Version pack : Le pack réunit vos supports, les fiches de situations familiales et l’atelier pédagogique. L’objectif : préparer le rendez-vous à partir de vos priorités, puis conserver les réponses au même endroit.
-Version assurance-vie : Vos contrats d’assurance-vie méritent une lecture organisée : clause en vigueur, informations manquantes et réponse de l’assureur. Le module vous guide pour préparer cette vérification sans modifier un contrat à l’aveugle.
-Le complément proposé est « [offre] ». Vos [montant réel] d’achats inclus déjà payés sont déduits automatiquement. Le montant à ajouter, calculé aujourd’hui, est de [montant]. La phrase de déduction n’apparaît que si son montant est positif.
-Vous ne repartez pas de zéro et vous ne repayez pas les contenus inclus déjà achetés. Cette déduction ne constitue pas un avoir à réclamer et n’expire pas ce soir.
-La page de confirmation affiche le montant à jour avant tout paiement. Cliquer dans cet email ne déclenche aucun débit.
-Si votre achat actuel suffit, continuez simplement votre parcours. Aucun produit supplémentaire n’est nécessaire pour terminer la Méthode.
-Bouton : Voir mon complément et son contenu → confirmation membre, jamais débit au clic du lien.
+## Compléments — deux messages ciblés
 
-### Rappel unique
-Objet : Votre préparation, si vous souhaitez la compléter
-Ouverture : Un dernier rappel pour ce complément. Votre achat actuel reste utilisable et aucune décision n’est attendue de vous.
-La suite reprend l’offre encore pertinente et son complément actualisé. Si elle est déjà possédée ou si le montant est nul, le message ne part pas.
+Source : envoyerComplement dans src/lib/email.ts, déclenchement dans sequence-ltv.ts et le cron.
 
-## Délivrabilité : limites
-Les [messages de retour d’usage et de suivi semestriel](09-SUIVI-SATISFACTION.md) sont conservés séparément, non activés. Le membre peut également suspendre les relances de compléments depuis son espace.
+Premier objet : « Vous avez commencé pour eux. Préparez maintenant la suite. »
 
-Les campagnes sont codées mais leurs interrupteurs restent inactifs par défaut. Aucun email réel n’a été envoyé pendant cette refonte.
-La confirmation de réception, la réputation, les autorisations du compte Resend et les domaines expéditeurs restent à vérifier en préproduction. Voir [la livraison V3](08-LIVRAISON-CONVERSION-V3.md).
+Ouverture : « Imaginez votre prochain échange : vous n’ouvrez plus trois tiroirs pour retrouver une information. Vous ouvrez votre préparation, avec ce qui est connu, ce qui manque et les questions propres à votre famille. C’est la suite de votre première fiche. »
+
+Rappel : « Ne laissez pas votre première avancée sans suite ». Il rappelle la pièce, les questions et le suivi à terminer, sans faire passer l’accès déjà payé pour un avantage qui expire.
+
+Version préparation : fiches familiales, trames et atelier pour préparer le rendez-vous puis conserver les réponses. Version assurance-vie : clause en vigueur, informations manquantes et demande à l’assureur.
+
+Le message donne le nom du seul complément retenu, les achats inclus réellement déduits et le montant restant. Puis il traite les objections : contenus déjà payés non refacturés ; pas de débit au clic dans l’email ; guides écrits à suivre ; garantie de 30 jours selon CGV ; base autonome.
+
+Bouton : « Préparer la suite · [montant actuel] », vers la confirmation de l’espace. Aucun produit déjà possédé n’est proposé.
+
+### Déclenchement et protection de la réception
+
+- Consentement marketing explicite, absence de désinscription, accès non révoqué et première fiche terminée.
+- Premier complément à partir de J10 ; rappel à partir de J17 et au moins sept jours après le premier envoi réel ; arrêt à J35. Deux envois maximum, pas de cascade après refus ou plainte.
+- L’offre immédiate est sur le site juste après qualification et livraison ; d’autres points d’entrée se trouvent après la première fiche et dans les étapes maison/contrat. Ces emails tardifs servent la reprise, pas un faux rappel de la réduction de 48 heures déjà terminée.
+- Un seul message commercial éligible par passage, priorité au service, plafonds, clés anti-doublon, suppressions sur rebonds/plaintes et désinscription.
+- Activation séparée : EMAIL_MARKETING_ACTIVE et EMAIL_LTV_ACTIVE. Configuration, DNS et boîtes réelles restent à tester avant activation.
+
+La qualité de réception se mesure ; aucune délivrabilité parfaite ni progression de LTV n’est démontrée par ces tests locaux.

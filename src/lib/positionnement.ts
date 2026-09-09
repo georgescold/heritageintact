@@ -6,8 +6,8 @@ export function objectifValide(v: unknown): Objectif | undefined {
 }
 export function conseilOffre(p: Reponses | null | undefined) {
   if (p?.objectif === "assurance-vie" && p.av === "O") return {
-    titre: "Vos contrats existent. Préparez maintenant les bonnes vérifications.",
-    raison: "Vous souhaitez faire le point sur votre assurance-vie. Ce module vous aide à retrouver les clauses en vigueur et à demander des réponses écrites à votre assureur.",
+    titre: "La personne que vous voulez protéger est-elle bien celle que votre contrat désigne ?",
+    raison: "Un contrat rangé depuis des années peut vous rassurer sans répondre à la question essentielle : que prévoit-il aujourd’hui ? Vous avez choisi ce sujet ; passez maintenant de la supposition à une demande précise.",
   };
   const famille = p?.enfants === "R" ? "Votre famille comprend des enfants d’une autre union : une fiche dédiée vous aide à préparer les questions propres à votre famille."
     : p?.vie === "V" ? "Après un veuvage, distinguer ce qui a déjà été transmis de ce qui vous appartient encore est un point de départ important."
@@ -15,7 +15,12 @@ export function conseilOffre(p: Reponses | null | undefined) {
     : p?.enfants === "0" ? "Sans enfant, la préparation de vos souhaits et des personnes à protéger mérite une attention particulière."
     : "Vos priorités familiales donnent l’ordre de votre préparation, pas une liste de documents à remplir au hasard.";
   return {
-    titre: p?.av === "O" ? "Votre famille, vos contrats : une préparation réunie." : "Passez de « je dois m’en occuper » à un dossier que vous pouvez ouvrir.",
+    titre: p?.enfants === "R" ? "Vous voulez protéger chacun. Ne laissez pas vos enfants découvrir vos intentions en les interprétant."
+      : p?.vie === "V" ? "Vous savez ce que c’est de rester seul face aux papiers. Préparez ce que vous voudriez leur épargner."
+      : p?.vie === "P" || p?.vie === "U" ? "Vous partagez votre vie. Mais avez-vous vérifié ce qui reviendrait à l’autre ?"
+      : p?.enfants === "0" ? "Sans enfant ne veut pas dire sans personne à protéger. Ne laissez pas vos souhaits dans le silence."
+      : p?.av === "O" ? "La maison est payée. Les contrats sont signés. Et si l’essentiel restait à clarifier ?"
+      : "Vous avez construit cette maison pour eux. Ne leur laissez pas aussi toutes les questions.",
     raison: famille,
   };
 }

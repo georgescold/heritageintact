@@ -85,7 +85,7 @@ export function PiecesAApporter() {
       <ul className="space-y-1">
         <Case>Mon inventaire patrimonial, rempli.</Case>
         <Case>Ma fiche famille, remplie.</Case>
-        <Case>Mon plan en une page, avec mon chiffre et mes trois dates.</Case>
+        <Case>Mon plan en une page, avec mes priorités, mes questions et les dates à faire vérifier.</Case>
       </ul>
 
       <Encadre titre="SI UNE PIÈCE MANQUE, ALLEZ QUAND MÊME">

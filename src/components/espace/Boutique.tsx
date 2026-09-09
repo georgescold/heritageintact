@@ -11,7 +11,7 @@ export const avantagesProduit = (sku: ProductSku) => PRESENTATION[sku]?.contenu 
 export async function Boutique({ etat }: { etat: EtatEspace }) {
   const offres = etat.boutique
     .filter((s) => !(etat.profil?.av !== "O" && (s === "upsell2" || s === "pack1")))
-    .slice(0, 2);
+    .slice(0, 1);
   if (!offres.length) return null;
   return (
     <section>
@@ -47,6 +47,7 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
                 {motif && <p className="my-3 border-l-4 border-orange bg-grey-bg p-3">{motif}</p>}
                 <p className="my-3">{resumeProduit(sku)}</p>
                 <p className="font-bold">Complément : {euros(d.montant)}</p>
+                {d.remise>0 && <p className="mt-2 font-bold text-orange-dark">Avantage en cours : −{euros(d.remise)} sur le complément.</p>}
                 {d.credit > 0 && (
                   <p className="mt-2 font-bold text-blue">
                     {euros(d.credit)} de vos achats inclus sont déjà déduits.

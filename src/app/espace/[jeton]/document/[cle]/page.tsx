@@ -6,6 +6,8 @@ import { LienInvalide } from "@/components/espace/LienInvalide";
 import { profilParEmail } from "@/lib/db";
 import { chargerEspace } from "@/lib/espace";
 import { estJetonValide } from "@/lib/jeton";
+import { EDITORIAL_FICHES } from "@/lib/editorial-fiches";
+import { SuiteProduit } from "@/components/SuiteProduit";
 import { documentParCle } from "@/lib/methode";
 
 export const metadata: Metadata = { title: "Votre document" };
@@ -74,6 +76,7 @@ export default async function DocumentPage({
   const profil = await profilParEmail(etat.acces.email);
 
   const Corps = doc.corps;
+  const intro = EDITORIAL_FICHES[cle];
 
   return (
     <main className="flex-1">
@@ -81,12 +84,14 @@ export default async function DocumentPage({
         <p className="mb-4">
           <Link href={`/espace/${jeton}`}>← Revenir à mon espace</Link>
         </p>
+        {intro && <section className="mb-6 border-l-4 border-orange bg-grey-bg p-5"><h1 className="mb-3 text-[1.5rem]">{doc.titre}</h1><p className="mb-3 text-lg">{intro[0]}</p><p><strong>Ce que vous allez comprendre : </strong>{intro[1]}</p></section>}
         <BoutonImprimer />
       </div>
 
       <div className="wrap-wide pb-10 print:pb-0">
         <Corps profil={profil ?? undefined} />
       </div>
+      {!etat.acces.revoque && <div className="no-print wrap"><SuiteProduit moment={cle} possede={etat.possede} profil={profil} hub={"/espace/"+jeton} /></div>}
     </main>
   );
 }

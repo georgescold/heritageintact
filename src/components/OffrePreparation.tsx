@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { MesureFunnel } from "./MesureFunnel";
+import { AvantageDemarrage } from "./AvantageDemarrage";
+import { SortieOffre } from "./SortieOffre";
+import { ObjectionsComplement } from "./ObjectionsComplement";
 import { ApercuProduit } from "./ApercuProduit";
 import { ValeurComplement } from "./ValeurComplement";
 import { BilanComplement } from "./BilanComplement";
@@ -9,10 +12,11 @@ import { alternativeAv } from "@/lib/complements";
 import { MesurerAchat } from "./MetaPixel";
 import { CHANGEMENTS, conseilOffre } from "@/lib/positionnement";
 import { profilDeCommande } from "@/lib/db";
+import { profilComplet } from "@/lib/questionnaire";
 import { redirect } from "next/navigation";
 import { acceptUpsell } from "@/app/actions";
 import { Header, Footer } from "./Chrome";
-import { Button } from "./ui";
+import { BoutonAchat as Button } from "./BoutonAchat";
 import { getOrder, accesParEmail } from "@/lib/db";
 import { devisPour } from "@/lib/devis";
 import { PRODUCTS, PRESENTATION, euros, type ProductSku } from "@/lib/config";
@@ -31,15 +35,15 @@ export async function OffrePreparation({
 }) {
   const order = id ? await getOrder(id) : null;
   if (!order || order.status !== "paid") redirect("/commande");
+  const profil = await profilDeCommande(order.id);
+  if (!profilComplet(profil)) redirect(`/situation?o=${encodeURIComponent(order.id)}`);
   const etape = await etapeTunnel(ecran, order.id, {
     bumpPresent: order.items.some((i) => i.sku === "bump"),
   });
-  const profil = await profilDeCommande(order.id);
   const possede = await possessions(order.email);
   const alternativeAutorisee =
     alternative &&
     sku === "upsell2" &&
-    profil?.objectif !== "comprendre" &&
     alternativeAv(profil, "pack1", possede);
   if (!etape.afficher && !alternativeAutorisee) redirect(etape.versOu);
   const contexte = conseilOffre(
@@ -69,13 +73,39 @@ export async function OffrePreparation({
           )}
         </p>
         <p className="font-bold text-orange-dark">
-          Une proposition facultative pour votre préparation
+          La suite recommandée pour votre priorité
         </p>
         <h1 className="my-4 text-[2rem] leading-tight">{contexte.titre}</h1>
         <p className="mb-3 text-[1.1rem] font-bold text-blue">{produit.name}</p>
         <p className="mb-6 border-l-4 border-orange bg-grey-bg p-4">{contexte.raison}</p>
         <p className="text-[1.2rem]">{texte?.promesse}</p>
+        <section id="decision-complement" className="my-6 border-2 border-blue bg-grey-bg p-5">
+          <h2 className="mb-3 text-[1.3rem]">{sku === "upsell2" ? "Ne laissez pas le contrat décider à votre place sans l’avoir relu." : "Le premier pas est payé. Donnez maintenant un fil à toute votre préparation."}</h2>
+          <p className="mb-4">{sku === "upsell2" ? "Vous souhaitez protéger quelqu’un, pas simplement posséder un contrat. Retrouvez la clause, préparez la demande à l’assureur et gardez une trace des réponses. Les mots pour commencer sont déjà préparés." : "Vous savez désormais par où commencer. Le risque, maintenant, c’est de remettre la suite dans le même tiroir. Le pack ajoute l’exemple, les trames, les fiches de votre famille et l’atelier : une préparation que vous pouvez reprendre et apporter au rendez-vous."}</p>
+          <p>Total de l’offre : {euros(d.total)} · Achats inclus déduits : {euros(d.credit)}.</p>
+          {d.remise>0 && <p className="mt-2 font-bold text-orange-dark">Avantage de démarrage : −{euros(d.remise)} sur le complément restant.</p>}
+          <AvantageDemarrage promotion={d.promotion} base={d.avantRemise}/>
+          <p className="mt-2 text-[1.25rem] font-bold">À payer maintenant si vous confirmez : {euros(d.montant)}.</p>
+        <form action={action} className="mt-6">
+          <input type="hidden" name="montantAffiche" value={d.montant} />
+          <Button>
+            {d.montant === 0
+              ? "Activer ce complément sans paiement"
+              : `Oui, préparer la suite maintenant · ${euros(d.montant)}`}
+          </Button>
+          <p className="mt-3 text-sm text-text-soft">
+            {d.montant === 0
+              ? "Aucun débit."
+              : "Paiement unique sur votre carte enregistrée, uniquement si vous confirmez."}{" "}
+            Garantie commerciale de 30 jours selon les CGV. Aucun abonnement. En validant, vous
+            demandez l’accès immédiat au contenu numérique et reconnaissez renoncer au droit de
+            rétractation applicable à cette exécution immédiate.
+          </p>
+        </form>
+          <p className="mt-4 text-sm"><Link href={fin}>Non merci, conserver mon achat actuel</Link></p>
+        </section>
         <ValeurComplement av={sku === "upsell2"} complet={sku === "pack1"} />
+        <ObjectionsComplement av={sku==="upsell2"} />
         <ApercuProduit pack={sku !== "upsell2"} av={sku === "upsell2"} />
         {sku !== "upsell2" && <DemonstrationPack />}
         <h2 className="mb-4 text-[1.5rem]">Ce que vous pourrez préparer, concrètement</h2>
@@ -127,22 +157,7 @@ export async function OffrePreparation({
             les nouveaux supports et leur mode d’emploi dans le même espace.
           </p>
         </div>
-        <form action={action} className="mt-6">
-          <input type="hidden" name="montantAffiche" value={d.montant} />
-          <Button>
-            {d.montant === 0
-              ? "Activer ce complément sans paiement"
-              : `Ajouter pour ${euros(d.montant)}`}
-          </Button>
-          <p className="mt-3 text-text-soft">
-            {d.montant === 0
-              ? "Aucun débit."
-              : "Paiement unique sur votre carte enregistrée, uniquement si vous confirmez."}{" "}
-            Garantie commerciale de 30 jours selon les CGV. Aucun abonnement. En validant, vous
-            demandez l’accès immédiat au contenu numérique et reconnaissez renoncer au droit de
-            rétractation applicable à cette exécution immédiate.
-          </p>
-        </form>
+        <p className="mt-6"><a href="#decision-complement" className="inline-flex min-h-[48px] items-center font-bold">Revenir à la proposition et au montant à payer ↑</a></p>
         <details className="mt-6 border-y border-grey-line py-4">
           <summary className="cursor-pointer font-bold">Et si je préfère attendre ?</summary>
           <p className="mt-3">
@@ -170,6 +185,7 @@ export async function OffrePreparation({
         )}
       </main>
       <Footer />
+      <SortieOffre produit={sku} href="#decision-complement" montant={d.montant} promotion={d.promotion}/>
     </>
   );
 }

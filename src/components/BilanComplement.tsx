@@ -1,6 +1,6 @@
 import { avantagePack, bilanSupports } from "@/lib/complements";
 import { euros, PRODUCTS, type ProductSku } from "@/lib/config";
-import type { devis } from "@/lib/prix";
+import type { devisPour } from "@/lib/devis";
 
 export function BilanComplement({
   sku,
@@ -9,7 +9,7 @@ export function BilanComplement({
 }: {
   sku: ProductSku;
   possede: Set<ProductSku>;
-  montant: ReturnType<typeof devis>;
+  montant: Awaited<ReturnType<typeof devisPour>>;
 }) {
   const bilan = bilanSupports(sku, possede);
   const pack = avantagePack();
@@ -55,6 +55,7 @@ export function BilanComplement({
             <dt>Achats inclus déduits</dt>
             <dd>− {euros(montant.credit)}</dd>
           </div>
+          {montant.remise>0 && <div className="flex justify-between gap-4 text-base text-orange-dark"><dt>Avantage de démarrage (−{montant.promotion.pourcent}%)</dt><dd>− {euros(montant.remise)}</dd></div>}
           <div className="flex flex-wrap justify-between gap-3 text-[1.4rem] font-bold">
             <dt>À payer si vous confirmez</dt>
             <dd>{euros(montant.montant)}</dd>

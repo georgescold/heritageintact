@@ -1,0 +1,182 @@
+"""Guides A4 lisibles et imprimables, depuis le même contenu que l'espace membre."""
+import json,re,html,sys
+from pathlib import Path
+sys.path.insert(0,str(Path("tmp/pdfs/deps").resolve()))
+from bs4 import BeautifulSoup, NavigableString
+from reportlab.pdfgen import canvas
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle, KeepTogether, HRFlowable
+from reportlab.lib.styles import ParagraphStyle
+from reportlab.lib import colors
+from reportlab.lib.enums import TA_LEFT
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from pypdf import PdfReader
+DATA=json.loads(Path("tmp/pdfs/contenu-v7.json").read_text(encoding="utf8"))
+OUT=Path("output/pdf"); OUT.mkdir(parents=True,exist_ok=True)
+FONT=Path("C:/Windows/Fonts")
+pdfmetrics.registerFont(TTFont("HI",str(FONT/"arial.ttf")))
+pdfmetrics.registerFont(TTFont("HI-Bold",str(FONT/"arialbd.ttf")))
+pdfmetrics.registerFontFamily("HI",normal="HI",bold="HI-Bold",italic="HI",boldItalic="HI-Bold")
+BLUE=colors.HexColor("#12365E"); ORANGE=colors.HexColor("#B74716"); GREY=colors.HexColor("#F2F4F6"); LINE=colors.HexColor("#D4DCE4")
+W,H=A4; M=44; CW=W-2*M
+S={
+ "body":ParagraphStyle("body",fontName="HI",fontSize=11.5,leading=16,spaceAfter=9,textColor=colors.HexColor("#222222")),
+ "h1":ParagraphStyle("h1",fontName="HI-Bold",fontSize=24,leading=29,spaceAfter=16,textColor=BLUE,keepWithNext=True),
+ "h2":ParagraphStyle("h2",fontName="HI-Bold",fontSize=15,leading=19,spaceBefore=12,spaceAfter=8,textColor=BLUE,keepWithNext=True),
+ "h3":ParagraphStyle("h3",fontName="HI-Bold",fontSize=12.5,leading=17,spaceBefore=8,spaceAfter=6,textColor=BLUE,keepWithNext=True),
+ "small":ParagraphStyle("small",fontName="HI",fontSize=9,leading=12,spaceAfter=7,textColor=colors.HexColor("#526171")),
+ "check":ParagraphStyle("check",fontName="HI",fontSize=10.5,leading=14,spaceAfter=7,textColor=colors.HexColor("#222222")),
+ "label":ParagraphStyle("label",fontName="HI-Bold",fontSize=10,leading=13,spaceAfter=8,textColor=ORANGE,keepWithNext=True),
+ "cell":ParagraphStyle("cell",fontName="HI",fontSize=9,leading=12,spaceAfter=2),
+ "field":ParagraphStyle("field",fontName="HI-Bold",fontSize=11,leading=14,spaceBefore=6,spaceAfter=3,textColor=BLUE,keepWithNext=True),
+}
+def clean(t):
+ return re.sub(r"\s+"," ",str(t)).strip().replace("\u00a0"," ").replace("\u202f"," ").replace("—","-").replace("–","-").replace("\u2011","-").replace("\u2212","-")
+def P(t,style="body"):
+ return Paragraph(html.escape(clean(t)),S[style])
+def rich(t,style="body"):
+ return Paragraph(t,S[style])
+def box(title,body):
+ t=Table([[P(title,"h3")],[P(body)]],colWidths=[CW-22])
+ t.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,-1),GREY),("BOX",(0,0),(-1,-1),.6,LINE),("LEFTPADDING",(0,0),(-1,-1),11),("RIGHTPADDING",(0,0),(-1,-1),11),("TOPPADDING",(0,0),(-1,0),4),("BOTTOMPADDING",(0,-1),(-1,-1),8)]))
+ return [KeepTogether([t]),Spacer(1,10)]
+def lines(label,n=2):
+ return [KeepTogether([P(label,"field")]+sum(([Spacer(1,13),HRFlowable(width="100%",thickness=.45,color=LINE)] for _ in range(n)),[]))]
+class Doc(SimpleDocTemplate):
+ def afterFlowable(self,f):
+  if isinstance(f,Paragraph) and f.style.name=="h1":
+   key="s"+str(self.page)+"-"+str(getattr(self,"marks",0)); self.marks=getattr(self,"marks",0)+1
+   self.canv.bookmarkPage(key);self.canv.addOutlineEntry(f.getPlainText(),key,0,False)
+def furniture(c,d):
+ c.saveState();c.setFillColor(BLUE);c.setFont("HI-Bold",9);c.drawString(M,H-26,"HÉRITAGE INTACT")
+ c.setFont("HI",8);c.setFillColor(colors.HexColor("#526171"));c.drawRightString(W-M,H-26,"GUIDE PRATIQUE / SEPTEMBRE 2026")
+ c.setStrokeColor(LINE);c.line(M,37,W-M,37)
+ c.setFont("HI",7.4);c.drawString(M,25,"Information pédagogique générale - exemples fictifs - décisions à faire vérifier.")
+ c.drawRightString(W-M,25,str(d.page));c.restoreState()
+def head(label,title):
+ return [P(label,"label"),P(title,"h1")]
+def html_flows(node):
+ if isinstance(node,NavigableString):
+  return [P(str(node))] if clean(str(node)) else []
+ if node.name in ("header","footer"):return []
+ if node.name=="table":
+  rows=[]
+  for tr in node.find_all("tr"):
+   cells=tr.find_all(["th","td"],recursive=False)
+   if cells:rows.append([P(c.get_text(" ",strip=True) or " ","cell") for c in cells])
+  if not rows:return []
+  cols=max(map(len,rows));rows=[r+[P(" ","cell")]*(cols-len(r)) for r in rows]
+  t=Table(rows,colWidths=[CW/cols]*cols,repeatRows=1,hAlign="LEFT",minRowHeights=[25]+[25]*(len(rows)-1))
+  t.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,0),GREY),("GRID",(0,0),(-1,-1),.45,LINE),("VALIGN",(0,0),(-1,-1),"TOP"),("TOPPADDING",(0,0),(-1,-1),5),("BOTTOMPADDING",(0,0),(-1,-1),5),("LEFTPADDING",(0,0),(-1,-1),6),("RIGHTPADDING",(0,0),(-1,-1),6)]))
+  return [t,Spacer(1,12)]
+ if node.name in ("h2","h3","h4"):
+  title=node.get_text(" ",strip=True)
+  if title=="Trois questions à rendre plus précises":
+   return [PageBreak()]+head("PRÉPARER LE RENDEZ-VOUS / SUITE",title)
+  return [P(title,"h2" if node.name=="h2" else "h3")]
+ if node.name in ("p","li","summary"):
+  text=node.get_text(" ",strip=True)
+  result=[P(("[ ] " if node.name=="li" else "")+text,"check" if node.name=="li" else "body")] if text else []
+  if node.name=="li" and node.select("div.border-b"):result.extend([Spacer(1,13),HRFlowable(width="100%",thickness=.45,color=LINE)])
+  return result
+ classes=node.get("class",[])
+ if node.name=="div" and "border-2" in classes and "border-black" in classes:
+  flows=sum((html_flows(ch) for ch in node.children),[])
+  # A nested KeepTogether reports an artificial height and needlessly moves a small box.
+  flat=sum((list(f._content) if isinstance(f,KeepTogether) else [f] for f in flows),[])
+  return [KeepTogether(flat)]
+ if "min-h-[44px]" in classes and "border-b" in classes:return lines(node.get_text(" ",strip=True),1)
+ return sum((html_flows(ch) for ch in node.children),[])
+def sources():
+ return [PageBreak()]+head("REPÈRES ET LIMITES","Pour vérifier une règle")+[
+ P("Les exemples ne déterminent pas vos droits. Les dates, la propriété, les donations passées et les dispositions familiales doivent être examinées ensemble. Les repères ci-dessous ont été consultés le 9 septembre 2026."),
+ rich('<b>Donations : abattements et calcul</b><br/><link href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits" color="#12365E">impots.gouv.fr - Calcul et paiement des droits</link>'),
+ rich('<b>Usufruit et nue-propriété</b><br/><link href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934" color="#12365E">Service Public - En quoi consiste l’usufruit ?</link>'),
+ rich('<b>Assurance-vie : fiscalité au décès</b><br/><link href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer" color="#12365E">impots.gouv.fr - Bénéficiaire d’une assurance-vie</link>'),
+ rich('<b>Succession et famille</b><br/><link href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2529" color="#12365E">Service Public - Règles de succession</link>'),
+ P("Gardez vos documents personnels chez vous et utilisez les canaux sécurisés de vos interlocuteurs. N’envoyez pas de relevés, données de santé ou pièces de vos proches à la formation."),
+ P("Une succession déjà ouverte, un conflit, une entreprise, un élément international ou une échéance proche nécessitent un professionnel. Ne retardez pas sa consultation pour finir ce guide."),
+ P("Dans votre espace : les fiches séparées peuvent être réimprimées à l’unité. En cas de nouvelle version, privilégiez l’édition la plus récente. Les PDF ne se mettent pas à jour une fois téléchargés.")]
+CAT=[
+ ("front","les-7-erreurs","Les 7 erreurs qui offrent votre héritage à l’État","Comprendre les repères. Poser votre situation. Préparer vos premières questions."),
+ ("bump","dossier-notaire","Mon dossier pour le rendez-vous","Partir de l’exemple. Rassembler les pièces utiles. Conserver les réponses."),
+ ("upsell1","preparation-familiale","Ma préparation familiale","Choisir votre fiche. Relier les faits. Comparer les hypothèses. Suivre les démarches."),
+ ("upsell2","assurance-vie","Mon guide assurance-vie","Retrouver la clause. Demander les informations. Suivre les vérifications."),
+]
+manifest=[]
+for sku,slug,title,subtitle in CAT:
+ guide=next(g for g in DATA["guides"] if g["sku"]==sku)
+ docs=[d for d in DATA["documents"] if d["sku"]==sku]
+ ed=DATA["editorial"][sku]
+ story=head("VOTRE GUIDE / "+("PRODUIT DE BASE" if sku=="front" else "COMPLÉMENT"),title)
+ story+=[P(ed["ouverture"],"h2")]+[P(p) for p in ed["histoire"]]
+ story+=[P("Ce que vous allez apprendre","h2")]
+ for appris in ed["apprendre"]:story+=[P("- "+appris)]
+ story+=[P("Pour aller à l’essentiel","h3"),P(ed["essentiel"]),P("Édition du 9 septembre 2026. Les scènes imaginées et exemples fictifs ne sont pas des témoignages. Supports à conserver chez vous.","small")]
+ story+=[PageBreak()]+head("REPÉRER VOS SUPPORTS","Le fil de votre préparation")
+ if sku=="front":
+  for l in DATA["lecons"]:story+=[P(("Départ - " if not l["numero"] else "")+l["titre"],"h3")]
+ else:
+  for d in docs:story+=[P(d["titre"],"h3")]
+ story+=[P("Utilisez les signets du PDF pour rejoindre votre question. Imprimez seulement les fiches utiles. Ce n’est pas un cahier à terminer : une réponse manquante devient une demande à faire.")]
+ if sku=="front":
+  for l in DATA["lecons"]:
+   story+=[PageBreak()]+head("DÉPART" if not l["numero"] else "LES 7 ERREURS / "+str(l["numero"]),l["titre"])+[P(DATA["ouvertures"][l["cle"]]),P("Ce que vous allez comprendre","h3")]+[P("- "+a) for a in l["acquis"]]
+   for t,b in l["blocs"]:story+=[P(t,"h2"),P(b)]
+   story+=box("Votre prochain pas utile",l["aFaire"])
+   if l.get("siNonConcerne"):story+=[P(l["siNonConcerne"],"small")]
+   if l["cle"] in ("e3","e4"):
+    titleSuite="Le contrat est retrouvé. Il reste à obtenir les réponses." if l["cle"]=="e3" else "La maison n’est qu’une partie de l’histoire."
+    texteSuite="Si vous avez une assurance-vie, le guide dédié fournit la grille de lecture et le courrier à adapter. Retrouvez-le dans votre espace s’il est inclus, ou consultez le complément proposé." if l["cle"]=="e3" else "Le pack Préparation relie cette question aux particularités de votre famille, aux pièces et au suivi. S’il est déjà inclus, ouvrez votre fiche familiale. Sinon, retrouvez votre proposition dans votre espace."
+    story+=[P(titleSuite,"h3"),P(texteSuite,"small"),rich('<link href="https://www.heritageintact.fr/espace" color="#12365E">Retrouver maintenant ma suite dans mon espace</link>',"small")]
+  story+=[PageBreak()]+head("EXEMPLE FICTIF ET CALCULÉ","Un seuil d’âge : 9 600 € d’écart") + [
+   P("Un parent seul propriétaire donne à un enfant la nue-propriété d’une maison de 480 000 €, en conservant l’usufruit viager. On suppose l’abattement de 100 000 € totalement disponible et aucune donation antérieure. Seul l’âge change dans cette comparaison."),
+   P("À 70 ans : valeur fiscale 60% × 480 000 € = 288 000 €. Après abattement : 188 000 € taxables. Droits pédagogiques avant arrondi fiscal : 35 794,35 €."),
+   P("À 71 ans : valeur fiscale 70% × 480 000 € = 336 000 €. Après abattement : 236 000 € taxables. Droits pédagogiques avant arrondi fiscal : 45 394,35 €."),
+   P("Écart : 9 600 €. Hors frais d’acte et autres paramètres. Ce n’est ni votre facture, ni une recommandation de donner. Les sources du barème figurent en fin de guide."),
+   P("Comment vérifier : 8 072 × 5% + (12 109 - 8 072) × 10% + (15 932 - 12 109) × 15% + (base taxable - 15 932) × 20%. Cette écriture vaut pour les deux bases retenues, toutes deux inférieures à 552 324 €."),
+   P("Votre question : quels changements de règles peuvent concerner un projet déjà envisagé, et faut-il prendre rendez-vous avant une date précise ?")]
+ if sku=="front":
+  ex=DATA["headline"]
+  story+=[PageBreak()]+head("L’EXEMPLE DE LA PRÉSENTATION","68 206 € d’écart : les hypothèses")+[P(ex["hypotheses"]),P(ex["scenarioA"]),P(ex["scenarioB"]),P("Droits calculés avant frais et arrondis fiscaux : 82 194,70 € contre 13 988,70 €, soit 68 206 € pour les deux enfants réunis."),P(ex["limites"]),P("Ce scénario fictif a été choisi pour illustrer l’accroche. Il ne représente pas une famille moyenne. Les sources du barème et de l’assurance-vie figurent en fin de guide.","small")]
+ if sku=="upsell2":
+  story+=[PageBreak()]+head("COMPRENDRE AVANT D’ÉCRIRE","Votre contrat : les six repères")
+  for t,b in DATA["assurance"]:story+=[P(t,"h2"),P(b)]
+  story+=[P("Exemple fictif : Marc dispose d’un relevé annuel mais seulement d’une ancienne photocopie de clause. Il note « clause en vigueur à demander », pas « clause incorrecte ». Contrat ouvert à 45 ans et versement effectué à 73 ans : l’âge à l’ouverture ne suffit pas à déterminer le régime du versement.")]
+ if sku=="upsell1":
+  story+=[PageBreak()]+head("L’ATELIER INCLUS","Comparer sans confondre résultat et décision")+[
+   P("Ouvrez Mes outils dans votre espace. Lisez le périmètre de l’atelier avant toute saisie. Une succession déjà ouverte, un conflit, une entreprise, un élément international ou des donations anciennes non vérifiées ne se résument pas à ce modèle."),
+   P("Pour apprendre, commencez par un cas fictif : un parent seul, un enfant, 480 000 € de bien, donation de nue-propriété, puis comparez 70 et 71 ans. Gardez toutes les autres hypothèses identiques. L’écart de droits du modèle est de 9 600 €, hors frais d’acte."),
+   P("Notez ce que vous avez changé, ce qui reste constant et ce que le modèle ne prend pas en compte. Ne mélangez pas deux parents dans un scénario et un seul dans l’autre. Un écart entre scénarios n’est pas une économie déjà acquise.")]
+  story+=lines("Hypothèse A / hypothèse B / limite du modèle",4)
+ for d in docs:
+  normalBody=S["body"]
+  if d["cle"]=="trois-poches":S["body"]=ParagraphStyle("bodycompact",parent=normalBody,leading=15,spaceAfter=6)
+  soup=BeautifulSoup(d["html"],"html.parser")
+  for blank in soup.select("span.border-b"):
+   if not clean(blank.get_text()):blank.string="____________"
+  story+=[PageBreak()]+head("FICHE PRATIQUE",d["titre"])
+  subtitle_node=soup.select_one("article > header > p:last-child")
+  intro=DATA["fichesEditorial"].get(d["cle"])
+  if intro:story+=[P(intro[0]),P("Ce que vous allez comprendre : "+intro[1],"small")]
+  elif subtitle_node:story+=[P(subtitle_node.get_text(" ",strip=True),"small")]
+  story+=html_flows(soup)
+  S["body"]=normalBody
+ story+=[PageBreak()]+head("POUR DONNER UNE SUITE À VOTRE LECTURE","Ne laissez pas vos réponses retourner dans le tiroir.")
+ story+=[P(ed["acquis"]),P(ed["limite"]),P(ed["suite"])]
+ story+=[P("Votre prochaine étape","h2"),P("Ouvrez votre espace personnel. Il distingue vos supports déjà inclus du seul complément qui peut vous être proposé selon vos réponses. Vous voyez le montant actuel avant de confirmer ; aucun achat n’est déclenché par le lien.")]
+ story+=[rich('<link href="https://www.heritageintact.fr/espace" color="#12365E"><b>Retrouver maintenant ma prochaine étape</b></link>')]
+ story+=[P("Une réduction personnelle peut avoir expiré au moment où vous lisez ce PDF. Seule l’offre dans votre espace indique son montant et sa fin réelle ; le lien ne relance aucun délai.","small")]
+ story+=[P("Si vous disposez déjà des supports utiles à votre situation, vous êtes au bout du parcours d’achat. La suite : votre demande, votre rendez-vous et le suivi des réponses. Vous n’avez pas besoin d’un autre produit pour utiliser ceux que vous avez.")]
+ story+=sources()
+ file=OUT/(slug+".pdf")
+ doc=Doc(str(file),pagesize=A4,rightMargin=M,leftMargin=M,topMargin=53,bottomMargin=52,title=title,author="Héritage Intact")
+ doc.build(story,onFirstPage=furniture,onLaterPages=furniture)
+ reader=PdfReader(str(file))
+ for i,page in enumerate(reader.pages,1):
+  text=page.extract_text()
+  if not text or "\ufffd" in text:raise ValueError(f"Page invalide {slug} {i}")
+ manifest.append({"sku":sku,"slug":slug,"pages":len(reader.pages),"fiches":len(docs),"octets":file.stat().st_size})
+ print(slug+": "+str(len(reader.pages))+" pages / "+str(len(docs))+" fiches")
+Path("tmp/pdfs/manifest-v7.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf8")

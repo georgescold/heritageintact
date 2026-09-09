@@ -1,62 +1,63 @@
-Mise à jour produit V4 : lire [les guides, exemples, exercices et preuves de valeur](../10-GUIDES-ET-VALEUR-V4.md). Les nouveaux guides n’exigent aucune vidéo supplémentaire. Pour la production publicitaire, utiliser [les scripts alignés](../11-CREATIVES-ALIGNEES-V4.md) ; les anciens scripts chiffrés sont historiques. La reprise VSL « notaire » reste à monter.
+# À faire par Loys — checklist unique V9
 
-# À faire par Loys — checklist unique
-Mise à jour : 9 septembre 2026. Rien de cette liste n’est réputé fait sans confirmation. Les tarifs approuvés ne sont pas à revalider.
+[Dernière passe marketing V8 : headline et copy réécrites](../18-AUDIT-COPY-VALERE-BRUNSON.md).
 
-## 1. Priorité : la VSL déjà tournée
-- [ ] Lire [les reprises ciblées](../scripts/VSL-REPRISES-CIBLEES.md).
-- [ ] Fournir le fichier vidéo original ou un lien de téléchargement autorisé au monteur.
-- [ ] Faire relire les passages fiscaux corrigés avant de les enregistrer.
-- [ ] Enregistrer uniquement les reprises nécessaires ; garder les plans utilisables.
-- [ ] Faire corriger aussi les textes incrustés, les sous-titres et la miniature lorsqu’ils reprennent les anciennes promesses.
-- [ ] Visionner l’export final : paroles et affichages concordent ; exemples fictifs signalés ; aucune garantie de conserver la maison ou d’obtenir une économie déterminée.
-À remettre : export final et sous-titres. L’activation technique sera faite après validation ; pas besoin de modifier toi-même les variables du site.
+9 septembre 2026. Publication de test demandée. [Produits narratifs V9 et contrôles](../19-PRODUITS-NARRATIFS-V9.md).
 
-## 2. Confier la relecture au professionnel approprié
-- [ ] Transmettre [le brief de relecture](01-BRIEF-RELECTURE.md).
-- [ ] Obtenir une réponse écrite indiquant les passages validés, corrigés ou hors périmètre de la personne consultée.
-- [ ] Transmettre ces retours pour intégration. Ne pas transformer une simple relecture en label « approuvé par » sans accord explicite.
-À remettre : annotations et version/date relues. La documentation officielle consultée n’est pas une certification du produit.
+## Ce qui est terminé pour toi
 
-## 3. Confirmer les informations que toi seul peux attester
-- [ ] Identité de l’éditeur, coordonnées et informations d’entreprise exactes.
-- [ ] Adresse support fonctionnelle et personne chargée de répondre.
-- [ ] Conditions réelles de prise en charge des remboursements et capacité à honorer la garantie annoncée.
-- [ ] Situation réelle du médiateur mentionné et coordonnées à utiliser.
-- [ ] Présentation personnelle : rôle, expérience et qualifications vérifiables, sans titre inventé.
-À remettre : informations et corrections éventuelles ; ne pas communiquer de mots de passe ou de clés secrètes dans les documents.
+Le produit pédagogique est écrit : quatre guides PDF, huit chapitres sans quiz et 34 fiches utiles, soit 67 pages. Les PDF sont téléchargeables dans l’espace selon l’achat. **Aucune vidéo pédagogique à tourner.** Les anciens scripts V1/V2/V3 et fonds Canva sont conservés comme archives, sans action attendue.
 
-## 4. Tourner les trois vidéos pédagogiques
-Elles complètent les huit étapes déjà écrites : leur absence ne rend pas le produit vide.
-- [ ] V1 : [Première fiche](../scripts/V1-PREMIERE-FICHE.md), environ 4 minutes.
-- [ ] V2 : [Propriété et transmission](../scripts/V2-PROPRIETE-TRANSMISSION.md), environ 5–6 minutes.
-- [ ] V3 : [Assurance-vie](../scripts/V3-ASSURANCE-VIE.md), environ 4–5 minutes.
-- [ ] Lire d’abord la partie « comprendre » de chaque script ; noter les passages que tu ne saurais pas expliquer spontanément.
-- [ ] Importer les [fonds éditables](../visuels/Fonds-formation-Heritage-Intact.pptx) dans Canva si souhaité, puis vérifier polices, cadrage et retours à la ligne. Les [PNG](../visuels/LIRE-AVANT-IMPORT-CANVA.md) sont l’alternative.
-- [ ] Enregistrer avec un son clair et un débit naturel ; suivre les indications de fond du script.
-- [ ] Vérifier les sous-titres, puis remettre les exports nommés V1, V2 et V3.
-Ne pas utiliser les anciens dossiers de tournage en parallèle : ils correspondent à l’ancienne offre.
+Les sept emails de vente et les compléments sont rédigés : [textes de production](../05-EMAILS.md). Tu n’as ni à écrire ces emails ni à manipuler les clés des services.
 
-## 5. Fournir des preuves authentiques, si disponibles
-- [ ] Photo de présentation dont tu détiens les droits, si tu souhaites apparaître sur les pages.
-- [ ] Retours utilisateurs authentiques et autorisation de publication, si tu en as.
-- [ ] Sinon, laisser les témoignages absents : une démonstration des véritables documents peut servir de preuve d’usage.
-Ne pas créer de faux clients, de faux nombres de ventes ou de validation notariale supposée. Les fonds vidéo déjà créés ne sont pas des visuels commerciaux des packs.
+## 1. Fournir et faire finaliser la VSL de vente
 
-## 6. Valider l’expérience avant publication
-- [ ] Lire [la livraison V5](../13-LIVRAISON-V5.md) : offres, déductions réelles et consentement sont préparés localement, non publiés.
-- [ ] Vérifier le texte du choix publicitaire avec le professionnel approprié ; confirmer le compte/dataset Meta autorisé. Les branchements et la [recette isolée](../14-RECETTE-CONSENTEMENT-META.md) sont des tâches techniques, pas une demande de manipuler toi-même des clés.
-- [ ] Parcourir la préproduction sur téléphone : comprendre l’offre, reconnaître le total, retrouver le contenu acheté.
-- [ ] Demander à quelques personnes représentatives de faire la même chose sans explication préalable. Les retours sont exploratoires, pas une mesure statistique de conversion.
-- [ ] Vérifier personnellement la réception des emails de test et la boîte support.
-- [ ] Donner le feu vert de publication après remise d’une recette technique concluante et intégration des corrections professionnelles.
+La VSL n’est pas une vidéo de formation : elle reste à intégrer sur la page de vente.
 
-## Ce qui ne doit pas être reporté sur toi
-La passe V3 ajoute des réglages et une recette email : [voir la livraison technique](../08-LIVRAISON-CONVERSION-V3.md). Tu dois seulement fournir les accès autorisés ou les validations humaines nécessaires ; les migrations, branchements et contrôles restent des tâches techniques.
+- [ ] Fournir le fichier tourné ou un lien de téléchargement autorisé.
+- [ ] Faire relire [les reprises ciblées](../scripts/VSL-REPRISES-CIBLEES.md), notamment les hypothèses des chiffres et les promesses absolues.
+- [ ] Enregistrer uniquement les reprises nécessaires, si le montage ne suffit pas.
+- [ ] Vérifier l’export et ses incrustations : même promesse que le produit écrit ; récits fictifs signalés ; pas de montant fiscal personnel certifié.
+- [ ] Remettre l’export et les sous-titres validés.
 
-À réaliser côté technique : corrections des cas de paiement hérités, tests Stripe en mode test, remboursements et accès, migrations sur copie de base, vérification consentement/traceurs, intégration vidéos, instrumentation, éventuelles automatisations LTV, contrôle du dépôt et de la cible Vercel, puis publication autorisée.
-La V5 ajoute : recette réelle du stockage du consentement et des événements Meta de test, contrôle de leur purge, secret du pilotage et réconciliation des anciennes commandes de test éventuellement étiquetées live. Les tests locaux simulés ne remplacent pas ces vérifications. La délivrabilité doit être observée sur des boîtes réelles ; elle ne peut pas être garantie « parfaite ».
-Ces points ne sont pas tous achevés. Voir [la recette](../06-RECETTE-ET-LANCEMENT.md).
+L’activation de la vidéo sera une tâche technique. Aucun fichier vidéo n’a été reçu.
 
-## Ce que tu n’as pas à refaire
-Le catalogue approuvé, les huit leçons écrites, les fiches pratiques, les scripts et les séquences rédigées existent déjà. Une nouvelle rédaction complète n’est pas attendue de toi.
+## 2. Obtenir la relecture professionnelle
+
+- [ ] Transmettre [le brief](01-BRIEF-RELECTURE.md), les quatre PDF et la VSL à la personne compétente.
+- [ ] Inclure les CGV, le questionnaire post-achat obligatoire, les consentements distincts et les nouvelles conditions de réduction : 20 % puis 10 % pour le guide ; 25 % puis 10 % pour les compléments.
+- [ ] Faire vérifier la présentation des pourcentages et des prix de référence, la garantie, l’accès immédiat et la rétractation.
+- [ ] Remettre des corrections écrites, avec la version et le périmètre relus.
+
+Les sources officielles consultées et les tests techniques ne sont pas une validation juridique. Ne pas afficher de label « approuvé » sans autorisation.
+
+## 3. Confirmer les éléments que toi seul peux attester
+
+- [ ] Informations exactes de l’éditeur et de l’entreprise, coordonnées support, médiateur effectivement désigné.
+- [ ] Personne chargée de répondre au support et d’honorer la garantie annoncée.
+- [ ] Authentiques retours clients avec autorisation, si disponibles. Jean-Pierre et Martine restent des récits explicitement fictifs ; ils ne doivent pas être renommés « témoignages clients ».
+- [x] Maintien du dépôt public confirmé par Loys, avec push des guides malgré leur accessibilité sur GitHub.
+- [x] Push et redéploiement pour test autorisés par Loys.
+
+Ton nom n’est pas utilisé dans l’argumentaire commercial. Les informations légales obligatoires restent un sujet distinct.
+
+## 4. Tester simplement l’expérience
+
+- [ ] Sur téléphone, essayer : email → page de vente → achat de test → quatre réponses → livraison → une proposition.
+- [ ] Télécharger le guide acheté et suivre la première fiche sans explication de notre part.
+- [ ] Vérifier un email d’accès et un email commercial de test dans tes boîtes ; tester aussi le lien de désinscription.
+- [ ] Faire essayer le même parcours à quelques personnes représentatives et remonter leurs incompréhensions.
+
+Il s’agit de tests utilisateurs, pas de témoignages ni de preuve statistique de conversion.
+
+## Ce qui reste du côté technique — pas à rédiger ou coder par toi
+
+- Intégrer la VSL après réception et validation.
+- Ne jamais pousser les clés, fichiers d'environnement, données clients ou fixtures de recette.
+- Vérifier la migration additive et l’unicité des horloges sur une copie Postgres.
+- Tester Stripe/SCA, les webhooks, reprises, remboursements et achats concurrents en préproduction.
+- Tester Resend sur boîtes réelles, les DNS SPF/DKIM/DMARC, suppressions et désinscriptions. Aucune délivrabilité « parfaite » ne peut être promise.
+- Activer les campagnes seulement après recette ; pas d’envoi commercial sans consentement requis.
+- Publier sur le dépôt et le projet Vercel vérifiés, **sans CLI Vercel**, puis contrôler le déploiement.
+
+La version demandée pour publication de test est la V9. La VSL, les relectures et les essais de services ci-dessus restent distincts de la mise en ligne.

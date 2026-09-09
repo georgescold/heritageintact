@@ -23,11 +23,11 @@ const MOTS: { mot: string; sens: string }[] = [
   },
   {
     mot: "Héritier réservataire",
-    sens: "Un enfant. La loi lui garantit une part minimale dont vous ne pouvez pas le priver.",
+    sens: "Une personne à laquelle la loi réserve une part de succession, notamment les enfants. Le conjoint peut l’être en l’absence de descendant.",
   },
   {
     mot: "Réserve héréditaire",
-    sens: "Cette part minimale, précisément : la fraction qui revient obligatoirement aux enfants.",
+    sens: "La part protégée par la loi au bénéfice des héritiers réservataires, selon la situation.",
   },
   {
     mot: "Quotité disponible",
@@ -35,7 +35,7 @@ const MOTS: { mot: string; sens: string }[] = [
   },
   {
     mot: "Abattement",
-    sens: "Une somme retirée de la part d'un héritier avant tout calcul d'impôt. 100 000 € par parent et par enfant.",
+    sens: "Une somme retranchée de la base taxable selon le lien de parenté et les conditions applicables. L’historique des donations compte.",
   },
   {
     mot: "Droits de succession",
@@ -43,11 +43,11 @@ const MOTS: { mot: string; sens: string }[] = [
   },
   {
     mot: "Donation",
-    sens: "Transmettre de son vivant. Elle est définitive : ce qui est donné ne revient pas.",
+    sens: "Transmettre de son vivant. En principe irrévocable, une donation engage le donateur ; ses conséquences et les exceptions doivent être expliquées.",
   },
   {
     mot: "Donation-partage",
-    sens: "Une donation qui répartit entre tous les enfants et fige les valeurs au jour où elle est faite.",
+    sens: "Un acte qui organise une répartition de son vivant. La fixation des valeurs et ses effets dépendent de conditions à vérifier.",
   },
   {
     mot: "Don manuel",
@@ -71,7 +71,7 @@ const MOTS: { mot: string; sens: string }[] = [
   },
   {
     mot: "Clause bénéficiaire",
-    sens: "La phrase de votre contrat d'assurance-vie qui désigne qui touchera le capital. Elle se modifie.",
+    sens: "La désignation des bénéficiaires du capital. Les possibilités de modification dépendent notamment d’une éventuelle acceptation.",
   },
   {
     mot: "Régime matrimonial",
@@ -82,7 +82,7 @@ const MOTS: { mot: string; sens: string }[] = [
     // plan double ou non l'abattement : les plans-types lui demandent si sa
     // maison est un bien commun, et la feuille voyage seule dans le classeur.
     mot: "Bien commun",
-    sens: "Un bien qui appartient aux deux époux à la fois — le plus souvent tout ce qui a été acheté pendant le mariage. Chacun en détient la moitié.",
+    sens: "Un bien relevant de la communauté des époux. Sa qualification et sa liquidation se vérifient au regard du régime matrimonial, des actes et des financements.",
   },
   {
     mot: "Donation au dernier vivant",
@@ -93,7 +93,7 @@ const MOTS: { mot: string; sens: string }[] = [
 export function Lexique() {
   return (
     <Feuille
-      titre="Le lexique en une page"
+      titre="Le lexique de la transmission"
       sousTitre="Les dix-huit mots que votre notaire emploiera. Emportez cette feuille au rendez-vous."
     >
       <p>
@@ -112,8 +112,8 @@ export function Lexique() {
       <p>
         <strong>Héritage</strong> et <strong>succession</strong> désignent la même chose vue de deux
         côtés : l&apos;héritage est ce que l&apos;on reçoit, la succession est l&apos;opération qui
-        l&apos;organise. <strong>Usufruit</strong> et <strong>nue-propriété</strong> sont les deux
-        moitiés d&apos;un même bien : réunies, elles font la pleine propriété.
+        l&apos;organise. <strong>Usufruit</strong> et <strong>nue-propriété</strong> sont deux droits complémentaires
+        sur un même bien : réunies, elles font la pleine propriété.
       </p>
       <Source>
         Définitions rédigées en langage courant à partir du Code civil et du Code général des

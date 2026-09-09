@@ -148,9 +148,10 @@ function Inner({
     try {
       // Mode simulé : pas de Stripe, on crée simplement la commande.
       if (!stripe || !elements) {
-        const prep = await prepareCheckout({ firstName, email, withBump: bump, consent });
+        const prep = await prepareCheckout({ firstName, email, withBump: bump, consent, montantAffiche: prixFront });
         if (!prep.ok) {
           setError(prep.error);
+          if (prep.actualiser) router.refresh();
           return;
         }
         router.push(`/situation?o=${prep.orderId}`);
@@ -165,9 +166,10 @@ function Inner({
       }
 
       // 2. Le serveur crée la commande, le client Stripe et le PaymentIntent.
-      const prep = await prepareCheckout({ firstName, email, withBump: bump, consent });
+      const prep = await prepareCheckout({ firstName, email, withBump: bump, consent, montantAffiche: prixFront });
       if (!prep.ok) {
         setError(prep.error);
+        if (prep.actualiser) router.refresh();
         return;
       }
 
@@ -300,17 +302,17 @@ function Inner({
                 Ajouter {PRODUCTS.bump.name} · +{euros(PRODUCTS.bump.price)} (facultatif)
               </span>
               <span className="mt-1 block text-[0.95rem]">
-                Préparez les pièces et le message pour votre rendez-vous sans partir d’une page
-                blanche. L’exemple rempli et le mode d’emploi vous guident jusqu’au compte rendu.
-                La méthode à 27 € reste utilisable sans cette option.
+                Au rendez-vous, ne laissez pas votre inquiétude parler à votre place. Le message,
+                l’inventaire et le compte rendu sont déjà préparés : suivez l’exemple et complétez votre dossier.
+                Le guide Les 7 erreurs reste complet et utilisable sans cette option.
               </span>
             </span>
           </span>
         </label>
         <details className="border border-grey-line bg-white p-4">
-          <summary className="cursor-pointer font-bold text-blue">Voir à quoi sert le Dossier avant de l’ajouter</summary>
+          <summary className="cursor-pointer font-bold text-blue">« Je saurai quoi demander… mais quoi apporter ? »</summary>
           <p className="mt-3">Pour votre rendez-vous : un inventaire guidé, les pièces à réunir et un modèle de message. Après : un compte rendu pour conserver les réponses. Un exemple rempli vous montre comment commencer.</p>
-          <a href="/apercu" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-[44px] items-center">Ouvrir l’exemple dans un nouvel onglet →</a>
+          <a href="/apercu#dossier" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-[44px] items-center">Voir un aperçu limité — pas le Dossier complet →</a>
           <p className="mt-2 text-sm text-text-soft">Le Dossier est inclus dans les packs. Les 17 € effectivement payés seront déduits d’un pack qui l’inclut.</p>
         </details>
         <label className="flex items-start gap-3 text-[0.9rem] text-text-soft">
@@ -369,7 +371,7 @@ function Inner({
               // parfaitement admis à l'intérieur du produit, où le client sait déjà
               // ce qu'il a acheté. Le mot
               // change ce que l'acheteur croit avoir acheté.
-              "8 étapes entièrement lisibles",
+              "Le guide Les 7 erreurs + ma première fiche",
               "Ma fiche de situation et mes repères",
               "Les questions à préparer au notaire",
               "Mon plan en une page",

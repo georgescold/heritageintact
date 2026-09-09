@@ -43,6 +43,7 @@ next-env.d.ts
 # données locales (mode test)
 /data/
 /.build-refonte/
+/tmp/pdfs/
 
 # on garde le modele de configuration, il ne contient aucune valeur sensible
 !.env.example

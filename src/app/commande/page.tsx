@@ -6,8 +6,9 @@ import { CheckoutForm } from "@/components/CheckoutForm";
 import { PixelEvent } from "@/components/MetaPixel";
 import { Guarantee } from "@/components/ui";
 import { isTestMode, stripeEnModeTest } from "@/lib/config";
-import { prixFront } from "@/lib/prix";
-export const metadata: Metadata = { title: "Votre commande · Comprendre ma transmission" };
+import { devisFront } from "@/lib/prix-front";
+import { AvantageDemarrage } from "@/components/AvantageDemarrage";
+export const metadata: Metadata = { title: "Votre commande · Les 7 erreurs" };
 export default async function Page() {
   const jar = await cookies();
   let defaults: { firstName?: string; email?: string } = {};
@@ -15,7 +16,8 @@ export default async function Page() {
     const raw = jar.get("hi_lead")?.value;
     if (raw) defaults = JSON.parse(raw);
   } catch {}
-  const prix = prixFront();
+  const d = await devisFront(jar.get("hi_offre")?.value);
+  const prix = d.montant;
   return (
     <>
       <MesureFunnel evenement="vue_commande" />
@@ -23,18 +25,18 @@ export default async function Page() {
       {(isTestMode || stripeEnModeTest) && <TestModeBanner stripeReel={stripeEnModeTest} />}
       <Header minimal />
       <main className="wrap-wide flex-1 py-8">
-        <h1 className="mb-3 text-[1.9rem]">Comprendre ma transmission</h1>
+        <h1 className="mb-3 text-[1.9rem]">Les 7 erreurs qui offrent votre héritage à l’État</h1>
         <p className="mb-6 text-[1.1rem]">
-          Votre méthode à 27 €, en paiement unique. Le dossier ci-dessous est facultatif. Le total
+          Votre guide et sa méthode explicative, en paiement unique. Le dossier ci-dessous est facultatif. Le total
           se met à jour avant votre validation.
         </p>
+        <AvantageDemarrage promotion={d.promotion} base={d.total} />
         <CheckoutForm defaults={defaults} testMode={isTestMode} prixFront={prix} />
         <div className="mt-8">
           <Guarantee />
         </div>
         <p className="mt-5 text-text-soft">
-          Après le paiement : votre accès, puis quelques questions facultatives pour organiser votre
-          parcours. Vous pouvez ignorer toute proposition complémentaire.
+          Après le paiement : quatre questions obligatoires pour orienter votre parcours, puis votre guide prêt à ouvrir et une proposition complémentaire adaptée. « Je ne sais pas » est une réponse acceptée. Aucun complément payant n’est obligatoire.
         </p>
       </main>
       <Footer />

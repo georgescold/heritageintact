@@ -13,7 +13,7 @@ export const LECONS = [
       "Une priorité formulée avec vos mots",
       "Les informations à retrouver avant de décider",
     ],
-    videoIndex: 0,
+    videoIndex: -1,
     documents: ["ma-situation", "trois-poches"],
     blocs: [
       [
@@ -37,7 +37,7 @@ export const LECONS = [
   {
     cle: "e1",
     numero: 1,
-    titre: "Préserver ce dont vous avez besoin",
+    titre: "Erreur 1 - Attendre sans regarder vos besoins ni les dates",
     minutes: 10,
     resume:
       "Avant de penser à transmettre, clarifiez vos besoins et retrouvez les donations déjà effectuées.",
@@ -70,7 +70,7 @@ export const LECONS = [
   {
     cle: "e2",
     numero: 2,
-    titre: "Comprendre qui possède et qui peut recevoir",
+    titre: "Erreur 2 - Croire que tout revient automatiquement à l’autre",
     minutes: 12,
     resume: "Distinguer la propriété actuelle, les droits des proches et la fiscalité.",
     aFaire:
@@ -79,7 +79,7 @@ export const LECONS = [
       "Exonération fiscale et droit d’hériter sont deux sujets distincts",
       "Votre situation familiale doit être examinée avant tout calcul",
     ],
-    videoIndex: 1,
+    videoIndex: -1,
     documents: ["ma-situation", "lexique"],
     blocs: [
       [
@@ -103,7 +103,7 @@ export const LECONS = [
   {
     cle: "e3",
     numero: 3,
-    titre: "Retrouver les informations de votre assurance-vie",
+    titre: "Erreur 3 - Croire qu’un contrat signé n’a plus besoin d’être vérifié",
     minutes: 10,
     resume: "Savoir ce qui est écrit dans vos contrats, sans modifier une clause à l’aveugle.",
     aFaire:
@@ -126,19 +126,15 @@ export const LECONS = [
         "Quel est le contrat ? Qui sont les bénéficiaires désignés et selon quelle répartition ? Quel est l’historique des versements ? Quelles informations l’assureur peut-il confirmer par écrit ? Les règles fiscales varient notamment selon les dates du contrat et des versements, l’âge de l’assuré lors de ceux-ci et la situation du bénéficiaire.",
       ],
       [
-        "La limite des trente minutes",
-        "Vous pouvez préparer une demande en une courte séance. Cela ne signifie pas que l’assureur aura répondu, que la clause sera validée ou que le contrat sera modifié. Ne présentez pas une grille remplie comme un audit juridique.",
-      ],
-      [
-        "La suite si vous avez le module",
-        "Le module assurance-vie comprend une grille de lecture et un modèle de demande. Vous pourrez classer les réponses et préparer les points à revoir avec le professionnel compétent. Aucun changement de placement n’est recommandé par ce parcours.",
+        "Une demande, pas une modification à l’aveugle",
+        "Demandez la clause bénéficiaire en vigueur, ses avenants et l’historique des versements par le canal habituel de votre assureur. Conservez sa réponse ; si vous envisagez un changement, faites d’abord examiner ses conséquences. Une grille remplie n’est pas un audit juridique.",
       ],
     ],
   },
   {
     cle: "e4",
     numero: 4,
-    titre: "La maison : usage, propriété et questions utiles",
+    titre: "Erreur 4 - Confondre maison payée et transmission préparée",
     minutes: 10,
     resume:
       "Comprendre ce que les droits sur un logement permettent, avant d’envisager une donation.",
@@ -172,7 +168,7 @@ export const LECONS = [
   {
     cle: "e5",
     numero: 5,
-    titre: "Les donations déjà faites",
+    titre: "Erreur 5 - Oublier l’histoire des dons déjà faits",
     minutes: 10,
     resume: "Retrouver une histoire vérifiable, sans confondre tous les transferts familiaux.",
     aFaire:
@@ -205,7 +201,7 @@ export const LECONS = [
   {
     cle: "e6",
     numero: 6,
-    titre: "Enfants, petits-enfants et équilibre familial",
+    titre: "Erreur 6 - Confondre bonnes intentions et équilibre familial",
     minutes: 10,
     resume: "Exprimer vos souhaits sans annoncer trop tôt une répartition ou un résultat fiscal.",
     aFaire:
@@ -238,7 +234,7 @@ export const LECONS = [
   {
     cle: "e7",
     numero: 7,
-    titre: "Préparer et suivre le rendez-vous",
+    titre: "Erreur 7 - Arriver sans questions, repartir sans suivi",
     minutes: 15,
     resume: "Transformer vos notes en questions précises, puis conserver les réponses.",
     aFaire: "Choisissez trois questions prioritaires et préparez votre demande de rendez-vous.",

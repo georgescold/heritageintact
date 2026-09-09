@@ -21,7 +21,6 @@ export function codeUtile(code?: string) {
 }
 export function sequence(r: Reponses | null, _opts: { bumpPresent: boolean }): Ecran[] {
   void _opts;
-  if (r?.objectif === "comprendre") return [];
   if (r?.objectif === "assurance-vie" && r.av === "O") return ["assurance-vie"];
   return [r?.av === "O" ? "pack" : "plan"];
 }

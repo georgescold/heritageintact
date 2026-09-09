@@ -5,7 +5,8 @@ import { acheterDepuisEspace } from "@/app/espace/achat";
 import { Footer, Header, TrustRow } from "@/components/Chrome";
 import { avantagesProduit, resumeProduit } from "@/components/espace/Boutique";
 import { LienInvalide } from "@/components/espace/LienInvalide";
-import { Button, Check, Panel } from "@/components/ui";
+import { Check, Panel } from "@/components/ui";
+import { BoutonAchat as Button } from "@/components/BoutonAchat";
 import { PRODUCTS, SKU_TUNNEL_UNIQUEMENT, euros, type ProductSku } from "@/lib/config";
 import { commandeAvecCarte } from "@/lib/db";
 import { chargerEspace } from "@/lib/espace";
@@ -14,6 +15,11 @@ import { devisPour } from "@/lib/devis";
 import { stripe } from "@/lib/stripe";
 import { BilanComplement } from "@/components/BilanComplement";
 import { DemonstrationPack } from "@/components/DemonstrationPack";
+import { AvantageDemarrage } from "@/components/AvantageDemarrage";
+import { SortieOffre } from "@/components/SortieOffre";
+import { ObjectionsComplement } from "@/components/ObjectionsComplement";
+import { conseilOffre } from "@/lib/positionnement";
+import { ValeurComplement } from "@/components/ValeurComplement";
 
 export const metadata: Metadata = {
   title: "Ajouter à mon espace",
@@ -119,7 +125,8 @@ export default async function AjouterPage({
 
           {err && <BandeauEchec motif={err} />}
 
-          <h1 className="mb-3 text-[1.5rem] leading-snug sm:text-[1.8rem]">{produit.name}</h1>
+          <h1 className="mb-3 text-[1.5rem] leading-snug sm:text-[1.8rem]">{sku==="bump"?"Arrivez avec vos questions. Repartez avec une trace des réponses.":conseilOffre(sku==="upsell2"?{...etat.profil,objectif:"assurance-vie",av:"O"}:etat.profil).titre}</h1>
+          <p className="mb-3 font-bold text-orange-dark">{produit.name}</p>
           <p className="mb-6 text-[1.15rem]">{resumeProduit(sku)}</p>
 
           {avantages.length > 0 && (
@@ -138,8 +145,11 @@ export default async function AjouterPage({
             </div>
           )}
 
+          {sku!=="bump"&&<ValeurComplement av={sku==="upsell2"} complet={sku==="pack1"}/>}
           {(sku === "upsell1" || sku === "pack1") && <DemonstrationPack />}
           <BilanComplement sku={sku} possede={etat.possede} montant={devis} />
+          <AvantageDemarrage promotion={devis.promotion} base={devis.avantRemise}/>
+          <ObjectionsComplement av={sku==="upsell2"}/>
 
           {/* ⚠️ La garantie est réécrite ici plutôt que reprise de `Guarantee` :
               le texte partagé parle de la simulation et du simulateur, ce qui
@@ -180,7 +190,7 @@ export default async function AjouterPage({
           </Panel>
 
           {/* DEUX CIBLES, ET RIEN D'AUTRE. */}
-          <form action={acheter} className="mt-6">
+          <form id="decision-membre" action={acheter} className="mt-6">
             <input type="hidden" name="montantAffiche" value={prix}/>
             <Button variant="green">
               {prix === 0 ? "Activer sans paiement" : `Confirmer mon achat : ${euros(prix)}`}
@@ -205,6 +215,7 @@ export default async function AjouterPage({
         </div>
       </main>
       <Footer />
+      <SortieOffre produit={sku} href="#decision-membre" montant={devis.montant} promotion={devis.promotion}/>
     </>
   );
 }

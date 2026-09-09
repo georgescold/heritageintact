@@ -1,18 +1,22 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { enregistrerReponses } from "@/app/profil";
 import { QualificationBloc } from "@/components/QualificationBloc";
 import type { Reponses } from "@/lib/qualification";
-/** Complète l’orientation facultative après livraison ; aucun champ sur le chemin bancaire. */
-export function FormulaireSituation({ orderId, email, objectif }: { orderId: string; email: string; objectif?: string }) {
-  const router = useRouter();
-  const [pending, setPending] = useState(false);
-  async function onTermine(reponses: Reponses) {
-    setPending(true);
-    try { await enregistrerReponses(orderId, email, reponses); }
-    finally { router.push(`/plan-complet?o=${encodeURIComponent(orderId)}`); }
+/** Qualification obligatoire dans le funnel. Aucun paiement supplémentaire ici. */
+export function FormulaireSituation({orderId,email}:{orderId:string;email:string}) {
+  const router=useRouter(), verrou=useRef(false);
+  const [pending,setPending]=useState(false),[erreur,setErreur]=useState("");
+  async function onTermine(r:Reponses) {
+    if(verrou.current)return;
+    verrou.current=true; setPending(true); setErreur("");
+    try {
+      const resultat=await enregistrerReponses(orderId,email,r);
+      if(resultat.ok)router.push(`/bienvenue?o=${encodeURIComponent(orderId)}`);
+      else setErreur(resultat.error || "Réessayez l’enregistrement.");
+    } catch { setErreur("La connexion a été interrompue. Réessayez, votre achat reste acquis."); }
+    finally { verrou.current=false;setPending(false); }
   }
-  if (pending) return <p role="status" className="border-2 border-blue bg-grey-bg p-5">Merci. Nous préparons la suite…</p>;
-  return <QualificationBloc onTermine={onTermine} initial={objectif ? {objectif} : undefined}/>;
+  return <><fieldset disabled={pending} className="min-w-0"><QualificationBloc onTermine={onTermine}/></fieldset>{pending&&<p role="status" className="mt-3">Nous préparons votre suite…</p>}{erreur&&<p role="alert" className="mt-3 border border-red bg-red-bg p-3">{erreur}</p>}</>;
 }

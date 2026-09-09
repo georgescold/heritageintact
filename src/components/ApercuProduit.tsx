@@ -1,4 +1,3 @@
-import Link from "next/link";
 export function ApercuProduit({ pack = false, av = false }: { pack?: boolean; av?: boolean }) {
   return <figure className="my-7 overflow-hidden border border-grey-line bg-[#f5f2eb]">
     <div className="flex flex-wrap items-center justify-between gap-2 bg-blue px-5 py-3 text-sm text-white">
@@ -23,7 +22,7 @@ export function ApercuProduit({ pack = false, av = false }: { pack?: boolean; av
     </div>
     <figcaption className="border-t border-grey-line px-5 py-4 text-sm">
       Exemple pédagogique, pas un témoignage ni un résultat fiscal.{" "}
-      <Link data-mesure="clic_apercu" href="/apercu">Ouvrir les véritables supports de démonstration →</Link>
+      Les supports complets et leur mode d’emploi sont réservés à votre achat.
     </figcaption>
   </figure>;
 }

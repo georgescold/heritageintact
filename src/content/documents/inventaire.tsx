@@ -41,8 +41,8 @@ export function Inventaire() {
         lignes={4}
       />
       <Source>
-        La colonne de droite est celle qui décide du traitement fiscal du contrat : ne la laissez
-        pas vide, même approximativement.
+Les dates de versement sont un repère parmi d’autres. Si l’historique manque, inscrivez
+        « à demander » : n’inventez pas de répartition avant et après 70 ans.
       </Source>
 
       <Titre>4. Le reste</Titre>
@@ -64,7 +64,7 @@ export function Inventaire() {
       <Titre>6. Les totaux</Titre>
       <Champ label="Total de ce que je possède" />
       <Champ label="Total de ce que je dois" />
-      <Champ label="Masse à transmettre" indice="la différence des deux" />
+      <Champ label="Différence indicative actif / dettes" indice="pas automatiquement la masse successorale" />
 
       <p className="text-[0.9rem]">
         Les valeurs portées ici sont des estimations personnelles, sans valeur d&apos;expertise. Le

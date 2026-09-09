@@ -11,11 +11,14 @@ import {
   createOrder,
   getOrder,
   markOrderPaid,
+  commencerPromotion,
+  profilDeCommande,
 } from "@/lib/db";
 import { isTestMode, stripeEnModeTest, PRODUCTS, type ProductSku } from "@/lib/config";
 import { possessions } from "@/lib/espace";
 import { devisPour } from "@/lib/devis";
-import { prixFront } from "@/lib/prix";
+import { devisFront } from "@/lib/prix-front";
+import { profilComplet } from "@/lib/questionnaire";
 import { stripe, toCents } from "@/lib/stripe";
 import { envoyerLivraison, envoyerRecuAchat } from "@/lib/email";
 import { livrer } from "@/lib/livraison";
@@ -40,6 +43,7 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   if (!EMAIL_RE.test(email))
     return { error: "Vérifiez votre adresse email : elle semble incomplète." };
   const lead = await addLead({ email, firstName, source, marketingConsent });
+  const promotion = await commencerPromotion(lead.email, "front");
 
   // L'email de livraison part tout de suite. On l'attend : sans ça, la fonction
   // se termine avec la redirection et l'envoi peut être coupé net sur Vercel.
@@ -48,6 +52,7 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   if (envoi.ok) await marquerEnvoye(lead.id, "j0");
 
   const jar = await cookies();
+  jar.set("hi_offre", promotion.id, { httpOnly:true, secure:process.env.NODE_ENV === "production", sameSite:"lax", path:"/", maxAge:60*60*24*30 });
   jar.set("hi_lead", JSON.stringify({ email: lead.email, firstName: lead.firstName }), {
     httpOnly: true,
     sameSite: "lax",
@@ -63,7 +68,7 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
 // ─────────────────────────────────────────────────────────────────────
 
 export type PrepareResult =
-  { ok: true; clientSecret: string; orderId: string } | { ok: false; error: string };
+  { ok: true; clientSecret: string; orderId: string } | { ok: false; error: string; actualiser?: boolean };
 
 /**
  * Étape 1 du paiement : on crée la commande (statut « pending »), le client Stripe,
@@ -75,6 +80,7 @@ export async function prepareCheckout(input: {
   email: string;
   withBump: boolean;
   consent: boolean;
+  montantAffiche: number;
 }): Promise<PrepareResult> {
   const firstName = input.firstName.trim();
   const email = input.email.trim().toLowerCase();
@@ -100,7 +106,13 @@ export async function prepareCheckout(input: {
   // Meta remontait la valeur basse. Une seule variable alimente désormais la
   // ligne de commande ET le PaymentIntent.
   const jar = await cookies();
-  const prix = prixFront(jar.get("hi_flash")?.value, jar.get("hi_rattrapage")?.value);
+  const estimation = await devisFront(jar.get("hi_offre")?.value, email);
+  const prix = estimation.montant;
+  if (!estimation.admissible || !Number.isFinite(input.montantAffiche) || input.montantAffiche !== prix) {
+    // Une expiration ne vaut jamais autorisation de débiter davantage.
+    if (!estimation.admissible) jar.delete("hi_offre");
+    return {ok:false,actualiser:true,error:"Le montant a été actualisé. Vérifiez le nouveau récapitulatif, puis confirmez à nouveau. Aucun paiement n’a été lancé."};
+  }
 
   const order = await createOrder({
     email,
@@ -265,6 +277,7 @@ export async function chargeUpsell(orderId: string, sku: ProductSku, montantAffi
   const order = await getOrder(orderId);
   if (!order || order.status !== "paid") return { ok: false, error: "Commande réglée introuvable." };
   if (order.items.some((i) => i.sku === sku)) return { ok: true }; // déjà acheté
+  if (!profilComplet(await profilDeCommande(order.id))) return {ok:false,error:"Terminez les quatre questions de qualification avant de continuer."};
 
   // ⚠️ HORS DE LA FENÊTRE, ON NE DÉBITE PLUS EN UN CLIC. Voir FENETRE_UPSELL_MS :
   // l'appelant redirige alors vers l'espace, qui demande une confirmation.
@@ -330,7 +343,7 @@ export async function chargeUpsell(orderId: string, sku: ProductSku, montantAffi
    * fois sur le bon de commande.
    */
   const { montant } = await devisPour(order.email, sku);
-  if (montantAffiche !== undefined && (!Number.isFinite(montantAffiche) || montantAffiche !== montant)) {
+  if (!Number.isFinite(montantAffiche) || montantAffiche !== montant) {
     return { ok: false, expire: true, error: "Votre récapitulatif a changé. Confirmez le montant actualisé depuis votre espace." };
   }
 
@@ -365,21 +378,12 @@ export async function chargeUpsell(orderId: string, sku: ProductSku, montantAffi
         description: PRODUCTS[sku].short,
         metadata: { orderId, sku },
       },
-      // ⚠️ LA CLÉ D'IDEMPOTENCE, ET ELLE MANQUAIT. Un acheteur de 75 ans qui
-      // ne voit « rien se passer » reclique — et Stripe créait alors un second
-      // PaymentIntent de 297 €. Le garde `items @> [{sku}]` d'`addItem`
-      // protège la base, pas la carte. Ici, Stripe renvoie le premier
-      // paiement au lieu d'en créer un second : un seul débit, quoi qu'il
-      // arrive. Une commande, un produit, un débit.
-      //
-      // ⚠️ LE MONTANT FAIT PARTIE DE LA CLÉ, ET CE N'EST PAS DÉCORATIF. Avec
-      // la règle des 47 €, le MÊME sku peut être tenté à 97 € puis à 50 €
-      // (l'acheteur a acquis Le Plan entre les deux). Stripe REFUSE une clé
-      // rejouée avec des paramètres différents : la seconde tentative lèverait
-      // au lieu de débiter, et l'acheteur lirait « paiement refusé » alors que
-      // sa carte est bonne. Trois caractères, et sans eux la moitié des
-      // secondes offres échoue.
-      { idempotencyKey: `${orderId}:${sku}:${montant}` },
+      // Une même tentative de complément garde la même clé, même si le palier
+      // expire : un changement de montant ne doit pas créer un deuxième débit.
+      // Stripe refuse des paramètres différents sous cette clé. Une reprise
+      // nécessitant une nouvelle tentative passe par le devis de l’espace ;
+      // elle ne réutilise pas silencieusement l’ancienne autorisation.
+      { idempotencyKey: `funnel-v7:${orderId}:${sku}` },
     );
 
     if (intent.status !== "succeeded") {

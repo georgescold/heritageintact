@@ -104,7 +104,7 @@ export const DOCUMENTS: DocumentImprimable[] = [
     ordre: 2,
     corps: CalendrierTroisDates,
   },
-  { cle: "lexique", titre: "Le lexique en une page", sku: "front", ordre: 3, corps: Lexique },
+  { cle: "lexique", titre: "Le lexique de la transmission", sku: "front", ordre: 3, corps: Lexique },
   {
     cle: "trois-poches",
     titre: "Combien garder pour soi : la règle des 3 poches",

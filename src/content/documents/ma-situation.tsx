@@ -20,9 +20,8 @@ export function MaSituation() {
       />
       <Titre>Mon point de départ</Titre>
       <p>
-        Plusieurs situations peuvent coexister : couple marié, famille recomposée, veuvage, PACS ou
-        union libre, absence d’enfant, enfant vulnérable, international, donations passées, biens
-        locatifs, entreprise ou patrimoine diversifié. Le questionnaire met une fiche en avant ; il
+        Quel sujet compte d’abord pour vous : logement, conjoint, enfants ou autre proche ?
+        Plusieurs situations peuvent coexister. Le questionnaire oriente votre lecture ; il
         n’établit pas un diagnostic.
       </p>
       <Champ label="La situation que je souhaite éclaircir d’abord" />

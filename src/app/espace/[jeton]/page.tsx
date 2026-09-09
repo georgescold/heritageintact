@@ -10,6 +10,7 @@ import { estJetonValide } from "@/lib/jeton";
 import { CONTACT_EMAIL, PRODUCTS } from "@/lib/config";
 import { PrioriteActuelle } from "@/components/espace/PrioriteActuelle";
 import { MesurerAchat } from "@/components/MetaPixel";
+import { MesGuidesPdf } from "@/components/espace/MesGuidesPdf";
 export const metadata = { title: "Mon parcours" };
 export default async function Page({
   params,
@@ -118,12 +119,13 @@ export default async function Page({
                 ))}
               </ol>
               <p className="mt-6 text-text-soft">
-                Les durées comprennent la préparation. Les vidéos sont facultatives : toutes les
-                explications sont écrites.
+                Les durées comprennent la préparation. Les explications, exemples et fiches utiles
+                sont écrits ; vos guides PDF sont disponibles ci-dessous.
               </p>
             </>
           )}
           {vue === "dossier" && <MesDocuments etat={etat} />}
+          {(vue==="parcours" || vue==="dossier") && <MesGuidesPdf jeton={jeton} possede={etat.possede}/>}
           {vue === "outils" && (
             <div className="space-y-8">
               <h2 className="text-[1.5rem]">Mes outils et compléments</h2>

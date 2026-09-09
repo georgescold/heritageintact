@@ -61,7 +61,7 @@ const produit = (sku: ProductSku, name: string, price: number, disponible = true
   disponible,
 });
 export const PRODUCTS: Record<ProductSku, Product> = {
-  front: produit("front", "Comprendre ma transmission", 27),
+  front: { ...produit("front", "Les 7 erreurs qui offrent votre héritage à l’État", 27), short: "Les 7 erreurs" },
   bump: produit("bump", "Mon dossier notaire", 17),
   upsell1: produit("upsell1", "Préparer ma transmission", 197),
   upsell2: produit("upsell2", "Faire le point sur mon assurance-vie", 67),
@@ -110,7 +110,7 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
     promesse:
       "Préparez un dossier clair pour votre rendez-vous et repérez les points propres à votre famille.",
     contenu: [
-      "Comprendre ma transmission inclus",
+      "Les 7 erreurs qui offrent votre héritage à l’État inclus",
       "Mon dossier notaire inclus",
       "Parcours familial et fiches de situations particulières",
       "Atelier de simulation pédagogique, avec hypothèses explicites",
