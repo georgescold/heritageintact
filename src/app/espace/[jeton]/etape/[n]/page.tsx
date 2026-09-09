@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Footer, Header } from "@/components/Chrome";
 import { CaseEtape } from "@/components/espace/CaseEtape";
 import { LienInvalide } from "@/components/espace/LienInvalide";
-import { Panel } from "@/components/ui";
+import { Check, Panel } from "@/components/ui";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { VIDEO } from "@/lib/config";
 import { ouvrirEtape } from "@/lib/db";
@@ -106,6 +106,26 @@ export default async function EtapePage({
               title={`Étape ${etape.numero} — ${etape.titre}`}
               minutes={etape.minutes}
             />
+          </div>
+
+          {/* ⚠️ LE GAIN AVANT LA TÂCHE, ET L'ORDRE N'EST PAS NÉGOCIABLE.
+              Cette page ne disait que ce qu'il restait à FAIRE. Quelqu'un qui
+              vient de donner douze minutes et qui ne voit s'afficher qu'une
+              consigne de plus ne se sent pas avancer : il se sent en retard.
+              Sur huit étapes, c'est comme ça qu'on décroche à la troisième.
+
+              Il lit donc d'abord ce qu'il vient d'acquérir — trois lignes
+              concrètes, au vert de ce qui est acquis — et seulement ensuite ce
+              qu'il a à faire. Inverser les deux blocs suffit à retransformer
+              un parcours en liste de corvées. */}
+          <div className="mb-8">
+            <Panel tone="green" title="Ce que vous savez maintenant">
+              <ul className="space-y-2 text-[1.1rem]">
+                {etape.acquis.map((a) => (
+                  <Check key={a}>{a}</Check>
+                ))}
+              </ul>
+            </Panel>
           </div>
 
           {/* L'action de ce soir : UNE seule, jamais deux. C'est ce qui

@@ -114,6 +114,59 @@ Le détail complet est dans `strategie/CARTE-PRODUIT.md`, qui est la
 source de vérité de l'architecture produit.
 
 
+LA CLÔTURE — LES QUATRE TEMPS DE CHAQUE FIN DE VIDÉO
+---------------------------------------------------
+
+Toutes les vidéos se terminent pareil, dans cet ordre, et l'ordre est la
+seule chose qui compte ici.
+
+  1. CE QUE VOUS SAVEZ MAINTENANT   le gain      ~25 s
+  2. CE SOIR                        une action   ~1 min
+  3. LE PONT                        le suivant   ~1 min
+  4. CARTON DE MENTION LÉGALE       muet          8 s
+
+POURQUOI LE GAIN VIENT AVANT LA TÂCHE, ET JAMAIS L'INVERSE.
+
+Quelqu'un qui vient de donner douze minutes de son temps et à qui on
+n'annonce qu'une consigne de plus ne se sent pas avancer : il se sent en
+retard. Sur un parcours de huit étapes, c'est comme ça qu'on décroche à
+la troisième — et qu'on demande un remboursement à la quatrième.
+
+Il entend donc d'abord ce qu'il vient d'acquérir, ensuite ce qu'il a à
+faire. Trois lignes, pas quatre : deux paraît maigre pour douze minutes,
+et quatre ne se retient pas.
+
+⚠️ LES TROIS LIGNES SONT LES MÊMES À L'ORAL ET À L'ÉCRAN.
+Elles sont écrites dans `src/lib/methode.ts`, champ `acquis`, et la page
+de l'étape les affiche dans un panneau vert placé JUSTE APRÈS la vidéo et
+JUSTE AVANT « Ce soir, faites ceci ».
+
+Le spectateur a donc l'écran sous les yeux pendant que vous parlez.
+Entendre une formulation et en lire une autre au même instant est
+exactement ce qui fait douter — et sur cette cible, douter d'un détail,
+c'est douter de tout. Si vous changez une ligne dans un script, changez
+la même dans `methode.ts`. Les deux ne se séparent jamais.
+
+CE QUI DOIT ÊTRE IDENTIQUE : le sens, l'ordre des trois lignes, et les
+mots qui portent — les chiffres, les articles, les mots-clés.
+
+CE QUI A LE DROIT DE DIFFÉRER : la ponctuation, et l'oralisation des
+nombres. On écrit « 0 %, 0 %, ou 60 % » et on dit « zéro pour cent, zéro
+pour cent, ou soixante pour cent ». Lire un symbole à voix haute sonne
+faux, et c'est le seul endroit où l'écart est voulu.
+
+⚠️ CHAQUE LIGNE EST UN GAIN CONCRET, PAS UN SOMMAIRE.
+Jamais « comprendre les enjeux de la transmission ». Toujours « le montant
+exact que ma famille paierait aujourd'hui ». Le test : si la ligne pourrait
+figurer sur la page de vente d'un concurrent, elle est trop vague.
+
+⚠️ ET ON FINIT SUR CE QU'IL A ENTRE LES MAINS.
+Après les trois lignes, une phrase nomme l'objet physique : la feuille
+remplie, le tableau, la pochette, la lettre prête à partir. C'est ce qui
+transforme « j'ai regardé une vidéo » en « j'ai fait quelque chose ce
+soir » — et c'est aussi ce qui rend le pont crédible juste après.
+
+
 LES PONTS — COMMENT ON DONNE ENVIE DU SUIVANT
 ---------------------------------------------
 

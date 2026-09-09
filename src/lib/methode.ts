@@ -89,6 +89,32 @@ export type EtapeMethode = {
   resume: string;
   /** L'encadré « Ce soir, faites ceci » : une seule action, jamais deux. */
   ceSoir: string;
+  /**
+   * CE QUE LE MEMBRE SAIT MAINTENANT — trois lignes, jamais plus.
+   *
+   * ⚠️ C'EST UN GAIN, PAS UN SOMMAIRE. La page d'étape disait ce qu'il y
+   * avait à FAIRE (« ce soir ») et jamais ce qui venait d'être ACQUIS.
+   * Quelqu'un qui termine une vidéo de douze minutes et qui ne voit
+   * s'afficher qu'une tâche de plus ne se sent pas avancer : il se sent
+   * en retard. Sur un parcours de huit étapes, c'est comme ça qu'on
+   * abandonne à la troisième — et qu'on demande un remboursement à la
+   * quatrième.
+   *
+   * ⚠️ VOUVOIEMENT, comme partout ailleurs dans l'espace. Le panneau qui
+   * les affiche s'intitule « Ce que VOUS savez maintenant » ; une puce à la
+   * première personne juste en dessous se remarque immédiatement. Et le
+   * script de la vidéo dit exactement les mêmes lignes, à voix haute,
+   * pendant que le membre a l'écran sous les yeux.
+   *
+   * Chaque ligne nomme une chose CONCRÈTE. Jamais « comprendre les enjeux
+   * de la transmission » : « le montant exact que votre famille paierait
+   * aujourd'hui ». Le test : si la ligne pourrait figurer sur la page de
+   * vente d'un concurrent, elle est trop vague.
+   *
+   * Trois, parce que deux paraît maigre pour douze minutes et que quatre
+   * ne se retient pas.
+   */
+  acquis: [string, string, string];
   /** Index dans `VIDEO.etapes`. Peut ne pas exister encore : voir l'en-tête. */
   videoIndex: number;
   /** Clés de `DOCUMENTS` rattachées à cette étape. */
@@ -173,11 +199,16 @@ export const ETAPES: EtapeMethode[] = [
     cle: "e0",
     numero: 0,
     titre: "Bienvenue, et votre facture invisible",
-    minutes: 12,
+    minutes: 14,
     resume:
       "Comment se calcule une succession en France, et le montant exact que votre famille paierait si elle s'ouvrait aujourd'hui.",
     ceSoir:
       "Remplissez la Facture Invisible avec vos vrais montants, puis reportez votre chiffre en haut du Calendrier des 3 dates.",
+    acquis: [
+      "Comment une succession se calcule : le total, le partage, l'abattement, puis le barème",
+      "Le montant exact que votre famille paierait aujourd'hui — le vôtre, pas celui d'un exemple",
+      "Vos trois dates, et laquelle arrive en premier",
+    ],
     videoIndex: 0,
     documents: ["simulateur-papier", "calendrier-3-dates", "lexique"],
   },
@@ -190,6 +221,11 @@ export const ETAPES: EtapeMethode[] = [
       "L'abattement de 100 000 € par parent et par enfant se reconstitue tous les 15 ans. Attendre, c'est en perdre un.",
     ceSoir:
       "Écrivez la date de votre dernière donation sur le Calendrier des 3 dates — ou le mot « jamais », qui est une réponse aussi.",
+    acquis: [
+      "L'abattement de 100 000 € se refait à neuf tous les 15 ans, et le compteur part du papier, pas du don",
+      "Ce qu'une enveloppe rechargée vaut en euros",
+      "Qu'une seconde enveloppe de 31 865 € existe, et qu'elle se ferme le jour de vos 80 ans",
+    ],
     videoIndex: 1,
     documents: ["trois-poches"],
   },
@@ -197,11 +233,16 @@ export const ETAPES: EtapeMethode[] = [
     cle: "e2",
     numero: 2,
     titre: "Ne pas être marié, ou l'être mal",
-    minutes: 9,
+    minutes: 11,
     resume:
       "Le conjoint marié ou pacsé ne paie aucun droit de succession. Le concubin en paie 60 % au-delà de 1 594 €.",
     ceSoir:
       "Vérifiez deux choses sur votre contrat de mariage : votre régime, et l'existence d'une donation au dernier vivant.",
+    acquis: [
+      "Ce que le mariage, le PACS et le concubinage changent : 0 %, 0 %, ou 60 %",
+      "Que le PACS efface l'impôt mais n'ouvre pas la porte — sans testament, le partenaire ne reçoit rien",
+      "Le nom exact de votre régime matrimonial, écrit noir sur blanc",
+    ],
     videoIndex: 2,
     documents: [],
   },
@@ -209,11 +250,16 @@ export const ETAPES: EtapeMethode[] = [
     cle: "e3",
     numero: 3,
     titre: "L'assurance-vie jamais relue",
-    minutes: 11,
+    minutes: 12,
     resume:
       "C'est le premier levier de transmission, et le plus souvent mal réglé : la clause bénéficiaire et la date des versements décident de tout.",
     ceSoir:
       "Sortez vos contrats et répondez à trois questions : quelle est ma clause, quand ai-je versé, combien de frais.",
+    acquis: [
+      "Que c'est la date de chaque versement qui compte, jamais l'âge du contrat",
+      "Ce que votre 70e anniversaire change : 152 500 € par bénéficiaire avant, 30 500 € pour tout le monde après",
+      "Où se trouve votre clause bénéficiaire, et qu'elle se change par simple courrier",
+    ],
     videoIndex: 3,
     documents: [],
   },
@@ -226,6 +272,11 @@ export const ETAPES: EtapeMethode[] = [
       "Donner les murs en gardant l'usage à vie : vous restez chez vous, et la valeur transmise est comptée à 60 % tant que vous n'avez pas 71 ans.",
     ceSoir:
       "Notez la valeur de votre maison et votre âge, puis lisez votre ligne du barème de l'article 669 du CGI.",
+    acquis: [
+      "Qu'on peut donner les murs de son logement et en garder l'usage, les loyers et la clé jusqu'au bout",
+      "Ce que votre 71e anniversaire change : les murs comptent pour 60 % de la valeur, puis 70 %",
+      "Ce que vous perdez en le faisant — vendre seul — et ce que vous gardez",
+    ],
     videoIndex: 4,
     documents: [],
   },
@@ -233,11 +284,16 @@ export const ETAPES: EtapeMethode[] = [
     cle: "e5",
     numero: 5,
     titre: "Le don de la main à la main",
-    minutes: 8,
+    minutes: 9,
     resume:
       "Un don non déclaré reste un don : il se découvre au décès, il se recompte, et il divise les héritiers.",
     ceSoir:
       "Listez tous les dons que vous avez faits depuis 15 ans, avec leur date exacte et leur montant.",
+    acquis: [
+      "Qu'un don remis sans papier n'a jamais démarré son compteur de 15 ans",
+      "Qu'au partage entre vos enfants, un don revient pour ce qu'il est DEVENU, pas pour ce qu'il valait",
+      "Qu'un acte existe pour arrêter les valeurs au jour où on le signe",
+    ],
     videoIndex: 5,
     documents: [],
   },
@@ -245,11 +301,16 @@ export const ETAPES: EtapeMethode[] = [
     cle: "e6",
     numero: 6,
     titre: "Oublier les petits-enfants",
-    minutes: 8,
+    minutes: 9,
     resume:
       "Chaque grand-parent dispose d'un abattement propre par petit-enfant, tous les 15 ans, cumulable avec le don familial de sommes d'argent.",
     ceSoir:
       "Écrivez le nom de chaque petit-enfant, et en face, ce que vous voudriez pour lui. Une ligne par enfant, pas davantage.",
+    acquis: [
+      "Ce que vous pouvez donner à un petit-enfant de votre vivant : 31 865 €, et 31 865 € de plus s'il est majeur",
+      "Que ce compteur est séparé de celui de son parent — l'un n'entame pas l'autre",
+      "Ce qu'il reçoit à votre décès si rien n'est écrit : 1 594 €, et seulement s'il y a un testament",
+    ],
     videoIndex: 6,
     documents: ["lettre-aux-enfants"],
   },
@@ -257,11 +318,16 @@ export const ETAPES: EtapeMethode[] = [
     cle: "e7",
     numero: 7,
     titre: "Aller chez le notaire les mains vides",
-    minutes: 10,
+    minutes: 12,
     resume:
       "Le notaire acte ce que vous lui demandez. Sans dossier, il pose trois questions et vous ressortez avec « revenez quand vous saurez ».",
     ceSoir:
       "Cochez votre situation sur la grille, et écrivez la première question que vous poserez. Puis prenez le rendez-vous.",
+    acquis: [
+      "Les trois questions que le notaire pose toujours en premier, et vos réponses écrites",
+      "Ce qu'il faut poser sur son bureau : cinq blocs, une pochette",
+      "Les trois questions à reformuler pour obtenir autre chose qu'une généralité",
+    ],
     videoIndex: 7,
     documents: ["ma-situation", "questions-notaire", "plan-en-1-page", "regle-mise-a-jour"],
   },
