@@ -318,7 +318,7 @@ export default function VslPage() {
               },
               {
                 q: "« Il faut de toute façon aller chez le notaire, alors autant y aller directement. »",
-                a: "Allez-y. Mais un notaire est payé à l'acte : il enregistre ce que vous demandez, il ne fait pas votre stratégie. Arrivez les mains vides, vous ressortez avec « revenez quand vous saurez ce que vous voulez » — et un rendez-vous à deux mois. Arrivez avec votre chiffre, vos trois dates et douze questions écrites, vous ressortez avec un acte. C'est la même consultation, ce n'est pas le même résultat.",
+                a: "Allez-y. Le notaire a un devoir de conseil, et il existe dès le premier rendez-vous. Mais sans votre régime, vos valeurs et les dates de vos donations, il ne peut répondre que par des généralités — la réponse change d'une famille à l'autre. Arrivez les mains vides, vous ressortez avec une liste de pièces à réunir, et un rendez-vous à deux mois. Arrivez avec votre chiffre, vos trois dates et douze questions écrites, et le même rendez-vous démarre au calcul. C'est la même consultation, ce n'est pas le même résultat.",
               },
               {
                 q: "« Je ne veux pas me déposséder de mon vivant. Et si j'en ai besoin pour l'EHPAD ? »",

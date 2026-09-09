@@ -55,8 +55,16 @@ export function QuestionsNotaire() {
       sousTitre="Emportez cette feuille. Cochez au fur et à mesure, et notez la réponse à côté."
     >
       <p>
-        Le notaire est payé à l&apos;acte, et il acte ce que vous lui demandez. Il ne devine pas
-        votre projet : ces douze questions le lui donnent en vingt minutes.
+        {/* ⚠️ CETTE PHRASE DISAIT « Le notaire est payé à l'acte, et il acte ce
+            que vous lui demandez ». Les deux affirmations sont fausses, et la
+            seconde est dénigrante pour une profession réglementée (art. 1240 du
+            code civil) : le notaire a un devoir de conseil, qui existe dès le
+            premier rendez-vous, et il peut refuser un acte illégal.
+
+            Elle était surtout contredite mot pour mot par la vidéo de
+            l'étape 7, que le membre regarde AVEC cette feuille sous les yeux. */}
+        Le notaire a un devoir de conseil, et il existe dès le premier rendez-vous. Mais il ne
+        devine pas votre projet : ces douze questions le lui donnent en vingt minutes.
       </p>
 
       <ol className="divide-y divide-black border-y border-black">

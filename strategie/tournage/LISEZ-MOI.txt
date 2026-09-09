@@ -260,4 +260,6 @@ CE QU'IL RESTE À VÉRIFIER AVANT D'ALLUMER LA CAMÉRA
     modifié : la vidéo 6 se retourne.
   · La déclaration de don en ligne sur impots.gouv.fr : relever le libellé
     exact de la rubrique le jour du tournage.
-  · Les trois phrases fautives sur le notaire (règle 6 ci-dessus).
+  · ✅ Les phrases fautives sur le notaire sont corrigées (9 septembre 2026).
+    Il y en avait cinq, pas trois : la feuille des 12 questions, le résumé de
+    l'étape 7, deux emails de la séquence, et la FAQ de la page de vente.

@@ -256,7 +256,7 @@ export function MaSituation({ profil }: { profil?: ProfilDocument }) {
         </p>
       </Encadre>
 
-      <Titre>Ce qu'il y a à faire maintenant</Titre>
+      <Titre>Ce qu&apos;il y a à faire maintenant</Titre>
       <ul className="space-y-1">
         <Case>J&apos;ai coché ma case, et celle de mon conjoint si elle diffère.</Case>
         <Case>J&apos;ai écrit ma première question sur la feuille des questions au notaire.</Case>

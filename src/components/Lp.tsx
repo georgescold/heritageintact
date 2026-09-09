@@ -559,7 +559,7 @@ export function NotThis() {
     },
     {
       t: "Ce n'est pas une application.",
-      d: "Pas de compte à créer, pas de mot de passe à retenir. Une vidéo, un simulateur qui tient dans un navigateur, et un plan qui s'imprime sur une page.",
+      d: "Pas de compte à créer, pas de mot de passe à retenir. Des vidéos, une feuille de calcul à remplir au stylo, et un plan qui s'imprime sur une page.",
     },
   ];
   return (

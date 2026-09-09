@@ -78,10 +78,23 @@ export default async function Upsell2Page({
         },
         { label: "Le tableau de décision « avant / après 70 ans »", value: "37 €" },
         { label: "La lettre-type pour demander la modification à votre assureur", value: "27 €" },
-        {
-          label: "Le comparatif des frais : ce que 3 % sur 20 ans coûte réellement",
-          value: "19 €",
-        },
+        /* ⚠️ « Le comparatif des frais : ce que 3 % sur 20 ans coûte réellement »
+           (19 €) A ÉTÉ RETIRÉ DE CETTE PILE LE 9 SEPTEMBRE 2026, ET IL NE
+           REVIENT PAS.
+
+           Deux raisons, et la seconde est définitive.
+           1. Aucun fichier de contenu n'existe pour lui : `methode.ts` le note
+              déjà — « on ne déclare pas une feuille vide ». La pile, elle,
+              continuait de le vendre.
+           2. Surtout, IL NE PEUT PAS EXISTER. Aucun taux de frais n'est sourcé
+              dans `12-chiffres-succession.md`, et la doctrine du produit
+              l'interdit expressément : prononcé ou imprimé, un taux serait
+              entendu comme une moyenne de marché, ce qu'il ne serait pas. La
+              ligne annonçait « 3 % » — un chiffre que le produit lui-même
+              s'interdit d'écrire.
+
+           Vendre une ligne qu'on s'interdit de produire est une promesse non
+           tenue à 30 jours de garantie. */
       ]}
       declineText="Non merci, mon contrat est parfait tel qu'il est."
     >

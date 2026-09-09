@@ -9,15 +9,20 @@ poser à votre notaire · Mon plan en une page · La règle de mise à jour.
 CE QUE LE SPECTATEUR EMPORTE : son plan en une page, rempli. Et une
 pochette prête.
 
-⚠️ TROIS PHRASES SONT ENCORE EN PRODUCTION ET CONTREDISENT CETTE VIDÉO.
-   `src/content/documents/questions-notaire.tsx` (l. 58), `src/lib/methode.ts`
-   (ETAPES[7].resume) et `src/lib/sequence.ts` (l. 95, email j4) portent
-   « le notaire est payé à l'acte, et il acte ce que vous lui demandez ».
-   Les deux affirmations sont interdites ici. Le spectateur aura la feuille
-   sous les yeux PENDANT que vous parlez.
-   → À corriger avant que cette vidéo sorte. Correction proposée : « Le
-     notaire ne devine pas votre projet : ces douze questions le lui donnent
-     en vingt minutes. »
+✅ CORRIGÉ LE 9 SEPTEMBRE 2026 — plus rien ne contredit cette vidéo.
+   Cinq phrases (et non trois) portaient « le notaire est payé à l'acte » ou
+   « il acte ce que vous lui demandez » : la feuille des 12 questions, le
+   résumé de l'étape 7, deux emails de la séquence, et la FAQ de la page de
+   vente. Les deux affirmations sont fausses, et la seconde est dénigrante
+   pour une profession réglementée.
+
+   Toutes disent maintenant la même chose que vous : il a un devoir de
+   conseil, qui existe dès le premier rendez-vous, mais il travaille sur ce
+   qu'on pose sur la table.
+
+   ⚠️ Le spectateur a la feuille des 12 questions sous les yeux PENDANT que
+   vous parlez. Si vous modifiez ce script, vérifiez `questions-notaire.tsx`
+   dans le même mouvement.
 
 ─────────────────────────────────────────────────────────────
 [1] OUVERTURE — 40 s

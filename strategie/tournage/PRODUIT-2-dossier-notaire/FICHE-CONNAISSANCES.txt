@@ -135,22 +135,20 @@ LES CINQ PIÈGES DE CETTE VIDÉO
    donne la forme d'un acte, et il peut déconseiller — le compte-rendu a
    une rubrique exprès pour ça.
 
-5. LE MAIL-TYPE LIVRÉ ANNONCE UNE PIÈCE QUE LE CLIENT N'A PEUT-ÊTRE PAS.
-   Il annonce « une estimation des droits qui seraient dus aujourd'hui ».
-   Cette estimation vient du Simulateur, qui appartient à La Méthode.
-   → Tant que le document n'est pas corrigé, la vidéo dit de barrer cette
-     mention avant de recopier.
+5. LE MAIL-TYPE — CORRIGÉ LE 9 SEPTEMBRE 2026, PLUS RIEN À BARRER.
+   Il annonçait « une estimation des droits qui seraient dus aujourd'hui ».
+   Cette estimation vient du Simulateur de Facture Invisible, qui appartient
+   à La Méthode — et ce Dossier s'achète SEUL. La moitié des lecteurs devait
+   donc corriger un courrier présenté comme prêt à recopier, et un modèle
+   qu'il faut corriger n'est plus un modèle.
+   → La mention est retirée du document. Les quatre pièces restantes sont
+     vraies pour tout le monde, et ce sont exactement les quatre feuilles
+     que le spectateur vient de remplir.
 
 
 CE QU'IL FAUT FAIRE CORRIGER AVANT DE TOURNER
 ---------------------------------------------
 
-  · `src/content/documents/questions-notaire.tsx` : la feuille imprime
-    « Le notaire est payé à l'acte, et il acte ce que vous lui demandez. »
-    Les deux affirmations sont interdites, et le client aura cette feuille
-    en main juste après.
-  · `src/content/documents/mail-rendez-vous.tsx` : la mention de
-    l'estimation des droits (piège 5).
   · `src/content/documents/compte-rendu.tsx` : il manque une ligne « où se
     trouve ce dossier dans la maison ». Solution retenue en attendant : on
     la fait ajouter à la main.

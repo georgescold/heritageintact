@@ -358,7 +358,7 @@ export const ETAPES: EtapeMethode[] = [
     titre: "Aller chez le notaire les mains vides",
     minutes: 12,
     resume:
-      "Le notaire acte ce que vous lui demandez. Sans dossier, il pose trois questions et vous ressortez avec « revenez quand vous saurez ».",
+      "Il a un devoir de conseil, mais il travaille sur ce que vous posez sur la table. Sans dossier, il pose trois questions et vous ressortez avec une liste de pièces à réunir.",
     aFaire:
       "Cochez votre situation sur la grille, et écrivez la première question que vous poserez. Puis prenez le rendez-vous.",
     acquis: [

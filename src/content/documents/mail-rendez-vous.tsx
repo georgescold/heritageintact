@@ -30,9 +30,19 @@ export function MailRendezVous() {
           <p>
             Pour que le rendez-vous soit utile dès la première fois, j&apos;apporterai un dossier
             déjà constitué : l&apos;inventaire de mes biens avec leur mode de détention, ma
-            situation familiale complète, la liste des donations déjà faites avec leurs dates, les
-            relevés et les clauses bénéficiaires de mes contrats d&apos;assurance-vie, et une
-            estimation des droits qui seraient dus aujourd&apos;hui.
+            situation familiale complète, la liste des donations déjà faites avec leurs dates, et
+            les relevés et clauses bénéficiaires de mes contrats d&apos;assurance-vie.
+            {/* ⚠️ CETTE PHRASE ANNONÇAIT AUSSI « une estimation des droits qui
+                seraient dus aujourd'hui ». Retiré le 9 septembre 2026 : cette
+                estimation vient du Simulateur de Facture Invisible, qui
+                appartient à La Méthode — et ce document-ci est livré avec Le
+                Dossier notaire, un bump que l'on peut acheter SEUL.
+
+                La moitié des lecteurs devait donc barrer une ligne d'un
+                courrier qu'on leur présentait comme prêt à recopier. Un modèle
+                qu'il faut corriger avant de s'en servir n'est plus un modèle.
+                Les quatre pièces restantes suffisent à faire préparer le
+                rendez-vous, et elles sont vraies pour tout le monde. */}
           </p>
           <p>
             Les sujets que je voudrais aborder sont :{" "}

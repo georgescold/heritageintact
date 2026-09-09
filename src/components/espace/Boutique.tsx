@@ -182,7 +182,6 @@ const AVANTAGES: Partial<Record<ProductSku, string[]>> = {
     "Les 3 clauses bénéficiaires rédigées et commentées ligne par ligne",
     "Le tableau de décision « avant / après 70 ans »",
     "La lettre-type pour demander la modification à votre assureur",
-    "Le comparatif des frais : ce que 3 % sur 20 ans coûte réellement",
   ],
 };
 

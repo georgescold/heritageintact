@@ -84,9 +84,13 @@ export function calculer(s: Saisie, anneeCourante: number): Resultat {
    * Diviser par deux ici afficherait un chiffre deux fois trop bas, dans le
    * sens rassurant — exactement le sens qui coûte cher : le lecteur conclurait
    * qu'il n'est pas concerné, et découvrirait l'inverse le jour où il ne peut
-   * plus rien changer. C'est aussi ce qui reproduit le cas canonique du projet :
-   * une maison commune de 380 000 € et 120 000 € de livrets donnent bien
-   * 500 000 € de masse, et 78 194 € de droits pour un enfant unique.
+   * plus rien changer.
+   *
+   * ⚠️ Le cas nommé ci-dessous en test — 380 000 € + 120 000 € — n'est PAS le
+   * cas canonique du projet. Celui-ci est 480 000 € de maison + 40 000 €
+   * d'épargne = 520 000 €, et il donne 82 194 € : c'est lui qu'emploient la
+   * page de vente, le Simulateur papier et les huit vidéos. Le jeu à
+   * 500 000 € ne sert qu'à éprouver le barème sur une seconde valeur.
    */
   const masse = s.biens.reduce((n, b) => n + b.valeur, 0);
   if (s.biens.some((b) => b.enCommun)) {

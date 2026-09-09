@@ -275,11 +275,10 @@ apporterez. Une étude qui lit « j'apporterai l'inventaire de mes biens avec
 leur mode de détention, ma situation familiale et la liste de mes donations
 avec leurs dates » ne prépare pas le même rendez-vous.
 
-⚠️ TEL QUEL — Une correction à faire avant de recopier. Le modèle annonce
-« une estimation des droits qui seraient dus aujourd'hui ». Cette estimation
-vient du Simulateur, qui appartient à La Méthode. Si vous ne l'avez pas,
-barrez simplement cette ligne avant de recopier. Le reste du message est
-complet sans elle.
+Il annonce quatre pièces : l'inventaire de vos biens avec leur mode de
+détention, votre situation familiale, la liste de vos donations avec leurs
+dates, et vos relevés d'assurance-vie. Ce sont exactement les quatre feuilles
+que vous venez de remplir. Vous n'avez rien à corriger avant d'envoyer.
 
 ─────────────────────────────────────────────────────────────
 [7] FEUILLE 5 — LE COMPTE-RENDU — 1 min

@@ -619,7 +619,16 @@ export function TheCostOfWaiting() {
                 Personne ne lui avait dit qu&apos;il y avait une date. Versés <strong>avant</strong>{" "}
                 son soixante-dixième anniversaire, ces 90 000 € seraient sortis de la succession
                 sans un centime de droits. Versés <strong>après</strong>, l&apos;abattement tombe de
-                152 500 € par enfant à 30 500 € pour tout le monde et tous les contrats confondus.
+                {/* ⚠️ « par bénéficiaire », jamais « par enfant ». L'abattement de
+                    l'art. 990 I porte sur la personne DÉSIGNÉE dans la clause, qui
+                    n'est pas forcément un enfant — la clause standard de cette
+                    audience commence par « mon conjoint ». Quelqu'un avec trois
+                    enfants dont la clause désigne son épouse n'a pas trois fois
+                    152 500 € : il a un conjoint exonéré et trois abattements
+                    jamais utilisés. C'est précisément l'erreur n° 3 du produit,
+                    et la page ne peut pas la commettre en l'annonçant. */}
+                152 500 € par bénéficiaire à 30 500 € pour tout le monde et tous les contrats
+                confondus.
               </p>
               <p>
                 Les 59 500 € qui dépassent retombent dans la succession. À 20 %, cela fera{" "}

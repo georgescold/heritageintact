@@ -213,7 +213,14 @@ export const PRODUCTS: Record<ProductSku, Product> = {
     name: "Votre assurance-vie, vérifiée en 30 minutes",
     short: "L'Assurance-vie",
     price: 97,
-    anchor: 197,
+    /**
+     * ⚠️ 178 ET NON 197 depuis le 9 septembre 2026. L'ancre est la somme des
+     * lignes de la pile de valeur, et « Le comparatif des frais » (19 €) en a
+     * été retiré : il n'existait pas, et il ne peut pas exister — aucun taux
+     * de frais n'est sourcé dans `12-chiffres-succession.md`.
+     * 67 + 47 + 37 + 27 = 178.
+     */
+    anchor: 178,
     /**
      * ⚠️ PASSÉ À `false` LE 8 SEPTEMBRE 2026, MÊME MOTIF QUE `upsell1` : aucune
      * feuille n'est déclarée dans `DOCUMENTS` pour ce SKU, donc l'espace ne
@@ -277,12 +284,12 @@ export const PRODUCTS: Record<ProductSku, Product> = {
      * la somme des LIGNES de la pile de valeur, celle qu'affiche `UpsellPage`,
      * qui la recalcule depuis `rows`.
      *
-     * 497 + 197 moins les 47 € de la ligne dupliquée = 647. Laisser 394 aurait
+     * 497 + 178 moins les 47 € de la ligne dupliquée = 628. Laisser 394 aurait
      * affiché un « total à l'unité » en désaccord avec l'addition que le lecteur
      * a sous les yeux — sur la seule page du funnel où on lui demande justement
      * de vérifier une remise ligne à ligne.
      */
-    anchor: 647,
+    anchor: 628,
     disponible: true,
   },
 
@@ -351,8 +358,8 @@ export const PRODUCTS: Record<ProductSku, Product> = {
     name: "Le Plan et l'Assurance-vie, avec le Dossier notaire offert",
     short: "Le Plan + l'Assurance-vie + Dossier",
     price: 329,
-    /** 647 (Le Plan et l'Assurance-vie) + 47 (Le Dossier notaire) = 694. */
-    anchor: 694,
+    /** 628 (Le Plan et l'Assurance-vie) + 47 (Le Dossier notaire) = 675. */
+    anchor: 675,
     disponible: true,
   },
   pack4: {
@@ -360,8 +367,8 @@ export const PRODUCTS: Record<ProductSku, Product> = {
     name: "Votre assurance-vie, et le Dossier notaire offert",
     short: "L'Assurance-vie + Dossier",
     price: 89,
-    /** 197 (L'Assurance-vie) + 47 (Le Dossier notaire) = 244. */
-    anchor: 244,
+    /** 178 (L'Assurance-vie) + 47 (Le Dossier notaire) = 225. */
+    anchor: 225,
     disponible: true,
   },
 
