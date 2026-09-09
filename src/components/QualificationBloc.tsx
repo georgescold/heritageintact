@@ -4,7 +4,7 @@ import type { Reponses } from "@/lib/qualification";
 import { Panel } from "./ui";
 
 /**
- * LES QUATRE QUESTIONS DU BON DE COMMANDE.
+ * LES QUATRE QUESTIONS, POSÉES JUSTE APRÈS LE PAIEMENT.
  *
  * ═══ CE QUE CE BLOC EST, ET CE QU'IL N'EST PAS ═══
  *
@@ -20,10 +20,11 @@ import { Panel } from "./ui";
  *
  * ═══ POURQUOI RIEN N'EST OBLIGATOIRE ═══
  *
- * Le lecteur a entre 65 et 85 ans, il est méfiant, et il est en train de saisir
- * sa carte bancaire. Chaque point de friction ici se paie sur 100 % du revenu :
- * un acheteur perdu au bon de commande ne coûte pas le prix du front, il coûte
- * le front PLUS son upsell PLUS son backend. Donc : aucun `required`, aucun
+ * Le lecteur a entre 65 et 85 ans, il est méfiant, et il vient de payer. Il ne
+ * peut plus être perdu au bon de commande — c’est précisément pourquoi ce bloc a
+ * quitté le bon de commande — mais il peut parfaitement fermer l’onglet avant
+ * le premier écran de vente, et emporter avec lui son upsell ET son backend.
+ * Donc : aucun `required`, aucun
  * message d'erreur, aucun rouge, aucun astérisque, aucun bouton grisé. Le bouton
  * de paiement reste actif dès la première seconde, et il l'est même si ce bloc
  * n'est jamais regardé.
@@ -130,7 +131,7 @@ const QUESTIONS: Question[] = [
     champ: "age",
     legende: "Quel âge avez-vous ?",
     // La justification est écrite AVANT les réponses, et en toutes lettres. On
-    // ne demande pas son âge à un homme de 74 ans qui saisit sa carte sans lui
+    // ne demande pas son âge à un homme de 74 ans qui vient de payer sans lui
     // dire, dans la même seconde, à quoi la réponse va servir. Les quatre bandes
     // ne sont pas démographiques : ce sont quatre portes fiscales.
     justification:
@@ -151,9 +152,9 @@ const QUESTIONS: Question[] = [
  * troisième transformerait le bloc en péage.
  */
 const CHAPEAU = [
-  "Votre Méthode est la même pour tout le monde. Ce que nous vous montrerons juste après votre commande, non : selon votre situation, ce n'est pas la même date qui se referme en premier.",
-  "Ces réponses ne changent ni le prix de votre commande d'aujourd'hui, ni le contenu de votre Méthode. Elles servent uniquement à choisir ce que nous vous montrons ensuite.",
-  "Si vous préférez ne pas répondre, passez directement au paiement plus bas : rien ne sera bloqué.",
+  "Votre Méthode est la même pour tout le monde, et elle est déjà à vous. Ce que nous allons vous montrer ensuite, non : selon votre situation, ce n’est pas la même date qui se referme en premier.",
+  "Ces réponses ne changent rien à ce que vous venez de payer, et rien au contenu de votre Méthode. Elles servent uniquement à choisir ce que nous vous montrons ensuite.",
+  "Si vous préférez ne pas répondre, passez directement à la suite en bas de page : rien ne sera bloqué, et vous ne perdez rien.",
 ];
 
 /**

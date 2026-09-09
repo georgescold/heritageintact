@@ -21,7 +21,12 @@ export default async function ConfirmationPage({
 
   if (o && payment_intent && redirect_status === "succeeded") {
     const done = await confirmCheckout(o, payment_intent);
-    if (done.ok) redirect(`/plan-complet?o=${o}`);
+    // ⚠️ /situation, comme le chemin sans 3-D Secure. C'est le seul endroit du
+    // code où un acheteur authentifié par sa banque rejoint le tunnel : l'y
+    // faire entrer par une autre porte que les autres priverait de questions
+    // exactement la moitié des acheteurs — celle dont la banque est la plus
+    // stricte, donc pas un échantillon au hasard.
+    if (done.ok) redirect(`/situation?o=${o}`);
   }
 
   return (

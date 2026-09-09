@@ -6,21 +6,27 @@
  *
  * ═══ POURQUOI UNE SERVER ACTION, ET POURQUOI À CET INSTANT-LÀ ═══
  *
- * Elle est appelée depuis le navigateur juste après `prepareCheckout` et AVANT
- * `stripe.confirmPayment` : c'est le seul moment où l'identifiant de commande
- * existe et où le paiement n'est pas encore parti. Trois conséquences, et ce
- * sont elles qui justifient tout le reste du dispositif :
+ * Elle est appelée depuis /situation, la page qui suit immédiatement le
+ * paiement. Elle l'était auparavant depuis le bon de commande, entre
+ * `prepareCheckout` et `stripe.confirmPayment` — c'est-à-dire sur le chemin
+ * critique du paiement, ce qui imposait qu'elle soit à la fois muette et
+ * infaillible. Elle n'y est plus, et le déplacement fait disparaître trois
+ * contraintes d'un coup :
  *
- *   · les réponses ne passent JAMAIS par la chaîne de requête. Une URL finit
- *     dans les journaux du serveur, dans l'en-tête `Referer` envoyé à des tiers,
- *     et dans l'historique d'un ordinateur familial — celui-là même où les
- *     enfants dont il est question dans les questions viennent lire leurs
- *     mails ;
- *   · le retour de 3-D Secure ne perd rien : `return_url` n'est pas touché, et
- *     les trois endroits qui écrivent `/plan-complet?o=` en dur ne changent pas ;
- *   · rien n'est ajouté sur le chemin critique du paiement — aucun écran
- *     supplémentaire, aucune seconde prise sur la fenêtre de 30 minutes du débit
- *     en un clic.
+ *   · plus rien n'est pris sur le chemin du débit. Un aller-retour serveur qui
+ *     traîne ne peut plus retarder une confirmation de carte ;
+ *   · les réponses ne peuvent plus être perdues par 3-D Secure. Elles
+ *     l'étaient dès que la banque redirigeait le navigateur avant l'écriture ;
+ *   · l'acheteur a déjà payé et déjà reçu sa livraison quand il répond. Une
+ *     question posée à cet instant ne coûte plus de conversion : elle
+ *     rassure, parce qu'elle prouve qu'on s'occupe de lui.
+ *
+ * Ce qui NE change pas, et ne doit jamais changer : les réponses ne passent
+ * JAMAIS par la chaîne de requête. Une URL finit dans les journaux du serveur,
+ * dans l'en-tête `Referer` envoyé à des tiers, et dans l'historique d'un
+ * ordinateur familial — celui-là même où les enfants dont il est question dans
+ * les questions viennent lire leurs mails. Elles vivent en base, relues par
+ * l'identifiant de commande, et le routage se fait à l'arrivée.
  *
  * ═══ CE QU'ELLE NE FAIT PAS, ET C'EST DÉLIBÉRÉ ═══
  *
@@ -112,9 +118,10 @@ export async function enregistrerReponses(
       piste: piste(propres, { bumpPresent }),
     });
   } catch (e) {
-    // Journalisé, jamais propagé. Cette fonction s'exécute entre la création de
-    // la commande et le débit : une exception qui remonte au navigateur à cette
-    // seconde-là coûterait un paiement pour une information de confort.
+    // Journalisé, jamais propagé. Le débit est déjà passé quand cette fonction
+    // s'exécute : une exception ne coûte plus un paiement, mais elle mettrait
+    // un message d'erreur rouge sous les yeux de quelqu'un qui vient de donner
+    // sa carte à un inconnu. Sans ligne écrite, il suit le tunnel par défaut.
     console.error("[profil] enregistrement des réponses impossible", e);
   }
 }
