@@ -19,6 +19,7 @@ export function UpsellPage({
   kicker,
   h1,
   h2,
+  motifSecond,
   videoId,
   videoMinutes,
   children,
@@ -35,6 +36,18 @@ export function UpsellPage({
   kicker: string;
   h1: ReactNode;
   h2: ReactNode;
+  /**
+   * LE SECOND MOTIF DE LA QUALIFICATION, quand il y en a deux.
+   *
+   * `accroches.ts` départage : la porte datée l'emporte sur le taux permanent.
+   * Mais le motif qui perd reste VRAI — quelqu'un peut être veuf ET avoir
+   * 70 ans — et le taire reviendrait à choisir pour le lecteur laquelle de
+   * ses deux urgences compte. Il est donc affiché juste sous le titre, dans
+   * l'ordre de son urgence, et jamais à la place du titre.
+   *
+   * Absent quand la qualification n'a retenu qu'un motif, ou aucun.
+   */
+  motifSecond?: string;
   videoId?: string;
   videoMinutes: number;
   children: ReactNode;
@@ -88,6 +101,11 @@ export function UpsellPage({
           )}
           <p className="mb-2 font-bold text-orange-dark">{kicker}</p>
           <h1 className="mb-3 text-[1.5rem] sm:text-[1.9rem]">{h1}</h1>
+          {motifSecond && (
+            <p className="mb-3 border-l-4 border-orange pl-3 text-[1.1rem] font-bold text-blue">
+              {motifSecond}
+            </p>
+          )}
           <p className="mb-5 text-[1.05rem] text-text-soft">{h2}</p>
 
           <VideoEmbed id={videoId} title={product.name} minutes={videoMinutes} />

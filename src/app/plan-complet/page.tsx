@@ -61,12 +61,15 @@ export default async function Upsell1Page({
         alt: "Les 12 plans-types imprimés, posés sur une table.",
       }}
       next={etape.suivant}
-      kicker="Attendez : votre commande est validée."
+      motifSecond={etape.accroche?.h2}
+      kicker={etape.accroche?.chapeau ?? "Attendez : votre commande est validée."}
       h1={
-        <>
-          Avant d&apos;accéder à votre espace, une seule question : dans <em>votre</em> situation
-          familiale, laquelle de vos 3 dates en premier&nbsp;?
-        </>
+        etape.accroche?.h1 ?? (
+          <>
+            Avant d&apos;accéder à votre espace, une seule question : dans <em>votre</em> situation
+            familiale, laquelle de vos 3 dates en premier&nbsp;?
+          </>
+        )
       }
       h2={`${PRODUCTS.upsell1.name} : les 12 situations familiales, chacune avec son plan d'action dans l'ordre, ses 3 pièges, ses 3 questions au notaire, et ${PRODUCTS.backend1.name}.`}
       videoId={VIDEO.upsell1}

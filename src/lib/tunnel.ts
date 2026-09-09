@@ -1,3 +1,4 @@
+import { accroches, type Accroche } from "@/lib/accroches";
 import { PRODUCTS, type ProductSku } from "@/lib/config";
 import { profilDeCommande } from "@/lib/db";
 import {
@@ -50,7 +51,28 @@ const SKU_DE_L_ECRAN: Record<Ecran, ProductSku> = {
 };
 
 export type EtapeTunnel =
-  | { afficher: true; suivant: string; position: number; total: number }
+  | {
+      afficher: true;
+      suivant: string;
+      position: number;
+      total: number;
+      /**
+       * LE TITRE PERSONNALISÉ, ET SEULEMENT SUR LE PREMIER ÉCRAN.
+       *
+       * Deux conditions, toutes les deux nécessaires :
+       *
+       *   · `position === 1`. Un acheteur qui voit deux écrans personnalisés
+       *     d'affilée ne se sent pas compris, il se sent fiché. C'est la règle
+       *     posée en tête d'`accroches.ts`, et elle est appliquée ici plutôt
+       *     que dans chaque page — une page ne peut pas se tromper sur un
+       *     rang qu'elle ne calcule pas ;
+       *   · un profil existe. Sans réponse, ce champ reste `undefined` et
+       *     chaque page garde son titre écrit à la main. Le parcours d'un
+       *     acheteur qui n'a rien répondu est alors strictement identique à
+       *     celui d'avant le dispositif, au caractère près.
+       */
+      accroche?: Accroche;
+    }
   | { afficher: false; versOu: string };
 
 /**
@@ -105,7 +127,13 @@ export async function etapeTunnel(
       : repliPossible
         ? versRepli
         : versMerci;
-  return { afficher: true, suivant, position: i + 1, total: seq.length };
+  return {
+    afficher: true,
+    suivant,
+    position: i + 1,
+    total: seq.length,
+    accroche: i === 0 && profil ? accroches(profil) : undefined,
+  };
 }
 
 /** Le chemin d'un écran, sans paramètre — pour les liens écrits en dur. */

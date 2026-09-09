@@ -179,10 +179,12 @@ export function accroches(r: Reponses | null): Accroche {
    * Il n'a aucune raison de changer : il fonctionne, et un profil vide doit
    * rendre le tunnel d'aujourd'hui à l'identique.
    * L'espace insécable avant le point d'interrogation est la typographie
-   * française, et reproduit le `&nbsp;` de la page.
+   * française, et reproduit le `&nbsp;` de la page. « votre » est en bas de
+   * casse : la page l'écrit en `<em>`, et une chaîne ne peut pas porter d'italique
+   * — mais des capitales, sur cette cible, ne mettent pas en valeur, elles crient.
    */
   const A11 =
-    "Avant d’accéder à votre espace, une seule question : dans VOTRE situation familiale, laquelle de vos 3 dates en premier\u00A0?";
+    "Avant d’accéder à votre espace, une seule question : dans votre situation familiale, laquelle de vos 3 dates en premier\u00A0?";
 
   /**
    * LES SURIMPRESSIONS. Elles s'ajoutent AU-DESSUS du titre retenu, elles n'en

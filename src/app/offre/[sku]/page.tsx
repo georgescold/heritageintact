@@ -129,8 +129,9 @@ export default async function OffrePage({
       orderId={order.id}
       sku={sku as ProductSku}
       next={etape.suivant}
-      kicker="Attendez : votre commande est validée."
-      h1={offre.h1}
+      motifSecond={etape.accroche?.h2}
+      kicker={etape.accroche?.chapeau ?? "Attendez : votre commande est validée."}
+      h1={etape.accroche?.h1 ?? offre.h1}
       h2={produit.name}
       videoId={VIDEO.upsell1}
       videoMinutes={4}

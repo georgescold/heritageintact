@@ -3,13 +3,14 @@ import { redirect } from "next/navigation";
 import { FormulaireSituation } from "./Formulaire";
 import { Header, Footer } from "@/components/Chrome";
 import { Panel } from "@/components/ui";
-import { PRODUCTS, euros } from "@/lib/config";
-import { getOrder } from "@/lib/db";
+import { PRODUCTS, euros, urlEspace } from "@/lib/config";
+import { accesParEmail, getOrder } from "@/lib/db";
 import { QUALIFICATION_ACTIVE } from "@/lib/qualification";
 
 /**
- * LA PREMIÈRE PAGE APRÈS LE PAIEMENT. Elle fait deux choses, dans cet ordre :
- * elle rassure, puis elle demande.
+ * LA PREMIÈRE PAGE APRÈS LE PAIEMENT. Elle fait trois choses, et l'ordre EST la
+ * règle : elle confirme le paiement, elle livre, et seulement ensuite elle
+ * demande. Aucune de ces trois étapes ne se déplace.
  *
  * ═══ CE QUE VOIT QUELQU'UN QUI VIENT DE DONNER SA CARTE ═══
  *
@@ -25,18 +26,34 @@ import { QUALIFICATION_ACTIVE } from "@/lib/qualification";
  * cette cible, un écart d'un euro entre l'écran et la banque n'est pas un bug
  * d'arrondi, c'est un appel au conseiller.
  *
- * ═══ CE QUI N'EST PAS SUR CETTE PAGE, ET C'EST DÉLIBÉRÉ ═══
+ * ═══ POURQUOI LE LIEN DE L'ESPACE EST ICI, AVANT LES OFFRES ═══
  *
- * Le lien vers l'espace membre. Il est dans l'email qui vient de partir — donc
- * l'acheteur n'est jamais captif, et la phrase « votre accès vous attend » est
- * littéralement vraie. Mais l'afficher ICI, en gros, à l'entrée du tunnel,
- * reviendrait à poser une porte de sortie avant les offres. La page /merci le
- * donne, en fin de parcours, et c'est sa place.
+ * Il n'y était pas. Le raisonnement de tunnel disait : ne pas poser de porte de
+ * sortie avant d'avoir proposé les offres. Il est faux sur cette cible-là.
+ *
+ * Un homme de 74 ans qui a payé et qui ne VOIT rien arriver ne se dit pas
+ * « je verrai après » : il se dit « je viens de donner ma carte à un site qui ne
+ * me donne rien et qui me revend déjà autre chose ». À partir de cette seconde,
+ * l'écran de vente suivant ne lit plus comme une offre mais comme la
+ * confirmation d'une arnaque — et il ne cliquera ni sur oui, ni sur non : il
+ * appellera sa banque.
+ *
+ * Livrer d'abord coûte quelques départs. Ne pas livrer coûte des oppositions de
+ * paiement, et une opposition coûte le prix de la commande PLUS les frais PLUS
+ * la réputation du compte Stripe. Ce n'est pas un arbitrage serré.
+ *
+ * ⚠️ ET LE LIEN NE MET PAS FIN AU PARCOURS. Il s'ouvre dans un ONGLET À PART
+ * (`target="_blank"`), donc la page reste ouverte derrière : celui qui va
+ * vérifier que sa Méthode existe revient sur cet écran, rassuré. C'est tout
+ * l'intérêt du dispositif, et c'est aussi pourquoi le bouton est écrit en
+ * secondaire : il rassure, il n'appelle pas au clic.
  *
  * ⚠️ La promesse faite ici doit rester vraie. Elle l'est parce que `livrer()`
  * s'exécute dans `confirmCheckout`, donc AVANT cette page, et une seconde fois
- * via le webhook Stripe en filet. Le jour où la livraison redeviendrait
- * asynchrone, c'est cette phrase qu'il faudrait corriger en premier.
+ * via le webhook Stripe en filet. `accesParEmail` renvoie `null` si, malgré
+ * tout, aucun accès n'existe : dans ce cas on n'affiche RIEN plutôt qu'un lien
+ * mort, et l'email reste le chemin annoncé.
+ *
  */
 export const metadata: Metadata = {
   title: "Votre commande est validée",
@@ -62,6 +79,9 @@ export default async function SituationPage({
   if (!QUALIFICATION_ACTIVE) redirect(suite);
 
   const paye = order.items.reduce((somme, article) => somme + article.price, 0);
+  // Créé par `livrer()` au moment du paiement, donc avant ce rendu — et
+  // indépendamment de Resend : l'accès existe même si aucun email n'est parti.
+  const acces = await accesParEmail(order.email);
   const bumpPresent = order.items.some((i) => i.sku === "bump");
 
   return (
@@ -97,7 +117,33 @@ export default async function SituationPage({
             </p>
           </Panel>
 
-          {/* ═══ 2. SEULEMENT MAINTENANT, LES QUESTIONS. ═══ */}
+          {/* ═══ 2. LA LIVRAISON, MONTRÉE. Avant la moindre offre. ═══ */}
+          {acces && (
+            <div className="mt-5 border-2 border-blue bg-white p-4">
+              <p className="text-[1.08rem] font-bold text-blue">
+                {PRODUCTS.front.name} est déjà en ligne. Vous pouvez la voir tout de suite.
+              </p>
+              <p className="mt-1 text-[1.05rem]">
+                Rien à installer, aucun mot de passe à retenir : ce lien est le vôtre, il fonctionne
+                aujourd&apos;hui et dans dix ans.
+              </p>
+              <a
+                href={urlEspace(acces.jeton)}
+                target="_blank"
+                rel="noopener"
+                className="mt-3 inline-flex min-h-[52px] items-center border-2 border-blue px-4 text-[1.05rem] font-bold text-blue no-underline"
+              >
+                Ouvrir mon espace dans un nouvel onglet
+              </a>
+              {/* Dit en toutes lettres, parce que c'est la crainte exacte du
+                  lecteur à cet instant : perdre sa place en cliquant. */}
+              <p className="mt-2 text-[0.98rem] text-text-soft">
+                Cette page reste ouverte derrière. Vous pouvez y revenir.
+              </p>
+            </div>
+          )}
+
+          {/* ═══ 3. SEULEMENT MAINTENANT, LES QUESTIONS. ═══ */}
           <div className="mt-6">
             <FormulaireSituation orderId={order.id} email={order.email} />
           </div>

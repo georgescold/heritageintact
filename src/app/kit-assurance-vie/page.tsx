@@ -57,12 +57,15 @@ export default async function Upsell2Page({
         alt: "Un contrat d’assurance-vie ouvert à côté de la grille d’audit à remplir.",
       }}
       next={etape.suivant}
-      kicker="Dernière chose avant votre espace."
+      motifSecond={etape.accroche?.h2}
+      kicker={etape.accroche?.chapeau ?? "Dernière chose avant votre espace."}
       h1={
-        <>
-          Votre assurance-vie. Celle de la banque, ouverte il y a 15 ou 20 ans. Trois questions,
-          cinq minutes&nbsp;: 9 contrats sur 10 échouent.
-        </>
+        etape.accroche?.h1 ?? (
+          <>
+            Votre assurance-vie. Celle de la banque, ouverte il y a 15 ou 20 ans. Trois questions,
+            cinq minutes&nbsp;: 9 contrats sur 10 échouent.
+          </>
+        )
       }
       h2={`${PRODUCTS.upsell2.name} : l'audit de votre contrat, les 3 clauses bénéficiaires rédigées et commentées, et le tableau « avant / après 70 ans » pour décider quoi faire avec votre épargne avant votre prochain anniversaire.`}
       videoId={VIDEO.upsell2}

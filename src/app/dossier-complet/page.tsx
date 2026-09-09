@@ -73,12 +73,15 @@ export default async function PackPage({
         alt: "Les deux ensembles de feuilles, réunis par un bandeau.",
       }}
       next={etape.suivant}
-      kicker="Attendez : votre commande est validée."
+      motifSecond={etape.accroche?.h2}
+      kicker={etape.accroche?.chapeau ?? "Attendez : votre commande est validée."}
       h1={
-        <>
-          Dans votre situation, deux choses pressent en même temps&nbsp;: la ligne de vos héritiers,
-          et la date de vos versements.
-        </>
+        etape.accroche?.h1 ?? (
+          <>
+            Dans votre situation, deux choses pressent en même temps&nbsp;: la ligne de vos
+            héritiers, et la date de vos versements.
+          </>
+        )
       }
       h2={`${PRODUCTS.pack1.name} : ${PRODUCTS.upsell1.name} et ${PRODUCTS.upsell2.name}, ensemble et en une seule fois.`}
       videoId={VIDEO.upsell1}
