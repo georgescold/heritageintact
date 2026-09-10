@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { suspendreComplements } from "@/app/espace/preferences";
 import { conseilOffre } from "@/lib/positionnement";
 import { PRODUCTS, PRESENTATION, euros, type ProductSku } from "@/lib/config";
 import { devisPour } from "@/lib/devis";
@@ -25,18 +24,6 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
       <p className="mb-4">
         Votre achat actuel reste utilisable seul. Chaque proposition ci-dessous correspond à un produit distinct.
       </p>
-      {etat.acces.envoyes.includes("ltv-pause") ? (
-        <p className="mb-4 text-sm">
-          Les relances par email sur les compléments sont suspendues. Vos offres restent
-          consultables ici.
-        </p>
-      ) : (
-        <form action={suspendreComplements.bind(null, etat.acces.jeton)} className="mb-4">
-          <button className="min-h-[44px] text-sm underline">
-            Ne pas me relancer par email sur les compléments
-          </button>
-        </form>
-      )}
       <div className="space-y-4">
         {await Promise.all(
           offres.map(async (sku) => {
