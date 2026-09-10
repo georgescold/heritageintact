@@ -36,7 +36,7 @@ try {
     await go("/");
     ok(await page.locator("#inscription input[name=email]").isVisible());
     ok(await page.locator('select[name="objectif"]').count()===0);
-    ok(!(await page.locator('#inscription input[name="marketingConsent"]').isChecked()));
+    ok(await page.locator('#inscription input[name="marketingConsent"]').count()===0);
     ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
     await page.screenshot({path:".build-refonte/v8-lp-"+width+".png",fullPage:true});
     await go("/methode");
