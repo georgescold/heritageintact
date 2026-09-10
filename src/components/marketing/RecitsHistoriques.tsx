@@ -21,7 +21,7 @@ export function JeanPierreHistorique() {
               Jean-Pierre, 67 ans — Nantes · marié, un fils unique : Nicolas
             </strong>
             <span className="text-text-soft">
-              Personnage fictif. Exemple pédagogique, pas un témoignage client.
+              Cas type, reconstitué à partir du barème officiel et de situations courantes.
             </span>
           </figcaption>
         </figure>
@@ -78,7 +78,6 @@ export function JeanPierreHistorique() {
                 jamais dit.
               </strong>
             </p>
-            <p>Reste à savoir pourquoi personne ne vous l&apos;a dit.</p>
           </div>
         </div>
       </div>
@@ -168,7 +167,7 @@ export function MartineHistorique() {
           <figcaption className="mt-2 border-l-4 border-blue bg-white px-3 py-2 text-[0.9rem]">
             <strong className="block text-blue">Martine, 71 ans — Montpellier</strong>
             <span className="text-text-soft">
-              Personnage fictif. Exemple pédagogique, pas un témoignage client.
+              Cas type, reconstitué à partir du barème officiel et de situations courantes.
             </span>
           </figcaption>
         </figure>
