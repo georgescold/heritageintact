@@ -156,7 +156,7 @@ function Inner({
           if (prep.actualiser) router.refresh();
           return;
         }
-        router.push(`/situation?o=${prep.orderId}`);
+        router.push(`/bienvenue?o=${prep.orderId}`);
         return;
       }
 
@@ -200,7 +200,7 @@ function Inner({
           return;
         }
       }
-      router.push(`/situation?o=${prep.orderId}`);
+      router.push(`/bienvenue?o=${prep.orderId}`);
     } finally {
       setPending(false);
     }

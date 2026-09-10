@@ -122,6 +122,9 @@ export default async function Page({
                 Les durées comprennent la préparation. Les explications, exemples et fiches utiles
                 sont écrits ; vos guides PDF sont disponibles ci-dessous.
               </p>
+              <div className="mt-10 border-t-2 border-blue pt-8">
+                <Boutique etat={etat} />
+              </div>
             </>
           )}
           {vue === "dossier" && <MesDocuments etat={etat} />}

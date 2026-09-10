@@ -19,12 +19,15 @@ export async function enregistrerReponses(orderId: string, _email: string, repon
   }
 }
 
-/** L'horloge commerciale du plan démarre lorsque l'aperçu détaillé est prêt, jamais pendant le questionnaire. */
-export async function demarrerOffrePlan(orderId: string): Promise<{ok:true}|{ok:false;error:string}> {
+/** Enregistre la qualification issue du questionnaire détaillé puis démarre l'offre. */
+export async function demarrerOffrePlan(orderId: string, reponses: Reponses): Promise<{ok:true}|{ok:false;error:string}> {
   const order = await getOrder(orderId);
   if (!order || order.status !== "paid") return {ok:false,error:"Commande réglée introuvable."};
-  if (!profilComplet(await profilDeCommande(orderId))) return {ok:false,error:"Terminez d’abord la qualification."};
+  if (!profilComplet(reponses)) return {ok:false,error:"Certaines réponses nécessaires au plan sont manquantes."};
   try {
+    const propres = {objectif:reponses.objectif, vie:reponses.vie, enfants:reponses.enfants, age:reponses.age, av:reponses.av, blocage:reponses.blocage};
+    await enregistrerProfil({...propres, orderId, email:order.email, piste:piste(propres,{bumpPresent:order.items.some(i=>i.sku==="bump")})});
+    if (!profilComplet(await profilDeCommande(orderId))) return {ok:false,error:"Vos réponses n’ont pas pu être conservées. Réessayez."};
     await commencerPromotion(order.email,"suite");
     return {ok:true};
   } catch {

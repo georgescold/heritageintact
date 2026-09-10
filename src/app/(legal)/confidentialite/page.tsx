@@ -26,17 +26,18 @@ export default function Confidentialite() {
           rapprochée d&apos;un compte Meta ; ce n&apos;est pas une anonymisation.
         </li>
         <li>
-          Six réponses <strong>obligatoires pour terminer la qualification après achat</strong> : votre inquiétude principale, votre situation de couple, la présence d&apos;enfants, votre tranche d’âge, l&apos;existence
-          d&apos;une assurance-vie et votre principal frein à l’action. Elles servent uniquement à choisir
-          les documents et les offres qui vous sont présentés ensuite. Elles ne modifient ni le prix
-          de votre commande ni le contenu de votre guide, ne sont transmises à aucun tiers ni à
-          aucun outil publicitaire, et sont supprimées lors de votre désinscription. Aucune donnée
-          de santé n&apos;est demandée, ni vous concernant, ni concernant vos proches.
+          Les réponses fournies <strong>uniquement lorsque vous demandez votre plan personnalisé</strong> :
+          situation familiale, âge, catégories et montants arrondis de patrimoine, bénéficiaires,
+          donations et assurance-vie. Les montants détaillés et le nombre facultatif de bénéficiaires
+          en situation de handicap restent enregistrés dans votre navigateur, sans nom ni identité,
+          afin de restaurer votre simulation. Seules les catégories nécessaires à l’orientation de
+          l’espace sont enregistrées sur nos serveurs. Ces informations ne sont transmises ni à un
+          tiers ni à un outil publicitaire.
         </li>
       </ul>
 
       <h2>Orientation et fiabilité des envois</h2>
-      <p>Le produit de base est commun à tous. La qualification intervient après paiement pour ordonner les documents et présenter une suite pertinente. Vous pouvez indiquer une situation à préciser ou « Je ne sais pas » sans communiquer de détail familial. Une réponse incertaine n’empêche pas de continuer. L’accès déjà acquis et l’assistance restent disponibles en cas de difficulté. Ces réponses ne valent pas consentement aux emails commerciaux ni à la publicité.</p>
+      <p>Le produit de base est commun à tous et accessible sans remplir ce questionnaire. Les informations du plan ne sont demandées que si vous choisissez de lancer la simulation, afin de préparer l’aperçu et de présenter le produit correspondant. L’accès déjà acquis et l’assistance restent disponibles en cas de difficulté. Ces réponses ne valent pas consentement aux emails commerciaux ni à la publicité.</p>
       <p>Les avantages de démarrage utilisent une date enregistrée avec l’adresse email et la gamme d’offre. Le cookie de fonctionnement « hi_offre » conserve pendant 30 jours une clé aléatoire permettant de retrouver le palier de prix, sans contenir l’adresse email. Il ne sert pas à vous suivre sur des sites tiers. Une nouvelle visite ne relance pas une offre expirée. Voir les <a href="/conditions-offres">conditions des offres</a>.</p>
       <p>Un journal technique conserve des identifiants et états d’envoi, des empreintes et les réponses de rejet ou plainte nécessaires pour limiter les doublons et cesser les envois vers les adresses concernées. Il ne contient ni vos réponses familiales ni le corps des emails. Les empreintes sont des données pseudonymisées, pas une anonymisation.</p>
       <p>Des compteurs internes peuvent mesurer des vues et clics agrégés, sans identifiant visiteur ni réponses au questionnaire. Ils ne constituent pas un suivi individuel.</p>

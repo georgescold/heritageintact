@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { calculer } from "@/lib/simulateur/moteur";
 import type { Heritier, Saisie } from "@/lib/simulateur/types";
 import { euros } from "@/lib/config";
+import type { Reponses } from "@/lib/qualification";
 
 type Donnees = {
   age: number; vie: string; residence: number; immobilier: number; epargne: number;
@@ -39,7 +40,7 @@ function saisie(d: Donnees): Saisie {
     donations:d.donationAnnee?[{id:"don-1",annee:d.donationAnnee,montant:d.donationMontant,pour:"Bénéficiaires déclarés"}]:[]};
 }
 const champ = "field mt-1 min-w-0 max-w-full";
-export function SimulationPlan({ verrouille, children, demarrerOffre }: { verrouille: boolean; children?: ReactNode; demarrerOffre?:()=>Promise<{ok:boolean;error?:string}> }) {
+export function SimulationPlan({ verrouille, children, demarrerOffre }: { verrouille: boolean; children?: ReactNode; demarrerOffre?:(reponses:Reponses)=>Promise<{ok:boolean;error?:string}> }) {
   const router=useRouter();
   const [d,setD]=useState<Donnees>(VIDE),[commence,setCommence]=useState(!verrouille),[termine,setTermine]=useState(false),[attente,setAttente]=useState(false),[erreur,setErreur]=useState("");
   useEffect(()=>{try{const v=localStorage.getItem(CLE);if(v){setD({...VIDE,...JSON.parse(v)});if(!verrouille)setTermine(true);}}catch{}},[verrouille]);
@@ -52,7 +53,10 @@ export function SimulationPlan({ verrouille, children, demarrerOffre }: { verrou
     try {
       try{localStorage.setItem(CLE,JSON.stringify(d));}catch{}
       if(demarrerOffre){
-        const r=await demarrerOffre();
+        const age=d.age<60?"a":d.age<65?"b":d.age<70?"c":d.age===70?"d":"e";
+        const enfants=d.beauxEnfants>0?"R":d.enfants===0?"0":d.enfants===1?"1":"2";
+        const objectif=d.avAvant+d.avApres>0?"assurance-vie":d.residence>0?"maison":"facture";
+        const r=await demarrerOffre({objectif,vie:d.vie,enfants,age,av:d.avAvant+d.avApres>0?"O":"N",blocage:"ordre"});
         if(!r.ok){setErreur(r.error??"Impossible de préparer l’offre.");return;}
         router.refresh();
       }

@@ -9,7 +9,6 @@ import { DemonstrationPack } from "./DemonstrationPack";
 import { MesurerAchat } from "./MetaPixel";
 import { CHANGEMENTS, conseilOffre } from "@/lib/positionnement";
 import { profilDeCommande } from "@/lib/db";
-import { profilComplet } from "@/lib/questionnaire";
 import { redirect } from "next/navigation";
 import { acceptUpsell } from "@/app/actions";
 import { Header, Footer } from "./Chrome";
@@ -35,7 +34,6 @@ export async function OffrePreparation({
   const order = id ? await getOrder(id) : null;
   if (!order || order.status !== "paid") redirect("/commande");
   const profil = await profilDeCommande(order.id);
-  if (!profilComplet(profil)) redirect(`/situation?o=${encodeURIComponent(order.id)}`);
   const etape = await etapeTunnel(ecran, order.id, {
     bumpPresent: order.items.some((i) => i.sku === "bump"),
   });
@@ -43,7 +41,7 @@ export async function OffrePreparation({
   if (!etape.afficher) redirect(etape.versOu);
   const contexte = conseilOffre(profil);
   const d = await devisPour(order.email, sku);
-  const fin = etape.suivant;
+  const fin = sku === "upsell1" ? `/bienvenue?o=${encodeURIComponent(order.id)}` : etape.suivant;
   if (d.dejaPossede) redirect(fin);
   const produit = PRODUCTS[sku],
     texte = PRESENTATION[sku];

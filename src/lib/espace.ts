@@ -206,14 +206,13 @@ export async function chargerEspace(jeton: string): Promise<EtatEspace | null> {
   const epingle = acces.revoque ? null : produitEpingle(progression, possede);
 
   const boutique =
-    acces.revoque || !parEtape.get("e0")?.faiteLe
+    acces.revoque
       ? []
       : [
           ...(epingle ? [epingle.sku] : []),
           ...ORDRE_BOUTIQUE.filter(
             (sku) => PRODUCTS[sku].disponible && !possede.has(sku) && sku !== epingle?.sku
               && !(profil?.av !== "O" && (sku === "upsell2" || sku === "pack1"))
-              && !(profil?.av === "O" && sku === "upsell1" && !possede.has("upsell2"))
               && !(sku === "pack1" && possede.has("upsell1")),
           ),
         ];

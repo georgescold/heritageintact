@@ -34,6 +34,12 @@ for(const p of [{confirme:false},{valeur:NaN},{valeur:-1},{enfants:0},{enfants:1
 const {partNuePropriete}=mod("src/lib/simulateur/bareme.ts");for(const [age,r] of [[60,.5],[61,.6],[70,.6],[71,.7],[80,.7],[81,.8],[90,.8],[91,.9]])equal(partNuePropriete(age),r);
 const {SEQUENCE}=mod("src/lib/sequence.ts");equal(SEQUENCE.length,7);equal(new Set(SEQUENCE.map(e=>e.cle)).size,7);for(const e of SEQUENCE){truth(e.corps("Test").length>=3);const dossier=path.join(root,"src/app",e.bouton.chemin.replace(/^\//,""));truth(fs.existsSync(path.join(dossier,"page.tsx"))||fs.existsSync(path.join(dossier,"route.ts")));}
 const checkout=fs.readFileSync("src/components/CheckoutForm.tsx","utf8");truth(checkout.includes("[bump, setBump] = useState(false)"));
+truth(checkout.includes("router.push(`/bienvenue?o=${prep.orderId}`)"));
+truth(!checkout.includes("router.push(`/situation?o=${prep.orderId}`)"));
+const bienvenue=fs.readFileSync("src/app/bienvenue/page.tsx","utf8");truth(bienvenue.includes("ouvrirEspace(acces.jeton)"));
+const boutique=fs.readFileSync("src/components/espace/Boutique.tsx","utf8");truth(boutique.includes("Obtenir mon plan personnalisé"));truth(boutique.includes("/plan-complet?o="));
+const offre=fs.readFileSync("src/components/OffrePreparation.tsx","utf8");truth(!offre.includes("profilComplet(profil)"));
+const simulateur=fs.readFileSync("src/components/simulateur/SimulationPlan.tsx","utf8");truth(simulateur.includes("demarrerOffre({objectif,vie:d.vie,enfants,age"));
 const email=fs.readFileSync("src/lib/email.ts","utf8");truth(email.includes("lead.marketingConsent !== true || lead.desabonne"));
 const actions=fs.readFileSync("src/app/actions.ts","utf8");truth(actions.includes('order.status !== "paid"'));
 const avant71=amount({valeur:400000,mode:"nue-propriete",parents:1,age:70});

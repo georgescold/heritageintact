@@ -123,7 +123,7 @@ export default function VslPage() {
               },
               {
                 q: "« Ma situation est particulière. »",
-                a: "Elle mérite d’être comprise, pas rangée de force dans un exemple. Le premier produit est commun à tous. Après le paiement, six questions obligatoires orientent votre parcours et les éventuels compléments, sans changer votre achat. Une situation complexe, une succession ouverte ou un conflit demandent un professionnel sans attendre.",
+                a: "Elle mérite d’être comprise, pas rangée de force dans un exemple. Le premier produit est commun à tous et s’ouvre directement dans votre espace après le paiement. Si vous demandez ensuite votre plan personnalisé, un questionnaire détaillé prépare votre aperçu avant toute proposition payante. Une situation complexe, une succession ouverte ou un conflit demandent un professionnel sans attendre.",
               },
               {
                 q: "« Et si la loi change ? »",

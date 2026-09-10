@@ -23,7 +23,7 @@ compte rendu et exemple rempli. Le guide reste utilisable sans cette option.
 
 ### Upsell 2 — Simulateur + plan adapté
 
-Après les six questions initiales, le client clique sur **« Simuler pour ma situation »**.
+Après l’achat, le client arrive directement dans le menu de son espace et peut ouvrir les 7 erreurs sans questionnaire préalable. Le menu présente le bouton **« Obtenir mon plan personnalisé »**. Ce bouton ouvre le questionnaire détaillé ; une fois celui-ci terminé, l’aperçu personnalisé et l’offre limitée apparaissent sur cette nouvelle page.
 Le formulaire détaillé recueille l’âge, la situation de couple, les catégories de biens,
 les dettes estimées, les personnes susceptibles de recevoir, l’assurance-vie et les
 donations connues.

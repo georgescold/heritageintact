@@ -35,7 +35,7 @@ export default async function Page() {
           <Guarantee />
         </div>
         <p className="mt-5 text-text-soft">
-          Après le paiement : six questions obligatoires pour orienter votre parcours, puis votre guide prêt à ouvrir et une proposition complémentaire adaptée. « Je ne sais pas » est une réponse acceptée. Aucun complément payant n’est obligatoire.
+          Après le paiement : accès direct à votre espace et aux 7 erreurs. Le questionnaire détaillé n’apparaît que si vous demandez votre plan personnalisé. Aucun complément payant n’est obligatoire.
         </p>
       </main>
       <Footer />
