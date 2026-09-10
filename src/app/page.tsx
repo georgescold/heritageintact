@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Footer, Header } from "@/components/Chrome";
 import { ExitPopup } from "@/components/ExitPopup";
 import { OptinForm } from "@/components/OptinForm";
-import { UrgencyBar, UrgencyCountdown, ConditionsExoneration } from "@/components/Urgency";
+import { UrgencyBar, UrgencyCountdown } from "@/components/Urgency";
 
 export const metadata: Metadata = {
   title: "Et si vos enfants héritaient de 68 206 € de plus ?",
@@ -42,7 +42,6 @@ export default function LandingPage() {
             ].map(t=><li key={t} className="flex gap-2 text-[1rem]"><span aria-hidden className="shrink-0 font-bold text-red">✕</span><span>{t}</span></li>)}</ul>
             <p className="mt-3 text-[0.95rem] text-text-soft">Nous préférons vous le dire avant. La Méthode sert à comprendre et préparer, pas à décider d’un acte à votre place.</p>
           </div>
-          <ConditionsExoneration />
         </div>
       </section>
     </main>
