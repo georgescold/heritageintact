@@ -1,57 +1,31 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { calculer } from "@/lib/simulateur/moteur";
-import type { Heritier, Saisie } from "@/lib/simulateur/types";
+import type { Saisie } from "@/lib/simulateur/types";
+import {
+  CLE_SIMULATION,
+  DONNEES_VIDES,
+  donneesVersSaisie,
+  planPreparation,
+  type DonneesSimulation as Donnees,
+} from "@/lib/simulateur/donnees";
 import { euros } from "@/lib/config";
 import type { Reponses } from "@/lib/qualification";
-
-type Donnees = {
-  age: number; vie: string; residence: number; immobilier: number; epargne: number;
-  titres: number; autres: number; dettes: number; enfants: number; petitsEnfants: number;
-  fratrie: number; neveux: number; sansLien: number; beauxEnfants: number; handicap: number;
-  avAvant: number; avApres: number; beneficiaires: number; donationAnnee: number; donationMontant: number;
-};
-const CLE = "hi_simulation_plan_v1";
-const VIDE: Donnees = {age:65,vie:"M",residence:0,immobilier:0,epargne:0,titres:0,autres:0,dettes:0,enfants:1,petitsEnfants:0,fratrie:0,neveux:0,sansLien:0,beauxEnfants:0,handicap:0,avAvant:0,avApres:0,beneficiaires:1,donationAnnee:0,donationMontant:0};
-
-function heritiers(d: Donnees): Heritier[] {
-  const liste: Heritier[] = [];
-  const ajouter = (n:number,lien:Heritier["lien"],prefixe:string,extra:Partial<Heritier>={}) => {
-    for(let i=0;i<Math.max(0,n);i++) liste.push({id:`${prefixe}-${i}`,prenom:`${prefixe} ${i+1}`,lien,...extra});
-  };
-  ajouter(d.enfants,"enfant","Enfant");
-  ajouter(d.beauxEnfants,"enfant","Enfant du conjoint",{duConjointNonAdopte:true});
-  ajouter(d.petitsEnfants,"petit-enfant","Petit-enfant");
-  ajouter(d.fratrie,"fratrie","Frère ou sœur");
-  ajouter(d.neveux,"neveu","Neveu ou nièce");
-  ajouter(d.sansLien,"sans-lien","Autre personne");
-  for(let i=0;i<Math.min(d.handicap,liste.length);i++) liste[i].handicap=true;
-  return liste;
-}
-function saisie(d: Donnees): Saisie {
-  const biens = [
-    ["Résidence principale","residence",d.residence], ["Autres biens immobiliers","immobilier",d.immobilier],
-    ["Épargne","liquide",d.epargne], ["Titres et placements","titres",d.titres], ["Autres biens","autre",d.autres],
-  ].filter(([, , valeur])=>Number(valeur)>0).map(([libelle,type,valeur],i)=>({id:`bien-${i}`,libelle:String(libelle),type:type as "residence"|"immobilier"|"liquide"|"titres"|"autre",valeur:Number(valeur)}));
-  return {age:d.age,vie:d.vie,heritiers:heritiers(d),biens,dettes:d.dettes,
-    contrats:d.avAvant||d.avApres?[{id:"av-1",libelle:"Contrats déclarés",verseAvant70:d.avAvant,verseApres70:d.avApres,beneficiaires:Math.max(1,d.beneficiaires)}]:[],
-    donations:d.donationAnnee?[{id:"don-1",annee:d.donationAnnee,montant:d.donationMontant,pour:"Bénéficiaires déclarés"}]:[]};
-}
 const champ = "field mt-1 min-w-0 max-w-full";
 export function SimulationPlan({ verrouille, children, demarrerOffre }: { verrouille: boolean; children?: ReactNode; demarrerOffre?:(reponses:Reponses)=>Promise<{ok:boolean;error?:string}> }) {
   const router=useRouter();
-  const [d,setD]=useState<Donnees>(VIDE),[commence,setCommence]=useState(!verrouille),[termine,setTermine]=useState(false),[attente,setAttente]=useState(false),[erreur,setErreur]=useState("");
-  useEffect(()=>{try{const v=localStorage.getItem(CLE);if(v){setD({...VIDE,...JSON.parse(v)});if(!verrouille)setTermine(true);}}catch{}},[verrouille]);
-  const s=useMemo(()=>saisie(d),[d]), resultat=useMemo(()=>calculer(s,new Date().getFullYear()),[s]);
+  const [d,setD]=useState<Donnees>(DONNEES_VIDES),[commence,setCommence]=useState(!verrouille),[termine,setTermine]=useState(false),[attente,setAttente]=useState(false),[erreur,setErreur]=useState("");
+  useEffect(()=>{const frame=requestAnimationFrame(()=>{try{const v=localStorage.getItem(CLE_SIMULATION);if(v){setD({...DONNEES_VIDES,...JSON.parse(v)});if(!verrouille)setTermine(true);}}catch{}});return()=>cancelAnimationFrame(frame);},[verrouille]);
+  const s=donneesVersSaisie(d), resultat=calculer(s,new Date().getFullYear());
   const nombreHeritiers=s.heritiers.length;
   const setNombre=(cle:keyof Donnees,valeur:string)=>setD(v=>({...v,[cle]:Math.max(0,Number(valeur)||0)}));
   async function terminer(){
     if(nombreHeritiers<1||attente)return;
     setAttente(true);setErreur("");
     try {
-      try{localStorage.setItem(CLE,JSON.stringify(d));}catch{}
+      try{localStorage.setItem(CLE_SIMULATION,JSON.stringify(d));}catch{}
       if(demarrerOffre){
         const age=d.age<60?"a":d.age<65?"b":d.age<70?"c":d.age===70?"d":"e";
         const enfants=d.beauxEnfants>0?"R":d.enfants===0?"0":d.enfants===1?"1":"2";
@@ -106,4 +80,4 @@ export function SimulationPlan({ verrouille, children, demarrerOffre }: { verrou
 }
 function Montant({titre,valeur,change}:{titre:string;valeur:number;change:(v:string)=>void}){return <label>{titre} (€)<input className={champ} type="number" min="0" step="1000" value={valeur||""} onChange={e=>change(e.target.value)}/></label>}
 function Nombre({titre,valeur,change}:{titre:string;valeur:number;change:(v:string)=>void}){return <label>{titre}<input className={champ} type="number" min="0" max="30" value={valeur} onChange={e=>change(e.target.value)}/></label>}
-function Resultat({d,s}:{d:Donnees;s:Saisie}){const r=calculer(s,new Date().getFullYear());const plan=["Faire confirmer la propriété réelle des biens, les dettes déductibles et les personnes appelées à recevoir.",d.donationAnnee?"Retrouver les actes et déclarations de donations avant de considérer un abattement comme disponible.":"Faire vérifier les abattements disponibles avant toute opération.",d.avAvant+d.avApres>0?"Obtenir la clause bénéficiaire actuellement enregistrée et l’historique des versements.":"Décider si l’assurance-vie fait partie des sujets à examiner.","Comparer les scénarios utiles avec le professionnel avant toute décision irréversible."];return <div className="border-2 border-green bg-green-bg p-5"><h2 className="text-[1.5rem]">Votre estimation pédagogique : {euros(r.total)}</h2><p className="my-3">Masse nette saisie : {euros(r.masse)} · {r.parts.length} bénéficiaire(s) modélisé(s).</p><h3 className="mt-5">Votre ordre de préparation</h3><ol className="mt-3 list-decimal space-y-2 pl-6">{plan.map(p=><li key={p}>{p}</li>)}</ol>{r.hypotheses.length>0&&<details className="mt-5"><summary className="cursor-pointer font-bold">Hypothèses et limites du calcul</summary><ul className="mt-3 list-disc space-y-2 pl-6">{r.hypotheses.map(h=><li key={h}>{h}</li>)}</ul></details>}<p className="mt-4 text-sm">Ce résultat prépare vos questions ; il ne constitue ni un devis notarial ni un conseil fiscal personnalisé.</p></div>}
+function Resultat({d,s}:{d:Donnees;s:Saisie}){const r=calculer(s,new Date().getFullYear());const plan=planPreparation(d);return <div className="border-2 border-green bg-green-bg p-5"><h2 className="text-[1.5rem]">Votre estimation pédagogique : {euros(r.total)}</h2><p className="my-3">Masse nette saisie : {euros(r.masse)} · {r.parts.length} bénéficiaire(s) modélisé(s).</p><h3 className="mt-5">Votre ordre de préparation</h3><ol className="mt-3 list-decimal space-y-2 pl-6">{plan.map(p=><li key={p}>{p}</li>)}</ol>{r.hypotheses.length>0&&<details className="mt-5"><summary className="cursor-pointer font-bold">Hypothèses et limites du calcul</summary><ul className="mt-3 list-disc space-y-2 pl-6">{r.hypotheses.map(h=><li key={h}>{h}</li>)}</ul></details>}<p className="mt-4 text-sm">Ce résultat prépare vos questions ; il ne constitue ni un devis notarial ni un conseil fiscal personnalisé.</p></div>}

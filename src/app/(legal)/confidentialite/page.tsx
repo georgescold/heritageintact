@@ -31,7 +31,9 @@ export default function Confidentialite() {
           donations et assurance-vie. Les montants détaillés et le nombre facultatif de bénéficiaires
           en situation de handicap restent enregistrés dans votre navigateur, sans nom ni identité,
           afin de restaurer votre simulation. Seules les catégories nécessaires à l’orientation de
-          l’espace sont enregistrées sur nos serveurs. Ces informations ne sont transmises ni à un
+          l’espace sont enregistrées sur nos serveurs. Si vous téléchargez votre plan personnalisé,
+          les réponses détaillées sont transmises temporairement au serveur afin de générer le PDF,
+          puis ne sont pas conservées. Ces informations ne sont transmises ni à un
           tiers ni à un outil publicitaire.
         </li>
       </ul>

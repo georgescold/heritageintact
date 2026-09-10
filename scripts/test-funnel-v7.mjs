@@ -120,6 +120,14 @@ let response=await pdf.GET(req,{params:Promise.resolve(params)});
 eq(response.status,200);eq(response.headers.get("Content-Type"),"application/pdf");ok(response.headers.get("Cache-Control").includes("no-store"));eq(reads,1);
 etat.acces.revoque=true;eq((await pdf.GET(req,{params:Promise.resolve(params)})).status,403);eq(reads,1);
 etat.acces.revoque=false;eq((await pdf.GET(req,{params:Promise.resolve({...params,slug:"dossier-notaire"})})).status,403);
+const simulation={age:69,vie:"M",residence:480000,immobilier:0,epargne:40000,titres:0,autres:0,dettes:0,enfants:2,petitsEnfants:0,fratrie:0,neveux:0,sansLien:0,beauxEnfants:0,handicap:0,avAvant:100000,avApres:0,beneficiaires:2,donationAnnee:0,donationMontant:0};
+const postParams={params:Promise.resolve({...params,slug:"plan-personnalise"})};
+etat={acces:{revoque:false},possede:new Set(["front"])};
+eq((await pdf.POST(new Request("http://localhost",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(simulation)}),postParams)).status,403);
+etat={acces:{revoque:false},possede:new Set(["upsell1"])};
+eq((await pdf.POST(new Request("http://localhost",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({...simulation,residence:-1})}),postParams)).status,400);
+response=await pdf.POST(new Request("http://localhost",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(simulation)}),postParams);
+eq(response.status,200);eq(response.headers.get("Content-Type"),"application/pdf");ok(Buffer.from(await response.arrayBuffer()).subarray(0,5).toString()==="%PDF-");
 for(const slug of ["les-7-erreurs","dossier-notaire","preparation-familiale","assurance-vie"]){
  ok(fs.readFileSync("output/pdf/"+slug+".pdf").subarray(0,5).toString()==="%PDF-");
  ok(!fs.existsSync("public/"+slug+".pdf"));
