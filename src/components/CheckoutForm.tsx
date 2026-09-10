@@ -303,7 +303,7 @@ function Inner({
                   renommé, et deux noms pour une seule chose sur le bon de
                   commande, c'est un acheteur qui doute au moment de payer. */}
               <span className="block text-[1.05rem] font-bold text-blue">
-                Ajouter {PRODUCTS.bump.name} · +{euros(PRODUCTS.bump.price)} (facultatif)
+                Ajouter {PRODUCTS.bump.name}
               </span>
               <span className="mt-1 block text-[0.95rem]">
                 Au rendez-vous, ne laissez pas votre inquiétude parler à votre place. Le message,
