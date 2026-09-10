@@ -92,19 +92,25 @@ export default async function Page({
           )}
           {vue==="dossier" && <MesGuidesPdf jeton={jeton} possede={etat.possede}/>}
           {vue === "aide" && (
-            <div className="space-y-6">
-              <h2 className="text-[1.5rem]">Une question sur votre préparation ?</h2>
-              <p>
-                Écrivez à <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> pour une question
-                d’accès, une consigne ou une demande de remboursement. N’envoyez pas de relevé
-                bancaire ni de données sensibles de vos proches.
-              </p>
-              <p>
-                Pour une décision juridique, fiscale ou patrimoniale individuelle, contactez le
-                professionnel compétent. En cas de délai urgent, n’attendez pas de réponse de notre
-                support.
-              </p>
+            <div>
+              <h2 className="mb-2 text-[1.5rem]">Retrouver facilement mon espace</h2>
+              <p className="mb-6">Conservez votre lien personnel dans vos favoris ou demandez son renvoi automatique ci-dessous.</p>
               <MonLien jeton={jeton} email={etat.acces.email} />
+              <section className="mt-8 border-t border-grey-line pt-6">
+                <h2 className="mb-3 text-[1.2rem]">Avant de demander de l’aide</h2>
+                <ul className="list-disc space-y-2 pl-5 text-text-soft">
+                  <li>Pour retrouver un achat, ouvrez l’onglet <Link href={`${hub}?vue=dossier`}>Mon dossier</Link>.</li>
+                  <li>Pour récupérer votre accès, utilisez le bouton de renvoi automatique ci-dessus.</li>
+                  <li>Pour une décision juridique, fiscale ou patrimoniale individuelle, contactez le professionnel compétent.</li>
+                </ul>
+              </section>
+              <section className="mt-10 border-t border-grey-line pt-5 text-sm text-text-soft">
+                <p className="mb-2 font-bold">Vous ne trouvez toujours pas la réponse ?</p>
+                <p>
+                  Pour une difficulté d’accès ou une demande de remboursement, écrivez à <a href={`mailto:${CONTACT_EMAIL}`} className="text-text-soft">{CONTACT_EMAIL}</a>.
+                  N’envoyez aucun relevé bancaire ni aucune donnée sensible concernant vos proches.
+                </p>
+              </section>
             </div>
           )}
         </div>
