@@ -158,14 +158,11 @@ for sku,slug,title,subtitle in CAT:
   elif subtitle_node:story+=[P(subtitle_node.get_text(" ",strip=True),"small")]
   story+=html_flows(soup)
   S["body"]=normalBody
- story+=[PageBreak()]+head("POUR DONNER UNE SUITE À VOTRE LECTURE",ed.get("sortieTitre","Ne laissez pas vos réponses retourner dans le tiroir."))
- story+=[P(ed["acquis"]),P(ed["limite"]),P(ed["suite"])]
- if sku!="upsell2":
-  story+=[P("Retrouver cette prochaine étape dans votre espace","h2")]
-  story+=[rich('<link href="https://www.heritageintact.fr/espace" color="#12365E"><b>Ouvrir mon espace personnel</b></link>')]
-  story+=[P("Une réduction personnelle peut avoir expiré au moment où vous lisez ce PDF. Seule l’offre dans votre espace indique son montant et sa fin réelle ; le lien ne relance aucun délai.","small")]
- else:
-  story+=[P("Votre action maintenant","h2"),P("Envoyez la demande préparée dans ce guide, conservez la réponse de l’assureur avec votre contrat et faites vérifier les conséquences avant toute modification.")]
+ story+=[PageBreak()]+head(ed.get("sortieLabel","VOTRE PROCHAINE ÉTAPE"),ed.get("sortieTitre","Ne laissez pas vos réponses retourner dans le tiroir."))
+ story+=[P(ed["acquis"]),P(ed["limite"])]
+ story+=box(ed["suiteLabel"],ed["suite"])
+ story+=[P(ed["suiteResultat"]),rich('<link href="https://www.heritageintact.fr/espace" color="#12365E"><b>'+html.escape(clean(ed["suiteCta"]))+'</b></link>')]
+ story+=[P("Votre espace vérifie vos achats avant d’afficher une offre. Un produit déjà acquis n’est jamais proposé une seconde fois ; le lien ne déclenche aucun paiement.","small")]
  story+=sources()
  file=OUT/(slug+".pdf")
  doc=Doc(str(file),pagesize=A4,rightMargin=M,leftMargin=M,topMargin=53,bottomMargin=52,title=title,author="Héritage Intact")

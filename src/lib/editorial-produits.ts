@@ -14,7 +14,12 @@ export const EDITORIAL_PRODUITS = {
   essentiel: "Commencez par les trois dates promises dans la présentation, puis lisez les quatre erreurs qui ne se voient pas sur un relevé bancaire. Chaque chapitre va droit au but : ce que les gens ignorent, ce qu’il faut comprendre, un cas concret et les actions à mener.",
   limite: "Comprendre les règles ne suffit pas à établir les droits de votre famille. Ce guide prépare vos premières questions ; les pièces, les choix et leurs conséquences restent à examiner avec le professionnel.",
   acquis: "Vous savez désormais quoi regarder et quoi demander. Votre inquiétude a un point de départ concret.",
-  suite: "Mais repérer les erreurs ne calcule pas encore votre cas. Le simulateur et le plan adapté relient vos réponses, les hypothèses et l’ordre des vérifications. Ne laissez pas votre première avancée retourner dans le tiroir."
+  sortieLabel: "APRÈS LES 7 ERREURS",
+  sortieTitre: "Vous connaissez maintenant les pièges. Savez-vous lesquels pèsent réellement sur votre situation ?",
+  suiteLabel: "Si vous vous arrêtez ici, il reste une décision dangereuse : choisir par quoi commencer au hasard.",
+  suite: "Une règle comprise n’indique pas automatiquement votre priorité. Sans relier votre âge, votre famille, vos biens, vos donations et vos contrats, vous pouvez surveiller la mauvaise date ou préparer une démarche secondaire pendant qu’un point plus important continue d’avancer.",
+  suiteResultat: "Le produit Mon simulateur + mon plan adapté transforme vos réponses en estimation expliquée, fait ressortir vos points de vigilance et génère l’ordre précis des vérifications à préparer.",
+  suiteCta: "Simuler entièrement ma situation"
  },
  bump: {
   ouverture: "Vous pouvez obtenir un rendez-vous… et pourtant repartir avec les mêmes doutes.",
@@ -31,8 +36,12 @@ export const EDITORIAL_PRODUITS = {
   parcoursTitre: "Les supports qui empêchent votre rendez-vous de tourner à la chasse aux papiers",
   limite: "Ranger vos pièces ne suffit pas à choisir ce qui convient à votre famille. Le Dossier organise l’échange ; il ne tranche ni les droits ni les options.",
   acquis: "Vous n’arrivez plus avec « tous vos papiers ». Vous arrivez avec une situation présentable, les pièces identifiées et les questions que vous refusez d’oublier.",
+  sortieLabel: "APRÈS LE DOSSIER NOTAIRE",
   sortieTitre: "Votre rendez-vous est préparé. Reste une question que le dossier ne peut pas trancher.",
-  suite: "Même parfaitement rempli, ce dossier ne vous dit pas quelle vérification mérite de passer en premier dans votre famille. Le simulateur transforme vos réponses en priorités et le plan les remet dans un ordre exploitable."
+  suiteLabel: "Le risque d’un dossier parfaitement rangé : croire que classement signifie priorité.",
+  suite: "Même parfaitement rempli, ce dossier ne vous dit pas quelle vérification mérite de passer en premier. Vous pouvez arriver avec toutes les pièces et consacrer le rendez-vous au mauvais sujet parce qu’aucun document ne hiérarchise votre situation.",
+  suiteResultat: "Mon simulateur + mon plan adapté relie les informations du dossier, révèle les hypothèses qui changent le résultat et vous donne l’ordre à préparer avant de décider.",
+  suiteCta: "Obtenir l’ordre adapté à ma situation"
  },
  upsell1: {
   ouverture: "La mauvaise décision n’est pas toujours d’attendre. C’est parfois de commencer par ce qui compte le moins.",
@@ -49,8 +58,12 @@ export const EDITORIAL_PRODUITS = {
   parcoursTitre: "De vos réponses au plan : ce que le moteur relie pour vous",
   limite: "Votre dossier prépare l’étude de votre situation ; il ne remplace pas les actes ni le conseil du professionnel. Une urgence juridique n’attend pas la fin de la lecture.",
   acquis: "Vous ne repartez plus avec dix sujets au même niveau. Vous disposez d’une estimation expliquée, des inconnues à lever et d’un ordre de préparation conservable.",
+  sortieLabel: "APRÈS VOTRE PLAN",
   sortieTitre: "Votre plan donne l’ordre. Un contrat d’assurance-vie peut encore cacher une intention différente.",
-  suite: "Le simulateur utilise les montants et dates que vous déclarez ; il ne peut pas lire la clause conservée chez votre assureur. Si vous détenez une assurance-vie, le guide dédié vous aide à obtenir la version réellement enregistrée avant qu’une mauvaise désignation ne soit découverte trop tard."
+  suiteLabel: "Le point aveugle du simulateur : il ne peut pas ouvrir le contrat détenu par votre assureur.",
+  suite: "Le moteur utilise les montants et dates que vous déclarez. Il ne peut ni retrouver la clause réellement enregistrée ni voir si votre vie familiale a changé depuis sa rédaction. S’arrêter au plan peut donc laisser intact le contrat qui transmettra différemment de ce que vous imaginiez.",
+  suiteResultat: "Si vous détenez une assurance-vie, le guide dédié vous aide à demander la clause en vigueur, reconstituer les versements et faire vérifier les conséquences avant qu’une mauvaise surprise ne devienne irréversible.",
+  suiteCta: "Vérifier maintenant mon assurance-vie"
  },
  upsell2: {
   ouverture: "Le danger n’est pas que votre assurance-vie soit vide. C’est qu’elle soit pleine d’une intention que le contrat n’a jamais enregistrée.",
@@ -67,8 +80,12 @@ export const EDITORIAL_PRODUITS = {
   parcoursTitre: "Du relevé rassurant à la preuve écrite : les vérifications qui comptent",
   limite: "Une réponse reçue ne suffit pas à valider une modification. Faites examiner les conséquences et la cohérence familiale avant de changer une clause ou un placement.",
   acquis: "Vous ne vous fiez plus au seul montant du relevé. Vous savez quelle preuve demander, quelles dates reconstituer et quelle réponse conserver.",
-  sortieTitre: "Ici, la prochaine étape n’est pas un nouvel achat.",
-  suite: "Envoyez votre demande à l’assureur, classez sa réponse puis faites examiner les conséquences avant toute modification. Le résultat attendu est une intention confrontée au contrat réel, pas une accumulation de documents supplémentaires."
+  sortieLabel: "VOTRE ÉCOSYSTÈME",
+  sortieTitre: "Une assurance-vie clarifiée ne prépare pas, à elle seule, le reste de votre transmission.",
+  suiteLabel: "Le dernier piège : croire qu’un maillon sécurisé protège toute la chaîne.",
+  suite: "Votre clause peut être claire alors que la maison, les donations passées ou le prochain rendez-vous restent sans ordre ni dossier. Si l’un de ces maillons manque encore, vos proches pourront toujours se retrouver face à des informations dispersées et des décisions jamais reliées entre elles.",
+  suiteResultat: "Votre espace retire automatiquement les produits déjà achetés et vous montre uniquement ce qui manque encore : le plan adapté, le Dossier Notaire ou aucun complément si votre préparation est complète.",
+  suiteCta: "Vérifier ce qu’il me reste à préparer"
  }
 } as const;
 
