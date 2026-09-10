@@ -70,7 +70,7 @@ export const GUIDES_UTILISATION: GuideUtilisation[] = [
       ],
       [
         "3. Utilisez l’atelier pour poser une meilleure question",
-        "Ouvrez Mes outils, puis l’atelier de simulation. Lisez son périmètre et ses hypothèses avant de saisir. Pour une situation couverte, comparez deux scénarios en identifiant ce qui change et ce qui reste constant. Notez les éléments non couverts. L’écart pédagogique ne constitue ni un gain acquis ni un choix recommandé.",
+        "Retrouvez le dossier correspondant dans Mon dossier. Lisez son périmètre et ses hypothèses avant de reprendre votre simulation. Pour une situation couverte, comparez deux scénarios en identifiant ce qui change et ce qui reste constant. Notez les éléments non couverts. L’écart pédagogique ne constitue ni un gain acquis ni un choix recommandé.",
         "Vous pouvez expliquer les hypothèses du résultat et sa limite.",
         ""
       ],

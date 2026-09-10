@@ -363,7 +363,7 @@ export async function envoyerRecuAchat(
   const paragraphes = [
     `Bonjour ${p},`,
     `C'est ajouté à votre espace&nbsp;: <strong>${produit.name}</strong>, ${euros(montant)}.`,
-    "Retrouvez vos supports dans « Mon dossier » et vos applications ou modules dans « Mes outils ».",
+    "Retrouvez tous les dossiers correspondant à vos achats dans « Mon dossier ».",
     "Garantie 30 jours&nbsp;: si cela ne vous sert pas, un message suffit et vous êtes remboursé, sans justification à fournir.",
     "<strong>Vous n'êtes pas à l'origine de cet achat&nbsp;?</strong> Répondez simplement à ce message&nbsp;: nous l'annulons et nous vous remboursons, sans discussion.",
   ];

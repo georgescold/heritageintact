@@ -15,7 +15,7 @@ export default async function Page({ params }: { params: Promise<{ jeton: string
     <>
       <Header minimal />
       <main className="wrap flex-1 py-8">
-        <Link href={`/espace/${jeton}?vue=outils`}>Mes outils</Link>
+        <Link href={`/espace/${jeton}?vue=dossier`}>Mon dossier</Link>
         <h1 className="my-5 text-[2rem]">Faire le point sur mon assurance-vie</h1>
         <IntroductionProduit sku="upsell2" />
         <a className="mb-6 inline-flex min-h-[48px] items-center border-2 border-blue px-4 font-bold" href={`/espace/${jeton}/pdf/assurance-vie`}>Télécharger mon guide assurance-vie en PDF</a>

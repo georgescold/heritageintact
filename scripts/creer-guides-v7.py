@@ -146,7 +146,7 @@ for sku,slug,title,subtitle in CAT:
   story+=[P("Exemple fictif : Marc dispose d’un relevé annuel mais seulement d’une ancienne photocopie de clause. Il note « clause en vigueur à demander », pas « clause incorrecte ». Contrat ouvert à 45 ans et versement effectué à 73 ans : l’âge à l’ouverture ne suffit pas à déterminer le régime du versement.")]
  if sku=="upsell1":
   story+=[PageBreak()]+head("L’ATELIER INCLUS","Comparer sans confondre résultat et décision")+[
-   P("Ouvrez Mes outils dans votre espace. Lisez le périmètre de l’atelier avant toute saisie. Une succession déjà ouverte, un conflit, une entreprise, un élément international ou des donations anciennes non vérifiées ne se résument pas à ce modèle."),
+   P("Retrouvez ce dossier dans Mon dossier. Lisez le périmètre de la simulation avant toute saisie. Une succession déjà ouverte, un conflit, une entreprise, un élément international ou des donations anciennes non vérifiées ne se résument pas à ce modèle."),
    P("Pour apprendre, commencez par un cas fictif : un parent seul, un enfant, 480 000 € de bien, donation de nue-propriété, puis comparez 70 et 71 ans. Gardez toutes les autres hypothèses identiques. L’écart de droits du modèle est de 9 600 €, hors frais d’acte."),
    P("Notez ce que vous avez changé, ce qui reste constant et ce que le modèle ne prend pas en compte. Ne mélangez pas deux parents dans un scénario et un seul dans l’autre. Un écart entre scénarios n’est pas une économie déjà acquise.")]
   story+=lines("Hypothèse A / hypothèse B / limite du modèle",4)

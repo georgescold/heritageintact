@@ -1,14 +1,12 @@
 import Link from "next/link";
 import { Header, Footer } from "@/components/Chrome";
 import { LienInvalide } from "@/components/espace/LienInvalide";
-import { MesDocuments } from "@/components/espace/MesDocuments";
 import { Boutique } from "@/components/espace/Boutique";
 import { MonLien } from "@/components/espace/MonLien";
 import { ButtonLink } from "@/components/ui";
 import { chargerEspace } from "@/lib/espace";
 import { estJetonValide } from "@/lib/jeton";
-import { CONTACT_EMAIL, PRODUCTS } from "@/lib/config";
-import { PrioriteActuelle } from "@/components/espace/PrioriteActuelle";
+import { CONTACT_EMAIL } from "@/lib/config";
 import { MesurerAchat } from "@/components/MetaPixel";
 import { MesGuidesPdf } from "@/components/espace/MesGuidesPdf";
 export const metadata = { title: "Mon parcours" };
@@ -37,7 +35,6 @@ export default async function Page({
   const onglets = [
     ["parcours", "Mon parcours"],
     ["dossier", "Mon dossier"],
-    ["outils", "Mes outils"],
     ["aide", "Aide"],
   ];
   return (
@@ -69,77 +66,32 @@ export default async function Page({
         </nav>
         {ajoute && etat.possede.has(ajoute as never) && (
           <p role="status" className="mb-6 border-l-4 border-green bg-green-bg p-4">
-            Votre complément est accessible dans Mon dossier et Mes outils.
+            Votre complément est maintenant accessible dans Mon dossier.
           </p>
         )}
         <div className="max-w-[760px]">
           {vue !== "parcours" && <p className="mb-6"><Link href={`${hub}/demarrer`}>Bien utiliser mes achats</Link></p>}
-          {(vue === "parcours" || vue === "outils") && etat.etapes.some(e => e.etape.cle === "e0" && e.faite) && <PrioriteActuelle jeton={jeton} objectif={etat.profil?.objectif} av={etat.profil?.av} />}
-          {!["dossier", "outils", "aide"].includes(vue) && !etat.possede.has("front") && (
-            <section><h2 className="mb-3 text-[1.5rem]">Vos contenus restent accessibles</h2><p className="mb-4">Retrouvez les supports et modules correspondant à vos achats actifs.</p><ButtonLink href={`${hub}?vue=outils`}>Ouvrir mes outils</ButtonLink></section>
+          {!["dossier", "aide"].includes(vue) && !etat.possede.has("front") && (
+            <section><h2 className="mb-3 text-[1.5rem]">Vos contenus restent accessibles</h2><p className="mb-4">Retrouvez les dossiers correspondant à vos achats actifs.</p><ButtonLink href={`${hub}?vue=dossier`}>Ouvrir mon dossier</ButtonLink></section>
           )}
-          {!["dossier", "outils", "aide"].includes(vue) && etat.possede.has("front") && (
+          {!["dossier", "aide"].includes(vue) && etat.possede.has("front") && (
             <>
               <section className="mb-8 border-2 border-blue bg-grey-bg p-5 sm:p-6">
                 <p className="font-bold uppercase tracking-wide text-orange-dark">Votre achat</p>
                 <h2 className="my-3 text-[1.55rem]">Les 7 erreurs qui offrent votre héritage à l’État</h2>
                 <p className="mb-5">Votre guide est réuni dans un seul fichier. Téléchargez-le pour le lire, l’imprimer ou le conserver sur votre ordinateur.</p>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <a className="inline-flex min-h-[54px] flex-1 items-center justify-center bg-orange px-5 py-3 text-center font-bold text-white no-underline" href={`${hub}/pdf/les-7-erreurs`} download>
+                <div>
+                  <a className="inline-flex min-h-[54px] w-full items-center justify-center bg-orange px-5 py-3 text-center font-bold text-white no-underline" href={`${hub}/pdf/les-7-erreurs`} download>
                     Télécharger mon guide PDF
                   </a>
-                  <ButtonLink href={`${hub}/etape/0`} variant="blue">Lire le guide en ligne</ButtonLink>
                 </div>
               </section>
-              <details className="border border-grey-line bg-white p-5">
-                <summary className="min-h-[44px] cursor-pointer text-[1.1rem] font-bold text-blue">
-                  Lire et suivre le guide dans mon espace · {etat.nbFaites}/8
-                </summary>
-                <div className="mt-5">
-                  {etat.reprendre && <p className="mb-4 border-l-4 border-orange bg-grey-bg p-3"><strong>À reprendre :</strong> {etat.reprendre.titre}</p>}
-                  <ol className="space-y-2">
-                    {etat.etapes.map(({ etape, faite }) => (
-                      <li key={etape.cle}>
-                        <Link className="flex min-h-[50px] items-center justify-between gap-4 border-b border-grey-line-soft py-2" href={`${hub}/etape/${etape.numero}`}>
-                          <span>{etape.numero + 1}. {etape.titre}</span>
-                          <span className="shrink-0 text-sm text-text-soft">{faite ? "Terminée" : `≈ ${etape.minutes} min`}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </details>
               <div className="mt-10 border-t-2 border-blue pt-8">
                 <Boutique etat={etat} />
               </div>
             </>
           )}
-          {vue === "dossier" && <MesDocuments etat={etat} />}
           {vue==="dossier" && <MesGuidesPdf jeton={jeton} possede={etat.possede}/>}
-          {vue === "outils" && (
-            <div className="space-y-8">
-              <h2 className="text-[1.5rem]">Mes outils et compléments</h2>
-              {etat.possede.has("backend1") && (
-                <section>
-                  <h3 className="mb-2 text-[1.3rem]">{PRODUCTS.backend1.name}</h3>
-                  <p className="mb-3">
-                    Explorez des hypothèses explicites. Un résultat pédagogique ne valide ni une
-                    succession ni une décision.
-                  </p>
-                  <Link href={`${hub}/simulateur`}>Ouvrir mon atelier</Link>
-                </section>
-              )}
-              {etat.possede.has("upsell2") && (
-                <section>
-                  <h3 className="mb-2 text-[1.3rem]">Mon module assurance-vie</h3>
-                  <Link href={`${hub}/assurance-vie`}>
-                    Préparer la vérification de mes contrats
-                  </Link>
-                </section>
-              )}
-              <Boutique etat={etat} />
-            </div>
-          )}
           {vue === "aide" && (
             <div className="space-y-6">
               <h2 className="text-[1.5rem]">Une question sur votre préparation ?</h2>

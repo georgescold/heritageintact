@@ -26,12 +26,12 @@ export default async function Page({ params }: { params: Promise<{ jeton: string
         const doc = cle ? documentParCle(cle) : null;
         return <section key={titre} className="mb-7"><h3 className="mb-3 text-[1.25rem]">{titre}</h3><p>{consigne}</p>
         {doc && etat.possede.has(doc.sku) && <Link href={`${hub}/document/${doc.cle}`}>Ouvrir : {doc.titre}</Link>}
-        {!cle && <Link href={`${hub}?vue=${titre.includes("atelier") ? "outils" : "dossier"}`}>Ouvrir mes supports</Link>}
+        {!cle && <Link href={`${hub}?vue=dossier`}>Ouvrir mes dossiers</Link>}
         </section>;
       })}
       <SuiteProduit moment={g.sku} possede={etat.possede} profil={etat.profil} hub={hub} conclusion />
     </section>)}
-    {!guides.length && <p>Retrouvez les supports de vos achats historiques dans Mon dossier et Mes outils.</p>}
+    {!guides.length && <p>Retrouvez les fichiers de vos achats dans Mon dossier.</p>}
     <p className="mt-6">Vous pouvez contacter votre notaire dès maintenant. Ces lectures ne sont pas un préalable obligatoire à une consultation.</p>
     <Link href={`${hub}?vue=dossier`}>Retrouver mes documents</Link>
   </main><Footer /></>;
