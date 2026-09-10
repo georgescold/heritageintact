@@ -29,11 +29,11 @@ for(const gamme of ["front","suite"]){
  eq(palier(null,now).pourcent,0);
  eq(palier(p,now-1).pourcent,0);
  eq(palier(p,now).pourcent,gamme==="front"?50:25);
- const premiereFin=now+(gamme==="front"?2:20)*60000;
+ const premiereFin=now+(gamme==="front"?5:20)*60000;
  eq(palier(p,premiereFin-1).pourcent,gamme==="front"?50:25);
- eq(palier(p,premiereFin).pourcent,gamme==="front"?30:10);
- const end=now+(gamme==="front"?10*60000:48*3600000);
- eq(palier(p,end-1).pourcent,gamme==="front"?30:10);eq(palier(p,end).pourcent,0);eq(palier(p,end+1).fin,null);
+ eq(palier(p,premiereFin).pourcent,gamme==="front"?0:10);
+ const end=now+(gamme==="front"?5*60000:48*3600000);
+ eq(palier(p,end-1).pourcent,gamme==="front"?50:10);eq(palier(p,end).pourcent,0);eq(palier(p,end+1).fin,null);
  eq(palier({...p,commenceLe:"invalide"},now).pourcent,0);
  eq(loader({}, {OFFRES_TEMPORAIRES_ACTIVES:"false"})("src/lib/promotions.ts").palier(p,now).pourcent,0);
 }

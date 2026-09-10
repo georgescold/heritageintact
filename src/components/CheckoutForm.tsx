@@ -210,11 +210,7 @@ function Inner({
     <form onSubmit={onSubmit} noValidate className="grid gap-6 lg:grid-cols-[3fr_2fr] lg:gap-8">
       {/* Colonne gauche */}
       <div className="space-y-5">
-        {identiteConnue ? (
-          <p className="border border-green bg-green-bg p-3 text-[0.95rem]">
-            Votre accès sera envoyé à <strong>{email}</strong>.
-          </p>
-        ) : (
+        {!identiteConnue && (
           <Panel title="1. Vos coordonnées">
             <div className="space-y-3">
               <label className="block">
@@ -368,16 +364,9 @@ function Inner({
           </div>
           <ul className="mt-4 space-y-1 text-[0.95rem]">
             {[
-              // « Module » est interdit sur les PAGES DE VENTE : ici on vend une
-              // démarche, et une démarche se suit par étapes. Le mot est en revanche
-              // parfaitement admis à l'intérieur du produit, où le client sait déjà
-              // ce qu'il a acheté. Le mot
-              // change ce que l'acheteur croit avoir acheté.
-              "Le guide Les 7 erreurs + ma première fiche",
-              "Ma fiche de situation et mes repères",
-              "Les questions à préparer au notaire",
-              "Mon plan en une page",
-              "Supports de base imprimables",
+              "Les 7 erreurs à connaître avant qu’il ne soit trop tard",
+              "Les repères essentiels sur la maison, les donations et l’assurance-vie",
+              "Une explication claire et accessible de chaque erreur",
               "Paiement unique, aucun abonnement",
               "Garantie 30 jours",
             ].map((t) => (

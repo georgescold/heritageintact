@@ -295,7 +295,7 @@ export async function chargeUpsell(
   if (!profilComplet(await profilDeCommande(order.id)))
     return {
       ok: false,
-      error: "Terminez les quatre questions de qualification avant de continuer.",
+      error: "Terminez les six questions de qualification avant de continuer.",
     };
 
   // ⚠️ HORS DE LA FENÊTRE, ON NE DÉBITE PLUS EN UN CLIC. Voir FENETRE_UPSELL_MS :

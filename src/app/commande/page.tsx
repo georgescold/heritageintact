@@ -25,10 +25,9 @@ export default async function Page() {
       {(isTestMode || stripeEnModeTest) && <TestModeBanner stripeReel={stripeEnModeTest} />}
       <Header minimal />
       <main className="wrap-wide flex-1 py-8">
-        <h1 className="mb-3 text-[1.9rem]">Les 7 erreurs qui offrent votre héritage à l’État</h1>
-        <p className="mb-6 text-[1.1rem]">
-          Votre guide et ses explications, en paiement unique. Le dossier ci-dessous est facultatif. Le total
-          se met à jour avant votre validation.
+        <h1 className="mb-3 text-[1.9rem]">Obtenez le guide avec les 7 erreurs qui offrent votre héritage à l’État</h1>
+        <p className="mb-6 text-[1.1rem] font-bold text-red">
+          Ne laissez pas vos enfants découvrir trop tard une erreur qui aurait pu être évitée aujourd’hui.
         </p>
         <AvantageDemarrage promotion={d.promotion} base={d.total} />
         <CheckoutForm defaults={defaults} testMode={isTestMode} prixFront={prix} />
@@ -36,7 +35,7 @@ export default async function Page() {
           <Guarantee />
         </div>
         <p className="mt-5 text-text-soft">
-          Après le paiement : quatre questions obligatoires pour orienter votre parcours, puis votre guide prêt à ouvrir et une proposition complémentaire adaptée. « Je ne sais pas » est une réponse acceptée. Aucun complément payant n’est obligatoire.
+          Après le paiement : six questions obligatoires pour orienter votre parcours, puis votre guide prêt à ouvrir et une proposition complémentaire adaptée. « Je ne sais pas » est une réponse acceptée. Aucun complément payant n’est obligatoire.
         </p>
       </main>
       <Footer />

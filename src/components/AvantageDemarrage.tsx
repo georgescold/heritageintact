@@ -38,9 +38,31 @@ export function AvantageDemarrage({
   }, [promotion.fin, promotion.serveurMaintenant, router]);
   if (!promotion.pourcent || !promotion.fin || base <= 0) return null;
   const secondes = Math.ceil(reste / 1000);
-  const temps = [Math.floor(secondes / 3600), Math.floor(secondes / 60) % 60, secondes % 60]
+  const estFront = promotion.gamme === "front";
+  const temps = (estFront
+    ? [Math.floor(secondes / 60), secondes % 60]
+    : [Math.floor(secondes / 3600), Math.floor(secondes / 60) % 60, secondes % 60])
     .map((n) => String(n).padStart(2, "0"))
     .join(":");
+  if (estFront) {
+    return (
+      <aside
+        className="my-6 border-4 border-red bg-red px-4 py-5 text-center text-white shadow-[0_8px_0_rgba(120,0,0,0.25)] sm:px-7"
+        aria-label="Offre de première inscription à durée limitée"
+      >
+        <p className="text-[1.35rem] font-extrabold uppercase leading-tight sm:text-[1.65rem]">
+          Nous offrons -50% pour votre première inscription
+        </p>
+        <p className="mt-2 font-bold">Cette offre disparaît dans :</p>
+        <p
+          className="mx-auto mt-3 w-fit min-w-40 border-2 border-white bg-[#760d13] px-5 py-2 text-[2.6rem] font-extrabold leading-none tabular-nums tracking-wider"
+          aria-label="Temps restant"
+        >
+          {reste > 0 ? temps : "Actualisation…"}
+        </p>
+      </aside>
+    );
+  }
   const apres = Math.round((base * 100 * (100 - promotion.suivant)) / 100) / 100;
   return (
     <aside

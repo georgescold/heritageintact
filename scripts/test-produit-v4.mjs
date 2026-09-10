@@ -79,7 +79,8 @@ for (const dossier of ["src/app", "src/components", "src/content", "src/lib"]) {
 }
 const checkout = fs.readFileSync("src/components/CheckoutForm.tsx", "utf8"),
   commander = fs.readFileSync("src/app/commander/route.ts", "utf8");
-ok(checkout.includes("identiteConnue ?") && checkout.includes("Votre accès sera envoyé à"));
+ok(checkout.includes("!identiteConnue &&") && !checkout.includes("Votre accès sera envoyé à"));
+ok(!checkout.includes("Les questions à préparer au notaire"));
 ok(!checkout.includes("Je saurai quoi demander") && commander.includes('commencerPromotion(email, "front")'));
 ok(!sale.includes("<EcheanceHistorique"));
 ok(LECONS.find((l) => l.cle === "e6").blocs.some(([titre, texte]) => titre.includes("fenêtre temporaire") && texte.includes("790 A bis") && texte.includes("31 décembre 2026")));
