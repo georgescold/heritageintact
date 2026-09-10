@@ -20,7 +20,7 @@ export default function LandingPage() {
         <div className="wrap">
           <p className="mb-1.5 text-[0.78rem] font-bold uppercase tracking-[0.14em] text-orange">Propriétaires de plus de 60 ans · France</p>
           <h1 className="text-[1.6rem] leading-[1.12] sm:text-[2.5rem]">Et si vos enfants héritaient de <span className="whitespace-nowrap text-orange">68 206 €</span> de plus&nbsp;?</h1>
-          <p className="mt-2.5 text-[1.08rem] font-bold text-blue sm:text-[1.3rem]">Sans rien vendre, sans quitter votre maison, et sans confier un centime à qui que ce soit pour découvrir la Méthode.</p>
+          <p className="mt-2.5 text-[1.08rem] font-bold text-blue sm:text-[1.3rem]">Sans rien vendre, sans quitter votre maison, et sans confier un centime à qui que ce soit.</p>
           <p className="mt-2.5 text-[1.02rem] leading-snug">Découvrez les <strong>3 repères de temps</strong> à connaître pour examiner <strong>la facture de l’État sur votre succession</strong> — <strong>avant votre mort, pendant que vous pouvez encore préparer ce que vous laisserez à vos enfants.</strong> L’exemple présenté sur la page suivante montre comment certaines opérations changent les droits calculés, avec ses hypothèses.</p>
           <div id="inscription" className="mt-3 border-2 border-blue bg-white p-3 sm:mt-5 sm:p-5"><OptinForm cta={cta} /></div>
           <div className="mt-5 border border-grey-line bg-grey-bg px-3.5 py-3">
