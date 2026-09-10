@@ -41,7 +41,8 @@ for(const [v,p,r]of[[52,50,26],[52,30,36.4],[170,25,127.5],[153,25,114.75],[203,
 for(const [v,p]of[[NaN,20],[-1,20],[100,99],[Infinity,25]]){assert.throws(()=>appliquerRemise(v,p));n++}
 const {QUESTIONS,profilComplet}=mod("src/lib/questionnaire.ts");
 const valide={objectif:"maison",vie:"M",enfants:"2",age:"c",av:"N",blocage:"ordre"};
-eq(QUESTIONS.length,6);ok(profilComplet(valide));ok(profilComplet({objectif:"facture",vie:"?",enfants:"?",age:"X",av:"?",blocage:"complexite"}));
+eq(QUESTIONS.length,6);ok(profilComplet(valide));ok(profilComplet({objectif:"facture",vie:"?",enfants:"?",age:"e",av:"?",blocage:"complexite"}));
+eq(profilComplet({...valide,age:"X"}),false);
 for(const q of QUESTIONS){
  const absent={...valide};delete absent[q.champ];eq(profilComplet(absent),false);
  for(const code of ["","Z","injection",undefined,12])eq(profilComplet({...valide,[q.champ]:code}),false);

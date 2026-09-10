@@ -191,7 +191,7 @@ try {
   await page.getByRole("button",{name:"Découvrir trop tard que j’ai laissé passer une date importante",exact:true}).click();
   await page.getByRole("button",{name:"Ma situation reste à préciser",exact:true}).click();
   await page.getByRole("button",{name:"Ma situation familiale reste à préciser",exact:true}).click();
-  await page.getByRole("button",{name:"Je préfère ne pas répondre",exact:true}).click();
+  await page.getByRole("button",{name:"De 65 à 69 ans",exact:true}).click();
   await page.getByRole("button",{name:"Je ne sais pas",exact:true}).click();
   await page.getByRole("button",{name:"Les démarches et les mots sont trop compliqués",exact:true}).click();
   await page.waitForURL(u=>u.pathname==="/plan-complet");
