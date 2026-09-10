@@ -9,26 +9,50 @@ export const avantagesProduit = (sku: ProductSku) => PRESENTATION[sku]?.contenu 
 
 const VITRINE: Partial<Record<ProductSku, {
   badge: string;
-  douleur: string;
-  resultat: string;
+  alerteTitre: string;
+  alerteTexte: string;
+  resultatTitre: string;
+  resultatTexte: string;
+  points: string[];
   bouton: string;
 }>> = {
   upsell1: {
     badge: "L’étape la plus importante",
-    douleur: "Connaître les sept erreurs ne suffit pas encore à savoir lesquelles concernent réellement votre famille, ni dans quel ordre avancer.",
-    resultat: "Le simulateur analyse vos réponses et génère votre estimation pédagogique, vos points de vigilance et votre plan détaillé : quoi faire vérifier, dans quel ordre et avec quels documents.",
+    alerteTitre: "Ne restez pas avec des règles générales et aucun ordre pour agir.",
+    alerteTexte: "Sans relier les sept erreurs à votre âge, votre famille, vos biens et vos donations, vous risquez de surveiller le mauvais point, de repousser la bonne vérification ou de commencer par une démarche secondaire.",
+    resultatTitre: "À la fin de votre simulation, votre situation devient lisible.",
+    resultatTexte: "Vos réponses génèrent votre estimation, vos points de vigilance et votre plan détaillé. Vous voyez ce qui mérite d’être vérifié en premier, les documents à retrouver et les questions à préparer.",
+    points: [
+      "Votre estimation et les hypothèses qui l’expliquent",
+      "Les dates et points de vigilance propres à vos réponses",
+      "Votre plan détaillé généré par le simulateur",
+    ],
     bouton: "Simuler entièrement ma situation",
   },
   bump: {
     badge: "Avant votre rendez-vous",
-    douleur: "Une date oubliée, une donation mal retracée ou un document absent peut laisser une question importante sans réponse et vous obliger à recommencer la préparation.",
-    resultat: "Le Dossier Notaire réunit l’inventaire, les pièces à retrouver, les questions à poser, la demande de rendez-vous et le compte rendu à conserver.",
+    alerteTitre: "Le notaire ne peut pas examiner ce que vous avez oublié de lui signaler.",
+    alerteTexte: "Une donation ancienne mal retracée, une clause absente ou un acte resté dans un tiroir peut laisser une question importante sans réponse. Vous risquez alors de repartir dans le flou, de chercher les pièces après le rendez-vous et de devoir reprendre les échanges.",
+    resultatTitre: "Arrivez préparé et repartez avec des réponses exploitables.",
+    resultatTexte: "Le Dossier Notaire rassemble tout au même endroit pour présenter clairement votre famille, vos biens, vos donations et les questions que vous ne voulez pas oublier.",
+    points: [
+      "La liste des pièces à réunir avant le rendez-vous",
+      "Les questions à poser pour ne pas repartir dans le flou",
+      "Le compte rendu pour conserver les réponses obtenues",
+    ],
     bouton: "Découvrir le Dossier Notaire",
   },
   upsell2: {
     badge: "Indispensable pour les détenteurs d’une assurance-vie",
-    douleur: "Un relevé annuel ne suffit pas à savoir qui recevra réellement le capital. Une clause ancienne ou imprécise et des versements mal identifiés peuvent produire un résultat très différent de ce que vous aviez prévu.",
-    resultat: "Retrouvez la clause en vigueur, les dates de versement et les informations manquantes, puis préparez la demande exacte à adresser à votre assureur avant toute modification.",
+    alerteTitre: "Votre contrat peut ne plus transmettre comme vous l’imaginez.",
+    alerteTexte: "Le montant visible sur votre relevé ne dit pas qui recevra le capital. Une clause jamais relue, un bénéficiaire mal désigné ou des versements dont les dates sont inconnues peuvent créer une mauvaise surprise lorsque votre famille ne pourra plus vous demander ce que vous vouliez.",
+    resultatTitre: "Sachez enfin ce qui est écrit — et ce qui manque encore.",
+    resultatTexte: "Vous apprenez à retrouver la clause réellement enregistrée, à reconstituer les dates utiles et à demander les informations manquantes à l’assureur avant d’envisager une modification.",
+    points: [
+      "La grille pour relire chacun de vos contrats",
+      "Le courrier pour obtenir les informations manquantes",
+      "Les points à faire vérifier avant toute modification",
+    ],
     bouton: "Faire le point sur mon assurance-vie",
   },
 };
@@ -77,14 +101,16 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
               </p>
               <div className="p-5 sm:p-6">
                 <h3 className="text-[1.35rem] leading-snug text-blue">{PRODUCTS[sku].name}</h3>
-                <p className="my-4 border-l-4 border-red bg-red-bg p-3 leading-relaxed">
-                  <strong>Ce que vous risquez de laisser de côté :</strong> {fiche.douleur}
-                </p>
-                <p className="mb-4 text-[1.05rem] leading-relaxed">
-                  <strong>Ce que ce produit vous permet d’obtenir :</strong> {fiche.resultat}
-                </p>
+                <div className="my-4 border-l-4 border-red bg-red-bg p-4 leading-relaxed">
+                  <p className="mb-1 font-bold">{fiche.alerteTitre}</p>
+                  <p>{sku === "upsell2" && etat.profil?.av === "O" ? "Vous nous avez indiqué détenir une assurance-vie. " : ""}{fiche.alerteTexte}</p>
+                </div>
+                <div className="mb-4 text-[1.05rem] leading-relaxed">
+                  <p className="mb-1 font-bold text-blue">{fiche.resultatTitre}</p>
+                  <p>{fiche.resultatTexte}</p>
+                </div>
                 <ul className="mb-5 space-y-2">
-                  {avantagesProduit(sku).slice(0, 3).map((avantage) => (
+                  {fiche.points.map((avantage) => (
                     <li key={avantage} className="flex gap-2">
                       <span aria-hidden="true" className="font-bold text-green">✓</span>
                       <span>{avantage}</span>
