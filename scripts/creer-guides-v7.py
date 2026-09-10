@@ -100,8 +100,8 @@ def sources():
  P("Dans votre espace : les fiches séparées peuvent être réimprimées à l’unité. En cas de nouvelle version, privilégiez l’édition la plus récente. Les PDF ne se mettent pas à jour une fois téléchargés.")]
 CAT=[
  ("front","les-7-erreurs","Les 7 erreurs qui offrent votre héritage à l’État","Les 3 dates qui avancent. Les 4 pièges qui restent invisibles. Les actions à mener."),
- ("bump","dossier-notaire","Mon dossier pour le rendez-vous","Partir de l’exemple. Rassembler les pièces utiles. Conserver les réponses."),
- ("upsell1","preparation-familiale","Ma préparation familiale","Choisir votre fiche. Relier les faits. Comparer les hypothèses. Suivre les démarches."),
+ ("bump","dossier-notaire","Dossier Notaire","Partir de l’exemple. Rassembler les pièces utiles. Conserver les réponses."),
+ ("upsell1","preparation-familiale","Mon simulateur + mon plan adapté","Choisir votre fiche. Relier les faits. Comparer les hypothèses. Suivre les démarches."),
  ("upsell2","assurance-vie","Mon guide assurance-vie","Retrouver la clause. Demander les informations. Suivre les vérifications."),
 ]
 manifest=[]
@@ -110,15 +110,16 @@ for sku,slug,title,subtitle in CAT:
  docs=[d for d in DATA["documents"] if d["sku"]==sku]
  if sku=="front":docs=[]
  ed=DATA["editorial"][sku]
- story=head("VOTRE GUIDE / "+("PRODUIT DE BASE" if sku=="front" else "COMPLÉMENT"),title)
+ cover_label={"front":"VOTRE GUIDE / PRODUIT DE BASE","bump":"VOTRE DOSSIER PRATIQUE","upsell1":"VOTRE SIMULATEUR + VOTRE PLAN","upsell2":"VOTRE GUIDE ASSURANCE-VIE"}[sku]
+ story=head(cover_label,title)
  story+=[P(ed["ouverture"],"h2")]+[P(p) for p in ed["histoire"]]
- story+=[P("Ce que vous allez apprendre","h2")]
+ story+=[P(ed.get("apprendreTitre","Ce que vous allez apprendre"),"h2")]
  for appris in ed["apprendre"]:story+=[P("- "+appris)]
- story+=[P("À qui ce guide s’adresse","h2")]
+ story+=[P(ed.get("adresseTitre","À qui ce guide s’adresse"),"h2")]
  for personne in ed.get("adresse",[]):story+=[P("- "+personne)]
- story+=[P("Pour aller à l’essentiel","h3"),P(ed["essentiel"])]
+ story+=[P(ed.get("essentielTitre","Pour aller à l’essentiel"),"h3"),P(ed["essentiel"])]
  if sku!="front":story+=[P("Édition du 10 septembre 2026. Les scènes imaginées et exemples fictifs ne sont pas des témoignages. Supports à conserver chez vous.","small")]
- story+=[PageBreak()]+head("VOTRE PARCOURS","Ce que les sept erreurs vont vous révéler" if sku=="front" else "Le fil de votre préparation")
+ story+=[PageBreak()]+head("VOTRE PARCOURS",ed.get("parcoursTitre","Ce que les sept erreurs vont vous révéler" if sku=="front" else "Le fil de votre préparation"))
  if sku=="front":
   for l in DATA["lecons"]:
    if l["numero"]:story+=[P(l["titre"],"h3"),P(l["resume"],"small")]
@@ -157,12 +158,14 @@ for sku,slug,title,subtitle in CAT:
   elif subtitle_node:story+=[P(subtitle_node.get_text(" ",strip=True),"small")]
   story+=html_flows(soup)
   S["body"]=normalBody
- story+=[PageBreak()]+head("POUR DONNER UNE SUITE À VOTRE LECTURE","Ne laissez pas vos réponses retourner dans le tiroir.")
+ story+=[PageBreak()]+head("POUR DONNER UNE SUITE À VOTRE LECTURE",ed.get("sortieTitre","Ne laissez pas vos réponses retourner dans le tiroir."))
  story+=[P(ed["acquis"]),P(ed["limite"]),P(ed["suite"])]
- story+=[P("Votre prochaine étape","h2"),P("Ouvrez votre espace personnel. Il distingue vos supports déjà inclus du seul complément qui peut vous être proposé selon vos réponses. Vous voyez le montant actuel avant de confirmer ; aucun achat n’est déclenché par le lien.")]
- story+=[rich('<link href="https://www.heritageintact.fr/espace" color="#12365E"><b>Retrouver maintenant ma prochaine étape</b></link>')]
- story+=[P("Une réduction personnelle peut avoir expiré au moment où vous lisez ce PDF. Seule l’offre dans votre espace indique son montant et sa fin réelle ; le lien ne relance aucun délai.","small")]
- story+=[P("Si vous disposez déjà des supports utiles à votre situation, vous êtes au bout du parcours d’achat. La suite : votre demande, votre rendez-vous et le suivi des réponses. Vous n’avez pas besoin d’un autre produit pour utiliser ceux que vous avez.")]
+ if sku!="upsell2":
+  story+=[P("Retrouver cette prochaine étape dans votre espace","h2")]
+  story+=[rich('<link href="https://www.heritageintact.fr/espace" color="#12365E"><b>Ouvrir mon espace personnel</b></link>')]
+  story+=[P("Une réduction personnelle peut avoir expiré au moment où vous lisez ce PDF. Seule l’offre dans votre espace indique son montant et sa fin réelle ; le lien ne relance aucun délai.","small")]
+ else:
+  story+=[P("Votre action maintenant","h2"),P("Envoyez la demande préparée dans ce guide, conservez la réponse de l’assureur avec votre contrat et faites vérifier les conséquences avant toute modification.")]
  story+=sources()
  file=OUT/(slug+".pdf")
  doc=Doc(str(file),pagesize=A4,rightMargin=M,leftMargin=M,topMargin=53,bottomMargin=52,title=title,author="Héritage Intact")

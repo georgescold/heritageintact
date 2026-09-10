@@ -17,43 +17,58 @@ export const EDITORIAL_PRODUITS = {
   suite: "Mais repérer les erreurs ne calcule pas encore votre cas. Le simulateur et le plan adapté relient vos réponses, les hypothèses et l’ordre des vérifications. Ne laissez pas votre première avancée retourner dans le tiroir."
  },
  bump: {
-  ouverture: "Le rendez-vous approche. Votre inquiétude mérite mieux qu’une pile de papiers.",
+  ouverture: "Vous pouvez obtenir un rendez-vous… et pourtant repartir avec les mêmes doutes.",
   histoire: [
-   "Imaginez-vous devant le notaire. Vous aviez tant de choses à demander… et au moment de parler, la question la plus importante vous échappe. Ce dossier existe pour vous éviter de tout porter dans votre tête.",
-   "Vous n’avez pas à inventer l’organisation : partez de l’exemple rempli, rassemblez les pièces utiles et gardez une trace des réponses. Une pièce manque ? Vous saurez laquelle demander, sans repousser tout le rendez-vous."
+   "Madeleine avait préparé une chemise pleine de papiers et trois questions dans sa tête. Mais dès les premières minutes, il lui manquait la date exacte d’une donation, le dernier avenant de son contrat et l’acte qui précisait la propriété de la maison. Le rendez-vous n’a pas réglé ses questions : il a surtout produit une nouvelle liste de documents à chercher et un second échange à organiser.",
+   "Le problème n’était ni son sérieux ni la compétence du notaire. Les faits nécessaires n’étaient simplement pas réunis au bon endroit. Ce dossier vous évite cette galère : arriver anxieux avec une pile désordonnée, oublier la question qui comptait, puis essayer de reconstruire de mémoire ce qui a été dit une fois rentré chez vous."
   ],
-  apprendre: ["Distinguer ce que vous savez de ce qui reste à retrouver.", "Préparer votre demande de rendez-vous et les documents utiles.", "Conserver les réponses, les responsables et les prochaines démarches."],
-  adresse: ["Vous voulez prendre rendez-vous sans arriver avec une pile de papiers désordonnée.", "Vous craignez d’oublier une question importante ou de ne pas savoir quoi demander.", "Vous voulez garder une trace claire des réponses et des prochaines démarches."],
-  essentiel: "Commencez par l’exemple de Claire et Marc, une famille fictive. Reprenez leur façon de classer, pas leur situation. Remplissez uniquement les rubriques utiles à votre prochain échange.",
+  apprendreTitre: "Ce que vous aurez sous la main avant de vous asseoir face au notaire",
+  apprendre: ["Voir immédiatement ce que vous possédez déjà et la pièce précise qui manque encore.", "Présenter votre famille, vos biens et les aides passées sans compter sur votre mémoire.", "Noter les réponses, la personne qui agit et la prochaine date afin que le rendez-vous produise une suite."],
+  adresseTitre: "Ce dossier est fait pour vous si le rendez-vous vous inquiète déjà",
+  adresse: ["Vos documents sont répartis entre plusieurs tiroirs, classeurs ou membres de la famille.", "Vous avez peur de payer un rendez-vous sans réussir à poser toutes vos questions.", "Vous ne voulez plus terminer un échange important avec des notes illisibles et aucune prochaine étape."],
+  essentielTitre: "Votre raccourci : ne préparez pas tout, préparez ce qui sera demandé",
+  essentiel: "Commencez par l’exemple de Claire et Marc, une famille fictive. Reprenez leur logique de classement, pas leur situation. Marquez ce qui manque au lieu de deviner, puis emportez uniquement les rubriques utiles au prochain échange.",
+  parcoursTitre: "Les supports qui empêchent votre rendez-vous de tourner à la chasse aux papiers",
   limite: "Ranger vos pièces ne suffit pas à choisir ce qui convient à votre famille. Le Dossier organise l’échange ; il ne tranche ni les droits ni les options.",
-  acquis: "Vos pièces, votre demande et votre compte rendu ont maintenant une place. Vous n’avez plus à repartir d’une page blanche.",
-  suite: "Ce qui reste à relier, ce sont les particularités de votre famille : conjoint, enfants d’une autre union, donations passées. Le simulateur et le plan adapté ajoutent ce fil. Regardez la suite maintenant, pendant que vos questions sont encore claires."
+  acquis: "Vous n’arrivez plus avec « tous vos papiers ». Vous arrivez avec une situation présentable, les pièces identifiées et les questions que vous refusez d’oublier.",
+  sortieTitre: "Votre rendez-vous est préparé. Reste une question que le dossier ne peut pas trancher.",
+  suite: "Même parfaitement rempli, ce dossier ne vous dit pas quelle vérification mérite de passer en premier dans votre famille. Le simulateur transforme vos réponses en priorités et le plan les remet dans un ordre exploitable."
  },
  upsell1: {
-  ouverture: "Votre famille ne tient pas dans un exemple trouvé sur Internet.",
+  ouverture: "La mauvaise décision n’est pas toujours d’attendre. C’est parfois de commencer par ce qui compte le moins.",
   histoire: [
-   "Vous avez lu une règle qui semblait simple. Puis vous avez pensé à votre conjoint, à une aide déjà donnée, à un enfant qui vit loin… et le doute est revenu. Ce n’est pas un manque d’attention : plusieurs histoires peuvent se croiser dans une même famille.",
-   "Ce guide les remet dans le bon ordre. Vous choisissez votre situation, reliez les pièces aux questions et préparez un suivi. L’objectif : pouvoir expliquer ce qui compte pour chacun sans improviser une solution."
+   "Alain avait compris plusieurs règles et voulait avancer vite. Il a commencé par le contrat le plus facile à retrouver. Quelques semaines plus tard, une donation ancienne et la propriété réelle de la maison ont fait apparaître des questions plus urgentes. Son premier travail n’était pas inutile ; il n’était simplement pas placé au bon rang.",
+   "C’est la fatigue la plus frustrante : faire des démarches, déplacer des papiers, demander des rendez-vous… puis découvrir que le point décisif était ailleurs. Le simulateur rassemble les faits déclarés, affiche les hypothèses qui influencent l’estimation et génère le plan détaillé qui vous indique quoi éclaircir d’abord."
   ],
-  apprendre: ["Repérer les questions spécifiques à votre famille, sans remplir les douze situations.", "Comprendre ce qu’une comparaison chiffrée suppose et ce qu’elle ne dit pas.", "Relier vos souhaits, vos documents et les démarches à faire confirmer."],
-  adresse: ["Vous ne voulez plus raisonner à partir d’un exemple général.", "Votre famille, vos donations ou vos contrats rendent votre situation difficile à relier.", "Vous voulez une estimation pédagogique, des alertes et un ordre de préparation conservable en PDF."],
-  essentiel: "Ouvrez votre fiche principale. Consultez les autres seulement si elles ajoutent une question utile. L’atelier est un outil de compréhension, pas un passage obligé avant le rendez-vous.",
+  apprendreTitre: "Ce que votre simulation va rendre visible dans votre propre situation",
+  apprendre: ["Distinguer vos données réelles des hypothèses nécessaires au calcul afin de savoir ce qui doit être confirmé.", "Repérer les personnes, dates et éléments de patrimoine qui changent le résultat affiché.", "Obtenir un ordre de préparation concret plutôt qu’une nouvelle liste de règles à mémoriser."],
+  adresseTitre: "Ce produit est fait pour vous si vous avez compris les règles mais hésitez encore sur l’ordre",
+  adresse: ["Plusieurs sujets semblent importants et vous ne savez pas lequel traiter en premier.", "Votre couple, vos donations ou les personnes que vous souhaitez protéger ne ressemblent pas au cas simple présenté dans un article.", "Vous voulez conserver une estimation expliquée et un plan détaillé généré à partir de vos réponses."],
+  essentielTitre: "Commencez par les faits, pas par la solution que vous imaginez déjà",
+  essentiel: "Répondez avec les informations que vous connaissez et signalez ce qui reste incertain. Lisez ensuite les hypothèses avant le montant : une estimation utile est une estimation dont vous savez exactement ce qu’elle suppose.",
+  parcoursTitre: "De vos réponses au plan : ce que le moteur relie pour vous",
   limite: "Votre dossier prépare l’étude de votre situation ; il ne remplace pas les actes ni le conseil du professionnel. Une urgence juridique n’attend pas la fin de la lecture.",
-  acquis: "Vous disposez du parcours de préparation familiale : vos situations, vos pièces, vos hypothèses et votre suivi.",
-  suite: "Si vous avez une assurance-vie, sa clause et son historique demandent une lecture distincte. Le guide dédié vous aide à préparer cette demande. S’il est déjà inclus dans votre achat, ouvrez-le dans votre espace : vous n’avez rien à racheter."
+  acquis: "Vous ne repartez plus avec dix sujets au même niveau. Vous disposez d’une estimation expliquée, des inconnues à lever et d’un ordre de préparation conservable.",
+  sortieTitre: "Votre plan donne l’ordre. Un contrat d’assurance-vie peut encore cacher une intention différente.",
+  suite: "Le simulateur utilise les montants et dates que vous déclarez ; il ne peut pas lire la clause conservée chez votre assureur. Si vous détenez une assurance-vie, le guide dédié vous aide à obtenir la version réellement enregistrée avant qu’une mauvaise désignation ne soit découverte trop tard."
  },
  upsell2: {
-  ouverture: "Vous connaissez le montant. Savez-vous ce que le contrat prévoit pour eux ?",
+  ouverture: "Le danger n’est pas que votre assurance-vie soit vide. C’est qu’elle soit pleine d’une intention que le contrat n’a jamais enregistrée.",
   histoire: [
-   "Imaginez ouvrir le contrat que vous aviez soigneusement rangé. Vous reconnaissez le montant, mais la clause bénéficiaire vous laisse hésitant : est-ce bien la version actuelle ? C’est ce doute que ce guide vous aide à transformer en demande précise.",
-   "Vous n’avez pas à devenir spécialiste ni à modifier quoi que ce soit à l’aveugle. Retrouvez les documents, comprenez les points à demander et conservez la réponse de l’assureur. Votre intention mérite d’être confrontée à ce qui est réellement écrit."
+   "Bernard regardait chaque année le montant de son relevé et se croyait rassuré. Il avait expliqué oralement qui il voulait protéger. Mais la seule copie de clause retrouvée datait d’avant un changement important dans sa vie, et rien ne prouvait qu’elle était encore la version enregistrée par l’assureur.",
+   "Si le doute avait été découvert après son décès, Bernard n’aurait plus pu expliquer son intention ni demander une correction. Ce guide ne vous pousse pas à changer votre contrat au hasard : il vous aide d’abord à obtenir la clause en vigueur, l’historique utile et une réponse écrite que vous pourrez faire examiner."
   ],
-  apprendre: ["Distinguer le relevé, la clause en vigueur et l’historique des versements.", "Comprendre les principales logiques de désignation et les questions liées aux dates.", "Adresser une demande claire à l’assureur et suivre sa réponse."],
-  adresse: ["Vous possédez au moins un contrat d’assurance-vie.", "Vous n’avez pas relu récemment la clause bénéficiaire ou l’historique des versements.", "Vous voulez vérifier ce qui est réellement enregistré avant d’envisager une modification."],
-  essentiel: "Choisissez un contrat, lisez les six repères, puis utilisez le courrier. Pas de note à donner au contrat, pas de clause type à recopier : vous cherchez des informations confirmées.",
+  apprendreTitre: "Les réponses que le montant de votre relevé ne vous donnera jamais",
+  apprendre: ["Distinguer le relevé reçu chaque année de la clause bénéficiaire réellement en vigueur.", "Retrouver la chronologie des versements au lieu de raisonner uniquement sur la date d’ouverture du contrat.", "Obtenir de l’assureur une réponse écrite et conserver les éléments nécessaires avant toute décision."],
+  adresseTitre: "Ce guide est indispensable si vous détenez un contrat sans pouvoir réciter sa clause actuelle",
+  adresse: ["Vous connaissez approximativement le capital mais pas le texte exact enregistré par l’assureur.", "Votre vie familiale a changé depuis la souscription ou la dernière mise à jour dont vous vous souvenez.", "Vous voulez éviter que vos proches découvrent trop tard des bénéficiaires, formulations ou dates que vous n’aviez jamais vérifiés."],
+  essentielTitre: "Ne commencez surtout pas par recopier une clause trouvée sur Internet",
+  essentiel: "Prenez un seul contrat. Demandez d’abord la clause en vigueur et l’historique des versements avec le courrier fourni. Vous déciderez ensuite, avec les bonnes informations et les conséquences vérifiées, si une modification mérite d’être envisagée.",
+  parcoursTitre: "Du relevé rassurant à la preuve écrite : les vérifications qui comptent",
   limite: "Une réponse reçue ne suffit pas à valider une modification. Faites examiner les conséquences et la cohérence familiale avant de changer une clause ou un placement.",
-  acquis: "Vous savez quelle version demander, quelles questions poser et où conserver les réponses. Vous avez les supports prévus pour ce travail.",
-  suite: "Si votre préparation familiale est déjà faite, la suite n’est pas un autre achat : adressez votre demande et faites examiner la réponse. Sinon, votre espace peut vous orienter vers la préparation de la famille et de la maison."
+  acquis: "Vous ne vous fiez plus au seul montant du relevé. Vous savez quelle preuve demander, quelles dates reconstituer et quelle réponse conserver.",
+  sortieTitre: "Ici, la prochaine étape n’est pas un nouvel achat.",
+  suite: "Envoyez votre demande à l’assureur, classez sa réponse puis faites examiner les conséquences avant toute modification. Le résultat attendu est une intention confrontée au contrat réel, pas une accumulation de documents supplémentaires."
  }
 } as const;
 
