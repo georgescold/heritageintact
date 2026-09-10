@@ -9,7 +9,7 @@ export function AvantApresHistorique() {
     <Section id="avant-apres" tone="grey" wide>
       <div className="wrap px-0">
         <SectionTitle>Ce que vos enfants trouveront sur la table</SectionTitle>
-        <p className="mb-5 text-sm text-text-soft">Deux scènes illustratives : le désordre laissé à vos proches, ou une préparation faite de votre vivant. Acheter le guide ne réalise pas les actes à votre place.</p>
+        <p className="mb-5 text-sm text-text-soft">Deux scènes illustratives : le désordre laissé à vos proches, ou une préparation faite de votre vivant.</p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
         <figure>

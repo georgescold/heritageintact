@@ -30,7 +30,7 @@ function AccesMethode({ montant, sombre = false }: { montant: number; sombre?: b
         href="/commande"
         className="flex min-h-[58px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-4 py-3 text-center text-[1.08rem] font-bold leading-tight text-white no-underline hover:bg-orange-dark sm:text-[1.15rem]"
       >
-        Accéder à la méthode
+        Accéder au guide
       </a>
       <p
         className={`mt-2 text-center text-[0.95rem] ${sombre ? "text-white/90" : "text-text-soft"}`}
@@ -165,7 +165,7 @@ export default async function VslPage() {
         />
       </main>
       <Footer />
-      <StickyCta href="/commande" label="Accéder à la méthode" />
+      <StickyCta href="/commande" label="Accéder au guide" />
       <ExitPopup
         storageKey="vsl-historique-v11"
         title="Ce que vous risquez si vous fermez cette page"

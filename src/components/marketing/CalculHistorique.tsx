@@ -24,7 +24,7 @@ export function CalculHistorique() {
       <blockquote className="mt-6 border-l-4 border-orange bg-white p-4 text-[1.1rem] leading-snug text-blue sm:p-5 sm:text-[1.25rem]">Vous avez mis une vie à construire ce patrimoine. La question mérite d’être posée pendant que vous pouvez encore décider de ce que vous voulez préserver.</blockquote>
     </Section>
     <Section>
-      <SectionTitle>Ce que ces trois décisions changent, en euros</SectionTitle>
+      <SectionTitle>Ce que les 7 erreurs changent</SectionTitle>
       <div className="max-w-[38rem] border-2 border-blue bg-white">
         <p className="border-b border-grey-line bg-grey-bg px-4 py-2 text-[0.88rem] uppercase tracking-[0.08em] text-text-soft">Cas fictif · Un parent · Deux enfants · Même patrimoine</p>
         <dl className="px-4 py-3">
@@ -34,7 +34,7 @@ export function CalculHistorique() {
         </dl>
         <p className="border-t border-grey-line bg-grey-bg px-4 py-2 text-[0.88rem] text-text-soft">Barème en ligne directe · Hors frais · Hypothèses constantes</p>
       </div>
-      <p className="mt-5 max-w-[38rem] text-[1.06rem]">Ces <strong>68 206 €</strong> illustrent ce que l’anticipation peut changer dans un cas précis. Ce n’est pas l’achat d’un guide qui réalise cette économie : ce sont les opérations, si elles sont adaptées et régulièrement effectuées.</p>
+      <p className="mt-5 max-w-[38rem] text-[1.06rem]">Ces <strong>68 206 €</strong> illustrent ce que l’anticipation peut changer dans un cas précis.</p>
       <details className="mt-5 border border-grey-line p-4"><summary className="cursor-pointer font-bold text-blue">Voir les hypothèses et le calcul des 68 206 €</summary><div className="mt-3 space-y-3 text-sm"><p>{e.hypotheses}</p><p>{e.scenarioA}</p><p>{e.scenarioB}</p><p>{e.limites}</p><p>Repères : <a href="https://www.impots.gouv.fr/particulier/questions/comment-dois-je-calculer-les-droits-de-succession">succession</a>, <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">donation</a>, <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934">usufruit</a>, <a href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer">assurance-vie</a>.</p></div></details>
     </Section>
   </>;
