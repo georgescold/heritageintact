@@ -14,9 +14,6 @@ export function QualificationBloc({ onTermine, initial }: { onTermine: (r: Repon
   }
   return (
     <section className="border border-grey-line bg-white p-5">
-      <p className="mb-4 text-text-soft">
-        Répondez selon ce que vous ressentez aujourd’hui. Aucun montant de patrimoine, nom de proche ni texte libre ne vous est demandé.
-      </p>
       <h2 className="my-4 text-[1.4rem]" aria-live="polite">
         {q.titre}
       </h2>

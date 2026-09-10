@@ -19,7 +19,6 @@ export default async function SituationPage({ searchParams }: { searchParams: Pr
       <p>Vous allez recevoir les 7 erreurs qui offrent votre héritage à l’État après avoir complété le questionnaire ci-dessous.</p>
     </Panel>
     <h1 className="mb-3 mt-6 text-[1.7rem]">Avant de découvrir les 7 erreurs nous aimerions comprendre profondément votre situation :</h1>
-    <p className="mb-5">Vos réponses nous permettent de comprendre ce qui vous inquiète, ce qui vous empêche d’avancer et la suite la plus pertinente à vous présenter. Choisissez simplement la réponse qui vous ressemble le plus aujourd’hui. Le contenu déjà acheté reste identique pour tous.</p>
     <FormulaireSituation orderId={order.id} email={order.email} />
     <p className="mt-5 text-sm text-text-soft">Votre accès reste acquis dès le paiement. Les réponses ne valent jamais consentement aux emails de vente. En cas de difficulté, votre lien d’accès et l’assistance restent disponibles par email.</p>
   </main><Footer /></>;
