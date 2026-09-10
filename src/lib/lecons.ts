@@ -209,6 +209,7 @@ export const LECONS = [
     acquis: [
       "Une intention familiale n’est pas encore un acte",
       "Il est possible d’ouvrir la conversation sans annoncer des montants",
+      "Le don temporaire destiné au logement obéit à ses propres plafonds et délais",
     ],
     videoIndex: -1,
     documents: ["lettre-aux-enfants"],
@@ -224,6 +225,10 @@ export const LECONS = [
       [
         "Petits-enfants",
         "Les dispositifs de donation aux petits-enfants ont leurs propres conditions. Un abattement applicable à une donation ne se transpose pas automatiquement à une succession. Demandez quel dispositif correspond réellement à l’opération envisagée.",
+      ],
+      [
+        "La fenêtre temporaire pour le logement",
+        "L’article 790 A bis du Code général des impôts prévoit, pour les sommes versées du 15 février 2025 au 31 décembre 2026, une exonération pouvant atteindre 100 000 € par donateur et par bénéficiaire, dans la limite globale de 300 000 € reçus par bénéficiaire. Le don doit être utilisé au plus tard à la fin du sixième mois suivant son versement pour acheter un logement neuf ou en VEFA, ou financer certains travaux de rénovation énergétique dans la résidence principale. Le logement doit ensuite conserver l’affectation prévue pendant cinq ans et les justificatifs doivent être gardés. Vérifiez l’ensemble des conditions et le texte en vigueur avant tout versement : cette exonération est distincte des abattements ordinaires et ne rend pas automatiquement une donation adaptée à votre famille.",
       ],
       [
         "Ouvrir le sujet",

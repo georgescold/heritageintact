@@ -69,6 +69,8 @@ ok(
     vsl.includes('localStorage.setItem("hi_vsl_terminee", "1")'),
 );
 ok(sale.includes("<AvantageDemarrage promotion={d.promotion} base={d.total} apresVsl />"));
+ok(!sale.includes("<EcheanceHistorique"));
+ok(LECONS.find((l) => l.cle === "e6").blocs.some(([titre, texte]) => titre.includes("fenêtre temporaire") && texte.includes("790 A bis") && texte.includes("31 décembre 2026")));
 ok(
   fs.existsSync(vslPath) &&
     fs.statSync(vslPath).size > 1_000_000 &&

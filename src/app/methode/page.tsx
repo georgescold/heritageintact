@@ -13,7 +13,6 @@ import { CalculHistorique } from "@/components/marketing/CalculHistorique";
 import { JeanPierreHistorique, MartineHistorique } from "@/components/marketing/RecitsHistoriques";
 import {
   AvantApresHistorique,
-  EcheanceHistorique,
   DernierMotHistorique,
 } from "@/components/marketing/SectionsHistoriques";
 import { ChiffresHistoriques } from "@/components/marketing/ChiffresHistoriques";
@@ -104,7 +103,6 @@ export default async function VslPage() {
         <MartineHistorique />
         <ChiffresHistoriques />
         <OffreMethodeHistorique montant={d.montant} action={<AccesMethode montant={d.montant} />} />
-        <EcheanceHistorique />
         <div className="wrap">
           <ExempleSeuil />
         </div>
