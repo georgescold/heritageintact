@@ -21,7 +21,7 @@ export default function LandingPage() {
           <p className="mb-1.5 text-[0.78rem] font-bold uppercase tracking-[0.14em] text-orange">Propriétaires de plus de 60 ans · France</p>
           <h1 className="text-[1.6rem] leading-[1.12] sm:text-[2.5rem]">Et si vos enfants héritaient de <span className="whitespace-nowrap text-orange">68 206 €</span> de plus&nbsp;?</h1>
           <p className="mt-2.5 text-[1.08rem] font-bold text-blue sm:text-[1.3rem]">Sans rien vendre, sans quitter votre maison, et sans confier un centime à qui que ce soit.</p>
-          <p className="mt-2.5 text-[1.02rem] leading-snug">Découvrez les <strong>7 erreurs à connaître à temps</strong> afin d’éviter <strong>une trop grosse facture de l’État sur votre succession.</strong></p>
+          <p className="mt-2.5 text-[1.02rem] leading-snug">Découvrez les <strong>7 erreurs à absolument connaitre rapidement</strong> afin d’éviter <strong>une trop grosse facture de l’État sur votre succession.</strong></p>
           <div id="inscription" className="mt-3 border-2 border-blue bg-white p-3 sm:mt-5 sm:p-5"><OptinForm cta={cta} /></div>
           <div className="mt-5 border border-grey-line bg-grey-bg px-3.5 py-3">
             <p className="mb-2 text-[0.98rem] font-bold text-blue">Ce que vous vous apprêtez à découvrir :</p>
