@@ -40,40 +40,32 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-grey-line bg-grey-bg">
-      <div className="wrap-wide py-7 text-[0.85rem] leading-relaxed text-text-soft">
-        <p className="mb-4">
-          <strong className="text-text">{BRAND}</strong> est un guide pédagogique
-          d&apos;information générale sur la transmission de patrimoine en France. Il ne constitue
-          ni une consultation juridique, ni un conseil fiscal, financier ou en investissement
-          personnalisé, et ne se substitue pas à l&apos;intervention d&apos;un notaire, d&apos;un
-          avocat ou d&apos;un conseiller habilité. Les exemples chiffrés sont illustratifs. La
-          législation évolue : vérifiez les montants en vigueur sur impots.gouv.fr avant toute
-          décision.
+      <div className="wrap-wide py-3 text-[0.72rem] leading-snug text-text-soft">
+        <p className="mb-1.5">
+          <strong className="text-text">{BRAND}</strong> fournit une information pédagogique générale, pas un conseil juridique, fiscal ou financier personnalisé. Les exemples sont illustratifs ; vérifiez les règles en vigueur avec le professionnel compétent avant toute décision.
         </p>
-        <div className="mb-4">
+        <div className="mb-1">
           <MetaDisclaimer />
         </div>
-        {/* Cibles de 44 px minimum : c'est la recommandation d'accessibilité,
-            et sur ce site elle n'est pas théorique. Le lecteur a 65 ans ou plus,
-            il lit sur téléphone, et il cherche les CGV parce qu'il se méfie —
-            c'est le pire moment pour lui faire rater un lien de 25 px. */}
-        <nav className="flex flex-wrap items-center gap-x-4">
+        <div className="flex flex-wrap items-center justify-between gap-x-4">
+        <nav className="flex flex-wrap items-center gap-x-3">
           {[
             { href: "/mentions-legales", t: "Mentions légales" },
             { href: "/cgv", t: "Conditions générales de vente" },
             { href: "/confidentialite", t: "Confidentialité" },
           ].map((l) => (
-            <Link key={l.href} href={l.href} className="flex min-h-[44px] items-center">
+            <Link key={l.href} href={l.href} className="flex min-h-[32px] items-center">
               {l.t}
             </Link>
           ))}
-          <a href={`mailto:${CONTACT_EMAIL}`} className="flex min-h-[44px] items-center">
+          <a href={`mailto:${CONTACT_EMAIL}`} className="flex min-h-[32px] items-center">
             Nous contacter
           </a>
         </nav>
-        <p className="mt-4">
+        <p>
           © {new Date().getFullYear()} {BRAND}. Tous droits réservés.
         </p>
+        </div>
       </div>
     </footer>
   );

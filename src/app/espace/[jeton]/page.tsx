@@ -70,7 +70,6 @@ export default async function Page({
           </p>
         )}
         <div className="max-w-[760px]">
-          {vue !== "parcours" && <p className="mb-6"><Link href={`${hub}/demarrer`}>Bien utiliser mes achats</Link></p>}
           {!["dossier", "aide"].includes(vue) && !etat.possede.has("front") && (
             <section><h2 className="mb-3 text-[1.5rem]">Vos contenus restent accessibles</h2><p className="mb-4">Retrouvez les dossiers correspondant à vos achats actifs.</p><ButtonLink href={`${hub}?vue=dossier`}>Ouvrir mon dossier</ButtonLink></section>
           )}

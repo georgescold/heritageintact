@@ -111,10 +111,8 @@ export function NoSpamLine() {
  */
 export function MetaDisclaimer() {
   return (
-    <p className="text-[0.8rem] leading-relaxed text-text-soft">
-      Ce site n&apos;est pas affilié à Facebook, Instagram ou Meta Platforms Inc., et n&apos;est en
-      aucune façon approuvé, administré ou sponsorisé par eux. Une fois que vous quittez Facebook,
-      la responsabilité n&apos;incombe plus à leur site.
+    <p className="text-[0.72rem] leading-snug text-text-soft">
+      Ce site n&apos;est ni affilié, ni approuvé, ni administré ou sponsorisé par Facebook, Instagram ou Meta Platforms Inc.
     </p>
   );
 }
