@@ -25,7 +25,7 @@ const checks = {
   pilotageProtege: (env.PILOTAGE_SECRET?.length ?? 0) >= 32,
   vslLocaleIntegree:
     fs.existsSync("public/videos/vsl-heritage-intact.mp4") &&
-    fs.existsSync("public/img/vsl-heritage-intact-thumbnail-v2.jpg"),
+    fs.existsSync("public/img/vsl-heritage-intact-thumbnail-v3.jpg"),
   marketingDeclareActif: env.EMAIL_MARKETING_ACTIVE === "true",
   ltvDeclareActive: env.EMAIL_LTV_ACTIVE === "true",
   interfaceConsentementDeclareeActive: env.NEXT_PUBLIC_META_SERVER_MEASUREMENT === "true",

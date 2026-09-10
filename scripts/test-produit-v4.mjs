@@ -22,6 +22,6 @@ ok(premier>sale.indexOf("<VslPresentation") && sale.indexOf("<VslPresentation")>
 const vsl=fs.readFileSync("src/components/VslPresentation.tsx","utf8"),vslPath="public/videos/vsl-heritage-intact.mp4";
 ok(vsl.includes('<video') && vsl.includes('src="/videos/vsl-heritage-intact.mp4"'));
 ok(fs.existsSync(vslPath) && fs.statSync(vslPath).size>1_000_000 && fs.statSync(vslPath).size<100_000_000);
-ok(fs.existsSync("public/img/vsl-heritage-intact-thumbnail-v2.jpg"));
+ok(fs.existsSync("public/img/vsl-heritage-intact-thumbnail-v3.jpg"));
 for(const bloc of ["Il faut de toute façon aller chez le notaire","<CalculHistorique"])ok(sale.indexOf(bloc)>premier && sale.indexOf(bloc)<dernier);
 console.log(n+" contrôles produit réussis : ouvertures, guides, supports existants, filtrage des achats, VSL et preuves conservées. Sans réseau ni base.");

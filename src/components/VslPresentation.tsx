@@ -8,7 +8,7 @@ export function VslPresentation() {
           controls
           playsInline
           preload="metadata"
-          poster="/img/vsl-heritage-intact-thumbnail-v2.jpg"
+          poster="/img/vsl-heritage-intact-thumbnail-v3.jpg"
           aria-label="Les 7 erreurs qui offrent votre héritage à l’État"
         >
           <source src="/videos/vsl-heritage-intact.mp4" type="video/mp4" />
