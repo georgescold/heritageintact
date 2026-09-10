@@ -55,7 +55,7 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
                 {motif && <p className="my-3 border-l-4 border-orange bg-grey-bg p-3">{motif}</p>}
                 <p className="my-3">{resumeProduit(sku)}</p>
                 {sku !== "upsell1" && <p className="font-bold">Complément : {euros(d.montant)}</p>}
-                {d.remise>0 && <p className="mt-2 font-bold text-orange-dark">Avantage en cours : −{euros(d.remise)} sur le complément.</p>}
+                {sku !== "upsell1" && d.remise > 0 && <p className="mt-2 font-bold text-orange-dark">Avantage en cours : −{euros(d.remise)} sur le complément.</p>}
                 {sku !== "upsell1" && <p className="my-3 text-text-soft">Paiement unique · aucun abonnement</p>}
                 <Link
                   className="flex min-h-[52px] items-center justify-center bg-blue p-3 text-center font-bold text-white no-underline"
