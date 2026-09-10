@@ -562,7 +562,7 @@ export async function marquerEnvoye(id: string, etape: string): Promise<void> {
  * ⚠️ L'exclusion des acheteurs ferme un bug qui se voyait de l'extérieur.
  * Quelqu'un qui achetait à J2 continuait de recevoir la séquence prospect :
  * J4 lui demandait « 27 € sur internet, à mon âge ? » à propos d'un produit
- * qu'il avait déjà payé, J6 lui proposait un bouton « Accéder à la méthode »,
+ * qu'il avait déjà payé, J6 lui proposait un bouton « Accéder à la démarche »,
  * et J7 lui vendait une dernière fois la place fondatrice qu'il occupait.
  * Sur cette cible, ce n'est pas une maladresse : c'est un email au support,
  * puis un doute sur ce qu'il a réellement acheté.

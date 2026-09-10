@@ -91,10 +91,10 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
     promesse:
       "Comprenez les points essentiels et préparez vos premières questions, sans prendre de décision irréversible.",
     contenu: [
-      "8 étapes écrites, avec exemples et actions",
-      "Votre fiche de situation et vos premières questions",
-      "Les repères sur la famille, les donations et l’assurance-vie",
-      "Un accès personnel pour avancer à votre rythme",
+      "Les 7 erreurs expliquées clairement et dans l’ordre",
+      "Les repères essentiels sur les donations, la maison et l’assurance-vie",
+      "Les dates et décisions à connaître avant qu’il ne soit trop tard",
+      "Un accès personnel pour lire le contenu à votre rythme",
     ],
   },
   bump: {

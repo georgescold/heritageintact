@@ -29,6 +29,8 @@ try {
   ok(await page.getByText("9 600 € de droits en plus dans cet exemple. Pour le même bien.",{exact:true}).count()===0);
   ok(await page.getByRole("heading",{name:"Ce que disent les chiffres publics",exact:true}).count()===0);
   ok(await page.evaluate(()=>document.querySelector("#la-methode").getBoundingClientRect().top>document.querySelector("#premier-cta").getBoundingClientRect().top));
+  ok(await page.locator("#la-methode table").count()===0);
+  ok(!(await page.locator("body").innerText()).match(/\bméthodes?\b/i));
   await go("/apercu");
   ok(await page.getByText("Deux éléments illustratifs seulement.",{exact:false}).isVisible());
   ok(!(await page.content()).includes("Bonjour, nous souhaitons préparer notre transmission"));

@@ -59,7 +59,7 @@ export function CheckoutForm({
         locale: "fr",
         // Carte uniquement. Klarna et consorts ajoutent de la friction et de la
         // méfiance sur un avatar de 60-78 ans, et le paiement différé n'a aucun
-        // sens sur ce produit. C'est aussi la seule méthode qui permet
+        // sens sur ce produit. C'est aussi la seule démarche qui permet
         // de débiter les upsells en un clic.
         paymentMethodTypes: ["card"],
         appearance: {
@@ -369,7 +369,7 @@ function Inner({
           <ul className="mt-4 space-y-1 text-[0.95rem]">
             {[
               // « Module » est interdit sur les PAGES DE VENTE : ici on vend une
-              // méthode, et une méthode se suit par étapes. Le mot est en revanche
+              // démarche, et une démarche se suit par étapes. Le mot est en revanche
               // parfaitement admis à l'intérieur du produit, où le client sait déjà
               // ce qu'il a acheté. Le mot
               // change ce que l'acheteur croit avoir acheté.

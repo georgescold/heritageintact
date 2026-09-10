@@ -67,7 +67,7 @@ const CLASSE_BOUTON =
   "flex min-h-[64px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-5 text-center text-[1.15rem] font-bold text-white no-underline hover:bg-orange-dark sm:text-[1.25rem]";
 
 /**
- * LE BOUTON D'ACCÈS À LA MÉTHODE.
+ * LE BOUTON D'ACCÈS À LA GUIDE.
  *
  * Un lien, sauf dans un cas : le compteur est épuisé et le rattrapage n'a
  * jamais été proposé. Le clic ouvre alors la fenêtre au lieu de naviguer.

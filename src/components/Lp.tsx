@@ -153,7 +153,7 @@ export function Hero({ form }: { form: ReactNode }) {
 
         <div className="order-2 border-2 border-blue bg-white p-4 sm:p-5 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
           <p className="mb-1 text-[1.15rem] font-bold text-blue">Recevez la vidéo, gratuitement</p>
-          {/* Ce que la vidéo contient, en une ligne. Aucun nom de méthode :
+          {/* Ce que la vidéo contient, en une ligne. Aucun nom de démarche :
               « les 3 Verrous » ne dit rien à quelqu'un qui découvre le sujet. */}
           <p className="mb-3 text-[0.92rem] text-text-soft">
             Les trois décisions, expliquées en français, sans un mot de jargon.

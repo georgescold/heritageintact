@@ -25,8 +25,8 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ o
     <p className="mb-5">Vous n’avez pas à résoudre toute votre transmission aujourd’hui. Commencez par ce que vous souhaitez protéger, puis notez ce qu’il faut retrouver et faire vérifier.</p>
     <section id="livraison-produit" className="mb-6 border-2 border-blue bg-grey-bg p-5">
       <h2 className="mb-3 text-[1.4rem]">{PRODUCTS.front.name}</h2>
-      <p className="mb-3">Votre première fiche, puis les sept erreurs. Le parcours complet de base est identique pour tous, lisible à l’écran et accompagné de supports imprimables.</p>
-      <p className="mb-4"><strong>Commencez ici :</strong> votre fiche de situation, environ {etapeParNumero(0)?.minutes ?? 12} minutes. Une priorité et trois questions à préparer.</p>
+      <p className="mb-3">Votre introduction, puis les sept erreurs expliquées dans l’ordre. Le contenu acheté est identique pour tous et lisible directement dans votre espace.</p>
+      <p className="mb-4"><strong>Commencez ici :</strong> l’introduction, environ {etapeParNumero(0)?.minutes ?? 12} minutes, puis découvrez chaque erreur à connaître à temps.</p>
       {acces ? <>
         <ButtonLink href={urlEspace(acces.jeton)} variant="blue">Ouvrir le guide</ButtonLink>
         <p className="mt-4 break-all text-sm">Votre lien personnel : {urlEspace(acces.jeton)}</p>

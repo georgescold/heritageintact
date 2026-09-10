@@ -231,7 +231,7 @@ export function TheDoubt() {
 
    ⚠️ Règle de ce bloc : on ne dit JAMAIS quelles sont les trois dates,
    ni ce qu'il faut faire. La page est là pour créer le manque, la vidéo
-   pour le combler. Une landing page qui livre la méthode n'a plus rien
+   pour le combler. Une landing page qui livre la démarche n'a plus rien
    à échanger contre une adresse email.
 
    Ce qui est permis ici : dire qu'elles existent, qu'elles sont

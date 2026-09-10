@@ -39,7 +39,7 @@ export function conseilOffre(p: Reponses | null | undefined) {
   };
 }
 export const CHANGEMENTS = [
-  ["Retrouver le fil", "Un guide en huit étapes pour distinguer votre priorité, les informations connues et les questions en suspens."],
+  ["Retrouver le fil", "Les 7 erreurs pour distinguer les points compris de ceux qui demandent encore une vérification."],
   ["Préparer sans partir de zéro", "Des modèles pour rassembler les pièces, demander le rendez-vous et conserver les réponses."],
   ["Tenir compte de votre famille", "Douze fiches de situations, avec un point de départ mis en avant selon vos réponses."],
   ["Comprendre ce qu’un calcul suppose", "Un atelier pédagogique avec hypothèses visibles et comparaison de deux scénarios couverts."],

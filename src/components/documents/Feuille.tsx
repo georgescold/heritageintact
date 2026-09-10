@@ -129,7 +129,7 @@ export function Encadre({ titre, children }: { titre?: string; children: ReactNo
  * L'article du CGI qui porte le chiffre affiché juste au-dessus.
  *
  * ⚠️ Aucun chiffre ne s'écrit sans sa source dans ce produit. C'est ce qui
- * sépare une méthode pédagogique d'un conseil : le lecteur peut vérifier
+ * sépare une démarche pédagogique d'un conseil : le lecteur peut vérifier
  * lui-même sur legifrance.gouv.fr, et son notaire aussi.
  */
 export function Source({ children }: { children: ReactNode }) {

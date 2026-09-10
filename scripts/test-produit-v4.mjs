@@ -70,6 +70,13 @@ ok(!sale.includes("AvantageDemarrage") && sale.includes('href="/commander"'));
 ok(!sale.includes("<ExempleSeuil") && !sale.includes("<ChiffresHistoriques"));
 ok(!sale.includes("52 € pour") && !sale.includes("euros(montant)"));
 ok(!fs.readFileSync("src/components/SortieGuide.tsx", "utf8").includes("euros("));
+const offreFront = fs.readFileSync("src/components/marketing/OffreMethodeHistorique.tsx", "utf8");
+ok(!offreFront.includes("<table") && !offreFront.includes("guide complet téléchargeable") && !offreFront.includes("guide PDF"));
+for (const dossier of ["src/app", "src/components", "src/content", "src/lib"]) {
+  for (const fichier of fs.readdirSync(dossier, { recursive: true }).filter((nom) => /\.tsx?$/.test(nom))) {
+    ok(!/\bméthodes?\b/i.test(fs.readFileSync(dossier + "/" + fichier, "utf8")));
+  }
+}
 const checkout = fs.readFileSync("src/components/CheckoutForm.tsx", "utf8"),
   commander = fs.readFileSync("src/app/commander/route.ts", "utf8");
 ok(checkout.includes("identiteConnue ?") && checkout.includes("Votre accès sera envoyé à"));
