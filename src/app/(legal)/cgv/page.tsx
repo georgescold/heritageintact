@@ -29,7 +29,7 @@ export default function CGV() {
           ))}
       </ul>
       <p>
-        Les packs sont affichés en prix total. Le pack Préparation inclut la méthode, le dossier et
+        Les packs sont affichés en prix total. Le pack Préparation inclut le guide, le dossier et
         l’atelier de simulation pédagogique. Le pack avec assurance-vie inclut également le module
         assurance-vie. Le dossier à 17 € est une option non précochée. L’atelier n’est pas vendu
         séparément.

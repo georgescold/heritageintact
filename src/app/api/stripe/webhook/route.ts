@@ -136,8 +136,8 @@ export async function POST(req: Request) {
            * *ET* QU'IL NE RESTE PLUS RIEN D'AUTRE DE PAYÉ.
            *
            * Se faire rembourser 97 € d'assurance-vie ne doit pas fermer la
-           * porte de quelqu'un qui garde La Méthode — c'était déjà le cas. Mais
-           * l'inverse était vrai aussi : quelqu'un qui rendait La Méthode à
+           * porte de quelqu'un qui gardu guide — c'était déjà le cas. Mais
+           * l'inverse était vrai aussi : quelqu'un qui rendait Le guide à
            * 27 € perdait l'accès aux 97 € qu'il avait payés dans une commande
            * ADDITIONNELLE et jamais contestés. Il avait payé, il ne recevait
            * plus rien, et l'écran lui affirmait que « sa commande » avait été

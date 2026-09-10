@@ -4,7 +4,7 @@
  * ═══ Pourquoi du trait et pas de la photo ═══
  *
  * Ces feuilles sont imprimées chez le client, sur une imprimante à jet d'encre
- * dont la cartouche coûte 30 € — plus cher que La Méthode. Une photo, même en
+ * dont la cartouche coûte 30 € — plus cher que Le guide. Une photo, même en
  * noir et blanc, c'est un aplat qui vide une cartouche en quatorze pages, et
  * c'est le premier email de réclamation.
  *

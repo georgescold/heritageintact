@@ -1,5 +1,5 @@
 # Pages, qualification et espace membre
-**Document historique V2. Ne pas reprendre ces headlines pour la correction actuelle.** Voir [V6 — vente et parcours actuels](16-RESTAURATION-DIRECT-RESPONSE.md). La page de vente actuelle est commune ; la qualification vient après achat, suivie d’une remise explicite avant l’offre adaptée. Le nom personnel a été retiré de l’argumentaire commercial.
+**Document historique V2. Ne pas reprendre ces headlines pour la correction actuelle.** Voir [V6 — vente et parcours actuels](16-RESTAURATION-DIRECT-RESPONSE.md). La page de vente actuelle est commune ; la qualification vient après achat, choisit l’offre adaptée unique, puis la décision précède la remise explicite du guide. Le nom personnel a été retiré de l’argumentaire commercial.
 
 Architecture éditoriale V2. Non publiée. Les prix ont été confirmés par Loys. Le texte de la VSL a été reçu et examiné ; les reprises nécessaires figurent dans scripts/VSL-REPRISES-CIBLEES.md. Les fichiers src/app font foi pour les formulations finalement intégrées. L’orientation facultative est placée après le paiement initial et avant l’unique complément proposé, l’accès étant déjà fourni.
 

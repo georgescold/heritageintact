@@ -7,9 +7,9 @@
 Le produit 1 reste commun : même promesse, même contenu, prix catalogue à 52 €, sans qualification avant sa vente. L’ancienne variante /lp-questions renvoie la même LP. Les anciens cookies d’objectif ne changent plus la page de vente.
 
 Parcours visible :
-LP avec prénom/email → présentation / VSL → commande (Dossier facultatif à 17 €) → quatre questions obligatoires → remise de la Méthode → proposition adaptée → espace membre.
+LP avec prénom/email → présentation / VSL → commande (Dossier facultatif à 17 €) → six questions obligatoires → proposition adaptée unique → acceptation ou refus → remise du guide → espace membre.
 
-La livraison technique est créée immédiatement après confirmation du paiement. Elle ne dépend pas du questionnaire ni de l’achat d’un complément. La page des questions conserve un lien de secours vers l’accès ; l’écran /bienvenue montre explicitement le produit acquis avant l’offre.
+La livraison technique est créée immédiatement après confirmation du paiement. Elle ne dépend pas du questionnaire ni de l’achat d’un complément. Dans le parcours visible, le questionnaire choisit l’unique proposition affichée ; acceptation et refus conduisent ensuite à l’écran /bienvenue qui remet explicitement le guide acquis.
 
 ## Vente et hiérarchie des actions
 
@@ -21,7 +21,7 @@ La livraison technique est créée immédiatement après confirmation du paiemen
 - Valeur présentée en changements utiles, pas uniquement en nombre de fichiers.
 - Coût du report expliqué avec les repères fiscaux, sans prétendre que l’achat fait économiser un montant déterminé.
 - Une proposition recommandée, un seul formulaire de paiement sur l’upsell, placé avant les longs détails. Montant supplémentaire et déduction réels visibles.
-- Sur la remise, le bouton principal propose la suite adaptée ; l’accès au produit reste clairement accessible en secondaire. Si le client veut seulement les bases, l’accès devient l’action principale.
+- La proposition adaptée précède la remise visible du guide. Son refus reste immédiat, lisible et mène au même écran de livraison sans ajouter de montant.
 - Pas de menus de packs concurrents affichés d’emblée. L’alternative assurance-vie reste dans un détail volontairement ouvert par le client.
 - Refus simple et paiement explicite. Aucun ajout payant précoché.
 
@@ -29,10 +29,9 @@ La livraison technique est créée immédiatement après confirmation du paiemen
 
 | Réponses | Suite immédiate |
 |---|---|
-| Comprendre les bases / passer les questions | Méthode, sans vente additionnelle immédiate |
 | Priorité assurance-vie et contrat existant | Module assurance-vie |
 | Préparation et assurance-vie existante | Pack Préparation avec assurance-vie |
-| Autres cas | Pack Préparation |
+| Autres cas | Préparer ma transmission |
 
 Les accroches et raisons changent aussi selon famille recomposée, veuvage, PACS/union libre et absence d’enfant. Ces réponses orientent l’offre, elles ne constituent pas un diagnostic civil ou fiscal.
 
@@ -76,7 +75,7 @@ Tests : scripts/test-refonte.mjs, test-conversion-v3.mjs, test-produit-v4.mjs, t
 Recettes : scripts/recette-restauration-v6.mjs et scripts/recette-funnel-v5.mjs, sur fixture fictive restaurée après chaque exécution, réseau tiers bloqué.
 Compilation : scripts/build-sans-services.mjs --consent-ui (services désactivés ; seule l’interface de consentement est compilée pour la recette).
 
-La recette V6 couvre LP commune malgré ancien cookie, email visible, consentement facultatif, VSL avant CTA, récits, aperçu limité, qualification post-achat réelle, remise avant offre, refus, unicité du paiement, protection des documents, huit exercices, guides et droits d’accès.
+La recette V7 couvre LP commune malgré ancien cookie, email visible, consentement facultatif, VSL avant CTA, récits, aperçu limité, qualification post-achat réelle, offre unique avant remise, refus vers le guide, unicité du paiement, protection des documents et droits d’accès.
 Captures locales dans .build-refonte/v6-*.png (non commitées).
 
 ## Pour Loys

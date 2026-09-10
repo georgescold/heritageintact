@@ -135,7 +135,7 @@ function AccesFerme({ depuis, simulateur }: { depuis?: string; simulateur?: stri
       </Panel>
 
       <p className="mt-6 text-text-soft">
-        Et si vous souhaitez reprendre plus tard, La Méthode Héritage Intact reste accessible : il
+        Et si vous souhaitez reprendre plus tard, Le guide Héritage Intact reste accessible : il
         suffira de repasser commande, votre progression est conservée.
       </p>
     </>

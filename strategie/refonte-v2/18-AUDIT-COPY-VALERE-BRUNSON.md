@@ -73,7 +73,7 @@ Les assertions non démontrées de l’ancien avatar (« 80 % des droits évitab
 ## Urgence et moment de l’upsell
 
 - Guide commun : opt-in → présentation sans timer → clic vers la commande. Remise 50 % pendant 2 minutes puis dernière chance à 30 % pendant 8 minutes, avant retour au catalogue à 52 €.
-- Après paiement : six réponses obligatoires → remise du produit → une proposition selon les réponses. Remise complémentaire 25 % pendant 20 minutes puis 10 % jusqu’à 48 heures, départ partagé et non renouvelé.
+- Après paiement : six réponses obligatoires → une proposition unique selon les réponses → acceptation ou refus → remise du guide. Remise complémentaire 25 % pendant 20 minutes puis 10 % jusqu’à 48 heures, départ partagé et non renouvelé.
 - Dans l’espace : une recommandation après la première fiche ; points d’entrée aux étapes contrat et maison ; pas de revente des mêmes droits.
 - Emails tardifs : reprendre l’élan après usage, pas prétendre que le tarif de démarrage est encore disponible à J10.
 - Refus lisible, pas de popup au milieu de la lecture du produit acheté ni de prix augmenté silencieusement.

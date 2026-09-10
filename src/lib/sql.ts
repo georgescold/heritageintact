@@ -105,7 +105,7 @@ export function assurerSchema(): Promise<void> {
       `;
       /* ─── L'ACCÈS MEMBRE ─────────────────────────────────────────────
          Un accès = une adresse email, JAMAIS une commande. Quelqu'un qui
-         achète La Méthode à 27 €, puis un produit backend trois mois plus
+         achète Le guide à 27 €, puis un produit backend trois mois plus
          tard, doit retrouver UN SEUL espace : c'est `email unique` qui le
          garantit, exploité par le même `on conflict … do update` no-op
          qu'addLead. */

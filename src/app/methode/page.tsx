@@ -123,7 +123,7 @@ export default async function VslPage() {
               },
               {
                 q: "« Je ne veux pas me déposséder de mon vivant. Et si j’en ai besoin pour l’EHPAD ? »",
-                a: "Vous avez raison de protéger vos besoins d’abord. Suivre la Méthode ne vous demande ni donation ni placement. Comprendre la nue-propriété ne signifie pas qu’il faut donner sa maison. Logement, revenus, autonomie et conséquences d’un acte doivent être examinés avant toute décision.",
+                a: "Vous avez raison de protéger vos besoins d’abord. Suivre le guide ne vous demande ni donation ni placement. Comprendre la nue-propriété ne signifie pas qu’il faut donner sa maison. Logement, revenus, autonomie et conséquences d’un acte doivent être examinés avant toute décision.",
               },
               {
                 q: "« Mon assurance-vie est déjà faite, c’est réglé. »",
@@ -135,11 +135,11 @@ export default async function VslPage() {
               },
               {
                 q: "« Sur internet, c’est des arnaques. Qui êtes-vous pour parler de ça ? »",
-                a: "Ne croyez pas un chiffre sur parole : les exemples et leurs hypothèses sont présentés avec les sources. Héritage Intact est une méthode pédagogique, pas un cabinet de notaires. L’éditeur figure dans les mentions légales, les conditions sont accessibles, et vous disposez d’une garantie commerciale de 30 jours.",
+                a: "Ne croyez pas un chiffre sur parole : les exemples et leurs hypothèses sont présentés avec les sources. Héritage Intact est un guide pédagogique, pas un cabinet de notaires. L’éditeur figure dans les mentions légales, les conditions sont accessibles, et vous disposez d’une garantie commerciale de 30 jours.",
               },
               {
                 q: "« C’est compliqué, je ne vais rien comprendre. »",
-                a: "Usufruit, nue-propriété, clause bénéficiaire : personne ne parle comme ça à table. La Méthode reprend les notions en français simple. Vous commencez par faire le point, puis vous lisez les sept erreurs dans l’ordre. Tout est écrit et imprimable ; aucun quiz ni vidéo pédagogique obligatoire.",
+                a: "Usufruit, nue-propriété, clause bénéficiaire : personne ne parle comme ça à table. Le guide reprend les notions en français simple. Vous commencez par faire le point, puis vous lisez les sept erreurs dans l’ordre. Tout est écrit et imprimable ; aucun quiz ni vidéo pédagogique obligatoire.",
               },
               {
                 q: "« Ma situation est particulière. »",

@@ -94,7 +94,7 @@ export async function prepareCheckout(input: {
     return {
       ok: false,
       error:
-        "Pour accéder immédiatement à la Méthode, cochez la case concernant le droit de rétractation.",
+        "Pour accéder immédiatement au guide, cochez la case concernant le droit de rétractation.",
     };
   }
 
@@ -450,7 +450,7 @@ export async function chargeUpsell(
  *
  * ═══ POURQUOI ON L'OFFRE ═══
  *
- * L'étape 7 de la Méthode s'appelle « Aller chez le notaire les mains vides ».
+ * L'étape 7 du guide s'appelle « Aller chez le notaire les mains vides ».
  * Un plan qu'on ne porte pas chez le notaire reste dans un tiroir, et un
  * rendez-vous raté sous une garantie de 30 jours coûte un remboursement de
  * 297 €. Offrir 17 € coûte moins cher. Et cela évite trois SKU de pack

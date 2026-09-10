@@ -42,7 +42,7 @@ export function Footer() {
     <footer className="mt-auto border-t border-grey-line bg-grey-bg">
       <div className="wrap-wide py-7 text-[0.85rem] leading-relaxed text-text-soft">
         <p className="mb-4">
-          <strong className="text-text">{BRAND}</strong> est une méthode pédagogique
+          <strong className="text-text">{BRAND}</strong> est un guide pédagogique
           d&apos;information générale sur la transmission de patrimoine en France. Il ne constitue
           ni une consultation juridique, ni un conseil fiscal, financier ou en investissement
           personnalisé, et ne se substitue pas à l&apos;intervention d&apos;un notaire, d&apos;un

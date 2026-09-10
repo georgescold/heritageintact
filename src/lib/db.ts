@@ -84,7 +84,7 @@ export type Order = {
 
 /**
  * L'accès à l'espace membre. UN accès = UNE adresse email, jamais une commande :
- * quelqu'un qui achète La Méthode puis un backend trois mois plus tard doit
+ * quelqu'un qui achète Le guide puis un backend trois mois plus tard doit
  * retrouver un seul espace.
  */
 export type Acces = {

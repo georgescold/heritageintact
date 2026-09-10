@@ -29,7 +29,7 @@ export default function Confidentialite() {
           Six réponses <strong>obligatoires pour terminer la qualification après achat</strong> : votre inquiétude principale, votre situation de couple, la présence d&apos;enfants, votre tranche d’âge, l&apos;existence
           d&apos;une assurance-vie et votre principal frein à l’action. Elles servent uniquement à choisir
           les documents et les offres qui vous sont présentés ensuite. Elles ne modifient ni le prix
-          de votre commande ni le contenu de votre Méthode, ne sont transmises à aucun tiers ni à
+          de votre commande ni le contenu de votre guide, ne sont transmises à aucun tiers ni à
           aucun outil publicitaire, et sont supprimées lors de votre désinscription. Aucune donnée
           de santé n&apos;est demandée, ni vous concernant, ni concernant vos proches.
         </li>

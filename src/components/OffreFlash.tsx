@@ -33,7 +33,7 @@ import {
  *     reste due : on ne retire rien qu'on n'ait pas promis.
  *   — une fois le compteur épuisé, un rattrapage à −30 % est proposé UNE
  *     seule fois (cf. `useRattrapage`). Un refus est définitif, sinon
- *     l'annonce « passé ce délai, la Méthode repasse à 89 € » serait fausse.
+ *     l'annonce « passé ce délai, le guide repasse à 89 € » serait fausse.
  */
 
 const CLE = "hi_flash";
@@ -181,7 +181,7 @@ export function FlashBar() {
     return (
       <div className="sticky top-0 z-40 border-b-[3px] border-[#3f3f3f] bg-[#5b5b5b] text-white">
         <p className="wrap-wide py-2 text-center text-[0.95rem] font-bold sm:text-[1.05rem]">
-          Offre terminée. La Méthode reste accessible à{" "}
+          Offre terminée. Le guide reste accessible à{" "}
           <span className="whitespace-nowrap">{euros(PRIX_APRES_FLASH)}</span>.
         </p>
       </div>
@@ -192,7 +192,7 @@ export function FlashBar() {
     <div className="sticky top-0 z-40 border-b-[3px] border-[#8d1f1f] bg-red text-white">
       <div className="wrap-wide flex flex-wrap items-center justify-center gap-x-3 gap-y-1 py-2">
         <p className="text-center text-[0.95rem] font-bold leading-snug sm:text-[1.08rem]">
-          La Méthode à <span className="whitespace-nowrap">{euros(PRODUCTS.front.price)}</span> au
+          Le guide à <span className="whitespace-nowrap">{euros(PRODUCTS.front.price)}</span> au
           lieu de <span className="whitespace-nowrap">{euros(PRIX_APRES_FLASH)}</span> — il vous
           reste
         </p>
@@ -221,14 +221,14 @@ export function FlashPrice() {
           Offre terminée
         </p>
         <p className="mt-1 text-[1.1rem] font-bold text-blue">
-          La Méthode reste accessible, au prix habituel.
+          Le guide reste accessible, au prix habituel.
         </p>
         <p className="mt-1 text-[1.9rem] font-bold tabular-nums text-blue">
           {euros(PRIX_APRES_FLASH)}
         </p>
         <p className="mt-1 text-[0.95rem] text-text-soft">
           Les {FLASH_MINUTES} minutes sont passées — ça arrive, et vous n&apos;avez rien perdu
-          d&apos;essentiel. Tout le reste est identique : même Méthode complète, même accès
+          d&apos;essentiel. Tout le reste est identique : même guide complet, même accès
           immédiat, même garantie de 30 jours.
         </p>
       </div>
@@ -238,14 +238,14 @@ export function FlashPrice() {
   return (
     <div className="border-2 border-red bg-red-bg p-4 text-center">
       <p className="text-[0.8rem] font-bold uppercase tracking-[0.12em] text-red">
-        Votre accès à la Méthode
+        Votre accès au guide
       </p>
       {/* La phrase entière, en une seule fois : ce qu'on donne, à quel prix,
           pendant combien de temps. Un chiffre isolé au-dessus d'un compteur
           laisse le lecteur deviner le lien entre les deux — or c'est
           précisément ce lien qui fait décider. */}
       <p className="mt-1 text-[1.18rem] leading-snug">
-        Nous vous ouvrons la Méthode complète pour{" "}
+        Nous vous ouvrons le guide complet pour{" "}
         <strong className="whitespace-nowrap text-[1.5rem] text-blue">
           {euros(PRODUCTS.front.price)}
         </strong>{" "}
@@ -263,7 +263,7 @@ export function FlashPrice() {
         </p>
       )}
       <p className="mt-2 text-[0.95rem]">
-        Passé ce délai, la Méthode repasse à{" "}
+        Passé ce délai, le guide repasse à{" "}
         <strong className="whitespace-nowrap">{euros(PRIX_APRES_FLASH)}</strong>. Ce compteur ne se
         remet pas à zéro si vous rechargez la page.
       </p>
@@ -317,12 +317,12 @@ export function EchelleDesPrix() {
       de vente.{" "}
       {etat === "expire" ? (
         <>
-          La Méthode se vend{" "}
+          Le guide se vend{" "}
           <strong className="whitespace-nowrap">{euros(PRIX_APRES_FLASH)}</strong>.
         </>
       ) : (
         <>
-          La Méthode se vend{" "}
+          Le guide se vend{" "}
           <strong className="whitespace-nowrap">{euros(PRIX_APRES_FLASH)}</strong> — et{" "}
           <strong className="whitespace-nowrap">{euros(PRODUCTS.front.price)}</strong> tant que
           votre compteur tourne.

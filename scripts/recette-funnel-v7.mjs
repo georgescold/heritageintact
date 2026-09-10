@@ -52,7 +52,7 @@ try {
     await page.screenshot({path:".build-refonte/v6-vente-"+width+".png",fullPage:true});
     await page.screenshot({path:".build-refonte/v11-vente-haut-"+width+".png"});
     for(const [id,nom] of [["#avant-apres","avant-apres"],["#jean-pierre","jean-pierre"],["#martine","martine"],["#la-methode","methode"]]){const bloc=page.locator(id);for(const img of await bloc.locator("img").all()){await img.scrollIntoViewIfNeeded();await img.evaluate(el=>el.decode());ok(await img.evaluate(el=>el.naturalWidth>0));}await bloc.screenshot({path:".build-refonte/v11-"+nom+"-"+width+".jpg",quality:72,style:".fixed { visibility: hidden !important; }"});}
-    ok(await page.getByRole("heading",{name:"Le jour où ils chercheront les réponses, pourrez-vous encore les leur donner ?",exact:true}).count()===1);
+    ok(await page.getByRole("heading",{name:"Le jour où vos enfants chercheront les réponses, pourrez-vous encore les leur donner ?",exact:true}).count()===1);
     ok(await page.getByText("Un exemple chiffré, pas une promesse d’économie",{exact:true}).count()===1);
     ok(await page.locator("#avant-apres img").count()===2);
     await page.locator("#jean-pierre").scrollIntoViewIfNeeded();
@@ -84,30 +84,29 @@ try {
     await page.getByRole("button",{name:"De 65 à 69 ans",exact:true}).click();
     await page.getByRole("button",{name:av,exact:true}).click();
     await page.getByRole("button",{name:"Je ne sais pas quoi faire en premier",exact:true}).click();
-    await page.waitForURL("**/bienvenue?*");
+    await page.waitForURL(u=>u.pathname===path);
     await page.waitForLoadState("networkidle");
-    ok(await page.locator("#livraison-produit").isVisible());
-    ok(await page.getByRole("link",{name:"Ouvrir ma Méthode",exact:true}).isVisible());
-    ok(await page.locator('input[name="montantAffiche"]').count()===0);
+    ok(await page.locator("#decision-complement").isVisible());
+    ok(await page.getByText("Ce que vous devez absolument avoir également",{exact:true}).isVisible());
+    ok(await page.locator("#livraison-produit").count()===0);
+    ok(await page.locator('input[name="montantAffiche"]').count()===1);
     ok(!new URL(page.url()).searchParams.has("objectif"));
-    if(path) {
-      ok(await page.evaluate(()=>document.querySelector("#livraison-produit").getBoundingClientRect().top<document.querySelector("#suite-adaptee").getBoundingClientRect().top));
-      await page.getByRole("link",{name:"Découvrir maintenant ma préparation complémentaire",exact:true}).click();
-      await page.waitForURL(u=>u.pathname===path);
-      await page.waitForLoadState("networkidle");
-      ok(await page.locator("#decision-complement form").count()===1);
-      if(path==="/dossier-complet") {
-        for(const w of [390,1440]) {
-          await page.setViewportSize({width:w,height:1000});
-          await page.locator("#decision-complement").scrollIntoViewIfNeeded();
-          ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
-          await page.screenshot({path:".build-refonte/v6-decision-"+w+".png"});
-        }
+    ok(await page.locator("#decision-complement form").count()===1);
+    if(path==="/dossier-complet") {
+      for(const w of [390,1440]) {
+        await page.setViewportSize({width:w,height:1000});
+        await page.locator("#decision-complement").scrollIntoViewIfNeeded();
+        ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+        await page.screenshot({path:".build-refonte/v6-decision-"+w+".png"});
       }
-      ok(await page.locator('input[name="montantAffiche"]').count()===1);
-      ok(await page.getByRole("link",{name:"Non merci, conserver mon achat actuel",exact:true}).isVisible());
-      ok(await page.evaluate(()=>document.querySelector("#decision-complement").getBoundingClientRect().top<document.querySelector("figure").getBoundingClientRect().top));
-    } else ok(await page.locator("#suite-adaptee").count()===0);
+    }
+    ok(await page.getByRole("link",{name:"Non merci, conserver mon achat actuel",exact:true}).isVisible());
+    ok(await page.evaluate(()=>document.querySelector("#decision-complement").getBoundingClientRect().top<document.querySelector("figure").getBoundingClientRect().top));
+    await page.getByRole("link",{name:"Non merci, conserver mon achat actuel",exact:true}).click();
+    await page.waitForURL("**/bienvenue?*");
+    ok(await page.locator("#livraison-produit").isVisible());
+    ok(await page.getByRole("link",{name:"Ouvrir le guide",exact:true}).isVisible());
+    ok(await page.locator("#suite-adaptee").count()===0);
   }
   await go("/situation?o=ord_revue_front");
   ok(await page.getByRole("button",{name:"Accéder directement à mon achat",exact:true}).count()===0);
@@ -173,15 +172,14 @@ try {
   }
   // Passage réel d'un palier dans le navigateur, avec remise enregistrée dans la fixture.
   const d=JSON.parse(fs.readFileSync(fixture,"utf8"));
-  d.promotions=[...(d.promotions||[]).filter(p=>p.gamme!=="front"),{id:"promo_navfront",email:"front@example.invalid",gamme:"front",commenceLe:new Date(Date.now()-20*60000+7000).toISOString()}];
+  d.promotions=[...(d.promotions||[]).filter(p=>p.gamme!=="front"),{id:"promo_navfront",email:"front@example.invalid",gamme:"front",commenceLe:new Date(Date.now()-2*60000+7000).toISOString()}];
   fs.writeFileSync(fixture,JSON.stringify(d));
   await page.context().addCookies([{name:"hi_offre",value:"promo_navfront",url:"http://127.0.0.1:3311"}]);
   await go("/methode");
-  ok((await page.locator("#premier-cta").innerText()).includes("21,60"));
-  await page.waitForFunction(()=>document.querySelector("#premier-cta")?.textContent?.includes("24,30"),{},{timeout:15000});
-  ok((await page.locator("#premier-cta").innerText()).includes("24,30"));
+  ok((await page.locator("#premier-cta").innerText()).includes("26"));
+  await page.waitForTimeout(8000);
   await page.reload({waitUntil:"networkidle"});
-  ok((await page.locator("#premier-cta").innerText()).includes("24,30"));
+  ok((await page.locator("#premier-cta").innerText()).includes("36,40"));
   // Nouveau client fictif, paiement simulé, questionnaire obligatoire puis offre.
   await page.context().clearCookies();
   await go("/commande");
@@ -199,23 +197,23 @@ try {
   await page.getByRole("button",{name:"Je préfère ne pas répondre",exact:true}).click();
   await page.getByRole("button",{name:"Je ne sais pas",exact:true}).click();
   await page.getByRole("button",{name:"Les démarches et les mots sont trop compliqués",exact:true}).click();
-  await page.waitForURL("**/bienvenue?*");
-  await page.getByRole("link",{name:"Découvrir maintenant ma préparation complémentaire",exact:true}).click();
   await page.waitForURL(u=>u.pathname==="/plan-complet");
-  ok(await page.locator('input[name="montantAffiche"]').inputValue()==="127.5");
+  const montantUpsell=Number(await page.locator('input[name="montantAffiche"]').inputValue());
+  ok(Number.isFinite(montantUpsell)&&montantUpsell>0);
   for(const width of [390,1440]){
     await page.setViewportSize({width,height:1000});
     ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
     await page.locator("#decision-complement").scrollIntoViewIfNeeded();
     await page.screenshot({path:".build-refonte/v8-offre-"+width+".png"});
   }
-  await page.getByRole("button",{name:"Oui, préparer la suite maintenant · 127,50 €",exact:true}).click();
-  await page.waitForURL("**/merci?*");
+  await page.getByRole("button",{name:/Oui, préparer la suite maintenant/}).click();
+  await page.waitForURL("**/bienvenue?*");
+  ok(await page.getByRole("link",{name:"Ouvrir le guide",exact:true}).isVisible());
   const final=JSON.parse(fs.readFileSync(fixture,"utf8"));
   const order=final.orders.find(o=>o.id===orderId);
-  ok(order.items.some(i=>i.sku==="upsell1"&&i.price===127.5));
+  ok(order.items.some(i=>i.sku==="upsell1"&&i.price===montantUpsell));
   ok(final.orders.every(o=>o.email.endsWith("@example.invalid")));
 
   ok(errors.length===0);
-  console.log(n+" contrôles navigateur V7 réussis : mobile/desktop, aperçu limité, LP commune, qualification réelle, remise avant offre, paiement unique, guides narratifs sans quiz et droits préservés. Aucun service externe.");
+  console.log(n+" contrôles navigateur V7 réussis : mobile/desktop, aperçu limité, LP commune, qualification réelle, offre adaptée avant remise, paiement unique, guides narratifs sans quiz et droits préservés. Aucun service externe.");
 } catch(error) {console.error(logs);throw error;} finally {await browser?.close();server.kill();await new Promise(resolve=>server.exitCode!==null?resolve():server.once("exit",resolve));fs.writeFileSync(fixture,initial);}

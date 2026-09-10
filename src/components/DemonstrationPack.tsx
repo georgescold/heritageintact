@@ -12,7 +12,7 @@ export function DemonstrationPack() {
       </p>
       <ol className="grid gap-4 sm:grid-cols-3">
         <li className="border border-grey-line bg-white p-4">
-          <h3 className="mb-3 font-bold">1. Avec la Méthode</h3>
+          <h3 className="mb-3 font-bold">1. Avec le guide</h3>
           <p>
             Vous distinguez propriété, droits de votre famille et fiscalité. Vous notez votre
             priorité et vos premières questions.

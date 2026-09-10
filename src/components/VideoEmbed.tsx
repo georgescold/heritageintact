@@ -54,7 +54,7 @@ export function VideoEmbed({
 
           C'était une note de chantier, écrite quand ce composant ne servait
           qu'à construire le funnel. Il est aujourd'hui monté derrière un
-          paywall à 27 €, sur les 8 étapes de La Méthode : un acheteur de 74 ans
+          paywall à 27 €, sur les 8 étapes du guide : un acheteur de 74 ans
           qui ouvre son étape 0 le soir de sa commande y lisait, en toutes
           lettres, qu'il venait de payer pour un site inachevé. C'est un
           remboursement le soir même.

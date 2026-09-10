@@ -11,7 +11,7 @@ import { BRAND } from "@/lib/config";
  * ═══ Pourquoi ce document est en noir et blanc, sans une seule teinte ═══
  *
  * L'acheteur a 70 ans et imprime chez lui, sur une imprimante à jet d'encre
- * dont la cartouche coûte 30 € — soit plus que La Méthode. Un aplat de couleur
+ * dont la cartouche coûte 30 € — soit plus que Le guide. Un aplat de couleur
  * sur quatorze pages, c'est une cartouche vidée, et c'est le premier email de
  * réclamation. Bordures 1 px, texte noir, fond blanc : le document est aussi
  * lisible photocopié qu'à l'écran.
@@ -42,7 +42,7 @@ export function Feuille({
       <div className="space-y-4 text-[1rem] leading-relaxed">{children}</div>
 
       <footer className="mt-6 border-t border-black pt-3 text-[0.78rem] leading-snug">
-        {BRAND} est une méthode pédagogique d&apos;information générale. Elle ne constitue ni une
+        {BRAND} est un guide pédagogique d&apos;information générale. Il ne constitue ni une
         consultation juridique, ni un conseil fiscal personnalisé.
       </footer>
     </article>

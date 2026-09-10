@@ -17,7 +17,7 @@ import { redirect } from "next/navigation";
 import { acceptUpsell } from "@/app/actions";
 import { Header, Footer } from "./Chrome";
 import { BoutonAchat as Button } from "./BoutonAchat";
-import { getOrder, accesParEmail } from "@/lib/db";
+import { getOrder } from "@/lib/db";
 import { devisPour } from "@/lib/devis";
 import { PRODUCTS, PRESENTATION, euros, type ProductSku } from "@/lib/config";
 import { etapeTunnel } from "@/lib/tunnel";
@@ -50,8 +50,7 @@ export async function OffrePreparation({
     alternativeAutorisee ? { ...profil, objectif: "assurance-vie" } : profil,
   );
   const d = await devisPour(order.email, sku);
-  const acces = await accesParEmail(order.email);
-  const fin = `/merci?o=${encodeURIComponent(order.id)}`;
+  const fin = `/bienvenue?o=${encodeURIComponent(order.id)}`;
   if (d.dejaPossede) redirect(fin);
   const produit = PRODUCTS[sku],
     texte = PRESENTATION[sku];
@@ -66,22 +65,17 @@ export async function OffrePreparation({
       <MesurerAchat id={order.id} />
       <Header minimal />
       <main className="wrap flex-1 py-10">
-        <p className="mb-5 border-l-4 border-green bg-green-bg p-4">
-          Votre achat est confirmé.{" "}
-          {acces && (
-            <Link href={`/espace/${acces.jeton}`}>Vous pouvez ouvrir votre espace maintenant.</Link>
-          )}
-        </p>
+        <p className="mb-5 border-l-4 border-green bg-green-bg p-4">Votre achat est confirmé. Vos réponses viennent de déterminer la suite la plus utile à votre situation.</p>
         <p className="font-bold text-orange-dark">
-          La suite recommandée pour votre priorité
+          Ce que vous devez absolument avoir également
         </p>
         <h1 className="my-4 text-[2rem] leading-tight">{contexte.titre}</h1>
         <p className="mb-3 text-[1.1rem] font-bold text-blue">{produit.name}</p>
         <p className="mb-6 border-l-4 border-orange bg-grey-bg p-4">{contexte.raison}</p>
         <p className="text-[1.2rem]">{texte?.promesse}</p>
         <section id="decision-complement" className="my-6 border-2 border-blue bg-grey-bg p-5">
-          <h2 className="mb-3 text-[1.3rem]">{sku === "upsell2" ? "Ne laissez pas le contrat décider à votre place sans l’avoir relu." : "Le premier pas est payé. Donnez maintenant un fil à toute votre préparation."}</h2>
-          <p className="mb-4">{sku === "upsell2" ? "Vous souhaitez protéger quelqu’un, pas simplement posséder un contrat. Retrouvez la clause, préparez la demande à l’assureur et gardez une trace des réponses. Les mots pour commencer sont déjà préparés." : "Vous savez désormais par où commencer. Le risque, maintenant, c’est de remettre la suite dans le même tiroir. Le pack ajoute l’exemple, les trames, les fiches de votre famille et l’atelier : une préparation que vous pouvez reprendre et apporter au rendez-vous."}</p>
+          <h2 className="mb-3 text-[1.3rem]">{sku === "upsell2" ? "Vérifiez qui votre contrat protégera avant qu’une clause oubliée ne décide à votre place." : "Transformez les erreurs repérées en préparation concrète avant que tout ne retourne dans le tiroir."}</h2>
+          <p className="mb-4">{sku === "upsell2" ? "Le guide vous montre l’erreur. Ce complément vous aide à retrouver la clause, demander sa version actuelle et conserver la réponse de l’assureur. Sans cette vérification, vous pouvez connaître le risque tout en laissant le contrat inchangé décider pour vous." : "Le guide vous montre ce qu’il faut éviter. Cette préparation ajoute les trames, les fiches de votre famille et l’atelier pour savoir quoi réunir et quoi demander. Sans elle, vous risquez de refermer le guide avec les mêmes documents dispersés et le même rendez-vous encore à préparer."}</p>
           <p>Total de l’offre : {euros(d.total)} · Achats inclus déduits : {euros(d.credit)}.</p>
           {d.remise>0 && <p className="mt-2 font-bold text-orange-dark">Avantage de démarrage : −{euros(d.remise)} sur le complément restant.</p>}
           <AvantageDemarrage promotion={d.promotion} base={d.avantRemise}/>
@@ -176,7 +170,7 @@ export async function OffrePreparation({
             <p className="my-3">
               Vous avez indiqué avoir une assurance-vie. Si c’est votre seul sujet maintenant, vous
               pouvez examiner le module pour {euros(autreDevis.montant)} supplémentaires, sans
-              ajouter le pack de préparation familiale. Votre Méthode reste accessible.
+              ajouter le pack de préparation familiale. Votre guide reste accessible.
             </p>
             <Link href={`/kit-assurance-vie?o=${encodeURIComponent(order.id)}&alternative=1`}>
               Voir uniquement le module assurance-vie, sans acheter

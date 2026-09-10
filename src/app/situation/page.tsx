@@ -14,7 +14,7 @@ export default async function SituationPage({ searchParams }: { searchParams: Pr
   const order = o ? await getOrder(o) : null;
   if (!order || order.status !== "paid") redirect("/commande");
   return <><Header minimal /><main className="wrap max-w-[720px] flex-1 py-7">
-    <p className="mb-4 text-sm font-bold text-orange-dark">1. Votre priorité → 2. Votre Méthode → 3. La suite adaptée</p>
+    <p className="mb-4 text-sm font-bold text-orange-dark">1. Votre situation → 2. Votre recommandation → 3. Votre guide</p>
     <Panel tone="green" title="Votre paiement est accepté">
       <p>Vous allez recevoir les 7 erreurs qui offrent votre héritage à l’État après avoir complété le questionnaire ci-dessous.</p>
     </Panel>

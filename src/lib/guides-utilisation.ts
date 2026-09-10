@@ -3,7 +3,7 @@ export type GuideUtilisation = { sku: "front"|"bump"|"upsell1"|"upsell2"; titre:
 export const GUIDES_UTILISATION: GuideUtilisation[] = [
   {
     "sku": "front",
-    "titre": "La Méthode : comprendre et faire votre premier pas",
+    "titre": "Le guide : comprendre et faire votre premier pas",
     "resultat": "Votre fiche de situation, vos questions et un plan de préparation en une page.",
     "seances": [
       [

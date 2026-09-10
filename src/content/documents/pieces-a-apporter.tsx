@@ -81,7 +81,7 @@ export function PiecesAApporter() {
         ))}
       </ol>
 
-      <Titre>Les trois feuilles de la Méthode à joindre</Titre>
+      <Titre>Les trois feuilles du guide à joindre</Titre>
       <ul className="space-y-1">
         <Case>Mon inventaire patrimonial, rempli.</Case>
         <Case>Ma fiche famille, remplie.</Case>

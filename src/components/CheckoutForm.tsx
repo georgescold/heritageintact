@@ -20,7 +20,7 @@ export function CheckoutForm({
   defaults: { firstName?: string; email?: string };
   testMode: boolean;
   /**
-   * Le prix de la Méthode pour CE visiteur, calculé par le serveur à partir
+   * Le prix du guide pour CE visiteur, calculé par le serveur à partir
    * de ses cookies (`lib/prix.ts`). Il valait `PRODUCTS.front.price` en dur :
    * le bouton annonçait alors un autre montant que celui que Stripe allait débiter.
    * Un montant affiché qui n'est pas celui débité n'est pas un détail

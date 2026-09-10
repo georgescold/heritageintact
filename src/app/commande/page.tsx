@@ -27,7 +27,7 @@ export default async function Page() {
       <main className="wrap-wide flex-1 py-8">
         <h1 className="mb-3 text-[1.9rem]">Les 7 erreurs qui offrent votre héritage à l’État</h1>
         <p className="mb-6 text-[1.1rem]">
-          Votre guide et sa méthode explicative, en paiement unique. Le dossier ci-dessous est facultatif. Le total
+          Votre guide et ses explications, en paiement unique. Le dossier ci-dessous est facultatif. Le total
           se met à jour avant votre validation.
         </p>
         <AvantageDemarrage promotion={d.promotion} base={d.total} />

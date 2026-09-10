@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Aperçu du Dossier — extraits de p
 export default function Page() {
   return <><Header minimal /><main className="wrap flex-1 py-8">
     <p className="mb-3 text-sm font-bold uppercase tracking-wide text-orange-dark">Aperçu commercial limité · Exemple fictif</p>
-    <h1 className="mb-4 text-[2rem]">La Méthode vous aide à comprendre.<br />Le Dossier vous évite de partir d’une page blanche.</h1>
+    <h1 className="mb-4 text-[2rem]">Le guide vous aide à comprendre.<br />Le Dossier vous évite de partir d’une page blanche.</h1>
     <p className="mb-6">Vous savez ce que vous voulez demander. Mais au moment de préparer le rendez-vous : où noter les réponses ? Quelles pièces réunir ? Comment écrire au notaire ? Le Dossier facultatif rassemble les trames pour passer à cette préparation.</p>
     <section id="dossier" className="mb-7 overflow-hidden border-2 border-blue bg-[#f5f2eb]">
       <h2 className="bg-blue p-4 text-[1.4rem] text-white">Le Dossier de préparation · 17 €</h2>
@@ -27,7 +27,7 @@ export default function Page() {
       <li><strong>Ne pas perdre les réponses :</strong> une trame de compte rendu et de suivi après l’échange.</li>
     </ul>
     <p className="mb-5">Supports numériques dans votre espace personnel après achat, à lire et à imprimer. Aucun dossier physique expédié. Pas de conseil juridique personnalisé.</p>
-    <p className="mb-5 font-bold">La Méthode reste complète sans ce Dossier. Vous choisissez l’option à 17 € sur le bon de commande ; elle n’est pas précochée. Le Dossier est aussi inclus dans les packs.</p>
+    <p className="mb-5 font-bold">Le guide reste complet sans ce Dossier. Vous choisissez l’option à 17 € sur le bon de commande ; elle n’est pas précochée. Le Dossier est aussi inclus dans les packs.</p>
     <ButtonLink href="/commande">Revenir au bon de commande et choisir</ButtonLink>
     <p className="mt-3 text-center text-sm text-text-soft">Si cette page s’est ouverte dans un autre onglet, fermez-la pour retrouver votre commande inchangée.</p>
   </main><Footer /></>;

@@ -37,10 +37,10 @@ export default function LandingPage() {
             <p className="mb-3 text-[1.1rem] font-bold text-red"><span aria-hidden>⚠</span> Ne remplissez pas ce formulaire si :</p>
             <ul className="space-y-2">{[
               "Vous cherchez un moyen de ne pas déclarer quelque chose : ici, les opérations sont légales et déclarées.",
-              "Vous attendez un conseil juridique ou un montant fiscal personnel certifié : ce n’est pas ce que cette méthode propose.",
+              "Vous attendez un conseil juridique ou un montant fiscal personnel certifié : ce n’est pas ce que ce guide propose.",
               "Vous avez une succession déjà ouverte, un conflit ou une échéance proche : contactez un professionnel sans attendre ce parcours."
             ].map(t=><li key={t} className="flex gap-2 text-[1rem]"><span aria-hidden className="shrink-0 font-bold text-red">✕</span><span>{t}</span></li>)}</ul>
-            <p className="mt-3 text-[0.95rem] text-text-soft">Nous préférons vous le dire avant. La Méthode sert à comprendre et préparer, pas à décider d’un acte à votre place.</p>
+            <p className="mt-3 text-[0.95rem] text-text-soft">Nous préférons vous le dire avant. Le guide sert à comprendre et préparer, pas à décider d’un acte à votre place.</p>
           </div>
         </div>
       </section>
@@ -53,7 +53,7 @@ export default function LandingPage() {
         <p><strong>Le 31 décembre 2026</strong>, la fenêtre prévue pour certains dons familiaux destinés au logement se referme. Elle est distincte de l’abattement parent-enfant.</p>
         <p><strong>Et une donation a son propre repère de quinze ans.</strong> Faite à 67 ans, elle atteint ce repère à 82 ans. Faite deux ans plus tard, à 84 ans.</p>
         <p className="border-l-4 border-red bg-red-bg p-3 font-bold text-blue">Vous pourrez rouvrir cette page. Vous ne pourrez pas antidater la donation.</p>
-        <p>La présentation et la Méthode vous attendent sur la page suivante. Commencez par comprendre ce qu’il faut regarder, pendant que vous pouvez encore en parler avec vos enfants.</p>
+        <p>La présentation et le guide vous attendent sur la page suivante. Commencez par comprendre ce qu’il faut regarder, pendant que vous pouvez encore en parler avec vos enfants.</p>
       </div>
       <OptinForm cta={cta} />
     </ExitPopup>

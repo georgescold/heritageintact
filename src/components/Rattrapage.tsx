@@ -156,7 +156,7 @@ export function CtaMethode({ label, href = "/commander" }: { label: string; href
               </div>
 
               <p className="text-[0.98rem]">
-                C&apos;est la même Méthode complète, le même accès immédiat et la même garantie de
+                C&apos;est le même guide complet, le même accès immédiat et la même garantie de
                 30 jours. Cette proposition ne vous sera faite qu&apos;une fois.
               </p>
 

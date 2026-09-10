@@ -93,7 +93,7 @@ export function Panel({
   );
 }
 
-export function Guarantee({ product = "la Méthode" }: { product?: string }) {
+export function Guarantee({ product = "le guide" }: { product?: string }) {
   return (
     <Panel tone="green" title="Garantie 30 jours : satisfait ou remboursé">
       <p>
@@ -137,7 +137,7 @@ export function ValueStack({
    * visiteur, donc il doit être rendu côté client. Il valait
    * `euros(PRODUCTS.front.price)` en dur, et le tableau annonçait donc
    * « Aujourd'hui : 27 € » à quelqu'un dont le bandeau venait de dire
-   * « offre terminée, la Méthode reste accessible à 89 € ».
+   * « offre terminée, le guide reste accessible à 89 € ».
    */
   today: ReactNode;
   todayLabel?: string;

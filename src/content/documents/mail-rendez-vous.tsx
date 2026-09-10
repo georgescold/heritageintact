@@ -35,7 +35,7 @@ export function MailRendezVous() {
             {/* ⚠️ CETTE PHRASE ANNONÇAIT AUSSI « une estimation des droits qui
                 seraient dus aujourd'hui ». Retiré le 9 septembre 2026 : cette
                 estimation vient du Simulateur de Facture Invisible, qui
-                appartient à La Méthode — et ce document-ci est livré avec Le
+                appartient au guide — et ce document-ci est livré avec Le
                 Dossier notaire, un bump que l'on peut acheter SEUL.
 
                 La moitié des lecteurs devait donc barrer une ligne d'un

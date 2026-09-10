@@ -13,7 +13,7 @@ export function FormulaireSituation({orderId,email}:{orderId:string;email:string
     verrou.current=true; setPending(true); setErreur("");
     try {
       const resultat=await enregistrerReponses(orderId,email,r);
-      if(resultat.ok)router.push(`/bienvenue?o=${encodeURIComponent(orderId)}`);
+      if(resultat.ok)router.push(resultat.destination);
       else setErreur(resultat.error || "Réessayez l’enregistrement.");
     } catch { setErreur("La connexion a été interrompue. Réessayez, votre achat reste acquis."); }
     finally { verrou.current=false;setPending(false); }

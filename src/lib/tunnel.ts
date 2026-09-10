@@ -21,9 +21,9 @@ export async function etapeTunnel(
 ): Promise<EtapeTunnel> {
   const profil = await profilDeCommande(orderId);
   const seq = sequence(profil, opts).filter((e) => PRODUCTS[SKU[e]].disponible);
-  const merci = `/merci?o=${encodeURIComponent(orderId)}`;
+  const livraison = `/bienvenue?o=${encodeURIComponent(orderId)}`;
   if (!seq.includes(ecran))
-    return { afficher: false, versOu: seq.length ? urlEcran(seq[0], orderId, 1) : merci };
-  return { afficher: true, suivant: merci, position: 1, total: 1 };
+    return { afficher: false, versOu: seq.length ? urlEcran(seq[0], orderId, 1) : livraison };
+  return { afficher: true, suivant: livraison, position: 1, total: 1 };
 }
 export const CHEMIN_ECRAN = ROUTE;

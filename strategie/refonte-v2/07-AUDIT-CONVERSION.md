@@ -12,7 +12,7 @@ Ces documents constituent le cadre de travail demandé, pas des preuves indépen
 |---|---|---|
 | Promesse et objections | Bénéfice de préparation, sécurité personnelle, contenu et limites, FAQ, garantie | Plus explicite et cohérent ; efficacité commerciale non mesurée |
 | Bump | Dossier 17 € au checkout, non coché, total 27/44 € | Pas de test de présentation ou d’aperçu du dossier |
-| Upsell | Une proposition après paiement et qualification, accès livré auparavant | Choix d’architecture, pas preuve qu’une seule offre maximise le revenu |
+| Upsell | Une proposition après paiement et qualification, avant la remise visible du guide | Choix d’architecture, pas preuve qu’une seule offre maximise le revenu |
 | Packs | 197/247 €, crédit réel affiché, simulateur inclus | Présentation surtout textuelle, pas de démonstration visuelle des packs |
 | Qualification | Quatre questions facultatives après achat | Pas de personnalisation avant la première vente |
 | Routage commercial | Objectif et présence d’AV déterminent l’offre ; « comprendre » ne déclenche pas d’upsell | Situation familiale et enfants orientent les fiches, pas un argumentaire commercial entièrement personnalisé |

@@ -153,7 +153,7 @@ export default async function AjouterPage({
 
           {/* ⚠️ La garantie est réécrite ici plutôt que reprise de `Guarantee` :
               le texte partagé parle de la simulation et du simulateur, ce qui
-              est vrai de La Méthode et faux de tout ce qui se vend depuis
+              est vrai du guide et faux de tout ce qui se vend depuis
               l'espace. Une garantie qui décrit un autre produit ne rassure
               pas, elle fait douter qu'elle s'applique. */}
           <div className="mb-6">

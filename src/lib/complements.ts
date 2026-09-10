@@ -9,7 +9,7 @@ export const avantagePack = () => ({
 });
 
 const SUPPORTS: [ProductSku, string][] = [
-  ["front", "Méthode et premières questions"],
+  ["front", "Guide et premières questions"],
   ["bump", "Dossier et trames de rendez-vous"],
   ["upsell1", "Fiches familiales et suivi des démarches"],
   ["backend1", "Atelier de simulation pédagogique"],

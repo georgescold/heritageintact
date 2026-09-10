@@ -7,13 +7,14 @@ ok(!/hi_objectif|objectifValide|Loys|Coquelle/.test(sale),"vente commune, sans n
 ok(lp.includes('id="inscription"')&&!lp.includes("OrientationAvant"),"formulaire visible sans qualification");
 ok(!/content\/documents|<MaSituation|<ExempleDossier|<ExerciceGuide/.test(preview),"pas de support payant dans aperçu");
 ok(preview.includes("Deux éléments illustratifs seulement"),"extrait borné");
-ok(read("src/app/situation/Formulaire.tsx").includes("/bienvenue?o="),"remise après qualification");
+ok(read("src/app/situation/Formulaire.tsx").includes("resultat.destination"),"offre choisie après qualification");
 const welcome=read("src/app/bienvenue/page.tsx");
 ok(welcome.includes('order.status !== "paid"'),"garde de paiement");
-ok(welcome.indexOf('id="livraison-produit"')<welcome.indexOf('id="suite-adaptee"'),"livraison avant offre");
-ok(welcome.includes("sequence(profil"),"routage selon profil");
+ok(!welcome.includes('id="suite-adaptee"'),"aucun upsell après la délivrance");
+ok(read("src/app/profil.ts").includes("urlEcran(prochain"),"routage de l’upsell avant délivrance");
 ok(welcome.includes("<MesurerAchat id={order.id}"),"mesure consentie même sans passage par une offre");
 const offer=read("src/components/OffrePreparation.tsx");
+ok(offer.includes('const fin = `/bienvenue?o='),"acceptation ou refus avant délivrance");
 ok((offer.match(/<form action=/g)||[]).length===1,"un seul formulaire de paiement");
 ok(offer.indexOf('id="decision-complement"')<offer.indexOf("<ValeurComplement"),"décision avant détail long");
 ok(offer.includes('name="montantAffiche"')&&offer.includes("devisPour"),"montant serveur conservé");

@@ -192,7 +192,7 @@ Bouton : « Préparer la suite · [montant actuel] », vers la confirmation de l
 
 - Consentement marketing explicite, absence de désinscription, accès non révoqué et première fiche terminée.
 - Premier complément à partir de J10 ; rappel à partir de J17 et au moins sept jours après le premier envoi réel ; arrêt à J35. Deux envois maximum, pas de cascade après refus ou plainte.
-- L’offre immédiate est sur le site juste après qualification et livraison ; d’autres points d’entrée se trouvent après la première fiche et dans les étapes maison/contrat. Ces emails tardifs servent la reprise, pas un faux rappel de la réduction de 48 heures déjà terminée.
+- L’offre immédiate est sur le site juste après qualification et avant la remise visible du guide ; d’autres points d’entrée se trouvent après la première fiche et dans les étapes maison/contrat. Ces emails tardifs servent la reprise, pas un faux rappel de la réduction de 48 heures déjà terminée.
 - Un seul message commercial éligible par passage, priorité au service, plafonds, clés anti-doublon, suppressions sur rebonds/plaintes et désinscription.
 - Activation séparée : EMAIL_MARKETING_ACTIVE et EMAIL_LTV_ACTIVE. Configuration, DNS et boîtes réelles restent à tester avant activation.
 

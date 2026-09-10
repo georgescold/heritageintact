@@ -152,7 +152,7 @@ ${ps ? `      <p style="margin:22px 0 0;padding-top:16px;border-top:1px solid #e
     </td></tr>
     <tr><td style="padding:16px 24px;background:#f0f3f6;font:13px/1.6 Arial,Helvetica,sans-serif;color:#555555;">
       ${provenance}<br><br>
-      Héritage Intact est une méthode pédagogique d'information générale. Elle ne constitue ni une
+      Héritage Intact est un guide pédagogique d'information générale. Il ne constitue ni une
       consultation juridique, ni un conseil fiscal personnalisé.
     </td></tr>
   </table>
@@ -176,7 +176,7 @@ function versionTexte(o: Contenu) {
     ...(o.ps ? [nettoyer(o.ps)] : []),
     "--",
     ...provenance,
-    "Héritage Intact est une méthode pédagogique d'information générale. Elle ne constitue ni une consultation juridique, ni un conseil fiscal personnalisé.",
+    "Héritage Intact est un guide pédagogique d'information générale. Il ne constitue ni une consultation juridique, ni un conseil fiscal personnalisé.",
   ].join("\n\n");
 }
 
@@ -312,7 +312,7 @@ export async function envoyerAcces(acces: Acces, demande?: string): Promise<{ ok
     `Bonjour ${p},`,
     "Votre espace est ouvert. Tout ce que vous avez commandé s'y trouve, sur une seule page, et vous pouvez y revenir autant de fois que vous le souhaitez.",
     "<strong>Votre lien personnel est votre clé d’accès : conservez-le sans le partager.</strong>",
-    "Ouvrez les contenus acquis dans votre espace. Si vous avez la Méthode, commencez par votre fiche de situation. Les explications sont accessibles à l’écrit.",
+    "Ouvrez les contenus acquis dans votre espace. Si vous avez le guide, commencez par votre fiche de situation. Les explications sont accessibles à l’écrit.",
   ];
   // Le lien en toutes lettres est placé APRÈS le bouton, dans le bloc du bas :
   // c'est là que regarde quelqu'un pour qui le bouton n'a pas fonctionné.
@@ -393,7 +393,7 @@ export async function envoyerComplement(lead: Lead, acces: Acces, sku: ProductSk
       `Le complément proposé est « ${PRODUCTS[sku].name} ». ${credit > 0 ? `Vos ${euros(credit)} d’achats inclus déjà payés sont déduits automatiquement. ` : ""}Le montant à ajouter, calculé aujourd’hui, est de ${euros(montant)}.`,
       "Vous ne repartez pas de zéro et vous ne repayez pas les contenus inclus déjà achetés. Cette déduction ne constitue pas un avoir à réclamer et n’expire pas ce soir.",
       "La page de confirmation affiche le montant à jour avant tout paiement. Cliquer dans cet email ne déclenche aucun débit.",
-      "Vous n’avez pas besoin de devenir spécialiste ni de tout décider maintenant. Les guides PDF donnent le mode d’emploi, un exemple et les étapes. La garantie commerciale de 30 jours permet de découvrir cette préparation selon les CGV. Ouvrez votre proposition et choisissez votre prochaine avancée ; la Méthode de base reste autonome.",
+      "Vous n’avez pas besoin de devenir spécialiste ni de tout décider maintenant. Les guides PDF donnent le mode d’emploi, un exemple et les étapes. La garantie commerciale de 30 jours permet de découvrir cette préparation selon les CGV. Ouvrez votre proposition et choisissez votre prochaine avancée ; le guide de base reste autonome.",
     ],
     bouton: {texte:"Préparer la suite · "+euros(montant),lien:urlEspace(acces.jeton)+"/ajouter/"+sku},
     pied:"prospect",leadId:lead.id,
