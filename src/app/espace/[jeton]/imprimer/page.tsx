@@ -58,7 +58,7 @@ export default async function ImprimerPage({ params, searchParams }: { params: P
    * ne peuvent pas se contredire. `null` — le cas normal, celui de quelqu'un
    * qui n'a pas répondu — imprime exactement le classeur d'aujourd'hui.
    *
-   * ⚠️ JAMAIS DEPUIS L'URL : ces quatre réponses sont des données personnelles,
+   * ⚠️ JAMAIS DEPUIS L'URL : ces réponses sont des données personnelles,
    * et une case pré-cochée par paramètre d'adresse serait pré-cochable par
    * n'importe qui.
    */

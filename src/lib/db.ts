@@ -114,9 +114,9 @@ export type Progression = {
 };
 
 /**
- * LES QUATRE RÉPONSES DU BON DE COMMANDE, telles qu'elles sortent de `profils`.
+ * LES RÉPONSES DE QUALIFICATION, telles qu'elles sortent de `profils`.
  *
- * Les quatre codes sont typés `string` et non des unions de littéraux : ils
+ * Les codes sont typés `string` et non des unions de littéraux : ils
  * viennent de la base, pas du compilateur. Une union donnerait l'illusion qu'un
  * code inconnu est impossible, alors qu'une vieille ligne en produirait un. Le
  * routage (`lib/qualification.ts`) traite tout code inconnu comme une absence
@@ -135,8 +135,10 @@ export type Profil = {
   enfants?: string;
   /** O oui · N non · ? je ne sais plus · X refus. */
   av?: string;
-  /** a moins de 65 · b 65-69 · c 70 · d 71+ · X refus. Une tranche, jamais une date. */
+  /** a moins de 60 · b 60-64 · c 65-69 · d 70 · e 71+ · X refus. Une tranche, jamais une date. */
   age?: string;
+  /** Frein principal déclaré, parmi une liste fermée. Aucun texte libre. */
+  blocage?: string;
   /** "plan-seul" · "pack" · "av-dabord" · "defaut". Pour la mesure, et rien d'autre. */
   piste?: string;
   createdAt: string;
@@ -283,6 +285,7 @@ type LigneProfil = {
   enfants: string | null;
   av: string | null;
   age: string | null;
+  blocage?: string | null;
   piste: string | null;
   created_at: Date;
 };
@@ -300,6 +303,7 @@ const versProfil = (r: LigneProfil): Profil => ({
   enfants: r.enfants ?? undefined,
   av: r.av ?? undefined,
   age: r.age ?? undefined,
+  blocage: r.blocage ?? undefined,
   piste: r.piste ?? undefined,
   createdAt: r.created_at.toISOString(),
 });
@@ -1437,6 +1441,7 @@ export async function enregistrerProfil(input: {
   enfants?: string;
   av?: string;
   age?: string;
+  blocage?: string;
   piste?: string;
 }): Promise<void> {
   // Même normalisation que `addLead` et `createOrder` : la purge à la
@@ -1448,15 +1453,16 @@ export async function enregistrerProfil(input: {
     if (sqlActif) {
       const s = await pg();
       await s`
-        insert into profils (order_id, email, vie, enfants, av, age, piste, objectif)
+        insert into profils (order_id, email, vie, enfants, av, age, blocage, piste, objectif)
         values (${input.orderId}, ${email}, ${input.vie ?? null}, ${input.enfants ?? null},
-                ${input.av ?? null}, ${input.age ?? null}, ${input.piste ?? null}, ${input.objectif ?? null})
+                ${input.av ?? null}, ${input.age ?? null}, ${input.blocage ?? null}, ${input.piste ?? null}, ${input.objectif ?? null})
         on conflict (order_id) do update set
           email   = excluded.email,
           vie     = excluded.vie,
           enfants = excluded.enfants,
           av      = excluded.av,
           age     = excluded.age,
+          blocage = excluded.blocage,
           piste   = excluded.piste,
           objectif = excluded.objectif
       `;
@@ -1472,6 +1478,7 @@ export async function enregistrerProfil(input: {
       enfants: input.enfants,
       av: input.av,
       age: input.age,
+      blocage: input.blocage,
       piste: input.piste,
       // Le miroir du `on conflict do update` : la date de création ne bouge pas
       // à la réécriture, exactement comme la colonne `created_at` en base.

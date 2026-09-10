@@ -64,7 +64,7 @@ export default async function DocumentPage({
    *
    * ⚠️ LUES SUR LA BASE, JAMAIS SUR L'URL. Une feuille dont la case pré-cochée
    * dépendrait d'un paramètre d'adresse serait pré-cochable par n'importe qui,
-   * et surtout : ces quatre réponses sont des données personnelles, elles ne
+   * et surtout : ces réponses sont des données personnelles, elles ne
    * transitent par aucune URL. `profilParEmail` rend la ligne la plus récente,
    * ou `null` — et `null` est le cas normal, celui du classeur d'aujourd'hui.
    *

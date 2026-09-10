@@ -12,7 +12,7 @@ Pour toi : [checklist Loys](a-faire-loys/00-CHECKLIST.md). **Aucune vidéo péda
 
 ## Le parcours actuel
 
-Email et prénom → présentation/VSL → guide de base commun → paiement → quatre réponses obligatoires → livraison explicite → une proposition adaptée → espace et approfondissements au fil de l’utilisation.
+Email et prénom → présentation/VSL → guide de base commun → paiement → six réponses obligatoires → livraison explicite → une proposition adaptée → espace et approfondissements au fil de l’utilisation.
 
 Le consentement marketing est facultatif et distinct du questionnaire. La qualification ne change pas le contenu déjà acheté ; « je ne sais pas » est une réponse recevable. Une panne d’enregistrement ne valide pas silencieusement le questionnaire.
 

@@ -65,17 +65,19 @@ try {
   ok(await page.locator("dialog[open]").count()===0);
   // Qualification effectuée réellement sur la fixture, sans payer ni envoyer d’email.
   for(const [objectif,av,path] of [
-    ["Préparer mon rendez-vous","Non","/plan-complet"],
-    ["Préparer mon rendez-vous","Oui","/dossier-complet"],
-    ["Faire le point sur mon assurance-vie","Oui","/kit-assurance-vie"],
-    ["Comprendre les bases","Oui",null]
+    ["Que mes enfants doivent vendre la maison pour payer les droits","Non","/plan-complet"],
+    ["Ne pas savoir quelle part l’État pourrait prendre","Oui","/dossier-complet"],
+    ["Que mon assurance-vie ne protège pas la bonne personne","Oui","/kit-assurance-vie"],
+    ["Que mes proches ne retrouvent pas les documents et les réponses","Oui","/dossier-complet"]
   ]) {
     await go("/situation?o=ord_revue_front");
-    ok(await page.getByText("Question 1 sur 4",{exact:true}).isVisible());
+    ok(await page.getByText("Question 1 sur 4",{exact:true}).count()===0);
     await page.getByRole("button",{name:objectif,exact:true}).click();
     await page.getByRole("button",{name:"Marié(e)",exact:true}).click();
     await page.getByRole("button",{name:"Deux enfants ou plus",exact:true}).click();
+    await page.getByRole("button",{name:"De 65 à 69 ans",exact:true}).click();
     await page.getByRole("button",{name:av,exact:true}).click();
+    await page.getByRole("button",{name:"Je ne sais pas quoi faire en premier",exact:true}).click();
     await page.waitForURL("**/bienvenue?*");
     await page.waitForLoadState("networkidle");
     ok(await page.locator("#livraison-produit").isVisible());

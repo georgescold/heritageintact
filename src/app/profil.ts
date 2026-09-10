@@ -4,11 +4,11 @@ import { piste, type Reponses } from "@/lib/qualification";
 import { profilComplet } from "@/lib/questionnaire";
 export async function enregistrerReponses(orderId: string, _email: string, reponses: Reponses): Promise<{ok: boolean; error?: string}> {
   void _email;
-  if (!profilComplet(reponses)) return {ok:false,error:"Répondez aux quatre questions pour continuer."};
+  if (!profilComplet(reponses)) return {ok:false,error:"Répondez à chaque question pour continuer."};
   try {
     const order = await getOrder(orderId);
     if (!order || order.status !== "paid") return {ok:false,error:"Votre commande réglée n’a pas été retrouvée."};
-    const propres = {objectif:reponses.objectif, vie:reponses.vie, enfants:reponses.enfants, av:reponses.av};
+    const propres = {objectif:reponses.objectif, vie:reponses.vie, enfants:reponses.enfants, age:reponses.age, av:reponses.av, blocage:reponses.blocage};
     await enregistrerProfil({...propres, orderId, email:order.email, piste:piste(propres,{bumpPresent:order.items.some(i=>i.sku==="bump")})});
     const enregistre = await profilDeCommande(orderId);
     if (!profilComplet(enregistre) || Object.entries(propres).some(([k,v]) => enregistre?.[k as keyof Reponses] !== v)) throw Error("Profil non conservé");

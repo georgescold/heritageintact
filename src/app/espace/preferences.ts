@@ -52,6 +52,7 @@ export async function actualiserPriorite(
     vie: profil?.vie,
     enfants: profil?.enfants,
     age: profil?.age,
+    blocage: profil?.blocage,
     piste: profil?.piste, // L'exposition initiale reste inchangée.
   });
   const verifie = await profilParEmail(acces.email);

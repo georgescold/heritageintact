@@ -7,7 +7,7 @@
 | Demande | Réalisation |
 |---|---|
 | Produit 1 commun | Les 7 erreurs qui offrent votre héritage à l’État : départ + sept erreurs, huit exercices, neuf fiches. |
-| Qualification obligatoire | Quatre réponses validées côté serveur après paiement ; aucune option « passer ». Inconnu accepté ; email du client non falsifiable par le formulaire. |
+| Qualification obligatoire | Six réponses validées côté serveur après paiement ; aucune option « passer ». Réponse incertaine ou refus de tranche d’âge acceptés ; email du client non falsifiable par le formulaire. |
 | Livraison cohérente | Accès créé au paiement, présentation du produit acheté avant la proposition ; droits conservés même en cas de refus d’un complément. |
 | Aucun tournage pédagogique | Quatre PDF et les mêmes contenus à l’écran. VSL de vente distincte, fichier manquant. |
 | Upsells ciblés | Une offre principale ; AV ciblée, pack familial, variante avec AV. Une autre entrée après la première fiche et aux étapes pertinentes. |

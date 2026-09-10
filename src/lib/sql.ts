@@ -210,7 +210,8 @@ export function assurerSchema(): Promise<void> {
           --   vie     : M P U V S X   (couple)
           --   enfants : 1 2 R 0 X
           --   av      : O N ? X       (assurance-vie)
-          --   age     : a b c d X     (tranche, jamais une date)
+          --   age     : a b c d e X   (tranche, jamais une date)
+          --   blocage : choix ferme sur le principal frein a l'action
           -- ⚠️ AUCUN ACCENT GRAVE DANS CE BLOC : il est à l'intérieur d'un
           -- gabarit balisé, et un accent grave le refermerait net.
           -- X = « je préfère ne pas répondre », traité PARTOUT comme une
@@ -219,6 +220,7 @@ export function assurerSchema(): Promise<void> {
           enfants     text,
           av          text,
           age         text,
+          blocage     text,
 
           -- Le nom court de la destination calculée au moment de la commande :
           -- "plan-seul", "pack", "av-dabord", "defaut". UNIQUEMENT pour la
@@ -234,6 +236,7 @@ export function assurerSchema(): Promise<void> {
 
       // Le compteur « membres fondateurs » filtre là-dessus à chaque affichage.
       await s`alter table profils add column if not exists objectif text`;
+      await s`alter table profils add column if not exists blocage text`;
       await s`alter table leads add column if not exists marketing_consent boolean not null default false`;
       await s`alter table leads add column if not exists marketing_consent_at timestamptz`;
       await s`create index if not exists orders_status_idx on orders (status)`;

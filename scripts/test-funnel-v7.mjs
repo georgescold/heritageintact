@@ -40,11 +40,11 @@ for(const gamme of ["front","suite"]){
 for(const [v,p,r]of[[52,50,26],[52,30,36.4],[170,25,127.5],[153,25,114.75],[203,25,152.25],[0,25,0],[67,25,50.25]])eq(appliquerRemise(v,p),r);
 for(const [v,p]of[[NaN,20],[-1,20],[100,99],[Infinity,25]]){assert.throws(()=>appliquerRemise(v,p));n++}
 const {QUESTIONS,profilComplet}=mod("src/lib/questionnaire.ts");
-const valide={objectif:"preparer",vie:"M",enfants:"2",av:"N"};
-eq(QUESTIONS.length,4);ok(profilComplet(valide));ok(profilComplet({objectif:"comprendre",vie:"?",enfants:"?",av:"?"}));
+const valide={objectif:"maison",vie:"M",enfants:"2",age:"c",av:"N",blocage:"ordre"};
+eq(QUESTIONS.length,6);ok(profilComplet(valide));ok(profilComplet({objectif:"facture",vie:"?",enfants:"?",age:"X",av:"?",blocage:"complexite"}));
 for(const q of QUESTIONS){
  const absent={...valide};delete absent[q.champ];eq(profilComplet(absent),false);
- for(const code of ["","X","injection",undefined,12])eq(profilComplet({...valide,[q.champ]:code}),false);
+ for(const code of ["","Z","injection",undefined,12])eq(profilComplet({...valide,[q.champ]:code}),false);
  for(const [code]of q.choix)eq(profilComplet({...valide,[q.champ]:code}),true);
 }
 // Base en mémoire exclusivement : aucun fichier data/db.json n’est lu ni écrit.
@@ -121,4 +121,4 @@ for(const slug of ["les-7-erreurs","dossier-notaire","preparation-familiale","as
  ok(fs.readFileSync("output/pdf/"+slug+".pdf").subarray(0,5).toString()==="%PDF-");
  ok(!fs.existsSync("public/"+slug+".pdf"));
 }
-console.log(n+" contrôles V7 réussis : quatre réponses, conservation, paliers, expirations, prix concordants, non-redébit simulé, droits PDF. Aucune base, API ni adresse réelle.");
+console.log(n+" contrôles V7 réussis : six réponses, conservation, paliers, expirations, prix concordants, non-redébit simulé, droits PDF. Aucune base, API ni adresse réelle.");

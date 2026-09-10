@@ -42,7 +42,7 @@ Les besoins sont réels et les limites restent explicites. Aucun faux témoignag
 ## Contrôles
 
 - 2 051 assertions locales au total, dont 265 contrôles éditoriaux V9.
-- 218 contrôles navigateur : mobile et ordinateur, quatre réponses obligatoires, achat simulé, contenus sans quiz, droits PDF et offres.
+- 218 contrôles navigateur : mobile et ordinateur, six réponses obligatoires, achat simulé, contenus sans quiz, droits PDF et offres.
 - Compilation Next/TypeScript réussie ; vérification visuelle des PDF avant push.
 - Aucun paiement réel ni campagne activée pour cette recette.
 

@@ -6,6 +6,7 @@ export type Reponses = {
   av?: string;
   age?: string;
   objectif?: string;
+  blocage?: string;
 };
 export type Ecran =
   | "plan"

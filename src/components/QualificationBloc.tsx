@@ -15,10 +15,7 @@ export function QualificationBloc({ onTermine, initial }: { onTermine: (r: Repon
   return (
     <section className="border border-grey-line bg-white p-5">
       <p className="mb-4 text-text-soft">
-        Quatre réponses sont nécessaires pour terminer cette étape et préparer votre suite. Le guide des 7 erreurs reste identique pour tous. Aucun montant de patrimoine ni nom de proche ne vous est demandé.
-      </p>
-      <p className="font-bold text-orange-dark">
-        Question {index + 1} sur {questions.length}
+        Répondez selon ce que vous ressentez aujourd’hui. Aucun montant de patrimoine, nom de proche ni texte libre ne vous est demandé.
       </p>
       <h2 className="my-4 text-[1.4rem]" aria-live="polite">
         {q.titre}

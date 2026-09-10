@@ -26,8 +26,8 @@ export default function Confidentialite() {
           rapprochée d&apos;un compte Meta ; ce n&apos;est pas une anonymisation.
         </li>
         <li>
-          Quatre réponses <strong>obligatoires pour terminer la qualification après achat</strong> : votre situation de couple, la présence d&apos;enfants, l&apos;existence
-          d&apos;une assurance-vie et votre objectif de préparation. Les anciennes réponses de tranche d’âge peuvent être conservées dans l’historique. Elles servent uniquement à choisir
+          Six réponses <strong>obligatoires pour terminer la qualification après achat</strong> : votre inquiétude principale, votre situation de couple, la présence d&apos;enfants, votre tranche d’âge, l&apos;existence
+          d&apos;une assurance-vie et votre principal frein à l’action. Elles servent uniquement à choisir
           les documents et les offres qui vous sont présentés ensuite. Elles ne modifient ni le prix
           de votre commande ni le contenu de votre Méthode, ne sont transmises à aucun tiers ni à
           aucun outil publicitaire, et sont supprimées lors de votre désinscription. Aucune donnée

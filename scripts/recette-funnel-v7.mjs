@@ -71,17 +71,19 @@ try {
   ok(await page.locator("dialog[open]").count()===0);
   // Qualification effectuée réellement sur la fixture, sans payer ni envoyer d’email.
   for(const [objectif,av,path] of [
-    ["Préparer mon rendez-vous","Non","/plan-complet"],
-    ["Préparer mon rendez-vous","Oui","/dossier-complet"],
-    ["Faire le point sur mon assurance-vie","Oui","/kit-assurance-vie"],
-    ["Repérer les erreurs qui peuvent concerner ma famille","Oui","/dossier-complet"]
+    ["Que mes enfants doivent vendre la maison pour payer les droits","Non","/plan-complet"],
+    ["Ne pas savoir quelle part l’État pourrait prendre","Oui","/dossier-complet"],
+    ["Que mon assurance-vie ne protège pas la bonne personne","Oui","/kit-assurance-vie"],
+    ["Que mes proches ne retrouvent pas les documents et les réponses","Oui","/dossier-complet"]
   ]) {
     await go("/situation?o=ord_revue_front");
-    ok(await page.getByText("Question 1 sur 4",{exact:true}).isVisible());
+    ok(await page.getByRole("heading",{name:"Qu’est-ce qui vous inquiète le plus aujourd’hui ?",exact:true}).isVisible());
     await page.getByRole("button",{name:objectif,exact:true}).click();
     await page.getByRole("button",{name:"Marié(e)",exact:true}).click();
     await page.getByRole("button",{name:"Deux enfants ou plus",exact:true}).click();
+    await page.getByRole("button",{name:"De 65 à 69 ans",exact:true}).click();
     await page.getByRole("button",{name:av,exact:true}).click();
+    await page.getByRole("button",{name:"Je ne sais pas quoi faire en premier",exact:true}).click();
     await page.waitForURL("**/bienvenue?*");
     await page.waitForLoadState("networkidle");
     ok(await page.locator("#livraison-produit").isVisible());
@@ -109,7 +111,7 @@ try {
   }
   await go("/situation?o=ord_revue_front");
   ok(await page.getByRole("button",{name:"Accéder directement à mon achat",exact:true}).count()===0);
-  ok(await page.getByText("Question 1 sur 4",{exact:true}).isVisible());
+  ok(await page.getByText("Question 1 sur 4",{exact:true}).count()===0);
   await go("/espace/aaaaaaaaaaaaaaaaaaaa/document/exemple-dossier");
   ok(new URL(page.url()).pathname==="/espace/aaaaaaaaaaaaaaaaaaaa");
   ok(!(await page.content()).includes("Bonjour, nous souhaitons préparer notre transmission"));
@@ -191,10 +193,12 @@ try {
   const orderId=new URL(page.url()).searchParams.get("o");
   await go("/bienvenue?o="+orderId);
   ok(new URL(page.url()).pathname==="/situation");
-  await page.getByRole("button",{name:"Préparer mon rendez-vous",exact:true}).click();
+  await page.getByRole("button",{name:"Découvrir trop tard que j’ai laissé passer une date importante",exact:true}).click();
   await page.getByRole("button",{name:"Ma situation reste à préciser",exact:true}).click();
   await page.getByRole("button",{name:"Ma situation familiale reste à préciser",exact:true}).click();
+  await page.getByRole("button",{name:"Je préfère ne pas répondre",exact:true}).click();
   await page.getByRole("button",{name:"Je ne sais pas",exact:true}).click();
+  await page.getByRole("button",{name:"Les démarches et les mots sont trop compliqués",exact:true}).click();
   await page.waitForURL("**/bienvenue?*");
   await page.getByRole("link",{name:"Découvrir maintenant ma préparation complémentaire",exact:true}).click();
   await page.waitForURL(u=>u.pathname==="/plan-complet");

@@ -43,7 +43,7 @@ Ton nom n’est pas utilisé dans l’argumentaire commercial. Les informations 
 
 ## 4. Tester simplement l’expérience
 
-- [ ] Sur téléphone, essayer : email → page de vente → achat de test → quatre réponses → livraison → une proposition.
+- [ ] Sur téléphone, essayer : email → page de vente → achat de test → six réponses → livraison → une proposition.
 - [ ] Télécharger le guide acheté et suivre la première fiche sans explication de notre part.
 - [ ] Vérifier un email d’accès et un email commercial de test dans tes boîtes ; tester aussi le lien de désinscription.
 - [ ] Faire essayer le même parcours à quelques personnes représentatives et remonter leurs incompréhensions.

@@ -23,9 +23,12 @@ function loader(env={}, overrides={}, fakeFetch=()=>{throw Error("Réseau interd
 let mod=loader();
 const {objectifValide,conseilOffre}=mod("src/lib/positionnement.ts");
 for(const x of [null,{},[],123,"pirate","",undefined])eq(objectifValide(x),undefined);
-for(const x of ["comprendre","preparer","assurance-vie"])eq(objectifValide(x),x);
+for(const x of ["comprendre","preparer","maison","facture","date","documents","assurance-vie"])eq(objectifValide(x),x);
 ok(conseilOffre({vie:"P"}).raison.includes("PACS"));
 ok(conseilOffre({enfants:"R"}).raison.includes("autre union"));
+const personnalise=conseilOffre({objectif:"date",blocage:"documents",age:"e"});
+ok(personnalise.titre.includes("date passée"));ok(personnalise.raison.includes("inventaires")&&personnalise.raison.includes("70 ans"));
+ok(conseilOffre({objectif:"assurance-vie",av:"O",blocage:"securite"}).raison.includes("démunir"));
 const {SEQUENCE}=mod("src/lib/sequence.ts"); eq(SEQUENCE.map(x=>x.jour).join(","),"1,2,3,4,5,6,7");
 ok(SEQUENCE[4].levier.includes("Ennemi"));ok(SEQUENCE[6].corps("Test").join(" ").includes("Une réduction commerciale ne change pas vos droits fiscaux"));
 const {offreLtv,etapeLtvDue}=mod("src/lib/sequence-ltv.ts");
