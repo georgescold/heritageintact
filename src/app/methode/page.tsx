@@ -111,7 +111,7 @@ export default async function VslPage() {
         </section>
         <section className="wrap py-10">
           <h2 className="mb-3 text-[1.4rem]">
-            Ce que vous êtes en train de vous dire — et la réponse
+            Vos questions - nos réponses
           </h2>
           <FAQ
             items={[
@@ -121,7 +121,7 @@ export default async function VslPage() {
               },
               {
                 q: "« Il faut de toute façon aller chez le notaire, alors autant y aller directement. »",
-                a: "Allez-y. Le notaire examine votre cas et vous conseille. Mais il y a une différence entre arriver avec « je suis inquiet » et arriver avec vos priorités, les documents retrouvés et les questions qui vous concernent. La Méthode prépare cet échange. Réservez le rendez-vous ; vous pouvez commencer à vous préparer en attendant.",
+                a: "Allez-y : le notaire reste indispensable pour valider votre situation et rédiger les actes. Mais pour obtenir une étude personnalisée couvrant ces mêmes points, vous paierez très probablement bien plus que les 27 € du guide : les consultations et études détachables d’un acte sont facturées librement selon le cabinet. Ici, vous comprenez les 7 erreurs en quelques minutes, retrouvez vos priorités et arrivez avec les bonnes questions. Vous utilisez alors le temps du notaire pour votre situation, pas pour découvrir les bases.",
               },
               {
                 q: "« Je ne veux pas me déposséder de mon vivant. Et si j’en ai besoin pour l’EHPAD ? »",
