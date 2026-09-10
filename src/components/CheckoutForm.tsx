@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
@@ -137,10 +137,7 @@ function Inner({
     if (elements) elements.update({ amount: Math.round(total * 100) });
   }, [elements, total]);
 
-  const label = useMemo(
-    () => (pending ? "Validation en cours..." : `Valider ma commande : ${euros(total)}`),
-    [pending, total],
-  );
+  const label = pending ? "Validation en cours..." : "Valider ma commande";
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -306,9 +303,9 @@ function Inner({
                 Ajouter {PRODUCTS.bump.name}
               </span>
               <span className="mt-1 block text-[0.95rem]">
-                Au rendez-vous, ne laissez pas votre inquiétude parler à votre place. Le message,
-                l’inventaire et le compte rendu sont déjà préparés : suivez l’exemple et complétez votre dossier.
-                Le guide Les 7 erreurs reste complet et utilisable sans cette option.
+                Une donation oubliée, une date imprécise ou une pièce manquante peut laisser votre
+                rendez-vous sans réponse et vous obliger à recommencer. Le Dossier Notaire réunit
+                l’inventaire, les documents et les questions à apporter.
               </span>
             </span>
           </span>
