@@ -16,9 +16,5 @@ export function ChiffresHistoriques() {
       <p className="mt-2 text-[1rem]">{s.texte}</p>
       <p className="mt-3 border-t border-grey-line-soft pt-2 text-[0.85rem] text-text-soft"><a href={s.lien}>{s.source}</a></p>
     </li>)}</ul>
-    <div className="mt-5 border-l-4 border-blue bg-white p-4">
-      <p className="mb-2 text-[1.08rem] font-bold text-blue">« Beaucoup d’héritages ne sont pas taxés. Alors pourquoi regarder ? »</p>
-      <p>Parce qu’une statistique nationale ne répond pas pour votre famille. La valeur transmise, le nombre d’héritiers, le lien familial et les donations passées changent le calcul. Une maison payée ne suffit pas à dire que vous serez imposé — ni que tout est déjà préparé.</p>
-    </div>
   </Section>;
 }
