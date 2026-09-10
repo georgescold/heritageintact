@@ -12,10 +12,22 @@ export async function enregistrerReponses(orderId: string, _email: string, repon
     await enregistrerProfil({...propres, orderId, email:order.email, piste:piste(propres,{bumpPresent:order.items.some(i=>i.sku==="bump")})});
     const enregistre = await profilDeCommande(orderId);
     if (!profilComplet(enregistre) || Object.entries(propres).some(([k,v]) => enregistre?.[k as keyof Reponses] !== v)) throw Error("Profil non conservé");
-    await commencerPromotion(order.email, "suite");
     const prochain = sequence(propres,{bumpPresent:order.items.some(i=>i.sku==="bump")})[0];
     return {ok:true,destination:prochain?urlEcran(prochain,order.id,0):`/bienvenue?o=${encodeURIComponent(order.id)}`};
   } catch {
     return {ok:false,error:"Vos réponses n’ont pas pu être enregistrées. Elles restent affichées : réessayez. Votre achat reste acquis."};
+  }
+}
+
+/** L'horloge commerciale du plan démarre lorsque l'aperçu détaillé est prêt, jamais pendant le questionnaire. */
+export async function demarrerOffrePlan(orderId: string): Promise<{ok:true}|{ok:false;error:string}> {
+  const order = await getOrder(orderId);
+  if (!order || order.status !== "paid") return {ok:false,error:"Commande réglée introuvable."};
+  if (!profilComplet(await profilDeCommande(orderId))) return {ok:false,error:"Terminez d’abord la qualification."};
+  try {
+    await commencerPromotion(order.email,"suite");
+    return {ok:true};
+  } catch {
+    return {ok:false,error:"Votre aperçu est prêt, mais le prix n’a pas pu être sécurisé. Réessayez."};
   }
 }

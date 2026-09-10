@@ -372,7 +372,6 @@ export async function chargeUpsell(
 
   if (!stripe || montant === 0) {
     await addItem(orderId, sku, undefined, montant);
-    await offrirDossierNotaire(orderId, sku, possede);
     await recuUpsell(order.email, sku, montant, order.id);
     return { ok: true };
   }
@@ -414,7 +413,6 @@ export async function chargeUpsell(
     }
 
     await addItem(orderId, sku, intent.id, montant);
-    await offrirDossierNotaire(orderId, sku, possede);
     await recuUpsell(order.email, sku, montant, order.id);
     return { ok: true };
   } catch (e) {
@@ -437,51 +435,6 @@ export async function chargeUpsell(
       ok: false,
       error: "Le paiement a été refusé. Votre commande précédente reste bien enregistrée.",
     };
-  }
-}
-
-/**
- * LE DOSSIER NOTAIRE, REMIS SANS SUPPLÉMENT APRÈS UN GRAND PANIER.
- *
- * Ce n'est ni un pack, ni une remise : c'est une ligne offerte, écrite à 0 €,
- * ajoutée à qui vient d'acheter Le Plan, l'Assurance-vie ou Le Dossier complet
- * SANS posséder le bump — donc à la minorité qui a décoché la case pré-cochée
- * du bon de commande.
- *
- * ═══ POURQUOI ON L'OFFRE ═══
- *
- * L'étape 7 du guide s'appelle « Aller chez le notaire les mains vides ».
- * Un plan qu'on ne porte pas chez le notaire reste dans un tiroir, et un
- * rendez-vous raté sous une garantie de 30 jours coûte un remboursement de
- * 297 €. Offrir 17 € coûte moins cher. Et cela évite trois SKU de pack
- * supplémentaires à déclarer, à protéger et à tenir cohérents avec
- * `INCLUS_DANS` — de la surface de bug achetée d'avance.
- *
- * ═══ JAMAIS À QUI LE POSSÈDE DÉJÀ ═══
- *
- * Ce serait une remise sur ce qu'il vient de payer trois minutes plus tôt,
- * donc une raison de demander un remboursement. D'où le test sur `possede`,
- * lu AVANT le débit — `addItem` dédoublonne aussi par SKU, mais on ne se
- * repose pas sur un filet quand la règle se dit en une ligne.
- *
- * Le prix 0 est explicite : `addItem` fait `?? PRODUCTS[sku].price`, jamais
- * `||`, précisément pour qu'un zéro reste un zéro. `orderTotal` n'augmente pas,
- * donc l'événement Purchase de Meta reste juste.
- */
-async function offrirDossierNotaire(
-  orderId: string,
-  sku: ProductSku,
-  possede: Set<ProductSku>,
-): Promise<void> {
-  if (sku !== "upsell1" && sku !== "pack1") return;
-  if (possede.has("bump")) return;
-
-  try {
-    await addItem(orderId, "bump", undefined, 0);
-  } catch (e) {
-    // Une ligne offerte ne doit jamais transformer une vente réussie en écran
-    // d'échec : le client a payé, il a son produit.
-    console.error("[upsell] dossier notaire offert non ajouté", orderId, sku, e);
   }
 }
 

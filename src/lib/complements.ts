@@ -25,8 +25,8 @@ export function bilanSupports(sku: ProductSku, possede: Set<ProductSku>) {
 export function motifEtape(sku: ProductSku, etape?: string): string | null {
   if (etape === "e3" && sku === "upsell2")
     return "Vous avez terminé l’étape sur l’assurance-vie. Si vous souhaitez passer des repères généraux au suivi de chaque contrat, ce module vous donne la grille et les demandes à préparer.";
-  if (etape === "e4" && (sku === "upsell1" || sku === "pack1"))
-    return "Vous avez terminé l’étape sur le démembrement. Le pack permet d’explorer les hypothèses couvertes dans l’atelier et de conserver les questions à faire valider.";
+  if (etape === "e4" && sku === "upsell1")
+    return "Vous avez terminé l’étape sur le démembrement. Le simulateur + plan adapté permet d’explorer les hypothèses couvertes et de conserver les questions à faire valider.";
   if (etape === "e7" && sku === "bump")
     return "Vous avez terminé l’étape de préparation du rendez-vous. Le Dossier ajoute les trames pour rassembler les pièces et conserver les réponses, avec un exemple rempli.";
   return null;

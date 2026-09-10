@@ -57,6 +57,8 @@ export type Saisie = {
   biens: Bien[];
   contrats: Contrat[];
   donations: Donation[];
+  /** Dettes justifiées saisies séparément des biens. */
+  dettes?: number;
 };
 
 export const SAISIE_VIDE: Saisie = {
@@ -64,6 +66,7 @@ export const SAISIE_VIDE: Saisie = {
   biens: [],
   contrats: [],
   donations: [],
+  dettes: 0,
 };
 
 /** Le détail par héritier, tel qu'il s'affiche : chaque ligne se vérifie. */

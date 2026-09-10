@@ -5,10 +5,7 @@ import { SortieOffre } from "./SortieOffre";
 import { ObjectionsComplement } from "./ObjectionsComplement";
 import { ApercuProduit } from "./ApercuProduit";
 import { ValeurComplement } from "./ValeurComplement";
-import { BilanComplement } from "./BilanComplement";
 import { DemonstrationPack } from "./DemonstrationPack";
-import { possessions } from "@/lib/espace";
-import { alternativeAv } from "@/lib/complements";
 import { MesurerAchat } from "./MetaPixel";
 import { CHANGEMENTS, conseilOffre } from "@/lib/positionnement";
 import { profilDeCommande } from "@/lib/db";
@@ -22,6 +19,8 @@ import { devisPour } from "@/lib/devis";
 import { PRODUCTS, PRESENTATION, euros, type ProductSku } from "@/lib/config";
 import { etapeTunnel } from "@/lib/tunnel";
 import type { Ecran } from "@/lib/qualification";
+import { SimulationPlan } from "./simulateur/SimulationPlan";
+import { demarrerOffrePlan } from "@/app/profil";
 export async function OffrePreparation({
   id,
   sku,
@@ -40,67 +39,49 @@ export async function OffrePreparation({
   const etape = await etapeTunnel(ecran, order.id, {
     bumpPresent: order.items.some((i) => i.sku === "bump"),
   });
-  const possede = await possessions(order.email);
-  const alternativeAutorisee =
-    alternative &&
-    sku === "upsell2" &&
-    alternativeAv(profil, "pack1", possede);
-  if (!etape.afficher && !alternativeAutorisee) redirect(etape.versOu);
-  const contexte = conseilOffre(
-    alternativeAutorisee ? { ...profil, objectif: "assurance-vie" } : profil,
-  );
+  void alternative;
+  if (!etape.afficher) redirect(etape.versOu);
+  const contexte = conseilOffre(profil);
   const d = await devisPour(order.email, sku);
-  const fin = `/bienvenue?o=${encodeURIComponent(order.id)}`;
+  const fin = etape.suivant;
   if (d.dejaPossede) redirect(fin);
   const produit = PRODUCTS[sku],
     texte = PRESENTATION[sku];
-  const autreDevis =
-    !alternative && alternativeAv(profil, sku, possede)
-      ? await devisPour(order.email, "upsell2")
-      : null;
-  const action = acceptUpsell.bind(null, order.id, sku, fin);
+  const apresAchat = sku === "upsell1" ? `/resultat-plan?o=${encodeURIComponent(order.id)}` : fin;
+  const action = acceptUpsell.bind(null, order.id, sku, apresAchat);
+  const demarrer = demarrerOffrePlan.bind(null, order.id);
+  const decision = <section id="decision-complement" className="my-6 border-2 border-blue bg-grey-bg p-5">
+    <p className="text-sm font-bold uppercase text-orange-dark">{sku === "upsell1" ? "Votre simulation est prête à être déverrouillée" : "Dernière étape de votre parcours"}</p>
+    <h2 className="mb-3 mt-2 text-[1.45rem]">{produit.name}</h2>
+    <p className="mb-4">{sku === "upsell2" ? "Une clause oubliée ou une date de versement mal comprise peut décider à la place de vos intentions. Retrouvez les informations du contrat, préparez votre demande et gardez une trace claire des réponses." : "Vos réponses ont déjà fait apparaître les premiers points sensibles. Déverrouillez maintenant le résultat chiffré, les hypothèses et l’ordre de préparation adapté à votre situation."}</p>
+    {sku === "upsell1" && (d.montant < d.total ? <p className="mb-2"><span className="line-through">Prix habituel : {euros(d.total)}</span> · <strong className="text-red">Votre prix actuel : {euros(d.montant)}</strong></p> : <p className="mb-2 font-bold">Paiement unique : {euros(d.montant)}</p>)}
+    {sku === "upsell2" && <p className="mb-2 font-bold">Paiement unique : {euros(d.montant)}</p>}
+    <AvantageDemarrage promotion={d.promotion} base={d.total}/>
+    <form action={action} className="mt-6">
+      <input type="hidden" name="montantAffiche" value={d.montant} />
+      <Button>{sku === "upsell1" ? `Déverrouiller mon simulateur et mon plan · ${euros(d.montant)}` : `Vérifier mon assurance-vie · ${euros(d.montant)}`}</Button>
+      <p className="mt-3 text-sm text-text-soft">Paiement unique sur votre carte enregistrée, uniquement si vous confirmez. Garantie commerciale de 30 jours selon les CGV. Aucun abonnement.</p>
+    </form>
+    <p className="mt-4 text-sm"><Link href={fin}>Non merci, continuer sans ce produit</Link></p>
+  </section>;
   return (
     <>
       <MesureFunnel evenement="vue_offre" />
       <MesurerAchat id={order.id} />
       <Header minimal />
       <main className="wrap flex-1 py-10">
-        <p className="mb-5 border-l-4 border-green bg-green-bg p-4">Votre achat est confirmé. Vos réponses viennent de déterminer la suite la plus utile à votre situation.</p>
+        <p className="mb-5 border-l-4 border-green bg-green-bg p-4">Votre guide est bien acquis. Voici maintenant la prochaine décision, clairement séparée de votre premier achat.</p>
         <p className="font-bold text-orange-dark">
           Ce que vous devez absolument avoir également
         </p>
-        <h1 className="my-4 text-[2rem] leading-tight">{contexte.titre}</h1>
+        <h1 className="my-4 text-[2rem] leading-tight">{sku === "upsell1" ? "Simulez votre situation avant de laisser vos enfants découvrir les conséquences trop tard." : contexte.titre}</h1>
         <p className="mb-3 text-[1.1rem] font-bold text-blue">{produit.name}</p>
         <p className="mb-6 border-l-4 border-orange bg-grey-bg p-4">{contexte.raison}</p>
         <p className="text-[1.2rem]">{texte?.promesse}</p>
-        <section id="decision-complement" className="my-6 border-2 border-blue bg-grey-bg p-5">
-          <h2 className="mb-3 text-[1.3rem]">{sku === "upsell2" ? "Vérifiez qui votre contrat protégera avant qu’une clause oubliée ne décide à votre place." : "Transformez les erreurs repérées en préparation concrète avant que tout ne retourne dans le tiroir."}</h2>
-          <p className="mb-4">{sku === "upsell2" ? "Le guide vous montre l’erreur. Ce complément vous aide à retrouver la clause, demander sa version actuelle et conserver la réponse de l’assureur. Sans cette vérification, vous pouvez connaître le risque tout en laissant le contrat inchangé décider pour vous." : "Le guide vous montre ce qu’il faut éviter. Cette préparation ajoute les trames, les fiches de votre famille et l’atelier pour savoir quoi réunir et quoi demander. Sans elle, vous risquez de refermer le guide avec les mêmes documents dispersés et le même rendez-vous encore à préparer."}</p>
-          <p>Total de l’offre : {euros(d.total)} · Achats inclus déduits : {euros(d.credit)}.</p>
-          {d.remise>0 && <p className="mt-2 font-bold text-orange-dark">Avantage de démarrage : −{euros(d.remise)} sur le complément restant.</p>}
-          <AvantageDemarrage promotion={d.promotion} base={d.avantRemise}/>
-          <p className="mt-2 text-[1.25rem] font-bold">À payer maintenant si vous confirmez : {euros(d.montant)}.</p>
-        <form action={action} className="mt-6">
-          <input type="hidden" name="montantAffiche" value={d.montant} />
-          <Button>
-            {d.montant === 0
-              ? "Activer ce complément sans paiement"
-              : `Oui, préparer la suite maintenant · ${euros(d.montant)}`}
-          </Button>
-          <p className="mt-3 text-sm text-text-soft">
-            {d.montant === 0
-              ? "Aucun débit."
-              : "Paiement unique sur votre carte enregistrée, uniquement si vous confirmez."}{" "}
-            Garantie commerciale de 30 jours selon les CGV. Aucun abonnement. En validant, vous
-            demandez l’accès immédiat au contenu numérique et reconnaissez renoncer au droit de
-            rétractation applicable à cette exécution immédiate.
-          </p>
-        </form>
-          <p className="mt-4 text-sm"><Link href={fin}>Non merci, conserver mon achat actuel</Link></p>
-        </section>
-        <ValeurComplement av={sku === "upsell2"} complet={sku === "pack1"} />
+        {sku === "upsell1" ? <SimulationPlan verrouille demarrerOffre={demarrer}>{decision}</SimulationPlan> : decision}
+        <ValeurComplement av={sku === "upsell2"} />
         <ObjectionsComplement av={sku==="upsell2"} />
-        <ApercuProduit pack={sku !== "upsell2"} av={sku === "upsell2"} />
+        <ApercuProduit plan={sku !== "upsell2"} av={sku === "upsell2"} />
         {sku !== "upsell2" && <DemonstrationPack />}
         <h2 className="mb-4 text-[1.5rem]">Ce que vous pourrez préparer, concrètement</h2>
         <div className="mb-8 grid gap-4 sm:grid-cols-2">
@@ -123,13 +104,6 @@ export async function OffrePreparation({
             </article>
           ))}
         </div>
-        {sku === "pack1" && (
-          <p className="mb-6 border-l-4 border-blue bg-grey-bg p-4">
-            <strong>Votre assurance-vie est également prise en compte.</strong> Le module vous aide
-            à retrouver les contrats, préparer la demande à l’assureur et classer ses réponses. Pas
-            une recommandation d’ouvrir un contrat.
-          </p>
-        )}
         <h2 className="mb-3 mt-8 text-[1.4rem]">Tout ce qui est compris</h2>
         <ul className="list-disc space-y-3 pl-6">
           {texte?.contenu.map((c) => (
@@ -140,10 +114,7 @@ export async function OffrePreparation({
           Les explications sont écrites, avec des modèles à utiliser à votre rythme. Les supports
           orientent votre préparation ; ils ne remplacent pas une consultation individuelle.
         </p>
-        <p className="mb-4 font-bold">
-          Vous complétez votre préparation. Vous ne repayez pas les contenus inclus déjà achetés.
-        </p>
-        <BilanComplement sku={sku} possede={possede} montant={d} />
+        <p className="mb-4 font-bold">Ce produit est distinct de votre guide et du Dossier notaire : un prix unique, sans calcul de crédit à comprendre.</p>
         <div className="mt-6 border border-green bg-green-bg p-4">
           <h2 className="mb-2 text-[1.15rem]">Votre premier achat reste acquis</h2>
           <p>
@@ -156,27 +127,12 @@ export async function OffrePreparation({
           <summary className="cursor-pointer font-bold">Et si je préfère attendre ?</summary>
           <p className="mt-3">
             Commencez avec votre achat actuel. Vous pourrez retrouver les compléments dans votre
-            espace après la première étape, avec vos achats inclus déduits.
+            espace après la première étape, à son tarif affiché au moment de votre décision.
           </p>
         </details>
         <p className="mt-6">
           <Link href={fin}>Commencer avec mon achat actuel</Link>
         </p>
-        {autreDevis && (
-          <details className="mt-6 border-t border-grey-line py-4">
-            <summary className="cursor-pointer font-bold">
-              Le pack est trop large pour mon besoin actuel
-            </summary>
-            <p className="my-3">
-              Vous avez indiqué avoir une assurance-vie. Si c’est votre seul sujet maintenant, vous
-              pouvez examiner le module pour {euros(autreDevis.montant)} supplémentaires, sans
-              ajouter le pack de préparation familiale. Votre guide reste accessible.
-            </p>
-            <Link href={`/kit-assurance-vie?o=${encodeURIComponent(order.id)}&alternative=1`}>
-              Voir uniquement le module assurance-vie, sans acheter
-            </Link>
-          </details>
-        )}
       </main>
       <Footer />
       <SortieOffre produit={sku} href="#decision-complement" montant={d.montant} promotion={d.promotion}/>

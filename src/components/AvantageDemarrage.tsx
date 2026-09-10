@@ -63,6 +63,22 @@ export function AvantageDemarrage({
       </aside>
     );
   }
+  if (typeof promotion.montantFixe === "number" && Number.isFinite(promotion.montantFixe)) {
+    const derniereChance = promotion.montantFixe === 197;
+    return (
+      <aside className="my-6 border-4 border-red bg-red px-4 py-5 text-center text-white shadow-[0_8px_0_rgba(120,0,0,0.25)] sm:px-7" aria-label="Offre limitée sur le simulateur et le plan adapté">
+        <p className="text-[1.35rem] font-extrabold uppercase sm:text-[1.65rem]">
+          {derniereChance ? "Dernière chance : -34%" : "Offre immédiate : plus de -50%"}
+        </p>
+        <p className="mt-2 text-[1.1rem]"><span className="line-through">{euros(base)}</span> <strong>→ {euros(promotion.montantFixe)}</strong></p>
+        <p className="mt-2 font-bold">Ce prix disparaît dans :</p>
+        <p className="mx-auto mt-3 w-fit min-w-40 border-2 border-white bg-[#760d13] px-5 py-2 text-[2.6rem] font-extrabold leading-none tabular-nums tracking-wider" aria-label="Temps restant">
+          {reste > 0 ? [Math.floor(secondes / 60), secondes % 60].map(n=>String(n).padStart(2,"0")).join(":") : "Actualisation…"}
+        </p>
+        <p className="mt-3 text-sm font-bold">{derniereChance ? `Ensuite : retour au prix de ${euros(base)}.` : `Ensuite : dernière chance à ${euros(promotion.suivantFixe ?? 197)} pendant 5 minutes.`}</p>
+      </aside>
+    );
+  }
   const apres = Math.round((base * 100 * (100 - promotion.suivant)) / 100) / 100;
   return (
     <aside

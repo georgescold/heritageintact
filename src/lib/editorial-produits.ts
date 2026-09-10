@@ -13,7 +13,7 @@ export const EDITORIAL_PRODUITS = {
   essentiel: "Lisez les sept erreurs, puis gardez les fiches dont vous avez besoin. Pas de questionnaire de connaissances ni de devoir à rendre : une seule priorité suffit pour commencer.",
   limite: "Comprendre les règles ne suffit pas à établir les droits de votre famille. Ce guide prépare vos premières questions ; les pièces, les choix et leurs conséquences restent à examiner avec le professionnel.",
   acquis: "Vous savez désormais quoi regarder et quoi demander. Votre inquiétude a un point de départ concret.",
-  suite: "Mais repérer les erreurs n’organise pas encore les réponses propres à votre famille. Le pack Préparation relie les pièces, les situations familiales et le suivi du rendez-vous. Ne laissez pas votre première avancée retourner dans le tiroir."
+  suite: "Mais repérer les erreurs ne calcule pas encore votre cas. Le simulateur et le plan adapté relient vos réponses, les hypothèses et l’ordre des vérifications. Ne laissez pas votre première avancée retourner dans le tiroir."
  },
  bump: {
   ouverture: "Le rendez-vous approche. Votre inquiétude mérite mieux qu’une pile de papiers.",
@@ -25,7 +25,7 @@ export const EDITORIAL_PRODUITS = {
   essentiel: "Commencez par l’exemple de Claire et Marc, une famille fictive. Reprenez leur façon de classer, pas leur situation. Remplissez uniquement les rubriques utiles à votre prochain échange.",
   limite: "Ranger vos pièces ne suffit pas à choisir ce qui convient à votre famille. Le Dossier organise l’échange ; il ne tranche ni les droits ni les options.",
   acquis: "Vos pièces, votre demande et votre compte rendu ont maintenant une place. Vous n’avez plus à repartir d’une page blanche.",
-  suite: "Ce qui reste à relier, ce sont les particularités de votre famille : conjoint, enfants d’une autre union, donations passées. Le pack Préparation ajoute ce fil. Regardez la suite maintenant, pendant que vos questions sont encore claires."
+  suite: "Ce qui reste à relier, ce sont les particularités de votre famille : conjoint, enfants d’une autre union, donations passées. Le simulateur et le plan adapté ajoutent ce fil. Regardez la suite maintenant, pendant que vos questions sont encore claires."
  },
  upsell1: {
   ouverture: "Votre famille ne tient pas dans un exemple trouvé sur Internet.",
@@ -66,7 +66,7 @@ export const OUVERTURES_CHAPITRES: Record<string,string> = {
 
 export type SuiteProduit = { sku: "upsell1"|"upsell2"|"pack1"; titre:string; besoin:string; cta:string };
 const AV: SuiteProduit = {sku:"upsell2",titre:"Vous avez retrouvé la question. Ne la laissez pas sans réponse.",besoin:"Le guide assurance-vie ajoute la grille de lecture, les repères et le courrier à adapter. Passez du contrat rangé à une demande précise, puis à une réponse conservée.",cta:"Préparer maintenant ma demande à l’assureur"};
-const FAMILLE: SuiteProduit = {sku:"upsell1",titre:"Comprendre ne suffit pas à relier toute l’histoire de votre famille.",besoin:"Le pack Préparation ajoute les fiches familiales, le Dossier, l’atelier et le suivi. Vos questions prennent place dans une préparation que vous pouvez apporter au rendez-vous.",cta:"Relier maintenant ma préparation familiale"};
+const FAMILLE: SuiteProduit = {sku:"upsell1",titre:"Comprendre ne suffit pas à simuler votre situation.",besoin:"Le simulateur utilise vos réponses et le plan adapté ordonne les hypothèses, les dates et les vérifications à préparer.",cta:"Simuler pour ma situation"};
 /** L'appelant fournit les droits dépliés par chargerEspace. Aucun produit déjà possédé, aucun achat de fin de parcours. */
 export function suiteProduit(moment:string, possede:ReadonlySet<ProductSku>, profil?:Reponses|null):SuiteProduit|null {
  const famille=possede.has("upsell1"), assurance=possede.has("upsell2");
@@ -74,9 +74,9 @@ export function suiteProduit(moment:string, possede:ReadonlySet<ProductSku>, pro
  if(moment==="e3" || moment==="grille-audit-assurance-vie")return profil?.av==="O"&&!assurance?AV:null;
  if(moment==="upsell1" || moment==="tableau-bord-familial")return profil?.av==="O"&&!assurance?AV:null;
  if(!["front","bump","upsell2","e0","e4","e7","plan-en-1-page","compte-rendu","lettre-modification-clause"].includes(moment))return null;
- if(moment==="front"&&profil?.objectif==="assurance-vie"&&profil.av==="O"&&!assurance)return AV;
+ if(moment==="front"&&!famille)return FAMILLE;
  if(!famille) {
-  if(profil?.av==="O"&&!assurance)return {...FAMILLE,sku:"pack1",besoin:FAMILLE.besoin+" Les vérifications assurance-vie sont réunies dans le même pack."};
+  if(profil?.av==="O"&&!assurance)return FAMILLE;
   return FAMILLE;
  }
  return profil?.av==="O"&&!assurance?AV:null;

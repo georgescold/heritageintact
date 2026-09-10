@@ -9,7 +9,7 @@ export function conseilOffre(p: Reponses | null | undefined) {
     : p?.blocage === "documents" ? "Vous ne savez pas quoi réunir : les inventaires, listes de pièces et trames de rendez-vous vous évitent de partir d’une page blanche."
     : p?.blocage === "complexite" ? "Les démarches vous paraissent compliquées : chaque support transforme les termes techniques en une question concrète à faire vérifier."
     : p?.blocage === "delegation" ? "Vous pensiez que le sujet serait traité automatiquement : ce parcours vous aide à remettre les bonnes questions sur la table."
-    : p?.blocage === "ordre" ? "Vous ne savez pas par quoi commencer : le pack donne un ordre précis à vos pièces, vos questions et votre prochain échange."
+    : p?.blocage === "ordre" ? "Vous ne savez pas par quoi commencer : le plan adapté donne un ordre précis à vos hypothèses, vos questions et votre prochain échange."
     : "Vous êtes prêt à agir : profitez de cet élan pour organiser maintenant les informations que vos proches ne devront pas chercher seuls.";
   const repereAge = p?.age === "d" || p?.age === "e"
     ? "Votre tranche d’âge rend notamment les repères autour de 70 ans utiles à faire vérifier sans repousser."

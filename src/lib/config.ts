@@ -63,9 +63,9 @@ const produit = (sku: ProductSku, name: string, price: number, disponible = true
 export const PRODUCTS: Record<ProductSku, Product> = {
   front: { ...produit("front", "Les 7 erreurs qui offrent votre héritage à l’État", 52), short: "Les 7 erreurs" },
   bump: produit("bump", "Mon dossier notaire", 17),
-  upsell1: produit("upsell1", "Préparer ma transmission", 197),
+  upsell1: produit("upsell1", "Mon simulateur + mon plan adapté", 297),
   upsell2: produit("upsell2", "Faire le point sur mon assurance-vie", 67),
-  pack1: produit("pack1", "Préparer ma transmission + assurance-vie", 247),
+  pack1: produit("pack1", "Ancienne offre Préparation + assurance-vie", 247, false),
   pack2: produit("pack2", "Préparer ma transmission — ancien pack", 197, false),
   pack3: produit("pack3", "Préparation + assurance-vie — ancien pack", 247, false),
   pack4: produit("pack4", "Assurance-vie + dossier — ancien pack", 84, false),
@@ -75,8 +75,8 @@ export const PRODUCTS: Record<ProductSku, Product> = {
   backend4: produit("backend4", "Préparer ses questions sur le testament", 47, false),
 };
 export const INCLUS_DANS: Partial<Record<ProductSku, ProductSku[]>> = {
-  upsell1: ["front", "bump", "backend1"],
-  pack1: ["upsell1", "upsell2"],
+  upsell1: ["backend1"],
+  pack1: ["front", "bump", "upsell1", "upsell2"],
   pack2: ["upsell1", "bump"],
   pack3: ["upsell1", "upsell2", "bump"],
   pack4: ["upsell2", "bump"],
@@ -108,13 +108,13 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
   },
   upsell1: {
     promesse:
-      "Préparez un dossier clair pour votre rendez-vous et repérez les points propres à votre famille.",
+      "Simulez votre situation, repérez les hypothèses qui changent le résultat et obtenez un plan adapté à vos réponses.",
     contenu: [
-      "Les 7 erreurs qui offrent votre héritage à l’État inclus",
-      "Mon dossier notaire inclus",
-      "Parcours familial et fiches de situations particulières",
-      "Atelier de simulation pédagogique, avec hypothèses explicites",
-      "Tableau familial et suivi de vos prochaines démarches",
+      "Simulateur détaillé avec hypothèses affichées",
+      "Plan adapté aux réponses saisies",
+      "Repères par héritier et dates à surveiller",
+      "Fiches correspondant aux situations familiales pertinentes",
+      "Liste des points à faire confirmer par le professionnel",
     ],
   },
   upsell2: {
@@ -139,7 +139,7 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
   },
 };
 export const REMISE_LIGNE_DUPLIQUEE = 0; // Compatibilité des anciennes pages, aucun ancrage fictif.
-export const SKU_TUNNEL_UNIQUEMENT: ProductSku[] = ["pack2", "pack3", "pack4"];
+export const SKU_TUNNEL_UNIQUEMENT: ProductSku[] = ["pack1", "pack2", "pack3", "pack4"];
 export const urlEspace = (jeton: string) => `${SITE_URL}/espace/${jeton}`;
 export const VARIANTES = { "/": "Présentation", "/lp-questions": "Orientation" };
 export const CTA = {

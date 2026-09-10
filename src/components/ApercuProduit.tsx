@@ -1,12 +1,12 @@
-export function ApercuProduit({ pack = false, av = false }: { pack?: boolean; av?: boolean }) {
+export function ApercuProduit({ plan = false, av = false }: { plan?: boolean; av?: boolean }) {
   return <figure className="my-7 overflow-hidden border border-grey-line bg-[#f5f2eb]">
     <div className="flex flex-wrap items-center justify-between gap-2 bg-blue px-5 py-3 text-sm text-white">
-      <span className="font-bold tracking-wide">HÉRITAGE INTACT</span><span>{av ? "Module assurance-vie" : pack ? "Pack Préparation" : "Votre première fiche"}</span>
+      <span className="font-bold tracking-wide">HÉRITAGE INTACT</span><span>{av ? "Guide assurance-vie" : plan ? "Simulateur + plan adapté" : "Votre première fiche"}</span>
     </div>
     <div className="grid gap-5 p-5 sm:grid-cols-[1fr_1.15fr] sm:p-7">
       <div>
         <p className="mb-3 text-sm font-bold text-orange-dark">DU CONCRET, SOUS VOS YEUX</p>
-        <h3 className="mb-4 text-[1.4rem]">{av ? "Vos informations connues. Vos points à vérifier." : pack ? "Un rendez-vous préparé commence ici." : "Une inquiétude devient une question claire."}</h3>
+        <h3 className="mb-4 text-[1.4rem]">{av ? "Vos informations connues. Vos points à vérifier." : plan ? "Votre situation devient un ordre de préparation." : "Une inquiétude devient une question claire."}</h3>
         <p className="text-[1rem]">{av ? "Repérez les documents manquants et préparez votre demande à l’assureur, sans modifier un contrat à l’aveugle." : "Vous n’avez pas besoin de tout savoir. Vous avez besoin de distinguer ce que vous savez de ce qu’il faut faire confirmer."}</p>
         <p className="mt-4 text-sm">Supports numériques à lire et à imprimer chez vous. Aucun classeur physique expédié.</p>
       </div>

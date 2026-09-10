@@ -28,19 +28,7 @@ export default function CGV() {
             </li>
           ))}
       </ul>
-      <p>
-        Les packs sont affichés en prix total. Le pack Préparation inclut le guide, le dossier et
-        l’atelier de simulation pédagogique. Le pack avec assurance-vie inclut également le module
-        assurance-vie. Le dossier à 17 € est une option non précochée. L’atelier n’est pas vendu
-        séparément.
-      </p>
-      <p>
-        Lors d’un complément, les sommes effectivement payées pour les contenus inclus, non
-        remboursés, sont déduites du prix total. Le complément est affiché avant validation. Le
-        prix catalogue total Préparation et assurance-vie est de 247 €, avant éventuelles réductions de démarrage. Le
-        crédit ne produit pas de somme négative ni de remboursement automatique des achats
-        antérieurs. Les droits acquis antérieurement sont conservés.
-      </p>
+      <p>Chaque produit est vendu séparément. Le Dossier notaire à 17 € est une option non précochée. « Mon simulateur + mon plan adapté » inclut l’outil de simulation, le résultat pédagogique, les hypothèses et les supports de préparation correspondants. Le guide assurance-vie est un achat distinct.</p>
       <p>
         Paiements uniques, sans abonnement. Des réductions personnelles à paliers peuvent s’appliquer selon les <a href="/conditions-offres">conditions des avantages de démarrage</a>. Le prix et sa date de fin sont affichés ; un changement avant paiement nécessite une nouvelle confirmation. Les prix
         sont en euros, toutes taxes comprises. {LEGAL.vatNotice}
@@ -80,7 +68,7 @@ export default function CGV() {
         Indépendamment de ce qui précède, {BRAND} accorde une garantie contractuelle de 30 jours
         calendaires à compter de l&apos;achat : sur simple demande par email à {CONTACT_EMAIL}, sans
         justification, le client est intégralement remboursé sous 7 jours. Le client conserve
-        l&apos;accès à la fiche de calcul pédagogique. L’atelier interactif des packs est distinct.
+        l&apos;accès à la fiche de calcul pédagogique. Le simulateur interactif et son plan adapté sont distincts.
         Cette précision ne réduit pas les droits expressément accordés lors d’un achat antérieur.
       </p>
 

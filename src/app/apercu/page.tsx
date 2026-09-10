@@ -27,7 +27,7 @@ export default function Page() {
       <li><strong>Ne pas perdre les réponses :</strong> une trame de compte rendu et de suivi après l’échange.</li>
     </ul>
     <p className="mb-5">Supports numériques dans votre espace personnel après achat, à lire et à imprimer. Aucun dossier physique expédié. Pas de conseil juridique personnalisé.</p>
-    <p className="mb-5 font-bold">Le guide reste complet sans ce Dossier. Vous choisissez l’option à 17 € sur le bon de commande ; elle n’est pas précochée. Le Dossier est aussi inclus dans les packs.</p>
+    <p className="mb-5 font-bold">Le guide reste complet sans ce Dossier. Vous choisissez cette option à 17 € sur le bon de commande ; elle n’est pas précochée.</p>
     <ButtonLink href="/commande">Revenir au bon de commande et choisir</ButtonLink>
     <p className="mt-3 text-center text-sm text-text-soft">Si cette page s’est ouverte dans un autre onglet, fermez-la pour retrouver votre commande inchangée.</p>
   </main><Footer /></>;

@@ -26,7 +26,7 @@ export function DemonstrationPack() {
           </p>
         </li>
         <li className="border-2 border-blue bg-white p-4">
-          <h3 className="mb-3 font-bold">3. Le pack ajoute</h3>
+          <h3 className="mb-3 font-bold">3. Le simulateur + plan ajoute</h3>
           <p>
             Vous consultez la fiche familiale utile, comparez deux scénarios couverts par l’atelier
             et inscrivez les hypothèses et points à vérifier dans votre suivi.
@@ -41,8 +41,8 @@ export function DemonstrationPack() {
         </p>
       </div>
       <p className="mt-4 text-sm">
-        Le simulateur demande de confirmer son cadre simplifié et affiche ses hypothèses. Il ne
-        couvre pas toutes les situations et ne remplace pas la vérification du professionnel.
+        Le simulateur affiche ses hypothèses et les limites du cas modélisé. Il prépare les points
+        à vérifier et ne remplace pas la validation du professionnel.
       </p>
     </section>
   );

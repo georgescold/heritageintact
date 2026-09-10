@@ -4,7 +4,7 @@ import type { ProductSku } from "./config";
 export function offreLtv(profil: Reponses | null, possede: Set<ProductSku>): ProductSku | null {
   if(possede.has("upsell1") && profil?.av==="O" && !possede.has("upsell2"))return "upsell2";
   const e=sequence(profil,{bumpPresent:possede.has("bump")})[0];
-  const sku=e==="pack"?"pack1":e==="plan"?"upsell1":e==="assurance-vie"?"upsell2":null;
+  const sku=e==="plan"?"upsell1":e==="assurance-vie"?"upsell2":null;
   return sku && !possede.has(sku) ? sku : null;
 }
 export function etapeLtvDue(lead: Lead, acces: Acces, progression: Progression[], maintenant=Date.now()) {

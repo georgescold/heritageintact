@@ -79,9 +79,9 @@ try {
   // Qualification effectuée réellement sur la fixture, sans payer ni envoyer d’email.
   for(const [objectif,av,path] of [
     ["Que mes enfants doivent vendre la maison pour payer les droits","Non","/plan-complet"],
-    ["Ne pas savoir quelle part l’État pourrait prendre","Oui","/dossier-complet"],
-    ["Que mon assurance-vie ne protège pas la bonne personne","Oui","/kit-assurance-vie"],
-    ["Que mes proches ne retrouvent pas les documents et les réponses","Oui","/dossier-complet"]
+    ["Ne pas savoir quelle part l’État pourrait prendre","Oui","/plan-complet"],
+    ["Que mon assurance-vie ne protège pas la bonne personne","Oui","/plan-complet"],
+    ["Que mes proches ne retrouvent pas les documents et les réponses","Oui","/plan-complet"]
   ]) {
     await go("/situation?o=ord_revue_front");
     ok(await page.getByRole("heading",{name:"Qu’est-ce qui vous inquiète le plus aujourd’hui ?",exact:true}).isVisible());
@@ -93,13 +93,16 @@ try {
     await page.getByRole("button",{name:"Je ne sais pas quoi faire en premier",exact:true}).click();
     await page.waitForURL(u=>u.pathname===path);
     await page.waitForLoadState("networkidle");
+    await page.getByRole("button",{name:"Simuler pour ma situation",exact:true}).click();
+    await page.getByRole("button",{name:"Préparer mon aperçu personnalisé",exact:true}).click();
+    await page.locator("#decision-complement").waitFor();
     ok(await page.locator("#decision-complement").isVisible());
     ok(await page.getByText("Ce que vous devez absolument avoir également",{exact:true}).isVisible());
     ok(await page.locator("#livraison-produit").count()===0);
     ok(await page.locator('input[name="montantAffiche"]').count()===1);
     ok(!new URL(page.url()).searchParams.has("objectif"));
     ok(await page.locator("#decision-complement form").count()===1);
-    if(path==="/dossier-complet") {
+    if(av==="Oui") {
       for(const w of [390,1440]) {
         await page.setViewportSize({width:w,height:1000});
         await page.locator("#decision-complement").scrollIntoViewIfNeeded();
@@ -107,9 +110,13 @@ try {
         await page.screenshot({path:".build-refonte/v6-decision-"+w+".png"});
       }
     }
-    ok(await page.getByRole("link",{name:"Non merci, conserver mon achat actuel",exact:true}).isVisible());
+    ok(await page.getByRole("link",{name:"Non merci, continuer sans ce produit",exact:true}).isVisible());
     ok(await page.evaluate(()=>document.querySelector("#decision-complement").getBoundingClientRect().top<document.querySelector("figure").getBoundingClientRect().top));
-    await page.getByRole("link",{name:"Non merci, conserver mon achat actuel",exact:true}).click();
+    await page.getByRole("link",{name:"Non merci, continuer sans ce produit",exact:true}).click();
+    if(av==="Oui") {
+      await page.waitForURL("**/kit-assurance-vie?*");
+      await page.getByRole("link",{name:"Non merci, continuer sans ce produit",exact:true}).click();
+    }
     await page.waitForURL("**/bienvenue?*");
     ok(await page.locator("#livraison-produit").isVisible());
     ok(await page.getByRole("link",{name:"Ouvrir le guide",exact:true}).isVisible());
@@ -195,15 +202,21 @@ try {
   await page.getByRole("button",{name:"Je ne sais pas",exact:true}).click();
   await page.getByRole("button",{name:"Les démarches et les mots sont trop compliqués",exact:true}).click();
   await page.waitForURL(u=>u.pathname==="/plan-complet");
+  await page.getByRole("button",{name:"Simuler pour ma situation",exact:true}).click();
+  await page.getByRole("button",{name:"Préparer mon aperçu personnalisé",exact:true}).click();
+  await page.locator("#decision-complement").waitFor();
   const montantUpsell=Number(await page.locator('input[name="montantAffiche"]').inputValue());
-  ok(Number.isFinite(montantUpsell)&&montantUpsell>0);
+  ok(montantUpsell===147);
   for(const width of [390,1440]){
     await page.setViewportSize({width,height:1000});
     ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
     await page.locator("#decision-complement").scrollIntoViewIfNeeded();
     await page.screenshot({path:".build-refonte/v8-offre-"+width+".png"});
   }
-  await page.getByRole("button",{name:/Oui, préparer la suite maintenant/}).click();
+  await page.getByRole("button",{name:/Déverrouiller mon simulateur et mon plan/}).click();
+  await page.waitForURL("**/resultat-plan?*");
+  ok(await page.getByText("votre simulateur et votre plan adapté sont déverrouillés",{exact:false}).isVisible());
+  await page.getByRole("link",{name:"Continuer mon parcours",exact:true}).click();
   await page.waitForURL("**/bienvenue?*");
   ok(await page.getByRole("link",{name:"Ouvrir le guide",exact:true}).isVisible());
   const final=JSON.parse(fs.readFileSync(fixture,"utf8"));

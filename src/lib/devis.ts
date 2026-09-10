@@ -10,7 +10,10 @@ export async function devisPour(email: string, sku: ProductSku) {
     sku,
     commandes.flatMap((c) => c.items),
   );
-  const promotion = palier(["upsell1","upsell2","pack1"].includes(sku) ? await promotionParEmail(email, "suite") : null);
-  const montant = base.dejaPossede ? 0 : appliquerRemise(base.montant, promotion.pourcent);
+  const promotion = palier(sku === "upsell1" ? await promotionParEmail(email, "suite") : null);
+  const prixFixe = typeof promotion.montantFixe === "number" && Number.isFinite(promotion.montantFixe)
+    ? Math.max(0, Math.min(base.montant, promotion.montantFixe))
+    : null;
+  const montant = base.dejaPossede ? 0 : prixFixe ?? appliquerRemise(base.montant, promotion.pourcent);
   return { ...base, montant, avantRemise: base.montant, remise: Math.round((base.montant-montant)*100)/100, promotion };
 }

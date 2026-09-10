@@ -92,7 +92,14 @@ export function calculer(s: Saisie, anneeCourante: number): Resultat {
    * page de vente, le Simulateur papier et les huit vidéos. Le jeu à
    * 500 000 € ne sert qu'à éprouver le barème sur une seconde valeur.
    */
-  const masse = s.biens.reduce((n, b) => n + b.valeur, 0);
+  const brut = s.biens.reduce((n, b) => n + b.valeur, 0);
+  const dettes = Number.isFinite(s.dettes) ? Math.max(0, s.dettes ?? 0) : 0;
+  const masse = Math.max(0, brut - dettes);
+  if (dettes > 0) {
+    hypotheses.push(
+      "Les dettes saisies sont retranchées à titre indicatif. Leur déductibilité et leur montant au décès doivent être confirmés.",
+    );
+  }
   if (s.biens.some((b) => b.enCommun)) {
     hypotheses.push(
       "Les biens détenus en commun sont comptés en entier : le calcul porte sur le second décès, celui où tout se retrouve sur une seule tête. Votre régime matrimonial exact peut modifier ce partage — votre notaire est seul à pouvoir le trancher.",
@@ -138,6 +145,11 @@ export function calculer(s: Saisie, anneeCourante: number): Resultat {
   if (avApres > 0) {
     hypotheses.push(
       "Les primes versées après 70 ans partagent un seul abattement de 30 500 €, tous contrats et tous bénéficiaires confondus (art. 757 B), puis suivent le barème ordinaire.",
+    );
+  }
+  if (s.donations.length) {
+    hypotheses.push(
+      "Les donations déclarées servent ici à repérer le délai de quinze ans. Leur effet exact sur les abattements et le rapport civil n’est pas déduit automatiquement : faites vérifier les actes et déclarations.",
     );
   }
 

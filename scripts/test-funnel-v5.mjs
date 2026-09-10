@@ -63,17 +63,13 @@ function loader(
   return mod;
 }
 let mod = loader();
-const { avantagePack, bilanSupports, motifEtape, alternativeAv } = mod("src/lib/complements.ts");
-eq(avantagePack().difference, 17);
-eq(avantagePack().separes, 264);
-eq(avantagePack().ensemble, 247);
-eq(bilanSupports("pack1", new Set(["front", "bump"])).acquis.length, 2);
-eq(bilanSupports("pack1", new Set(["front", "bump"])).ajoutes.length, 3);
+const { bilanSupports, motifEtape } = mod("src/lib/complements.ts");
+const { PRODUCTS } = mod("src/lib/config.ts");
+for (const sku of ["pack1","pack2","pack3","pack4"]) eq(PRODUCTS[sku].disponible,false);
+eq(bilanSupports("upsell1", new Set(["front", "bump"])).acquis.length, 2);
+eq(bilanSupports("upsell1", new Set(["front", "bump"])).ajoutes.length, 2);
 eq(motifEtape("upsell2", "e0"), null);
 ok(motifEtape("upsell2", "e3").includes("terminé"));
-for (const av of ["N", "?", "X", undefined]) eq(alternativeAv({ av }, "pack1", new Set()), false);
-eq(alternativeAv({ av: "O" }, "pack1", new Set()), true);
-eq(alternativeAv({ av: "O" }, "pack1", new Set(["upsell2"])), false);
 const { capaciteEmail, reserveComplements } = mod("src/lib/capacite-email.ts");
 for (const value of ["", "abc", "-1", "1501", "2.5"])
   eq(capaciteEmail({ EMAIL_DAILY_CAP: value }), 150);

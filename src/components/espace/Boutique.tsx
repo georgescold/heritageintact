@@ -4,7 +4,7 @@ import { conseilOffre } from "@/lib/positionnement";
 import { PRODUCTS, PRESENTATION, euros, type ProductSku } from "@/lib/config";
 import { devisPour } from "@/lib/devis";
 import type { EtatEspace } from "@/lib/espace";
-import { motifEtape, avantagePack } from "@/lib/complements";
+import { motifEtape } from "@/lib/complements";
 export const resumeProduit = (sku: ProductSku) =>
   PRESENTATION[sku]?.promesse ?? "Support pédagogique de préparation.";
 export const avantagesProduit = (sku: ProductSku) => PRESENTATION[sku]?.contenu ?? [];
@@ -20,7 +20,7 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
         {conseilOffre(etat.profil).raison}
       </p>
       <p className="mb-4">
-        Votre achat actuel reste utilisable seul. Les achats inclus déjà payés sont déduits du pack.
+        Votre achat actuel reste utilisable seul. Chaque proposition ci-dessous correspond à un produit distinct.
       </p>
       {etat.acces.envoyes.includes("ltv-pause") ? (
         <p className="mb-4 text-sm">
@@ -40,7 +40,6 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
             const d = await devisPour(etat.acces.email, sku);
             const motif =
               etat.epingle?.sku === sku ? motifEtape(sku, etat.epingle.etape.cle) : null;
-            const pack = avantagePack();
             return (
               <article key={sku} className="border border-grey-line p-5">
                 <h3 className="text-[1.25rem]">{PRODUCTS[sku].name}</h3>
@@ -48,20 +47,7 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
                 <p className="my-3">{resumeProduit(sku)}</p>
                 <p className="font-bold">Complément : {euros(d.montant)}</p>
                 {d.remise>0 && <p className="mt-2 font-bold text-orange-dark">Avantage en cours : −{euros(d.remise)} sur le complément.</p>}
-                {d.credit > 0 && (
-                  <p className="mt-2 font-bold text-blue">
-                    {euros(d.credit)} de vos achats inclus sont déjà déduits.
-                  </p>
-                )}
-                {sku === "pack1" && (
-                  <p className="mt-2 text-sm">
-                    Réunis à {euros(pack.ensemble)} au total, contre {euros(pack.separes)} aux
-                    tarifs catalogue séparés, avant déduction de vos achats inclus.
-                  </p>
-                )}
-                <p className="my-3 text-text-soft">
-                  Total {euros(d.total)} · achats inclus déduits {euros(d.credit)}
-                </p>
+                <p className="my-3 text-text-soft">Paiement unique · aucun abonnement</p>
                 <Link
                   className="flex min-h-[52px] items-center justify-center bg-blue p-3 text-center font-bold text-white no-underline"
                   href={`/espace/${etat.acces.jeton}/ajouter/${sku}`}

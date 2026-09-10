@@ -53,7 +53,7 @@ export const GUIDES_UTILISATION: GuideUtilisation[] = [
   },
   {
     "sku": "upsell1",
-    "titre": "Le pack Préparation : relier votre famille, vos pièces et vos scénarios",
+    "titre": "Mon simulateur + mon plan adapté : relier les hypothèses et les prochaines vérifications",
     "resultat": "Une préparation approfondie reliée à vos particularités familiales, avec des hypothèses et un suivi explicites.",
     "seances": [
       [

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LienInvalide } from "@/components/espace/LienInvalide";
-import { Simulateur } from "@/components/simulateur/Simulateur";
+import { SimulationPlan } from "@/components/simulateur/SimulationPlan";
 import { chargerEspace } from "@/lib/espace";
 import { estJetonValide } from "@/lib/jeton";
 
@@ -31,17 +31,13 @@ export default async function SimulateurPage({ params }: { params: Promise<{ jet
   const etat = await chargerEspace(jeton);
   if (!etat || etat.acces.revoque) return <LienInvalide />;
 
-  const aDroit =
-    etat.possede.has("backend1") || etat.possede.has("upsell1") || etat.possede.has("pack1");
+  const aDroit = etat.possede.has("backend1") || etat.possede.has("upsell1") || etat.possede.has("pack1");
 
   if (!aDroit) {
     return (
       <div className="wrap py-12">
         <h1 className="mb-3 text-[1.5rem]">Atelier de simulation pédagogique</h1>
-        <p className="mb-4 text-[1.05rem]">
-          Cet outil est inclus dans les packs Préparation. Consultez votre espace
-          pour voir les contenus et votre éventuel complément de prix.
-        </p>
+        <p className="mb-4 text-[1.05rem]">Cet outil est inclus dans « Mon simulateur + mon plan adapté ». Consultez votre espace pour retrouver cette offre.</p>
         <p className="mb-6 text-[1.05rem]">
           En attendant, la fiche de calcul pédagogique est dans vos documents :
           elle explique le barème sur un exemple fictif.
@@ -63,7 +59,7 @@ export default async function SimulateurPage({ params }: { params: Promise<{ jet
           ← Mon espace
         </Link>
       </div>
-      <Simulateur anneeCourante={new Date().getFullYear()} />
+      <main className="wrap py-4"><SimulationPlan verrouille={false} /></main>
     </>
   );
 }

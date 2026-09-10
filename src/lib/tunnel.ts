@@ -24,6 +24,12 @@ export async function etapeTunnel(
   const livraison = `/bienvenue?o=${encodeURIComponent(orderId)}`;
   if (!seq.includes(ecran))
     return { afficher: false, versOu: seq.length ? urlEcran(seq[0], orderId, 1) : livraison };
-  return { afficher: true, suivant: livraison, position: 1, total: 1 };
+  const position = seq.indexOf(ecran);
+  return {
+    afficher: true,
+    suivant: seq[position + 1] ? urlEcran(seq[position + 1], orderId, position + 2) : livraison,
+    position: position + 1,
+    total: seq.length,
+  };
 }
 export const CHEMIN_ECRAN = ROUTE;

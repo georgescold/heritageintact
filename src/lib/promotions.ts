@@ -1,9 +1,9 @@
 import type { Promotion } from "./db";
 export const PROMOTIONS_ACTIVES = process.env.OFFRES_TEMPORAIRES_ACTIVES !== "false";
-export type Palier = {pourcent:number;fin:string|null;suivant:number;serveurMaintenant:number;gamme:"front"|"suite"};
+export type Palier = {pourcent:number;fin:string|null;suivant:number;serveurMaintenant:number;gamme:"front"|"suite";montantFixe:number|null;suivantFixe:number|null};
 /** Horloge serveur et dates persistées. Réduction sur le prix hors remise ou le complément dû, jamais sur les achats passés. */
 export function palier(p:Promotion|null,maintenant=Date.now()):Palier {
-  const base={pourcent:0,fin:null,suivant:0,serveurMaintenant:maintenant,gamme:p?.gamme??"front"} as Palier;
+  const base={pourcent:0,fin:null,suivant:0,serveurMaintenant:maintenant,gamme:p?.gamme??"front",montantFixe:null,suivantFixe:null} as Palier;
   if(!p || !PROMOTIONS_ACTIVES)return base;
   const debut=Date.parse(p.commenceLe);
   if(!Number.isFinite(debut)||debut>maintenant)return base;
@@ -13,10 +13,10 @@ export function palier(p:Promotion|null,maintenant=Date.now()):Palier {
     if(maintenant<fin)return {...base,pourcent:50,fin:new Date(fin).toISOString(),suivant:0};
     return base;
   }
-  const premiereFin=debut+20*60*1000;
-  const derniereFin=debut+48*3600000;
-  if(maintenant<premiereFin)return {...base,pourcent:25,fin:new Date(premiereFin).toISOString(),suivant:10};
-  if(maintenant<derniereFin)return {...base,pourcent:10,fin:new Date(derniereFin).toISOString(),suivant:0};
+  const premiereFin=debut+10*60*1000;
+  const derniereFin=premiereFin+5*60*1000;
+  if(maintenant<premiereFin)return {...base,pourcent:50,fin:new Date(premiereFin).toISOString(),suivant:34,montantFixe:147,suivantFixe:197};
+  if(maintenant<derniereFin)return {...base,pourcent:34,fin:new Date(derniereFin).toISOString(),suivant:0,montantFixe:197,suivantFixe:297};
   return base;
 }
 export function appliquerRemise(montant:number,pourcent:number) {

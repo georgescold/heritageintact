@@ -10,11 +10,7 @@ export function prixFront(_flash?: string, _rattrapage?: string): number {
 export function devis(sku: ProductSku, lignes: LignePayee[]) {
   const actives = lignes.filter((l) => !l.rembourse && Number.isFinite(l.price) && l.price >= 0);
   const acquis = new Set(actives.flatMap((l) => [...composants(l.sku)]));
-  // L’AV après le pack de préparation complète le pack à 247 €, quel que soit l’ordre.
-  const cible =
-    (sku === "upsell2" && acquis.has("upsell1")) || (sku === "upsell1" && acquis.has("upsell2"))
-      ? "pack1"
-      : sku;
+  const cible = sku;
   const inclus = composants(cible);
   const credit = actives
     .filter((l) =>

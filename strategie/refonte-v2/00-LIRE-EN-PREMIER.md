@@ -12,7 +12,7 @@ Pour toi : [checklist Loys](a-faire-loys/00-CHECKLIST.md). **Aucune vidéo péda
 
 ## Le parcours actuel
 
-Email et prénom → présentation/VSL → guide de base commun → paiement → six réponses obligatoires → une proposition adaptée → acceptation ou refus → livraison explicite du guide → espace et approfondissements au fil de l’utilisation.
+Email et prénom → présentation/VSL → achat du guide avec Dossier notaire facultatif → six réponses obligatoires → simulation détaillée → aperçu verrouillé → Simulateur + plan adapté → assurance-vie si pertinente → livraison et espace.
 
 Le consentement marketing est facultatif et distinct du questionnaire. La qualification ne change pas le contenu déjà acheté ; « je ne sais pas » est une réponse recevable. Une panne d’enregistrement ne valide pas silencieusement le questionnaire.
 
@@ -20,18 +20,18 @@ Le consentement marketing est facultatif et distinct du questionnaire. La qualif
 
 - Guide Les 7 erreurs : huit étapes écrites, huit exercices, neuf fiches.
 - Dossier : exemple rempli, inventaire, famille, pièces, demande de rendez-vous et compte-rendu.
-- Préparation : douze fiches familiales, tableau de bord et suivi des donations ; atelier inclus dans les packs.
+- Simulateur + plan adapté : saisie détaillée, estimation pédagogique, hypothèses, ordre de préparation et fiches familiales.
 - Assurance-vie : six repères expliqués, mode d’emploi et quatre fiches.
 
 Ces contenus existent à l’écran et dans quatre PDF protégés par les droits d’achat. Les anciens scripts pédagogiques et fonds de présentation sont historiques ; ils ne sont plus des livrables à produire par Loys.
 
 ## Prix et remises
 
-Tarifs catalogue : guide 52 € ; Dossier facultatif non précoché 17 € ; Préparation 197 € au total ; pack avec assurance-vie 247 € au total ; assurance-vie seule 67 €.
+Tarifs : guide 52 € ; Dossier facultatif non précoché 17 € ; Simulateur + plan adapté 297 € ; assurance-vie 67 €. Aucun pack actif.
 
-Guide : aucun timer sur la page de vente ; au clic vers la commande, réduction de 50 % pendant 2 minutes, puis 30 % pendant 8 minutes, puis retour à 52 €. Compléments : 25 % pendant 20 minutes après la qualification, puis 10 % jusqu’à 48 heures. Départ unique enregistré par email ; une visite ne relance pas le délai.
+Guide : aucun timer sur la page de vente ; au clic vers la commande, réduction de 50 % pendant 5 minutes, puis retour à 52 €. Simulateur + plan : lorsque l’aperçu est prêt, 147 € pendant 10 minutes, puis 197 € pendant 5 minutes, puis 297 €. Départ unique enregistré côté serveur ; une visite ne relance pas le délai.
 
-Les achats inclus effectivement payés sont d’abord déduits ; la remise porte ensuite sur le complément restant. Un prix périmé demande une nouvelle confirmation, jamais un débit plus élevé automatique. Le Dossier à 17 € n’a pas de réduction. Voir les conditions intégrées dans le site.
+Chaque produit est payé séparément. Un prix périmé demande une nouvelle confirmation, jamais un débit plus élevé automatique. Le Dossier à 17 € et le guide assurance-vie à 67 € n’ont pas cette remise. Voir les conditions intégrées dans le site.
 
 ## Documents de référence
 

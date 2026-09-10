@@ -1209,8 +1209,11 @@ export async function creerCommandeEspace(input: {
   const commandes = await commandesPayeesParEmail(input.email);
   const { appliquerRemise, palier } = await import("./promotions");
   const prixBase = devis(input.sku, commandes.flatMap(c => c.items)).montant;
-  const reduction = palier(["upsell1","upsell2","pack1"].includes(input.sku) ? await promotionParEmail(input.email,"suite") : null);
-  const prix = appliquerRemise(prixBase, reduction.pourcent);
+  const reduction = palier(input.sku === "upsell1" ? await promotionParEmail(input.email,"suite") : null);
+  const prixFixe = typeof reduction.montantFixe === "number" && Number.isFinite(reduction.montantFixe)
+    ? Math.max(0, Math.min(prixBase, reduction.montantFixe))
+    : null;
+  const prix = prixFixe ?? appliquerRemise(prixBase, reduction.pourcent);
   if (!Number.isFinite(prix) || prix < 0) throw new Error("Prix de commande invalide");
   const items: OrderItem[] = [{ sku: input.sku, price: prix }];
   const base = {

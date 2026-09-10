@@ -1,5 +1,5 @@
-import { avantagePack, bilanSupports } from "@/lib/complements";
-import { euros, PRODUCTS, type ProductSku } from "@/lib/config";
+import { bilanSupports } from "@/lib/complements";
+import { euros, type ProductSku } from "@/lib/config";
 import type { devisPour } from "@/lib/devis";
 
 export function BilanComplement({
@@ -12,7 +12,6 @@ export function BilanComplement({
   montant: Awaited<ReturnType<typeof devisPour>>;
 }) {
   const bilan = bilanSupports(sku, possede);
-  const pack = avantagePack();
   return (
     <section
       className="my-7 overflow-hidden border-2 border-blue"
@@ -41,37 +40,19 @@ export function BilanComplement({
         </div>
       </div>
       <div className="border-t border-grey-line p-5">
-        {montant.credit > 0 && (
-          <p className="mb-3 font-bold text-blue">
-            {euros(montant.credit)} d’achats inclus déjà payés sont déduits automatiquement.
-          </p>
-        )}
         <dl className="space-y-3">
           <div className="flex justify-between gap-4">
-            <dt>Total de l’offre</dt>
+            <dt>Prix habituel de ce produit</dt>
             <dd>{euros(montant.total)}</dd>
           </div>
-          <div className="flex justify-between gap-4">
-            <dt>Achats inclus déduits</dt>
-            <dd>− {euros(montant.credit)}</dd>
-          </div>
-          {montant.remise>0 && <div className="flex justify-between gap-4 text-base text-orange-dark"><dt>Avantage de démarrage (−{montant.promotion.pourcent}%)</dt><dd>− {euros(montant.remise)}</dd></div>}
+          {montant.remise>0 && <div className="flex justify-between gap-4 text-base text-orange-dark"><dt>Avantage personnel en cours</dt><dd>− {euros(montant.remise)}</dd></div>}
           <div className="flex flex-wrap justify-between gap-3 text-[1.4rem] font-bold">
             <dt>À payer si vous confirmez</dt>
             <dd>{euros(montant.montant)}</dd>
           </div>
         </dl>
-        {sku === "pack1" && pack.difference > 0 && (
-          <p className="mt-4 border-l-4 border-orange bg-grey-bg p-3">
-            <strong>L’avantage du pack : {euros(pack.difference)} de moins.</strong> Préparation (
-            {euros(PRODUCTS.upsell1.price)}) + assurance-vie ({euros(PRODUCTS.upsell2.price)})
-            représentent {euros(pack.separes)} aux tarifs catalogue séparés ; réunies,{" "}
-            {euros(pack.ensemble)} au total, avant déduction de vos achats inclus.
-          </p>
-        )}
         <p className="mt-4 text-sm text-text-soft">
-          Cette déduction provient de vos achats inclus, pas d’un solde à réclamer. Elle ne
-          disparaît pas ce soir. Le devis est recalculé avant paiement ; aucun abonnement.
+          Ce produit est facturé séparément. Le prix est recalculé avant paiement ; aucun abonnement.
         </p>
       </div>
     </section>
