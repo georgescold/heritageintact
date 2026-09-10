@@ -21,6 +21,8 @@ const premier=sale.indexOf('id="premier-cta"'), dernier=sale.indexOf('id="dernie
 ok(premier>sale.indexOf("<VslPresentation") && sale.indexOf("<VslPresentation")>=0);
 const vsl=fs.readFileSync("src/components/VslPresentation.tsx","utf8"),vslPath="public/videos/vsl-heritage-intact.mp4";
 ok(vsl.includes('<video') && vsl.includes('src="/videos/vsl-heritage-intact.mp4"'));
+ok(!vsl.includes("\n          controls\n")&&vsl.includes("onSeeking={empecherLeSaut}")&&vsl.includes('controlsList="nodownload noplaybackrate noremoteplayback"'));
+ok(vsl.includes('data-progression-visuelle="acceleree-puis-ralentie"')&&vsl.includes("Math.pow(1 - reel, 2)"));
 ok(fs.existsSync(vslPath) && fs.statSync(vslPath).size>1_000_000 && fs.statSync(vslPath).size<100_000_000);
 ok(fs.existsSync("public/img/vsl-heritage-intact-thumbnail-v3.jpg"));
 for(const bloc of ["Il faut de toute façon aller chez le notaire","<CalculHistorique"])ok(sale.indexOf(bloc)>premier && sale.indexOf(bloc)<dernier);
