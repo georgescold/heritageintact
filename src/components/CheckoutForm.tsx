@@ -286,30 +286,33 @@ function Inner({
         </Panel>
 
         {/* Option payante uniquement sur choix explicite. */}
-        <label className="block cursor-pointer border-2 border-orange bg-yellow-bg p-3 sm:p-4">
-          <span className="flex items-start gap-3">
-            <input
-              type="checkbox"
-              checked={bump}
-              onChange={(e) => setBump(e.target.checked)}
-              className="mt-1 h-6 w-6 shrink-0 accent-orange"
-            />
-            <span>
-              {/* Le nom se lit dans PRODUCTS, jamais en dur : « Dossier Notaire
+        <div className="space-y-2">
+          <p className="text-[1.05rem] font-bold text-blue">Nous vous le conseillons fortement :</p>
+          <label className="block cursor-pointer border-2 border-orange bg-yellow-bg p-3 sm:p-4">
+            <span className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                checked={bump}
+                onChange={(e) => setBump(e.target.checked)}
+                className="mt-1 h-6 w-6 shrink-0 accent-orange"
+              />
+              <span>
+                {/* Le nom se lit dans PRODUCTS, jamais en dur : « Dossier Notaire
                   Prêt-à-Signer » traînait encore ici alors que le produit a été
                   renommé, et deux noms pour une seule chose sur le bon de
                   commande, c'est un acheteur qui doute au moment de payer. */}
-              <span className="block text-[1.05rem] font-bold text-blue">
-                Ajouter {PRODUCTS.bump.name}
-              </span>
-              <span className="mt-1 block text-[0.95rem]">
-                Une donation oubliée, une date imprécise ou une pièce manquante peut laisser votre
-                rendez-vous sans réponse et vous obliger à recommencer. Le Dossier Notaire réunit
-                l’inventaire, les documents et les questions à apporter.
+                <span className="block text-[1.05rem] font-bold text-blue">
+                  Ajouter {PRODUCTS.bump.name}
+                </span>
+                <span className="mt-1 block text-[0.95rem]">
+                  Une donation oubliée, une date imprécise ou une pièce manquante peut laisser votre
+                  rendez-vous sans réponse et vous obliger à recommencer. Le Dossier Notaire réunit
+                  l’inventaire, les documents et les questions à apporter.
+                </span>
               </span>
             </span>
-          </span>
-        </label>
+          </label>
+        </div>
         <label className="flex items-start gap-3 text-[0.9rem] text-text-soft">
           <input
             type="checkbox"
