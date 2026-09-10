@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { confirmCheckout, prepareCheckout } from "@/app/actions";
-import { CONTACT_EMAIL, PRODUCTS, SITE_URL, euros } from "@/lib/config";
+import { CONTACT_EMAIL, PRESENTATION, PRODUCTS, SITE_URL, euros } from "@/lib/config";
 import { TrustRow } from "./Chrome";
 import { Button, Panel } from "./ui";
 
@@ -376,6 +376,19 @@ function Inner({
               </li>
             ))}
           </ul>
+          {bump && (
+            <div className="mt-5 border-t border-grey-line pt-4">
+              <p className="mb-2 font-bold text-blue">Votre dossier notaire contient également :</p>
+              <ul className="space-y-1 text-[0.95rem]">
+                {(PRESENTATION.bump?.contenu ?? []).map((t) => (
+                  <li key={t} className="flex gap-2">
+                    <span className="text-green">✔</span>
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </Panel>
         {testMode && (
           <p className="mt-3 text-[0.85rem] text-text-soft">
