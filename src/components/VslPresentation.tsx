@@ -2,12 +2,6 @@
 
 import { useRef, useState } from "react";
 
-const dureeAffichee = (secondes: number) => {
-  if (!Number.isFinite(secondes)) return "0:00";
-  const minutes = Math.floor(secondes / 60);
-  return `${minutes}:${String(Math.floor(secondes % 60)).padStart(2, "0")}`;
-};
-
 /**
  * Courbe de type VSL : la barre avance vite au début puis ralentit
  * progressivement. La vidéo reste toujours lue à vitesse réelle.
@@ -15,7 +9,7 @@ const dureeAffichee = (secondes: number) => {
 const progressionVisuelle = (temps: number, duree: number) => {
   if (!Number.isFinite(duree) || duree <= 0) return 0;
   const reel = Math.min(1, Math.max(0, temps / duree));
-  return (1 - Math.pow(1 - reel, 2)) * 100;
+  return (1 - Math.pow(1 - reel, 4)) * 100;
 };
 
 /** VSL auto-hébergée avec contrôles non navigables et progression visuelle accélérée. */
@@ -156,8 +150,7 @@ export function VslPresentation() {
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={Math.round(progressionReelle)}
-            aria-valuetext={`${dureeAffichee(temps)} sur ${dureeAffichee(duree)}`}
-            data-progression-visuelle="acceleree-puis-ralentie"
+            data-progression-visuelle="tres-acceleree-puis-ralentie"
             className="h-1.5 overflow-hidden rounded-full bg-white/30"
           >
             <div
@@ -182,7 +175,6 @@ export function VslPresentation() {
             >
               <span aria-hidden>{muet ? "🔇" : "🔊"}</span>
             </button>
-            <span className="text-xs tabular-nums text-white/90">{dureeAffichee(temps)}</span>
             <button
               type="button"
               onClick={() => void afficherPleinEcran()}

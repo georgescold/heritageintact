@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
 import { Footer, Header, TrustRow } from "@/components/Chrome";
 import { SortieGuide } from "@/components/SortieGuide";
 import { StickyCta } from "@/components/StickyCta";
@@ -7,21 +6,17 @@ import { MesureFunnel } from "@/components/MesureFunnel";
 import { VslPresentation } from "@/components/VslPresentation";
 import { UrgencyBar } from "@/components/Urgency";
 import { FAQ, Guarantee } from "@/components/ui";
-import { ExempleSeuil } from "@/components/ExempleSeuil";
 import { CalculHistorique } from "@/components/marketing/CalculHistorique";
 import { JeanPierreHistorique, MartineHistorique } from "@/components/marketing/RecitsHistoriques";
 import {
   AvantApresHistorique,
   DernierMotHistorique,
 } from "@/components/marketing/SectionsHistoriques";
-import { ChiffresHistoriques } from "@/components/marketing/ChiffresHistoriques";
 import { OffreMethodeHistorique } from "@/components/marketing/OffreMethodeHistorique";
-import { devisFront } from "@/lib/prix-front";
-import { euros } from "@/lib/config";
 
 export const metadata: Metadata = { title: "Les 7 erreurs qui offrent votre héritage à l’État" };
 
-function AccesMethode({ montant, sombre = false }: { montant: number; sombre?: boolean }) {
+function AccesMethode() {
   return (
     <div data-mesure="clic_commande">
       <a
@@ -30,19 +25,12 @@ function AccesMethode({ montant, sombre = false }: { montant: number; sombre?: b
       >
         Accéder au guide
       </a>
-      <p
-        className={`mt-2 text-center text-[0.95rem] ${sombre ? "text-white/90" : "text-text-soft"}`}
-      >
-        {euros(montant)} · Paiement unique · Accès immédiat · Garantie 30 jours
-      </p>
     </div>
   );
 }
 
 /** Retour au gabarit pré-refonte : la vente uniquement, jamais un retour arrière du produit. */
-export default async function VslPage() {
-  const jar = await cookies(),
-    d = await devisFront(jar.get("hi_offre")?.value);
+export default function VslPage() {
   return (
     <>
       <MesureFunnel evenement="vue_vente" />
@@ -66,7 +54,7 @@ export default async function VslPage() {
           </p>
           <VslPresentation />
           <div id="premier-cta" className="mt-5 space-y-3">
-            <AccesMethode montant={d.montant} />
+            <AccesMethode />
             <div className="flex justify-center">
               <TrustRow />
             </div>
@@ -99,11 +87,7 @@ export default async function VslPage() {
         </div>
         <JeanPierreHistorique />
         <MartineHistorique />
-        <ChiffresHistoriques />
-        <OffreMethodeHistorique montant={d.montant} action={<AccesMethode montant={d.montant} />} />
-        <div className="wrap">
-          <ExempleSeuil />
-        </div>
+        <OffreMethodeHistorique action={<AccesMethode />} />
         <section className="wrap py-8">
           <Guarantee />
         </section>
@@ -119,7 +103,7 @@ export default async function VslPage() {
               },
               {
                 q: "« Il faut de toute façon aller chez le notaire, alors autant y aller directement. »",
-                a: "Allez-y : le notaire reste indispensable pour valider votre situation et rédiger les actes. Mais pour obtenir une étude personnalisée couvrant ces mêmes points, vous paierez très probablement bien plus que le prix du guide : les consultations et études détachables d’un acte sont facturées librement selon le cabinet. Ici, vous comprenez les 7 erreurs en quelques minutes, retrouvez vos priorités et arrivez avec les bonnes questions. Vous utilisez alors le temps du notaire pour votre situation, pas pour découvrir les bases.",
+                a: "Allez-y : le notaire reste indispensable pour valider votre situation et rédiger les actes. Ici, vous comprenez d’abord les 7 erreurs, retrouvez vos priorités et arrivez avec les bonnes questions. Vous utilisez alors le rendez-vous pour votre situation, pas pour découvrir les bases.",
               },
               {
                 q: "« Je ne veux pas me déposséder de mon vivant. Et si j’en ai besoin pour l’EHPAD ? »",
@@ -128,10 +112,6 @@ export default async function VslPage() {
               {
                 q: "« Mon assurance-vie est déjà faite, c’est réglé. »",
                 a: "Deux questions restent utiles même quand le contrat est signé : quand avez-vous versé les sommes, et qui est désigné aujourd’hui ? Avant et après 70 ans, les règles et les assiettes fiscales diffèrent. Ce n’est pas une raison de modifier le contrat dans l’urgence : c’est une raison de retrouver les informations pendant que vous pouvez encore demander des explications.",
-              },
-              {
-                q: "« 52 € pour un truc que je peux trouver gratuitement sur YouTube. »",
-                a: "Vous pouvez trouver les règles gratuitement. Ce que vous achetez ici, c’est un parcours écrit dans l’ordre, avec les sept erreurs expliquées, des exemples et des fiches à garder. Vous reprenez votre lecture sans rechercher dix vidéos ni tout retenir de tête. Vous achetez cette préparation, pas un montant de droits garanti.",
               },
               {
                 q: "« Sur internet, c’est des arnaques. Qui êtes-vous pour parler de ça ? »",
@@ -143,7 +123,7 @@ export default async function VslPage() {
               },
               {
                 q: "« Ma situation est particulière. »",
-                a: "Elle mérite d’être comprise, pas rangée de force dans un exemple. Le premier produit est commun à tous. Après le paiement, quatre questions obligatoires orientent votre parcours et les éventuels compléments, sans changer votre achat. Une situation complexe, une succession ouverte ou un conflit demandent un professionnel sans attendre.",
+                a: "Elle mérite d’être comprise, pas rangée de force dans un exemple. Le premier produit est commun à tous. Après le paiement, six questions obligatoires orientent votre parcours et les éventuels compléments, sans changer votre achat. Une situation complexe, une succession ouverte ou un conflit demandent un professionnel sans attendre.",
               },
               {
                 q: "« Et si la loi change ? »",
@@ -155,14 +135,14 @@ export default async function VslPage() {
         <DernierMotHistorique
           action={
             <div id="dernier-cta">
-              <AccesMethode montant={d.montant} sombre />
+              <AccesMethode />
             </div>
           }
         />
       </main>
       <Footer />
       <StickyCta href="/commander" label="Accéder au guide" />
-      <SortieGuide storageKey="vsl-historique-v12" montant={d.montant} promotion={d.promotion} />
+      <SortieGuide storageKey="vsl-historique-v12" />
     </>
   );
 }

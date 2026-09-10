@@ -60,12 +60,16 @@ ok(
     vsl.includes('controlsList="nodownload noplaybackrate noremoteplayback"'),
 );
 ok(
-  vsl.includes('data-progression-visuelle="acceleree-puis-ralentie"') &&
-    vsl.includes("Math.pow(1 - reel, 2)"),
+  vsl.includes('data-progression-visuelle="tres-acceleree-puis-ralentie"') &&
+    vsl.includes("Math.pow(1 - reel, 4)"),
 );
+ok(!vsl.includes("dureeAffichee"));
 ok(!vsl.includes("Présentation complète · 5 min 14 · Activez le son"));
 ok(!vsl.includes("activerOffreApresVsl") && !vsl.includes("hi_vsl_terminee"));
 ok(!sale.includes("AvantageDemarrage") && sale.includes('href="/commander"'));
+ok(!sale.includes("<ExempleSeuil") && !sale.includes("<ChiffresHistoriques"));
+ok(!sale.includes("52 € pour") && !sale.includes("euros(montant)"));
+ok(!fs.readFileSync("src/components/SortieGuide.tsx", "utf8").includes("euros("));
 const checkout = fs.readFileSync("src/components/CheckoutForm.tsx", "utf8"),
   commander = fs.readFileSync("src/app/commander/route.ts", "utf8");
 ok(checkout.includes("identiteConnue ?") && checkout.includes("Votre accès sera envoyé à"));

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
 import { Footer, Header } from "@/components/Chrome";
 import { OptinForm } from "@/components/OptinForm";
 import { SortieGuide } from "@/components/SortieGuide";
 import { UrgencyBar } from "@/components/Urgency";
-import { devisFront } from "@/lib/prix-front";
 
 export const metadata: Metadata = {
   title: "Et si vos enfants héritaient de 68 206 € de plus ?",
@@ -13,9 +11,7 @@ export const metadata: Metadata = {
 const cta = "Voir la vidéo";
 
 /** Page de capture pré-refonte : headline, objection, mécanisme, formulaire. Produit inchangé. */
-export default async function LandingPage() {
-  const jar = await cookies();
-  const d = await devisFront(jar.get("hi_offre")?.value);
+export default function LandingPage() {
   return <>
     <UrgencyBar />
     <Header />
@@ -50,6 +46,6 @@ export default async function LandingPage() {
       </section>
     </main>
     <Footer />
-    <SortieGuide storageKey="lp-historique-v12" montant={d.montant} promotion={d.promotion} />
+    <SortieGuide storageKey="lp-historique-v12" />
   </>;
 }

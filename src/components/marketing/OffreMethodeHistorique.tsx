@@ -1,10 +1,9 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { Check, Cross } from "../ui";
-import { euros } from "@/lib/config";
 
 /** Présentation commerciale uniquement : le catalogue, les inclusions et les PDF restent inchangés. */
-export function OffreMethodeHistorique({ montant, action }: { montant: number; action: ReactNode }) {
+export function OffreMethodeHistorique({ action }: { action: ReactNode }) {
   return <section id="la-methode" className="wrap py-10">
     <h2 className="mb-2 text-[1.4rem]">Ce que vous éviterez de laisser sans réponse avec « Les 7 erreurs qui offrent votre héritage à l’État »</h2>
     <p className="mb-4 text-[1.06rem]">Le guide est une suite de <strong>8 étapes, dans un ordre précis</strong>. Un guide commun à tous, entièrement écrit, pour comprendre les sept erreurs et préparer les questions qui concernent votre famille.</p>
@@ -29,7 +28,6 @@ export function OffreMethodeHistorique({ montant, action }: { montant: number; a
     <div className="overflow-hidden border border-grey-line">
       <table className="w-full text-left text-[0.95rem] sm:text-[1rem]"><tbody>
         {["Les 8 étapes écrites : faire le point, puis comprendre les 7 erreurs", "Le guide complet téléchargeable en PDF", "Les exemples et les fiches incluses dans le guide", "L’accès à votre parcours dans l’espace membre"].map(t => <tr key={t} className="border-b border-grey-line-soft"><td className="px-3 py-2">{t}</td><td className="px-3 py-2 text-right font-bold text-green">Inclus</td></tr>)}
-        <tr className="bg-yellow-bg"><td className="px-3 py-3 text-[1.1rem] font-bold text-blue">Votre guide complet · paiement unique</td><td className="whitespace-nowrap px-3 py-3 text-right text-[1.5rem] font-bold text-red">{euros(montant)}</td></tr>
       </tbody></table>
     </div>
     <p className="mt-3 text-sm text-text-soft">Le Dossier et les packs restent des compléments distincts. Le simulateur appartient aux packs Préparation. Aucun autre achat n’est nécessaire pour terminer le guide.</p>

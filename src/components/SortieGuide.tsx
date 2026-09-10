@@ -1,16 +1,6 @@
 import { ExitPopup } from "./ExitPopup";
-import { euros } from "@/lib/config";
-import type { Palier } from "@/lib/promotions";
 
-export function SortieGuide({
-  storageKey,
-  montant,
-  promotion,
-}: {
-  storageKey: string;
-  montant: number;
-  promotion: Palier;
-}) {
+export function SortieGuide({ storageKey }: { storageKey: string }) {
   return (
     <ExitPopup storageKey={storageKey} title="Ce que vous risquez si vous fermez cette page">
       <ul className="space-y-2 text-[1.03rem]">
@@ -30,19 +20,6 @@ export function SortieGuide({
         Une première lecture, une première fiche. Commencez pendant que vous pouvez encore leur
         expliquer ce qui compte pour vous.
       </p>
-      {promotion.pourcent > 0 && promotion.fin && (
-        <p className="text-sm text-text-soft">
-          Votre palier de −{promotion.pourcent}% se termine le{" "}
-          {new Date(promotion.fin).toLocaleString("fr-FR", {
-            timeZone: "Europe/Paris",
-            day: "numeric",
-            month: "long",
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
-          , heure de Paris. Le prix sera revérifié avant confirmation.
-        </p>
-      )}
       <div data-mesure="clic_commande">
         <a
           href="/commander"
@@ -50,9 +27,6 @@ export function SortieGuide({
         >
           Accéder au guide
         </a>
-        <p className="mt-2 text-center text-[0.95rem] text-text-soft">
-          {euros(montant)} · Paiement unique · Accès immédiat · Garantie 30 jours
-        </p>
       </div>
     </ExitPopup>
   );

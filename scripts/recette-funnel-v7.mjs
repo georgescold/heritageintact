@@ -26,7 +26,9 @@ try {
   }
   await go("/methode");
   ok(await page.getByText("Il faut de toute façon aller chez le notaire, alors autant y aller directement.",{exact:false}).isVisible());
-  ok(await page.evaluate(()=>document.querySelector("#exemple-chiffre").getBoundingClientRect().top>document.querySelector("#premier-cta").getBoundingClientRect().top));
+  ok(await page.getByText("9 600 € de droits en plus dans cet exemple. Pour le même bien.",{exact:true}).count()===0);
+  ok(await page.getByRole("heading",{name:"Ce que disent les chiffres publics",exact:true}).count()===0);
+  ok(await page.evaluate(()=>document.querySelector("#la-methode").getBoundingClientRect().top>document.querySelector("#premier-cta").getBoundingClientRect().top));
   await go("/apercu");
   ok(await page.getByText("Deux éléments illustratifs seulement.",{exact:false}).isVisible());
   ok(!(await page.content()).includes("Bonjour, nous souhaitons préparer notre transmission"));
@@ -53,7 +55,7 @@ try {
     await page.screenshot({path:".build-refonte/v11-vente-haut-"+width+".png"});
     for(const [id,nom] of [["#avant-apres","avant-apres"],["#jean-pierre","jean-pierre"],["#martine","martine"],["#la-methode","methode"]]){const bloc=page.locator(id);for(const img of await bloc.locator("img").all()){await img.scrollIntoViewIfNeeded();await img.evaluate(el=>el.decode());ok(await img.evaluate(el=>el.naturalWidth>0));}await bloc.screenshot({path:".build-refonte/v11-"+nom+"-"+width+".jpg",quality:72,style:".fixed { visibility: hidden !important; }"});}
     ok(await page.getByRole("heading",{name:"Le jour où vos enfants chercheront les réponses, pourrez-vous encore les leur donner ?",exact:true}).count()===1);
-    ok(await page.getByText("Un exemple chiffré, pas une promesse d’économie",{exact:true}).count()===1);
+    ok(await page.getByText("Un exemple chiffré, pas une promesse d’économie",{exact:true}).count()===0);
     ok(await page.locator("#avant-apres img").count()===2);
     await page.locator("#jean-pierre").scrollIntoViewIfNeeded();
     await page.screenshot({path:".build-refonte/v6-recit-"+width+".png"});
@@ -173,16 +175,6 @@ try {
     await page.keyboard.press("Escape");
     ok(await page.locator("dialog[open]").count()===0);
   }
-  // Passage réel d'un palier dans le navigateur, avec remise enregistrée dans la fixture.
-  const d=JSON.parse(fs.readFileSync(fixture,"utf8"));
-  d.promotions=[...(d.promotions||[]).filter(p=>p.gamme!=="front"),{id:"promo_navfront",email:"front@example.invalid",gamme:"front",commenceLe:new Date(Date.now()-2*60000+7000).toISOString()}];
-  fs.writeFileSync(fixture,JSON.stringify(d));
-  await page.context().addCookies([{name:"hi_offre",value:"promo_navfront",url:"http://127.0.0.1:3311"}]);
-  await go("/methode");
-  ok((await page.locator("#premier-cta").innerText()).includes("26"));
-  await page.waitForTimeout(8000);
-  await page.reload({waitUntil:"networkidle"});
-  ok((await page.locator("#premier-cta").innerText()).includes("36,40"));
   // Nouveau client fictif, paiement simulé, questionnaire obligatoire puis offre.
   await page.context().clearCookies();
   await go("/commande");
