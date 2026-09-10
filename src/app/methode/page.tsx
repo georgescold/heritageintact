@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Footer, Header, TrustRow } from "@/components/Chrome";
-import { ExitPopup } from "@/components/ExitPopup";
+import { SortieGuide } from "@/components/SortieGuide";
 import { StickyCta } from "@/components/StickyCta";
 import { MesureFunnel } from "@/components/MesureFunnel";
 import { VslPresentation } from "@/components/VslPresentation";
@@ -162,44 +162,7 @@ export default async function VslPage() {
       </main>
       <Footer />
       <StickyCta href="/commander" label="Accéder au guide" />
-      <ExitPopup
-        storageKey="vsl-historique-v11"
-        title="Ce que vous risquez si vous fermez cette page"
-      >
-        <ul className="space-y-2 text-[1.03rem]">
-          {[
-            "Vous ne saurez toujours pas ce qu’il faut faire vérifier sur votre maison, votre épargne et les documents que vous avez signés.",
-            "Vous ne saurez pas laquelle des dates vous concerne en premier. Elle arrivera quand même.",
-            "La question retournera dans la pile « plus tard ». Elle ne sera pas réglée pour autant.",
-            "Et si rien ne change, ce sont vos enfants qui devront chercher les réponses — pendant leur deuil, sans pouvoir vous les demander.",
-          ].map((t) => (
-            <li key={t} className="flex gap-2 border-l-4 border-red bg-red-bg p-3">
-              <span aria-hidden className="shrink-0 font-bold text-red">
-                ✕
-              </span>
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="text-[1rem] font-bold text-blue">
-          Une première lecture, une première fiche. Commencez pendant que vous pouvez encore leur
-          expliquer ce qui compte pour vous.
-        </p>
-        {d.promotion.pourcent > 0 && d.promotion.fin && (
-          <p className="text-sm text-text-soft">
-            Votre palier de −{d.promotion.pourcent}% se termine le{" "}
-            {new Date(d.promotion.fin).toLocaleString("fr-FR", {
-              timeZone: "Europe/Paris",
-              day: "numeric",
-              month: "long",
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
-            , heure de Paris. Le prix sera revérifié avant confirmation.
-          </p>
-        )}
-        <AccesMethode montant={d.montant} />
-      </ExitPopup>
+      <SortieGuide storageKey="vsl-historique-v12" montant={d.montant} promotion={d.promotion} />
     </>
   );
 }

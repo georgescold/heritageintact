@@ -33,8 +33,8 @@ const urgence = fs.readFileSync("src/components/Urgency.tsx", "utf8");
 ok(!/localStorage|sessionStorage|commencerPromotion/.test(urgence)); ok(urgence.includes("67 ans")); ok(urgence.includes("82 ans")); ok(urgence.includes("84 ans")); ok(urgence.includes("Acheter le guide ne lance pas ce délai"));
 for (const file of ["src/app/page.tsx", "src/app/methode/page.tsx"]) {
   const page = fs.readFileSync(file, "utf8");
-  ok(page.includes("<UrgencyBar />")); ok(file.includes("/methode/")?!page.includes("<EcheanceHistorique"):page.includes("<UrgencyCountdown")); ok(!page.includes("<ConditionsExoneration")); ok(page.includes(file.includes("/methode/")?"votre mort":"7 erreurs à connaître à temps")); ok(!page.includes("Pas une économie promise."));
-  ok(page.includes(file.includes("/methode/")?"<CalculHistorique":"page suivante")); ok(page.indexOf("<UrgencyBar") < page.indexOf("<Header"));
+  ok(page.includes("<UrgencyBar />")); ok(file.includes("/methode/")?!page.includes("<EcheanceHistorique"):page.includes("<SortieGuide")); ok(!page.includes("<ConditionsExoneration")); ok(page.includes(file.includes("/methode/")?"votre mort":"7 erreurs à connaître à temps")); ok(!page.includes("Pas une économie promise."));
+  ok(page.includes(file.includes("/methode/")?"<CalculHistorique":"<OptinForm")); ok(page.indexOf("<UrgencyBar") < page.indexOf("<Header"));
 }
 const exemple = fs.readFileSync("src/components/ExempleHeadline.tsx", "utf8");
 ok(exemple.includes("EXEMPLE FICTIF")); ok(exemple.includes("Voir les hypothèses"));

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Footer, Header } from "@/components/Chrome";
-import { ExitPopup } from "@/components/ExitPopup";
 import { OptinForm } from "@/components/OptinForm";
-import { UrgencyBar, UrgencyCountdown } from "@/components/Urgency";
+import { SortieGuide } from "@/components/SortieGuide";
+import { UrgencyBar } from "@/components/Urgency";
+import { devisFront } from "@/lib/prix-front";
 
 export const metadata: Metadata = {
   title: "Et si vos enfants héritaient de 68 206 € de plus ?",
@@ -11,7 +13,9 @@ export const metadata: Metadata = {
 const cta = "Voir la vidéo";
 
 /** Page de capture pré-refonte : headline, objection, mécanisme, formulaire. Produit inchangé. */
-export default function LandingPage() {
+export default async function LandingPage() {
+  const jar = await cookies();
+  const d = await devisFront(jar.get("hi_offre")?.value);
   return <>
     <UrgencyBar />
     <Header />
@@ -46,16 +50,6 @@ export default function LandingPage() {
       </section>
     </main>
     <Footer />
-    <ExitPopup storageKey="lp-historique-v11" title="Ce que vous risquez si vous fermez cette page">
-      <div className="mb-4"><UrgencyCountdown /></div>
-      <div className="mb-4 space-y-2.5 text-[0.98rem]">
-        <p>Vous fermez cette page. Les dates, elles, continuent d’avancer.</p>
-        <p><strong>Le 31 décembre 2026</strong>, la fenêtre prévue pour certains dons familiaux destinés au logement se referme. Elle est distincte de l’abattement parent-enfant.</p>
-        <p><strong>Et une donation a son propre repère de quinze ans.</strong> Faite à 67 ans, elle atteint ce repère à 82 ans. Faite deux ans plus tard, à 84 ans.</p>
-        <p className="border-l-4 border-red bg-red-bg p-3 font-bold text-blue">Vous pourrez rouvrir cette page. Vous ne pourrez pas antidater la donation.</p>
-        <p>La présentation et le guide vous attendent sur la page suivante. Commencez par comprendre ce qu’il faut regarder, pendant que vous pouvez encore en parler avec vos enfants.</p>
-      </div>
-      <OptinForm cta={cta} />
-    </ExitPopup>
+    <SortieGuide storageKey="lp-historique-v12" montant={d.montant} promotion={d.promotion} />
   </>;
 }

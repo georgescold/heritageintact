@@ -65,6 +65,9 @@ try {
   await go("/");
   await page.evaluate(()=>document.dispatchEvent(new MouseEvent("mouseout",{clientY:0,bubbles:true})));
   await page.locator("dialog[open]").waitFor();
+  ok(await page.locator("dialog[open] li").count()===4);
+  ok(await page.getByText("Vous ne saurez toujours pas ce qu’il faut faire vérifier sur votre maison, votre épargne et les documents que vous avez signés.",{exact:true}).isVisible());
+  ok(await page.getByRole("link",{name:"Accéder au guide",exact:true}).isVisible());
   await page.keyboard.press("Escape");
   ok(await page.locator("dialog[open]").count()===0);
   await page.evaluate(()=>document.dispatchEvent(new MouseEvent("mouseout",{clientY:0,bubbles:true})));
