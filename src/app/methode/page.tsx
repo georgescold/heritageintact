@@ -82,7 +82,7 @@ export default async function VslPage() {
         <div className="wrap">
           <section className="my-8 border-l-4 border-red bg-red-bg p-5">
             <h2 className="mb-3 text-[1.5rem]">
-              Le jour où ils chercheront les réponses, pourrez-vous encore les leur donner ?
+              Le jour où vos enfants chercheront les réponses, pourrez-vous encore les leur donner ?
             </h2>
             <p className="mb-3">
               « Où est le contrat ? Est-ce que la maison appartenait aux deux ? Est-ce que papa
