@@ -113,6 +113,8 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
       "Simulateur détaillé avec hypothèses affichées",
       "Plan adapté aux réponses saisies",
       "Repères par héritier et dates à surveiller",
+      "Alertes sur la protection future, la famille recomposée et la maison",
+      "Dossier de questions et de pièces à remettre au professionnel",
       "Fiches correspondant aux situations familiales pertinentes",
       "Liste des points à faire confirmer par le professionnel",
     ],

@@ -54,7 +54,7 @@ export const GUIDES_UTILISATION: GuideUtilisation[] = [
   {
     "sku": "upsell1",
     "titre": "Mon simulateur + mon plan adapté : relier les hypothèses et les prochaines vérifications",
-    "resultat": "Une préparation approfondie reliée à vos particularités familiales, avec des hypothèses et un suivi explicites.",
+    "resultat": "Une estimation expliquée, des alertes personnelles et un dossier qui distingue vos intentions des actes restant à formaliser.",
     "seances": [
       [
         "1. Choisissez votre fiche principale",
@@ -75,7 +75,13 @@ export const GUIDES_UTILISATION: GuideUtilisation[] = [
         ""
       ],
       [
-        "4. Faites votre tableau de suivi",
+        "4. Préparez ce qui ne se résume pas à un calcul",
+        "Si le résultat signale votre capacité future de décider, ouvrez la fiche Protection future : elle ne désigne personne à votre place et ne crée aucun mandat. Si une maison concentre le patrimoine ou plusieurs volontés, ouvrez la fiche Maison et comparez les scénarios. Dans les deux cas, notez séparément votre souhait, la question à vérifier et l’acte finalement retenu.",
+        "Vous arrivez chez le professionnel avec vos décisions personnelles déjà clarifiées, sans les prendre pour des droits acquis.",
+        "protection-future"
+      ],
+      [
+        "5. Faites votre tableau de suivi",
         "Rassemblez les questions de famille, les documents attendus et les points soulevés par l’atelier dans le tableau de bord. Choisissez une prochaine démarche par sujet et qui s’en charge. Après le rendez-vous, complétez les réponses confirmées : c’est un outil de suivi, pas un dossier certifié.",
         "Votre dossier indique les prochaines actions sans mélanger calcul, conseil et acte.",
         "tableau-bord-familial"

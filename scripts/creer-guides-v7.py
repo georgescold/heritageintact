@@ -95,6 +95,8 @@ def sources():
  rich('<b>Usufruit et nue-propriété</b><br/><link href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934" color="#12365E">Service Public - En quoi consiste l’usufruit ?</link>'),
  rich('<b>Assurance-vie : fiscalité au décès</b><br/><link href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer" color="#12365E">impots.gouv.fr - Bénéficiaire d’une assurance-vie</link>'),
  rich('<b>Succession et famille</b><br/><link href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2529" color="#12365E">Service Public - Règles de succession</link>'),
+ rich('<b>Anticiper une éventuelle incapacité</b><br/><link href="https://www.service-public.fr/particuliers/vosdroits/F16670" color="#12365E">Service Public - Mandat de protection future</link>'),
+ rich('<b>Maison transmise à plusieurs</b><br/><link href="https://www.service-public.fr/particuliers/vosdroits/F1296" color="#12365E">Service Public - Indivision entre les héritiers</link>'),
  P("Gardez vos documents personnels chez vous et utilisez les canaux sécurisés de vos interlocuteurs. N’envoyez pas de relevés, données de santé ou pièces de vos proches à la formation."),
  P("Une succession déjà ouverte, un conflit, une entreprise, un élément international ou une échéance proche nécessitent un professionnel. Ne retardez pas sa consultation pour finir ce guide."),
  P("Dans votre espace : les fiches séparées peuvent être réimprimées à l’unité. En cas de nouvelle version, privilégiez l’édition la plus récente. Les PDF ne se mettent pas à jour une fois téléchargés.")]

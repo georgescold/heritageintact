@@ -21,6 +21,18 @@ export type DonneesSimulation = {
   beneficiaires: number;
   donationAnnee: number;
   donationMontant: number;
+  protectionSignee: "O" | "N" | "?";
+  personneConfiance: "O" | "N" | "?";
+  detentionResidence: "propre" | "couple" | "indivision" | "?";
+  souhaitResidence: "rester" | "transmettre" | "vendre" | "?";
+};
+
+export type PointPreparation = {
+  cle: "protection" | "famille" | "maison" | "assurance-vie" | "donation" | "dates";
+  titre: string;
+  constat: string;
+  actions: string[];
+  effetReel: string;
 };
 
 export const CLE_SIMULATION = "hi_simulation_plan_v1";
@@ -46,6 +58,10 @@ export const DONNEES_VIDES: DonneesSimulation = {
   beneficiaires: 1,
   donationAnnee: 0,
   donationMontant: 0,
+  protectionSignee: "?",
+  personneConfiance: "?",
+  detentionResidence: "?",
+  souhaitResidence: "?",
 };
 
 function heritiers(d: DonneesSimulation): Heritier[] {
@@ -118,8 +134,10 @@ export function donneesVersSaisie(d: DonneesSimulation): Saisie {
 }
 
 export function planPreparation(d: DonneesSimulation): string[] {
+  const specifiques = pointsPreparation(d).flatMap((point) => point.actions.slice(0, 1));
   return [
     "Faire confirmer la propriété réelle des biens, les dettes déductibles et les personnes appelées à recevoir.",
+    ...specifiques,
     d.donationAnnee
       ? "Retrouver les actes et déclarations de donations avant de considérer un abattement comme disponible."
       : "Faire vérifier les abattements disponibles avant toute opération.",
@@ -127,7 +145,124 @@ export function planPreparation(d: DonneesSimulation): string[] {
       ? "Obtenir la clause bénéficiaire actuellement enregistrée et l’historique des versements."
       : "Décider si l’assurance-vie fait partie des sujets à examiner.",
     "Comparer les scénarios utiles avec le professionnel avant toute décision irréversible.",
+  ].filter((etape, index, liste) => liste.indexOf(etape) === index);
+}
+
+export function pointsPreparation(d: DonneesSimulation): PointPreparation[] {
+  const points: PointPreparation[] = [];
+  if (d.protectionSignee !== "O" || d.personneConfiance !== "O") {
+    points.push({
+      cle: "protection",
+      titre: "Votre protection si vous ne pouviez plus décider reste à formaliser",
+      constat:
+        d.protectionSignee === "O"
+          ? "Vous indiquez qu’un dispositif existe, mais l’acceptation de la personne envisagée ou une solution de remplacement reste à confirmer."
+          : "Une personne de confiance connue de la famille ne reçoit aucun pouvoir juridique par cette seule intention.",
+      actions: [
+        "Identifier une personne principale et un remplaçant, puis leur demander s’ils acceptent réellement cette responsabilité.",
+        "Lister les décisions personnelles et patrimoniales que vous voudriez pouvoir confier.",
+        "Apporter la fiche Protection future au notaire ou à l’avocat pour choisir et établir le dispositif approprié.",
+      ],
+      effetReel:
+        "Le pouvoir d’agir viendra uniquement d’un dispositif officiel valablement établi et, le moment venu, régulièrement mis en œuvre.",
+    });
+  }
+  if (d.beauxEnfants > 0 || d.vie === "P" || d.vie === "U") {
+    points.push({
+      cle: "famille",
+      titre: "Votre intention familiale peut différer des droits réellement applicables",
+      constat:
+        d.beauxEnfants > 0
+          ? "Un enfant du conjoint non adopté n’est pas automatiquement traité comme votre propre enfant."
+          : "Partager une vie ou être pacsé ne suffit pas à déterminer ce que le partenaire recevra.",
+      actions: [
+        "Dessiner les liens de filiation et distinguer clairement vos enfants de ceux de votre conjoint.",
+        "Retrouver le régime matrimonial, la convention de PACS, le testament et les actes déjà signés.",
+        "Demander au notaire de comparer votre intention au résultat produit par les actes existants.",
+      ],
+      effetReel:
+        "Seuls les droits établis par la loi et les actes valablement formalisés détermineront la transmission.",
+    });
+  }
+  const destinataires =
+    d.enfants + d.petitsEnfants + d.fratrie + d.neveux + d.sansLien + d.beauxEnfants;
+  if (
+    d.residence > 0 &&
+    (destinataires > 1 || d.detentionResidence === "indivision" || d.souhaitResidence !== "?")
+  ) {
+    points.push({
+      cle: "maison",
+      titre: "La maison nécessite une décision plus précise qu’« ils la garderont »",
+      constat:
+        d.detentionResidence === "?"
+          ? "Le mode de détention du logement n’est pas confirmé, alors qu’il conditionne la part réellement concernée."
+          : "Plusieurs personnes ou plusieurs intentions autour du logement peuvent rendre l’occupation, les charges ou la vente difficiles à organiser.",
+      actions: [
+        "Faire confirmer le propriétaire, les quotes-parts, l’emprunt et les droits déjà existants sur le logement.",
+        "Comparer au moins trois scénarios : occupation, conservation ou rachat d’une part, et vente.",
+        "Noter ce que la famille a compris puis faire formaliser la solution réellement retenue.",
+      ],
+      effetReel:
+        "Cette simulation ne crée aucun droit d’occupation, de partage ou de vente : l’acte approprié doit être établi par le professionnel.",
+    });
+  }
+  if (d.avAvant + d.avApres > 0) {
+    points.push({
+      cle: "assurance-vie",
+      titre: "Le montant de l’assurance-vie ne révèle pas la clause enregistrée",
+      constat:
+        "Le simulateur utilise vos montants et le nombre de bénéficiaires déclaré, mais il ne peut pas lire le contrat détenu par l’assureur.",
+      actions: [
+        "Demander la clause bénéficiaire actuellement enregistrée et l’historique des versements.",
+        "Comparer la clause obtenue à votre intention actuelle avant toute demande de modification.",
+      ],
+      effetReel: "Seule la clause effectivement enregistrée auprès de l’assureur produit ses effets.",
+    });
+  }
+  if (d.donationAnnee > 0) {
+    points.push({
+      cle: "donation",
+      titre: "Une donation passée doit être retrouvée avant tout nouveau calcul",
+      constat:
+        "Une année et un montant approximatifs ne permettent pas de connaître seuls les effets civils et fiscaux encore applicables.",
+      actions: [
+        "Retrouver l’acte, la déclaration et l’identité exacte du donateur et du bénéficiaire.",
+        "Faire confirmer séparément le rappel fiscal, le rapport civil et les abattements disponibles.",
+      ],
+      effetReel: "Les actes et déclarations conservés, pas le souvenir du montant, permettront la vérification.",
+    });
+  }
+  if (d.age >= 69) {
+    points.push({
+      cle: "dates",
+      titre: "Vos repères de 70 et 71 ans méritent une vérification datée",
+      constat:
+        "L’âge seul signale un point à examiner ; il ne démontre ni une urgence juridique ni l’intérêt d’une opération.",
+      actions: [
+        "Faire dater les versements d’assurance-vie et tout projet de démembrement avant de comparer les conséquences.",
+      ],
+      effetReel: "Une décision ne doit être prise qu’après vérification de votre situation et des règles en vigueur.",
+    });
+  }
+  return points;
+}
+
+export function dossierProfessionnel(d: DonneesSimulation): string[] {
+  const pieces = [
+    "Titres de propriété, régime matrimonial ou convention de PACS et dernier relevé des dettes.",
+    "Liste factuelle des personnes concernées et actes familiaux déjà signés.",
+    d.donationAnnee
+      ? "Actes et déclarations correspondant aux donations passées."
+      : "Confirmation qu’aucune donation passée n’a été oubliée.",
+    d.avAvant + d.avApres > 0
+      ? "Clause bénéficiaire en vigueur et historique des versements d’assurance-vie."
+      : "Liste des contrats à vérifier, même lorsque leur montant est encore inconnu.",
   ];
+  if (pointsPreparation(d).some((point) => point.cle === "protection"))
+    pieces.push("Fiche Protection future : personnes envisagées, pouvoirs souhaités et solution de remplacement.");
+  if (pointsPreparation(d).some((point) => point.cle === "maison"))
+    pieces.push("Fiche Maison : mode de détention, charges, souhaits et scénarios à comparer.");
+  return pieces;
 }
 
 const CLES_MONTANTS = [
@@ -181,5 +316,25 @@ export function validerDonneesSimulation(valeur: unknown): DonneesSimulation | n
   }
   const total = d.enfants + d.petitsEnfants + d.fratrie + d.neveux + d.sansLien + d.beauxEnfants;
   if (total < 1 || d.handicap > total) return null;
+  const choix = <T extends string>(cle: string, permis: readonly T[]): T | null => {
+    const valeur = String(source[cle] ?? "?") as T;
+    return permis.includes(valeur) ? valeur : null;
+  };
+  const protectionSignee = choix("protectionSignee", ["O", "N", "?"] as const);
+  const personneConfiance = choix("personneConfiance", ["O", "N", "?"] as const);
+  const detentionResidence = choix(
+    "detentionResidence",
+    ["propre", "couple", "indivision", "?"] as const,
+  );
+  const souhaitResidence = choix(
+    "souhaitResidence",
+    ["rester", "transmettre", "vendre", "?"] as const,
+  );
+  if (!protectionSignee || !personneConfiance || !detentionResidence || !souhaitResidence)
+    return null;
+  d.protectionSignee = protectionSignee;
+  d.personneConfiance = personneConfiance;
+  d.detentionResidence = detentionResidence;
+  d.souhaitResidence = souhaitResidence;
   return d;
 }

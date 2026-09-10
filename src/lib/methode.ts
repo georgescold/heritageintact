@@ -15,6 +15,7 @@ import { LettreAuxEnfants } from "@/content/documents/lettre-aux-enfants";
 import { LettreModificationClause } from "@/content/documents/lettre-modification-clause";
 import { Lexique } from "@/content/documents/lexique";
 import { MaSituation } from "@/content/documents/ma-situation";
+import { MaisonIndivision } from "@/content/documents/maison-indivision";
 import { MailRendezVous } from "@/content/documents/mail-rendez-vous";
 import { PiecesAApporter } from "@/content/documents/pieces-a-apporter";
 import { PlanConcubinsPacs } from "@/content/documents/plan-concubins-pacs";
@@ -30,6 +31,7 @@ import { PlanMarie2Enfants } from "@/content/documents/plan-marie-2-enfants";
 import { PlanPatrimoineImportant } from "@/content/documents/plan-patrimoine-important";
 import { PlanSansEnfant } from "@/content/documents/plan-sans-enfant";
 import { PlanVeufVeuve } from "@/content/documents/plan-veuf-veuve";
+import { ProtectionFuture } from "@/content/documents/protection-future";
 import { QuestionsNotaire } from "@/content/documents/questions-notaire";
 import { RegleMiseAJour } from "@/content/documents/regle-mise-a-jour";
 import { SimulateurPapier } from "@/content/documents/simulateur-papier";
@@ -283,6 +285,20 @@ export const DOCUMENTS: DocumentImprimable[] = [
     sku: "upsell1",
     ordre: 29,
     corps: Calendrier15Ans,
+  },
+  {
+    cle: "protection-future",
+    titre: "Préparer ma protection si je ne peux plus décider",
+    sku: "upsell1",
+    ordre: 29.5,
+    corps: ProtectionFuture,
+  },
+  {
+    cle: "maison-indivision",
+    titre: "Ma maison : préparer les décisions avant qu’elles ne se bloquent",
+    sku: "upsell1",
+    ordre: 29.6,
+    corps: MaisonIndivision,
   },
 
   {

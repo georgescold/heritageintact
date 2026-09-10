@@ -32,19 +32,23 @@ function charger(relatif) {
 const exemple = {
   age: 69, vie: "M", residence: 480000, immobilier: 90000, epargne: 40000,
   titres: 25000, autres: 10000, dettes: 30000, enfants: 2, petitsEnfants: 1,
-  fratrie: 0, neveux: 0, sansLien: 0, beauxEnfants: 1, handicap: 1,
+  fratrie: 0, neveux: 0, sansLien: 0, beauxEnfants: 1, handicap: 0,
   avAvant: 180000, avApres: 45000, beneficiaires: 2, donationAnnee: 2017,
-  donationMontant: 60000,
+  donationMontant: 60000, protectionSignee: "N", personneConfiance: "?",
+  detentionResidence: "couple", souhaitResidence: "transmettre",
 };
 const donnees = charger("src/lib/simulateur/donnees.ts");
 assert.equal(donnees.validerDonneesSimulation(exemple)?.age, 69);
 assert.equal(donnees.validerDonneesSimulation({ ...exemple, residence: -1 }), null);
 assert.equal(donnees.validerDonneesSimulation({ ...exemple, enfants: 0, petitsEnfants: 0, beauxEnfants: 0 }), null);
+assert.ok(donnees.pointsPreparation(exemple).some((point) => point.cle === "protection"));
+assert.ok(donnees.pointsPreparation(exemple).some((point) => point.cle === "famille"));
+assert.ok(donnees.pointsPreparation(exemple).some((point) => point.cle === "maison"));
 const pdf = await charger("src/lib/simulateur/pdf-plan.ts").genererPlanPersonnalisePdf(exemple, new Date("2026-09-10T10:00:00Z"));
 assert.equal(Buffer.from(pdf).subarray(0, 5).toString(), "%PDF-");
 const sortie = path.resolve("output/pdf/exemple-plan-personnalise.pdf");
 fs.mkdirSync(path.dirname(sortie), { recursive: true });
 fs.writeFileSync(sortie, Buffer.from(pdf));
 const document = await require("pdf-lib").PDFDocument.load(pdf);
-assert.ok(document.getPageCount() >= 3);
+assert.ok(document.getPageCount() >= 4);
 console.log(`PDF personnalisé valide : ${document.getPageCount()} pages, ${pdf.length} octets.`);

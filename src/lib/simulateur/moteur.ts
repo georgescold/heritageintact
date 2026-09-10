@@ -23,10 +23,10 @@ import type { DateButoir, Heritier, PartHeritier, Resultat, Saisie } from "./typ
  *
  * ═══ Ce que ce moteur ne fait PAS, délibérément
  *
- * Il calcule la succession au SECOND décès, celui qui coûte. Entre époux et
- * partenaires de PACS il n'y a aucun droit (art. 796-0 bis) : le premier décès
- * ne produit pas de facture, il concentre le patrimoine sur une seule tête. Le
- * chiffre qui compte est donc celui d'après, et c'est celui qu'on rend.
+ * Il calcule un SCÉNARIO volontaire à partir des montants et des personnes
+ * saisis. Il ne détermine ni la propriété réelle, ni les héritiers légaux, ni
+ * les droits du conjoint. L'utilisateur doit donc saisir uniquement la part
+ * de patrimoine qu'il souhaite modéliser et faire confirmer cette assiette.
  */
 
 const ARTICLE: Record<Heritier["lien"], string> = {
@@ -73,18 +73,10 @@ export function calculer(s: Saisie, anneeCourante: number): Resultat {
 
   // ── LA MASSE ────────────────────────────────────────────────────
   /**
-   * ⚠️ UN BIEN COMMUN COMPTE EN ENTIER, et c'est contre-intuitif.
-   *
-   * On serait tenté de n'en retenir que la moitié — l'autre appartenant au
-   * conjoint. C'est juste au PREMIER décès. Or ce moteur calcule le SECOND,
-   * celui qui produit la facture : entre-temps le survivant a recueilli la
-   * moitié de l'autre sans payer un euro (art. 796-0 bis), et le bien entier
-   * se trouve alors sur une seule tête.
-   *
-   * Diviser par deux ici afficherait un chiffre deux fois trop bas, dans le
-   * sens rassurant — exactement le sens qui coûte cher : le lecteur conclurait
-   * qu'il n'est pas concerné, et découvrirait l'inverse le jour où il ne peut
-   * plus rien changer.
+   * ⚠️ Les valeurs sont utilisées telles qu'elles sont saisies. Le moteur ne
+   * liquide pas un régime matrimonial et ne devine aucune quote-part. Pour un
+   * bien détenu à plusieurs, l'utilisateur doit saisir la part qu'il veut
+   * examiner puis la faire confirmer par le professionnel.
    *
    * ⚠️ Le cas nommé ci-dessous en test — 380 000 € + 120 000 € — n'est PAS le
    * cas canonique du projet. Celui-ci est 480 000 € de maison + 40 000 €
@@ -102,7 +94,7 @@ export function calculer(s: Saisie, anneeCourante: number): Resultat {
   }
   if (s.biens.some((b) => b.enCommun)) {
     hypotheses.push(
-      "Les biens détenus en commun sont comptés en entier : le calcul porte sur le second décès, celui où tout se retrouve sur une seule tête. Votre régime matrimonial exact peut modifier ce partage — votre notaire est seul à pouvoir le trancher.",
+      "Un bien signalé comme détenu à plusieurs est utilisé pour la valeur saisie, sans calcul automatique de quote-part. Faites confirmer la part appartenant réellement à la personne concernée.",
     );
   }
 
@@ -112,16 +104,16 @@ export function calculer(s: Saisie, anneeCourante: number): Resultat {
   }
 
   // ── LE PARTAGE ──────────────────────────────────────────────────
-  // À parts égales. La réserve héréditaire et la quotité disponible peuvent
-  // modifier ce partage : on le dit, on ne le devine pas.
+  // À parts égales entre les personnes du scénario. Cela ne détermine jamais
+  // qu'elles sont héritières ni qu'une telle répartition serait possible.
   const part = masse / heritiers.length;
   if (heritiers.length > 1) {
     hypotheses.push(
-      "Le partage est calculé à parts égales entre les héritiers. Un testament ou une donation-partage peut le modifier.",
+      "Le scénario répartit la masse à parts égales entre les personnes saisies. Il ne détermine ni leur qualité d’héritier, ni leur réserve, ni la possibilité juridique de cette répartition.",
     );
   }
   hypotheses.push(
-    "Le calcul porte sur le second décès, celui qui produit la facture : entre époux et partenaires de PACS, aucun droit n'est dû (art. 796-0 bis).",
+    "Le calcul porte sur une seule transmission de la masse saisie. Il ne liquide pas le régime matrimonial, les droits du conjoint ou une succession antérieure.",
   );
 
   // ── L'ASSURANCE-VIE, HORS SUCCESSION ────────────────────────────
@@ -196,10 +188,10 @@ export function datesButoir(s: Saisie, anneeCourante: number): DateButoir[] {
     : {
         cle: "quinze-ans",
         libelle:
-          "Aucune donation déclarée : votre abattement est entier, et le compteur ne court pas encore",
+          "Aucune donation saisie : la disponibilité de l’abattement reste à confirmer",
         article: "art. 779 et 784",
         moisRestants: null,
-        note: "C'est une bonne nouvelle : les 100 000 € par parent et par enfant sont disponibles aujourd'hui. Le compteur de 15 ans ne démarre qu'au premier don déclaré.",
+        note: "L’absence de donation dans ce formulaire ne prouve pas qu’aucune opération antérieure n’a utilisé un abattement. Vérifiez les actes et déclarations avant tout calcul.",
       };
 
   const mois = (cible: number) => (age === undefined ? null : (cible - age) * 12);

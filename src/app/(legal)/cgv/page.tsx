@@ -28,7 +28,7 @@ export default function CGV() {
             </li>
           ))}
       </ul>
-      <p>Chaque produit est vendu séparément. Le Dossier notaire à 17 € est une option non précochée. « Mon simulateur + mon plan adapté » inclut l’outil de simulation, le résultat pédagogique, les hypothèses et les supports de préparation correspondants. Le guide assurance-vie est un achat distinct.</p>
+      <p>Chaque produit est vendu séparément. Le Dossier notaire à 17 € est une option non précochée. « Mon simulateur + mon plan adapté » inclut l’outil de simulation, le résultat indicatif, les hypothèses et les supports de préparation correspondants. Le guide assurance-vie est un achat distinct.</p>
       <p>
         Paiements uniques, sans abonnement. Des réductions personnelles à paliers peuvent s’appliquer selon les <a href="/conditions-offres">conditions des avantages de démarrage</a>. Le prix et sa date de fin sont affichés ; un changement avant paiement nécessite une nouvelle confirmation. Les prix
         sont en euros, toutes taxes comprises. {LEGAL.vatNotice}
