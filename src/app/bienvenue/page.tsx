@@ -9,14 +9,14 @@ import { etapeParNumero } from "@/lib/methode";
 export const metadata: Metadata = { title: "Votre guide est prêt", robots: { index: false, follow: false } };
 
 /** Remise explicite du produit 1 après la décision concernant l'offre recommandée. */
-export default async function Page({ searchParams }: { searchParams: Promise<{ o?: string; err?: string }> }) {
-  const { o, err } = await searchParams;
+export default async function Page({ searchParams }: { searchParams: Promise<{ o?: string; err?: string; retour?: string }> }) {
+  const { o, err, retour } = await searchParams;
   const order = o ? await getOrder(o) : null;
   if (!order || order.status !== "paid") redirect("/commande");
   const acces = await accesParEmail(order.email);
   // Après le paiement du guide, le client rejoint son menu sans questionnaire intermédiaire.
   // La qualification commerciale se fait uniquement s'il demande son plan personnalisé.
-  if (acces) ouvrirEspace(acces.jeton);
+  if (acces) ouvrirEspace(acces.jeton, retour !== "1");
   const total = order.items.reduce((s, i) => s + i.price, 0);
   return <><MesurerAchat id={order.id} /><Header minimal /><main className="wrap flex-1 py-8">
     {err === "1" && <p role="alert" className="mb-5 border-2 border-orange bg-yellow-bg p-4">Le complément n’a pas pu être ajouté. Aucun montant supplémentaire n’a été débité et votre guide reste bien acquis.</p>}
@@ -39,6 +39,6 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ o
   </main><Footer /></>;
 }
 
-function ouvrirEspace(jeton: string): void {
-  redirect(urlEspace(jeton));
+function ouvrirEspace(jeton: string, nouveau: boolean): void {
+  redirect(`${urlEspace(jeton)}${nouveau ? "?nouveau=1" : ""}`);
 }

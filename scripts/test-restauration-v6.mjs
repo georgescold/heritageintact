@@ -14,7 +14,7 @@ ok(!welcome.includes('id="suite-adaptee"'),"aucun upsell après la délivrance")
 ok(read("src/app/profil.ts").includes("urlEcran(prochain"),"routage de l’upsell avant délivrance");
 ok(welcome.includes("<MesurerAchat id={order.id}"),"mesure consentie même sans passage par une offre");
 const offer=read("src/components/OffrePreparation.tsx");
-ok(offer.includes("const fin = etape.suivant")&&offer.includes("const apresAchat"),"acceptation ou refus suit le nouveau tunnel");
+ok(offer.includes('const fin = sku === "upsell1"')&&offer.includes("&retour=1")&&offer.includes("const apresAchat"),"acceptation ou refus du plan revient au menu membre");
 ok((offer.match(/<form action=/g)||[]).length===1,"un seul formulaire de paiement");
 ok(offer.indexOf('id="decision-complement"')<offer.indexOf("<ValeurComplement"),"décision avant détail long");
 ok(offer.includes('name="montantAffiche"')&&offer.includes("devisPour"),"montant serveur conservé");

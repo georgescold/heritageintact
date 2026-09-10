@@ -17,10 +17,10 @@ export default async function Page({
   searchParams,
 }: {
   params: Promise<{ jeton: string }>;
-  searchParams: Promise<{ vue?: string; ajoute?: string }>;
+  searchParams: Promise<{ vue?: string; ajoute?: string; nouveau?: string }>;
 }) {
   const { jeton } = await params;
-  const { vue = "parcours", ajoute } = await searchParams;
+  const { vue = "parcours", ajoute, nouveau } = await searchParams;
   if (!estJetonValide(jeton)) return <LienInvalide />;
   const etat = await chargerEspace(jeton);
   if (!etat) return <LienInvalide />;
@@ -46,6 +46,12 @@ export default async function Page({
       <MesurerAchat id={jeton} membre />
       <main className="wrap-wide flex-1 py-8">
         <h1 className="text-[1.8rem]">Bonjour {etat.acces.firstName || "et bienvenue"}</h1>
+        {nouveau === "1" && etat.possede.has("front") && (
+          <section role="status" className="mt-5 border-2 border-green bg-green-bg p-5">
+            <p className="text-[1.2rem] font-bold text-green">✓ Votre paiement a été accepté</p>
+            <p className="mt-2">Votre guide <strong>Les 7 erreurs qui offrent votre héritage à l’État</strong> est prêt. Vous pouvez le télécharger immédiatement ci-dessous.</p>
+          </section>
+        )}
         <nav
           aria-label="Mon espace"
           className="my-6 flex flex-wrap gap-2 border-b border-grey-line pb-3"
@@ -67,68 +73,49 @@ export default async function Page({
           </p>
         )}
         <div className="max-w-[760px]">
-          <p className="mb-6"><Link href={`${hub}/demarrer`}>Bien utiliser mes achats : le guide pas à pas</Link></p>
+          {vue !== "parcours" && <p className="mb-6"><Link href={`${hub}/demarrer`}>Bien utiliser mes achats</Link></p>}
           {(vue === "parcours" || vue === "outils") && etat.etapes.some(e => e.etape.cle === "e0" && e.faite) && <PrioriteActuelle jeton={jeton} objectif={etat.profil?.objectif} av={etat.profil?.av} />}
           {!["dossier", "outils", "aide"].includes(vue) && !etat.possede.has("front") && (
             <section><h2 className="mb-3 text-[1.5rem]">Vos contenus restent accessibles</h2><p className="mb-4">Retrouvez les supports et modules correspondant à vos achats actifs.</p><ButtonLink href={`${hub}?vue=outils`}>Ouvrir mes outils</ButtonLink></section>
           )}
           {!["dossier", "outils", "aide"].includes(vue) && etat.possede.has("front") && (
             <>
-              <section className="mb-9 bg-grey-bg p-6">
-                <p className="font-bold text-orange-dark">
-                  {etat.nbFaites} étape{etat.nbFaites > 1 ? "s" : ""} terminée
-                  {etat.nbFaites > 1 ? "s" : ""} sur 8
-                </p>
-                {etat.reprendre ? (
-                  <>
-                    <h2 className="my-3 text-[1.6rem]">
-                      Votre prochaine étape : {etat.reprendre.titre}
-                    </h2>
-                    <p className="mb-5">{etat.reprendre.resume}</p>
-                    <ButtonLink href={`${hub}/etape/${etat.reprendre.numero}`}>
-                      Continuer ma préparation
-                    </ButtonLink>
-                  </>
-                ) : (
-                  <>
-                    <h2 className="my-3 text-[1.5rem]">Votre parcours écrit est terminé</h2>
-                    <p>
-                      Relisez vos questions et préparez votre rendez-vous. Avoir suivi le parcours
-                      ne signifie pas que vos décisions ont été validées.
-                    </p>
-                    <Link href={`${hub}?vue=dossier`}>Retrouver mon dossier</Link>
-                  </>
-                )}
+              <section className="mb-8 border-2 border-blue bg-grey-bg p-5 sm:p-6">
+                <p className="font-bold uppercase tracking-wide text-orange-dark">Votre achat</p>
+                <h2 className="my-3 text-[1.55rem]">Les 7 erreurs qui offrent votre héritage à l’État</h2>
+                <p className="mb-5">Votre guide est réuni dans un seul fichier. Téléchargez-le pour le lire, l’imprimer ou le conserver sur votre ordinateur.</p>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <a className="inline-flex min-h-[54px] flex-1 items-center justify-center bg-orange px-5 py-3 text-center font-bold text-white no-underline" href={`${hub}/pdf/les-7-erreurs`} download>
+                    Télécharger mon guide PDF
+                  </a>
+                  <ButtonLink href={`${hub}/etape/0`} variant="blue">Lire le guide en ligne</ButtonLink>
+                </div>
               </section>
-              <h2 className="mb-4 text-[1.4rem]">Les étapes, à votre rythme</h2>
-              <ol className="space-y-3">
-                {etat.etapes.map(({ etape, faite }) => (
-                  <li key={etape.cle}>
-                    <Link
-                      className="flex min-h-[56px] items-center justify-between gap-4 border-b border-grey-line py-3"
-                      href={`${hub}/etape/${etape.numero}`}
-                    >
-                      <span>
-                        {etape.numero + 1}. {etape.titre}
-                      </span>
-                      <span className="shrink-0 whitespace-nowrap text-text-soft">
-                        {faite ? "Terminée" : `≈ ${etape.minutes} min`}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-              <p className="mt-6 text-text-soft">
-                Les durées comprennent la préparation. Les explications, exemples et fiches utiles
-                sont écrits ; vos guides PDF sont disponibles ci-dessous.
-              </p>
+              <details className="border border-grey-line bg-white p-5">
+                <summary className="min-h-[44px] cursor-pointer text-[1.1rem] font-bold text-blue">
+                  Lire et suivre le guide dans mon espace · {etat.nbFaites}/8
+                </summary>
+                <div className="mt-5">
+                  {etat.reprendre && <p className="mb-4 border-l-4 border-orange bg-grey-bg p-3"><strong>À reprendre :</strong> {etat.reprendre.titre}</p>}
+                  <ol className="space-y-2">
+                    {etat.etapes.map(({ etape, faite }) => (
+                      <li key={etape.cle}>
+                        <Link className="flex min-h-[50px] items-center justify-between gap-4 border-b border-grey-line-soft py-2" href={`${hub}/etape/${etape.numero}`}>
+                          <span>{etape.numero + 1}. {etape.titre}</span>
+                          <span className="shrink-0 text-sm text-text-soft">{faite ? "Terminée" : `≈ ${etape.minutes} min`}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </details>
               <div className="mt-10 border-t-2 border-blue pt-8">
                 <Boutique etat={etat} />
               </div>
             </>
           )}
           {vue === "dossier" && <MesDocuments etat={etat} />}
-          {(vue==="parcours" || vue==="dossier") && <MesGuidesPdf jeton={jeton} possede={etat.possede}/>}
+          {vue==="dossier" && <MesGuidesPdf jeton={jeton} possede={etat.possede}/>}
           {vue === "outils" && (
             <div className="space-y-8">
               <h2 className="text-[1.5rem]">Mes outils et compléments</h2>

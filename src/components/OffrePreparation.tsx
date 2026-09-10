@@ -41,7 +41,7 @@ export async function OffrePreparation({
   if (!etape.afficher) redirect(etape.versOu);
   const contexte = conseilOffre(profil);
   const d = await devisPour(order.email, sku);
-  const fin = sku === "upsell1" ? `/bienvenue?o=${encodeURIComponent(order.id)}` : etape.suivant;
+  const fin = sku === "upsell1" ? `/bienvenue?o=${encodeURIComponent(order.id)}&retour=1` : etape.suivant;
   if (d.dejaPossede) redirect(fin);
   const produit = PRODUCTS[sku],
     texte = PRESENTATION[sku];
