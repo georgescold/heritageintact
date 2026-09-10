@@ -31,7 +31,7 @@
 
 Tarifs hors avantage approuvés : 27 / 17 / 197 / 247 / 67 €. Pas de vente autonome du simulateur.
 
-Guide : 21,60 € pendant 20 minutes après inscription, 24,30 € jusqu’à J7, puis 27 €.
+Guide : 21,60 € pendant 20 minutes après la fin complète de la VSL, 24,30 € jusqu’à J7 après cette fin, puis 27 €.
 Compléments : 25 % pendant 20 minutes après qualification, 10 % jusqu’à 48 h, puis fin de réduction.
 Dossier : 17 €, facultatif, non précoché, sans timer de réduction.
 

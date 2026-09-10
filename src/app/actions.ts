@@ -47,8 +47,6 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
     return { error: "Cochez la case pour accepter les conditions générales avant de continuer." };
   }
   const lead = await addLead({ email, firstName, source, marketingConsent });
-  const promotion = await commencerPromotion(lead.email, "front");
-
   // L'email de livraison part tout de suite. On l'attend : sans ça, la fonction
   // se termine avec la redirection et l'envoi peut être coupé net sur Vercel.
   // Il ne lève jamais, un incident chez Resend ne doit pas bloquer l'inscription.
@@ -56,7 +54,6 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   if (envoi.ok) await marquerEnvoye(lead.id, "j0");
 
   const jar = await cookies();
-  jar.set("hi_offre", promotion.id, { httpOnly:true, secure:process.env.NODE_ENV === "production", sameSite:"lax", path:"/", maxAge:60*60*24*30 });
   jar.set("hi_lead", JSON.stringify({ email: lead.email, firstName: lead.firstName }), {
     httpOnly: true,
     sameSite: "lax",
@@ -67,12 +64,37 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   redirect("/methode");
 }
 
+/** La remise de la Méthode ne commence qu'une fois la VSL regardée jusqu'au bout. */
+export async function activerOffreApresVsl(): Promise<{ ok: boolean }> {
+  const jar = await cookies();
+  const brut = jar.get("hi_lead")?.value;
+  if (!brut) return { ok: false };
+
+  try {
+    const lead = JSON.parse(brut) as { email?: string };
+    const email = lead.email?.trim().toLowerCase() ?? "";
+    if (!EMAIL_RE.test(email)) return { ok: false };
+    const promotion = await commencerPromotion(email, "front");
+    jar.set("hi_offre", promotion.id, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 30,
+    });
+    return { ok: true };
+  } catch {
+    return { ok: false };
+  }
+}
+
 // ─────────────────────────────────────────────────────────────────────
 //  PAIEMENT
 // ─────────────────────────────────────────────────────────────────────
 
 export type PrepareResult =
-  { ok: true; clientSecret: string; orderId: string } | { ok: false; error: string; actualiser?: boolean };
+  | { ok: true; clientSecret: string; orderId: string }
+  | { ok: false; error: string; actualiser?: boolean };
 
 /**
  * Étape 1 du paiement : on crée la commande (statut « pending »), le client Stripe,
@@ -112,10 +134,19 @@ export async function prepareCheckout(input: {
   const jar = await cookies();
   const estimation = await devisFront(jar.get("hi_offre")?.value, email);
   const prix = estimation.montant;
-  if (!estimation.admissible || !Number.isFinite(input.montantAffiche) || input.montantAffiche !== prix) {
+  if (
+    !estimation.admissible ||
+    !Number.isFinite(input.montantAffiche) ||
+    input.montantAffiche !== prix
+  ) {
     // Une expiration ne vaut jamais autorisation de débiter davantage.
     if (!estimation.admissible) jar.delete("hi_offre");
-    return {ok:false,actualiser:true,error:"Le montant a été actualisé. Vérifiez le nouveau récapitulatif, puis confirmez à nouveau. Aucun paiement n’a été lancé."};
+    return {
+      ok: false,
+      actualiser: true,
+      error:
+        "Le montant a été actualisé. Vérifiez le nouveau récapitulatif, puis confirmez à nouveau. Aucun paiement n’a été lancé.",
+    };
   }
 
   const order = await createOrder({
@@ -269,7 +300,11 @@ const FENETRE_UPSELL_MS = 30 * 60 * 1000;
  * forte, même sur une carte enregistrée. Stripe renvoie alors `authentication_required`.
  * On le traite explicitement plutôt que d'afficher une erreur générique.
  */
-export async function chargeUpsell(orderId: string, sku: ProductSku, montantAffiche?: number): Promise<UpsellResult> {
+export async function chargeUpsell(
+  orderId: string,
+  sku: ProductSku,
+  montantAffiche?: number,
+): Promise<UpsellResult> {
   // ⚠️ Le drapeau se vérifie DANS L'ACTION, pas seulement à l'affichage :
   // un SKU connu du type devient facturable dès que quelqu'un écrit son prix,
   // et l'URL qui mène ici est devinable. Encaisser 147 € pour un contenu qui
@@ -279,9 +314,14 @@ export async function chargeUpsell(orderId: string, sku: ProductSku, montantAffi
   }
 
   const order = await getOrder(orderId);
-  if (!order || order.status !== "paid") return { ok: false, error: "Commande réglée introuvable." };
+  if (!order || order.status !== "paid")
+    return { ok: false, error: "Commande réglée introuvable." };
   if (order.items.some((i) => i.sku === sku)) return { ok: true }; // déjà acheté
-  if (!profilComplet(await profilDeCommande(order.id))) return {ok:false,error:"Terminez les quatre questions de qualification avant de continuer."};
+  if (!profilComplet(await profilDeCommande(order.id)))
+    return {
+      ok: false,
+      error: "Terminez les quatre questions de qualification avant de continuer.",
+    };
 
   // ⚠️ HORS DE LA FENÊTRE, ON NE DÉBITE PLUS EN UN CLIC. Voir FENETRE_UPSELL_MS :
   // l'appelant redirige alors vers l'espace, qui demande une confirmation.
@@ -348,7 +388,11 @@ export async function chargeUpsell(orderId: string, sku: ProductSku, montantAffi
    */
   const { montant } = await devisPour(order.email, sku);
   if (!Number.isFinite(montantAffiche) || montantAffiche !== montant) {
-    return { ok: false, expire: true, error: "Votre récapitulatif a changé. Confirmez le montant actualisé depuis votre espace." };
+    return {
+      ok: false,
+      expire: true,
+      error: "Votre récapitulatif a changé. Confirmez le montant actualisé depuis votre espace.",
+    };
   }
 
   if (!stripe || montant === 0) {
@@ -478,7 +522,12 @@ async function offrirDossierNotaire(
  * Ne lève jamais : le client a payé, il a son produit. Un incident chez Resend
  * ne doit pas transformer une vente réussie en écran d'échec.
  */
-async function recuUpsell(email: string, sku: ProductSku, montant: number, operation: string): Promise<void> {
+async function recuUpsell(
+  email: string,
+  sku: ProductSku,
+  montant: number,
+  operation: string,
+): Promise<void> {
   try {
     const acces = await accesParEmail(email);
     if (!acces) return;
@@ -489,8 +538,15 @@ async function recuUpsell(email: string, sku: ProductSku, montant: number, opera
 }
 
 /** Acceptation d'un upsell : on débite, puis on avance dans le funnel. */
-export async function acceptUpsell(orderId: string, sku: ProductSku, next: string, formData?: FormData): Promise<void> {
-  const montantAffiche = formData?.has("montantAffiche") ? Number(formData.get("montantAffiche")) : undefined;
+export async function acceptUpsell(
+  orderId: string,
+  sku: ProductSku,
+  next: string,
+  formData?: FormData,
+): Promise<void> {
+  const montantAffiche = formData?.has("montantAffiche")
+    ? Number(formData.get("montantAffiche"))
+    : undefined;
   const result = await chargeUpsell(orderId, sku, montantAffiche);
 
   // Hors fenêtre : on n'affiche pas un échec, on emmène vers le seul endroit

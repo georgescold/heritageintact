@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { activerOffreApresVsl } from "@/app/actions";
 
 const dureeAffichee = (secondes: number) => {
   if (!Number.isFinite(secondes)) return "0:00";
@@ -20,6 +22,7 @@ const progressionVisuelle = (temps: number, duree: number) => {
 
 /** VSL auto-hébergée avec contrôles non navigables et progression visuelle accélérée. */
 export function VslPresentation() {
+  const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
   const cadreRef = useRef<HTMLDivElement>(null);
   const dernierTempsLu = useRef(0);
@@ -59,8 +62,7 @@ export function VslPresentation() {
   const afficherPleinEcran = async () => {
     const cadre = cadreRef.current;
     const video = videoRef.current as
-      | (HTMLVideoElement & { webkitEnterFullscreen?: () => void })
-      | null;
+      (HTMLVideoElement & { webkitEnterFullscreen?: () => void }) | null;
     if (document.fullscreenElement) {
       await document.exitFullscreen();
     } else if (cadre?.requestFullscreen) {
@@ -79,8 +81,7 @@ export function VslPresentation() {
     }
   };
 
-  const progressionReelle =
-    duree > 0 ? Math.min(100, Math.max(0, (temps / duree) * 100)) : 0;
+  const progressionReelle = duree > 0 ? Math.min(100, Math.max(0, (temps / duree) * 100)) : 0;
   const progression = progressionVisuelle(temps, duree);
 
   return (
@@ -111,6 +112,13 @@ export function VslPresentation() {
             setLecture(false);
             setTemps(duree);
             dernierTempsLu.current = duree;
+            try {
+              localStorage.setItem("hi_vsl_terminee", "1");
+            } catch {}
+            window.dispatchEvent(new Event("hi:vsl-terminee"));
+            void activerOffreApresVsl().then((resultat) => {
+              if (resultat.ok) router.refresh();
+            });
           }}
           onTimeUpdate={(event) => {
             const nouveauTemps = event.currentTarget.currentTime;
@@ -184,9 +192,7 @@ export function VslPresentation() {
             >
               <span aria-hidden>{muet ? "🔇" : "🔊"}</span>
             </button>
-            <span className="text-xs tabular-nums text-white/90">
-              {dureeAffichee(temps)}
-            </span>
+            <span className="text-xs tabular-nums text-white/90">{dureeAffichee(temps)}</span>
             <button
               type="button"
               onClick={() => void afficherPleinEcran()}
@@ -198,9 +204,6 @@ export function VslPresentation() {
           </div>
         </div>
       </div>
-      <p className="mt-2 text-center text-sm text-text-soft">
-        Présentation complète · 5 min 14 · Activez le son
-      </p>
     </section>
   );
 }

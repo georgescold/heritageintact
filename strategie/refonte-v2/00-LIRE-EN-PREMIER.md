@@ -29,7 +29,7 @@ Ces contenus existent à l’écran et dans quatre PDF protégés par les droits
 
 Tarifs hors avantage : guide 27 € ; Dossier facultatif non précoché 17 € ; Préparation 197 € au total ; pack avec assurance-vie 247 € au total ; assurance-vie seule 67 €.
 
-Guide : réduction de 20 % pendant 20 minutes après inscription, puis 10 % jusqu’au septième jour. Compléments : 25 % pendant 20 minutes après la qualification, puis 10 % jusqu’à 48 heures. Départ unique enregistré par email ; une visite ne relance pas le délai.
+Guide : réduction de 20 % pendant 20 minutes après la fin complète de la VSL, puis 10 % jusqu’au septième jour après cette fin. Compléments : 25 % pendant 20 minutes après la qualification, puis 10 % jusqu’à 48 heures. Départ unique enregistré par email ; une visite ne relance pas le délai.
 
 Les achats inclus effectivement payés sont d’abord déduits ; la remise porte ensuite sur le complément restant. Un prix périmé demande une nouvelle confirmation, jamais un débit plus élevé automatique. Le Dossier à 17 € n’a pas de réduction. Voir les conditions intégrées dans le site.
 
