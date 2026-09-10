@@ -22,8 +22,8 @@ export function CheckoutForm({
   /**
    * Le prix de la Méthode pour CE visiteur, calculé par le serveur à partir
    * de ses cookies (`lib/prix.ts`). Il valait `PRODUCTS.front.price` en dur :
-   * le bouton annonçait alors 27 € à quelqu'un que Stripe allait débiter de
-   * 89 €. Un montant affiché qui n'est pas celui débité n'est pas un détail
+   * le bouton annonçait alors un autre montant que celui que Stripe allait débiter.
+   * Un montant affiché qui n'est pas celui débité n'est pas un détail
    * d'affichage, c'est une information tarifaire fausse.
    */
   prixFront: number;
@@ -59,7 +59,7 @@ export function CheckoutForm({
         locale: "fr",
         // Carte uniquement. Klarna et consorts ajoutent de la friction et de la
         // méfiance sur un avatar de 60-78 ans, et le paiement différé n'a aucun
-        // sens sur un produit à 27 €. C'est aussi la seule méthode qui permet
+        // sens sur ce produit. C'est aussi la seule méthode qui permet
         // de débiter les upsells en un clic.
         paymentMethodTypes: ["card"],
         appearance: {
@@ -129,6 +129,8 @@ function Inner({
   const [consent, setConsent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+  const identiteConnue =
+    firstName.trim().length >= 2 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   // Le montant du PaymentIntent suit la case du bump, en direct.
   useEffect(() => {
@@ -208,37 +210,43 @@ function Inner({
     <form onSubmit={onSubmit} noValidate className="grid gap-6 lg:grid-cols-[3fr_2fr] lg:gap-8">
       {/* Colonne gauche */}
       <div className="space-y-5">
-        <Panel title="1. Vos coordonnées">
-          <div className="space-y-3">
-            <label className="block">
-              <span className="mb-1 block font-bold">Prénom</span>
-              <input
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                autoComplete="given-name"
-                required
-                className="field"
-              />
-            </label>
-            <label className="block">
-              <span className="mb-1 block font-bold">Adresse email</span>
-              <span className="mb-1 block text-[0.85rem] text-text-soft">
-                Vos accès y seront envoyés.
-              </span>
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                autoComplete="email"
-                inputMode="email"
-                required
-                className="field"
-              />
-            </label>
-          </div>
-        </Panel>
+        {identiteConnue ? (
+          <p className="border border-green bg-green-bg p-3 text-[0.95rem]">
+            Votre accès sera envoyé à <strong>{email}</strong>.
+          </p>
+        ) : (
+          <Panel title="1. Vos coordonnées">
+            <div className="space-y-3">
+              <label className="block">
+                <span className="mb-1 block font-bold">Prénom</span>
+                <input
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  autoComplete="given-name"
+                  required
+                  className="field"
+                />
+              </label>
+              <label className="block">
+                <span className="mb-1 block font-bold">Adresse email</span>
+                <span className="mb-1 block text-[0.85rem] text-text-soft">
+                  Vos accès y seront envoyés.
+                </span>
+                <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  autoComplete="email"
+                  inputMode="email"
+                  required
+                  className="field"
+                />
+              </label>
+            </div>
+          </Panel>
+        )}
 
-        <Panel title="2. Paiement sécurisé">
+        <Panel title={identiteConnue ? "Paiement sécurisé" : "2. Paiement sécurisé"}>
           {stripe ? (
             <PaymentElement
               options={{
@@ -309,12 +317,6 @@ function Inner({
             </span>
           </span>
         </label>
-        <details className="border border-grey-line bg-white p-4">
-          <summary className="cursor-pointer font-bold text-blue">« Je saurai quoi demander… mais quoi apporter ? »</summary>
-          <p className="mt-3">Pour votre rendez-vous : un inventaire guidé, les pièces à réunir et un modèle de message. Après : un compte rendu pour conserver les réponses. Un exemple rempli vous montre comment commencer.</p>
-          <a href="/apercu#dossier" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-[44px] items-center">Voir un aperçu limité — pas le Dossier complet →</a>
-          <p className="mt-2 text-sm text-text-soft">Le Dossier est inclus dans les packs. Les 17 € effectivement payés seront déduits d’un pack qui l’inclut.</p>
-        </details>
         <label className="flex items-start gap-3 text-[0.9rem] text-text-soft">
           <input
             type="checkbox"

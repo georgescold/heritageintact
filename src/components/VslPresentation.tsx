@@ -1,8 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
-import { activerOffreApresVsl } from "@/app/actions";
 
 const dureeAffichee = (secondes: number) => {
   if (!Number.isFinite(secondes)) return "0:00";
@@ -22,7 +20,6 @@ const progressionVisuelle = (temps: number, duree: number) => {
 
 /** VSL auto-hébergée avec contrôles non navigables et progression visuelle accélérée. */
 export function VslPresentation() {
-  const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
   const cadreRef = useRef<HTMLDivElement>(null);
   const dernierTempsLu = useRef(0);
@@ -112,13 +109,6 @@ export function VslPresentation() {
             setLecture(false);
             setTemps(duree);
             dernierTempsLu.current = duree;
-            try {
-              localStorage.setItem("hi_vsl_terminee", "1");
-            } catch {}
-            window.dispatchEvent(new Event("hi:vsl-terminee"));
-            void activerOffreApresVsl().then((resultat) => {
-              if (resultat.ok) router.refresh();
-            });
           }}
           onTimeUpdate={(event) => {
             const nouveauTemps = event.currentTarget.currentTime;

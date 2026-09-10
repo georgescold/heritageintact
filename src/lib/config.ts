@@ -61,7 +61,7 @@ const produit = (sku: ProductSku, name: string, price: number, disponible = true
   disponible,
 });
 export const PRODUCTS: Record<ProductSku, Product> = {
-  front: { ...produit("front", "Les 7 erreurs qui offrent votre héritage à l’État", 27), short: "Les 7 erreurs" },
+  front: { ...produit("front", "Les 7 erreurs qui offrent votre héritage à l’État", 52), short: "Les 7 erreurs" },
   bump: produit("bump", "Mon dossier notaire", 17),
   upsell1: produit("upsell1", "Préparer ma transmission", 197),
   upsell2: produit("upsell2", "Faire le point sur mon assurance-vie", 67),
@@ -143,16 +143,16 @@ export const SKU_TUNNEL_UNIQUEMENT: ProductSku[] = ["pack2", "pack3", "pack4"];
 export const urlEspace = (jeton: string) => `${SITE_URL}/espace/${jeton}`;
 export const VARIANTES = { "/": "Présentation", "/lp-questions": "Orientation" };
 export const CTA = {
-  benefice: "Commencer pour 27 €",
-  urgence: "Commencer pour 27 €",
+  benefice: "Commencer maintenant",
+  urgence: "Accéder au guide",
   optin: "Recevoir les repères pour commencer",
 };
 // Anciens exports conservés sans changement de prix au fil du temps.
 export const FLASH_MINUTES = 0;
-export const PRIX_APRES_FLASH = 27;
+export const PRIX_APRES_FLASH = 52;
 export const REDUCTION_RATTRAPAGE = 0;
-export const PRIX_RATTRAPAGE = 27;
-export const PRIX_APRES_FONDATEURS = 27;
+export const PRIX_RATTRAPAGE = 52;
+export const PRIX_APRES_FONDATEURS = 52;
 export const FOUNDERS_CAP = 20;
 const CLE_STRIPE = process.env.STRIPE_SECRET_KEY ?? "";
 export const isTestMode = !CLE_STRIPE;

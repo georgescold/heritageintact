@@ -712,7 +712,7 @@ function InlineCta({
       </p>
       <div className="mb-4 text-[1.02rem]">{children}</div>
       <a
-        href="/commande"
+        href="/commander"
         className="flex min-h-[58px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-4 text-center text-[1.08rem] font-bold leading-tight text-white no-underline hover:bg-orange-dark sm:text-[1.15rem]"
       >
         {label}
@@ -846,7 +846,7 @@ export function CtaButton({ label, sombre = false }: { label: string; sombre?: b
   return (
     <div className="mt-5">
       <a
-        href="/commande"
+        href="/commander"
         className="flex min-h-[58px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-4 text-center text-[1.08rem] font-bold leading-tight text-white no-underline hover:bg-orange-dark sm:text-[1.15rem]"
       >
         {label}

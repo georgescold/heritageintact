@@ -64,11 +64,12 @@ ok(
     vsl.includes("Math.pow(1 - reel, 2)"),
 );
 ok(!vsl.includes("Présentation complète · 5 min 14 · Activez le son"));
-ok(
-  vsl.includes("activerOffreApresVsl") &&
-    vsl.includes('localStorage.setItem("hi_vsl_terminee", "1")'),
-);
-ok(sale.includes("<AvantageDemarrage promotion={d.promotion} base={d.total} apresVsl />"));
+ok(!vsl.includes("activerOffreApresVsl") && !vsl.includes("hi_vsl_terminee"));
+ok(!sale.includes("AvantageDemarrage") && sale.includes('href="/commander"'));
+const checkout = fs.readFileSync("src/components/CheckoutForm.tsx", "utf8"),
+  commander = fs.readFileSync("src/app/commander/route.ts", "utf8");
+ok(checkout.includes("identiteConnue ?") && checkout.includes("Votre accès sera envoyé à"));
+ok(!checkout.includes("Je saurai quoi demander") && commander.includes('commencerPromotion(email, "front")'));
 ok(!sale.includes("<EcheanceHistorique"));
 ok(LECONS.find((l) => l.cle === "e6").blocs.some(([titre, texte]) => titre.includes("fenêtre temporaire") && texte.includes("790 A bis") && texte.includes("31 décembre 2026")));
 ok(

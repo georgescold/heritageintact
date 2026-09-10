@@ -4,7 +4,6 @@ import { Footer, Header, TrustRow } from "@/components/Chrome";
 import { ExitPopup } from "@/components/ExitPopup";
 import { StickyCta } from "@/components/StickyCta";
 import { MesureFunnel } from "@/components/MesureFunnel";
-import { AvantageDemarrage } from "@/components/AvantageDemarrage";
 import { VslPresentation } from "@/components/VslPresentation";
 import { UrgencyBar } from "@/components/Urgency";
 import { FAQ, Guarantee } from "@/components/ui";
@@ -26,7 +25,7 @@ function AccesMethode({ montant, sombre = false }: { montant: number; sombre?: b
   return (
     <div data-mesure="clic_commande">
       <a
-        href="/commande"
+        href="/commander"
         className="flex min-h-[58px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-4 py-3 text-center text-[1.08rem] font-bold leading-tight text-white no-underline hover:bg-orange-dark sm:text-[1.15rem]"
       >
         Accéder au guide
@@ -67,7 +66,6 @@ export default async function VslPage() {
           </p>
           <VslPresentation />
           <div id="premier-cta" className="mt-5 space-y-3">
-            <AvantageDemarrage promotion={d.promotion} base={d.total} apresVsl />
             <AccesMethode montant={d.montant} />
             <div className="flex justify-center">
               <TrustRow />
@@ -121,7 +119,7 @@ export default async function VslPage() {
               },
               {
                 q: "« Il faut de toute façon aller chez le notaire, alors autant y aller directement. »",
-                a: "Allez-y : le notaire reste indispensable pour valider votre situation et rédiger les actes. Mais pour obtenir une étude personnalisée couvrant ces mêmes points, vous paierez très probablement bien plus que les 27 € du guide : les consultations et études détachables d’un acte sont facturées librement selon le cabinet. Ici, vous comprenez les 7 erreurs en quelques minutes, retrouvez vos priorités et arrivez avec les bonnes questions. Vous utilisez alors le temps du notaire pour votre situation, pas pour découvrir les bases.",
+                a: "Allez-y : le notaire reste indispensable pour valider votre situation et rédiger les actes. Mais pour obtenir une étude personnalisée couvrant ces mêmes points, vous paierez très probablement bien plus que le prix du guide : les consultations et études détachables d’un acte sont facturées librement selon le cabinet. Ici, vous comprenez les 7 erreurs en quelques minutes, retrouvez vos priorités et arrivez avec les bonnes questions. Vous utilisez alors le temps du notaire pour votre situation, pas pour découvrir les bases.",
               },
               {
                 q: "« Je ne veux pas me déposséder de mon vivant. Et si j’en ai besoin pour l’EHPAD ? »",
@@ -132,7 +130,7 @@ export default async function VslPage() {
                 a: "Deux questions restent utiles même quand le contrat est signé : quand avez-vous versé les sommes, et qui est désigné aujourd’hui ? Avant et après 70 ans, les règles et les assiettes fiscales diffèrent. Ce n’est pas une raison de modifier le contrat dans l’urgence : c’est une raison de retrouver les informations pendant que vous pouvez encore demander des explications.",
               },
               {
-                q: "« 27 € pour un truc que je peux trouver gratuitement sur YouTube. »",
+                q: "« 52 € pour un truc que je peux trouver gratuitement sur YouTube. »",
                 a: "Vous pouvez trouver les règles gratuitement. Ce que vous achetez ici, c’est un parcours écrit dans l’ordre, avec les sept erreurs expliquées, des exemples et des fiches à garder. Vous reprenez votre lecture sans rechercher dix vidéos ni tout retenir de tête. Vous achetez cette préparation, pas un montant de droits garanti.",
               },
               {
@@ -163,7 +161,7 @@ export default async function VslPage() {
         />
       </main>
       <Footer />
-      <StickyCta href="/commande" label="Accéder au guide" />
+      <StickyCta href="/commander" label="Accéder au guide" />
       <ExitPopup
         storageKey="vsl-historique-v11"
         title="Ce que vous risquez si vous fermez cette page"
@@ -172,9 +170,7 @@ export default async function VslPage() {
           {[
             "Vous ne saurez toujours pas ce qu’il faut faire vérifier sur votre maison, votre épargne et les documents que vous avez signés.",
             "Vous ne saurez pas laquelle des dates vous concerne en premier. Elle arrivera quand même.",
-            d.promotion.pourcent > 0
-              ? "Votre réduction personnelle ne se prolonge pas en quittant cette page. Le compteur ne repart pas de zéro au prochain passage."
-              : "La question retournera dans la pile « plus tard ». Elle ne sera pas réglée pour autant.",
+            "La question retournera dans la pile « plus tard ». Elle ne sera pas réglée pour autant.",
             "Et si rien ne change, ce sont vos enfants qui devront chercher les réponses — pendant leur deuil, sans pouvoir vous les demander.",
           ].map((t) => (
             <li key={t} className="flex gap-2 border-l-4 border-red bg-red-bg p-3">

@@ -4,10 +4,10 @@
 
 ## Ce qui change
 
-Le produit 1 reste commun : même promesse, même contenu, même prix à 27 €, sans qualification avant sa vente. L’ancienne variante /lp-questions renvoie la même LP. Les anciens cookies d’objectif ne changent plus la page de vente.
+Le produit 1 reste commun : même promesse, même contenu, prix catalogue à 52 €, sans qualification avant sa vente. L’ancienne variante /lp-questions renvoie la même LP. Les anciens cookies d’objectif ne changent plus la page de vente.
 
 Parcours visible :
-LP avec prénom/email → présentation / VSL → commande (Dossier facultatif à 17 €) → questions facultatives → remise de la Méthode → proposition adaptée → espace membre.
+LP avec prénom/email → présentation / VSL → commande (Dossier facultatif à 17 €) → quatre questions obligatoires → remise de la Méthode → proposition adaptée → espace membre.
 
 La livraison technique est créée immédiatement après confirmation du paiement. Elle ne dépend pas du questionnaire ni de l’achat d’un complément. La page des questions conserve un lien de secours vers l’accès ; l’écran /bienvenue montre explicitement le produit acquis avant l’offre.
 

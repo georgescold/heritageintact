@@ -70,9 +70,9 @@ Oui si vous voulez comprendre et préparer vos démarches.
 Ce parcours ne remplace pas une consultation individuelle. Si une succession est déjà ouverte, si un délai court, ou si la situation est internationale ou conflictuelle, contactez le professionnel compétent sans attendre la fin des étapes.
 
 ### Le prix
-27 €, paiement unique. Pas d'abonnement.
+52 € au catalogue, paiement unique. Pas d'abonnement.
 Vous pouvez utiliser cette première offre sans acheter le pack.
-Bouton : Commencer pour 27 €
+Bouton : Accéder au guide
 Garantie : reprendre exactement la garantie commerciale effectivement prévue par les CGV. Ne pas afficher une garantie de résultat fiscal.
 
 ### Qui vous accompagne ?
@@ -96,10 +96,10 @@ Récapitulatif visible avant la carte : produit, montant, paiement unique, pas d
 Pour gagner du temps, ajoutez les modèles guidés : inventaire, fiche famille, liste de pièces, demande de rendez-vous et compte rendu, avec un exemple rempli.
 Case NON cochée : Oui, j’ajoute Mon dossier notaire pour 17 €.
 Sous-texte : La fiche de situation et les premières questions sont déjà comprises dans votre Méthode. Cette option vous apporte des supports de préparation supplémentaires.
-Total recalculé immédiatement : 27 € ou 44 €.
+Total recalculé immédiatement : 26 € ou 43 € au premier palier ; 36,40 € ou 53,40 € au dernier palier ; 52 € ou 69 € après expiration.
 Bouton : Payer [total exact] et ouvrir mon accès.
 Consentement exécution immédiate distinct du consentement commercial. Présenter clairement la conservation du moyen de paiement si elle reste utilisée, sans consentement implicite à de futurs débits.
-Aucun compteur de prix ni supplément ajouté après validation.
+Le compteur personnel est visible uniquement sur la commande. Aucun supplément n’est ajouté après validation.
 
 ## 5. Après paiement
 La commande est confirmée. Le lien d'accès est visible immédiatement, avant toute proposition.

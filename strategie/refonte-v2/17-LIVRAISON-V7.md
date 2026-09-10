@@ -29,15 +29,15 @@
 
 ## Prix appliqués
 
-Tarifs hors avantage approuvés : 27 / 17 / 197 / 247 / 67 €. Pas de vente autonome du simulateur.
+Tarifs catalogue : 52 / 17 / 197 / 247 / 67 €. Pas de vente autonome du simulateur.
 
-Guide : 21,60 € pendant 20 minutes après la fin complète de la VSL, 24,30 € jusqu’à J7 après cette fin, puis 27 €.
+Guide : aucun timer sur la vente ; 26 € pendant 2 minutes au clic vers la commande, 36,40 € pendant les 8 minutes suivantes, puis 52 €.
 Compléments : 25 % pendant 20 minutes après qualification, 10 % jusqu’à 48 h, puis fin de réduction.
 Dossier : 17 €, facultatif, non précoché, sans timer de réduction.
 
-Exemple d’achats réellement payés : guide 21,60 € + Dossier 17 € = 38,60 € déduits.
-Préparation : 197 − 38,60 = 158,40 € avant remise ; au premier palier, 118,80 € à ajouter.
-Pack AV : 247 − 38,60 = 208,40 € avant remise ; au premier palier, 156,30 € à ajouter.
+Exemple d’achats réellement payés : guide 26 € + Dossier 17 € = 43 € déduits.
+Préparation : 197 − 43 = 154 € avant remise ; au premier palier, 115,50 € à ajouter.
+Pack AV : 247 − 43 = 204 € avant remise ; au premier palier, 153 € à ajouter.
 
 Un palier expiré ne vaut pas accord pour payer davantage : affichage actualisé puis nouvelle confirmation. Une réduction n’est jamais comptée comme de l’argent déjà payé. L’ancienne possession et le crédit réel ne disparaissent pas à la fin du timer.
 

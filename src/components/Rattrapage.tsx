@@ -76,7 +76,7 @@ const CLASSE_BOUTON =
  * JavaScript ne se charge pas, ce qui est la seule chose qu'un bouton d'achat
  * n'a pas le droit de rater.
  */
-export function CtaMethode({ label, href = "/commande" }: { label: string; href?: string }) {
+export function CtaMethode({ label, href = "/commander" }: { label: string; href?: string }) {
   const { etat: flash } = useFlash();
   const { etat: ratt, decider } = useRattrapage();
   const [ouvert, setOuvert] = useState(false);

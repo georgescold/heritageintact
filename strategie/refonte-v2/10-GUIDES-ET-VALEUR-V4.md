@@ -12,7 +12,7 @@ Les guides sont des pages web écrites. Les feuilles existantes sont imprimables
 
 | Offre | Résultat de préparation visé | Ce qui justifie sa différence |
 |---|---|---|
-| Méthode 27 € | Comprendre, formuler sa priorité et ses premières questions | Huit étapes autonomes, exemples, exercices et supports de base |
+| Méthode — catalogue 52 € | Comprendre, formuler sa priorité et ses premières questions | Huit étapes autonomes, exemples, exercices et supports de base |
 | Dossier +17 € | Organiser les pièces, demander le rendez-vous et suivre les réponses | Trames, exemple rempli et mode d’emploi d’organisation |
 | Préparation 197 € total | Relier famille, historique, hypothèses et prochaines démarches | Fiches de situations, atelier pédagogique et tableau de suivi, Méthode et Dossier inclus |
 | Assurance-vie 67 € seule | Identifier les pièces d’un contrat et suivre les vérifications | Grille, logiques de désignation, demande et suivi |

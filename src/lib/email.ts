@@ -225,11 +225,11 @@ export async function envoyerEtape(lead: Lead, etape: Etape) {
   const offre = await promotionParEmail(lead.email,"front");
   const tarif = palier(offre);
   const prix = appliquerRemise(PRODUCTS.front.price,tarif.pourcent);
-  const bouton = { texte: "Commencer les 7 erreurs maintenant · "+euros(prix), lien: offre ? lien("/reprendre/"+offre.id+(etape.bouton.chemin==="/commande"?"?destination=commande":"")) : lien(etape.bouton.chemin) };
+  const bouton = { texte: "Commencer les 7 erreurs maintenant · "+euros(prix), lien: offre ? lien("/reprendre/"+offre.id+(etape.bouton.chemin==="/commander"?"?destination=commande":"")) : lien(etape.bouton.chemin) };
   const paragraphes = etape.corps(p);
   paragraphes.push(tarif.pourcent && tarif.fin
-    ? "Votre avantage au moment de cet envoi : −"+tarif.pourcent+"% sur le prix hors avantage de 27 €, soit "+euros(prix)+". Ce palier prend fin le "+new Date(tarif.fin).toLocaleString("fr-FR",{timeZone:"Europe/Paris",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})+" (Paris). Le lien conserve votre date de départ ; le récapitulatif affichera le montant à jour avant tout paiement."
-    : "Votre accès au guide complet : 27 €, en paiement unique, sans abonnement. Garantie commerciale de 30 jours selon les CGV. Cliquez pour ouvrir votre première fiche aujourd’hui.");
+    ? "Votre avantage au moment de cet envoi : −"+tarif.pourcent+"% sur le prix catalogue de "+euros(PRODUCTS.front.price)+", soit "+euros(prix)+". Ce palier prend fin le "+new Date(tarif.fin).toLocaleString("fr-FR",{timeZone:"Europe/Paris",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})+" (Paris). Le lien conserve votre date de départ ; le récapitulatif affichera le montant à jour avant tout paiement."
+    : "Votre accès au guide complet : "+euros(PRODUCTS.front.price)+", en paiement unique, sans abonnement. Garantie commerciale de 30 jours selon les CGV. Cliquez pour ouvrir votre première fiche aujourd’hui.");
 
   const contenu: Contenu = {
     titre: etape.objet(p),

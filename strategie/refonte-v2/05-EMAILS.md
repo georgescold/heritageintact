@@ -10,9 +10,9 @@ J1 rêve ; J2 excuser le blocage ; J3 réduire la peur ; J4 répondre aux doutes
 
 Le pied de chaque email commercial est calculé au moment de l’envoi : pourcentage encore actif, prix actuel et fin exacte du palier en heure de Paris. Le lien personnel reprend la date de départ enregistrée, même dans un autre navigateur ; il ne relance pas l’offre. Un email lu plus tard peut afficher un ancien prix : le site réaffiche le prix actuel avant confirmation.
 
-Guide : 21,60 € pendant les 20 premières minutes après la fin complète de la VSL, puis 24,30 € jusqu’à J7 après cette fin, puis 27 €. Tant que la VSL n’a pas été terminée, aucune fenêtre promotionnelle n’est créée. La séquence quotidienne ne prétend pas qu’un palier court si le prospect n’a pas déclenché l’offre. J7 clôt la série, pas automatiquement une promotion encore active. Les liens J3/J6/J7 rejoignent directement le checkout via la route personnelle avec destination=commande lorsqu’un lien d’offre existe ; les autres rejoignent la présentation. Le bouton final est remplacé par « Commencer les 7 erreurs maintenant · [prix actuel] ». Aucun faux compte à rebours dans un email figé.
+Guide : prix catalogue 52 €. Au clic vers la commande : 26 € pendant 2 minutes (−50 %), puis 36,40 € pendant 8 minutes (−30 %), puis 52 €. Aucun palier ne court sur la page de vente. La séquence quotidienne commence à J1 et ne prétend pas qu’un palier court avant le clic. Les liens de commande passent par /commander afin de démarrer une seule fenêtre personnelle ; les autres rejoignent la présentation. Le bouton final est remplacé par « Commencer les 7 erreurs maintenant · [prix actuel] ». Aucun faux compte à rebours dans un email figé.
 
-Les prix de 27 € dans les textes désignent le tarif hors avantage. Les mentions de remise n’apparaissent que si une date valide existe. Le prix de référence et la présentation des pourcentages restent à faire relire avant publication.
+Les prix de 52 € dans les textes désignent le tarif catalogue. Les mentions de remise n’apparaissent que si une date valide existe. Le prix de référence et la présentation des pourcentages restent à faire relire avant publication.
 
 ## J0 — lien de présentation demandé
 
@@ -34,7 +34,7 @@ C’est le point de départ d’Héritage Intact : faire le point, préparer, pu
 
 Pas besoin d’être fiscaliste. Pas besoin de décider d’une donation. Et pas besoin de regarder des heures de vidéo : les huit étapes sont écrites.
 
-Le prix hors avantage du guide est de 27 €, une seule fois. Ce soir, votre première avancée peut être une fiche commencée — un support que vous pourrez reprendre, plutôt qu’une nouvelle inquiétude laissée de côté.
+Le prix hors avantage du guide est de 52 €, une seule fois. Ce soir, votre première avancée peut être une fiche commencée — un support que vous pourrez reprendre, plutôt qu’une nouvelle inquiétude laissée de côté.
 
 CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /methode.
 
@@ -76,11 +76,11 @@ Vous distinguez ensuite ce qui vous appartient, les questions de votre famille e
 
 Tout est expliqué à l’écrit, avec les guides PDF et des exercices. Si une information manque, vous notez « à vérifier ». Si vous avez besoin de temps, vous reprenez à votre rythme.
 
-Au tarif hors avantage de 27 €, vous disposez des huit étapes et des supports de base. La garantie commerciale de 30 jours vous permet de découvrir le parcours et de demander le remboursement selon les conditions présentées.
+Au tarif hors avantage de 52 €, vous disposez des huit étapes et des supports de base. La garantie commerciale de 30 jours vous permet de découvrir le parcours et de demander le remboursement selon les conditions présentées.
 
 Vous pensez plutôt prendre rendez-vous directement chez le notaire ? Vous pouvez le faire dès maintenant. Le guide Les 7 erreurs vous aide à préparer l’échange : formuler vos priorités, retrouver les documents et distinguer vos questions des décisions à faire vérifier. Vous gardez la main sur la suite.
 
-CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commande.
+CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commander.
 
 ## J4 — Confirmer les doutes et prouver
 
@@ -96,7 +96,7 @@ La présentation ci-dessous montre cette différence avec un exemple fictif. Ell
 
 Vous n’avez pas besoin de connaître déjà les règles. Le parcours de base est le même pour tous : votre première fiche et les sept erreurs, expliquées à l’écrit avec des exercices. Aucun tournage pédagogique n’est à attendre.
 
-Le prix hors avantage du guide est de 27 €, une seule fois. Vous ouvrez votre première fiche, puis les sept erreurs expliquées, avec un exemple et un exercice à chaque étape. Les PDF sont déjà prêts. Vous n’achetez ni une promesse de tournage ni un accès vide.
+Le prix hors avantage du guide est de 52 €, une seule fois. Vous ouvrez votre première fiche, puis les sept erreurs expliquées, avec un exemple et un exercice à chaque étape. Les PDF sont déjà prêts. Vous n’achetez ni une promesse de tournage ni un accès vide.
 
 Votre premier achat est autonome. Aucun pack n’est nécessaire pour le terminer ; la garantie commerciale de 30 jours vous permet de découvrir la pédagogie à votre rythme.
 
@@ -134,7 +134,7 @@ Bonjour [Prénom],
 
 Remettre une préparation à plus tard ne change pas seulement la date de votre rendez-vous. Si un projet de transmission vous concerne, l’attente peut aussi en modifier les conditions fiscales.
 
-Au tarif hors avantage de 27 €, en paiement unique, vous recevez huit étapes lisibles, des actions guidées et les supports de base à imprimer. Votre première tâche : noter votre priorité et les informations à retrouver.
+Au tarif hors avantage de 52 €, en paiement unique, vous recevez huit étapes lisibles, des actions guidées et les supports de base à imprimer. Votre première tâche : noter votre priorité et les informations à retrouver.
 
 Exemple fictif : un parent seul donne à un enfant la nue-propriété d’une maison de 480 000 €, avec usufruit viager conservé, aucun don antérieur et l’abattement de 100 000 € disponible. À 70 ans : environ 35 794 € de droits. À 71 ans : environ 45 394 €. Écart : 9 600 €, hors frais. Même bien, même enfant ; seul l’âge au moment de donner change. Le calcul et ses sources officielles sont détaillés sur la présentation.
 
@@ -144,7 +144,7 @@ Pour commencer, les huit étapes et les supports de base suffisent. Vous trouver
 
 La garantie commerciale de 30 jours reste applicable. Si cette manière d’avancer vous convient, ouvrez votre accès et commencez par la fiche. Pas toute votre transmission à régler : une première action utile.
 
-CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commande.
+CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commander.
 
 ## J7 — Closing final : passage à l’action, conditions de prix relues au moment de l’envoi
 
@@ -156,7 +156,7 @@ Il serait facile de fermer cet email et de se dire : « Je m’en occuperai apr�
 
 Prenez rendez-vous avec votre notaire si nécessaire. En attendant cet échange, vous pouvez déjà ouvrir votre guide et préparer une priorité, les documents utiles et vos trois questions.
 
-Le guide Les 7 erreurs, à 27 € hors avantage, donne accès au parcours écrit et aux supports de base. Votre première fiche vous aidera à séparer une priorité, une information connue et une question à vérifier.
+Le guide Les 7 erreurs, à 52 € hors avantage, donne accès au parcours écrit et aux supports de base. Votre première fiche vous aidera à séparer une priorité, une information connue et une question à vérifier.
 
 Imaginez simplement la différence : au prochain échange en famille, vous ne dites plus seulement « il faudrait qu’on s’en occupe ». Vous pouvez ouvrir ce que vous avez commencé.
 
@@ -166,7 +166,7 @@ Une réduction commerciale ne change pas vos droits fiscaux. Sa date et son mont
 
 Vous n’avez pas besoin de régler toute votre succession ce soir. Mais vous pouvez décider de ne pas repousser encore le premier pas. Ouvrez les 7 erreurs maintenant. Posez votre priorité, retrouvez une information, écrivez votre première question. Faites-le pendant que vous pouvez encore en parler ensemble.
 
-CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commande.
+CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commander.
 
 ## Après achat : livraison et accompagnement
 

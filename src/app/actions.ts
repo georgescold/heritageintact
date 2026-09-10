@@ -11,7 +11,6 @@ import {
   createOrder,
   getOrder,
   markOrderPaid,
-  commencerPromotion,
   profilDeCommande,
 } from "@/lib/db";
 import { isTestMode, stripeEnModeTest, PRODUCTS, type ProductSku } from "@/lib/config";
@@ -62,30 +61,6 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   });
 
   redirect("/methode");
-}
-
-/** La remise de la Méthode ne commence qu'une fois la VSL regardée jusqu'au bout. */
-export async function activerOffreApresVsl(): Promise<{ ok: boolean }> {
-  const jar = await cookies();
-  const brut = jar.get("hi_lead")?.value;
-  if (!brut) return { ok: false };
-
-  try {
-    const lead = JSON.parse(brut) as { email?: string };
-    const email = lead.email?.trim().toLowerCase() ?? "";
-    if (!EMAIL_RE.test(email)) return { ok: false };
-    const promotion = await commencerPromotion(email, "front");
-    jar.set("hi_offre", promotion.id, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 30,
-    });
-    return { ok: true };
-  } catch {
-    return { ok: false };
-  }
 }
 
 // ─────────────────────────────────────────────────────────────────────
