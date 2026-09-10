@@ -38,7 +38,6 @@ export function UrgencyBar() {
         <p className="text-center text-[0.95rem] font-bold leading-snug sm:text-[1.08rem]">Jusqu’à <span className="whitespace-nowrap">100 000 € exonérés</span> pour un don familial destiné au logement :<br />la fenêtre se ferme le <span className="whitespace-nowrap">31 décembre 2026.</span></p>
         <Cases c={c} />
       </div>
-      <p className="mt-2 text-center text-xs leading-relaxed text-white">Logement neuf ou rénovation énergétique, sous conditions. Exonération distincte de l’abattement parent-enfant. <a className="font-bold text-white underline" href="#conditions-exoneration">Voir les conditions</a>.</p>
     </div>
   </div>;
 }

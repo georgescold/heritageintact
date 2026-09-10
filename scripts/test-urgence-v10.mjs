@@ -18,7 +18,7 @@ eq(f.FIN_EXONERATION_LOGEMENT, "2026-12-31T23:59:59+01:00");
 for (const [offset, expected] of [[-86400000,86400],[-1000,1],[-1,1],[0,0],[1,0],[86400000,0]]) eq(f.secondesExonerationRestantes(fin + offset), expected);
 const now = Date.parse("2026-09-09T12:00:00+02:00");
 const markup = renderToStaticMarkup(load("src/components/Urgency.tsx", now).UrgencyBar());
-ok(markup.includes('role="timer"')); ok(markup.includes('aria-live="off"')); ok(markup.includes("31 décembre 2026")); ok(markup.includes("rénovation énergétique")); ok(markup.includes("distincte de l’abattement")); ok(!markup.includes("NaN"));
+ok(markup.includes('role="timer"')); ok(markup.includes('aria-live="off"')); ok(markup.includes("31 décembre 2026")); ok(!markup.includes("Logement neuf ou rénovation énergétique")); ok(!markup.includes("Voir les conditions")); ok(!markup.includes("NaN"));
 eq(markup, renderToStaticMarkup(load("src/components/Urgency.tsx", now).UrgencyBar()));
 const initial = renderToStaticMarkup(load("src/components/Urgency.tsx", now, true).UrgencyBar());
 ok(initial.includes("—")); ok(!initial.includes("NaN"));
