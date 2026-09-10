@@ -35,6 +35,7 @@ function clean(v: FormDataEntryValue | null): string {
 export async function optin(_prev: FormState, formData: FormData): Promise<FormState> {
   const firstName = clean(formData.get("firstName"));
   const email = clean(formData.get("email"));
+  const cgv = formData.get("cgv") === "on";
   const marketingConsent = formData.get("marketingConsent") === "on";
   // D'où vient ce lead : c'est ce qui rend l'A/B test mesurable après l'opt-in.
   const source = clean(formData.get("source")).slice(0, 60) || undefined;
@@ -42,6 +43,9 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   if (firstName.length < 2) return { error: "Indiquez votre prénom." };
   if (!EMAIL_RE.test(email))
     return { error: "Vérifiez votre adresse email : elle semble incomplète." };
+  if (!cgv) {
+    return { error: "Cochez la case pour accepter les conditions générales avant de continuer." };
+  }
   const lead = await addLead({ email, firstName, source, marketingConsent });
   const promotion = await commencerPromotion(lead.email, "front");
 

@@ -11,7 +11,7 @@ export function OptinForm({ cta = "Accéder à la présentation" }: { cta?: stri
   const pathname = usePathname();
 
   return (
-    <form action={action} className="space-y-3" noValidate>
+    <form action={action} className="space-y-3">
       {/* La variante d'où vient le lead, pour pouvoir la suivre jusqu'à l'achat. */}
       <input type="hidden" name="source" value={pathname} />
       <label className="block">
@@ -28,6 +28,18 @@ export function OptinForm({ cta = "Accéder à la présentation" }: { cta?: stri
           required
           className="field"
         />
+      </label>
+      <label className="flex items-start gap-2 text-[0.85rem] text-text-soft">
+        <input
+          type="checkbox"
+          name="cgv"
+          required
+          className="mt-1 h-5 w-5 shrink-0 accent-blue-mid"
+        />
+        <span>
+          J&apos;accepte les <Link href="/cgv">conditions générales</Link> et la{" "}
+          <Link href="/confidentialite">politique de confidentialité</Link>.
+        </span>
       </label>
       {/* Consentement commercial distinct de la demande du lien, jamais précoché. */}
       <label className="flex items-start gap-2 text-[0.85rem] text-text-soft">
