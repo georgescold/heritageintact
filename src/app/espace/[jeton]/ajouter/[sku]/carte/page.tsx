@@ -59,7 +59,7 @@ export default async function CartePage({
   // elle aussi, et elle mène à un formulaire de carte.
   if (!estSkuConnu(sku)) redirect(hub);
   const produit = PRODUCTS[sku];
-  if (!etat.etape0Ouverte) redirect(hub);
+  if (!etat.possede.has("front")) redirect(hub);
   if (!produit.disponible) redirect(hub);
   if (etat.possede.has(sku)) redirect(hub);
 

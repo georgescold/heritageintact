@@ -38,7 +38,7 @@ truth(checkout.includes("router.push(`/bienvenue?o=${prep.orderId}`)"));
 truth(!checkout.includes("router.push(`/situation?o=${prep.orderId}`)"));
 const bienvenue=fs.readFileSync("src/app/bienvenue/page.tsx","utf8");truth(bienvenue.includes("ouvrirEspace(acces.jeton, retour"));truth(bienvenue.includes('"?nouveau=1"'));
 const espace=fs.readFileSync("src/app/espace/[jeton]/page.tsx","utf8");truth(espace.includes("Votre paiement a été accepté"));truth(espace.includes("Télécharger mon guide PDF"));
-const boutique=fs.readFileSync("src/components/espace/Boutique.tsx","utf8");truth(boutique.includes("Obtenir mon plan personnalisé"));truth(boutique.includes("/plan-complet?o="));
+const boutique=fs.readFileSync("src/components/espace/Boutique.tsx","utf8");truth(boutique.includes("Simuler entièrement ma situation"));truth(boutique.includes("/plan-complet?o="));truth(boutique.includes("Indispensable pour les détenteurs d’une assurance-vie"));truth(boutique.includes("Découvrir le Dossier Notaire"));
 const offre=fs.readFileSync("src/components/OffrePreparation.tsx","utf8");truth(!offre.includes("profilComplet(profil)"));
 const simulateur=fs.readFileSync("src/components/simulateur/SimulationPlan.tsx","utf8");truth(simulateur.includes("demarrerOffre({objectif,vie:d.vie,enfants,age"));
 const email=fs.readFileSync("src/lib/email.ts","utf8");truth(email.includes("lead.marketingConsent !== true || lead.desabonne"));

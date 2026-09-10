@@ -42,14 +42,14 @@ export type EtatEspace = {
   /** Habilitation globale : tous les achats de cette adresse, expansion comprise. */
   possede: Set<ProductSku>;
   etapes: EtatEtape[];
-  /** L'étape 0 a été ouverte au moins une fois. Condition de toute la boutique. */
+  /** L'étape 0 historique a été ouverte au moins une fois. Conservé pour les anciens parcours. */
   etape0Ouverte: boolean;
   nbFaites: number;
   /** La première étape non terminée : le bouton « Reprendre ». `null` si tout est fait. */
   reprendre: EtapeMethode | null;
   /** Ce que le membre peut imprimer, trié dans l'ordre du classeur. */
   documents: DocumentImprimable[];
-  /** Les produits disponibles, non possédés, ordonnés. Vide si `!etape0Ouverte`. */
+  /** Les produits disponibles et non possédés, ordonnés pour la boutique membre. */
   boutique: ProductSku[];
   /**
    * ⚠️ CHAMP ADDITIF, hors du contrat minimal, et il ne coûte rien à ignorer.
@@ -84,10 +84,10 @@ export type EtatEspace = {
 const CLE_SIMULATEUR = "simulateur-papier";
 
 const ORDRE_BOUTIQUE: ProductSku[] = [
-  "pack1",
   "upsell1",
-  "upsell2",
   "bump",
+  "upsell2",
+  "pack1",
   "backend1",
   "backend2",
   "backend3",
@@ -212,7 +212,6 @@ export async function chargerEspace(jeton: string): Promise<EtatEspace | null> {
           ...(epingle ? [epingle.sku] : []),
           ...ORDRE_BOUTIQUE.filter(
             (sku) => PRODUCTS[sku].disponible && !possede.has(sku) && sku !== epingle?.sku
-              && !(profil?.av !== "O" && (sku === "upsell2" || sku === "pack1"))
               && !(sku === "pack1" && possede.has("upsell1")),
           ),
         ];

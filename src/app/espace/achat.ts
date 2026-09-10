@@ -29,7 +29,7 @@ import { stripe, toCents } from "@/lib/stripe";
  *
  * L'écran de confirmation les vérifie déjà. Ça ne suffit pas : une server
  * action est une URL, elle s'appelle sans passer par l'écran qui la précède.
- * « Étape 0 ouverte », « produit disponible », « produit non possédé » sont
+ * « guide principal possédé », « produit disponible », « produit non possédé » sont
  * donc revérifiés ci-dessous, à partir du jeton et de rien d'autre.
  *
  * ═══ 2. `redirect()` NE DOIT JAMAIS ÊTRE APPELÉE DANS UN try QUI ENTOURE STRIPE ═══
@@ -63,7 +63,7 @@ export async function acheterDepuisEspace(jeton: string, sku: ProductSku, formul
   if (!Object.prototype.hasOwnProperty.call(PRODUCTS, sku)) redirect(hub);
 
   // Les trois gardes, dans l'ordre où elles coûtent cher quand elles manquent.
-  if (!etat.etape0Ouverte) redirect(hub);
+  if (!etat.possede.has("front")) redirect(hub);
   if (!PRODUCTS[sku].disponible) redirect(hub);
   if (etat.possede.has(sku)) redirect(hub);
 

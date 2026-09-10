@@ -76,8 +76,10 @@ export default async function AjouterPage({
   if (!estSkuConnu(sku)) redirect(hub);
   const produit = PRODUCTS[sku];
 
-  // GARDE 2 — on ne vend rien à qui n'a pas ouvert l'étape 0.
-  if (!etat.etape0Ouverte) redirect(hub);
+  // GARDE 2 — la boutique est réservée aux clients du guide principal.
+  // Le guide est désormais téléchargé : son ancienne « étape 0 » en ligne
+  // n'est donc plus un signal d'éligibilité fiable.
+  if (!etat.possede.has("front")) redirect(hub);
 
   // GARDE 3 — on ne vend jamais un produit dont le contenu n'existe pas.
   if (!produit.disponible) redirect(hub);
