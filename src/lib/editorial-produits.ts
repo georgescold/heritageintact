@@ -4,13 +4,14 @@ import type { Reponses } from "./qualification";
 /** Texte commun aux guides PDF et à l'espace. Aucune promesse de résultat patrimonial. */
 export const EDITORIAL_PRODUITS = {
  front: {
-  ouverture: "Vous avez payé la maison. Il reste à préparer ce qu’ils ne devront pas deviner.",
+  ouverture: "Le jour où vos enfants chercheront les réponses, vous ne pourrez plus les leur donner.",
   histoire: [
-   "Imaginez un dimanche chez vous. Les enfants repartent, la maison retrouve son calme. Vous regardez ces murs que vous avez mis des années à payer. Vous voulez leur laisser un appui, pas des questions qu’ils devront porter seuls.",
-   "Si vous avez repoussé ce sujet, vous n’êtes pas un mauvais parent. Entre les termes inconnus et la peur de vous démunir, il est facile de refermer le dossier. Ce guide vous donne un ordre clair pour comprendre ce qui mérite votre attention, sans vous précipiter dans une donation."
+   "Imaginez vos enfants assis devant le notaire. Ils viennent de perdre un parent et découvrent, au même moment, une facture, une date dépassée ou un document que personne ne retrouve. Ils ne se demanderont pas si vous les aimiez. Ils se demanderont simplement ce que vous aviez prévu et pourquoi personne ne leur en a parlé.",
+   "Vous avez travaillé, payé la maison et voulu rester libre jusqu’au bout. Votre rêve n’est pas de devenir fiscaliste : c’est de garder votre sécurité aujourd’hui et de transmettre demain sans laisser une énigme à votre famille. Ce guide existe pour vous montrer les sept erreurs à connaître avant qu’une décision utile ne devienne plus coûteuse, plus complexe ou impossible à reprendre."
   ],
-  apprendre: ["Reconnaître les sept confusions qui peuvent laisser votre transmission mal préparée.", "Comprendre les repères de temps, de famille et de contrat qui méritent une vérification.", "Arriver à votre prochain échange avec vos priorités et des questions précises."],
-  essentiel: "Lisez les sept erreurs, puis gardez les fiches dont vous avez besoin. Pas de questionnaire de connaissances ni de devoir à rendre : une seule priorité suffit pour commencer.",
+  apprendre: ["Identifier les trois dates qui avancent même lorsque vous ne faites rien : quinze ans, 70 ans et 71 ans.", "Reconnaître quatre erreurs familiales ou documentaires qui peuvent fausser un calcul ou retarder une décision.", "Savoir exactement quels documents retrouver et quelles questions poser pour votre propre situation."],
+  adresse: ["Vous avez généralement 60 ans ou plus et vous voulez protéger votre autonomie autant que vos proches.", "Vous possédez un logement, de l’épargne ou une assurance-vie et vous ne savez pas si tout est réellement préparé.", "Vous êtes parent ou grand-parent, marié, pacsé, seul, ou votre famille comprend plusieurs unions.", "Vous avez déjà aidé un proche, ou vous hésitez à le faire, et vous voulez comprendre avant de décider."],
+  essentiel: "Commencez par les trois dates promises dans la présentation, puis lisez les quatre erreurs qui ne se voient pas sur un relevé bancaire. Chaque chapitre va droit au but : ce que les gens ignorent, ce qu’il faut comprendre, un cas concret et les actions à mener.",
   limite: "Comprendre les règles ne suffit pas à établir les droits de votre famille. Ce guide prépare vos premières questions ; les pièces, les choix et leurs conséquences restent à examiner avec le professionnel.",
   acquis: "Vous savez désormais quoi regarder et quoi demander. Votre inquiétude a un point de départ concret.",
   suite: "Mais repérer les erreurs ne calcule pas encore votre cas. Le simulateur et le plan adapté relient vos réponses, les hypothèses et l’ordre des vérifications. Ne laissez pas votre première avancée retourner dans le tiroir."
@@ -22,6 +23,7 @@ export const EDITORIAL_PRODUITS = {
    "Vous n’avez pas à inventer l’organisation : partez de l’exemple rempli, rassemblez les pièces utiles et gardez une trace des réponses. Une pièce manque ? Vous saurez laquelle demander, sans repousser tout le rendez-vous."
   ],
   apprendre: ["Distinguer ce que vous savez de ce qui reste à retrouver.", "Préparer votre demande de rendez-vous et les documents utiles.", "Conserver les réponses, les responsables et les prochaines démarches."],
+  adresse: ["Vous voulez prendre rendez-vous sans arriver avec une pile de papiers désordonnée.", "Vous craignez d’oublier une question importante ou de ne pas savoir quoi demander.", "Vous voulez garder une trace claire des réponses et des prochaines démarches."],
   essentiel: "Commencez par l’exemple de Claire et Marc, une famille fictive. Reprenez leur façon de classer, pas leur situation. Remplissez uniquement les rubriques utiles à votre prochain échange.",
   limite: "Ranger vos pièces ne suffit pas à choisir ce qui convient à votre famille. Le Dossier organise l’échange ; il ne tranche ni les droits ni les options.",
   acquis: "Vos pièces, votre demande et votre compte rendu ont maintenant une place. Vous n’avez plus à repartir d’une page blanche.",
@@ -34,6 +36,7 @@ export const EDITORIAL_PRODUITS = {
    "Ce guide les remet dans le bon ordre. Vous choisissez votre situation, reliez les pièces aux questions et préparez un suivi. L’objectif : pouvoir expliquer ce qui compte pour chacun sans improviser une solution."
   ],
   apprendre: ["Repérer les questions spécifiques à votre famille, sans remplir les douze situations.", "Comprendre ce qu’une comparaison chiffrée suppose et ce qu’elle ne dit pas.", "Relier vos souhaits, vos documents et les démarches à faire confirmer."],
+  adresse: ["Vous ne voulez plus raisonner à partir d’un exemple général.", "Votre famille, vos donations ou vos contrats rendent votre situation difficile à relier.", "Vous voulez une estimation pédagogique, des alertes et un ordre de préparation conservable en PDF."],
   essentiel: "Ouvrez votre fiche principale. Consultez les autres seulement si elles ajoutent une question utile. L’atelier est un outil de compréhension, pas un passage obligé avant le rendez-vous.",
   limite: "Votre dossier prépare l’étude de votre situation ; il ne remplace pas les actes ni le conseil du professionnel. Une urgence juridique n’attend pas la fin de la lecture.",
   acquis: "Vous disposez du parcours de préparation familiale : vos situations, vos pièces, vos hypothèses et votre suivi.",
@@ -46,6 +49,7 @@ export const EDITORIAL_PRODUITS = {
    "Vous n’avez pas à devenir spécialiste ni à modifier quoi que ce soit à l’aveugle. Retrouvez les documents, comprenez les points à demander et conservez la réponse de l’assureur. Votre intention mérite d’être confrontée à ce qui est réellement écrit."
   ],
   apprendre: ["Distinguer le relevé, la clause en vigueur et l’historique des versements.", "Comprendre les principales logiques de désignation et les questions liées aux dates.", "Adresser une demande claire à l’assureur et suivre sa réponse."],
+  adresse: ["Vous possédez au moins un contrat d’assurance-vie.", "Vous n’avez pas relu récemment la clause bénéficiaire ou l’historique des versements.", "Vous voulez vérifier ce qui est réellement enregistré avant d’envisager une modification."],
   essentiel: "Choisissez un contrat, lisez les six repères, puis utilisez le courrier. Pas de note à donner au contrat, pas de clause type à recopier : vous cherchez des informations confirmées.",
   limite: "Une réponse reçue ne suffit pas à valider une modification. Faites examiner les conséquences et la cohérence familiale avant de changer une clause ou un placement.",
   acquis: "Vous savez quelle version demander, quelles questions poser et où conserver les réponses. Vous avez les supports prévus pour ce travail.",
@@ -54,14 +58,14 @@ export const EDITORIAL_PRODUITS = {
 } as const;
 
 export const OUVERTURES_CHAPITRES: Record<string,string> = {
- e0: "Vous pensez à votre conjoint, à vos enfants, à ce qu’ils trouveraient dans vos tiroirs. Tout semble important. Commencez par ce que vous voulez leur épargner : cette priorité donnera un sens à toute la lecture.",
- e1: "Vous voulez aider vos enfants sans devenir dépendant d’eux demain. Ce n’est pas égoïste : préserver vos besoins fait partie de leur protection. Regardez les dates, mais ne laissez pas un plafond fiscal décider à votre place.",
- e2: "« Nous avons toujours tout partagé. » Cette phrase raconte votre vie à deux. Elle ne dit pas encore quels droits chacun aurait si l’autre disparaissait. Ici, vous allez séparer votre souhait des règles à vérifier.",
- e3: "Le contrat est signé, le relevé arrive chaque année : vous pourriez croire le sujet clos. Pourtant, savoir combien il contient ne dit pas tout sur les personnes désignées. Retrouvez ce qui est écrit, aujourd’hui.",
- e4: "La dernière mensualité est payée. Ce soulagement, vous l’avez mérité. Mais protéger l’avenir de cette maison pose une autre question : quels droits voulez-vous garder et que pourraient recevoir vos proches ?",
- e5: "Vous vous souvenez d’avoir aidé un enfant. Lui aussi. Mais vous ne retrouvez plus la date ni le document. N’attendez pas que les souvenirs de chacun deviennent les seules pièces du dossier.",
- e6: "Vous voulez être juste. Vos enfants peuvent pourtant comprendre différemment une aide, un silence ou une intention. Quelques mots clairs aujourd’hui peuvent éviter de leur laisser tout à interpréter.",
- e7: "Imaginez sortir du rendez-vous en sachant ce qui a été confirmé et qui fait quoi ensuite. Ce dernier chapitre sert à cela : ne pas laisser une conversation importante redevenir un souvenir flou."
+ e0: "Vous n’avez rien à signer ici. Vous allez comprendre les erreurs avant de décider ce qui mérite une vérification.",
+ e1: "Une date de donation oubliée peut changer ce qu’il reste réellement de l’abattement. Le temps passe même lorsque le dossier reste fermé.",
+ e2: "Un contrat ouvert depuis vingt ans peut contenir des versements qui n’obéissent pas tous aux mêmes règles. Le 70e anniversaire sépare deux lectures très différentes.",
+ e3: "À valeur de maison identique, le barème de la nue-propriété change au passage de 71 ans. Comprenez la marche avant d’en parler avec le notaire.",
+ e4: "« Nous avons toujours tout partagé » raconte votre vie. Cette phrase ne dit pas encore qui possède, qui hérite et qui paie.",
+ e5: "Vous vous souvenez d’avoir aidé un enfant. Lui aussi. Sans date ni preuve, ce souvenir peut devenir une question fiscale et familiale.",
+ e6: "Vous voulez aider vos petits-enfants sans désavantager leurs parents ni fragiliser votre sécurité. Donation et succession ne répondent pas aux mêmes règles.",
+ e7: "Le notaire peut sécuriser les décisions, mais il ne peut pas deviner les faits absents. Préparez l’histoire qu’il doit réellement étudier."
 };
 
 export type SuiteProduit = { sku: "upsell1"|"upsell2"|"pack1"; titre:string; besoin:string; cta:string };
@@ -71,7 +75,7 @@ const FAMILLE: SuiteProduit = {sku:"upsell1",titre:"Comprendre ne suffit pas à 
 export function suiteProduit(moment:string, possede:ReadonlySet<ProductSku>, profil?:Reponses|null):SuiteProduit|null {
  const famille=possede.has("upsell1"), assurance=possede.has("upsell2");
  if(famille && (assurance || profil?.av!=="O"))return null;
- if(moment==="e3" || moment==="grille-audit-assurance-vie")return profil?.av==="O"&&!assurance?AV:null;
+ if(moment==="e2" || moment==="grille-audit-assurance-vie")return profil?.av==="O"&&!assurance?AV:null;
  if(moment==="upsell1" || moment==="tableau-bord-familial")return profil?.av==="O"&&!assurance?AV:null;
  if(!["front","bump","upsell2","e0","e4","e7","plan-en-1-page","compte-rendu","lettre-modification-clause"].includes(moment))return null;
  if(moment==="front"&&!famille)return FAMILLE;

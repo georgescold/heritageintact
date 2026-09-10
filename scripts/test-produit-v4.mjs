@@ -83,7 +83,7 @@ ok(checkout.includes("!identiteConnue &&") && !checkout.includes("Votre accès s
 ok(!checkout.includes("Les questions à préparer au notaire"));
 ok(!checkout.includes("Je saurai quoi demander") && commander.includes('commencerPromotion(email, "front")'));
 ok(!sale.includes("<EcheanceHistorique"));
-ok(LECONS.find((l) => l.cle === "e6").blocs.some(([titre, texte]) => titre.includes("fenêtre temporaire") && texte.includes("790 A bis") && texte.includes("31 décembre 2026")));
+ok(JSON.stringify(LECONS.find((l) => l.cle === "e6")).includes("790 A bis") && JSON.stringify(LECONS.find((l) => l.cle === "e6")).includes("31 décembre 2026"));
 ok(
   fs.existsSync(vslPath) &&
     fs.statSync(vslPath).size > 1_000_000 &&

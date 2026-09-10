@@ -1,6 +1,6 @@
 # Version courante : produits narratifs V9
 
-[Lire la structure, les 67 pages et les contrôles V9](19-PRODUITS-NARRATIFS-V9.md). Les quiz et les huit exercices ont été retirés ; les fiches utiles sont conservées. Push et redéploiement de test autorisés, dépôt public maintenu à la demande de Loys. Les informations ci-dessous décrivent le socle V7/V8 ; la V9 prévaut pour la pédagogie et la publication.
+[Lire la structure, les 54 pages et les contrôles V9](19-PRODUITS-NARRATIFS-V9.md). Les quiz et les huit exercices ont été retirés ; le guide des 7 erreurs va à l’essentiel et les fiches utiles restent dans les compléments. Push et redéploiement de test autorisés, dépôt public maintenu à la demande de Loys. Les informations ci-dessous décrivent le socle V7/V8 ; la V9 prévaut pour la pédagogie et la publication.
 
 # Héritage Intact — commencer ici
 

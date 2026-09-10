@@ -3,26 +3,26 @@ export type GuideUtilisation = { sku: "front"|"bump"|"upsell1"|"upsell2"; titre:
 export const GUIDES_UTILISATION: GuideUtilisation[] = [
   {
     "sku": "front",
-    "titre": "Le guide : comprendre et faire votre premier pas",
-    "resultat": "Votre fiche de situation, vos questions et un plan de préparation en une page.",
+    "titre": "Les 7 erreurs : comprendre avant qu’il ne soit trop tard",
+    "resultat": "Les trois dates, les quatre pièges invisibles et les actions concrètes à mener.",
     "seances": [
       [
-        "1. Commencez par une seule priorité",
-        "Ouvrez l’étape 1 et la fiche de situation. Écrivez ce que vous souhaitez préserver pour vous ou vos proches. Ajoutez un document retrouvé et une question à poser. Si vous hésitez entre plusieurs priorités, choisissez celle qui vous empêche le plus d’avancer aujourd’hui.",
-        "Vous pouvez expliquer votre priorité en une phrase, sans parler de solution juridique.",
-        "ma-situation"
+        "1. Commencez par les trois dates",
+        "Lisez le compteur des quinze ans, le 70e anniversaire et le 71e anniversaire. Pour chacune, repérez l’information qui manque dans votre dossier : date d’un don, historique des versements ou âge au prochain palier de nue-propriété.",
+        "Vous savez quelle date mérite d’être vérifiée en premier.",
+        ""
       ],
       [
-        "2. Suivez les notions à votre rythme",
-        "Lisez les sept erreurs et leurs exemples. Chaque chapitre annonce ce que vous allez comprendre, explique l’essentiel et indique un prochain pas utile. Gardez les fiches nécessaires à votre situation : aucun test ni devoir à rendre.",
-        "Vous distinguez un fait connu, un souhait et une vérification.",
-        "questions-notaire"
+        "2. Vérifiez les quatre erreurs invisibles",
+        "Lisez ensuite la protection du couple, les dons sans trace, les règles des petits-enfants et la préparation du rendez-vous. Ne retenez pas tout : notez uniquement les erreurs qui correspondent réellement à votre famille.",
+        "Vous distinguez ce qui est déjà confirmé de ce qui repose encore sur une supposition.",
+        ""
       ],
       [
-        "3. Gardez vos questions pour le rendez-vous",
-        "Reportez sur le plan en une page votre objectif et vos trois questions principales. Prenez rendez-vous dès que cela vous est utile, sans attendre la fin du parcours en cas de délai ou de difficulté. Vous gardez votre feuille pour préparer l’échange et noter la prochaine action.",
-        "Votre plan indique ce que vous voulez clarifier et le prochain interlocuteur.",
-        "plan-en-1-page"
+        "3. Passez des erreurs aux questions",
+        "Pour chaque erreur qui vous concerne, reprenez la section « Comment l’appliquer à votre situation ». Retrouvez le premier document demandé et transformez l’incertitude principale en question à faire confirmer.",
+        "Vous avez une liste courte de documents et de questions, sans montage choisi à l’aveugle.",
+        ""
       ]
     ]
   },

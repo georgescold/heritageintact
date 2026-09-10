@@ -90,7 +90,7 @@ def html_flows(node):
  return sum((html_flows(ch) for ch in node.children),[])
 def sources():
  return [PageBreak()]+head("REPÈRES ET LIMITES","Pour vérifier une règle")+[
- P("Les exemples ne déterminent pas vos droits. Les dates, la propriété, les donations passées et les dispositions familiales doivent être examinées ensemble. Les repères ci-dessous ont été consultés le 9 septembre 2026."),
+ P("Les exemples ne déterminent pas vos droits. Les dates, la propriété, les donations passées et les dispositions familiales doivent être examinées ensemble. Les repères ci-dessous ont été consultés le 10 septembre 2026."),
  rich('<b>Donations : abattements et calcul</b><br/><link href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits" color="#12365E">impots.gouv.fr - Calcul et paiement des droits</link>'),
  rich('<b>Usufruit et nue-propriété</b><br/><link href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934" color="#12365E">Service Public - En quoi consiste l’usufruit ?</link>'),
  rich('<b>Assurance-vie : fiscalité au décès</b><br/><link href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer" color="#12365E">impots.gouv.fr - Bénéficiaire d’une assurance-vie</link>'),
@@ -99,7 +99,7 @@ def sources():
  P("Une succession déjà ouverte, un conflit, une entreprise, un élément international ou une échéance proche nécessitent un professionnel. Ne retardez pas sa consultation pour finir ce guide."),
  P("Dans votre espace : les fiches séparées peuvent être réimprimées à l’unité. En cas de nouvelle version, privilégiez l’édition la plus récente. Les PDF ne se mettent pas à jour une fois téléchargés.")]
 CAT=[
- ("front","les-7-erreurs","Les 7 erreurs qui offrent votre héritage à l’État","Comprendre les repères. Poser votre situation. Préparer vos premières questions."),
+ ("front","les-7-erreurs","Les 7 erreurs qui offrent votre héritage à l’État","Les 3 dates qui avancent. Les 4 pièges qui restent invisibles. Les actions à mener."),
  ("bump","dossier-notaire","Mon dossier pour le rendez-vous","Partir de l’exemple. Rassembler les pièces utiles. Conserver les réponses."),
  ("upsell1","preparation-familiale","Ma préparation familiale","Choisir votre fiche. Relier les faits. Comparer les hypothèses. Suivre les démarches."),
  ("upsell2","assurance-vie","Mon guide assurance-vie","Retrouver la clause. Demander les informations. Suivre les vérifications."),
@@ -108,35 +108,29 @@ manifest=[]
 for sku,slug,title,subtitle in CAT:
  guide=next(g for g in DATA["guides"] if g["sku"]==sku)
  docs=[d for d in DATA["documents"] if d["sku"]==sku]
+ if sku=="front":docs=[]
  ed=DATA["editorial"][sku]
  story=head("VOTRE GUIDE / "+("PRODUIT DE BASE" if sku=="front" else "COMPLÉMENT"),title)
  story+=[P(ed["ouverture"],"h2")]+[P(p) for p in ed["histoire"]]
  story+=[P("Ce que vous allez apprendre","h2")]
  for appris in ed["apprendre"]:story+=[P("- "+appris)]
- story+=[P("Pour aller à l’essentiel","h3"),P(ed["essentiel"]),P("Édition du 9 septembre 2026. Les scènes imaginées et exemples fictifs ne sont pas des témoignages. Supports à conserver chez vous.","small")]
- story+=[PageBreak()]+head("REPÉRER VOS SUPPORTS","Le fil de votre préparation")
- if sku=="front":
-  for l in DATA["lecons"]:story+=[P(("Départ - " if not l["numero"] else "")+l["titre"],"h3")]
- else:
-  for d in docs:story+=[P(d["titre"],"h3")]
- story+=[P("Utilisez les signets du PDF pour rejoindre votre question. Imprimez seulement les fiches utiles. Ce n’est pas un cahier à terminer : une réponse manquante devient une demande à faire.")]
+ story+=[P("À qui ce guide s’adresse","h2")]
+ for personne in ed.get("adresse",[]):story+=[P("- "+personne)]
+ story+=[P("Pour aller à l’essentiel","h3"),P(ed["essentiel"])]
+ if sku!="front":story+=[P("Édition du 10 septembre 2026. Les scènes imaginées et exemples fictifs ne sont pas des témoignages. Supports à conserver chez vous.","small")]
+ story+=[PageBreak()]+head("VOTRE PARCOURS","Ce que les sept erreurs vont vous révéler" if sku=="front" else "Le fil de votre préparation")
  if sku=="front":
   for l in DATA["lecons"]:
+   if l["numero"]:story+=[P(l["titre"],"h3"),P(l["resume"],"small")]
+ else:
+  for d in docs:story+=[P(d["titre"],"h3")]
+ story+=[P("Utilisez les signets du PDF pour rejoindre directement la question qui vous concerne. Ce n’est pas un cours à mémoriser : une information manquante devient une demande précise à faire.")]
+ if sku=="front":
+  for l in DATA["lecons"]:
+   if not l["numero"]:continue
    story+=[PageBreak()]+head("DÉPART" if not l["numero"] else "LES 7 ERREURS / "+str(l["numero"]),l["titre"])+[P(DATA["ouvertures"][l["cle"]]),P("Ce que vous allez comprendre","h3")]+[P("- "+a) for a in l["acquis"]]
    for t,b in l["blocs"]:story+=[P(t,"h2"),P(b)]
-   story+=box("Votre prochain pas utile",l["aFaire"])
    if l.get("siNonConcerne"):story+=[P(l["siNonConcerne"],"small")]
-   if l["cle"] in ("e3","e4"):
-    titleSuite="Le contrat est retrouvé. Il reste à obtenir les réponses." if l["cle"]=="e3" else "La maison n’est qu’une partie de l’histoire."
-    texteSuite="Si vous avez une assurance-vie, le guide dédié fournit la grille de lecture et le courrier à adapter. Retrouvez-le dans votre espace s’il est inclus, ou consultez le complément proposé." if l["cle"]=="e3" else "Le pack Préparation relie cette question aux particularités de votre famille, aux pièces et au suivi. S’il est déjà inclus, ouvrez votre fiche familiale. Sinon, retrouvez votre proposition dans votre espace."
-    story+=[P(titleSuite,"h3"),P(texteSuite,"small"),rich('<link href="https://www.heritageintact.fr/espace" color="#12365E">Retrouver maintenant ma suite dans mon espace</link>',"small")]
-  story+=[PageBreak()]+head("EXEMPLE FICTIF ET CALCULÉ","Un seuil d’âge : 9 600 € d’écart") + [
-   P("Un parent seul propriétaire donne à un enfant la nue-propriété d’une maison de 480 000 €, en conservant l’usufruit viager. On suppose l’abattement de 100 000 € totalement disponible et aucune donation antérieure. Seul l’âge change dans cette comparaison."),
-   P("À 70 ans : valeur fiscale 60% × 480 000 € = 288 000 €. Après abattement : 188 000 € taxables. Droits pédagogiques avant arrondi fiscal : 35 794,35 €."),
-   P("À 71 ans : valeur fiscale 70% × 480 000 € = 336 000 €. Après abattement : 236 000 € taxables. Droits pédagogiques avant arrondi fiscal : 45 394,35 €."),
-   P("Écart : 9 600 €. Hors frais d’acte et autres paramètres. Ce n’est ni votre facture, ni une recommandation de donner. Les sources du barème figurent en fin de guide."),
-   P("Comment vérifier : 8 072 × 5% + (12 109 - 8 072) × 10% + (15 932 - 12 109) × 15% + (base taxable - 15 932) × 20%. Cette écriture vaut pour les deux bases retenues, toutes deux inférieures à 552 324 €."),
-   P("Votre question : quels changements de règles peuvent concerner un projet déjà envisagé, et faut-il prendre rendez-vous avant une date précise ?")]
  if sku=="front":
   ex=DATA["headline"]
   story+=[PageBreak()]+head("L’EXEMPLE DE LA PRÉSENTATION","68 206 € d’écart : les hypothèses")+[P(ex["hypotheses"]),P(ex["scenarioA"]),P(ex["scenarioB"]),P("Droits calculés avant frais et arrondis fiscaux : 82 194,70 € contre 13 988,70 €, soit 68 206 € pour les deux enfants réunis."),P(ex["limites"]),P("Ce scénario fictif a été choisi pour illustrer l’accroche. Il ne représente pas une famille moyenne. Les sources du barème et de l’assurance-vie figurent en fin de guide.","small")]

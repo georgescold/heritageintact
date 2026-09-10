@@ -10,18 +10,18 @@
 4. Des fiches pratiques réservées aux besoins réels : inventaire, demande, questions, suivi.
 5. Une transition qui relie l'acquis au besoin suivant, sans rendre le premier achat artificiellement inutilisable.
 
-Les quatre guides et les 34 fiches ont une ouverture dédiée. Les huit doubles blocs de gestes, question, correction et auto-évaluation ont été retirés du PDF et de l'espace. Les anciens fichiers d'exercices restent des archives non importées dans le parcours actif.
+Les quatre guides ont une ouverture dédiée. Le produit 1 contient uniquement les sept erreurs, leurs exemples, leurs actions et leurs sources ; ses anciennes fiches génériques ne sont plus ajoutées au PDF. Les trois compléments conservent 25 fiches directement utiles. Les anciens fichiers d'exercices restent des archives non importées dans le parcours actif.
 
 ## Contenus
 
 | Guide | Pages | Supports |
 |---|---:|---|
-| Les 7 erreurs | 25 | Départ + sept erreurs, neuf fiches, exemples chiffrés et sources |
+| Les 7 erreurs | 12 | Sept erreurs structurées, exemples chiffrés et sources |
 | Dossier pour le rendez-vous | 13 | Six fiches, dont exemple rempli et compte rendu |
 | Préparation familiale | 20 | Quinze fiches ; atelier interactif dans l'espace |
 | Assurance-vie | 9 | Six repères expliqués et quatre fiches |
 
-67 pages au total, contre 80 auparavant. Les introductions sont communes entre PDF et espace. Les fiches web restent imprimables sans encarts commerciaux sur le papier.
+54 pages au total. Les introductions sont communes entre PDF et espace. Les fiches des compléments restent imprimables sans encarts commerciaux sur le papier.
 
 ## Moments de transition
 

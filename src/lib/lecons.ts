@@ -1,271 +1,103 @@
 /** Contenu écrit autonome. Repères généraux, cas fictifs, sans conseil individuel. */
 export const LECONS = [
   {
-    cle: "e0",
-    numero: 0,
-    titre: "Faire le point, sans rien décider",
-    minutes: 10,
-    resume:
-      "Une fiche pour distinguer vos priorités, vos informations connues et ce qui reste à vérifier.",
-    aFaire:
-      "Remplissez votre fiche de situation. Une information manquante peut être notée « à vérifier ».",
-    acquis: [
-      "Une priorité formulée avec vos mots",
-      "Les informations à retrouver avant de décider",
-    ],
-    videoIndex: -1,
-    documents: ["ma-situation", "trois-poches"],
+    cle: "e0", numero: 0, titre: "Avant de commencer", minutes: 5,
+    resume: "Comprendre à quoi servent les sept erreurs et ce qu’elles ne décident pas à votre place.",
+    aFaire: "Gardez à portée de main les dates et documents que vous connaissez déjà.",
+    acquis: ["Comprendre l’objectif du guide", "Distinguer un repère général d’un conseil individuel"],
+    videoIndex: -1, documents: [],
+    blocs: [["Votre point de départ", "Ce guide vous aide à reconnaître sept erreurs avant qu’elles ne deviennent des questions urgentes pour vos enfants. Vous n’avez rien à signer ni à décider pendant la lecture. Chaque chapitre vous explique le mécanisme, vous montre un cas concret et vous indique les informations à retrouver."]],
+  },
+  {
+    cle: "e1", numero: 1, titre: "Erreur 1 - Laisser passer le compteur des quinze ans", minutes: 10,
+    resume: "Comprendre quand l’abattement parent-enfant a déjà été utilisé et quand il peut de nouveau s’appliquer.",
+    aFaire: "Retrouvez, pour chaque don, le donateur, le bénéficiaire, la date, le montant et la déclaration.",
+    acquis: ["L’abattement de 100 000 € se suit par parent et par enfant", "Une donation antérieure peut encore réduire l’abattement disponible"],
+    videoIndex: -1, documents: [],
     blocs: [
-      [
-        "Votre premier résultat",
-        "Vous n’avez pas besoin de connaître toutes les règles pour commencer. Notez d’abord ce que vous voulez protéger : le logement de votre conjoint, votre propre sécurité financière, l’équilibre entre les enfants ou une autre priorité. Préparer votre transmission ne vous engage à rien donner ni à signer quoi que ce soit.",
-      ],
-      [
-        "Ce que vous savez, ce que vous ignorez",
-        "Sur une feuille, écrivez votre situation familiale, les grandes catégories de biens et les documents retrouvés. Une estimation doit porter sa date. Ne devinez pas un régime matrimonial ou une clause : indiquez « à vérifier » et le document à demander. N’envoyez pas vos relevés ou les données de vos proches par email pour suivre cette étape.",
-      ],
-      [
-        "Exemple fictif",
-        "Jean-Pierre veut d’abord comprendre comment Françoise pourrait continuer à vivre dans leur maison. Il retrouve l’acte d’achat mais pas les dispositions de son mariage. Il inscrit donc une question : « Quels droits aurait mon épouse sur notre logement dans notre situation ? » Son premier progrès est une question précise, pas un montage déjà choisi.",
-      ],
-      [
-        "Quand demander de l’aide tout de suite",
-        "Une succession déjà ouverte, un délai fiscal ou judiciaire, une situation internationale ou un conflit important demandent un interlocuteur compétent. N’attendez pas d’avoir fini le parcours pour le contacter. Ce programme prépare les échanges ; il ne traite pas une urgence juridique.",
-      ],
+      ["Ce que les gens ne savent pas", "Beaucoup de parents connaissent le chiffre de 100 000 €, mais ignorent qu’il se suit séparément pour chaque couple parent-enfant et sur une période de quinze ans. Un don ancien peut donc avoir consommé tout ou partie de l’abattement encore disponible. À l’inverse, attendre sans avoir jamais commencé peut empêcher d’utiliser plusieurs fois ce mécanisme au cours d’une vie."],
+      ["Ce qu’il faut comprendre", "Chaque parent peut utiliser un abattement de 100 000 € pour chaque enfant, en une ou plusieurs fois sur quinze ans. Une donation de moins de quinze ans peut aussi peser sur l’abattement applicable à la succession. Le compteur fiscal ne remplace pas la question essentielle : pouvez-vous transmettre sans fragiliser votre propre sécurité ?"],
+      ["Exemples concrets", "Cas 1 : un père a déclaré 60 000 € donnés à sa fille il y a huit ans. Dans ce schéma simplifié, il lui reste 40 000 € d’abattement ordinaire disponible pour elle pendant la période en cours. Cas 2 : les deux parents donnent chacun à leurs deux enfants. Il existe alors quatre suivis distincts, pas un compteur unique pour toute la famille. Cas 3 : un ancien transfert est retrouvé sans déclaration certaine ; sa date et sa qualification doivent être vérifiées avant tout nouveau calcul."],
+      ["Comment l’appliquer à votre situation", "Faites une liste courte : qui a donné, à qui, quoi, combien, à quelle date et avec quel justificatif. Téléchargez les récépissés disponibles et séparez les dons de chaque parent. Faites confirmer l’historique et l’abattement restant avant une nouvelle opération. Ne donnez jamais pour respecter un calendrier si cela réduit l’argent ou les droits dont vous avez besoin pour vivre."],
     ],
   },
   {
-    cle: "e1",
-    numero: 1,
-    titre: "Erreur 1 - Attendre sans regarder vos besoins ni les dates",
-    minutes: 10,
-    resume:
-      "Avant de penser à transmettre, clarifiez vos besoins et retrouvez les donations déjà effectuées.",
-    aFaire: "Complétez la fiche de vos besoins. Notez séparément les donations passées à vérifier.",
-    acquis: [
-      "Préparer ne signifie pas donner",
-      "Les donations antérieures demandent un historique par donateur et bénéficiaire",
-    ],
-    videoIndex: -1,
-    documents: ["trois-poches", "calendrier-3-dates"],
+    cle: "e2", numero: 2, titre: "Erreur 2 - Regarder l’âge du contrat au lieu de l’âge au moment des versements", minutes: 10,
+    resume: "Comprendre pourquoi le 70e anniversaire change la lecture fiscale des versements d’assurance-vie.",
+    aFaire: "Demandez l’historique daté des versements et la clause bénéficiaire actuellement enregistrée.",
+    siNonConcerne: "Si vous n’avez pas d’assurance-vie, passez directement à l’erreur 3. Ce guide ne vous recommande pas d’ouvrir un contrat.",
+    acquis: ["C’est la date de chaque versement qui compte", "152 500 € par bénéficiaire et 30 500 € au total ne sont pas le même abattement"],
+    videoIndex: -1, documents: [],
     blocs: [
-      [
-        "Commencer par votre sécurité",
-        "Le bon montant à transmettre ne se déduit pas du seul plafond fiscal. Vos dépenses, vos ressources, les travaux du logement et les besoins futurs comptent aussi. Faites la liste de vos dépenses courantes et des projets prévisibles. Une réserve de sécurité ne se résume pas à un nombre universel de mois.",
-      ],
-      [
-        "Retrouver les dons antérieurs",
-        "Pour chaque donation dont vous vous souvenez, notez qui a donné, à qui, quoi, quand, et quel justificatif existe. Une ligne par couple donateur-bénéficiaire évite de mélanger les situations. Si une déclaration ou une date est incertaine, demandez une vérification avant un nouveau don.",
-      ],
-      [
-        "Le repère des quinze ans",
-        "L’abattement ordinaire de donation entre parent et enfant est de 100 000 € par parent et par enfant, utilisable sur une période de quinze ans. Des donations antérieures peuvent en avoir consommé une partie. Ce repère ne signifie pas qu’il faut donner aujourd’hui ni que tout le compteur familial redémarre à une seule date.",
-      ],
-      [
-        "Votre limite personnelle",
-        "Écrivez ce que vous ne voulez pas compromettre : vos revenus, la possibilité de financer des soins, le logement ou une dépense importante. Apportez ces priorités au professionnel. Un avantage fiscal ne suffit pas à rendre une décision adaptée.",
-      ],
+      ["Ce que les gens ne savent pas", "Un contrat peut avoir été ouvert longtemps avant 70 ans et recevoir pourtant des versements après cet âge. Le nom du produit et sa date d’ouverture ne suffisent donc pas. Beaucoup de familles découvrent aussi trop tard qu’une ancienne clause bénéficiaire ne correspond plus aux personnes qu’elles voulaient protéger."],
+      ["Ce qu’il faut comprendre", "Pour les contrats concernés, les primes versées avant 70 ans relèvent notamment d’un abattement de 152 500 € par bénéficiaire, tous contrats du même assuré confondus. Après 70 ans, les primes concernées relèvent notamment d’un abattement global de 30 500 €, partagé entre les contrats et bénéficiaires. Les gains et les situations particulières demandent une lecture distincte : après 70 ans ne signifie pas que l’assurance-vie ne sert plus à rien."],
+      ["Exemples concrets", "Cas 1 : un contrat ouvert à 55 ans reçoit 40 000 € à 68 ans. La date utile pour ce versement est 68 ans. Cas 2 : le même contrat reçoit ensuite 40 000 € à 72 ans ; ce second versement n’entre pas dans le même régime. Cas 3 : deux bénéficiaires sont désignés sur plusieurs contrats ; l’abattement de 30 500 € après 70 ans reste global, il n’est pas multiplié par le nombre de contrats ou de bénéficiaires."],
+      ["Comment l’appliquer à votre situation", "Pour chaque contrat, demandez par écrit la clause bénéficiaire en vigueur, l’historique des versements avec leurs dates et les avenants. Classez les versements avant et après 70 ans sans essayer de recalculer seul la fiscalité finale. Vérifiez que les personnes désignées correspondent encore à votre intention, puis faites examiner toute modification avant de la signer."],
     ],
   },
   {
-    cle: "e2",
-    numero: 2,
-    titre: "Erreur 2 - Croire que tout revient automatiquement à l’autre",
-    minutes: 12,
-    resume: "Distinguer la propriété actuelle, les droits des proches et la fiscalité.",
-    aFaire:
-      "Rédigez une question sur les droits de votre conjoint ou des personnes que vous souhaitez protéger.",
-    acquis: [
-      "Exonération fiscale et droit d’hériter sont deux sujets distincts",
-      "Votre situation familiale doit être examinée avant tout calcul",
-    ],
-    videoIndex: -1,
-    documents: ["ma-situation", "lexique"],
+    cle: "e3", numero: 3, titre: "Erreur 3 - Découvrir trop tard le changement de valeur à 71 ans", minutes: 10,
+    resume: "Comprendre le repère de 71 ans lorsque l’usufruit et la nue-propriété d’un bien sont séparés.",
+    aFaire: "Retrouvez l’acte de propriété, la part de chaque propriétaire et l’âge exact de la personne qui conserverait l’usufruit.",
+    acquis: ["La nue-propriété est évaluée à 60 % avant 71 ans puis à 70 % de 71 à 80 ans", "Le barème fiscal ne suffit pas à décider d’une donation"],
+    videoIndex: -1, documents: [],
     blocs: [
-      [
-        "Trois questions différentes",
-        "Qui possède les biens aujourd’hui ? Qui pourrait recevoir quoi ? Quels droits seraient éventuellement dus ? Il faut les traiter dans cet ordre. Le total du patrimoine du couple n’est pas automatiquement le montant d’une succession.",
-      ],
-      [
-        "Le conjoint",
-        "L’exonération fiscale du conjoint survivant ne signifie pas qu’il reçoit toujours tout en pleine propriété. Ses droits dépendent notamment de la famille et des dispositions existantes. Par exemple, dans le cas ordinaire d’enfants tous communs au couple, il peut avoir une option entre l’usufruit de la totalité de la succession et un quart en pleine propriété. Cet exemple ne détermine pas votre cas.",
-      ],
-      [
-        "PACS et concubinage",
-        "Une exonération de droits n’attribue pas, à elle seule, la qualité d’héritier. Les couples non mariés doivent vérifier les dispositions existantes et les droits de chacun. Ne recopiez pas le testament ou la solution d’un autre couple.",
-      ],
-      [
-        "Les documents utiles",
-        "L’acte d’achat, les dispositions matrimoniales, les donations et les testaments connus aident à clarifier la situation. Un document introuvable devient une demande à faire, pas un échec. Le professionnel vérifiera les droits et les choix possibles avant de chiffrer une transmission.",
-      ],
+      ["Ce que les gens ne savent pas", "Il est possible de donner la nue-propriété d’un logement tout en conservant l’usufruit, c’est-à-dire notamment le droit de l’occuper ou d’en percevoir les revenus. Mais la valeur fiscale de la nue-propriété avance par paliers avec l’âge de l’usufruitier. Le passage à 71 ans est l’un de ces paliers."],
+      ["Ce qu’il faut comprendre", "Dans le barème fiscal de l’usufruit viager, la nue-propriété vaut 60 % lorsque l’usufruitier a de 61 à 70 ans, puis 70 % de 71 à 80 ans. Cela augmente la base transmise pour une même valeur de bien. Ce n’est toutefois qu’un élément : les frais, la propriété réelle, les pouvoirs de chacun, les travaux, une vente future et votre besoin de sécurité doivent aussi être examinés."],
+      ["Exemple concret", "Un parent seul envisage la donation de la nue-propriété d’une maison estimée à 480 000 € à un enfant, avec un abattement de 100 000 € entièrement disponible. À 70 ans, la nue-propriété est évaluée à 288 000 € ; à 71 ans, à 336 000 €. Dans ce cas pédagogique simplifié, les 48 000 € de base supplémentaires produisent environ 9 600 € de droits supplémentaires au taux marginal de 20 %, hors frais et autres paramètres."],
+      ["Comment l’appliquer à votre situation", "Vérifiez d’abord qui possède réellement le logement et dans quelles proportions. Notez l’âge exact de chaque usufruitier potentiel. Demandez au notaire un chiffrage écrit des scénarios avant et après le prochain palier, les frais de l’acte, les conséquences d’une vente et la répartition des charges. Ne signez pas uniquement parce qu’une date approche."],
     ],
   },
   {
-    cle: "e3",
-    numero: 3,
-    titre: "Erreur 3 - Croire qu’un contrat signé n’a plus besoin d’être vérifié",
-    minutes: 10,
-    resume: "Savoir ce qui est écrit dans vos contrats, sans modifier une clause à l’aveugle.",
-    aFaire:
-      "Retrouvez le dernier relevé et demandez une copie de la clause bénéficiaire actuellement en vigueur.",
-    siNonConcerne:
-      "Sans assurance-vie, passez à la suite. Vous n’avez aucun contrat à ouvrir pour suivre le parcours.",
-    acquis: [
-      "Le bénéficiaire d’un contrat n’est pas nécessairement un enfant",
-      "Une information absente se demande à l’assureur",
-    ],
-    videoIndex: -1,
-    documents: ["lexique"],
+    cle: "e4", numero: 4, titre: "Erreur 4 - Croire que le mariage, le PACS ou la vie commune règlent tout", minutes: 12,
+    resume: "Séparer propriété, droit d’hériter et fiscalité pour éviter une protection de couple seulement supposée.",
+    aFaire: "Retrouvez contrat de mariage, convention de PACS, testament, donation entre époux et acte d’achat.",
+    acquis: ["Être exonéré ne signifie pas recevoir automatiquement", "La présence d’enfants non communs peut modifier les droits du conjoint"],
+    videoIndex: -1, documents: [],
     blocs: [
-      [
-        "Un contrat à retrouver",
-        "Identifiez l’assureur, la référence du contrat et les documents disponibles. Un relevé annuel n’indique pas toujours toutes les informations nécessaires. Pour la clause bénéficiaire, demandez la version effectivement enregistrée.",
-      ],
-      [
-        "Quatre repères",
-        "Quel est le contrat ? Qui sont les bénéficiaires désignés et selon quelle répartition ? Quel est l’historique des versements ? Quelles informations l’assureur peut-il confirmer par écrit ? Les règles fiscales varient notamment selon les dates du contrat et des versements, l’âge de l’assuré lors de ceux-ci et la situation du bénéficiaire.",
-      ],
-      [
-        "Une demande, pas une modification à l’aveugle",
-        "Demandez la clause bénéficiaire en vigueur, ses avenants et l’historique des versements par le canal habituel de votre assureur. Conservez sa réponse ; si vous envisagez un changement, faites d’abord examiner ses conséquences. Une grille remplie n’est pas un audit juridique.",
-      ],
+      ["Ce que les gens ne savent pas", "Dire « nous avons toujours tout partagé » ne décrit pas ce que chacun possède ni ce que l’autre recevrait. Le conjoint marié est exonéré de droits de succession, mais il ne reçoit pas nécessairement tout. Le partenaire de PACS est exonéré fiscalement, mais il n’est pas héritier légal sans disposition. Le concubin ne bénéficie pas de la même protection."],
+      ["Ce qu’il faut comprendre", "Trois questions doivent rester séparées : qui possède le bien aujourd’hui, qui a juridiquement le droit de recevoir, et quelle fiscalité s’applique à cette personne. Le régime matrimonial, la composition de la famille, un testament, une donation entre époux ou une clause d’attribution peuvent modifier la réponse. Une protection forte du survivant peut aussi reporter davantage de patrimoine sur le second décès."],
+      ["Exemples concrets", "Cas 1 : un couple marié avec uniquement des enfants communs peut laisser au conjoint une option successorale prévue par la loi ; ce n’est pas automatiquement la pleine propriété de tout. Cas 2 : en présence d’un enfant non commun, les droits légaux du conjoint ne sont pas les mêmes. Cas 3 : un partenaire de PACS sans testament n’hérite pas automatiquement. Cas 4 : un enfant du conjoint non adopté peut être fiscalement traité très différemment d’un enfant en ligne directe."],
+      ["Comment l’appliquer à votre situation", "Rassemblez les documents qui gouvernent votre couple et votre logement. Écrivez les liens exacts entre chaque adulte et chaque enfant. Posez au professionnel trois questions : que possède chacun aujourd’hui, que recevrait chacun si rien ne change, et que se passerait-il au premier puis au second décès ? Demandez une réponse qui distingue clairement les droits civils de l’impôt."],
     ],
   },
   {
-    cle: "e4",
-    numero: 4,
-    titre: "Erreur 4 - Confondre maison payée et transmission préparée",
-    minutes: 10,
-    resume:
-      "Comprendre ce que les droits sur un logement permettent, avant d’envisager une donation.",
-    aFaire:
-      "Retrouvez l’acte de propriété et notez ce que vous voulez préserver concernant le logement.",
-    acquis: [
-      "Donner un droit sur un bien mérite une décision éclairée",
-      "Un pourcentage fiscal ne décrit pas toute la conséquence d’une donation",
-    ],
-    videoIndex: -1,
-    documents: ["lexique", "ma-situation"],
+    cle: "e5", numero: 5, titre: "Erreur 5 - Faire un don sans créer une trace exploitable", minutes: 10,
+    resume: "Distinguer don manuel, présent d’usage et prêt familial, puis conserver la date et la preuve utiles.",
+    aFaire: "Reconstituez l’historique des transferts familiaux sans inventer une date ou une qualification.",
+    acquis: ["Un don manuel doit en principe être déclaré même s’il ne déclenche pas de droits", "La déclaration permet de conserver une date et un historique vérifiables"],
+    videoIndex: -1, documents: [],
     blocs: [
-      [
-        "Partir de l’acte",
-        "Le logement peut être détenu seul, à plusieurs, via une société ou avec des droits déjà partagés. L’acte et les dispositions existantes comptent davantage qu’un souvenir approximatif. Notez les titulaires et ce qui doit être confirmé.",
-      ],
-      [
-        "Les mots à comprendre",
-        "L’usufruit permet notamment d’utiliser le bien et d’en percevoir les revenus, selon les droits et obligations applicables. La nue-propriété est un autre droit sur le bien. La pleine propriété les réunit. Les répartir peut changer les possibilités de vente, les charges et les décisions futures.",
-      ],
-      [
-        "Le repère fiscal",
-        "Dans le barème fiscal de l’usufruit viager, la nue-propriété est notamment évaluée à 60 % entre 61 et 70 ans, puis à 70 % entre 71 et 80 ans. Cela ne veut pas dire que toute donation avant 71 ans porte automatiquement sur 60 %, ni qu’il devient impossible de donner après cet âge.",
-      ],
-      [
-        "Avant de choisir",
-        "Demandez qui pourrait habiter, louer, vendre, décider des travaux et supporter les dépenses. Demandez aussi ce qui se passerait en cas de décès ou de désaccord. Ne choisissez pas une donation uniquement pour changer une base de calcul.",
-      ],
+      ["Ce que les gens ne savent pas", "Un virement entre proches peut être un don, un prêt, le remboursement d’une dépense ou un présent d’usage. Ces mots ne sont pas interchangeables. Depuis le 1er janvier 2026, la déclaration des dons manuels et dons de sommes d’argent se fait en principe en ligne, même lorsque l’abattement évite tout droit à payer."],
+      ["Ce qu’il faut comprendre", "Déclarer un don ne signifie pas automatiquement payer un impôt. La déclaration fixe un historique utile pour le suivi des abattements et évite de laisser aux enfants un transfert impossible à expliquer. Les conséquences civiles d’un don peuvent toutefois rester distinctes de son traitement fiscal : le délai de quinze ans ne fait pas disparaître toutes les questions d’équilibre entre héritiers."],
+      ["Exemples concrets", "Cas 1 : 10 000 € sont virés à un enfant pour l’aider à acheter. Si c’est un don, le bénéficiaire doit en principe le déclarer, même si aucun droit n’est dû. Cas 2 : 10 000 € sont prêtés et doivent être remboursés ; l’absence d’écrit peut créer un conflit sur leur nature. Cas 3 : un cadeau proportionné aux ressources est offert pour un événement ; sa qualification dépend du contexte, pas seulement du montant."],
+      ["Comment l’appliquer à votre situation", "Listez chaque transfert important avec la date, le montant, le motif, le bénéficiaire et la preuve disponible. Ne rebaptisez pas après coup un don en prêt ou inversement. Retrouvez les déclarations dans l’espace fiscal du bénéficiaire et demandez comment traiter les cas incertains. Pour un bien immobilier, passez obligatoirement par un acte notarié."],
     ],
   },
   {
-    cle: "e5",
-    numero: 5,
-    titre: "Erreur 5 - Oublier l’histoire des dons déjà faits",
-    minutes: 10,
-    resume: "Retrouver une histoire vérifiable, sans confondre tous les transferts familiaux.",
-    aFaire:
-      "Créez une ligne d’historique pour chaque donation connue et marquez les justificatifs manquants.",
-    acquis: [
-      "Un historique clair aide la vérification",
-      "Vous pouvez avancer même si certains justificatifs manquent",
-    ],
-    videoIndex: -1,
-    documents: ["calendrier-3-dates"],
+    cle: "e6", numero: 6, titre: "Erreur 6 - Oublier que les petits-enfants ont leurs propres règles", minutes: 10,
+    resume: "Comprendre quand un petit-enfant peut recevoir et pourquoi donation et succession ne se confondent pas.",
+    aFaire: "Écrivez qui vous souhaitez aider, à quel moment et sans compromettre l’équilibre avec vos enfants.",
+    acquis: ["L’abattement de donation grand-parent/petit-enfant est distinct", "Un petit-enfant n’hérite pas toujours directement si son parent est vivant"],
+    videoIndex: -1, documents: [],
     blocs: [
-      [
-        "Ce qu’il faut relever",
-        "Donateur, bénéficiaire, date, nature du bien, montant ou valeur, justificatif et éventuelle déclaration. Si plusieurs personnes ont donné, séparez les lignes. Conservez les documents originaux sans les modifier.",
-      ],
-      [
-        "Ne pas qualifier seul un ancien transfert",
-        "Une aide, un présent, un prêt ou une donation ne sont pas interchangeables. Si vous ne savez pas comment un transfert a été traité, notez les faits et demandez une vérification. Ne reconstituez pas une déclaration en inventant une date.",
-      ],
-      [
-        "Pourquoi le calcul peut changer",
-        "Les donations antérieures peuvent avoir des conséquences fiscales et civiles différentes. Le délai fiscal de quinze ans n’efface pas nécessairement tous les effets d’une donation dans les rapports familiaux. C’est une raison de retrouver les pièces avant de simuler.",
-      ],
-      [
-        "Une bonne question",
-        "« Voici les transferts que j’ai retrouvés. Comment ont-ils été traités et quelles conséquences faut-il prendre en compte avant une nouvelle décision ? » Vous apportez des faits, le professionnel vérifie leur qualification.",
-      ],
+      ["Ce que les gens ne savent pas", "Aider directement un petit-enfant n’utilise pas nécessairement les mêmes abattements qu’aider son enfant. Mais un abattement applicable à une donation ne devient pas automatiquement un abattement de succession. Beaucoup de grands-parents mélangent ces deux moments et surestiment ce qui se produira sans disposition particulière."],
+      ["Ce qu’il faut comprendre", "Un grand-parent peut notamment bénéficier d’un abattement de 31 865 € pour une donation à un petit-enfant, renouvelable selon la période légale. Un don familial de somme d’argent peut parfois s’ajouter sous des conditions d’âge et de majorité. Lors d’une succession, la place du petit-enfant dépend notamment de la situation de son parent et des dispositions prises."],
+      ["Exemples concrets", "Cas 1 : une grand-mère souhaite aider un petit-enfant majeur maintenant ; elle doit distinguer l’abattement de donation et, si les conditions sont réunies, celui du don familial de somme d’argent. Cas 2 : elle suppose que ce petit-enfant recevra automatiquement à son décès alors que son propre enfant est vivant ; cette hypothèse doit être vérifiée. Cas 3 : plusieurs petits-enfants reçoivent des montants différents ; l’intention d’aide doit être rapprochée des droits des héritiers et des donations déjà faites. Repère temporaire : l’article 790 A bis prévoit, sous conditions, une exonération distincte pour certains dons de sommes d’argent réalisés du 15 février 2025 au 31 décembre 2026 et affectés dans les six mois à un logement neuf, une VEFA ou certains travaux de rénovation énergétique. Les plafonds annoncés sont de 100 000 € par donateur et bénéficiaire, dans une limite globale de 300 000 € reçus par bénéficiaire. Vérifiez toutes les conditions avant tout versement."],
+      ["Comment l’appliquer à votre situation", "Dessinez simplement les générations et notez qui est vivant, qui est l’enfant de qui et les aides déjà données. Distinguez ce que vous voulez faire maintenant de ce que vous voulez prévoir au décès. Faites calculer séparément les abattements par donateur et bénéficiaire, puis vérifiez les conséquences civiles et l’équilibre entre les branches de la famille."],
     ],
   },
   {
-    cle: "e6",
-    numero: 6,
-    titre: "Erreur 6 - Confondre bonnes intentions et équilibre familial",
-    minutes: 10,
-    resume: "Exprimer vos souhaits sans annoncer trop tôt une répartition ou un résultat fiscal.",
-    aFaire:
-      "Écrivez ce que vous voulez expliquer à vos proches et une question sur l’équilibre entre eux.",
-    acquis: [
-      "Une intention familiale n’est pas encore un acte",
-      "Il est possible d’ouvrir la conversation sans annoncer des montants",
-      "Le don temporaire destiné au logement obéit à ses propres plafonds et délais",
-    ],
-    videoIndex: -1,
-    documents: ["lettre-aux-enfants"],
+    cle: "e7", numero: 7, titre: "Erreur 7 - Arriver chez le notaire avec une histoire incomplète", minutes: 10,
+    resume: "Obtenir un rendez-vous utile en apportant les faits, les documents et les questions qui changent réellement l’étude.",
+    aFaire: "Préparez une page avec votre famille, vos biens, vos dons passés et vos trois questions prioritaires.",
+    acquis: ["Le notaire peut mieux étudier un dossier lorsque les faits essentiels sont disponibles", "Un rendez-vous doit se terminer par des réponses, des pièces manquantes et une prochaine action"],
+    videoIndex: -1, documents: [],
     blocs: [
-      [
-        "Partir de votre intention",
-        "Voulez-vous aider quelqu’un maintenant, préserver une équité, expliquer une différence de traitement ou simplement éviter des informations dispersées ? Écrivez une intention avant de parler de montants.",
-      ],
-      [
-        "Égalité et équité",
-        "Des situations différentes peuvent donner envie d’aider différemment. Les conséquences juridiques et familiales doivent néanmoins être examinées. Une bonne intention ne permet pas d’ignorer les droits des héritiers ou les effets d’une donation passée.",
-      ],
-      [
-        "Petits-enfants",
-        "Les dispositifs de donation aux petits-enfants ont leurs propres conditions. Un abattement applicable à une donation ne se transpose pas automatiquement à une succession. Demandez quel dispositif correspond réellement à l’opération envisagée.",
-      ],
-      [
-        "La fenêtre temporaire pour le logement",
-        "L’article 790 A bis du Code général des impôts prévoit, pour les sommes versées du 15 février 2025 au 31 décembre 2026, une exonération pouvant atteindre 100 000 € par donateur et par bénéficiaire, dans la limite globale de 300 000 € reçus par bénéficiaire. Le don doit être utilisé au plus tard à la fin du sixième mois suivant son versement pour acheter un logement neuf ou en VEFA, ou financer certains travaux de rénovation énergétique dans la résidence principale. Le logement doit ensuite conserver l’affectation prévue pendant cinq ans et les justificatifs doivent être gardés. Vérifiez l’ensemble des conditions et le texte en vigueur avant tout versement : cette exonération est distincte des abattements ordinaires et ne rend pas automatiquement une donation adaptée à votre famille.",
-      ],
-      [
-        "Ouvrir le sujet",
-        "Vous pouvez dire : « Je mets mes informations en ordre pour vous éviter de chercher plus tard. Je ne vous demande pas de décider aujourd’hui. J’aimerais commencer par vous expliquer où trouver les documents utiles. » Choisissez le moment et les informations que vous souhaitez partager.",
-      ],
-    ],
-  },
-  {
-    cle: "e7",
-    numero: 7,
-    titre: "Erreur 7 - Arriver sans questions, repartir sans suivi",
-    minutes: 15,
-    resume: "Transformer vos notes en questions précises, puis conserver les réponses.",
-    aFaire: "Choisissez trois questions prioritaires et préparez votre demande de rendez-vous.",
-    acquis: [
-      "Un rendez-vous peut être préparé sans dossier parfait",
-      "Une réponse et une prochaine démarche peuvent être notées après l’échange",
-    ],
-    videoIndex: -1,
-    documents: ["plan-en-1-page", "regle-mise-a-jour"],
-    blocs: [
-      [
-        "Votre minimum utile",
-        "Une fiche de situation, vos priorités, les pièces retrouvées et trois questions suffisent pour commencer à préparer un échange. Demandez au cabinet quels documents apporter et comment les transmettre de façon sûre.",
-      ],
-      [
-        "Trois questions de départ",
-        "« Quels sont les droits de mes proches dans notre situation ? » « Quelles informations vous manquent pour vérifier ? » « Quelles conséquences et quels coûts devons-nous comprendre avant toute décision ? » Ajoutez ce qui est spécifique à votre famille.",
-      ],
-      [
-        "Demander le cadre",
-        "Précisez l’objet du rendez-vous et demandez ses modalités, son coût éventuel et les documents utiles. Ce programme ne garantit pas un rendez-vous gratuit ni une disponibilité immédiate du cabinet.",
-      ],
-      [
-        "Après le rendez-vous",
-        "Notez les réponses, les documents encore attendus, qui s’occupe de chaque démarche et la prochaine date de suivi. Si une réponse reste floue, reformulez-la avant de signer. Une naissance, une séparation, un décès, un déménagement ou un changement important justifie de réexaminer le dossier.",
-      ],
+      ["Ce que les gens ne savent pas", "Le notaire ne peut pas deviner un don ancien, une clause d’assurance-vie, un enfant d’une autre union ou un document resté dans un tiroir. Si les faits essentiels apparaissent seulement à la fin du rendez-vous, l’étude peut devoir être reprise, des pièces redemandées et une échéance utile peut être manquée."],
+      ["Ce qu’il faut comprendre", "Consulter un notaire reste indispensable pour un acte immobilier et utile pour sécuriser une situation individuelle. Ce guide ne le remplace pas : il vous évite d’utiliser le rendez-vous pour découvrir les notions les plus élémentaires. Vous arrivez avec un objectif précis, un inventaire compréhensible et les anomalies déjà repérées ; le professionnel peut alors consacrer son temps à votre cas."],
+      ["Exemple concret", "Jean-Pierre arrive en disant seulement : « Je veux protéger mes enfants. » Le notaire doit d’abord reconstituer sa famille, ses titres de propriété et ses dons antérieurs. Martine apporte une page indiquant son régime matrimonial à confirmer, ses deux enfants dont un d’une précédente union, la maison, une donation de 2018 et trois questions. Son dossier n’est pas juridiquement résolu, mais le point de départ est immédiatement plus précis."],
+      ["Comment l’appliquer à votre situation", "Préparez quatre rubriques : famille, biens et dettes, donations et contrats, questions. Demandez au cabinet quels documents transmettre, par quel canal sécurisé et quel sera le coût de l’étude ou des actes envisagés. Pendant le rendez-vous, notez ce qui est confirmé, ce qui manque, qui doit agir et à quelle date. Ne repartez pas avec une simple impression de tranquillité."],
     ],
   },
 ];

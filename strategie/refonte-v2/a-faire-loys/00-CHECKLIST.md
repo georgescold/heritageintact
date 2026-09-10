@@ -6,7 +6,7 @@
 
 ## Ce qui est terminé pour toi
 
-Le produit pédagogique est écrit : quatre guides PDF, huit chapitres sans quiz et 34 fiches utiles, soit 67 pages. Les PDF sont téléchargeables dans l’espace selon l’achat. **Aucune vidéo pédagogique à tourner.** Les anciens scripts V1/V2/V3 et fonds Canva sont conservés comme archives, sans action attendue.
+Le produit pédagogique est écrit : quatre guides PDF, sept erreurs sans quiz et 25 fiches réservées aux compléments, soit 54 pages. Les PDF sont téléchargeables dans l’espace selon l’achat. **Aucune vidéo pédagogique à tourner.** Les anciens scripts V1/V2/V3 et fonds Canva sont conservés comme archives, sans action attendue.
 
 Les sept emails de vente et les compléments sont rédigés : [textes de production](../05-EMAILS.md). Tu n’as ni à écrire ces emails ni à manipuler les clés des services.
 
