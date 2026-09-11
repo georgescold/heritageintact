@@ -18,96 +18,96 @@ export type ThemeLexique = {
 export const LEXIQUE_SUCCESSION: readonly ThemeLexique[] = [
  {
   titre: "Qui possède et qui reçoit ?",
-  question: "Avant de calculer quoi que ce soit, séparez ce que vous possédez aujourd’hui de ce qui sera transmis demain.",
+  question: "Une propriété mal identifiée au départ peut rendre tous les calculs suivants inutiles. Séparez ce que vous possédez aujourd’hui de ce qui sera réellement transmis demain.",
   entrees: [
    {
     terme: "Patrimoine / succession",
     definition: "Votre patrimoine réunit vos biens, droits et dettes de votre vivant. La succession est ce qui devra être identifié et transmis à votre décès, après avoir tenu compte notamment de la propriété des biens, du régime du couple et des dettes.",
-    impact: "Dire « notre maison vaut 480 000 € » ne signifie pas forcément que 480 000 € entreront dans la succession d’un seul membre du couple.",
+    impact: "Dire « notre maison vaut 480 000 € » ne signifie pas que 480 000 € entreront dans la succession d’un seul membre du couple. Si ce point est faux, les parts, les droits estimés et la protection imaginée pour le conjoint peuvent l’être aussi.",
     verifier: "Retrouvez le titre de propriété, le contrat de mariage éventuel et les derniers relevés des dettes encore dues."
    },
    {
     terme: "Héritier / légataire / bénéficiaire",
     definition: "L’héritier reçoit selon la loi ou un testament. Le légataire reçoit ce qu’un testament lui attribue. Le bénéficiaire d’une assurance-vie reçoit selon la clause du contrat : ce n’est pas automatiquement la même personne.",
-    impact: "Nommer quelqu’un oralement ou dans une note personnelle ne suffit pas à lui donner le même statut dans chaque dispositif.",
+    impact: "Nommer quelqu’un oralement ou dans une note personnelle ne lui donne pas le même statut dans chaque dispositif. Le jour où la famille découvre l’écart, la personne qui voulait expliquer son choix n’est souvent plus là pour le corriger.",
     verifier: "Distinguez trois preuves : la situation familiale, le testament éventuel et la clause bénéficiaire réellement enregistrée."
    },
    {
     terme: "Réserve héréditaire / quotité disponible",
     definition: "La réserve est la part que la loi protège pour certains héritiers, notamment les enfants. La quotité disponible est la part restante dont une personne peut disposer plus librement, par donation ou testament.",
-    impact: "Un testament exprime une volonté, mais il ne permet pas toujours d’attribuer librement la totalité du patrimoine.",
+    impact: "Un testament exprime une volonté, mais il ne permet pas toujours d’attribuer librement la totalité du patrimoine. Une rédaction incompatible avec les parts protégées peut déplacer le problème vers les héritiers et nourrir une contestation au pire moment.",
     verifier: "Notez le nombre d’enfants et faites examiner ensemble les donations déjà consenties et le testament."
    }
   ]
  },
  {
   titre: "Donner ne veut pas toujours dire la même chose",
-  question: "Un cadeau, un don d’argent et une donation immobilière n’ont ni les mêmes preuves, ni les mêmes formalités, ni toujours les mêmes conséquences.",
+  question: "Le virement qui paraissait anodin peut devenir des années plus tard la somme que chacun raconte différemment. Un cadeau, un don manuel et une donation n’ont ni les mêmes preuves ni les mêmes conséquences.",
   entrees: [
    {
     terme: "Donation / don manuel / présent d’usage",
     definition: "Une donation transmet un bien du vivant du donateur. Un don manuel porte sur un bien remis directement, comme une somme d’argent. Un présent d’usage est un cadeau lié à une occasion et raisonnable au regard des revenus et du patrimoine de celui qui l’offre.",
-    impact: "Appeler une somme « cadeau » ne suffit pas à en faire juridiquement un présent d’usage. Une qualification erronée peut faire oublier une déclaration ou une preuve utile.",
+    impact: "Appeler une somme « cadeau » ne suffit pas à en faire juridiquement un présent d’usage. Sans date, déclaration ou preuve, une aide généreuse peut devenir une question fiscale et une source de soupçon entre ceux qui restent.",
     verifier: "Conservez la date, le montant, l’occasion, le bénéficiaire, le mode de remise et la déclaration lorsqu’elle est requise."
    },
    {
     terme: "Abattement / exonération",
     definition: "Un abattement retire une somme de la base taxable avant le calcul des droits. Une exonération écarte tout ou partie de l’impôt lorsque ses conditions précises sont remplies.",
-    impact: "« Aucun droit à payer aujourd’hui » ne signifie pas forcément « opération sans déclaration » ni « abattement encore intact demain ».",
+    impact: "« Aucun droit à payer aujourd’hui » ne signifie ni « opération sans déclaration » ni « abattement intact demain ». Cette confusion peut faire promettre à un autre enfant une possibilité qui a déjà été partiellement consommée.",
     verifier: "Demandez quel dispositif est utilisé, son montant, ses conditions et la date à laquelle il pourra éventuellement être disponible de nouveau."
    },
    {
     terme: "Délai fiscal de quinze ans",
     definition: "Pour calculer les droits d’une nouvelle donation, l’administration tient compte de donations antérieures, notamment pour l’abattement et les tranches déjà utilisés, lorsqu’elles ont moins de quinze ans.",
-    impact: "Ce délai fiscal ne signifie pas qu’après quinze ans une donation disparaît de toute discussion civile ou familiale lors de la succession.",
+    impact: "Quinze ans ne fait pas disparaître magiquement une donation de l’histoire familiale. Croire le dossier effacé peut conduire à cacher involontairement au professionnel le fait qui change l’analyse ou ravive un ancien déséquilibre.",
     verifier: "Dressez la chronologie de toutes les aides et donations, même anciennes, sans décider vous-même lesquelles peuvent être écartées."
    }
   ]
  },
  {
   titre: "Comprendre le calcul sans confondre les étages",
-  question: "La valeur du bien, la part reçue, l’abattement et le barème sont quatre étapes différentes. Une erreur au début déforme tout le reste.",
+  question: "Un pourcentage appliqué au mauvais montant peut fabriquer une fausse économie ou une fausse sécurité. Valeur, part reçue, abattement et barème sont quatre étages différents.",
   entrees: [
    {
     terme: "Part transmise / part taxable / droits",
     definition: "La part transmise est la valeur attribuée à une personne. La part taxable est ce qui reste après les abattements applicables. Les droits sont l’impôt calculé ensuite avec le barème correspondant.",
-    impact: "Appliquer un pourcentage directement à la valeur totale de la maison produit souvent un chiffre sans rapport avec la situation réelle.",
+    impact: "Appliquer un pourcentage directement à la maison peut produire un chiffre sans rapport avec la situation réelle. Décider à partir de ce montant, c’est risquer d’engager un acte ou de retarder une démarche pour une économie qui n’existe pas.",
     verifier: "Écrivez le calcul en ligne : valeur possédée, part de chacun, abattement disponible, base taxable, puis barème."
    },
    {
     terme: "Pleine propriété / usufruit / nue-propriété",
     definition: "La pleine propriété réunit l’usage, les revenus et le droit de disposer du bien. L’usufruit permet de l’utiliser ou d’en percevoir les revenus. La nue-propriété conserve le droit sur le bien sans sa jouissance immédiate.",
-    impact: "Transmettre la nue-propriété n’équivaut ni à donner toute la maison, ni à la quitter. La valeur fiscale de chaque droit dépend notamment de l’âge de l’usufruitier.",
+    impact: "Transmettre la nue-propriété n’équivaut ni à donner toute la maison ni à la quitter. Mais ignorer qui décide, qui paie et qui peut vendre peut transformer une solution rassurante sur le papier en blocage familial concret.",
     verifier: "Faites préciser qui pourra habiter, louer, vendre ou financer les grosses réparations, et dans quelles conditions."
    },
    {
     terme: "Indivision / quote-part",
     definition: "Il y a indivision lorsque plusieurs personnes ont des droits de même nature sur un même bien. La quote-part indique les droits de chacun, sans découper physiquement la maison ou le compte.",
-    impact: "Recevoir « la moitié d’une maison » ne donne pas une moitié de chaque pièce : certaines décisions devront être prises avec les autres indivisaires.",
+    impact: "Recevoir « la moitié d’une maison » ne donne pas une moitié de chaque pièce. Une vente, des travaux ou l’occupation du logement peuvent alors devenir le conflit que personne n’avait anticipé.",
     verifier: "Identifiez les quote-parts et demandez quelles décisions seront individuelles, prises à la majorité ou à l’unanimité."
    }
   ]
  },
  {
   titre: "Les mots qui changent une assurance-vie",
-  question: "Le montant affiché sur le relevé est visible. Les éléments qui déterminent la transmission le sont beaucoup moins.",
+  question: "Le capital du relevé rassure parce qu’il est visible. Pourtant, un nom ancien, une clause imprécise ou des versements mal datés peuvent produire un résultat très différent de celui raconté à la famille.",
   entrees: [
    {
     terme: "Souscripteur / assuré / bénéficiaire",
     definition: "Le souscripteur conclut le contrat. L’assuré est la personne dont le décès déclenche le versement. Le bénéficiaire est désigné pour recevoir le capital selon la clause en vigueur.",
-    impact: "Ces rôles sont parfois tenus par la même personne, parfois non. Les confondre peut conduire à poser la mauvaise question à l’assureur.",
+    impact: "Ces rôles sont parfois tenus par la même personne, parfois non. Les confondre peut laisser dormir une anomalie derrière un relevé rassurant jusqu’au moment où le contrat doit réellement produire ses effets.",
     verifier: "Relevez les trois qualités telles qu’elles figurent dans le contrat, pas seulement les noms visibles sur le relevé annuel."
    },
    {
     terme: "Date d’ouverture / date et âge au versement",
     definition: "La date d’ouverture marque le début du contrat. Pour la fiscalité au décès, la date de chaque versement et l’âge de l’assuré au moment de ce versement peuvent également être déterminants.",
-    impact: "Un contrat ouvert avant 70 ans peut contenir des sommes versées après 70 ans : l’ancienneté du contrat ne raconte donc pas toute l’histoire.",
+    impact: "Un contrat ouvert avant 70 ans peut contenir des sommes versées après 70 ans. Se fier uniquement à son ancienneté peut donc créer une attente fiscale qui s’effondrera lorsque l’historique sera enfin examiné.",
     verifier: "Demandez l’historique daté des versements et séparez ceux effectués avant et après le 70e anniversaire."
    },
    {
     terme: "Clause bénéficiaire / intention",
     definition: "La clause bénéficiaire est le texte enregistré qui désigne la ou les personnes appelées à recevoir le capital. Votre intention est ce que vous souhaitez réellement aujourd’hui.",
-    impact: "Une intention expliquée à la famille ne corrige pas une clause ancienne, imprécise ou devenue incohérente après un changement de vie.",
+    impact: "Une intention expliquée à la famille ne corrige pas une clause ancienne ou devenue incohérente. Après le décès, il est trop tard pour demander au souscripteur ce qu’il voulait vraiment ou lui faire signer une correction.",
     verifier: "Obtenez la clause en vigueur par écrit, puis faites examiner ses effets avant toute modification."
    }
   ]

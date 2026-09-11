@@ -138,11 +138,12 @@ for sku,slug,title,subtitle in CAT:
  if sku=="front":
   story+=[PageBreak()]+head("AVANT LES 7 ERREURS","Les mots qui changent le sens d’une décision")
   story+=[
-   P("Vous êtes assis face au notaire. En quelques minutes, vous entendez « réserve », « abattement », « usufruit », « bénéficiaire ». Tous ces mots paraissent familiers. Pourtant, chacun répond à une question différente : qui possède, qui reçoit, quelle valeur est transmise et quel calcul s’applique."),
-   P("Vous n’avez pas à mémoriser le Code civil. Votre objectif est plus simple : reconnaître le mot, comprendre ce qu’il ne prouve pas et savoir quelle pièce ou quelle question permettra de vérifier votre situation."),
+   P("Vous êtes assis face au notaire. En quelques minutes, vous entendez « réserve », « abattement », « usufruit », « bénéficiaire ». Vous pensez comprendre. Vous acquiescez. Puis vous rentrez chez vous avec la mauvaise question, le mauvais document ou la certitude rassurante que tout est déjà réglé."),
+   P("Le danger n’est pas de ne pas connaître le vocabulaire juridique. Le danger est de croire qu’un mot familier signifie ce que vous imaginez. Une seule confusion au départ peut fausser le calcul, laisser une clause ancienne intacte ou transmettre à vos enfants une difficulté que vous pensiez avoir évitée."),
+   P("Vous n’avez pas à mémoriser le Code civil. Vous devez reconnaître les mots qui changent le résultat, comprendre ce qu’ils ne prouvent pas et retrouver la pièce qui empêchera votre famille de découvrir trop tard la véritable réponse."),
   ]
   story+=box("Votre boussole en quatre questions","1. Qui possède le bien aujourd’hui ? 2. Qui peut le recevoir et par quel dispositif ? 3. Quelle valeur sera réellement transmise ? 4. Quel abattement et quel barème s’appliqueront à cette personne ?")
-  story+=[P("Lisez ce lexique une première fois, puis revenez-y au fil des erreurs. Chaque définition se termine par un premier réflexe concret : retrouver une preuve vaut mieux que compléter un souvenir.","small")]
+  story+=[P("Lisez ce lexique maintenant, puis revenez-y au fil des erreurs. Chaque définition se termine par un premier réflexe concret : une preuve retrouvée aujourd’hui peut éviter demain un calcul faux, une démarche perdue ou une dispute que personne ne pourra plus arbitrer.","small")]
   for theme in DATA["lexique"]:
    story+=[PageBreak()]+head("LEXIQUE PRATIQUE",theme["titre"])+[P(theme["question"])]
    for entry in theme["entrees"]:story+=lexicon_box(entry)
