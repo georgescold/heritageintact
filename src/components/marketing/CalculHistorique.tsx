@@ -14,13 +14,13 @@ export function CalculHistorique() {
   return <>
     <Section id="exemple-chiffre" tone="grey">
       <SectionTitle>D’où sortent les 82 194 €</SectionTitle>
-      <p className="mb-4 text-[1.05rem]">Il n’y a aucune astuce dans ce calcul. Dans ce cas fictif, un parent de 65 ans, seul propriétaire et sans conjoint, possède une maison de 480 000 € et 149 030 € d’épargne. Ses deux enfants reçoivent chacun la moitié ; aucun don antérieur n’a utilisé leurs abattements.</p>
+      <p className="mb-4 text-[1.05rem]">Il n’y a aucune astuce dans ce calcul. Dans cet exemple, un parent de 65 ans, seul propriétaire et sans conjoint, possède une maison de 480 000 € et 149 030 € d’épargne. Ses deux enfants reçoivent chacun la moitié ; aucun don antérieur n’a utilisé leurs abattements.</p>
       <p className="mb-5 text-[1.05rem]">Le barème s’applique à chaque part. Voici comment on arrive à environ 82 194 € de droits pour les deux enfants réunis, hors frais.</p>
       <div className="overflow-hidden border border-grey-line bg-white">
         <table className="w-full text-left"><tbody>{lignes.map(([l,v],i)=><tr key={l} className={i<lignes.length-1?"border-b border-grey-line-soft":"border-b border-blue bg-grey-bg"}><td className="px-4 py-2.5">{l}</td><td className="whitespace-nowrap px-4 py-2.5 text-right font-bold tabular-nums">{v}</td></tr>)}</tbody></table>
         <div className="flex flex-wrap items-baseline justify-between gap-2 px-4 py-4"><span className="text-[1.05rem] font-bold text-blue">Droits calculés pour les deux enfants</span><span className="figure-xl text-red">{euros(e.succession)}</span></div>
       </div>
-      <p className="mt-5 text-[1.05rem]">Dans cet exemple, les tranches à 5 %, 10 % et 15 % sont suivies d’une tranche à 20 %. La valeur du bien, les parts de chacun et les abattements changent le résultat.</p>
+      <p className="mt-5 text-[1.05rem]">Les tranches à 5 %, 10 % et 15 % sont suivies d’une tranche à 20 %. La valeur du bien, les parts de chacun et les abattements changent le résultat.</p>
       <blockquote className="mt-6 border-l-4 border-orange bg-white p-4 text-[1.1rem] leading-snug text-blue sm:p-5 sm:text-[1.25rem]">Vous avez mis une vie à construire ce patrimoine. La question mérite d’être posée pendant que vous pouvez encore décider de ce que vous voulez préserver.</blockquote>
     </Section>
     <Section>
