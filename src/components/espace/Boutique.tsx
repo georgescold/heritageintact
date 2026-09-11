@@ -60,11 +60,11 @@ const VITRINE: Partial<Record<ProductSku, {
     alerteTitre: "La loi ne peut pas deviner ce que vous n’avez pas valablement formalisé.",
     alerteTexte: "Une volonté confiée à un proche peut être sincère et pourtant rester introuvable, imprécise ou sans effet. Au moment de la succession, votre famille ne pourra plus vous demander si vous vouliez avantager une personne, attribuer un bien précis ou simplement exprimer un souhait sans portée juridique.",
     resultatTitre: "Arrivez chez le notaire avec un projet clair — pas avec une phrase à improviser.",
-    resultatTexte: "Le Dossier Testament vous aide à cartographier vos volontés, repérer les contradictions possibles et préparer les questions nécessaires à leur formalisation. Il ne vous vend pas un faux testament prêt à signer : il rend l’échange professionnel plus précis et plus utile.",
+    resultatTexte: "Le Dossier Testament vous aide à cartographier vos volontés, repérer les contradictions possibles et préparer les questions nécessaires à leur formalisation. Vous arrivez chez le notaire avec un projet structuré, précis et beaucoup plus facile à traduire dans la forme adaptée.",
     points: [
       "Le diagnostic des situations qui justifient une vérification",
       "La carte des personnes, biens et volontés à clarifier",
-      "Le brief non juridique à remettre au notaire",
+      "Le brief clair à remettre au notaire",
     ],
     bouton: "Découvrir le Dossier Testament",
   },

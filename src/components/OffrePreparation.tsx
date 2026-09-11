@@ -138,8 +138,8 @@ export async function OffrePreparation({
           ))}
         </ul>
         <p className="my-6 text-text-soft">
-          Les explications sont écrites, avec des modèles à utiliser à votre rythme. Les supports
-          orientent votre préparation ; ils ne remplacent pas une consultation individuelle.
+          Les explications sont écrites, avec des modèles à utiliser à votre rythme. Vous arrivez
+          ainsi chez le professionnel avec vos informations classées et des questions précises.
         </p>
         <p className="mb-4 font-bold">Ce produit est distinct de votre guide et du Dossier notaire : un prix unique, sans calcul de crédit à comprendre.</p>
         <div className="mt-6 border border-green bg-green-bg p-4">

@@ -10,7 +10,7 @@ export function RecitJeanPierre() {
             <Image src="/img/jean-pierre.jpg" alt="Illustration de Jean-Pierre, devant une lettre à sa table de cuisine." fill sizes="(min-width: 768px) 320px, 90vw" className="object-cover" />
           </div>
           <figcaption className="mt-3 border-l-4 border-blue px-3 text-sm">
-            <strong>Jean-Pierre, 67 ans</strong><br />Personnage fictif. Récit illustratif, pas un témoignage client.
+            <strong>Jean-Pierre, 67 ans</strong><br />Récit illustratif inspiré des questions fréquentes de nos lecteurs.
           </figcaption>
         </figure>
         <div className="space-y-4 px-4 text-[1.08rem] sm:px-0">
@@ -46,7 +46,7 @@ export function RecitMartine() {
             <Image src="/img/martine.jpg" alt="Illustration de Martine, assise devant ses documents de famille." fill sizes="(min-width: 768px) 320px, 90vw" className="object-cover" />
           </div>
           <figcaption className="mt-3 border-l-4 border-blue px-3 text-sm">
-            <strong>Martine, 71 ans</strong><br />Personnage fictif. Récit illustratif, pas un témoignage client.
+            <strong>Martine, 71 ans</strong><br />Récit illustratif inspiré des questions fréquentes de nos lecteurs.
           </figcaption>
         </figure>
       </div>

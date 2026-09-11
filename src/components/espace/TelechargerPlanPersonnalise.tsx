@@ -47,8 +47,9 @@ export function TelechargerPlanPersonnalise({ jeton }: { jeton: string }) {
 
   return (
     <li className="border-2 border-blue bg-grey-bg p-5">
+      <p className="mb-1 text-sm font-bold uppercase tracking-wide text-orange-dark">Votre résultat principal</p>
       <p className="mb-2 text-[1.1rem] font-bold text-blue">Mon plan personnalisé</p>
-      <p className="mb-3 text-sm">PDF généré à partir de la dernière simulation enregistrée sur cet appareil.</p>
+      <p className="mb-3 text-sm">Votre estimation, vos alertes et l’ordre des démarches générés à partir de la dernière simulation enregistrée sur cet appareil.</p>
       <button
         type="button"
         onClick={telecharger}

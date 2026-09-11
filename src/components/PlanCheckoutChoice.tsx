@@ -39,8 +39,8 @@ export function PlanCheckoutChoice({
                 puis à préparer leur vérification et leur formalisation par un notaire.
               </span>
               <small className="mt-2 block text-text-soft">
-                Économie immédiate : 18 €. Document préparatoire : ce dossier ne constitue pas un
-                testament et ne remplace pas l’acte ni le conseil du professionnel.
+                Économie immédiate : 18 €. Vous préparez vos volontés et le notaire les traduit
+                ensuite dans la forme adaptée à votre situation.
               </small>
             </span>
           </span>

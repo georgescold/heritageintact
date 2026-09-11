@@ -42,7 +42,7 @@ export function Footer() {
     <footer className="mt-auto border-t border-grey-line bg-grey-bg">
       <div className="wrap-wide py-3 text-[0.72rem] leading-snug text-text-soft">
         <p className="mb-1.5">
-          <strong className="text-text">{BRAND}</strong> fournit une information pédagogique générale, pas un conseil juridique, fiscal ou financier personnalisé. Les exemples sont illustratifs ; vérifiez les règles en vigueur avec le professionnel compétent avant toute décision.
+          <strong className="text-text">{BRAND}</strong> vous aide à comprendre les repères, organiser vos informations et préparer des questions précises. Le professionnel compétent pourra ensuite confirmer leur application à votre situation.
         </p>
         <div className="mb-1">
           <MetaDisclaimer />

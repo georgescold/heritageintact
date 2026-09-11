@@ -11,7 +11,7 @@ export function ApercuProduit({ plan = false, av = false }: { plan?: boolean; av
         <p className="mt-4 text-sm">Supports numériques à lire et à imprimer chez vous. Aucun classeur physique expédié.</p>
       </div>
       <div className="border border-grey-line bg-white p-5">
-        <p className="mb-1 text-xs font-bold uppercase tracking-widest text-text-soft">Exemple fictif · Claire et Marc</p>
+        <p className="mb-1 text-xs font-bold uppercase tracking-widest text-text-soft">Cas guidé · Claire et Marc</p>
         <h3 className="mb-4 border-b-2 border-blue pb-3 text-[1.15rem]">{av ? "Préparer notre demande à l’assureur" : "Notre dossier, en une page"}</h3>
         <dl className="space-y-4 text-sm">
           <div><dt className="font-bold text-blue">Notre priorité</dt><dd>{av ? "Retrouver les clauses bénéficiaires en vigueur." : "Comprendre comment chacun pourrait rester dans le logement."}</dd></div>
@@ -21,7 +21,7 @@ export function ApercuProduit({ plan = false, av = false }: { plan?: boolean; av
       </div>
     </div>
     <figcaption className="border-t border-grey-line px-5 py-4 text-sm">
-      Exemple pédagogique, pas un témoignage ni un résultat fiscal.{" "}
+      Cas illustratif avec hypothèses visibles.{" "}
       Les supports complets et leur mode d’emploi sont réservés à votre achat.
     </figcaption>
   </figure>;

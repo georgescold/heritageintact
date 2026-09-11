@@ -33,7 +33,7 @@ export const GUIDES_UTILISATION: GuideUtilisation[] = [
     "seances": [
       [
         "1. Reprenez l’exemple avant les cases vides",
-        "Lisez le dossier fictif de Claire et Marc. Regardez comment ils distinguent ce qu’ils savent, ce qui manque et leurs questions. Ouvrez ensuite votre inventaire : une ligne par bien ou compte utile, avec la source et la date. Ne copiez pas leur situation ; reprenez seulement leur façon de classer.",
+        "Lisez le cas guidé de Claire et Marc. Regardez comment ils distinguent ce qu’ils savent, ce qui manque et leurs questions. Ouvrez ensuite votre inventaire : une ligne par bien ou compte utile, avec la source et la date. Reprenez leur méthode de classement avec vos propres informations.",
         "Chaque ligne renvoie à un document ou porte clairement « à retrouver ».",
         "exemple-dossier"
       ],
@@ -70,7 +70,7 @@ export const GUIDES_UTILISATION: GuideUtilisation[] = [
       ],
       [
         "3. Utilisez l’atelier pour poser une meilleure question",
-        "Retrouvez le dossier correspondant dans Mon dossier. Lisez son périmètre et ses hypothèses avant de reprendre votre simulation. Pour une situation couverte, comparez deux scénarios en identifiant ce qui change et ce qui reste constant. Notez les éléments non couverts. L’écart pédagogique ne constitue ni un gain acquis ni un choix recommandé.",
+        "Retrouvez le dossier correspondant dans Mon dossier. Lisez son périmètre et ses hypothèses avant de reprendre votre simulation. Comparez deux scénarios en identifiant ce qui change et ce qui reste constant, puis utilisez l’écart obtenu pour préparer une question précise au professionnel.",
         "Vous pouvez expliquer les hypothèses du résultat et sa limite.",
         ""
       ],

@@ -10,7 +10,7 @@ const INITIAL: Scenario = {
   mode: "succession",
   confirme: false,
 };
-export function Simulateur({ anneeCourante }: { anneeCourante: number }) {
+export function Simulateur() {
   const [s, setS] = useState<Scenario>(INITIAL);
   const [compare, setCompare] = useState<Scenario | null>(null);
   const r = calculerAtelier(s);
@@ -18,13 +18,12 @@ export function Simulateur({ anneeCourante }: { anneeCourante: number }) {
   const maj = (p: Partial<Scenario>) => setS((v) => ({ ...v, ...p, confirme: false }));
   return (
     <main className="wrap py-8">
-      <p className="font-bold text-orange-dark">Atelier pédagogique · {anneeCourante}</p>
+      <p className="font-bold text-orange-dark">Atelier de simulation guidée</p>
       <h1 className="my-4 text-[2rem]">Comprendre un calcul, comparer des hypothèses</h1>
       <p className="mb-5">
-        Les montants préremplis sont fictifs. Cet atelier ne détermine pas les droits civils de
-        votre famille et ne calcule pas deux successions successives. Les saisies restent dans cette
-        page, sans envoi au serveur ni sauvegarde automatique. Vos anciennes saisies locales ne sont
-        pas supprimées, mais ne sont pas reprises dans ce modèle corrigé.
+        Les montants préremplis forment un cas d’entraînement. Modifiez une hypothèse à la fois pour
+        comprendre son effet, puis reportez les informations de vos actes dans votre dossier. Les
+        saisies restent dans cette page, sans envoi au serveur ni sauvegarde automatique.
       </p>
       <div className="space-y-4 border border-grey-line p-5">
         <label className="block font-bold">
@@ -174,7 +173,7 @@ export function Simulateur({ anneeCourante }: { anneeCourante: number }) {
         </section>
       )}
       <section className="my-8">
-        <h2 className="mb-3 text-[1.4rem]">À faire vérifier avant d’utiliser ces chiffres</h2>
+        <h2 className="mb-3 text-[1.4rem]">Pour passer de la simulation à votre décision</h2>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
             Le montant qui appartient réellement au parent concerné et les parts civiles transmises.

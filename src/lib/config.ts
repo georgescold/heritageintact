@@ -141,7 +141,7 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
       "Diagnostic des situations où un testament mérite d’être étudié",
       "Carte de vos volontés, personnes et biens concernés",
       "Contrôle des contradictions avec donations et assurance-vie",
-      "Brief préparatoire à remettre au notaire — ce document n’est pas un testament",
+      "Brief clair à remettre au notaire pour préparer la formalisation",
       "Questions de validation, dépôt, conservation et mise à jour",
       "Registre personnel des versions et événements à surveiller",
     ],

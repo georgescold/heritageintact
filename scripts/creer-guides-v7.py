@@ -62,7 +62,7 @@ def furniture(c,d):
  c.saveState();c.setFillColor(BLUE);c.setFont("HI-Bold",9);c.drawString(M,H-26,"HÉRITAGE INTACT")
  c.setFont("HI",8);c.setFillColor(colors.HexColor("#526171"));c.drawRightString(W-M,H-26,"GUIDE PRATIQUE")
  c.setStrokeColor(LINE);c.line(M,37,W-M,37)
- c.setFont("HI",7.4);c.drawString(M,25,"Information pédagogique générale - exemples fictifs - décisions à faire vérifier.")
+ c.setFont("HI",7.4);c.drawString(M,25,"Repères pratiques pour organiser vos informations et préparer vos échanges professionnels.")
  c.drawRightString(W-M,25,str(d.page));c.restoreState()
 def head(label,title):
  return [P(label,"label"),P(title,"h1")]
@@ -100,7 +100,7 @@ def html_flows(node):
  return sum((html_flows(ch) for ch in node.children),[])
 def sources():
  return [PageBreak()]+head("REPÈRES ET LIMITES","Pour vérifier une règle")+[
- P("Les exemples ne déterminent pas vos droits. Les dates, la propriété, les donations passées et les dispositions familiales doivent être examinées ensemble. Consultez toujours les sources officielles dans leur version en vigueur."),
+ P("Ces repères vous aident à préparer un échange précis. Les dates, la propriété, les donations passées et les dispositions familiales se lisent ensemble. Consultez toujours les sources officielles dans leur version en vigueur."),
  rich('<b>Donations : abattements et calcul</b><br/><link href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits" color="#12365E">impots.gouv.fr - Calcul et paiement des droits</link>'),
  rich('<b>Usufruit et nue-propriété</b><br/><link href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934" color="#12365E">Service Public - En quoi consiste l’usufruit ?</link>'),
  rich('<b>Assurance-vie : fiscalité au décès</b><br/><link href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer" color="#12365E">impots.gouv.fr - Bénéficiaire d’une assurance-vie</link>'),
@@ -114,7 +114,7 @@ def sources():
  rich('<b>Tarification des notaires</b><br/><link href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049060695" color="#12365E">Légifrance - Émoluments réglementés et honoraires des prestations non tarifées</link>'),
  P("Gardez vos documents personnels chez vous et utilisez les canaux sécurisés de vos interlocuteurs. N’envoyez pas de relevés, données de santé ou pièces de vos proches à la formation."),
  P("Une succession déjà ouverte, un conflit, une entreprise, un élément international ou une échéance proche nécessitent un professionnel. Ne retardez pas sa consultation pour finir ce guide."),
- P("Dans votre espace : les fiches séparées peuvent être réimprimées à l’unité. En cas de nouvelle version, privilégiez l’édition la plus récente. Les PDF ne se mettent pas à jour une fois téléchargés.")]
+ P("Retrouvez vos fiches dans Mon dossier et réimprimez seulement celles dont vous avez besoin.")]
 def article_box(reference,comprendre,attention,url):
  rows=[
   [rich("<b>"+html.escape(clean(reference))+"</b>","h3")],
@@ -155,7 +155,7 @@ def creer_lexique_offert():
    ("Code civil, articles 843 à 863 - rapport des libéralités","Quand une libéralité reçue par un héritier doit être prise en compte au partage et selon quelles règles de valeur.","Le rapport civil et le rappel fiscal de quinze ans sont deux mécanismes différents.","https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150166/"),
   ]),
   ("TESTAMENT : FORME, LIMITES ET CONSERVATION",[
-   ("Code civil, article 970 - testament olographe","Les conditions de forme : le testament olographe doit être écrit en entier, daté et signé de la main du testateur.","Une feuille préparatoire imprimée ou un modèle prérempli ne devient pas un testament valable parce qu’il est signé.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006434066/"),
+   ("Code civil, article 970 - testament olographe","Les conditions de forme : le testament olographe doit être écrit en entier, daté et signé de la main du testateur.","Apportez vos notes au notaire afin qu’il vous indique la forme et la rédaction adaptées à vos volontés.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006434066/"),
    ("Code civil, articles 971 à 975 - testament authentique","Les règles de réception et de formalisation du testament authentique par le notaire.","La forme adaptée dépend de la situation ; ce lexique ne permet pas de choisir ni rédiger l’acte à votre place.","https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150244/"),
    ("Code civil, articles 912 et 913 - réserve et quotité disponible","Les limites que les parts protégées de certains héritiers peuvent imposer aux volontés testamentaires.","Nommer une personne ou un bien ne suffit pas à garantir que la disposition pourra être exécutée telle qu’imaginée.","https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006150544"),
    ("Fichier central des dispositions de dernières volontés - FCDDV","Ce que permet la recherche : savoir qu’un testament existe et auprès de quel notaire il est déposé, sans accéder à son contenu.","Un testament introuvable ou une version mal identifiée peut créer une fausse sécurité. Demandez comment l’existence et l’original seront conservés.","https://www.service-public.fr/particuliers/vosdroits/F15009"),
@@ -185,7 +185,7 @@ def creer_lexique_offert():
   if label=="PROTÉGER LES PARTS ET COMPRENDRE LES DONATIONS":
    story+=product_bridge("Lire seul les règles - ou les relier à votre propre situation","Vous pouvez rechercher chaque article, réunir vos actes et construire vous-même l’ordre des vérifications. Si vous voulez que vos réponses soient reliées dans un parcours unique, Mon plan adapté à ma situation produit une estimation expliquée et un ordre de préparation.","Découvrir Mon plan adapté à ma situation")
   elif label=="TESTAMENT : FORME, LIMITES ET CONSERVATION":
-   story+=product_bridge("Lire les formes - ou préparer un rendez-vous qui part de vos volontés","Vous pouvez lire les textes officiels, inventorier seul vos souhaits et préparer vos questions. Le Dossier Testament vous donne le diagnostic, la carte des personnes et des biens, le contrôle des contradictions avec donations et assurance-vie, le brief non juridique à remettre au notaire, les questions de validité et le registre de conservation. Vous savez ainsi ce que vous voulez protéger, ce qui manque encore et ce que le professionnel doit transformer en solution valable. Il ne constitue jamais un testament prêt à signer.","Découvrir le Dossier Testament")
+   story+=product_bridge("Lire les formes - ou préparer un rendez-vous qui part de vos volontés","Vous pouvez lire les textes officiels, inventorier seul vos souhaits et préparer vos questions. Le Dossier Testament vous donne le diagnostic, la carte des personnes et des biens, le contrôle des contradictions avec donations et assurance-vie, le brief à remettre au notaire, les questions de validité et le registre de conservation. Vous savez ainsi ce que vous voulez protéger, ce qui manque encore et ce que le professionnel doit transformer en solution valable.","Découvrir le Dossier Testament")
   elif label=="ASSURANCE-VIE : LE CONTRAT, LA CLAUSE ET LA FISCALITÉ":
    story+=product_bridge("Lire les articles - ou obtenir les preuves détenues par l’assureur","Les textes expliquent le cadre, mais ils ne révèlent ni votre clause enregistrée ni l’historique de vos versements. Le guide assurance-vie fournit la grille et le courrier pour demander les informations puis préparer leur vérification.","Découvrir le guide assurance-vie")
  story += [P("Les liens conduisent aux sources officielles. La loi et votre situation peuvent évoluer : consultez toujours la version en vigueur et faites valider toute décision individuelle.","small")]
@@ -201,7 +201,7 @@ def creer_lexique_offert():
 CAT=[
  ("front","les-7-erreurs","Les 7 erreurs qui offrent votre héritage à l’État","Les 3 dates qui avancent. Les 4 pièges qui restent invisibles. Les actions à mener."),
  ("bump","dossier-notaire","Dossier Notaire","Partir de l’exemple. Rassembler les pièces utiles. Conserver les réponses."),
- ("upsell1","preparation-familiale","Mon plan adapté à ma situation","Choisir votre fiche. Relier les faits. Comparer les hypothèses. Suivre les démarches."),
+ ("upsell1","bibliotheque-12-situations-familiales","Bibliothèque des 12 situations familiales","Le complément pratique de votre résultat personnalisé : choisissez les fiches qui correspondent à votre famille."),
  ("upsell2","assurance-vie","Mon guide assurance-vie","Retrouver la clause. Demander les informations. Suivre les vérifications."),
  ("backend4","dossier-testament","Dossier Testament","Clarifier vos volontés. Détecter les contradictions. Préparer leur formalisation."),
 ]
@@ -227,7 +227,7 @@ for sku,slug,title,subtitle in CAT:
  story+=[P(ed.get("adresseTitre","À qui ce guide s’adresse"),"h2")]
  for personne in ed.get("adresse",[]):story+=[P("- "+personne)]
  story+=[P(ed.get("essentielTitre","Pour aller à l’essentiel"),"h3"),P(ed["essentiel"])]
- if sku!="front":story+=[P("Les scènes imaginées et exemples fictifs ne sont pas des témoignages. Supports à conserver chez vous.","small")]
+ if sku!="front":story+=[P("Les cas illustratifs montrent comment utiliser les supports. Adaptez uniquement les champs correspondant à votre situation et conservez-les chez vous.","small")]
  story+=[PageBreak()]+head("VOTRE PARCOURS",ed.get("parcoursTitre","Ce que les sept erreurs vont vous révéler" if sku=="front" else "Le fil de votre préparation"))
  if sku=="front":
   for l in DATA["lecons"]:
@@ -243,15 +243,15 @@ for sku,slug,title,subtitle in CAT:
    if l.get("siNonConcerne"):story+=[P(l["siNonConcerne"],"small")]
  if sku=="front":
   ex=DATA["headline"]
-  story+=[PageBreak()]+head("L’EXEMPLE DE LA PRÉSENTATION","68 206 € d’écart : les hypothèses")+[P(ex["hypotheses"]),P(ex["scenarioA"]),P(ex["scenarioB"]),P("Droits calculés avant frais et arrondis fiscaux : 82 194,70 € contre 13 988,70 €, soit 68 206 € pour les deux enfants réunis."),P(ex["limites"]),P("Ce scénario fictif a été choisi pour illustrer l’accroche. Il ne représente pas une famille moyenne. Les sources du barème et de l’assurance-vie figurent en fin de guide.","small")]
+  story+=[PageBreak()]+head("L’EXEMPLE DE LA PRÉSENTATION","68 206 € d’écart : les hypothèses")+[P(ex["hypotheses"]),P(ex["scenarioA"]),P(ex["scenarioB"]),P("Droits calculés avant frais et arrondis fiscaux : 82 194,70 € contre 13 988,70 €, soit 68 206 € pour les deux enfants réunis."),P(ex["limites"]),P("Ce cas chiffré illustre les mécanismes de l’accroche à partir d’hypothèses visibles. Les sources du barème et de l’assurance-vie figurent en fin de guide.","small")]
  if sku=="upsell2":
   story+=[PageBreak()]+head("COMPRENDRE AVANT D’ÉCRIRE","Votre contrat : les six repères")
   for t,b in DATA["assurance"]:story+=[P(t,"h2"),P(b)]
-  story+=[P("Exemple fictif : Marc dispose d’un relevé annuel mais seulement d’une ancienne photocopie de clause. Il note « clause en vigueur à demander », pas « clause incorrecte ». Contrat ouvert à 45 ans et versement effectué à 73 ans : l’âge à l’ouverture ne suffit pas à déterminer le régime du versement.")]
+  story+=[P("Cas guidé : Marc dispose d’un relevé annuel mais seulement d’une ancienne photocopie de clause. Il note « clause en vigueur à demander », pas « clause incorrecte ». Contrat ouvert à 45 ans et versement effectué à 73 ans : l’âge à l’ouverture ne suffit pas à déterminer le régime du versement.")]
  if sku=="upsell1":
   story+=[PageBreak()]+head("L’ATELIER INCLUS","Comparer sans confondre résultat et décision")+[
    P("Retrouvez ce dossier dans Mon dossier. Lisez le périmètre de la simulation avant toute saisie. Une succession déjà ouverte, un conflit, une entreprise, un élément international ou des donations anciennes non vérifiées ne se résument pas à ce modèle."),
-   P("Pour apprendre, commencez par un cas fictif : un parent seul, un enfant, 480 000 € de bien, donation de nue-propriété, puis comparez 70 et 71 ans. Gardez toutes les autres hypothèses identiques. L’écart de droits du modèle est de 9 600 €, hors frais d’acte."),
+   P("Pour apprendre, commencez par ce cas d’entraînement : un parent seul, un enfant, 480 000 € de bien, donation de nue-propriété, puis comparez 70 et 71 ans. Gardez toutes les autres hypothèses identiques. L’écart de droits du modèle est de 9 600 €, hors frais d’acte."),
    P("Notez ce que vous avez changé, ce qui reste constant et ce que le modèle ne prend pas en compte. Ne mélangez pas deux parents dans un scénario et un seul dans l’autre. Un écart entre scénarios n’est pas une économie déjà acquise.")]
   story+=lines("Hypothèse A / hypothèse B / limite du modèle",4)
  for d in docs:

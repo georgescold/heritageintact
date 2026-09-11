@@ -3,7 +3,7 @@ export function SimulateurPapier() {
   return (
     <Feuille
       titre="Ma fiche de calcul pédagogique"
-      sousTitre="Un exemple fictif pour comprendre, pas votre facture personnelle."
+      sousTitre="Un cas chiffré détaillé pour comprendre chaque étape du calcul."
     >
       <Encadre titre="Le cadre de cet exemple">
         <p>

@@ -20,8 +20,8 @@ export function LettreModificationClause() {
         </p>
         <p>
           Merci de préciser les documents et la procédure nécessaires si je souhaite, après conseil,
-          envisager une modification. Cette demande d’informations ne constitue pas une instruction
-          de changement de bénéficiaire, de rachat ou de versement.
+          envisager une modification. À ce stade, ma demande porte uniquement sur la communication
+          et la compréhension des informations enregistrées.
         </p>
         <p>
           Je vous remercie de votre réponse écrite et reste disponible par votre canal sécurisé.
@@ -32,7 +32,7 @@ export function LettreModificationClause() {
       <Champ label="Point à revoir avec le notaire" />
       <p>
         Conservez la réponse. Une acceptation de bénéficiaire, un testament ou une situation
-        particulière peuvent modifier la procédure : faites vérifier votre cas.
+        particulière peuvent modifier la procédure : présentez-les au professionnel lors de votre échange.
       </p>
     </Feuille>
   );

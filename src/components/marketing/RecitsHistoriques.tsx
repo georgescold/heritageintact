@@ -55,7 +55,7 @@ export function JeanPierreHistorique() {
                 raconté deux fois. Le calcul de celui-ci est dans
                 `12-chiffres-succession.md` § Le cas Jean-Pierre. */}
             <p className="border-l-4 border-red bg-red-bg p-4 text-[1.15rem] font-bold text-blue">
-              Dans ce cas fictif, son fils Nicolas ferait face à 78 194 € de droits.
+              Dans cette simulation, son fils Nicolas ferait face à 78 194 € de droits.
             </p>
             <p className="text-[0.95rem] text-text-soft">
               Hypothèse : Jean-Pierre est devenu seul propriétaire d’une maison de 380 000 € et de 120 000 € sur ses livrets. À son décès, sans conjoint survivant, Nicolas reçoit ces 500 000 €, avec un abattement intégral de 100 000 € disponible, sans dette ni autre correction. Le barème en ligne directe s’applique aux 400 000 € restants, hors frais. Cette hypothèse ne décrit pas automatiquement le règlement de deux successions. Article 777 du Code général des impôts.

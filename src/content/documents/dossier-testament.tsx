@@ -1,11 +1,10 @@
 import { Case, Champ, Encadre, Feuille, Source, TableauVierge, Titre } from "@/components/documents/Feuille";
 
 const Avertissement = () => (
-  <Encadre titre="Document préparatoire — ne pas utiliser comme testament">
-    Ces feuilles clarifient vos intentions et préparent un échange avec un notaire. Elles ne
-    constituent pas un testament, ne produisent aucun effet juridique et ne doivent pas être
-    recopiées ou signées comme tel. La forme, la rédaction, la validité et les conséquences doivent
-    être vérifiées par le professionnel.
+  <Encadre titre="Votre préparation, puis la formalisation">
+    Complétez ces feuilles avec vos mots et remettez-les à votre notaire. Il pourra relier vos
+    volontés à votre situation, vous présenter la forme adaptée et formaliser avec vous les
+    dispositions qui leur donneront leur pleine portée.
   </Encadre>
 );
 
@@ -39,7 +38,7 @@ export function CarteVolontesTestament() {
     <Titre>Ce qui n’est pas négociable pour moi</Titre>
     <Champ label="Ma priorité personnelle" />
     <Champ label="La situation que je veux absolument éviter" />
-    <Source>Écrivez ici vos intentions en langage courant. Ne cherchez pas une formule juridique : c’est précisément ce que le rendez-vous doit transformer en question puis, si approprié, en acte valable.</Source>
+    <Source>Écrivez ici vos intentions en langage courant. Le rendez-vous permettra au notaire de les traduire dans la forme appropriée et d’en préciser les effets.</Source>
   </Feuille>;
 }
 
@@ -77,7 +76,7 @@ export function BriefNotaireTestament() {
     <Champ label="Donation, contrat, famille recomposée, bien à l’étranger…" />
     <Champ label="Ce que je ne sais pas encore ou ne peux pas prouver" />
     <Titre>Ma demande au professionnel</Titre>
-    <p>Je souhaite comprendre ce que la loi prévoit sans nouvelle disposition, ce qui peut être organisé, les limites applicables, la forme recommandée, le coût annoncé et la manière de conserver puis mettre à jour l’acte.</p>
+    <p>Je souhaite comprendre ce que la loi prévoit aujourd’hui, ce qui peut être organisé, les limites applicables, la forme recommandée, le coût annoncé et la manière de conserver puis mettre à jour l’acte.</p>
   </Feuille>;
 }
 

@@ -8,7 +8,7 @@ export function DemonstrationPack() {
         « Quelles hypothèses dois-je faire vérifier avant de donner ? »
       </h2>
       <p className="mb-5 text-sm">
-        Exemple fictif d’utilisation. Ce n’est ni un témoignage ni une recommandation de donation.
+        Cas d’utilisation guidé, avec les hypothèses affichées pour comprendre chaque étape.
       </p>
       <ol className="grid gap-4 sm:grid-cols-3">
         <li className="border border-grey-line bg-white p-4">
@@ -42,7 +42,7 @@ export function DemonstrationPack() {
       </div>
       <p className="mt-4 text-sm">
         Le simulateur affiche ses hypothèses et les limites du cas modélisé. Il prépare les points
-        à vérifier et ne remplace pas la validation du professionnel.
+        à examiner, puis le professionnel confirme la solution à retenir.
       </p>
     </section>
   );

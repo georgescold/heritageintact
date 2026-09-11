@@ -42,8 +42,8 @@ export function Feuille({
       <div className="space-y-4 text-[1rem] leading-relaxed">{children}</div>
 
       <footer className="mt-6 border-t border-black pt-3 text-[0.78rem] leading-snug">
-        {BRAND} est un guide pédagogique d&apos;information générale. Il ne constitue ni une
-        consultation juridique, ni un conseil fiscal personnalisé.
+        Ce support organise vos informations et prépare vos questions. Le professionnel pourra
+        ensuite confirmer la solution adaptée à partir de vos pièces et de votre situation.
       </footer>
     </article>
   );

@@ -67,8 +67,8 @@ Les dates de versement sont un repère parmi d’autres. Si l’historique manqu
       <Champ label="Différence indicative actif / dettes" indice="pas automatiquement la masse successorale" />
 
       <p className="text-[0.9rem]">
-        Les valeurs portées ici sont des estimations personnelles, sans valeur d&apos;expertise. Le
-        notaire les fera confirmer pour les actes qui l&apos;exigent.
+        Les valeurs portées ici constituent votre photographie de départ. Le notaire pourra indiquer
+        celles qui nécessitent une estimation complémentaire pour l&apos;acte envisagé.
       </p>
     </Feuille>
   );

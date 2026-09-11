@@ -33,8 +33,8 @@ export default async function Page({ params }: { params: Promise<{ jeton: string
         <section className="mb-6 border-l-4 border-orange bg-grey-bg p-5"><h2 className="mb-3 text-[1.3rem]">Ce que vous allez comprendre</h2><ul className="list-disc space-y-2 pl-5">{lecon.acquis.map(a=><li key={a}>{a}</li>)}</ul></section>
         <a className="inline-flex min-h-[48px] items-center border-2 border-blue px-4 font-bold" href={hub+"/pdf/les-7-erreurs"}>Télécharger le guide complet en PDF</a>
         <p className="my-6 text-text-soft">
-          Vous pouvez suivre toute cette étape à l’écrit. Les exemples sont fictifs et ne
-          constituent pas une consultation.
+          Vous pouvez suivre toute cette étape à l’écrit. Les cas guidés rendent les mécanismes
+          concrets avant que vous les appliquiez à vos propres documents.
         </p>
         <article className="space-y-7">
           {lecon.blocs.map(([titre, texte]) => (

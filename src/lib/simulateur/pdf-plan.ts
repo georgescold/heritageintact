@@ -127,14 +127,14 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
   page.drawRectangle({ x: marge, y: y - 145, width: largeur, height: 145, color: CLAIR });
   page.drawText("MON PLAN PERSONNALISE", { x: marge + 24, y: y - 42, size: 24, font: gras, color: BLEU });
   page.drawText("Votre simulation et votre ordre de preparation", { x: marge + 24, y: y - 72, size: 13, font: normal, color: ORANGE });
-  page.drawText(`Genere le ${date.toLocaleDateString("fr-FR")}`, { x: marge + 24, y: y - 108, size: 10, font: normal, color: GRIS });
+  page.drawText("Vos réponses, vos priorités et les prochaines vérifications", { x: marge + 24, y: y - 108, size: 10, font: normal, color: GRIS });
   y -= 175;
   paragraphe("Ce document fige les informations que vous avez saisies et le résultat indicatif correspondant. Conservez-le pour préparer vos questions et comparer les éléments à faire confirmer.", { taille: 11, couleur: BLEU, espace: 18 });
   verifierPlace(82);
   page.drawRectangle({ x: marge, y: y - 62, width: largeur, height: 70, color: CLAIR, borderColor: ORANGE, borderWidth: 1.5 });
-  page.drawText("CE PLAN N'A AUCUN EFFET JURIDIQUE A LUI SEUL", { x: marge + 16, y: y - 20, size: 11, font: gras, color: BLEU });
-  page.drawText("Il prepare vos decisions et votre rendez-vous.", { x: marge + 16, y: y - 41, size: 9, font: normal, color: GRIS });
-  page.drawText("Seuls les actes et contrats valablement etablis produiront leurs effets.", { x: marge + 16, y: y - 54, size: 9, font: normal, color: GRIS });
+  page.drawText("COMMENT UTILISER CE PLAN", { x: marge + 16, y: y - 20, size: 11, font: gras, color: BLEU });
+  page.drawText("Apportez vos priorites et vos pieces au rendez-vous.", { x: marge + 16, y: y - 41, size: 9, font: normal, color: GRIS });
+  page.drawText("Le professionnel pourra confirmer et formaliser la solution adaptee.", { x: marge + 16, y: y - 54, size: 9, font: normal, color: GRIS });
   y -= 88;
 
   titre("1. Votre situation saisie");
@@ -161,7 +161,7 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
   page.drawText("Estimation totale du cas modelise", { x: marge + 18, y: y - 18, size: 11, font: normal, color: BLEU });
   page.drawText(argent(resultat.total), { x: marge + 18, y: y - 48, size: 22, font: gras, color: BLEU });
   y -= 88;
-  paragraphe("Cette estimation dépend exclusivement de vos réponses et des hypothèses affichées plus loin. Elle ne constitue ni un devis notarial, ni une économie promise, ni un conseil fiscal personnalisé.", { taille: 9 });
+  paragraphe("Cette estimation relie vos réponses aux hypothèses affichées plus loin. Utilisez-la pour comprendre le calcul, préparer les pièces utiles et demander au professionnel un chiffrage confirmé.", { taille: 9 });
 
   if (resultat.parts.length) {
     titre("3. Detail du scenario modelise");
@@ -217,6 +217,5 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
   document.setTitle("Mon plan personnalisé - Héritage Intact");
   document.setAuthor("Héritage Intact");
   document.setSubject("Résultat personnalisé de simulation indicative");
-  document.setCreationDate(date);
   return document.save();
 }

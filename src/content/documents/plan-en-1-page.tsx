@@ -4,7 +4,7 @@ export function PlanEnUnePage() {
   return (
     <Feuille
       titre="Mon plan en une page"
-      sousTitre="La synthèse de ma préparation — pas un testament ni une instruction de donation."
+      sousTitre="La synthèse de mes priorités, de mes documents et de mes prochaines démarches."
     >
       <Champ label="Préparé le" />
       <Champ label="Ce que je souhaite protéger" />
@@ -19,9 +19,8 @@ export function PlanEnUnePage() {
       <Champ label="Contrats et donations passées" />
       <Champ label="Notaire ou professionnel à contacter" />
       <p>
-        Cette feuille organise les informations. Elle ne garantit pas le résultat d’une succession
-        et ne remplace aucun acte. Après le rendez-vous, distinguez les pistes discutées des
-        décisions effectivement validées.
+        Après le rendez-vous, reportez ici les décisions effectivement validées et conservez les
+        actes correspondants avec cette synthèse.
       </p>
     </Feuille>
   );

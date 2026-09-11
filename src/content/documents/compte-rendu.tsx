@@ -72,8 +72,8 @@ export function CompteRendu() {
       </ul>
 
       <p className="text-[0.9rem]">
-        Ce compte-rendu est votre note personnelle. Il n&apos;engage pas le notaire et ne remplace
-        pas les actes ni les courriers de l&apos;étude, qui font seuls foi.
+        Conservez ce compte-rendu avec les actes et courriers reçus de l&apos;étude : vous retrouverez
+        ainsi, au même endroit, vos notes de préparation et les réponses formalisées.
       </p>
     </Feuille>
   );

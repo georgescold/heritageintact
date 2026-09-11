@@ -26,7 +26,7 @@ export function CalculHistorique() {
     <Section>
       <SectionTitle>Ce que les 7 erreurs changent</SectionTitle>
       <div className="max-w-[38rem] border-2 border-blue bg-white">
-        <p className="border-b border-grey-line bg-grey-bg px-4 py-2 text-[0.88rem] uppercase tracking-[0.08em] text-text-soft">Cas fictif · Un parent · Deux enfants · Même patrimoine</p>
+        <p className="border-b border-grey-line bg-grey-bg px-4 py-2 text-[0.88rem] uppercase tracking-[0.08em] text-text-soft">Cas chiffré · Un parent · Deux enfants · Même patrimoine</p>
         <dl className="px-4 py-3">
           <div className="flex items-baseline justify-between gap-3 border-b border-grey-line pb-3"><dt>Sans les opérations décrites</dt><dd className="whitespace-nowrap text-[1.7rem] font-bold text-red">{euros(e.succession)}</dd></div>
           <div className="flex items-baseline justify-between gap-3 border-b border-grey-line py-3"><dt>Avec les opérations décrites</dt><dd className="whitespace-nowrap text-[1.7rem] font-bold text-green">{euros(e.donation)}</dd></div>

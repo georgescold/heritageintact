@@ -70,8 +70,8 @@ export function FicheFamille() {
       <Champ label="J'ai rédigé un testament" indice="oui / non — si oui, où est-il déposé ?" />
 
       <p className="text-[0.9rem]">
-        Cette fiche est un document de préparation personnel. Elle n&apos;a aucune valeur
-        d&apos;acte et ne remplace aucun état civil.
+        Joignez les justificatifs d’état civil demandés par l’étude : cette fiche donnera au
+        notaire une vue d’ensemble pour préparer l’examen des pièces officielles.
       </p>
     </Feuille>
   );

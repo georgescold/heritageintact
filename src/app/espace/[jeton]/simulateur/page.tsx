@@ -40,7 +40,7 @@ export default async function SimulateurPage({ params }: { params: Promise<{ jet
         <p className="mb-4 text-[1.05rem]">Cet outil génère « Mon plan adapté à ma situation ». Consultez votre espace pour retrouver cette offre.</p>
         <p className="mb-6 text-[1.05rem]">
           En attendant, la fiche de calcul pédagogique est dans vos documents :
-          elle explique le barème sur un exemple fictif.
+          elle explique le barème sur un cas chiffré entièrement détaillé.
         </p>
         <Link
           href={`/espace/${jeton}`}

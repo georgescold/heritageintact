@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ jeton: string
         </article>
         <p className="my-6 border-l-4 border-blue bg-grey-bg p-4"><Link href={`/espace/${jeton}/demarrer#guide-upsell2`}>Retrouver la grille, les questions et le courrier</Link></p>
         <section className="my-8 border border-grey-line p-5">
-          <h2 className="mb-3 text-[1.4rem]">Exemple fictif : ce que Marc note dans sa grille</h2>
+          <h2 className="mb-3 text-[1.4rem]">Cas guidé : ce que Marc note dans sa grille</h2>
           <p className="mb-3">Marc retrouve son relevé annuel, mais seulement une ancienne photocopie de la clause. Il inscrit « relevé reçu » et « clause actuellement enregistrée à demander ». Il ne recopie pas l’ancienne version comme si elle était confirmée.</p>
           <p className="mb-3">Sa demande porte sur la version en vigueur, ses avenants et l’historique des versements. Dans le suivi, il note la date d’envoi puis, à réception, les pièces obtenues et la question restant sans réponse.</p>
           <p><strong>À retenir :</strong> une pièce manquante appelle une demande, pas une modification précipitée. Le courrier inclus vous aide à la formuler.</p>

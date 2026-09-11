@@ -3,7 +3,7 @@ export function ExempleDossier() {
   return (
     <Feuille
       titre="Un exemple de dossier rempli"
-      sousTitre="Claire et Marc · Situation entièrement fictive"
+      sousTitre="Claire et Marc · Cas guidé de préparation"
     >
       <Titre>Notre objectif</Titre>
       <p>Comprendre comment chacun pourrait rester dans le logement si l’autre décédait.</p>

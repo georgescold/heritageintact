@@ -546,16 +546,16 @@ export function TheDeadline() {
 export function NotThis() {
   const items = [
     {
-      t: "Ce n'est pas un testament.",
-      d: "Un testament dit qui reçoit quoi. Il ne fait pas baisser la facture d'un centime. C'est le malentendu le plus coûteux du sujet : des milliers de familles croient avoir tout réglé parce qu'elles en ont un.",
+      t: "Il complète la préparation autour du testament.",
+      d: "Un testament organise certaines volontés. Le guide vous aide aussi à comprendre les dates, la fiscalité, les donations et les contrats qui continuent d’exister autour de lui.",
     },
     {
-      t: "Ce n'est pas un notaire.",
-      d: "Vous irez chez le notaire, et c'est très bien. Vous irez simplement en sachant quoi lui demander, au lieu de découvrir vos options en face de lui, montre en main.",
+      t: "Il rend le rendez-vous chez le notaire plus utile.",
+      d: "Vous arrivez en sachant quoi demander, avec les faits, les pièces et les priorités déjà organisés, au lieu de découvrir vos questions en face du professionnel, montre en main.",
     },
     {
-      t: "Ce n'est pas un placement.",
-      d: "Aucun contrat à souscrire, aucun placement à ouvrir, aucune commission sur quoi que ce soit. Nous ne sommes ni banque, ni assureur, ni courtier : rien de ce que vous lirez ici ne nous rapporte un pourcentage.",
+      t: "Il vous laisse entièrement libre de vos décisions.",
+      d: "Vous n’avez aucun contrat à souscrire ni placement à ouvrir. Vous comprenez les options, préparez vos questions et choisissez ensuite avec les professionnels que vous avez retenus.",
     },
     {
       t: "Ce n'est pas une application.",

@@ -127,7 +127,7 @@ export default function VslPage() {
               },
               {
                 q: "« Et si la loi change ? »",
-                a: "Vérifiez les règles en vigueur avant un acte. Les exemples sont datés et leurs sources sont accessibles. Le guide explique les notions ; il ne remplace pas la vérification de votre situation au moment de décider. La date du 31 décembre 2026 concerne une exonération temporaire particulière, pas la fin de l’abattement parent-enfant.",
+                a: "Les sources officielles sont accessibles directement dans le guide. Avant un acte, votre professionnel confronte les règles en vigueur à vos pièces, à votre famille et aux opérations déjà réalisées.",
               },
             ]}
           />
