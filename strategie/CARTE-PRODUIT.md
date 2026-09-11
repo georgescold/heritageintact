@@ -12,7 +12,7 @@ un pack et aucun achat antérieur n’est transformé en « crédit » commercia
 |---|---|---|---|
 | Produit 1 | **Les 7 erreurs qui offrent votre héritage à l’État** | « Quelles erreurs dois-je connaître à temps ? » | 52 € ; 26 € pendant 5 min à la première inscription |
 | Option | **Mon Dossier notaire** | « Qu’est-ce que j’apporte au rendez-vous ? » | 17 €, facultatif et non précoché |
-| Upsell 2 | **Mon simulateur + mon plan adapté** | « Que fait apparaître ma situation et dans quel ordre avancer ? » | 297 € ; 147 € pendant 10 min, puis 197 € pendant 5 min |
+| Upsell 2 | **Mon plan adapté à ma situation** | « Que fait apparaître ma situation et dans quel ordre avancer ? » | 297 € ; 147 € pendant 10 min, puis 197 € pendant 5 min |
 | Upsell 3 | **Faire le point sur mon assurance-vie** | « Que prévoit réellement mon contrat aujourd’hui ? » | 67 € |
 
 ### Produit 1 et option notaire
@@ -21,7 +21,7 @@ Le client reçoit le guide téléchargeable des 7 erreurs. Le Dossier notaire es
 option séparée au checkout : inventaire, fiche famille, pièces, demande de rendez-vous,
 compte rendu et exemple rempli. Le guide reste utilisable sans cette option.
 
-### Upsell 2 — Simulateur + plan adapté
+### Upsell 2 — Mon plan adapté à ma situation
 
 Après l’achat, le client arrive directement dans le menu de son espace et peut ouvrir les 7 erreurs sans questionnaire préalable. Le menu présente le bouton **« Obtenir mon plan personnalisé »**. Ce bouton ouvre le questionnaire détaillé ; une fois celui-ci terminé, l’aperçu personnalisé et l’offre limitée apparaissent sur cette nouvelle page.
 Le formulaire détaillé recueille l’âge, la situation de couple, les catégories de biens,
@@ -50,7 +50,7 @@ la clause et les versements, puis le suivi des réponses. Prix : 67 €.
 2. Achat du guide, avec Dossier notaire facultatif.
 3. Six questions obligatoires.
 4. Simulation détaillée et aperçu verrouillé.
-5. Achat ou refus du Simulateur + plan adapté.
+5. Achat ou refus de Mon plan adapté à ma situation.
 6. Achat ou refus de l’Assurance-vie si pertinent.
 7. Livraison de tout ce qui a réellement été acheté.
 

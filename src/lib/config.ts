@@ -65,7 +65,7 @@ const produit = (sku: ProductSku, name: string, price: number, disponible = true
 export const PRODUCTS: Record<ProductSku, Product> = {
   front: { ...produit("front", "Les 7 erreurs qui offrent votre héritage à l’État", 52), short: "Les 7 erreurs" },
   bump: produit("bump", "Mon dossier notaire", 17),
-  upsell1: produit("upsell1", "Mon simulateur + mon plan adapté", 297),
+  upsell1: produit("upsell1", "Mon plan adapté à ma situation", 297),
   upsell2: produit("upsell2", "Faire le point sur mon assurance-vie", 67),
   pack1: produit("pack1", "Ancienne offre Préparation + assurance-vie", 247, false),
   pack2: produit("pack2", "Préparer ma transmission — ancien pack", 197, false),

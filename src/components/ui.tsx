@@ -100,7 +100,7 @@ export function Guarantee({ product = "le guide" }: { product?: string }) {
         Découvrez {product} à votre rythme. Si vous n&apos;êtes pas satisfait, demandez
         votre remboursement par email dans les 30 jours suivant votre achat, sans justification.
         Consultez les <Link href="/cgv">conditions de la garantie</Link>. La fiche de calcul
-        pédagogique reste accessible après remboursement ; le simulateur interactif et son plan adapté sont distincts.
+        pédagogique reste accessible après remboursement ; le produit « Mon plan adapté à ma situation », généré grâce au questionnaire interactif, est distinct.
       </p>
     </Panel>
   );

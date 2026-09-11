@@ -215,7 +215,7 @@ try {
   }
   await page.getByRole("button",{name:/Déverrouiller mon simulateur et mon plan/}).click();
   await page.waitForURL("**/resultat-plan?*");
-  ok(await page.getByText("votre simulateur et votre plan adapté sont déverrouillés",{exact:false}).isVisible());
+  ok(await page.getByText("votre plan adapté à votre situation est déverrouillé",{exact:false}).isVisible());
   await page.getByRole("link",{name:"Continuer mon parcours",exact:true}).click();
   await page.waitForURL("**/bienvenue?*");
   ok(await page.getByRole("link",{name:"Ouvrir le guide",exact:true}).isVisible());

@@ -27,7 +27,7 @@ const VITRINE: Partial<Record<ProductSku, {
       "Les alertes concernant votre famille, votre maison et votre capacité future de décider",
       "Votre plan détaillé et votre dossier à remettre au professionnel",
     ],
-    bouton: "Simuler entièrement ma situation",
+    bouton: "Obtenir mon plan adapté",
   },
   bump: {
     badge: "Avant votre rendez-vous",

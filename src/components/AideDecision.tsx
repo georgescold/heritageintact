@@ -41,7 +41,7 @@ export function AideDecision() {
       <div className="flex items-start justify-between gap-3"><h2 id="aide-titre" className="text-[1.5rem]">Vous voulez savoir ce qu’il y a vraiment dedans ?</h2><button autoFocus type="button" onClick={fermer} aria-label="Fermer l’aide" className="min-h-[44px] min-w-[44px] border border-grey-line">×</button></div>
       <p className="my-4">C’est normal. Ouvrez la fiche et l’exemple rempli : vous pourrez juger si cette manière de préparer vous convient.</p>
       <a href="/apercu" className="my-4 block bg-blue p-4 text-center font-bold text-white no-underline">Voir les supports sans m’inscrire</a>
-      <details className="border-t border-grey-line py-3"><summary className="cursor-pointer font-bold">Devrai-je acheter autre chose ensuite ?</summary><p className="mt-3">Non. Les 7 erreurs restent accessibles sans autre achat. Le simulateur avec plan adapté et le guide assurance-vie sont deux produits distincts, proposés séparément.</p></details>
+      <details className="border-t border-grey-line py-3"><summary className="cursor-pointer font-bold">Devrai-je acheter autre chose ensuite ?</summary><p className="mt-3">Non. Les 7 erreurs restent accessibles sans autre achat. Mon plan adapté à ma situation et le guide assurance-vie sont deux produits distincts, proposés séparément.</p></details>
       <button type="button" onClick={fermer} className="mt-3 min-h-[44px] underline">Continuer ma lecture</button>
     </dialog>
   </>;

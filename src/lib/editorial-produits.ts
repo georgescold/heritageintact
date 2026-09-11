@@ -131,8 +131,8 @@ export const EDITORIAL_PRODUITS = {
   sortieTitre: "Vous connaissez maintenant les pièges. Savez-vous lesquels pèsent réellement sur votre situation ?",
   suiteLabel: "Si vous vous arrêtez ici, il reste une décision dangereuse : choisir par quoi commencer au hasard.",
   suite: "Une règle comprise n’indique pas automatiquement votre priorité. Sans relier votre âge, votre famille, vos biens, vos donations et vos contrats, vous pouvez surveiller la mauvaise date ou préparer une démarche secondaire pendant qu’un point plus important continue d’avancer.",
-  suiteResultat: "Le produit Mon simulateur + mon plan adapté transforme vos réponses en estimation expliquée, fait ressortir vos points de vigilance et génère l’ordre précis des vérifications à préparer.",
-  suiteCta: "Simuler entièrement ma situation"
+  suiteResultat: "Mon plan adapté à ma situation est généré à partir de vos réponses : il explique votre estimation, fait ressortir vos points de vigilance et ordonne précisément les vérifications à préparer.",
+  suiteCta: "Obtenir mon plan adapté"
  },
  bump: {
   ouverture: "Le rendez-vous peut durer une heure. Le regret d’avoir oublié la seule information décisive peut durer des années.",
@@ -153,7 +153,7 @@ export const EDITORIAL_PRODUITS = {
   sortieTitre: "Votre rendez-vous est préparé. Reste une question que le dossier ne peut pas trancher.",
   suiteLabel: "Le risque d’un dossier parfaitement rangé : croire que classement signifie priorité.",
   suite: "Même parfaitement rempli, ce dossier ne vous dit pas quelle vérification mérite de passer en premier. Vous pouvez apporter chaque pièce demandée et consacrer le rendez-vous au sujet le plus rassurant pendant qu’une date, une propriété ou une protection plus fragile continue d’attendre.",
-  suiteResultat: "Mon simulateur + mon plan adapté relie les informations du dossier, révèle les hypothèses qui changent le résultat et vous donne l’ordre à préparer avant de décider.",
+  suiteResultat: "Mon plan adapté à ma situation relie les informations du dossier, révèle les hypothèses qui changent le résultat et vous donne l’ordre à préparer avant de décider.",
   suiteCta: "Obtenir l’ordre adapté à ma situation"
  },
  upsell1: {
@@ -215,7 +215,7 @@ export const OUVERTURES_CHAPITRES: Record<string,string> = {
 
 export type SuiteProduit = { sku: "upsell1"|"upsell2"|"pack1"; titre:string; besoin:string; cta:string };
 const AV: SuiteProduit = {sku:"upsell2",titre:"Vous avez retrouvé la question. Ne la laissez pas sans réponse.",besoin:"Le guide assurance-vie ajoute la grille de lecture, les repères et le courrier à adapter. Passez du contrat rangé à une demande précise, puis à une réponse conservée.",cta:"Préparer maintenant ma demande à l’assureur"};
-const FAMILLE: SuiteProduit = {sku:"upsell1",titre:"Comprendre ne suffit pas à simuler votre situation.",besoin:"Le simulateur utilise vos réponses et le plan adapté ordonne les hypothèses, les dates et les vérifications à préparer.",cta:"Simuler pour ma situation"};
+const FAMILLE: SuiteProduit = {sku:"upsell1",titre:"Comprendre ne suffit pas à savoir par quoi commencer.",besoin:"Votre plan adapté à votre situation est généré à partir de vos réponses : il ordonne les hypothèses, les dates et les vérifications à préparer.",cta:"Obtenir mon plan adapté"};
 /** L'appelant fournit les droits dépliés par chargerEspace. Aucun produit déjà possédé, aucun achat de fin de parcours. */
 export function suiteProduit(moment:string, possede:ReadonlySet<ProductSku>, profil?:Reponses|null):SuiteProduit|null {
  const famille=possede.has("upsell1"), assurance=possede.has("upsell2");

@@ -12,7 +12,7 @@ Pour toi : [checklist Loys](a-faire-loys/00-CHECKLIST.md). **Aucune vidéo péda
 
 ## Le parcours actuel
 
-Email et prénom → présentation/VSL → achat du guide avec Dossier notaire facultatif → six réponses obligatoires → simulation détaillée → aperçu verrouillé → Simulateur + plan adapté → assurance-vie si pertinente → livraison et espace.
+Email et prénom → présentation/VSL → achat du guide avec Dossier notaire facultatif → six réponses obligatoires → simulation détaillée → aperçu verrouillé → Mon plan adapté à ma situation → assurance-vie si pertinente → livraison et espace.
 
 Le consentement marketing est facultatif et distinct du questionnaire. La qualification ne change pas le contenu déjà acheté ; « je ne sais pas » est une réponse recevable. Une panne d’enregistrement ne valide pas silencieusement le questionnaire.
 
@@ -20,14 +20,14 @@ Le consentement marketing est facultatif et distinct du questionnaire. La qualif
 
 - Guide Les 7 erreurs : huit étapes écrites, huit exercices, neuf fiches.
 - Dossier : exemple rempli, inventaire, famille, pièces, demande de rendez-vous et compte-rendu.
-- Simulateur + plan adapté : saisie détaillée, estimation pédagogique, hypothèses, ordre de préparation et fiches familiales.
+- Mon plan adapté à ma situation : questionnaire détaillé, estimation expliquée, hypothèses, ordre de préparation et fiches familiales.
 - Assurance-vie : six repères expliqués, mode d’emploi et quatre fiches.
 
 Ces contenus existent à l’écran et dans quatre PDF protégés par les droits d’achat. Les anciens scripts pédagogiques et fonds de présentation sont historiques ; ils ne sont plus des livrables à produire par Loys.
 
 ## Prix et remises
 
-Tarifs : guide 52 € ; Dossier facultatif non précoché 17 € ; Simulateur + plan adapté 297 € ; assurance-vie 67 €. Aucun pack actif.
+Tarifs : guide 52 € ; Dossier facultatif non précoché 17 € ; Mon plan adapté à ma situation 297 € ; assurance-vie 67 €. Aucun pack actif.
 
 Guide : aucun timer sur la page de vente ; au clic vers la commande, réduction de 50 % pendant 5 minutes, puis retour à 52 €. Simulateur + plan : lorsque l’aperçu est prêt, 147 € pendant 10 minutes, puis 197 € pendant 5 minutes, puis 297 €. Départ unique enregistré côté serveur ; une visite ne relance pas le délai.
 

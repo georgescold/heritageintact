@@ -48,7 +48,7 @@ Architecture :
 
 Ce produit n’enseigne pas une seconde fois les sept erreurs. Il transforme la compréhension en rendez-vous préparé.
 
-## Upsell 2 - Mon simulateur + mon plan adapté
+## Upsell 2 - Mon plan adapté à ma situation
 
 Question résolue : « Que révèle ma situation et dans quel ordre avancer ? »
 
@@ -88,4 +88,3 @@ Ce produit approfondit les contrats ; il ne refait ni le plan familial ni l’ex
 - Le contenu distingue information générale, simulation et conseil individuel.
 - Un seul prochain produit proposé au moment où la limite du produit actuel devient évidente.
 - Le client ayant terminé le dernier produit reçoit une conclusion et des actions, pas une vente artificielle.
-

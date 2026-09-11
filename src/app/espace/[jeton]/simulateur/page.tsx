@@ -37,7 +37,7 @@ export default async function SimulateurPage({ params }: { params: Promise<{ jet
     return (
       <div className="wrap py-12">
         <h1 className="mb-3 text-[1.5rem]">Atelier de simulation pédagogique</h1>
-        <p className="mb-4 text-[1.05rem]">Cet outil est inclus dans « Mon simulateur + mon plan adapté ». Consultez votre espace pour retrouver cette offre.</p>
+        <p className="mb-4 text-[1.05rem]">Cet outil génère « Mon plan adapté à ma situation ». Consultez votre espace pour retrouver cette offre.</p>
         <p className="mb-6 text-[1.05rem]">
           En attendant, la fiche de calcul pédagogique est dans vos documents :
           elle explique le barème sur un exemple fictif.

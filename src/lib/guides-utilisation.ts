@@ -53,7 +53,7 @@ export const GUIDES_UTILISATION: GuideUtilisation[] = [
   },
   {
     "sku": "upsell1",
-    "titre": "Mon simulateur + mon plan adapté : relier les hypothèses et les prochaines vérifications",
+    "titre": "Mon plan adapté à ma situation : relier les hypothèses et les prochaines vérifications",
     "resultat": "Une estimation expliquée, des alertes personnelles et un dossier qui distingue vos intentions des actes restant à formaliser.",
     "seances": [
       [

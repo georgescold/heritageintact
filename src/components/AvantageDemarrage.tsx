@@ -66,7 +66,7 @@ export function AvantageDemarrage({
   if (typeof promotion.montantFixe === "number" && Number.isFinite(promotion.montantFixe)) {
     const derniereChance = promotion.montantFixe === 197;
     return (
-      <aside className="my-6 border-4 border-red bg-red px-4 py-5 text-center text-white shadow-[0_8px_0_rgba(120,0,0,0.25)] sm:px-7" aria-label="Offre limitée sur le simulateur et le plan adapté">
+      <aside className="my-6 border-4 border-red bg-red px-4 py-5 text-center text-white shadow-[0_8px_0_rgba(120,0,0,0.25)] sm:px-7" aria-label="Offre limitée sur Mon plan adapté à ma situation">
         <p className="text-[1.35rem] font-extrabold uppercase sm:text-[1.65rem]">
           {derniereChance ? "Dernière chance : -34%" : "Offre immédiate : plus de -50%"}
         </p>

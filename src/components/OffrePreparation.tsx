@@ -57,7 +57,7 @@ export async function OffrePreparation({
     <AvantageDemarrage promotion={d.promotion} base={d.total}/>
     <form action={action} className="mt-6">
       <input type="hidden" name="montantAffiche" value={d.montant} />
-      <Button>{sku === "upsell1" ? `Déverrouiller mon simulateur et mon plan · ${euros(d.montant)}` : `Vérifier mon assurance-vie · ${euros(d.montant)}`}</Button>
+      <Button>{sku === "upsell1" ? `Déverrouiller mon plan adapté · ${euros(d.montant)}` : `Vérifier mon assurance-vie · ${euros(d.montant)}`}</Button>
       <p className="mt-3 text-sm text-text-soft">Paiement unique sur votre carte enregistrée, uniquement si vous confirmez. Garantie commerciale de 30 jours selon les CGV. Aucun abonnement.</p>
     </form>
     <p className="mt-4 text-sm"><Link href={fin}>Non merci, continuer sans ce produit</Link></p>

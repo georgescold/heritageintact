@@ -116,7 +116,7 @@ def sources():
 CAT=[
  ("front","les-7-erreurs","Les 7 erreurs qui offrent votre héritage à l’État","Les 3 dates qui avancent. Les 4 pièges qui restent invisibles. Les actions à mener."),
  ("bump","dossier-notaire","Dossier Notaire","Partir de l’exemple. Rassembler les pièces utiles. Conserver les réponses."),
- ("upsell1","preparation-familiale","Mon simulateur + mon plan adapté","Choisir votre fiche. Relier les faits. Comparer les hypothèses. Suivre les démarches."),
+ ("upsell1","preparation-familiale","Mon plan adapté à ma situation","Choisir votre fiche. Relier les faits. Comparer les hypothèses. Suivre les démarches."),
  ("upsell2","assurance-vie","Mon guide assurance-vie","Retrouver la clause. Demander les informations. Suivre les vérifications."),
 ]
 ONLY=set(sys.argv[1:])
@@ -127,7 +127,7 @@ for sku,slug,title,subtitle in CAT:
  docs=[d for d in DATA["documents"] if d["sku"]==sku]
  if sku=="front":docs=[]
  ed=DATA["editorial"][sku]
- cover_label={"front":"VOTRE GUIDE / PRODUIT DE BASE","bump":"VOTRE DOSSIER PRATIQUE","upsell1":"VOTRE SIMULATEUR + VOTRE PLAN","upsell2":"VOTRE GUIDE ASSURANCE-VIE"}[sku]
+ cover_label={"front":"VOTRE GUIDE / PRODUIT DE BASE","bump":"VOTRE DOSSIER PRATIQUE","upsell1":"VOTRE PLAN ADAPTÉ À VOTRE SITUATION","upsell2":"VOTRE GUIDE ASSURANCE-VIE"}[sku]
  story=head(cover_label,title)
  story+=[P(ed["ouverture"],"h2")]+[P(p) for p in ed["histoire"]]
  story+=[P(ed.get("apprendreTitre","Ce que vous allez apprendre"),"h2")]

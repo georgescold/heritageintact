@@ -26,7 +26,7 @@ export async function POST(request:Request,{params}:{params:Promise<{jeton:strin
  const longueur=Number(request.headers.get("content-length")||0);
  if(longueur>25_000)return new Response("Les données de simulation sont trop volumineuses.",{status:413,headers});
  const etat=await chargerEspace(jeton);
- if(!etat||etat.acces.revoque||!etat.possede.has("upsell1"))return new Response("Ce document nécessite l’achat du simulateur et du plan adapté.",{status:403,headers});
+ if(!etat||etat.acces.revoque||!etat.possede.has("upsell1"))return new Response("Ce document nécessite l’achat de Mon plan adapté à ma situation.",{status:403,headers});
  try{
    const corps=await request.text();
    if(corps.length>25_000)return new Response("Les données de simulation sont trop volumineuses.",{status:413,headers});

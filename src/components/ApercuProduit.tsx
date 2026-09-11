@@ -1,7 +1,7 @@
 export function ApercuProduit({ plan = false, av = false }: { plan?: boolean; av?: boolean }) {
   return <figure className="my-7 overflow-hidden border border-grey-line bg-[#f5f2eb]">
     <div className="flex flex-wrap items-center justify-between gap-2 bg-blue px-5 py-3 text-sm text-white">
-      <span className="font-bold tracking-wide">HÉRITAGE INTACT</span><span>{av ? "Guide assurance-vie" : plan ? "Simulateur + plan adapté" : "Votre première fiche"}</span>
+      <span className="font-bold tracking-wide">HÉRITAGE INTACT</span><span>{av ? "Guide assurance-vie" : plan ? "Mon plan adapté à ma situation" : "Votre première fiche"}</span>
     </div>
     <div className="grid gap-5 p-5 sm:grid-cols-[1fr_1.15fr] sm:p-7">
       <div>
