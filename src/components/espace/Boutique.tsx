@@ -87,6 +87,7 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
           const fiche = VITRINE[sku];
           if (!fiche) return null;
           const plan = sku === "upsell1";
+          const assurance = sku === "upsell2";
           const href = plan && commandeGuide
             ? `/plan-complet?o=${encodeURIComponent(commandeGuide.id)}`
             : `/espace/${etat.acces.jeton}/ajouter/${sku}`;
@@ -94,13 +95,13 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
           return (
             <article
               key={sku}
-              className={`overflow-hidden border-2 bg-white shadow-[0_6px_18px_rgba(9,55,96,0.10)] ${plan ? "border-orange" : "border-grey-line"}`}
+              className={`overflow-hidden border-2 bg-white shadow-[0_6px_18px_rgba(9,55,96,0.10)] ${plan ? "border-orange" : assurance ? "border-green" : "border-grey-line"}`}
             >
-              <p className={`px-5 py-2 text-sm font-bold uppercase tracking-wide text-white ${plan ? "bg-orange" : "bg-blue"}`}>
+              <p className={`px-5 py-2 text-sm font-bold uppercase tracking-wide text-white ${plan ? "bg-orange" : assurance ? "bg-green" : "bg-blue"}`}>
                 {fiche.badge}
               </p>
               <div className="p-5 sm:p-6">
-                <h3 className="text-[1.35rem] leading-snug text-blue">{PRODUCTS[sku].name}</h3>
+                <h3 className={`text-[1.35rem] leading-snug ${assurance ? "text-green" : "text-blue"}`}>{PRODUCTS[sku].name}</h3>
                 <div className="my-4 border-l-4 border-red bg-red-bg p-4 leading-relaxed">
                   <p className="mb-1 font-bold">{fiche.alerteTitre}</p>
                   <p>{sku === "upsell2" && etat.profil?.av === "O" ? "Vous nous avez indiqué détenir une assurance-vie. " : ""}{fiche.alerteTexte}</p>
@@ -131,7 +132,7 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
                   </details>
                 )}
                 <Link
-                  className={`flex min-h-[54px] items-center justify-center px-4 py-3 text-center font-bold text-white no-underline ${plan ? "bg-orange" : "bg-blue"}`}
+                  className={`flex min-h-[54px] items-center justify-center px-4 py-3 text-center font-bold text-white no-underline ${plan ? "bg-orange" : assurance ? "bg-green" : "bg-blue"}`}
                   href={href}
                 >
                   {fiche.bouton}
