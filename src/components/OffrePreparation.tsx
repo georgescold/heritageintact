@@ -62,6 +62,23 @@ export async function OffrePreparation({
     </form>
     <p className="mt-4 text-sm"><Link href={fin}>Non merci, continuer sans ce produit</Link></p>
   </section>;
+  if (sku === "upsell1") return (
+    <>
+      <MesureFunnel evenement="vue_offre" />
+      <MesurerAchat id={order.id} />
+      <Header minimal />
+      <main className="wrap flex-1 py-7 sm:py-10">
+        <div className="mx-auto max-w-[840px]">
+          <p className="font-bold uppercase tracking-wide text-orange-dark">Votre guide est acquis — passons à votre situation</p>
+          <h1 className="my-3 text-[1.9rem] leading-tight sm:text-[2.35rem]">L’État appliquera les règles aux faits et aux actes réellement en place — pas à ce que vous pensiez avoir prévu.</h1>
+          <p className="text-[1.08rem] leading-relaxed">Une donation oubliée, une mauvaise quote-part ou une clause non vérifiée peut déplacer fortement le résultat. Répondez à une question à la fois pour faire apparaître votre estimation, vos points de vigilance et l’ordre des vérifications à préparer.</p>
+          <SimulationPlan verrouille demarrerOffre={demarrer}>{decision}</SimulationPlan>
+        </div>
+      </main>
+      <Footer />
+      <SortieOffre produit={sku} href="#decision-complement" montant={d.montant} promotion={d.promotion}/>
+    </>
+  );
   return (
     <>
       <MesureFunnel evenement="vue_offre" />
@@ -72,11 +89,11 @@ export async function OffrePreparation({
         <p className="font-bold text-orange-dark">
           Ce que vous devez absolument avoir également
         </p>
-        <h1 className="my-4 text-[2rem] leading-tight">{sku === "upsell1" ? "Vous pouvez tout préparer avec sérieux… et commencer par ce qui compte le moins." : "Votre assurance-vie peut transmettre exactement comme le contrat l’indique — et pas comme vous l’avez expliqué à votre famille."}</h1>
+        <h1 className="my-4 text-[2rem] leading-tight">Votre assurance-vie peut transmettre exactement comme le contrat l’indique — et pas comme vous l’avez expliqué à votre famille.</h1>
         <p className="mb-3 text-[1.1rem] font-bold text-blue">{produit.name}</p>
-        <p className="mb-6 border-l-4 border-orange bg-grey-bg p-4">{sku === "upsell1" ? "Votre famille, vos biens, les aides passées et les dates forment un seul problème d’ordre. Tant qu’ils restent séparés, le point le plus urgent peut rester invisible derrière la démarche la plus facile." : contexte.raison}</p>
+        <p className="mb-6 border-l-4 border-orange bg-grey-bg p-4">{contexte.raison}</p>
         <p className="text-[1.2rem]">{texte?.promesse}</p>
-        {sku === "upsell1" ? <SimulationPlan verrouille demarrerOffre={demarrer}>{decision}</SimulationPlan> : decision}
+        {decision}
         <ValeurComplement av={sku === "upsell2"} />
         <ObjectionsComplement av={sku==="upsell2"} />
         <ApercuProduit plan={sku !== "upsell2"} av={sku === "upsell2"} />

@@ -17,6 +17,23 @@ try {
   await page.route("**/api/confidentialite/preferences",r=>r.fulfill({status:200,contentType:"application/json",body:JSON.stringify({choix:"non"})}));
   const errors=[];page.on("pageerror",e=>errors.push(e.message));
   const go=async p=>{console.log("Contrôle "+p);const r=await page.goto("http://127.0.0.1:3311"+p,{waitUntil:"domcontentloaded"});ok(r.status()===200);await page.locator("main").waitFor();};
+  const remplirPlan=async({assuranceVie=false}={})=>{
+    ok(await page.getByRole("heading",{name:"Quel âge avez-vous aujourd’hui ?",exact:true}).isVisible());
+    await page.getByLabel("Votre réponse",{exact:true}).fill("68");await page.getByRole("button",{name:"Continuer",exact:true}).click();
+    await page.getByRole("button",{name:"Marié(e)",exact:true}).click();
+    await page.getByLabel("Votre réponse en euros",{exact:true}).fill("480000");await page.getByRole("button",{name:"Continuer",exact:true}).click();
+    await page.getByRole("button",{name:"Avec mon conjoint ou partenaire",exact:true}).click();
+    await page.getByRole("button",{name:"Permettre à un proche de la conserver",exact:true}).click();
+    for(const valeur of ["0","40000","0","0","0"]){await page.getByLabel("Votre réponse en euros",{exact:true}).fill(valeur);await page.getByRole("button",{name:"Continuer",exact:true}).click();}
+    for(const valeur of ["2","0","0","0","0","0"]){await page.getByLabel("Votre réponse",{exact:true}).fill(valeur);await page.getByRole("button",{name:"Continuer",exact:true}).click();}
+    await page.getByRole("button",{name:"Non",exact:true}).click();
+    await page.getByRole("button",{name:"Nous n’en avons pas encore parlé",exact:true}).click();
+    await page.getByLabel("Votre réponse en euros",{exact:true}).fill(assuranceVie?"100000":"0");await page.getByRole("button",{name:"Continuer",exact:true}).click();
+    await page.getByLabel("Votre réponse en euros",{exact:true}).fill("0");await page.getByRole("button",{name:"Continuer",exact:true}).click();
+    if(assuranceVie){await page.getByLabel("Votre réponse",{exact:true}).fill("2");await page.getByRole("button",{name:"Continuer",exact:true}).click();}
+    await page.getByRole("button",{name:"Je ne connais aucune donation passée",exact:true}).click();
+    await page.locator("#decision-complement").waitFor();
+  };
   for(const width of [390,1440]) {
     await page.setViewportSize({width,height:1000});
     for(const p of ["/methode","/apercu","/espace/aaaaaaaaaaaaaaaaaaaa/demarrer","/espace/bbbbbbbbbbbbbbbbbbbb/demarrer","/plan-complet?o=ord_revue_front"]) {
@@ -93,11 +110,9 @@ try {
     await page.getByRole("button",{name:"Je ne sais pas quoi faire en premier",exact:true}).click();
     await page.waitForURL(u=>u.pathname===path);
     await page.waitForLoadState("networkidle");
-    await page.getByRole("button",{name:"Simuler pour ma situation",exact:true}).click();
-    await page.getByRole("button",{name:"Préparer mon aperçu personnalisé",exact:true}).click();
-    await page.locator("#decision-complement").waitFor();
+    await remplirPlan({assuranceVie:av==="Oui"});
     ok(await page.locator("#decision-complement").isVisible());
-    ok(await page.getByText("Ce que vous devez absolument avoir également",{exact:true}).isVisible());
+    ok(await page.getByText("L’État appliquera les règles aux faits et aux actes réellement en place",{exact:false}).isVisible());
     ok(await page.locator("#livraison-produit").count()===0);
     ok(await page.locator('input[name="montantAffiche"]').count()===1);
     ok(!new URL(page.url()).searchParams.has("objectif"));
@@ -111,7 +126,6 @@ try {
       }
     }
     ok(await page.getByRole("link",{name:"Non merci, continuer sans ce produit",exact:true}).isVisible());
-    ok(await page.evaluate(()=>document.querySelector("#decision-complement").getBoundingClientRect().top<document.querySelector("figure").getBoundingClientRect().top));
     await page.getByRole("link",{name:"Non merci, continuer sans ce produit",exact:true}).click();
     if(av==="Oui") {
       await page.waitForURL("**/kit-assurance-vie?*");
@@ -202,9 +216,7 @@ try {
   await page.getByRole("button",{name:"Je ne sais pas",exact:true}).click();
   await page.getByRole("button",{name:"Les démarches et les mots sont trop compliqués",exact:true}).click();
   await page.waitForURL(u=>u.pathname==="/plan-complet");
-  await page.getByRole("button",{name:"Simuler pour ma situation",exact:true}).click();
-  await page.getByRole("button",{name:"Préparer mon aperçu personnalisé",exact:true}).click();
-  await page.locator("#decision-complement").waitFor();
+  await remplirPlan();
   const montantUpsell=Number(await page.locator('input[name="montantAffiche"]').inputValue());
   ok(montantUpsell===147);
   for(const width of [390,1440]){
@@ -213,7 +225,7 @@ try {
     await page.locator("#decision-complement").scrollIntoViewIfNeeded();
     await page.screenshot({path:".build-refonte/v8-offre-"+width+".png"});
   }
-  await page.getByRole("button",{name:/Déverrouiller mon simulateur et mon plan/}).click();
+  await page.getByRole("button",{name:/Déverrouiller mon plan adapté/}).click();
   await page.waitForURL("**/resultat-plan?*");
   ok(await page.getByText("votre plan adapté à votre situation est déverrouillé",{exact:false}).isVisible());
   await page.getByRole("link",{name:"Continuer mon parcours",exact:true}).click();

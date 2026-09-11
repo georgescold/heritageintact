@@ -12,7 +12,7 @@ Pour toi : [checklist Loys](a-faire-loys/00-CHECKLIST.md). **Aucune vidéo péda
 
 ## Le parcours actuel
 
-Email et prénom → présentation/VSL → achat du guide avec Dossier notaire facultatif → six réponses obligatoires → simulation détaillée → aperçu verrouillé → Mon plan adapté à ma situation → assurance-vie si pertinente → livraison et espace.
+Email et prénom → présentation/VSL → achat du guide avec Dossier notaire facultatif → menu client et téléchargement du guide → bouton « Construire mon plan adapté » → questionnaire détaillé, une question à la fois → aperçu verrouillé → offre Mon plan adapté à ma situation → assurance-vie si pertinente.
 
 Le consentement marketing est facultatif et distinct du questionnaire. La qualification ne change pas le contenu déjà acheté ; « je ne sais pas » est une réponse recevable. Une panne d’enregistrement ne valide pas silencieusement le questionnaire.
 

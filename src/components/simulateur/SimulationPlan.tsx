@@ -15,73 +15,142 @@ import {
 } from "@/lib/simulateur/donnees";
 import { euros } from "@/lib/config";
 import type { Reponses } from "@/lib/qualification";
-const champ = "field mt-1 min-w-0 max-w-full";
+
+type Cle = keyof Donnees;
+type Option = readonly [string, string];
+type Etape = {
+  cle: Cle;
+  titre: string;
+  aide: string;
+  type: "choix" | "nombre" | "montant" | "annee";
+  options?: readonly Option[];
+  min?: number;
+  max?: number;
+  visible?: (d: Donnees) => boolean;
+};
+
+const ETAPES: readonly Etape[] = [
+  { cle: "age", titre: "Quel âge avez-vous aujourd’hui ?", aide: "Votre âge permet de situer les repères de 70 et 71 ans sans demander votre date de naissance.", type: "nombre", min: 18, max: 120 },
+  { cle: "vie", titre: "Quelle est votre situation de couple ?", aide: "La situation de couple peut modifier les droits à examiner et les documents à retrouver.", type: "choix", options: [["M", "Marié(e)"], ["P", "Pacsé(e)"], ["U", "En couple sans mariage ni PACS"], ["V", "Veuf ou veuve"], ["S", "Seul(e)"]] },
+  { cle: "residence", titre: "Quelle part de votre résidence principale faut-il examiner ?", aide: "Indiquez uniquement la valeur de la part qui vous appartient ou que vous souhaitez modéliser. Elle devra être confirmée avec le titre de propriété.", type: "montant" },
+  { cle: "detentionResidence", titre: "Comment cette résidence est-elle détenue ?", aide: "Le prix de la maison ne dit pas quelle part entre réellement dans une succession.", type: "choix", visible: d => d.residence > 0, options: [["propre", "Par moi seul(e)"], ["couple", "Avec mon conjoint ou partenaire"], ["indivision", "En indivision avec d’autres personnes"], ["?", "Je dois encore le vérifier"]] },
+  { cle: "souhaitResidence", titre: "Que souhaitez-vous principalement pour cette résidence ?", aide: "Votre intention ne crée pas encore un droit, mais elle détermine les scénarios à faire vérifier.", type: "choix", visible: d => d.residence > 0, options: [["rester", "Pouvoir y vivre aussi longtemps que possible"], ["transmettre", "Permettre à un proche de la conserver"], ["vendre", "Éviter qu’une vente éventuelle se bloque"], ["?", "Je ne l’ai pas encore décidé"]] },
+  { cle: "immobilier", titre: "Quelle est la valeur de votre part dans vos autres biens immobiliers ?", aide: "Additionnez uniquement les parts que vous souhaitez inclure dans cette estimation.", type: "montant" },
+  { cle: "epargne", titre: "Quel montant d’épargne disponible faut-il inclure ?", aide: "Comptes courants, livrets et liquidités, hors assurance-vie.", type: "montant" },
+  { cle: "titres", titre: "Quelle valeur de titres et placements faut-il inclure ?", aide: "Actions, obligations, comptes-titres ou autres placements, hors assurance-vie.", type: "montant" },
+  { cle: "autres", titre: "Quelle valeur donner aux autres biens concernés ?", aide: "Véhicules, objets de valeur ou autres éléments que vous souhaitez faire apparaître dans le scénario.", type: "montant" },
+  { cle: "dettes", titre: "Quel montant de dettes faut-il signaler ?", aide: "Leur déductibilité n’est pas automatique : le plan vous indiquera de les faire confirmer.", type: "montant" },
+  { cle: "enfants", titre: "Combien avez-vous d’enfants ?", aide: "Indiquez vos enfants, qu’ils soient communs au couple ou issus d’une précédente union.", type: "nombre", min: 0, max: 30 },
+  { cle: "beauxEnfants", titre: "Combien d’enfants de votre conjoint non adoptés souhaitez-vous protéger ?", aide: "Ils ne sont pas automatiquement traités fiscalement comme vos propres enfants : cette distinction peut changer fortement l’estimation.", type: "nombre", min: 0, max: 30 },
+  { cle: "petitsEnfants", titre: "Combien de petits-enfants faut-il inclure dans le scénario ?", aide: "Ne les ajoutez que si vous souhaitez examiner une transmission qui les concerne directement.", type: "nombre", min: 0, max: 30 },
+  { cle: "fratrie", titre: "Combien de frères ou sœurs faut-il inclure ?", aide: "Cette question sert au scénario demandé ; elle ne détermine pas qui héritera réellement.", type: "nombre", min: 0, max: 30 },
+  { cle: "neveux", titre: "Combien de neveux ou nièces faut-il inclure ?", aide: "Ajoutez uniquement les personnes que vous souhaitez voir apparaître dans l’estimation.", type: "nombre", min: 0, max: 30 },
+  { cle: "sansLien", titre: "Combien d’autres personnes sans lien familial faut-il inclure ?", aide: "Une personne non parente peut relever d’un traitement très différent : mieux vaut la faire apparaître que la laisser cachée dans une intention générale.", type: "nombre", min: 0, max: 30 },
+  { cle: "protectionSignee", titre: "Avez-vous signé un dispositif officiel si vous ne pouviez plus gérer vos intérêts ?", aide: "Une intention orale ne donne aucun pouvoir pour agir à votre place.", type: "choix", options: [["O", "Oui"], ["N", "Non"], ["?", "Je ne sais pas"]] },
+  { cle: "personneConfiance", titre: "La personne envisagée a-t-elle accepté cette responsabilité ?", aide: "Le plan distinguera la personne à laquelle vous pensez du pouvoir qui devra réellement être formalisé.", type: "choix", options: [["O", "Oui"], ["N", "Non ou personne non identifiée"], ["?", "Nous n’en avons pas encore parlé"]] },
+  { cle: "avAvant", titre: "Combien avez-vous versé en assurance-vie avant 70 ans ?", aide: "Indiquez une estimation pour tous les contrats concernés. Le relevé de l’assureur devra ensuite confirmer les dates.", type: "montant" },
+  { cle: "avApres", titre: "Combien avez-vous versé en assurance-vie après 70 ans ?", aide: "Cette distinction est essentielle : les primes versées avant et après 70 ans ne suivent pas le même mécanisme.", type: "montant" },
+  { cle: "beneficiaires", titre: "Combien de bénéficiaires se partagent l’assurance-vie ?", aide: "Le simulateur ne lit pas la clause : indiquez le nombre que vous pensez actuel, puis faites-le confirmer par l’assureur.", type: "nombre", min: 1, max: 30, visible: d => d.avAvant + d.avApres > 0 },
+  { cle: "donationAnnee", titre: "En quelle année a eu lieu votre dernière donation connue ?", aide: "L’année sert à repérer le délai de quinze ans. Si vous n’en connaissez aucune, choisissez le bouton prévu.", type: "annee", min: 1900, max: new Date().getFullYear() },
+  { cle: "donationMontant", titre: "Quel était le montant approximatif de cette donation ?", aide: "Le montant et l’année ne remplacent pas l’acte : ils font apparaître la vérification à préparer.", type: "montant", visible: d => d.donationAnnee > 0 },
+] as const;
+
 export function SimulationPlan({ verrouille, children, demarrerOffre }: { verrouille: boolean; children?: ReactNode; demarrerOffre?:(reponses:Reponses)=>Promise<{ok:boolean;error?:string}> }) {
-  const router=useRouter();
-  const [d,setD]=useState<Donnees>(DONNEES_VIDES),[commence,setCommence]=useState(!verrouille),[termine,setTermine]=useState(false),[attente,setAttente]=useState(false),[erreur,setErreur]=useState("");
-  useEffect(()=>{const frame=requestAnimationFrame(()=>{try{const v=localStorage.getItem(CLE_SIMULATION);if(v){setD({...DONNEES_VIDES,...JSON.parse(v),handicap:0});if(!verrouille)setTermine(true);}}catch{}});return()=>cancelAnimationFrame(frame);},[verrouille]);
-  const s=donneesVersSaisie(d), resultat=calculer(s,new Date().getFullYear());
-  const nombreHeritiers=s.heritiers.length;
-  const setNombre=(cle:keyof Donnees,valeur:string)=>setD(v=>({...v,[cle]:Math.max(0,Number(valeur)||0)}));
-  async function terminer(){
-    if(nombreHeritiers<1||attente)return;
-    setAttente(true);setErreur("");
+  const router = useRouter();
+  const [d, setD] = useState<Donnees>(DONNEES_VIDES);
+  const [index, setIndex] = useState(0);
+  const [termine, setTermine] = useState(false);
+  const [attente, setAttente] = useState(false);
+  const [erreur, setErreur] = useState("");
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      try {
+        const valeur = localStorage.getItem(CLE_SIMULATION);
+        if (valeur) {
+          setD({ ...DONNEES_VIDES, ...JSON.parse(valeur), handicap: 0 });
+          if (!verrouille) setTermine(true);
+        }
+      } catch {}
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [verrouille]);
+
+  const etapes = ETAPES.filter(etape => !etape.visible || etape.visible(d));
+  const etape = etapes[Math.min(index, etapes.length - 1)];
+  const s = donneesVersSaisie(d);
+  const resultat = calculer(s, new Date().getFullYear());
+  const alertes = pointsPreparation(d);
+  const progression = Math.round(((Math.min(index, etapes.length - 1) + 1) / etapes.length) * 100);
+  const valeurNumerique = Number(d[etape.cle]) || 0;
+
+  const definir = (cle: Cle, valeur: string | number) => setD(actuel => ({ ...actuel, [cle]: valeur }));
+  const suivant = () => setIndex(actuel => Math.min(actuel + 1, etapes.length - 1));
+  const precedent = () => { setErreur(""); setIndex(actuel => Math.max(0, actuel - 1)); };
+
+  async function terminer(donnees: Donnees = d) {
+    if (attente) return;
+    setAttente(true);
+    setErreur("");
     try {
-      try{localStorage.setItem(CLE_SIMULATION,JSON.stringify(d));}catch{}
-      if(demarrerOffre){
-        const age=d.age<60?"a":d.age<65?"b":d.age<70?"c":d.age===70?"d":"e";
-        const enfants=d.beauxEnfants>0?"R":d.enfants===0?"0":d.enfants===1?"1":"2";
-        const objectif=d.avAvant+d.avApres>0?"assurance-vie":d.residence>0?"maison":"facture";
-        const r=await demarrerOffre({objectif,vie:d.vie,enfants,age,av:d.avAvant+d.avApres>0?"O":"N",blocage:"ordre"});
-        if(!r.ok){setErreur(r.error??"Impossible de préparer l’offre.");return;}
+      try { localStorage.setItem(CLE_SIMULATION, JSON.stringify(donnees)); } catch {}
+      if (demarrerOffre) {
+        const age = donnees.age < 60 ? "a" : donnees.age < 65 ? "b" : donnees.age < 70 ? "c" : donnees.age === 70 ? "d" : "e";
+        const enfants = donnees.beauxEnfants > 0 ? "R" : donnees.enfants === 0 ? "0" : donnees.enfants === 1 ? "1" : "2";
+        const objectif = donnees.avAvant + donnees.avApres > 0 ? "assurance-vie" : donnees.residence > 0 ? "maison" : "facture";
+        const reponse = await demarrerOffre({ objectif, vie: donnees.vie, enfants, age, av: donnees.avAvant + donnees.avApres > 0 ? "O" : "N", blocage: "ordre" });
+        if (!reponse.ok) { setErreur(reponse.error ?? "Impossible de préparer l’aperçu."); return; }
         router.refresh();
       }
       setTermine(true);
     } catch {
       setErreur("La connexion a été interrompue. Vos réponses restent affichées : réessayez.");
-    } finally { setAttente(false); }
+    } finally {
+      setAttente(false);
+    }
   }
-  const alertes=pointsPreparation(d);
-  if(!commence)return <button onClick={()=>setCommence(true)} className="min-h-[58px] w-full bg-orange px-5 py-4 text-[1.15rem] font-bold text-white">Simuler pour ma situation</button>;
-  return <section className="my-6 border-2 border-blue bg-white p-4 sm:p-6">
-    <p className="font-bold text-orange-dark">ÉTAPE 1 — VOTRE SIMULATION</p>
-    <h2 className="my-3 text-[1.5rem]">Répondez maintenant : votre aperçu sera préparé à partir de vos informations</h2>
-    <p className="mb-5">Aucun nom de proche, adresse ni donnée de santé n’est demandé. Pour un bien détenu à plusieurs, indiquez seulement la part que vous souhaitez modéliser et faites-la ensuite confirmer.</p>
-    <div className="grid gap-4 sm:grid-cols-2">
-      <label>Votre âge<input className={champ} type="number" min="18" max="120" value={d.age} onChange={e=>setNombre("age",e.target.value)}/></label>
-      <label>Votre situation<select className={champ} value={d.vie} onChange={e=>setD(v=>({...v,vie:e.target.value}))}><option value="M">Marié(e)</option><option value="P">Pacsé(e)</option><option value="U">En couple sans mariage ni PACS</option><option value="V">Veuf ou veuve</option><option value="S">Seul(e)</option></select></label>
-      <Montant titre="Part de la résidence principale à modéliser" valeur={d.residence} change={v=>setNombre("residence",v)}/><Montant titre="Part des autres biens immobiliers à modéliser" valeur={d.immobilier} change={v=>setNombre("immobilier",v)}/>
-      <Montant titre="Épargne disponible" valeur={d.epargne} change={v=>setNombre("epargne",v)}/><Montant titre="Titres et placements" valeur={d.titres} change={v=>setNombre("titres",v)}/>
-      <Montant titre="Autres biens" valeur={d.autres} change={v=>setNombre("autres",v)}/><Montant titre="Dettes estimées" valeur={d.dettes} change={v=>setNombre("dettes",v)}/>
+
+  if (termine) return <section className="my-6 border-2 border-blue bg-white p-4 sm:p-6">
+    <p className="font-bold text-green">Votre aperçu personnalisé est prêt.</p>
+    <h2 className="my-3 text-[1.5rem]">{alertes.length || 1} point{alertes.length > 1 ? "s" : ""} de vigilance détecté{alertes.length > 1 ? "s" : ""}</h2>
+    <ul className="mb-5 list-disc space-y-2 pl-6">{(alertes.length ? alertes.map(a => a.titre) : ["La composition de votre patrimoine et les personnes incluses doivent être reliées dans un ordre clair."]).slice(0, 3).map(a => <li key={a}>{a}</li>)}</ul>
+    {verrouille ? <>
+      <div className="relative overflow-hidden border-2 border-grey-line bg-grey-bg p-5">
+        <div className="select-none blur-[7px]" aria-hidden="true"><p className="text-[1.6rem] font-bold">Estimation : {euros(resultat.total)}</p><p>Votre ordre de vérification personnalisé, vos échéances et les documents à préparer apparaissent ici.</p></div>
+        <div className="absolute inset-0 flex items-center justify-center bg-white/70 p-5 text-center font-bold text-blue">Votre résultat complet est prêt : déverrouillez votre estimation et votre plan adapté</div>
+      </div>
+      {children}
+    </> : <Resultat d={d} s={s} />}
+  </section>;
+
+  return <section className="my-6 overflow-hidden border-2 border-blue bg-white shadow-[0_8px_24px_rgba(9,55,96,0.10)]">
+    <div className="border-b border-grey-line bg-grey-bg px-4 py-4 sm:px-6">
+      <div className="mb-2 flex items-center justify-between gap-4 text-sm font-bold text-blue"><span>QUESTION {index + 1} SUR {etapes.length}</span><span>{progression} %</span></div>
+      <div className="h-2 overflow-hidden bg-white" aria-label={`Progression : ${progression} %`}><div className="h-full bg-orange transition-all" style={{ width: `${progression}%` }} /></div>
     </div>
-    <h3 className="mb-1 mt-6 text-[1.2rem]">Personnes incluses dans votre scénario</h3>
-    <p className="mb-3 text-[0.9rem] text-text-soft">Cette liste ne détermine pas vos héritiers légaux. Elle sert uniquement à construire le scénario que vous souhaitez examiner.</p>
-    <div className="grid gap-4 sm:grid-cols-3">
-      <Nombre titre="Enfants" valeur={d.enfants} change={v=>setNombre("enfants",v)}/><Nombre titre="Enfants du conjoint non adoptés" valeur={d.beauxEnfants} change={v=>setNombre("beauxEnfants",v)}/><Nombre titre="Petits-enfants" valeur={d.petitsEnfants} change={v=>setNombre("petitsEnfants",v)}/>
-      <Nombre titre="Frères ou sœurs" valeur={d.fratrie} change={v=>setNombre("fratrie",v)}/><Nombre titre="Neveux ou nièces" valeur={d.neveux} change={v=>setNombre("neveux",v)}/><Nombre titre="Autres personnes" valeur={d.sansLien} change={v=>setNombre("sansLien",v)}/>
+    <div className="p-5 sm:p-8">
+      <p className="mb-2 text-sm font-bold uppercase tracking-wide text-orange-dark">Une seule réponse à la fois</p>
+      <h2 className="text-[1.55rem] leading-snug sm:text-[1.85rem]">{etape.titre}</h2>
+      <p className="mb-6 mt-3 text-[1.02rem] text-text-soft">{etape.aide}</p>
+
+      {etape.type === "choix" ? <div className="grid gap-3">
+        {etape.options?.map(([code, libelle]) => <button key={code} type="button" onClick={() => { definir(etape.cle, code); suivant(); }} className="min-h-[56px] border-2 border-grey-line bg-white px-4 py-3 text-left text-[1.05rem] font-bold text-blue hover:border-orange focus:border-orange">{libelle}</button>)}
+      </div> : <>
+        <label className="block font-bold" htmlFor={`question-${etape.cle}`}>{etape.type === "montant" ? "Votre réponse en euros" : "Votre réponse"}</label>
+        <input id={`question-${etape.cle}`} className="field mt-2 w-full text-[1.2rem]" type="number" min={etape.min ?? 0} max={etape.max} step={etape.type === "montant" ? 1000 : 1} value={valeurNumerique || ""} onChange={e => definir(etape.cle, Math.max(0, Number(e.target.value) || 0))} autoFocus />
+        {etape.type === "annee" && <button type="button" onClick={() => { const sansDonation = { ...d, donationAnnee: 0, donationMontant: 0 }; setD(sansDonation); if (index === etapes.length - 1) void terminer(sansDonation); else suivant(); }} className="mt-3 min-h-[48px] w-full border border-blue px-4 py-2 font-bold text-blue">Je ne connais aucune donation passée</button>}
+        <button type="button" onClick={index === etapes.length - 1 ? () => void terminer() : suivant} disabled={attente || valeurNumerique < (etape.min ?? 0) || (etape.max !== undefined && valeurNumerique > etape.max)} className="mt-4 min-h-[56px] w-full bg-orange px-5 py-3 text-[1.05rem] font-bold text-white disabled:opacity-50">{attente ? "Préparation en cours…" : index === etapes.length - 1 ? "Préparer mon aperçu personnalisé" : "Continuer"}</button>
+      </>}
+
+      <div className="mt-6 flex items-center justify-between gap-4 text-sm">{index > 0 ? <button type="button" onClick={precedent} className="underline">← Question précédente</button> : <span />}<span className="text-right text-text-soft">Environ 4 minutes</span></div>
+      {erreur && <p role="alert" className="mt-4 border border-red bg-red-bg p-3">{erreur}</p>}
+      <p className="mt-5 border-t border-grey-line pt-4 text-[0.88rem] text-text-soft">Aucun nom de proche, aucune adresse ni aucun document n’est demandé. Vos réponses détaillées restent dans ce navigateur et servent uniquement à préparer votre aperçu.</p>
     </div>
-    <h3 className="mb-1 mt-6 text-[1.2rem]">Votre capacité de décider et votre maison</h3>
-    <p className="mb-3 text-[0.9rem] text-text-soft">Ces réponses ne créent aucun droit. Elles servent à faire apparaître les décisions personnelles à préparer avant un rendez-vous professionnel.</p>
-    <div className="grid gap-4 sm:grid-cols-2">
-      <Choix titre="Avez-vous déjà signé un dispositif officiel pour être représenté si vous ne pouviez plus gérer vos intérêts ?" valeur={d.protectionSignee} change={v=>setD(a=>({...a,protectionSignee:v as Donnees["protectionSignee"]}))} options={[["?","Je ne sais pas"],["N","Non"],["O","Oui"]]}/>
-      <Choix titre="Une personne de confiance a-t-elle accepté cette responsabilité ?" valeur={d.personneConfiance} change={v=>setD(a=>({...a,personneConfiance:v as Donnees["personneConfiance"]}))} options={[["?","Nous n’en avons pas encore parlé"],["N","Non ou personne non identifiée"],["O","Oui"]]}/>
-      {d.residence>0&&<Choix titre="Comment votre résidence principale est-elle détenue ?" valeur={d.detentionResidence} change={v=>setD(a=>({...a,detentionResidence:v as Donnees["detentionResidence"]}))} options={[["?","Je ne sais pas"],["propre","Par moi seul(e)"],["couple","Avec mon conjoint ou partenaire"],["indivision","En indivision avec une ou plusieurs personnes"]]}/>}
-      {d.residence>0&&<Choix titre="Quel est votre souhait principal concernant cette résidence ?" valeur={d.souhaitResidence} change={v=>setD(a=>({...a,souhaitResidence:v as Donnees["souhaitResidence"]}))} options={[["?","Je ne l’ai pas encore décidé"],["rester","Pouvoir y vivre aussi longtemps que possible"],["transmettre","Permettre à un proche de la conserver"],["vendre","Éviter qu’une vente éventuelle se bloque"]]}/>}
-    </div>
-    <h3 className="mb-3 mt-6 text-[1.2rem]">Assurance-vie et donations passées</h3>
-    <div className="grid gap-4 sm:grid-cols-2"><Montant titre="Versements avant 70 ans" valeur={d.avAvant} change={v=>setNombre("avAvant",v)}/><Montant titre="Versements après 70 ans" valeur={d.avApres} change={v=>setNombre("avApres",v)}/><Nombre titre="Bénéficiaires assurance-vie" valeur={d.beneficiaires} change={v=>setNombre("beneficiaires",v)}/><label>Année de la dernière donation<input className={champ} type="number" min="1900" max={new Date().getFullYear()} value={d.donationAnnee||""} onChange={e=>setNombre("donationAnnee",e.target.value)}/></label><Montant titre="Montant approximatif de cette donation" valeur={d.donationMontant} change={v=>setNombre("donationMontant",v)}/></div>
-    {nombreHeritiers<1&&<p role="alert" className="mt-4 border border-red bg-red-bg p-3">Indiquez au moins une personne susceptible de recevoir.</p>}
-    <button type="button" onClick={terminer} disabled={nombreHeritiers<1||attente} className="mt-6 min-h-[56px] w-full bg-blue px-5 py-3 font-bold text-white disabled:opacity-50">{attente?"Préparation en cours…":"Préparer mon aperçu personnalisé"}</button>
-    {erreur&&<p role="alert" className="mt-3 border border-red bg-red-bg p-3">{erreur}</p>}
-    {termine&&<div className="mt-6 border-t-2 border-blue pt-5">
-      <p className="font-bold text-green">Votre simulation est prête.</p>
-      <h3 className="my-3 text-[1.4rem]">{alertes.length||1} point{alertes.length>1?"s":""} de vigilance détecté{alertes.length>1?"s":""}</h3>
-      <ul className="mb-5 list-disc space-y-2 pl-6">{(alertes.length?alertes.map(a=>a.titre):["La composition de votre patrimoine et les personnes incluses dans le scénario doivent être reliées dans un ordre clair."]).slice(0,3).map(a=><li key={a}>{a}</li>)}</ul>
-      {verrouille?<><div className="relative overflow-hidden border-2 border-grey-line bg-grey-bg p-5"><div className="select-none blur-[7px]" aria-hidden="true"><p className="text-[1.6rem] font-bold">Estimation : {euros(resultat.total)}</p><p>Votre ordre de vérification personnalisé et vos échéances apparaissent ici.</p></div><div className="absolute inset-0 flex items-center justify-center bg-white/70 p-5 text-center font-bold text-blue">Déverrouillez votre estimation détaillée et votre plan adapté</div></div>{children}</>:<Resultat d={d} s={s}/>} 
-    </div>}
   </section>;
 }
-function Montant({titre,valeur,change}:{titre:string;valeur:number;change:(v:string)=>void}){return <label>{titre} (€)<input className={champ} type="number" min="0" step="1000" value={valeur||""} onChange={e=>change(e.target.value)}/></label>}
-function Nombre({titre,valeur,change}:{titre:string;valeur:number;change:(v:string)=>void}){return <label>{titre}<input className={champ} type="number" min="0" max="30" value={valeur} onChange={e=>change(e.target.value)}/></label>}
-function Choix({titre,valeur,change,options}:{titre:string;valeur:string;change:(v:string)=>void;options:[string,string][]}){return <label>{titre}<select className={champ} value={valeur} onChange={e=>change(e.target.value)}>{options.map(([v,l])=><option key={v} value={v}>{l}</option>)}</select></label>}
-function Resultat({d,s}:{d:Donnees;s:Saisie}){const r=calculer(s,new Date().getFullYear());const plan=planPreparation(d),points=pointsPreparation(d),pieces=dossierProfessionnel(d);return <div className="border-2 border-green bg-green-bg p-5"><h2 className="text-[1.5rem]">Votre estimation indicative : {euros(r.total)}</h2><p className="my-3">Masse nette saisie : {euros(r.masse)} · {r.parts.length} personne(s) incluse(s) dans le scénario.</p><div className="my-5 border-2 border-blue bg-white p-4"><p className="font-bold text-blue">Ce résultat n’a aucun effet juridique à lui seul.</p><p className="mt-2">Il prépare les décisions et les pièces à apporter. Seuls la loi, les contrats réellement enregistrés et les actes valablement établis détermineront vos droits.</p></div><h3 className="mt-5">Vos points de vigilance personnels</h3><div className="mt-3 space-y-4">{points.map(point=><article key={point.cle} className="border-l-4 border-orange bg-white p-4"><p className="font-bold text-blue">{point.titre}</p><p className="mt-1">{point.constat}</p><p className="mt-3 font-bold">À préparer :</p><ul className="mt-1 list-disc space-y-1 pl-6">{point.actions.map(action=><li key={action}>{action}</li>)}</ul><p className="mt-3 text-sm"><strong>Ce qui donnera un effet réel :</strong> {point.effetReel}</p></article>)}</div><h3 className="mt-5">Votre ordre de préparation</h3><ol className="mt-3 list-decimal space-y-2 pl-6">{plan.map(p=><li key={p}>{p}</li>)}</ol><h3 className="mt-5">Votre dossier pour le professionnel</h3><ul className="mt-3 list-disc space-y-2 pl-6">{pieces.map(piece=><li key={piece}>{piece}</li>)}</ul>{r.hypotheses.length>0&&<details className="mt-5"><summary className="cursor-pointer font-bold">Hypothèses et limites du calcul</summary><ul className="mt-3 list-disc space-y-2 pl-6">{r.hypotheses.map(h=><li key={h}>{h}</li>)}</ul></details>}<p className="mt-4 text-sm">Ce résultat prépare vos questions ; il ne constitue ni un devis notarial, ni un acte, ni un conseil fiscal personnalisé.</p></div>}
+
+function Resultat({ d, s }: { d: Donnees; s: Saisie }) {
+  const r = calculer(s, new Date().getFullYear());
+  const plan = planPreparation(d), points = pointsPreparation(d), pieces = dossierProfessionnel(d);
+  return <div className="border-2 border-green bg-green-bg p-5"><h2 className="text-[1.5rem]">Votre estimation indicative : {euros(r.total)}</h2><p className="my-3">Masse nette saisie : {euros(r.masse)} · {r.parts.length} personne(s) incluse(s) dans le scénario.</p><div className="my-5 border-2 border-blue bg-white p-4"><p className="font-bold text-blue">Ce résultat n’a aucun effet juridique à lui seul.</p><p className="mt-2">Il prépare les décisions et les pièces à apporter. Seuls la loi, les contrats réellement enregistrés et les actes valablement établis détermineront vos droits.</p></div><h3 className="mt-5">Vos points de vigilance personnels</h3><div className="mt-3 space-y-4">{points.map(point => <article key={point.cle} className="border-l-4 border-orange bg-white p-4"><p className="font-bold text-blue">{point.titre}</p><p className="mt-1">{point.constat}</p><p className="mt-3 font-bold">À préparer :</p><ul className="mt-1 list-disc space-y-1 pl-6">{point.actions.map(action => <li key={action}>{action}</li>)}</ul><p className="mt-3 text-sm"><strong>Ce qui donnera un effet réel :</strong> {point.effetReel}</p></article>)}</div><h3 className="mt-5">Votre ordre de préparation</h3><ol className="mt-3 list-decimal space-y-2 pl-6">{plan.map(p => <li key={p}>{p}</li>)}</ol><h3 className="mt-5">Votre dossier pour le professionnel</h3><ul className="mt-3 list-disc space-y-2 pl-6">{pieces.map(piece => <li key={piece}>{piece}</li>)}</ul>{r.hypotheses.length > 0 && <details className="mt-5"><summary className="cursor-pointer font-bold">Hypothèses et limites du calcul</summary><ul className="mt-3 list-disc space-y-2 pl-6">{r.hypotheses.map(h => <li key={h}>{h}</li>)}</ul></details>}<p className="mt-4 text-sm">Ce résultat prépare vos questions ; il ne constitue ni un devis notarial, ni un acte, ni un conseil fiscal personnalisé.</p></div>;
+}
