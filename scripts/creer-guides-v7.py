@@ -50,7 +50,7 @@ class Doc(SimpleDocTemplate):
    self.canv.bookmarkPage(key);self.canv.addOutlineEntry(f.getPlainText(),key,0,False)
 def furniture(c,d):
  c.saveState();c.setFillColor(BLUE);c.setFont("HI-Bold",9);c.drawString(M,H-26,"HÉRITAGE INTACT")
- c.setFont("HI",8);c.setFillColor(colors.HexColor("#526171"));c.drawRightString(W-M,H-26,"GUIDE PRATIQUE / SEPTEMBRE 2026")
+ c.setFont("HI",8);c.setFillColor(colors.HexColor("#526171"));c.drawRightString(W-M,H-26,"GUIDE PRATIQUE" if getattr(d,"sans_date",False) else "GUIDE PRATIQUE / SEPTEMBRE 2026")
  c.setStrokeColor(LINE);c.line(M,37,W-M,37)
  c.setFont("HI",7.4);c.drawString(M,25,"Information pédagogique générale - exemples fictifs - décisions à faire vérifier.")
  c.drawRightString(W-M,25,str(d.page));c.restoreState()
@@ -106,8 +106,10 @@ CAT=[
  ("upsell1","preparation-familiale","Mon simulateur + mon plan adapté","Choisir votre fiche. Relier les faits. Comparer les hypothèses. Suivre les démarches."),
  ("upsell2","assurance-vie","Mon guide assurance-vie","Retrouver la clause. Demander les informations. Suivre les vérifications."),
 ]
+ONLY=set(sys.argv[1:])
 manifest=[]
 for sku,slug,title,subtitle in CAT:
+ if ONLY and slug not in ONLY:continue
  guide=next(g for g in DATA["guides"] if g["sku"]==sku)
  docs=[d for d in DATA["documents"] if d["sku"]==sku]
  if sku=="front":docs=[]
@@ -168,6 +170,7 @@ for sku,slug,title,subtitle in CAT:
  story+=sources()
  file=OUT/(slug+".pdf")
  doc=Doc(str(file),pagesize=A4,rightMargin=M,leftMargin=M,topMargin=53,bottomMargin=52,title=title,author="Héritage Intact")
+ doc.sans_date=sku=="front"
  doc.build(story,onFirstPage=furniture,onLaterPages=furniture)
  reader=PdfReader(str(file))
  for i,page in enumerate(reader.pages,1):
