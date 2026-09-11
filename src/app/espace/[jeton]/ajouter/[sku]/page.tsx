@@ -151,7 +151,7 @@ export default async function AjouterPage({
           {(sku === "upsell1" || sku === "pack1") && <DemonstrationPack />}
           <BilanComplement sku={sku} possede={etat.possede} montant={devis} />
           <AvantageDemarrage promotion={devis.promotion} base={devis.avantRemise}/>
-          <ObjectionsComplement av={sku==="upsell2"}/>
+          <ObjectionsComplement av={sku==="upsell2"} dossier={sku==="bump"}/>
 
           {/* ⚠️ La garantie est réécrite ici plutôt que reprise de `Guarantee` :
               le texte partagé parle de la simulation et du simulateur, ce qui

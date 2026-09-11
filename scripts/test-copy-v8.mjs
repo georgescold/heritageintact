@@ -16,6 +16,7 @@ for(const key of ["j1","j2","j3","j4","j5","j6","j7"])ok(sequence.includes('cle:
 ok(sequence.includes("52 €"));ok(sequence.includes("cas fictif"));ok(!sequence.includes("Le prix ne disparaît pas ce soir"));
 const sortie=fs.readFileSync("src/components/SortieOffre.tsx","utf8");
 ok(sortie.includes('dossier=produit==="bump"'));ok(sortie.includes("Ce que vous risquez si vous fermez cette page"));ok(sortie.includes("Aucun achat sur ce clic"));
-const paiement=fs.readFileSync("src/components/CheckoutForm.tsx","utf8");
-ok(paiement.includes("selon l’étude")&&paiement.includes("honoraires")&&!paiement.includes("chaque rendez-vous est payant"));
+const paiement=fs.readFileSync("src/components/CheckoutForm.tsx","utf8"),faq=fs.readFileSync("src/components/ObjectionsComplement.tsx","utf8");
+ok(paiement.includes("Un rendez-vous supplémentaire peut-il coûter plus cher ?")&&paiement.includes("Pas automatiquement"));
+ok(faq.includes("dossier")&&faq.includes("Selon l’étude")&&!faq.includes("chaque rendez-vous est payant"));
 console.log(n+" contrôles copy V8 réussis : headline, calcul fictif, profils, CTA, liens chauds, preuve et droits. Aucun service externe.");

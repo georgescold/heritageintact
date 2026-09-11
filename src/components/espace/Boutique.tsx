@@ -32,7 +32,7 @@ const VITRINE: Partial<Record<ProductSku, {
   bump: {
     badge: "Avant votre rendez-vous",
     alerteTitre: "Une heure de rendez-vous ne rattrape pas le document resté dans un tiroir.",
-    alerteTexte: "Le notaire ne peut pas analyser ce que vous oubliez de signaler. Une date approximative ou un acte introuvable peut repousser la seule réponse recherchée, imposer un nouvel échange et, selon l’étude et la prestation demandée, ajouter des honoraires de consultation ou de recherche.",
+    alerteTexte: "Le notaire ne peut pas analyser ce que vous oubliez de signaler. Une date approximative ou un acte introuvable peut repousser la seule réponse recherchée et vous imposer de reprendre l’échange depuis le début.",
     resultatTitre: "Faites apparaître les manques avant qu’ils ne bloquent le rendez-vous.",
     resultatTexte: "Le Dossier Notaire transforme vos papiers et souvenirs en inventaire, questions et compte rendu. Il vous aide aussi à demander avant le rendez-vous ce qui est inclus, ce qui sera facturé et dans quel cas un devis est nécessaire.",
     points: [
@@ -117,6 +117,19 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
                     </li>
                   ))}
                 </ul>
+                {sku === "bump" && (
+                  <details className="mb-5 border border-grey-line bg-grey-bg p-3 text-[0.95rem]">
+                    <summary className="cursor-pointer font-bold text-blue">
+                      Un rendez-vous supplémentaire peut-il coûter plus cher ?
+                    </summary>
+                    <p className="mt-2 leading-relaxed">
+                      Pas automatiquement. Les échanges liés à un acte tarifé peuvent être inclus.
+                      Une consultation distincte, des recherches, un écrit ou un nouvel échange peuvent
+                      cependant être facturés selon l’étude. Demandez ce qui est inclus et si un devis
+                      sera nécessaire.
+                    </p>
+                  </details>
+                )}
                 <Link
                   className={`flex min-h-[54px] items-center justify-center px-4 py-3 text-center font-bold text-white no-underline ${plan ? "bg-orange" : "bg-blue"}`}
                   href={href}

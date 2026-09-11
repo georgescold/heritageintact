@@ -305,13 +305,24 @@ function Inner({
                   Ajouter {PRODUCTS.bump.name}
                 </span>
                 <span className="mt-1 block text-[0.95rem]">
-                  Une pièce manquante peut imposer un nouvel échange et, selon l’étude, des honoraires
-                  supplémentaires. Le Dossier Notaire réunit les documents, les questions et le coût
-                  à clarifier avant votre rendez-vous.
+                  Une pièce manquante peut laisser votre rendez-vous sans réponse et vous obliger à
+                  reprendre les échanges. Le Dossier Notaire réunit les documents et les questions
+                  à préparer avant votre rendez-vous.
                 </span>
               </span>
             </span>
           </label>
+          <details className="border border-grey-line bg-white p-3 text-[0.9rem]">
+            <summary className="cursor-pointer font-bold text-blue">
+              Un rendez-vous supplémentaire peut-il coûter plus cher ?
+            </summary>
+            <p className="mt-2 leading-relaxed">
+              Pas automatiquement. Les échanges liés à un acte tarifé peuvent être inclus. En revanche,
+              selon l’étude, une consultation distincte, des recherches, un écrit ou un rendez-vous
+              supplémentaire peuvent être facturés. Demandez avant le premier échange ce qui est inclus
+              et dans quel cas un devis sera établi.
+            </p>
+          </details>
         </div>
         <label className="flex items-start gap-3 text-[0.9rem] text-text-soft">
           <input
