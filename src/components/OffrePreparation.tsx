@@ -87,6 +87,7 @@ export async function OffrePreparation({
           <p className="font-bold uppercase tracking-wide text-orange-dark">Votre guide est acquis — passons à votre situation</p>
           <h1 className="my-3 text-[1.9rem] leading-tight sm:text-[2.35rem]">L’État appliquera les règles aux faits et aux actes réellement en place — pas à ce que vous pensiez avoir prévu.</h1>
           <p className="text-[1.08rem] leading-relaxed">Une donation oubliée, une mauvaise quote-part ou une clause non vérifiée peut déplacer fortement le résultat. Répondez à une question à la fois pour faire apparaître votre estimation, vos points de vigilance et l’ordre des vérifications à préparer.</p>
+          <p className="mt-3 text-[1.08rem] leading-relaxed">Votre estimation fait aussi apparaître le montant que vos proches devraient réunir. Ils auraient six mois pour le payer ; au-delà, des intérêts de retard puis une majoration s’ajoutent. Mieux vaut connaître ce chiffre aujourd’hui, pendant que vous pouvez encore préparer de quoi le régler, que le leur laisser découvrir chez le notaire.</p>
           <SimulationPlan verrouille jeton={acces?.jeton} demarrerOffre={demarrer}>{decision}</SimulationPlan>
         </div>
       </main>
@@ -108,6 +109,14 @@ export async function OffrePreparation({
         <p className="mb-3 text-[1.1rem] font-bold text-blue">{produit.name}</p>
         <p className="mb-6 border-l-4 border-orange bg-grey-bg p-4">{contexte.raison}</p>
         <p className="text-[1.2rem]">{texte?.promesse}</p>
+        {sku === "upsell2" && (
+          <section className="my-6 border-l-4 border-green bg-green-bg p-4">
+            <h2 className="mb-2 text-[1.25rem]">Pendant que la succession se règle, votre contrat, lui, peut déjà verser.</h2>
+            <p className="mb-2">Après un décès, les comptes sont bloqués, sauf pour certaines dépenses comme les obsèques, et les héritiers ont six mois pour payer les droits. Le capital d’une assurance-vie ne fait pas partie de la succession : l’assureur le verse directement aux bénéficiaires désignés, au plus tard un mois après avoir reçu les pièces demandées.</p>
+            <p className="font-bold">Encore faut-il que la clause désigne les personnes que vous voulez protéger aujourd’hui. Sinon, il sera versé selon l’ancienne clause, pas selon votre volonté.</p>
+            <p className="mt-2 text-sm text-text-soft">Articles L132-12 et L132-23-1 du Code des assurances. Ce rappel décrit ce que prévoit la loi ; ce n’est pas une recommandation de placement.</p>
+          </section>
+        )}
         <ComparatifDecision sku={sku} />
         {decision}
         <ValeurComplement av={sku === "upsell2"} />

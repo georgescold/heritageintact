@@ -54,10 +54,18 @@ Montrer la vraie fiche, puis l’exemple de question avant/après. Ne pas annonc
 ### Conclusion — conserver le geste vers le bouton
 « Si vous souhaitez mettre de l’ordre dans ces questions, le contenu et le prix sont indiqués sous cette vidéo. Cliquez sur le bouton pour découvrir la méthode. Votre première étape sera de clarifier votre situation, pas de prendre une décision irréversible. »
 
+### Après « Vous avez six mois » — le coût du délai *(ajout du 11 septembre 2026)*
+À insérer juste après la réplique du notaire. Elle transforme le « six mois » en délai de paiement vérifiable, au lieu d’un ultimatum de vente.
+
+« Six mois. C’est le délai pour déclarer la succession et payer les droits. Pas pour vendre la maison : pour payer. Et si la maison n’est pas vendue à temps ? Dès le septième mois, des intérêts de retard s’ajoutent chaque mois. Au-delà d’un an, la facture prend dix pour cent de plus. Le fisc peut accepter d’étaler le paiement… à condition d’apporter une garantie. Le plus souvent, une hypothèque sur un bien de la succession. Parfois, la maison elle-même. »
+
+Incrustation possible : « 0,20 % par mois dès le 7e mois · + 10 % à partir du 13e mois ». Dire les pourcentages à l’oral, pas de montant en euros tant que la comparaison chiffrée de l’ouverture n’est pas réalignée (§ 1). Hors mise en demeure ; décès en France métropolitaine.
+Sources : [paiement des droits de succession](https://www.service-public.gouv.fr/particuliers/vosdroits/F36432), [dépôt tardif de la déclaration](https://www.cnaf.notaires.fr/actualites/succession-et-depot-tardif-de-la-ds), [paiement fractionné et garanties](https://paris.notaires.fr/fr/actualites/paiement-fractionne-ou-differe-des-droits-de-succession-du-nouveau-compter-du-1er-fevrier-2024).
+
 ## 3. Contrôle du monteur
 - Retirer aussi les incrustations 82 194 → 13 989 et les économies garanties.
 - Supprimer le reproche « mes parents m’avaient oublié » et la gratitude conditionnée à l’achat.
-- Ne pas conserver « 6 mois » comme date limite universelle ou obligation automatique de vendre. Le délai fiscal usuel en cas de décès en France n’est pas un ultimatum de vente.
+- Garder « 6 mois » uniquement comme délai légal de déclaration et de paiement, jamais comme obligation de vendre. Ce qui coûte après ce délai, ce sont les intérêts de retard et la majoration (reprise ci-dessus), pas l’absence de vente.
 - Pas de faux témoignage, document de notaire reconstitué présenté comme réel, compteur commercial ou résultat promis.
 - Garder sous-titres, pauses et rythme calme. Faire écouter sans l’image pour vérifier qu’aucune phrase fausse ne subsiste.
 - Révision fiscale et juridique du montage final, puis seulement activer sa diffusion.

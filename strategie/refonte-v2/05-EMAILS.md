@@ -30,11 +30,11 @@ Ce que vous aimeriez transmettre ne tient pas seulement dans un montant. Il y a 
 
 Imaginez pouvoir leur dire : « J’ai commencé à préparer les choses. Voilà où sont les informations, voilà ce que je veux faire vérifier. » Pas une promesse de tout maîtriser. La fierté d’avoir fait un premier pas pour eux.
 
-C’est le point de départ d’Héritage Intact : faire le point, préparer, puis faire vérifier. La première étape vous aide à noter une priorité, les informations disponibles et vos premières questions.
+C’est le point de départ d’Héritage Intact : connaître les erreurs qui peuvent laisser vos proches seuls face aux questions et aux dates passées.
 
-Pas besoin d’être fiscaliste. Pas besoin de décider d’une donation. Et pas besoin de regarder des heures de vidéo : les huit étapes sont écrites.
+Pas besoin d’être fiscaliste. Pas besoin de décider d’une donation. Les 7 erreurs sont expliquées clairement et à l’écrit.
 
-Le prix hors avantage du guide est de 52 €, une seule fois. Ce soir, votre première avancée peut être une fiche commencée — un support que vous pourrez reprendre, plutôt qu’une nouvelle inquiétude laissée de côté.
+Le prix hors avantage du guide est de 52 €, une seule fois. Ce soir, vous pouvez commencer par reconnaître la première erreur, plutôt que laisser une nouvelle inquiétude de côté.
 
 CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /methode.
 
@@ -56,7 +56,7 @@ Une priorité. Ce que vous savez déjà. Ce qui reste à faire confirmer. Ensuit
 
 Vous n’achetez pas des règles secrètes : les sources officielles sont publiques. Vous achetez une organisation pour les aborder dans un ordre compréhensible et préparer vos questions.
 
-Si vous souhaitez arrêter de collectionner les onglets sans savoir quoi en faire, regardez les étapes du parcours. Le premier achat reste autonome : aucun pack n’est nécessaire pour le terminer.
+Si vous souhaitez arrêter de collectionner les onglets sans savoir quoi en faire, regardez les étapes du parcours. Le premier achat reste autonome : aucun complément n’est nécessaire pour le terminer.
 
 CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /methode.
 
@@ -70,15 +70,15 @@ Bonjour [Prénom],
 
 Cette question mérite de passer avant une économie d’impôt. Votre logement, vos dépenses, vos projets et les imprévus font partie de la préparation.
 
-Héritage Intact ne vous demande ni de donner, ni de signer, ni de modifier un contrat. Le parcours commence par ce que vous souhaitez préserver pour vous.
+Héritage Intact ne vous demande ni de donner, ni de signer, ni de modifier un contrat.
 
-Vous distinguez ensuite ce qui vous appartient, les questions de votre famille et les repères fiscaux à faire vérifier. Comprendre n’est pas s’engager.
+Les 7 erreurs vous montrent les sujets qui méritent une vérification avant toute décision. Comprendre n’est pas s’engager.
 
-Tout est expliqué à l’écrit, avec les guides PDF et des exercices. Si une information manque, vous notez « à vérifier ». Si vous avez besoin de temps, vous reprenez à votre rythme.
+Tout est expliqué à l’écrit. Vous pouvez lire chaque erreur à votre rythme et noter ce qui doit être vérifié pour votre situation.
 
-Au tarif hors avantage de 52 €, vous disposez des huit étapes et des supports de base. La garantie commerciale de 30 jours vous permet de découvrir le parcours et de demander le remboursement selon les conditions présentées.
+Au tarif hors avantage de 52 €, vous accédez aux 7 erreurs. La garantie commerciale de 30 jours vous permet de les découvrir et de demander le remboursement selon les conditions présentées.
 
-Vous pensez plutôt prendre rendez-vous directement chez le notaire ? Vous pouvez le faire dès maintenant. Le guide Les 7 erreurs vous aide à préparer l’échange : formuler vos priorités, retrouver les documents et distinguer vos questions des décisions à faire vérifier. Vous gardez la main sur la suite.
+Vous pensez plutôt prendre rendez-vous directement chez le notaire ? Vous pouvez le faire dès maintenant. Les 7 erreurs vous aident à préparer l’échange, à hiérarchiser vos questions et à arriver avec les bonnes informations. Vous gardez la main sur la suite.
 
 CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commander.
 
@@ -88,19 +88,19 @@ Objet : « Encore une formation… et après ? »
 
 Bonjour [Prénom],
 
-Une belle page ne prépare pas votre transmission. Et acheter des dizaines de vidéos pour les laisser de côté ne vous avancerait pas davantage. Vous avez raison d’exiger autre chose : savoir ce que vous pourrez faire dès l’ouverture du guide.
+Une belle page ne prépare pas votre transmission. Et acheter des dizaines de vidéos pour les laisser de côté ne vous avancerait pas davantage. Vous avez raison d’exiger autre chose : savoir exactement ce que vous allez découvrir.
 
-Imaginez la différence entre « je ne sais pas par où commencer » et « je veux protéger notre logement ; voici la pièce à retrouver et la question à poser ». C’est le premier pas proposé dans la Méthode.
+Les 7 erreurs mettent des mots sur les oublis, les dates et les suppositions qui peuvent peser sur votre famille.
 
-La présentation ci-dessous montre cette différence avec un exemple fictif. Elle explique les étapes et ce que vous pourrez préparer : votre situation, les points sensibles et vos questions au professionnel.
+La présentation ci-dessous montre leur impact avec un cas chiffré et des hypothèses visibles.
 
-Vous n’avez pas besoin de connaître déjà les règles. Le parcours de base est le même pour tous : votre première fiche et les sept erreurs, expliquées à l’écrit avec des exercices. Aucun tournage pédagogique n’est à attendre.
+Vous n’avez pas besoin de connaître déjà les règles. Les sept erreurs sont expliquées à l’écrit, dans un ordre clair. Aucun tournage pédagogique n’est à attendre.
 
-Le prix hors avantage du guide est de 52 €, une seule fois. Vous ouvrez votre première fiche, puis les sept erreurs expliquées, avec un exemple et un exercice à chaque étape. Les PDF sont déjà prêts. Vous n’achetez ni une promesse de tournage ni un accès vide.
+Le prix hors avantage du guide est de 52 €, une seule fois. Vous achetez l’accès aux 7 erreurs, pas une promesse de tournage ni un espace vide.
 
-Votre premier achat est autonome. Aucun pack n’est nécessaire pour le terminer ; la garantie commerciale de 30 jours vous permet de découvrir la pédagogie à votre rythme.
+Votre premier achat est autonome ; la garantie commerciale de 30 jours vous permet de découvrir le contenu à votre rythme.
 
-Ce soir, vous pouvez encore garder tout cela dans votre tête. Ou commencer à poser ce que vous voulez préserver pour vous et pour vos proches.
+Ce soir, vous pouvez encore garder ces questions dans votre tête. Ou découvrir les erreurs pendant que vous pouvez encore agir.
 
 CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /methode.
 
@@ -118,7 +118,7 @@ Le problème n’est pas votre intelligence. C’est une information détachée 
 
 Notre adversaire, c’est ce silence qui rassure à tort : la maison est payée, le contrat est signé, donc tout serait réglé. Pendant ce temps, les questions restent sans réponse. Le notaire peut vous conseiller ; encore faut-il remettre le sujet sur la table.
 
-La méthode remet trois choses dans l’ordre : faire le point sur votre situation, préparer les informations, puis faire vérifier les décisions.
+Le guide remet trois choses dans l’ordre : faire le point sur votre situation, préparer les informations, puis faire vérifier les décisions.
 
 Une question précise vaut mieux qu’une règle appliquée à l’aveugle. C’est pourquoi les repères de donation et d’assurance-vie sont présentés avec leurs distinctions, et non comme des ordres d’agir.
 
@@ -126,23 +126,25 @@ Ne laissez pas un article de plus rejoindre les autres sans suite. Ouvrez les 7 
 
 CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /methode.
 
-## J6 — Closing : valeur, risque et première action
+## J6 — Closing : coût de l’attente, valeur et première action
 
-Objet : 9 600 € d’écart pour la même maison : le seuil à regarder
+Objet : Six mois pour payer. Ensuite, la facture grossit chaque mois.
 
 Bonjour [Prénom],
 
-Remettre une préparation à plus tard ne change pas seulement la date de votre rendez-vous. Si un projet de transmission vous concerne, l’attente peut aussi en modifier les conditions fiscales.
+Le jour où une succession s’ouvre, un délai commence. Les héritiers ont six mois pour déclarer la succession et payer les droits. En euros, pas en parts de maison.
 
-Au tarif hors avantage de 52 €, en paiement unique, vous recevez huit étapes lisibles, des actions guidées et les supports de base à imprimer. Votre première tâche : noter votre priorité et les informations à retrouver.
+Si l’épargne ne suffit pas, il faut trouver l’argent ailleurs : emprunter, ou vendre. Et une maison ne se vend pas toujours en six mois.
 
-Exemple fictif : un parent seul donne à un enfant la nue-propriété d’une maison de 480 000 €, avec usufruit viager conservé, aucun don antérieur et l’abattement de 100 000 € disponible. À 70 ans : environ 35 794 € de droits. À 71 ans : environ 45 394 €. Écart : 9 600 €, hors frais. Même bien, même enfant ; seul l’âge au moment de donner change. Le calcul et ses sources officielles sont détaillés sur la présentation.
+Passé ce délai, le fisc n’attend pas sans contrepartie. Dès le 7e mois, des intérêts de retard de 0,20 % s’ajoutent chaque mois. À partir du 13e mois, une majoration de 10 % tombe en plus. Dans un cas fictif où les droits atteignent 82 194 €, c’est 164 € de plus chaque mois, puis 8 219 € d’un coup.
 
-Le parcours ne remplace pas une consultation individuelle. Il ne calcule pas une facture successorale certifiée. Si une succession est déjà ouverte ou qu’un délai court, contactez directement un professionnel.
+Le paiement peut être étalé. Mais il faut le demander avec la déclaration, payer des intérêts et apporter une garantie, le plus souvent une hypothèque sur un bien de la succession. Pour garder la maison de leurs parents, vos enfants pourraient devoir la donner en garantie à l’État.
 
-Pour commencer, les huit étapes et les supports de base suffisent. Vous trouverez une consigne, un exemple et un contrôle de compréhension à chaque étape. Si vous souhaitez ensuite organiser davantage vos pièces ou approfondir un sujet, les compléments restent facultatifs et les achats inclus déjà payés sont déduits.
+Rien de cela ne se règle le jour du décès. Tout se prépare avant, pendant que vous êtes là pour décider.
 
-La garantie commerciale de 30 jours reste applicable. Si cette manière d’avancer vous convient, ouvrez votre accès et commencez par la fiche. Pas toute votre transmission à régler : une première action utile.
+Au tarif hors avantage de 52 €, en paiement unique, les 7 erreurs vous montrent ce qui pèse sur cette facture et ce qu’il faut faire vérifier pendant qu’il est encore temps. Pour une succession déjà ouverte ou un délai qui court, contactez directement un professionnel.
+
+La garantie commerciale de 30 jours reste applicable. Vous pouvez ouvrir votre accès ce soir et commencer par la première erreur.
 
 CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commander.
 
@@ -154,17 +156,19 @@ Bonjour [Prénom],
 
 Il serait facile de fermer cet email et de se dire : « Je m’en occuperai après les vacances. » Puis après les fêtes. Puis l’année prochaine. La maison serait toujours là. Les questions aussi. Et certaines dates, elles, auraient avancé.
 
-Prenez rendez-vous avec votre notaire si nécessaire. En attendant cet échange, vous pouvez déjà ouvrir votre guide et préparer une priorité, les documents utiles et vos trois questions.
+Prenez rendez-vous avec votre notaire si nécessaire. En attendant cet échange, vous pouvez déjà découvrir les erreurs qui concernent la maison, les donations, l’assurance-vie et les documents oubliés.
 
-Le guide Les 7 erreurs, à 52 € hors avantage, donne accès au parcours écrit et aux supports de base. Votre première fiche vous aidera à séparer une priorité, une information connue et une question à vérifier.
+Les 7 erreurs sont accessibles à 52 € hors avantage et expliquées à l’écrit dans un ordre clair.
 
-Imaginez simplement la différence : au prochain échange en famille, vous ne dites plus seulement « il faudrait qu’on s’en occupe ». Vous pouvez ouvrir ce que vous avez commencé.
+Imaginez simplement la différence : au prochain échange en famille, vous ne dites plus seulement « il faudrait qu’on s’en occupe ». Vous savez déjà quels sujets ne doivent plus être repoussés.
+
+Gardez aussi ce chiffre en tête : six mois. C’est le temps dont vos enfants disposeront pour payer les droits. Chaque mois de retard ensuite leur coûtera des intérêts, puis une majoration.
 
 Une donation reportée peut repousser le renouvellement d’un abattement utilisé. Un projet de versement en assurance-vie mérite aussi d’être examiné avant son exécution, notamment autour de 70 ans. Les effets dépendent de votre situation : commencer par les vérifier permet de ne pas décider à l’aveugle.
 
-Une réduction commerciale ne change pas vos droits fiscaux. Sa date et son montant, lorsqu’elle est encore active pour vous, figurent en bas de cet email. Les dates de votre situation méritent une vérification distincte. Si un seuil est proche, contactez directement votre notaire sans attendre de finir la Méthode. Sinon, vous pouvez choisir dès maintenant votre première séance de préparation.
+Une réduction commerciale ne change pas vos droits fiscaux. Sa date et son montant, lorsqu’elle est encore active pour vous, figurent en bas de cet email. Si un seuil est proche, contactez directement votre notaire.
 
-Vous n’avez pas besoin de régler toute votre succession ce soir. Mais vous pouvez décider de ne pas repousser encore le premier pas. Ouvrez les 7 erreurs maintenant. Posez votre priorité, retrouvez une information, écrivez votre première question. Faites-le pendant que vous pouvez encore en parler ensemble.
+Vous n’avez pas besoin de régler toute votre succession ce soir. Mais vous pouvez décider de ne pas repousser encore le premier pas. Ouvrez les 7 erreurs maintenant, pendant que vous pouvez encore en parler ensemble.
 
 CTA commercial : Commencer les 7 erreurs · [prix recalculé à l’envoi]. Destination personnelle : /reprendre/[jeton] si l’offre existe ; sinon /commander.
 
@@ -192,7 +196,7 @@ Bouton : « Préparer la suite · [montant actuel] », vers la confirmation de l
 
 - Consentement marketing explicite, absence de désinscription, accès non révoqué et première fiche terminée.
 - Premier complément à partir de J10 ; rappel à partir de J17 et au moins sept jours après le premier envoi réel ; arrêt à J35. Deux envois maximum, pas de cascade après refus ou plainte.
-- L’offre immédiate est sur le site juste après qualification et avant la remise visible du guide ; d’autres points d’entrée se trouvent après la première fiche et dans les étapes maison/contrat. Ces emails tardifs servent la reprise, pas un faux rappel de la réduction de 48 heures déjà terminée.
+- L’offre immédiate est sur le site juste après qualification et livraison ; d’autres points d’entrée se trouvent après la première fiche et dans les étapes maison/contrat. Ces emails tardifs servent la reprise, pas un faux rappel de la réduction de 48 heures déjà terminée.
 - Un seul message commercial éligible par passage, priorité au service, plafonds, clés anti-doublon, suppressions sur rebonds/plaintes et désinscription.
 - Activation séparée : EMAIL_MARKETING_ACTIVE et EMAIL_LTV_ACTIVE. Configuration, DNS et boîtes réelles restent à tester avant activation.
 
