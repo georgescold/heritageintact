@@ -9,6 +9,7 @@ import { DemonstrationPack } from "./DemonstrationPack";
 import { MesurerAchat } from "./MetaPixel";
 import { CHANGEMENTS, conseilOffre } from "@/lib/positionnement";
 import { profilDeCommande } from "@/lib/db";
+import { possessions } from "@/lib/espace";
 import { redirect } from "next/navigation";
 import { acceptUpsell } from "@/app/actions";
 import { Header, Footer } from "./Chrome";
@@ -21,6 +22,7 @@ import type { Ecran } from "@/lib/qualification";
 import { SimulationPlan } from "./simulateur/SimulationPlan";
 import { demarrerOffrePlan } from "@/app/profil";
 import { ComparatifDecision } from "./ComparatifDecision";
+import { PlanCheckoutChoice } from "./PlanCheckoutChoice";
 export async function OffrePreparation({
   id,
   sku,
@@ -42,6 +44,10 @@ export async function OffrePreparation({
   if (!etape.afficher) redirect(etape.versOu);
   const contexte = conseilOffre(profil);
   const d = await devisPour(order.email, sku);
+  const acquis = sku === "upsell1" ? await possessions(order.email) : null;
+  const dPackTestament = sku === "upsell1" && !acquis?.has("backend4")
+    ? await devisPour(order.email, "pack5")
+    : null;
   const fin = sku === "upsell1" ? `/bienvenue?o=${encodeURIComponent(order.id)}&retour=1` : etape.suivant;
   if (d.dejaPossede) redirect(fin);
   const produit = PRODUCTS[sku],
@@ -56,11 +62,15 @@ export async function OffrePreparation({
     {sku === "upsell1" && (d.montant < d.total ? <p className="mb-2"><span className="line-through">Prix habituel : {euros(d.total)}</span> · <strong className="text-red">Votre prix actuel : {euros(d.montant)}</strong></p> : <p className="mb-2 font-bold">Paiement unique : {euros(d.montant)}</p>)}
     {sku === "upsell2" && <p className="mb-2 font-bold">Paiement unique : {euros(d.montant)}</p>}
     <AvantageDemarrage promotion={d.promotion} base={d.total}/>
-    <form action={action} className="mt-6">
-      <input type="hidden" name="montantAffiche" value={d.montant} />
-      <Button>{sku === "upsell1" ? `Déverrouiller mon plan adapté · ${euros(d.montant)}` : `Vérifier mon assurance-vie · ${euros(d.montant)}`}</Button>
-      <p className="mt-3 text-sm text-text-soft">Paiement unique sur votre carte enregistrée, uniquement si vous confirmez. Garantie commerciale de 30 jours selon les CGV. Aucun abonnement.</p>
-    </form>
+    {sku === "upsell1" ? (
+      <PlanCheckoutChoice action={action} planPrice={d.montant} bundlePrice={dPackTestament?.montant} />
+    ) : (
+      <form action={action} className="mt-6">
+        <input type="hidden" name="montantAffiche" value={d.montant} />
+        <Button>{`Vérifier mon assurance-vie · ${euros(d.montant)}`}</Button>
+        <p className="mt-3 text-sm text-text-soft">Paiement unique sur votre carte enregistrée, uniquement si vous confirmez. Garantie commerciale de 30 jours selon les CGV. Aucun abonnement.</p>
+      </form>
+    )}
     <p className="mt-4 text-sm"><Link href={fin}>Non merci, continuer sans ce produit</Link></p>
   </section>;
   if (sku === "upsell1") return (

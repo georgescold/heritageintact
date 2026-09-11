@@ -1,5 +1,5 @@
 import type { ProductSku } from "./config";
-export type GuideUtilisation = { sku: "front"|"bump"|"upsell1"|"upsell2"; titre: string; resultat: string; seances: string[][] };
+export type GuideUtilisation = { sku: "front"|"bump"|"upsell1"|"upsell2"|"backend4"; titre: string; resultat: string; seances: string[][] };
 export const GUIDES_UTILISATION: GuideUtilisation[] = [
   {
     "sku": "front",
@@ -110,6 +110,31 @@ export const GUIDES_UTILISATION: GuideUtilisation[] = [
         "Adaptez le courrier de demande d’informations, puis utilisez le canal sécurisé habituel de l’assureur. Conservez une copie, notez la date et classez la réponse avec le contrat correspondant. Si une modification est envisagée, faites vérifier sa cohérence avec le professionnel compétent avant de décider.",
         "Vous distinguez la demande envoyée, la réponse reçue et les points encore ouverts.",
         "lettre-modification-clause"
+      ]
+    ]
+  },
+  {
+    "sku": "backend4",
+    "titre": "Dossier Testament : clarifier avant de faire formaliser",
+    "resultat": "Un projet compréhensible, ses contradictions visibles et un brief à remettre au notaire.",
+    "seances": [
+      [
+        "1. Vérifiez si le sujet vous concerne réellement",
+        "Cochez uniquement les situations présentes dans votre vie. Retrouvez ensuite les anciens actes, clauses et titres cités. Si vous ne savez pas si un document existe, écrivez « à rechercher » au lieu de répondre non.",
+        "Vous savez quelle volonté ou quel document justifie le rendez-vous.",
+        "diagnostic-testament"
+      ],
+      [
+        "2. Écrivez vos intentions sans jouer au juriste",
+        "Complétez la carte des volontés avec vos mots. Pour chacune, indiquez la personne, le bien ou l’objectif concerné et votre raison. Passez ensuite au contrôle de cohérence : contrat, donation, propriété et testament antérieur restent sur des lignes séparées.",
+        "Vous distinguez vos souhaits des mécanismes qui pourraient leur donner un effet.",
+        "carte-volontes-testament"
+      ],
+      [
+        "3. Faites transformer le projet en solution valable",
+        "Remettez le brief au notaire et utilisez la liste de questions. Demandez la forme adaptée, les limites, le coût complet, la conservation et la mise à jour. Ne recopiez ni ne signez les feuilles du dossier comme testament.",
+        "Vous repartez avec une réponse professionnelle, une version identifiable et une prochaine date de revue.",
+        "brief-notaire-testament"
       ]
     ]
   }

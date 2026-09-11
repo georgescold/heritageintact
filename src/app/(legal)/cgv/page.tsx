@@ -28,7 +28,7 @@ export default function CGV() {
             </li>
           ))}
       </ul>
-      <p>Chaque produit est vendu séparément. Le Dossier notaire à 17 € est une option non précochée. « Mon plan adapté à ma situation » inclut l’outil de simulation qui le génère, le résultat indicatif, les hypothèses et les supports de préparation correspondants. Le guide assurance-vie est un achat distinct.</p>
+      <p>Chaque produit est vendu séparément, sauf offre groupée expressément présentée avant confirmation. Le Dossier notaire à 17 € est une option non précochée. « Mon plan adapté à ma situation » inclut l’outil de simulation qui le génère, le résultat indicatif, les hypothèses et les supports de préparation correspondants. Le guide assurance-vie est un achat distinct. Le Dossier Testament coûte 47 € seul ; lorsqu’il est proposé à la fin du questionnaire du Plan, il peut être ajouté pour 29 €, option non précochée, soit une économie de 18 €.</p>
       <p>
         Paiements uniques, sans abonnement. Des réductions personnelles à paliers peuvent s’appliquer selon les <a href="/conditions-offres">conditions des avantages de démarrage</a>. Le prix et sa date de fin sont affichés ; un changement avant paiement nécessite une nouvelle confirmation. Les prix
         sont en euros, toutes taxes comprises. {LEGAL.vatNotice}
@@ -79,6 +79,7 @@ export default function CGV() {
         conseiller habilité. Les exemples chiffrés sont illustratifs. Le client demeure seul
         responsable des décisions prises.
       </p>
+      <p>Le Dossier Testament est exclusivement préparatoire. Ses feuilles ne constituent pas un testament, ne doivent pas être recopiées ou signées comme tel et ne remplacent ni la rédaction, ni la vérification, ni la formalisation par le professionnel compétent.</p>
 
       <h2>8. Données personnelles</h2>
       <p>Voir la politique de confidentialité.</p>

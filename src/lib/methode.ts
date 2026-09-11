@@ -38,6 +38,7 @@ import { SimulateurPapier } from "@/content/documents/simulateur-papier";
 import { TableauBordFamilial } from "@/content/documents/tableau-bord-familial";
 import { TroisClausesBeneficiaires } from "@/content/documents/trois-clauses-beneficiaires";
 import { TroisPoches } from "@/content/documents/trois-poches";
+import { BriefNotaireTestament, CarteVolontesTestament, CoherenceTestament, DiagnosticTestament, QuestionsTestament, SuiviTestament } from "@/content/documents/dossier-testament";
 
 export type EtapeMethode = {
   cle: string;
@@ -329,6 +330,12 @@ export const DOCUMENTS: DocumentImprimable[] = [
     ordre: 33,
     corps: LettreModificationClause,
   },
+  { cle: "diagnostic-testament", titre: "Mon diagnostic testament", sku: "backend4", ordre: 40, corps: DiagnosticTestament },
+  { cle: "carte-volontes-testament", titre: "Ma carte des volontés", sku: "backend4", ordre: 41, corps: CarteVolontesTestament },
+  { cle: "coherence-testament", titre: "Le contrôle de cohérence", sku: "backend4", ordre: 42, corps: CoherenceTestament },
+  { cle: "brief-notaire-testament", titre: "Mon brief pour le notaire", sku: "backend4", ordre: 43, corps: BriefNotaireTestament },
+  { cle: "questions-testament", titre: "Les questions de validation", sku: "backend4", ordre: 44, corps: QuestionsTestament },
+  { cle: "suivi-testament", titre: "Conservation et mise à jour", sku: "backend4", ordre: 45, corps: SuiviTestament },
 ];
 
 export function etapeParNumero(n: number): EtapeMethode | null {

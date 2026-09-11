@@ -14,6 +14,7 @@ const SUPPORTS: [ProductSku, string][] = [
   ["upsell1", "Fiches familiales et suivi des démarches"],
   ["backend1", "Atelier de simulation pédagogique"],
   ["upsell2", "Vérifications des contrats d’assurance-vie"],
+  ["backend4", "Dossier Testament : volontés, cohérence et brief notaire"],
 ];
 export function bilanSupports(sku: ProductSku, possede: Set<ProductSku>) {
   const cible = composants(sku);

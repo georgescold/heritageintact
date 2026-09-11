@@ -199,6 +199,28 @@ export const EDITORIAL_PRODUITS = {
   suite: "Votre clause peut être claire alors que la maison, les donations passées ou le prochain rendez-vous restent sans ordre ni dossier. Si l’un de ces maillons manque encore, vos proches pourront toujours se retrouver face à des informations dispersées et des décisions jamais reliées entre elles.",
   suiteResultat: "Votre espace retire automatiquement les produits déjà achetés et vous montre uniquement ce qui manque encore : le plan adapté, le Dossier Notaire ou aucun complément si votre préparation est complète.",
   suiteCta: "Vérifier ce qu’il me reste à préparer"
+ },
+ backend4: {
+  ouverture: "Le pire conflit n’est pas toujours causé par l’argent. Il peut commencer par quatre proches certains d’avoir entendu quatre versions différentes de votre volonté.",
+  histoire: [
+   "Élise a toujours dit que sa nièce garderait un objet de famille et qu’une part aiderait une association. Ses enfants connaissent l’idée générale, mais aucun ne sait si elle concernait un bien précis, une somme ou seulement un souhait symbolique. Un ancien testament existe peut-être dans un tiroir. Une assurance-vie désigne encore une autre personne. Tant qu’Élise peut expliquer, tout semble clair ; le jour où elle ne le pourra plus, chaque souvenir sincère pourra contredire le suivant.",
+   "Le Dossier Testament ne vous vend pas une formule magique à recopier. Il vous aide à séparer vos volontés, les faits qui les entourent, les documents déjà signés et les questions que seul un professionnel peut trancher. Vous arrivez ainsi au rendez-vous avec un projet compréhensible, prêt à être vérifié puis formalisé dans une forme réellement valable."
+  ],
+  apprendreTitre: "Ce qu’une conversation familiale ne peut pas sécuriser",
+  apprendre: ["Identifier ce que la loi organiserait en l’absence de disposition valable et les personnes dont les droits doivent être protégés.", "Distinguer une volonté personnelle, une clause d’assurance-vie, une donation et une disposition testamentaire afin de ne pas croire que l’une corrige automatiquement l’autre.", "Préparer un brief complet, les questions de validité, le lieu de conservation et les événements qui imposeront une mise à jour."],
+  adresseTitre: "Ce dossier est utile dès qu’une volonté importante mérite mieux qu’un souvenir",
+  adresse: ["Vous souhaitez protéger une personne, attribuer un bien précis ou soutenir une association.", "Votre famille est recomposée, sans enfant, vulnérable ou marquée par une relation difficile.", "Un ancien testament, une donation ou une clause d’assurance-vie existe déjà et vous ne savez pas si l’ensemble reste cohérent.", "Vous voulez préparer le rendez-vous sans acheter un faux modèle juridique prêt à signer."],
+  essentielTitre: "N’écrivez pas le droit : préparez les faits que le droit devra traduire",
+  essentiel: "Commencez par le diagnostic, puis écrivez vos intentions en langage courant. Reliez chaque souhait aux personnes, aux biens et aux documents existants. Utilisez ensuite le brief et les questions pour demander au notaire ce qui est possible, quelle forme est adaptée, quel coût sera facturé et où la version valable sera conservée.",
+  parcoursTitre: "De la volonté racontée au projet prêt à faire formaliser",
+  limite: "Aucune feuille de ce dossier n’est un testament. Ne recopiez ni ne signez ces pages comme tel. La rédaction, la validité, la capacité, les droits réservataires et les effets doivent être vérifiés par un notaire ou, selon la situation, un avocat.",
+  acquis: "Vous savez ce que vous voulez protéger, quels documents peuvent contredire cette volonté, quelles questions poser et comment suivre la version finalement formalisée.",
+  sortieLabel: "APRÈS LE DOSSIER TESTAMENT",
+  sortieTitre: "Vos volontés sont clarifiées. Il reste à vérifier qu’elles s’accordent avec toute votre transmission.",
+  suiteLabel: "Le piège d’un testament préparé isolément : oublier le contrat ou la donation qui suit une autre logique.",
+  suite: "Un testament n’ouvre pas votre contrat d’assurance-vie, ne reconstitue pas vos donations passées et ne décide pas l’ordre de toutes vos démarches. Une volonté claire peut donc encore rester en contradiction avec un document distinct.",
+  suiteResultat: "Revenez dans votre espace : il masque ce que vous possédez déjà et vous montre uniquement le prochain maillon utile à votre situation.",
+  suiteCta: "Vérifier la cohérence de ma préparation"
  }
 } as const;
 

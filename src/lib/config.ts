@@ -42,6 +42,7 @@ export type ProductSku =
   | "pack2"
   | "pack3"
   | "pack4"
+  | "pack5"
   | "backend1"
   | "backend2"
   | "backend3"
@@ -71,10 +72,11 @@ export const PRODUCTS: Record<ProductSku, Product> = {
   pack2: produit("pack2", "Préparer ma transmission — ancien pack", 197, false),
   pack3: produit("pack3", "Préparation + assurance-vie — ancien pack", 247, false),
   pack4: produit("pack4", "Assurance-vie + dossier — ancien pack", 84, false),
+  pack5: produit("pack5", "Mon plan adapté + Dossier Testament", 326),
   backend1: produit("backend1", "Mon atelier de simulation", 0, false),
   backend2: produit("backend2", "Préparer une éventuelle perte d’autonomie", 97, false),
   backend3: produit("backend3", "Le Classeur Héritage Intact", 67, false),
-  backend4: produit("backend4", "Préparer ses questions sur le testament", 47, false),
+  backend4: produit("backend4", "Dossier Testament", 47),
 };
 export const INCLUS_DANS: Partial<Record<ProductSku, ProductSku[]>> = {
   upsell1: ["backend1"],
@@ -82,6 +84,7 @@ export const INCLUS_DANS: Partial<Record<ProductSku, ProductSku[]>> = {
   pack2: ["upsell1", "bump"],
   pack3: ["upsell1", "upsell2", "bump"],
   pack4: ["upsell2", "bump"],
+  pack5: ["upsell1", "backend4"],
 };
 export function composants(sku: ProductSku): Set<ProductSku> {
   const resultat = new Set<ProductSku>([sku]);
@@ -131,6 +134,27 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
       "Suivi des réponses et de la vérification professionnelle",
     ],
   },
+  backend4: {
+    promesse:
+      "Transformez des volontés parfois seulement dites à voix haute en un projet clair à faire vérifier et formaliser par un notaire.",
+    contenu: [
+      "Diagnostic des situations où un testament mérite d’être étudié",
+      "Carte de vos volontés, personnes et biens concernés",
+      "Contrôle des contradictions avec donations et assurance-vie",
+      "Brief préparatoire à remettre au notaire — ce document n’est pas un testament",
+      "Questions de validation, dépôt, conservation et mise à jour",
+      "Registre personnel des versions et événements à surveiller",
+    ],
+  },
+  pack5: {
+    promesse:
+      "Obtenez votre plan adapté puis préparez, dans le même parcours, les volontés qui devront être vérifiées et formalisées.",
+    contenu: [
+      "Tout le contenu de Mon plan adapté à ma situation",
+      "Le Dossier Testament complet",
+      "Une économie de 18 € sur le Dossier Testament lorsqu’il est ajouté à la fin du questionnaire",
+    ],
+  },
   pack1: {
     promesse:
       "Réunissez votre préparation familiale et les points à vérifier sur vos contrats d’assurance-vie.",
@@ -143,7 +167,7 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
   },
 };
 export const REMISE_LIGNE_DUPLIQUEE = 0; // Compatibilité des anciennes pages, aucun ancrage fictif.
-export const SKU_TUNNEL_UNIQUEMENT: ProductSku[] = ["pack1", "pack2", "pack3", "pack4"];
+export const SKU_TUNNEL_UNIQUEMENT: ProductSku[] = ["pack1", "pack2", "pack3", "pack4", "pack5"];
 export const urlEspace = (jeton: string) => `${SITE_URL}/espace/${jeton}`;
 export const VARIANTES = { "/": "Présentation", "/lp-questions": "Orientation" };
 export const CTA = {

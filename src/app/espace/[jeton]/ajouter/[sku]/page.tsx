@@ -128,7 +128,7 @@ export default async function AjouterPage({
 
           {err && <BandeauEchec motif={err} />}
 
-          <h1 className="mb-3 text-[1.5rem] leading-snug sm:text-[1.8rem]">{sku==="bump"?"Arrivez avec vos questions. Repartez avec une trace des réponses.":conseilOffre(sku==="upsell2"?{...etat.profil,objectif:"assurance-vie",av:"O"}:etat.profil).titre}</h1>
+          <h1 className="mb-3 text-[1.5rem] leading-snug sm:text-[1.8rem]">{sku==="bump"?"Arrivez avec vos questions. Repartez avec une trace des réponses.":sku==="backend4"?"Vos proches ne devraient jamais avoir à deviner quelle était votre dernière volonté.":conseilOffre(sku==="upsell2"?{...etat.profil,objectif:"assurance-vie",av:"O"}:etat.profil).titre}</h1>
           <p className="mb-3 font-bold text-orange-dark">{produit.name}</p>
           <p className="mb-6 text-[1.15rem]">{resumeProduit(sku)}</p>
 
@@ -143,18 +143,18 @@ export default async function AjouterPage({
                   ))}
                 </ul>
                 <p className="mt-3 text-[0.95rem] text-text-soft">
-                  Tout est disponible immédiatement dans votre espace, sur cette même page. Il
-                  n&apos;y a ni mot de passe, ni compte à créer.
+                  Tout est disponible immédiatement dans l’onglet « Mon dossier » de votre espace.
+                  Il n&apos;y a ni mot de passe, ni compte à créer.
                 </p>
               </Panel>
             </div>
           )}
 
-          {sku!=="bump"&&<ValeurComplement av={sku==="upsell2"} complet={sku==="pack1"}/>}
+          {sku!=="bump"&&sku!=="backend4"&&<ValeurComplement av={sku==="upsell2"} complet={sku==="pack1"}/>}
           {(sku === "upsell1" || sku === "pack1") && <DemonstrationPack />}
           <BilanComplement sku={sku} possede={etat.possede} montant={devis} />
           <AvantageDemarrage promotion={devis.promotion} base={devis.avantRemise}/>
-          <ObjectionsComplement av={sku==="upsell2"} dossier={sku==="bump"}/>
+          <ObjectionsComplement av={sku==="upsell2"} dossier={sku==="bump"} testament={sku==="backend4"}/>
 
           {/* ⚠️ La garantie est réécrite ici plutôt que reprise de `Guarantee` :
               le texte partagé parle de la simulation et du simulateur, ce qui

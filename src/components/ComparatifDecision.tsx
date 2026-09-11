@@ -37,10 +37,28 @@ const COMPARATIFS = {
     ],
     chute: "Le contrat n’exécutera ni vos souvenirs ni vos conversations familiales. Il exécutera ce qui est effectivement enregistré le jour où vous ne pourrez plus l’expliquer.",
   },
+  backend4: {
+    titre: "La différence entre une volonté seulement racontée — et un projet préparé pour être formalisé",
+    risqueTitre: "Ceux qui pensent que leurs proches sauront",
+    risqueIntro: "Ils ont souvent parlé de leurs souhaits avec sincérité. Mais une conversation ne dit pas toujours quelle version est la dernière, ni ce qui peut juridiquement être appliqué.",
+    risques: [
+      "Ils laissent plusieurs proches porter des souvenirs différents de la même volonté.",
+      "Ils découvrent trop tard qu’un testament, une donation ou une clause d’assurance-vie ne produisent pas les mêmes effets.",
+      "Ils risquent de faire préparer dans l’urgence un texte imprécis, incomplet ou incompatible avec les droits protégés.",
+    ],
+    qualiteTitre: "Ceux qui préparent avant de faire formaliser",
+    qualiteIntro: "Ils ne cherchent pas à jouer au juriste. Ils clarifient leurs intentions, rassemblent les faits et demandent au professionnel de transformer le projet en solution valable.",
+    qualites: [
+      "Ils distinguent un souhait personnel, une question juridique et l’acte finalement retenu.",
+      "Ils rendent visibles les personnes, biens et contradictions à examiner.",
+      "Ils savent où la version valable sera conservée et quand la refaire vérifier.",
+    ],
+    chute: "Parler apaise aujourd’hui. Préparer la formalisation évite demain que vos proches aient à débattre de ce que vous vouliez dire.",
+  },
 } as const;
 
 export function ComparatifDecision({ sku }: { sku: ProductSku }) {
-  if (sku !== "bump" && sku !== "upsell2") return null;
+  if (sku !== "bump" && sku !== "upsell2" && sku !== "backend4") return null;
   const contenu = COMPARATIFS[sku];
 
   return (

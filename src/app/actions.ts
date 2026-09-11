@@ -339,7 +339,14 @@ export async function chargeUpsell(
     pack2: ["upsell1", "bump"],
     pack3: ["upsell1", "upsell2", "bump"],
     pack4: ["upsell2", "bump"],
+    pack5: ["upsell1", "backend4"],
   };
+  if (sku === "pack5" && possede.has("backend4")) {
+    return {
+      ok: false,
+      error: "Le Dossier Testament est déjà dans votre espace. Rien n'a été débité.",
+    };
+  }
   if (COMPOSANTS[sku]?.every((c) => possede.has(c))) {
     return {
       ok: false,
@@ -472,10 +479,13 @@ export async function acceptUpsell(
   next: string,
   formData?: FormData,
 ): Promise<void> {
+  const skuFacture = sku === "upsell1" && formData?.get("ajouterTestament") === "oui"
+    ? "pack5"
+    : sku;
   const montantAffiche = formData?.has("montantAffiche")
     ? Number(formData.get("montantAffiche"))
     : undefined;
-  const result = await chargeUpsell(orderId, sku, montantAffiche);
+  const result = await chargeUpsell(orderId, skuFacture, montantAffiche);
 
   // Hors fenêtre : on n'affiche pas un échec, on emmène vers le seul endroit
   // où cet achat reste possible — l'espace et son écran de confirmation. Sans

@@ -40,7 +40,7 @@ def rich(t,style="body"):
 def box(title,body):
  t=Table([[P(title,"h3")],[P(body)]],colWidths=[CW-22])
  t.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,-1),GREY),("BOX",(0,0),(-1,-1),.6,LINE),("LEFTPADDING",(0,0),(-1,-1),11),("RIGHTPADDING",(0,0),(-1,-1),11),("TOPPADDING",(0,0),(-1,0),4),("BOTTOMPADDING",(0,-1),(-1,-1),8)]))
- return [KeepTogether([t]),Spacer(1,10)]
+ return [KeepTogether([t])]
 def lexicon_box(entry):
  rows=[
   [rich("<b>"+html.escape(clean(entry["terme"]))+"</b>","h3")],
@@ -106,6 +106,8 @@ def sources():
  rich('<b>Assurance-vie : fiscalité au décès</b><br/><link href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer" color="#12365E">impots.gouv.fr - Bénéficiaire d’une assurance-vie</link>'),
  rich('<b>Succession et famille</b><br/><link href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2529" color="#12365E">Service Public - Règles de succession</link>'),
  rich('<b>Réserve héréditaire et quotité disponible</b><br/><link href="https://www.service-public.gouv.fr/particuliers/vosdroits/F36739/1_0?idFicheParent=F2529" color="#12365E">Service Public - Parts protégées et testament</link>'),
+ rich('<b>Forme du testament olographe</b><br/><link href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006434066/" color="#12365E">Légifrance - Code civil, article 970</link>'),
+ rich('<b>Retrouver l’existence et le lieu de dépôt d’un testament</b><br/><link href="https://www.service-public.fr/particuliers/vosdroits/F15009" color="#12365E">Service Public - FCDDV</link>'),
  rich('<b>Don d’argent et présent d’usage</b><br/><link href="https://www.service-public.fr/particuliers/vosdroits/F36656" color="#12365E">Service Public - Don d’une somme d’argent</link>'),
  rich('<b>Anticiper une éventuelle incapacité</b><br/><link href="https://www.service-public.fr/particuliers/vosdroits/F16670" color="#12365E">Service Public - Mandat de protection future</link>'),
  rich('<b>Maison transmise à plusieurs</b><br/><link href="https://www.service-public.fr/particuliers/vosdroits/F1296" color="#12365E">Service Public - Indivision entre les héritiers</link>'),
@@ -118,10 +120,20 @@ def article_box(reference,comprendre,attention,url):
   [rich("<b>"+html.escape(clean(reference))+"</b>","h3")],
   [rich("<b>Ce qu’il faut y chercher :</b> "+html.escape(clean(comprendre)),"check")],
   [rich("<b>Attention :</b> "+html.escape(clean(attention)),"small")],
-  [rich('<link href="'+url+'" color="#12365E"><b>Lire le texte à jour sur Légifrance</b></link>',"small")],
+  [rich('<link href="'+url+'" color="#12365E"><b>Consulter la source officielle à jour</b></link>',"small")],
  ]
  t=Table(rows,colWidths=[CW-22])
  t.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,-1),GREY),("BOX",(0,0),(-1,-1),.6,LINE),("LINEBEFORE",(0,0),(0,-1),3,BLUE),("LEFTPADDING",(0,0),(-1,-1),11),("RIGHTPADDING",(0,0),(-1,-1),11),("TOPPADDING",(0,0),(-1,-1),5),("BOTTOMPADDING",(0,0),(-1,-1),5)]))
+ return [KeepTogether([t]),Spacer(1,10)]
+def product_bridge(title,body,cta):
+ rows=[
+  [P(title,"h3")],
+  [P(body)],
+  [rich('<link href="https://www.heritageintact.fr/espace" color="#B74716"><b>'+html.escape(clean(cta))+'</b></link>',"check")],
+  [P("Le lien ouvre votre espace. Il ne déclenche aucun paiement ; le contenu et le prix sont présentés avant toute confirmation.","small")],
+ ]
+ t=Table(rows,colWidths=[CW-22])
+ t.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,-1),GREY),("BOX",(0,0),(-1,-1),.8,ORANGE),("LINEBEFORE",(0,0),(0,-1),3,ORANGE),("LEFTPADDING",(0,0),(-1,-1),11),("RIGHTPADDING",(0,0),(-1,-1),11),("TOPPADDING",(0,0),(-1,-1),5),("BOTTOMPADDING",(0,0),(-1,-1),5)]))
  return [KeepTogether([t]),Spacer(1,10)]
 def creer_lexique_offert():
  slug="lexique-succession";title="Lexique détaillé de la succession"
@@ -142,6 +154,12 @@ def creer_lexique_offert():
    ("Code civil, articles 1075 à 1080 - donation-partage","Le cadre permettant d’organiser de son vivant la distribution et le partage de biens entre héritiers présomptifs.","Les effets sur les valeurs et l’équilibre familial dépendent de la rédaction et des conditions de l’acte.","https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136339/"),
    ("Code civil, articles 843 à 863 - rapport des libéralités","Quand une libéralité reçue par un héritier doit être prise en compte au partage et selon quelles règles de valeur.","Le rapport civil et le rappel fiscal de quinze ans sont deux mécanismes différents.","https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150166/"),
   ]),
+  ("TESTAMENT : FORME, LIMITES ET CONSERVATION",[
+   ("Code civil, article 970 - testament olographe","Les conditions de forme : le testament olographe doit être écrit en entier, daté et signé de la main du testateur.","Une feuille préparatoire imprimée ou un modèle prérempli ne devient pas un testament valable parce qu’il est signé.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006434066/"),
+   ("Code civil, articles 971 à 975 - testament authentique","Les règles de réception et de formalisation du testament authentique par le notaire.","La forme adaptée dépend de la situation ; ce lexique ne permet pas de choisir ni rédiger l’acte à votre place.","https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150244/"),
+   ("Code civil, articles 912 et 913 - réserve et quotité disponible","Les limites que les parts protégées de certains héritiers peuvent imposer aux volontés testamentaires.","Nommer une personne ou un bien ne suffit pas à garantir que la disposition pourra être exécutée telle qu’imaginée.","https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006150544"),
+   ("Fichier central des dispositions de dernières volontés - FCDDV","Ce que permet la recherche : savoir qu’un testament existe et auprès de quel notaire il est déposé, sans accéder à son contenu.","Un testament introuvable ou une version mal identifiée peut créer une fausse sécurité. Demandez comment l’existence et l’original seront conservés.","https://www.service-public.fr/particuliers/vosdroits/F15009"),
+  ]),
   ("PROPRIÉTÉ, DÉMEMBREMENT ET INDIVISION",[
    ("Code civil, articles 578 à 624 - usufruit","Les droits et obligations attachés à la jouissance d’un bien dont une autre personne détient la propriété.","Usufruit ne signifie ni pleine propriété ni liberté de vendre seul le bien entier.","https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136246"),
    ("Code général des impôts, article 669 - valeur fiscale de l’usufruit et de la nue-propriété","Le barème fiscal fondé sur l’âge de l’usufruitier pour certaines liquidations de droits.","Ce barème fiscal ne répond pas, à lui seul, aux questions de pouvoir, de financement ou d’opportunité familiale.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006310173/"),
@@ -160,9 +178,16 @@ def creer_lexique_offert():
    ("Code général des impôts, article 990 I - prélèvement sur certains capitaux décès","Le prélèvement applicable à certains capitaux selon la date des primes et la part revenant à chaque bénéficiaire.","Les régimes des articles 757 B et 990 I ne se résument pas à « avant ou après 70 ans » sans examiner les dates et conditions du contrat.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288653"),
   ]),
  ]
- for label,articles in lois:
-  story+=[PageBreak()]+head("ARTICLES DE LOI À LIRE",label)
+ for index,(label,articles) in enumerate(lois):
+  if index in (0,3,4):story+=[PageBreak()]
+  story+=head("ARTICLES DE LOI À LIRE",label)
   for article in articles:story+=article_box(*article)
+  if label=="PROTÉGER LES PARTS ET COMPRENDRE LES DONATIONS":
+   story+=product_bridge("Lire seul les règles - ou les relier à votre propre situation","Vous pouvez rechercher chaque article, réunir vos actes et construire vous-même l’ordre des vérifications. Si vous voulez que vos réponses soient reliées dans un parcours unique, Mon plan adapté à ma situation produit une estimation expliquée et un ordre de préparation.","Découvrir Mon plan adapté à ma situation")
+  elif label=="TESTAMENT : FORME, LIMITES ET CONSERVATION":
+   story+=product_bridge("Lire les formes - ou préparer un rendez-vous qui part de vos volontés","Vous pouvez lire les textes officiels, inventorier seul vos souhaits et préparer vos questions. Le Dossier Testament vous donne le diagnostic, la carte des personnes et des biens, le contrôle des contradictions avec donations et assurance-vie, le brief non juridique à remettre au notaire, les questions de validité et le registre de conservation. Vous savez ainsi ce que vous voulez protéger, ce qui manque encore et ce que le professionnel doit transformer en solution valable. Il ne constitue jamais un testament prêt à signer.","Découvrir le Dossier Testament")
+  elif label=="ASSURANCE-VIE : LE CONTRAT, LA CLAUSE ET LA FISCALITÉ":
+   story+=product_bridge("Lire les articles - ou obtenir les preuves détenues par l’assureur","Les textes expliquent le cadre, mais ils ne révèlent ni votre clause enregistrée ni l’historique de vos versements. Le guide assurance-vie fournit la grille et le courrier pour demander les informations puis préparer leur vérification.","Découvrir le guide assurance-vie")
  story+=head("AVANT VOTRE RENDEZ-VOUS","Transformez les mots en questions")+[
   P("Cochez uniquement ce qui reste flou. Le but n’est pas d’arriver avec une conclusion juridique, mais avec les faits et les pièces qui permettront au professionnel de répondre."),
   P("[ ] Qui est propriétaire de chaque bien et selon quel acte ?"),
@@ -186,6 +211,7 @@ CAT=[
  ("bump","dossier-notaire","Dossier Notaire","Partir de l’exemple. Rassembler les pièces utiles. Conserver les réponses."),
  ("upsell1","preparation-familiale","Mon plan adapté à ma situation","Choisir votre fiche. Relier les faits. Comparer les hypothèses. Suivre les démarches."),
  ("upsell2","assurance-vie","Mon guide assurance-vie","Retrouver la clause. Demander les informations. Suivre les vérifications."),
+ ("backend4","dossier-testament","Dossier Testament","Clarifier vos volontés. Détecter les contradictions. Préparer leur formalisation."),
 ]
 ONLY=set(sys.argv[1:])
 manifest=[]
@@ -197,7 +223,11 @@ for sku,slug,title,subtitle in CAT:
  docs=[d for d in DATA["documents"] if d["sku"]==sku]
  if sku=="front":docs=[]
  ed=DATA["editorial"][sku]
- cover_label={"front":"VOTRE GUIDE / PRODUIT DE BASE","bump":"VOTRE DOSSIER PRATIQUE","upsell1":"VOTRE PLAN ADAPTÉ À VOTRE SITUATION","upsell2":"VOTRE GUIDE ASSURANCE-VIE"}[sku]
+ if sku=="backend4":
+  S["body"]=ParagraphStyle("bodytestament",parent=S["body"],fontSize=10.8,leading=14.2,spaceAfter=7)
+  S["check"]=ParagraphStyle("checktestament",parent=S["check"],fontSize=9.8,leading=12.5,spaceAfter=5)
+  S["small"]=ParagraphStyle("smalltestament",parent=S["small"],fontSize=8.4,leading=10.5,spaceAfter=5)
+ cover_label={"front":"VOTRE GUIDE / PRODUIT DE BASE","bump":"VOTRE DOSSIER PRATIQUE","upsell1":"VOTRE PLAN ADAPTÉ À VOTRE SITUATION","upsell2":"VOTRE GUIDE ASSURANCE-VIE","backend4":"VOTRE DOSSIER TESTAMENT"}[sku]
  story=head(cover_label,title)
  story+=[P(ed["ouverture"],"h2")]+[P(p) for p in ed["histoire"]]
  story+=[P(ed.get("apprendreTitre","Ce que vous allez apprendre"),"h2")]

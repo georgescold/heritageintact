@@ -14,6 +14,7 @@ const CONFIRMATION_AJOUT: Partial<Record<ProductSku, string>> = {
   bump: "Votre Dossier Notaire est maintenant accessible dans Mon dossier.",
   upsell1: "Votre plan adapté à votre situation est maintenant accessible dans Mon dossier.",
   upsell2: "Votre guide Assurance-vie est maintenant accessible dans Mon dossier.",
+  backend4: "Votre Dossier Testament est maintenant accessible dans Mon dossier.",
 };
 function estProduitAjoute(produit?: string): produit is ProductSku {
   return Boolean(produit && produit in CONFIRMATION_AJOUT);
