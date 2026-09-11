@@ -20,6 +20,7 @@ import { etapeTunnel } from "@/lib/tunnel";
 import type { Ecran } from "@/lib/qualification";
 import { SimulationPlan } from "./simulateur/SimulationPlan";
 import { demarrerOffrePlan } from "@/app/profil";
+import { ComparatifDecision } from "./ComparatifDecision";
 export async function OffrePreparation({
   id,
   sku,
@@ -93,6 +94,7 @@ export async function OffrePreparation({
         <p className="mb-3 text-[1.1rem] font-bold text-blue">{produit.name}</p>
         <p className="mb-6 border-l-4 border-orange bg-grey-bg p-4">{contexte.raison}</p>
         <p className="text-[1.2rem]">{texte?.promesse}</p>
+        <ComparatifDecision sku={sku} />
         {decision}
         <ValeurComplement av={sku === "upsell2"} />
         <ObjectionsComplement av={sku==="upsell2"} />

@@ -20,6 +20,7 @@ import { SortieOffre } from "@/components/SortieOffre";
 import { ObjectionsComplement } from "@/components/ObjectionsComplement";
 import { conseilOffre } from "@/lib/positionnement";
 import { ValeurComplement } from "@/components/ValeurComplement";
+import { ComparatifDecision } from "@/components/ComparatifDecision";
 
 export const metadata: Metadata = {
   title: "Ajouter à mon espace",
@@ -130,6 +131,8 @@ export default async function AjouterPage({
           <h1 className="mb-3 text-[1.5rem] leading-snug sm:text-[1.8rem]">{sku==="bump"?"Arrivez avec vos questions. Repartez avec une trace des réponses.":conseilOffre(sku==="upsell2"?{...etat.profil,objectif:"assurance-vie",av:"O"}:etat.profil).titre}</h1>
           <p className="mb-3 font-bold text-orange-dark">{produit.name}</p>
           <p className="mb-6 text-[1.15rem]">{resumeProduit(sku)}</p>
+
+          <ComparatifDecision sku={sku} />
 
           {avantages.length > 0 && (
             <div className="mb-6">
