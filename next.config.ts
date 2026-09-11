@@ -81,6 +81,30 @@ const nextConfig: NextConfig = {
           { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
         ],
       },
+      /**
+       * LES AUTRES ADRESSES QUI PORTENT UNE CLÉ, depuis l'arrivée du Pixel Meta.
+       *
+       * Le pixel des pages publiques transmet aussi la page PRÉCÉDENTE (le
+       * referrer). Sans cet en-tête, passer de l'une de ces pages à une page
+       * publique enverrait à Meta l'identifiant de commande, le jeton de reprise
+       * ou l'identifiant d'inscrit. Voir lib/meta-pixel.ts.
+       */
+      {
+        source: "/:chemin(resultat-plan|simulateur-seul|desinscription)",
+        headers: [
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "Cache-Control", value: "private, no-store, max-age=0" },
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+        ],
+      },
+      ...["/reprendre/:path*", "/commande/confirmation"].map((source) => ({
+        source,
+        headers: [
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "Cache-Control", value: "private, no-store, max-age=0" },
+          { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+        ],
+      })),
     ];
   },
 

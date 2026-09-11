@@ -26,6 +26,15 @@ export default function Confidentialite() {
           ne sont jamais transmis à Trustpilot.
         </li>
         <li>
+          Pixel Meta : sur les pages publiques du site (accueil, présentation, commande et pages
+          d’information), le Pixel Meta est chargé dans votre navigateur. Il transmet à Meta l’adresse
+          de la page consultée, des informations techniques sur votre navigateur et votre appareil
+          (dont l’adresse IP) et les identifiants de ses propres cookies, afin de mesurer et
+          d’améliorer nos publicités. Il n’est jamais chargé dans votre espace client, sur les pages
+          qui suivent un paiement ni sur le lien de désinscription, et il ne reçoit ni vos réponses
+          familiales ni vos liens privés.
+        </li>
+        <li>
           Lorsque la mesure publicitaire est activée et que vous l&apos;autorisez : achats confirmés,
           montant, date, identifiant technique d&apos;événement et empreinte de votre adresse email
           transmis à Meta pour mesurer et améliorer les publicités. L&apos;empreinte peut être
@@ -72,7 +81,7 @@ export default function Confidentialite() {
 
       <h2>Durée de conservation</h2>
       <p>Les réponses au questionnaire et les fiches enregistrées sont conservées pour permettre la reprise de votre préparation tant que votre espace reste actif, ou jusqu’à votre demande d’effacement auprès de {CONTACT_EMAIL}. Pour retirer aussi la copie locale de votre questionnaire, effacez les données du site dans votre navigateur.</p>
-      <p id="mesure-publicitaire">Votre préférence publicitaire est mémorisée pendant 180 jours dans ce navigateur par un cookie de première partie, « hi_publicite », qui contient une clé aléatoire, pas votre adresse email. Sans accord explicite et valable, aucune transmission publicitaire n’est effectuée. Le dispositif n’utilise pas de Pixel Meta dans votre navigateur.</p>
+      <p id="mesure-publicitaire">Votre préférence publicitaire est mémorisée pendant 180 jours dans ce navigateur par un cookie de première partie, « hi_publicite », qui contient une clé aléatoire, pas votre adresse email. Ce choix encadre la transmission de vos achats confirmés à Meta décrite ci-dessus : sans accord explicite et valable, elle n’est pas effectuée. Il ne s’applique pas encore au Pixel Meta des pages publiques, décrit dans la liste des données collectées.</p>
       <p>Vous pouvez refuser, fermer le bandeau sans accepter, ou retirer votre accord depuis « Mes préférences publicitaires », en bas de page. Le retrait arrête les transmissions futures depuis ce navigateur ; il ne rappelle pas les données déjà envoyées. Les autres navigateurs ont leurs propres préférences. Pour exercer vos droits sur les données déjà transmises, contactez-nous.</p>
       <p>La preuve de votre choix (date, version et texte présenté) et le journal technique des transmissions sont conservés au maximum 13 mois, avec purge planifiée. Ni vos réponses familiales ni vos liens privés ne figurent dans les données transmises à Meta. Le consentement publicitaire est distinct de celui des emails commerciaux.</p>
       <p>
