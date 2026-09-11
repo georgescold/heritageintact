@@ -14,7 +14,7 @@ const CLE = process.env.RESEND_API_KEY;
 
 /** L’acceptation fournisseur ne prouve pas le placement en boîte de réception. */
 export const EXPEDITEUR =
-  process.env.EMAIL_FROM ?? "Loys — Héritage Intact <loys@heritageintact.fr>";
+  process.env.EMAIL_FROM ?? "Héritage Intact <contact@heritageintact.fr>";
 
 /** Lien de désinscription propre à chaque inscrit. L'identifiant suffit : il est aléatoire. */
 export const lienDesinscription = (leadId: string) => `${SITE_URL}/desinscription?id=${leadId}`;
