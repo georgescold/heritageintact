@@ -24,8 +24,8 @@ const checks = {
   cronProtege: (env.CRON_SECRET?.length ?? 0) >= 32,
   pilotageProtege: (env.PILOTAGE_SECRET?.length ?? 0) >= 32,
   vslLocaleIntegree:
-    fs.existsSync("public/videos/vsl-heritage-intact.mp4") &&
-    fs.existsSync("public/img/vsl-heritage-intact-thumbnail-v3.jpg"),
+    fs.existsSync("public/videos/vsl-heritage-intact-v2.mp4") &&
+    fs.existsSync("public/img/vsl-heritage-intact-thumbnail-v4.webp"),
   marketingDeclareActif: env.EMAIL_MARKETING_ACTIVE === "true",
   ltvDeclareActive: env.EMAIL_LTV_ACTIVE === "true",
   interfaceConsentementDeclareeActive: env.NEXT_PUBLIC_META_SERVER_MEASUREMENT === "true",

@@ -85,8 +85,8 @@ export function VslPresentation() {
           ref={videoRef}
           className="h-full w-full"
           playsInline
-          preload="metadata"
-          poster="/img/vsl-heritage-intact-thumbnail-v3.jpg"
+          preload="none"
+          poster="/img/vsl-heritage-intact-thumbnail-v4.webp"
           aria-label="Les 7 erreurs qui offrent votre héritage à l’État"
           controlsList="nodownload noplaybackrate noremoteplayback"
           disablePictureInPicture
@@ -123,7 +123,7 @@ export function VslPresentation() {
             }
           }}
         >
-          <source src="/videos/vsl-heritage-intact.mp4" type="video/mp4" />
+          <source src="/videos/vsl-heritage-intact-v2.mp4" type="video/mp4" />
           Votre navigateur ne permet pas de lire cette vidéo.
         </video>
 

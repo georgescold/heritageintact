@@ -3,7 +3,6 @@ import { MesureFunnel } from "@/components/MesureFunnel";
 import { cookies } from "next/headers";
 import { Header, Footer, TestModeBanner } from "@/components/Chrome";
 import { CheckoutForm } from "@/components/CheckoutForm";
-import { PixelEvent } from "@/components/MetaPixel";
 import { Guarantee } from "@/components/ui";
 import { isTestMode, stripeEnModeTest } from "@/lib/config";
 import { devisFront } from "@/lib/prix-front";
@@ -21,13 +20,12 @@ export default async function Page() {
   return (
     <>
       <MesureFunnel evenement="vue_commande" />
-      <PixelEvent name="InitiateCheckout" params={{ value: prix, currency: "EUR" }} />
       {(isTestMode || stripeEnModeTest) && <TestModeBanner stripeReel={stripeEnModeTest} />}
       <Header minimal />
       <main className="wrap-wide flex-1 py-8">
         <h1 className="mb-3 text-[1.9rem]">Obtenez le guide qui vous évitera de commettre les 7 erreurs qui offrent votre héritage à l’État sans le savoir</h1>
         <p className="mb-6 text-[1.1rem] font-bold text-red">
-          Préparez votre succession en toute tranquillité en comprenant parfaitement ce que vous faites.
+          Et préparez votre succession en toute tranquillité en comprenant parfaitement ce que vous faites.
         </p>
         <AvantageDemarrage promotion={d.promotion} base={d.total} />
         <CheckoutForm defaults={defaults} testMode={isTestMode} prixFront={prix} />

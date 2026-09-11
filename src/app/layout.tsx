@@ -5,6 +5,8 @@ import { MetaPixel } from "@/components/MetaPixel";
 import { EphemeralStorageBanner } from "@/components/Chrome";
 import { BRAND, stockageEphemere } from "@/lib/config";
 
+const mesurePublicitaireActive = process.env.NEXT_PUBLIC_META_SERVER_MEASUREMENT === "true";
+
 export const metadata: Metadata = {
   title: {
     default: BRAND,
@@ -27,7 +29,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Garde-fou : voir `stockageEphemere` dans lib/config.ts. */}
         {stockageEphemere && <EphemeralStorageBanner />}
         {children}
-        <MetaPixel />
+        {mesurePublicitaireActive && <MetaPixel />}
       </body>
     </html>
   );
