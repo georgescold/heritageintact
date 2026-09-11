@@ -46,7 +46,7 @@ export default async function Page({
         {nouveau === "1" && etat.possede.has("front") && (
           <section role="status" className="mt-5 border-2 border-green bg-green-bg p-5">
             <p className="text-[1.2rem] font-bold text-green">✓ Votre paiement a été accepté</p>
-            <p className="mt-2">Votre guide <strong>Les 7 erreurs qui offrent votre héritage à l’État</strong> est prêt. Vous pouvez le télécharger immédiatement ci-dessous.</p>
+            <p className="mt-2">Votre guide <strong>Les 7 erreurs qui offrent votre héritage à l’État</strong> est prêt. Vous pouvez le télécharger immédiatement ci-dessous. Une fois cela fait, lisez les éléments qui suivent pour compléter votre situation.</p>
           </section>
         )}
         <nav
