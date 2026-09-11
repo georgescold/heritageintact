@@ -43,6 +43,14 @@ try {
  await second.route("**/*",r=>new URL(r.request().url()).hostname==="127.0.0.1"?r.continue():r.abort());
  const other=await second.newPage();await other.goto(base+"/simulateur");
  await other.getByText("Votre plan personnalisé est prêt.",{exact:true}).waitFor();
+ const downloadPromise=other.waitForEvent("download");
+ await other.getByRole("button",{name:"Télécharger mon plan personnalisé PDF",exact:true}).click();
+ const download=await downloadPromise;assert.equal(await download.failure(),null);
+ // Reprendre une réponse ne rend pas indisponible le dernier PDF finalisé.
+ await other.getByRole("button",{name:"Relire ou modifier mes réponses",exact:true}).click();
+ await other.locator('input[type="number"]').fill("66");
+ await other.getByRole("button",{name:"Continuer",exact:true}).click();
+ await other.getByRole("heading",{name:/couple/}).waitFor();
  const pdf=await second.request.get(base+"/pdf/plan-personnalise");assert.equal(pdf.status(),200);assert.equal((await pdf.body()).subarray(0,5).toString(),"%PDF-");
  assert.equal((await second.request.get("http://127.0.0.1:3312/espace/aaaaaaaaaaaaaaaaaaaa/pdf/plan-personnalise")).status(),403);
  await page.goto(base+"/document/inventaire");await page.getByRole("button",{name:"Enregistrer ma fiche",exact:true}).waitFor();

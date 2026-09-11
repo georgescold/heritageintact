@@ -36,16 +36,19 @@ export async function OffrePreparation({
 }) {
   const order = id ? await getOrder(id) : null;
   if (!order || order.status !== "paid") redirect("/commande");
-  const profil = await profilDeCommande(order.id);
-  const acces = await accesParEmail(order.email) ?? await assurerAcces({email:order.email,firstName:order.firstName});
-  const etape = await etapeTunnel(ecran, order.id, {
-    bumpPresent: order.items.some((i) => i.sku === "bump"),
-  });
+  const [profil, accesExistant, etape] = await Promise.all([
+    profilDeCommande(order.id),
+    accesParEmail(order.email),
+    etapeTunnel(ecran, order.id, { bumpPresent: order.items.some((i) => i.sku === "bump") }),
+  ]);
+  const acces = accesExistant ?? await assurerAcces({email:order.email,firstName:order.firstName});
   void alternative;
   if (!etape.afficher) redirect(etape.versOu);
   const contexte = conseilOffre(profil);
-  const d = await devisPour(order.email, sku);
-  const acquis = sku === "upsell1" ? await possessions(order.email) : null;
+  const [d, acquis] = await Promise.all([
+    devisPour(order.email, sku),
+    sku === "upsell1" ? possessions(order.email) : Promise.resolve(null),
+  ]);
   const dPackTestament = sku === "upsell1" && !acquis?.has("backend4")
     ? await devisPour(order.email, "pack5")
     : null;

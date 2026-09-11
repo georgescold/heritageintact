@@ -96,7 +96,10 @@ export function SimulationPlan({ verrouille, children, demarrerOffre, jeton }: {
         let saved = remote?.value;
         try {
           const local = JSON.parse(localStorage.getItem(cleLocale) ?? "null");
-          if (local && local.version === (remote?.version ?? 0)) saved = local;
+          if (local && local.version === (remote?.version ?? 0)) {
+            // Conserver la saisie locale, mais pas un ancien état de validation.
+            saved = { ...local, termine: remote ? Boolean(remote.value?.termine) : Boolean(local.termine) };
+          }
           if (!saved && active) {
             const legacy = JSON.parse(localStorage.getItem(CLE_SIMULATION) ?? "null");
             if (legacy?.age) setAnciennes(legacy);
@@ -129,6 +132,8 @@ export function SimulationPlan({ verrouille, children, demarrerOffre, jeton }: {
       const result = await response.json();
       if (!response.ok) throw new Error(result.error);
       version.current = result.version;
+      // Écrire la version complète avant toute navigation/actualisation React.
+      try { localStorage.setItem(cleLocale, JSON.stringify({ ...result.value, version: result.version })); } catch {}
       setSauvegarde("Réponses enregistrées dans votre espace.");
       return true;
     } catch (error) { setErreur((error as Error).message); setSauvegarde(""); return false; }
@@ -193,7 +198,7 @@ export function SimulationPlan({ verrouille, children, demarrerOffre, jeton }: {
         <div className="absolute inset-0 flex items-center justify-center bg-white/70 p-5 text-center font-bold text-blue">Votre résultat complet est prêt : déverrouillez votre estimation et votre plan adapté</div>
       </div>
       {children}
-    </> : <><Resultat d={d} s={s} />{jeton && <ul className="mt-5"><TelechargerPlanPersonnalise jeton={jeton}/></ul>}</>}
+    </> : <><Resultat d={d} s={s} />{jeton && <ul className="mt-5"><TelechargerPlanPersonnalise jeton={jeton} donnees={d}/></ul>}</>}
     <button type="button" onClick={() => { setTermine(false); setIndex(0); }} className="mt-5 min-h-[48px] underline">Relire ou modifier mes réponses</button>
     {jeton && <p className="mt-3"><Link href={`/espace/${jeton}?vue=dossier`}>Retrouver tous mes documents</Link></p>}
   </section>;

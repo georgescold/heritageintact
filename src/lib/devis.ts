@@ -5,13 +5,16 @@ import { PRODUCTS, type ProductSku } from "./config";
 
 /** Devis exclusivement calculé sur les encaissements enregistrés, jamais sur l’URL. */
 export async function devisPour(email: string, sku: ProductSku) {
-  const commandes = await commandesPayeesParEmail(email);
+  const promotionPlan = sku === "upsell1" || sku === "pack5";
+  const [commandes, offre] = await Promise.all([
+    commandesPayeesParEmail(email),
+    promotionPlan ? promotionParEmail(email, "suite") : Promise.resolve(null),
+  ]);
   const base = devis(
     sku,
     commandes.flatMap((c) => c.items),
   );
-  const promotionPlan = sku === "upsell1" || sku === "pack5";
-  const promotion = palier(promotionPlan ? await promotionParEmail(email, "suite") : null);
+  const promotion = palier(offre);
   const montantPromotionnel = sku === "pack5" && typeof promotion.montantFixe === "number"
     ? promotion.montantFixe + 29
     : promotion.montantFixe;

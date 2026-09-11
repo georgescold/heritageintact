@@ -44,7 +44,11 @@ export async function PUT(request: Request, context: Context) {
     if (access.cle === "simulation") {
       const donnees = validerDonneesSimulation(value.donnees);
       if (!donnees || !Number.isInteger(value.index) || value.index < 0 || value.index > 100 || typeof value.termine !== "boolean") throw new Error("invalid");
-      validated = { donnees: { ...donnees, handicap: 0 }, index: value.index, termine: value.termine };
+      const previous = await readDelivery(access.email, access.cle);
+      const prior = previous?.value as { donnees?: unknown; termine?: boolean; dernierPlan?: unknown } | undefined;
+      // Une modification ne doit pas supprimer le dernier plan terminé du dossier.
+      const dernierPlan = value.termine ? donnees : prior?.termine ? prior.donnees : prior?.dernierPlan;
+      validated = { donnees: { ...donnees, handicap: 0 }, index: value.index, termine: value.termine, ...(dernierPlan ? { dernierPlan } : {}) };
     } else if (Array.isArray(value) || Object.keys(value).length > 500 || Object.values(value).some(v => typeof v !== "string" || v.length > 5000)) throw new Error("invalid");
     const record = await writeDelivery(access.email, access.cle, validated, version);
     return record ? Response.json(record, { headers }) : Response.json({ error: "Ce document a changé sur un autre écran. Rechargez la page pour reprendre la dernière version." }, { status: 409, headers });

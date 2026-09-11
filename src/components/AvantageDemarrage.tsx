@@ -16,15 +16,13 @@ export function AvantageDemarrage({
     Math.max(0, Date.parse(promotion.fin ?? "") - promotion.serveurMaintenant) || 0,
   );
   useEffect(() => {
-    const depart = performance.now();
     let rafraichi = false;
     function maj() {
       const duree =
         Math.max(
           0,
           Date.parse(promotion.fin ?? "") -
-            promotion.serveurMaintenant -
-            (performance.now() - depart),
+            Date.now(),
         ) || 0;
       setReste(duree);
       if (promotion.fin && duree === 0 && !rafraichi) {
@@ -34,7 +32,13 @@ export function AvantageDemarrage({
     }
     maj();
     const interval = setInterval(maj, 1000);
-    return () => clearInterval(interval);
+    window.addEventListener("pageshow", maj);
+    document.addEventListener("visibilitychange", maj);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("pageshow", maj);
+      document.removeEventListener("visibilitychange", maj);
+    };
   }, [promotion.fin, promotion.serveurMaintenant, router]);
   if (!promotion.pourcent || !promotion.fin || base <= 0) return null;
   const secondes = Math.ceil(reste / 1000);

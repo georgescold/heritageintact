@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import type { DonneesSimulation } from "@/lib/simulateur/donnees";
 
-export function TelechargerPlanPersonnalise({ jeton }: { jeton: string }) {
+export function TelechargerPlanPersonnalise({ jeton, donnees }: { jeton: string; donnees?: DonneesSimulation }) {
   const [attente, setAttente] = useState(false);
   const [erreur, setErreur] = useState("");
 
@@ -13,7 +14,10 @@ export function TelechargerPlanPersonnalise({ jeton }: { jeton: string }) {
     setAttente(true);
     try {
       const reponse = await fetch(`/espace/${jeton}/pdf/plan-personnalise`, {
-        method: "GET",
+        // Exporter exactement le résultat affiché ; le serveur vérifie toujours l'achat.
+        method: donnees ? "POST" : "GET",
+        ...(donnees ? { headers: { "Content-Type": "application/json" }, body: JSON.stringify(donnees) } : {}),
+        cache: "no-store",
       });
       if (!reponse.ok) {
         setErreur(await reponse.text());
@@ -27,7 +31,8 @@ export function TelechargerPlanPersonnalise({ jeton }: { jeton: string }) {
       document.body.appendChild(lien);
       lien.click();
       lien.remove();
-      URL.revokeObjectURL(url);
+      // Laisser le navigateur démarrer le téléchargement, notamment sur mobile.
+      setTimeout(() => URL.revokeObjectURL(url), 30_000);
     } catch {
       setErreur("Le téléchargement a été interrompu. Réessayez dans quelques instants.");
     } finally {
