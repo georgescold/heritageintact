@@ -1,10 +1,13 @@
 import fs from "node:fs";import vm from "node:vm";import assert from "node:assert/strict";import {createRequire} from "node:module";
 const require=createRequire(import.meta.url),ts=require("typescript");
 function read(file){const exports={};vm.runInNewContext(ts.transpileModule(fs.readFileSync(file,"utf8"),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports});return exports;}
-const {EDITORIAL_PRODUITS:guides,OUVERTURES_CHAPITRES:chapitres,suiteProduit:suite}=read("src/lib/editorial-produits.ts"),{EDITORIAL_FICHES:fiches}=read("src/lib/editorial-fiches.ts"),{LECONS}=read("src/lib/lecons.ts");
+const {EDITORIAL_PRODUITS:guides,OUVERTURES_CHAPITRES:chapitres,LEXIQUE_SUCCESSION:lexique,suiteProduit:suite}=read("src/lib/editorial-produits.ts"),{EDITORIAL_FICHES:fiches}=read("src/lib/editorial-fiches.ts"),{LECONS}=read("src/lib/lecons.ts");
 let n=0;const ok=(v,m)=>{assert.ok(v,m);n++};
 for(const g of Object.values(guides)){ok(g.histoire.length===2);ok(g.apprendre.length===3);ok(g.adresse.length>=3);for(const p of [g.ouverture,...g.histoire,...g.apprendre,...g.adresse,g.essentiel,g.limite,g.acquis,g.suite])ok(p.length>30);}
 ok(Object.keys(chapitres).length===8);ok(Object.keys(fiches).length===36);
+ok(lexique.length===4);ok(lexique.flatMap(t=>t.entrees).length===12);
+const termes=lexique.flatMap(t=>t.entrees.map(e=>e.terme));ok(new Set(termes).size===termes.length);
+for(const theme of lexique){ok(theme.question.length>60);ok(theme.entrees.length===3);for(const entree of theme.entrees){ok(entree.definition.length>100);ok(entree.impact.length>80);ok(entree.verifier.length>70);}}
 const erreurs=LECONS.filter(l=>l.numero>0);ok(erreurs.length===7);ok(erreurs[0].titre.includes("quinze ans"));ok(erreurs[1].titre.includes("versements"));ok(erreurs[2].titre.includes("71 ans"));
 for(const erreur of erreurs){const titres=erreur.blocs.map(b=>b[0]);for(const attendu of ["Ce que les gens ne savent pas","Ce qu’il faut comprendre","Comment l’appliquer à votre situation"])ok(titres.includes(attendu),erreur.cle+" "+attendu);ok(titres.some(t=>t.startsWith("Exemple")),erreur.cle+" exemple");}
 for(const [cle,[histoire,objectif]] of Object.entries(fiches)){ok(histoire.length>80,cle);ok(objectif.length>50,cle);}
@@ -20,4 +23,4 @@ for(const moment of ["e1","e3","e5","e6","lexique","inventaire"])ok(suite(moment
 const page=fs.readFileSync("src/app/espace/[jeton]/etape/[n]/page.tsx","utf8"),renderer=fs.readFileSync("scripts/creer-guides-v7.py","utf8");
 ok(!page.includes("ExerciceGuide"));ok(!renderer.includes('DATA["exercices"]'));ok(page.includes("OUVERTURES_CHAPITRES"));ok(renderer.includes('DATA["fichesEditorial"]'));
 const composant=fs.readFileSync("src/components/SuiteProduit.tsx","utf8");ok(composant.includes("Aucun achat sur ce clic"));ok(!composant.includes("commencerPromotion"));ok(!composant.includes("chargeUpsell"));
-console.log(n+" contrôles éditoriaux V9 réussis : 4 guides, 7 erreurs actives, 27 fiches de compléments, pas de quiz, suites pertinentes et fin de parcours sans revente. Aucun service externe.");
+console.log(n+" contrôles éditoriaux V9 réussis : 4 guides, lexique de 12 notions, 7 erreurs actives, 27 fiches de compléments, pas de quiz, suites pertinentes et fin de parcours sans revente. Aucun service externe.");
