@@ -18,6 +18,7 @@ import {
   type DonneesSimulation as Donnees,
 } from "@/lib/simulateur/donnees";
 import { euros } from "@/lib/config";
+import { accompagnementPoint } from "@/lib/simulateur/accompagnement";
 import type { Reponses } from "@/lib/qualification";
 
 type Cle = keyof Donnees;
@@ -190,8 +191,11 @@ export function SimulationPlan({ verrouille, children, demarrerOffre, jeton }: {
 
   if (termine) return <section className="my-6 border-2 border-blue bg-white p-4 sm:p-6">
     <p className="font-bold text-green">{verrouille ? "Votre aperçu personnalisé est prêt." : "Votre plan personnalisé est prêt."}</p>
-    <h2 className="my-3 text-[1.5rem]">{alertes.length || 1} point{alertes.length > 1 ? "s" : ""} de vigilance détecté{alertes.length > 1 ? "s" : ""}</h2>
-    <ul className="mb-5 list-disc space-y-2 pl-6">{(alertes.length ? alertes.map(a => a.titre) : ["La composition de votre patrimoine et les personnes incluses doivent être reliées dans un ordre clair."]).slice(0, 3).map(a => <li key={a}>{a}</li>)}</ul>
+    <h2 className="my-4 text-[1.5rem] leading-snug">{alertes.length ? `${alertes.length} point${alertes.length > 1 ? "s" : ""} de vigilance détecté${alertes.length > 1 ? "s" : ""}` : "Votre synthèse de préparation"}</h2>
+    {verrouille ? <ul className="mb-5 list-disc space-y-2 pl-6">{(alertes.length ? alertes.map(a => a.titre) : ["La composition de votre patrimoine et les personnes incluses doivent être reliées dans un ordre clair."]).slice(0, 3).map(a => <li key={a}>{a}</li>)}</ul> : <>
+      <p className="mb-5 leading-relaxed">Ces points ne signifient pas qu’une perte est certaine. Ils vous indiquent quoi vérifier et comment avancer, un sujet à la fois.</p>
+      <ul className="mb-8 space-y-5">{alertes.map(point => <li key={point.cle} className="border-l-4 border-green bg-green-bg p-4 leading-relaxed"><p className="font-bold">{point.titre}</p><p className="mt-2">{accompagnementPoint(point).rassurance}</p><p className="mt-3 text-sm"><strong>Votre repère de réussite : </strong>{accompagnementPoint(point).resultatAttendu}</p></li>)}</ul>
+    </>}
     {verrouille ? <>
       <div className="relative overflow-hidden border-2 border-grey-line bg-grey-bg p-5">
         <div className="select-none blur-[7px]" aria-hidden="true"><p className="text-[1.6rem] font-bold">{raisonsChiffrage(d).length ? "Votre chiffrage : les éléments à préciser" : `Estimation : ${euros(resultat.total)}`}</p><p>Votre ordre de vérification personnalisé, vos échéances et les documents à préparer apparaissent ici.</p></div>

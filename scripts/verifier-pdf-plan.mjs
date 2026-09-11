@@ -56,3 +56,23 @@ fs.writeFileSync(sortie, Buffer.from(pdf));
 const document = await require("pdf-lib").PDFDocument.load(pdf);
 assert.ok(document.getPageCount() >= 4);
 console.log(`PDF personnalisé valide : ${document.getPageCount()} pages, ${pdf.length} octets.`);
+const aide = charger("src/lib/simulateur/accompagnement.ts");
+const simple = {...donnees.DONNEES_VIDES, age:65, vie:"S", enfants:2, residence:180000, epargne:20000, testament:"N", international:"N", entreprise:"N", donationsMultiples:"N", descendantDecede:"N", demembrement:"N", repartition:"O", recomposition:"N", urgence:"non", intention:"ordre"};
+assert.equal(donnees.raisonsChiffrage(simple).length,0);
+assert.ok(aide.incoherencesReponses({...simple,age:20,avApres:40000}).length);
+assert.ok(aide.incoherencesReponses({...simple,age:20,donationAnnee:1990}).length);
+let casesTested=0;
+for(const vie of ["M","P","U","V","S"])for(const urgence of ["non","signature","succession","conflit"])for(const intention of ["ordre","maison","conjoint","famille"])for(const statut of ["O","N","?"]) {
+ const d={...simple,vie,urgence,intention,testament:statut,international:statut,entreprise:statut,donationsMultiples:statut,descendantDecede:statut,demembrement:statut,recomposition:statut,regime:"communaute"};
+ assert.ok(donnees.validerDonneesSimulation(d));
+ assert.ok(aide.questionsSituation(d).length);
+ for(const p of donnees.pointsPreparation(d)) assert.ok(Object.values(aide.accompagnementPoint(p)).every(x=>x.length>20));
+ assert.ok(donnees.planPreparation(d).length);casesTested++;
+}
+const variants={simple,pacs:{...simple,age:20,vie:"P",avApres:40000,urgence:"signature",entreprise:"O",descendantDecede:"O"},inconnus:{...simple,inconnues:["epargne","quotePart","donationAnnee"], international:"?"},sans_enfant:{...simple,enfants:0,vie:"V"},maximal:{...exemple,age:90,residence:1000000000,epargne:1000000000,international:"O",entreprise:"O",testament:"O",urgence:"conflit",descendantDecede:"O"}};
+for(const [name,d] of Object.entries(variants)) {
+ const bytes=await charger("src/lib/simulateur/pdf-plan.ts").genererPlanPersonnalisePdf(d);
+ fs.writeFileSync(path.resolve(`tmp/pdfs/qa-${name}.pdf`),bytes);
+ assert.equal(Buffer.from(bytes).subarray(0,5).toString(),"%PDF-");
+}
+console.log(`${casesTested} combinaisons + 5 PDF représentatifs : OK.`);

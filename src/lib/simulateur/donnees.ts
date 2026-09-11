@@ -1,4 +1,5 @@
 import type { Heritier, Saisie } from "./types";
+import { incoherencesReponses } from "./accompagnement";
 
 export type DonneesSimulation = {
   inconnues?: string[];
@@ -382,7 +383,7 @@ export function validerDonneesSimulation(valeur: unknown): DonneesSimulation | n
 
 /** Pas de montant présenté comme une estimation personnelle avec une assiette inconnue. */
 export function raisonsChiffrage(d: DonneesSimulation): string[] {
-  const raisons: string[] = [];
+  const raisons: string[] = [...incoherencesReponses(d)];
   if (d.inconnues?.length) raisons.push("Des informations restent à retrouver : votre plan indique comment les obtenir.");
   if (d.vie === "M") raisons.push("La part du conjoint et le régime matrimonial doivent être déterminés avant le chiffrage de votre succession.");
   if (d.testament === "O" || d.donationEpoux === "O") raisons.push("Les dispositions déjà signées doivent être rapprochées des droits des bénéficiaires.");

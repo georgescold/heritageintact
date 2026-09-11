@@ -43,6 +43,8 @@ try {
  await second.route("**/*",r=>new URL(r.request().url()).hostname==="127.0.0.1"?r.continue():r.abort());
  const other=await second.newPage();await other.goto(base+"/simulateur");
  await other.getByText("Votre plan personnalisé est prêt.",{exact:true}).waitFor();
+ assert.equal(await other.getByRole("link",{name:"Reprendre ou modifier mes réponses",exact:true}).count(),0);
+ assert.equal(await other.getByRole("button",{name:"Relire ou modifier mes réponses",exact:true}).count(),1);
  const downloadPromise=other.waitForEvent("download");
  await other.getByRole("button",{name:"Télécharger mon plan personnalisé PDF",exact:true}).click();
  const download=await downloadPromise;assert.equal(await download.failure(),null);

@@ -1,5 +1,6 @@
 import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFPage } from "pdf-lib";
 import { calculer } from "./moteur";
+import { accompagnementPoint, incoherencesReponses, questionsSituation } from "./accompagnement";
 import {
   donneesVersSaisie,
   dossierProfessionnel,
@@ -102,29 +103,34 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
     if (y - hauteur < 72) nouvellePage();
   };
   const paragraphe = (texte: string, options: { taille?: number; police?: PDFFont; couleur?: ReturnType<typeof rgb>; espace?: number } = {}) => {
-    const taille = options.taille ?? 10;
+    const taille = options.taille ?? 11;
     const police = options.police ?? normal;
-    const hauteur = taille * 1.35;
+    const hauteur = taille * 1.55;
     const ls = lignes(texte, police, taille, largeur);
     verifierPlace(ls.length * hauteur + (options.espace ?? 8));
     for (const ligne of ls) {
+      verifierPlace(hauteur);
       page.drawText(ligne, { x: marge, y, size: taille, font: police, color: options.couleur ?? GRIS });
       y -= hauteur;
     }
     y -= options.espace ?? 8;
   };
   const titre = (texte: string) => {
-    verifierPlace(155);
-    y -= 6;
+    const ls = lignes(texte, gras, 16, largeur - 18);
+    verifierPlace(95 + ls.length * 22);
+    y -= 18;
     page.drawRectangle({ x: marge, y: y - 4, width: 5, height: 24, color: ORANGE });
-    page.drawText(compatiblePdf(texte), { x: marge + 14, y, size: 16, font: gras, color: BLEU });
-    y -= 34;
+    for (const ligne of ls) { page.drawText(ligne, { x: marge + 14, y, size: 16, font: gras, color: BLEU }); y -= 22; }
+    y -= 16;
   };
   const valeur = (libelle: string, contenu: string) => {
-    verifierPlace(24);
-    page.drawText(compatiblePdf(libelle), { x: marge, y, size: 9, font: normal, color: GRIS });
-    page.drawText(compatiblePdf(contenu), { x: marge + 240, y, size: 10, font: gras, color: BLEU });
-    y -= 20;
+    const gauche = lignes(libelle, normal, 10, 212);
+    const droite = lignes(contenu, gras, 10, largeur - 230);
+    const hauteur = Math.max(gauche.length, droite.length) * 16 + 12;
+    verifierPlace(hauteur);
+    gauche.forEach((ligne, i) => page.drawText(ligne, { x: marge, y: y - i * 16, size: 10, font: normal, color: GRIS }));
+    droite.forEach((ligne, i) => page.drawText(ligne, { x: marge + 230, y: y - i * 16, size: 10, font: gras, color: BLEU }));
+    y -= hauteur;
   };
 
   nouvellePage();
@@ -144,9 +150,16 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
   titre("Votre premiere action");
   paragraphe(planPreparation(d)[0], { police: gras, couleur: BLEU, taille: 11 });
   paragraphe("Votre préparation est prête lorsque vous avez réuni les informations connues, les pièces disponibles et les questions restantes. Il n’est pas nécessaire de tout savoir pour prendre rendez-vous.");
+  paragraphe("Un point de vigilance n’est ni une perte constatée, ni une obligation de signer un acte. Pour chacun, ce plan vous donne une démarche et un résultat à obtenir. Avancez un sujet à la fois.", { couleur: BLEU });
+  if (incoherencesReponses(d, date.getFullYear()).length) {
+    titre("Des réponses à rapprocher");
+    incoherencesReponses(d, date.getFullYear()).forEach(x => paragraphe(x));
+    paragraphe("Vos réponses sont conservées telles quelles. Corrigez-les depuis votre espace lorsque vous aurez retrouvé les pièces ; aucun montant n’est corrigé automatiquement à votre place.");
+  }
   if (informationsARetrouver(d).length) titre("Vos informations a retrouver");
   informationsARetrouver(d).forEach(info => paragraphe(info));
 
+  nouvellePage();
   titre("Votre situation saisie");
   valeur("Age", `${d.age} ans`);
   valeur("Situation", situation(d.vie));
@@ -166,6 +179,13 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
     valeur("Detention de la residence", detention(d.detentionResidence));
     valeur("Souhait principal pour la maison", souhaitMaison(d.souhaitResidence));
   }
+  const choix = (v?: string) => ({ O: "Oui", N: "Non", "?": "À confirmer", communaute: "Communauté", separation: "Séparation de biens", autre: "Autre régime", non: "Préparation sans urgence signalée", succession: "Succession ouverte", signature: "Signature prévue", conflit: "Désaccord", maison: "Préserver le logement", conjoint: "Protéger le conjoint", famille: "Préparer pour la famille", ordre: "Savoir par quoi commencer" }[v ?? "?"] ?? "À confirmer");
+  valeur("Votre objectif", choix(d.intention));
+  valeur("Contexte de la démarche", choix(d.urgence));
+  if(d.vie === "M") { valeur("Régime matrimonial", choix(d.regime)); valeur("Donation entre époux", choix(d.donationEpoux)); }
+  for (const [label, key] of [["Testament existant", "testament"], ["Enfants d'une précédente union", "recomposition"], ["Descendants d'un enfant décédé", "descendantDecede"], ["Situation internationale", "international"], ["Entreprise ou parts sociales", "entreprise"], ["Plusieurs donations", "donationsMultiples"], ["Répartition égale souhaitée", "repartition"]] as const) valeur(label, choix(d[key]));
+  if (d.residence + d.immobilier > 0) valeur("Démembrement déclaré", choix(d.demembrement));
+  for (const [label, key] of [["Enfants en vie", "enfants"], ["Enfants du conjoint non adoptés", "beauxEnfants"], ["Petits-enfants", "petitsEnfants"], ["Frères et soeurs", "fratrie"], ["Neveux et nièces", "neveux"], ["Autres personnes", "sansLien"]] as const) valeur(label, d.inconnues?.includes(key) ? "À retrouver" : String(d[key]));
 
   if (raisons.length) {
     titre("Pour etablir votre chiffrage personnel");
@@ -196,18 +216,25 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
 
   }
   titre("Vos points de vigilance personnels");
+  paragraphe("Ces points servent à organiser vos vérifications, pas à annoncer qu’un problème va nécessairement se produire. Le résultat attendu vous permet de savoir quand passer à la suite.");
   const points = pointsPreparation(d);
   if (!points.length) {
     paragraphe("Aucun point complémentaire n'a été déclenché par ces réponses. Les pièces et les droits restent néanmoins à faire confirmer.");
   }
   for (const point of points) {
+    verifierPlace(290);
+    const aide = accompagnementPoint(point);
     paragraphe(point.titre, { police: gras, couleur: BLEU, taille: 11, espace: 4 });
-    paragraphe(point.constat, { taille: 9, espace: 5 });
-    point.actions.forEach((action) => paragraphe(`- ${action}`, { taille: 9, espace: 3 }));
-    paragraphe(`Ce qui donnera un effet réel : ${point.effetReel}`, { police: gras, taille: 9, espace: 12 });
+    paragraphe(point.constat, { taille: 10, espace: 8 });
+    paragraphe(aide.rassurance, { couleur: BLEU, taille: 10 });
+    point.actions.forEach((action) => paragraphe(`- ${action}`, { taille: 10, espace: 7 }));
+    paragraphe(`Question à poser : ${aide.question}`, { taille: 10 });
+    paragraphe(`Vous aurez avancé lorsque : ${aide.resultatAttendu}`, { police: gras, taille: 10 });
+    paragraphe(`Formalisation : ${point.effetReel}`, { taille: 9, espace: 20 });
   }
 
   titre("Vos reperes de temps");
+  paragraphe("Ces repères ne sont pas des délais imposés pour agir. L’âge et l’année saisis ne donnent pas le jour exact : faites confirmer la date pertinente avant une opération. Un délai fiscal ne règle pas à lui seul les effets civils d’une donation.");
   for (const repere of resultat.dates) {
     const delai = repere.moisRestants === null
       ? "A calculer selon les informations disponibles"
@@ -226,11 +253,41 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
   titre("Votre dossier pour le professionnel");
   dossierProfessionnel(d).forEach((piece) => paragraphe(`- ${piece}`, { taille: 9, espace: 6 }));
 
+  nouvellePage();
+  titre("Vos questions pour obtenir une réponse utile");
+  paragraphe("Apportez cette liste au rendez-vous. Pour chaque question, demandez une réponse liée à vos actes et notez la pièce qui la confirme. Vous n’avez pas besoin de maîtriser les termes juridiques pour commencer.");
+  questionsSituation(d).forEach((question, index) => {
+    verifierPlace(110);
+    paragraphe(`${index + 1}. ${question}`, { police: gras, couleur: BLEU });
+    paragraphe("Réponse / pièce à obtenir : ................................................................................", { taille: 9, espace: 16 });
+  });
+  titre("Comparer avant de choisir");
+  paragraphe("Demandez au professionnel de comparer le maintien de la situation actuelle et les solutions qu’il juge adaptées. Ne retenez pas une option uniquement pour un gain fiscal annoncé.");
+  for (const question of ["Qui conserve la propriété, l’usage et le pouvoir de décider ?", "Quels frais immédiats, obligations et conséquences pour les autres personnes ?", "Qu’est-ce qui reste modifiable, et qu’est-ce qui devient irréversible ?", "Quelle pièce ou quel acte donnera effet à la solution retenue ?"]) paragraphe(`- ${question}`);
+
+  nouvellePage();
+  titre("Votre suivi après le rendez-vous");
+  paragraphe("Reprenez vos trois premières démarches ci-dessous. Si une réponse manque, notez qui la fournira. Une demande envoyée et une réponse confirmée sont deux étapes différentes.");
+  planPreparation(d).slice(0, 3).forEach((action, index) => {
+    verifierPlace(175);
+    paragraphe(`Démarche ${index + 1} - ${action}`, { police: gras, couleur: BLEU });
+    paragraphe("Interlocuteur / pièce demandée : ...................................................................", { taille: 9 });
+    paragraphe("À demander / demandé / reçu / vérifié : ........................................................", { taille: 9 });
+    paragraphe("Prochaine étape convenue : ...........................................................................", { taille: 9, espace: 20 });
+  });
+  paragraphe("Actualisez votre plan après un changement familial, patrimonial ou contractuel important. Conservez l’ancienne version pour distinguer ce qui a changé ; ne partagez votre lien personnel d’accès avec personne.");
+
+  nouvellePage();
   titre("Hypotheses et limites");
   if (resultat.hypotheses.length) resultat.hypotheses.forEach((hypothese) => paragraphe(`- ${hypothese}`, { taille: 9, espace: 7 }));
   else paragraphe("Aucune hypothèse complémentaire n'a été ajoutée au calcul.");
   paragraphe("Avant toute décision ou opération, faites vérifier votre situation, les actes existants, le régime matrimonial et les règles en vigueur par le professionnel compétent.", { police: gras, couleur: BLEU, espace: 0 });
   paragraphe("Références officielles à vérifier au moment de la démarche : service-public.fr/particuliers/vosdroits/F16670 (protection future) et service-public.fr/particuliers/vosdroits/F1296 (indivision successorale).", { taille: 8, espace: 0 });
+  paragraphe("Pour les droits du partenaire de PACS : www.service-public.gouv.fr/particuliers/vosdroits/F1621. Les références permettent de retrouver le cadre général ; l’analyse de vos actes reste nécessaire.", { taille: 9, espace: 14 });
+  verifierPlace(170);
+  y -= 20;
+  paragraphe("INFORMATIONS IMPORTANTES", { police: gras, taille: 9 });
+  paragraphe("Ce document est un outil d’information générale et de préparation établi à partir de vos déclarations. Il ne constitue ni un conseil en investissement, ni une recommandation personnalisée d’achat ou de vente d’un instrument financier, ni une consultation juridique, fiscale ou patrimoniale individualisée. Les estimations reposent sur les hypothèses indiquées ; elles ne garantissent ni une économie, ni un résultat fiscal ou successoral. Ce plan n’établit aucun acte juridique et ne remplace pas l’examen de votre situation par un notaire, un avocat ou un autre professionnel habilité. Avant toute signature, placement, donation ou modification de contrat, faites confirmer les règles en vigueur, les données et les conséquences de l’opération. En cas d’échéance urgente, contactez directement le professionnel compétent.", { taille: 8.5, espace: 10 });
 
   document.setTitle("Mon plan personnalisé - Héritage Intact");
   document.setAuthor("Héritage Intact");

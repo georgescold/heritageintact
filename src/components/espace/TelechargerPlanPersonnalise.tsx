@@ -53,7 +53,7 @@ export function TelechargerPlanPersonnalise({ jeton, donnees }: { jeton: string;
       >
         {attente ? "Génération du PDF…" : "Télécharger mon plan personnalisé PDF"}
       </button>
-      <p className="mt-3"><Link className="inline-flex min-h-[48px] items-center underline" href={`/espace/${jeton}/simulateur`}>Reprendre ou modifier mes réponses</Link></p>
+      {!donnees && <p className="mt-3"><Link className="inline-flex min-h-[48px] items-center underline" href={`/espace/${jeton}/simulateur`}>Reprendre ou modifier mes réponses</Link></p>}
       {erreur && <p role="alert" className="mt-3 border-l-4 border-red bg-red-bg p-3 text-sm">{erreur}</p>}
     </li>
   );
