@@ -31,7 +31,7 @@ export function Decision70Ans() {
         <a href="https://www.impots.gouv.fr/je-suis-beneficiaire-dune-assurance-vie">
           Documentation officielle sur les capitaux d’assurance-vie
         </a>
-        , consultée le 9 septembre 2026.
+        . Consultez toujours la version en vigueur.
       </Source>
     </Feuille>
   );

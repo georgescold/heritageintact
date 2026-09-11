@@ -11,7 +11,7 @@ export function ExempleHeadline({compact=false}:{compact?:boolean}){
   </div>}
   <details><summary className="cursor-pointer font-bold text-blue">Voir les hypothèses et le calcul des 68 206 €</summary>
    <div className="mt-4 space-y-3 text-sm"><p>{e.hypotheses}</p><p>{e.scenarioA}</p><p>{e.scenarioB}</p><p>Barème en ligne directe : {euros(e.succession)} − {euros(e.donation)} = {euros(e.ecart)} pour les deux enfants réunis, avant arrondis fiscaux.</p><p>{e.limites}</p>
-   <p>Repères vérifiés le 9 septembre 2026 : <a href="https://www.impots.gouv.fr/particulier/questions/comment-dois-je-calculer-les-droits-de-succession">succession</a>, <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">donation</a>, <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934">nue-propriété</a>, <a href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer">assurance-vie</a>.</p></div>
+   <p>Sources officielles à consulter dans leur version en vigueur : <a href="https://www.impots.gouv.fr/particulier/questions/comment-dois-je-calculer-les-droits-de-succession">succession</a>, <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">donation</a>, <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934">nue-propriété</a>, <a href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer">assurance-vie</a>.</p></div>
   </details>
   <p className="mt-3 text-sm text-text-soft">Écart illustratif, non représentatif de toutes les familles. Votre résultat peut être différent ou nul. La préparation ne remplace pas le notaire.</p>
  </section>;

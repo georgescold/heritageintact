@@ -74,8 +74,8 @@ export default async function Page({ params }: { params: Promise<{ jeton: string
           )}
         </p>
         <p className="mt-8 text-[0.95rem] text-text-soft">
-          Repères pédagogiques datés du 9 septembre 2026. Vérifiez votre situation avec un
-          professionnel avant toute décision. Sources :{" "}
+          Vérifiez votre situation avec un professionnel avant toute décision. Sources officielles à
+          consulter dans leur version en vigueur :{" "}
           <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F2529">
             Service-Public
           </a>{" "}

@@ -193,7 +193,7 @@ export function Simulateur({ anneeCourante }: { anneeCourante: number }) {
         Imprimer les hypothèses et le résultat
       </button>
       <p className="mt-6 text-sm">
-        Repères vérifiés le 9 septembre 2026 :{" "}
+        Sources officielles à consulter dans leur version en vigueur :{" "}
         <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">
           barème et abattements
         </a>{" "}

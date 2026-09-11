@@ -60,7 +60,7 @@ class Doc(SimpleDocTemplate):
    self.canv.bookmarkPage(key);self.canv.addOutlineEntry(f.getPlainText(),key,0,False)
 def furniture(c,d):
  c.saveState();c.setFillColor(BLUE);c.setFont("HI-Bold",9);c.drawString(M,H-26,"HÉRITAGE INTACT")
- c.setFont("HI",8);c.setFillColor(colors.HexColor("#526171"));c.drawRightString(W-M,H-26,"GUIDE PRATIQUE" if getattr(d,"sans_date",False) else "GUIDE PRATIQUE / SEPTEMBRE 2026")
+ c.setFont("HI",8);c.setFillColor(colors.HexColor("#526171"));c.drawRightString(W-M,H-26,"GUIDE PRATIQUE")
  c.setStrokeColor(LINE);c.line(M,37,W-M,37)
  c.setFont("HI",7.4);c.drawString(M,25,"Information pédagogique générale - exemples fictifs - décisions à faire vérifier.")
  c.drawRightString(W-M,25,str(d.page));c.restoreState()
@@ -87,7 +87,7 @@ def html_flows(node):
   return [P(title,"h2" if node.name=="h2" else "h3")]
  if node.name in ("p","li","summary"):
   text=node.get_text(" ",strip=True)
-  result=[P(("[ ] " if node.name=="li" else "")+text,"check" if node.name=="li" else "body")] if text else []
+  result=[P(("- " if node.name=="li" else "")+text,"check" if node.name=="li" else "body")] if text else []
   if node.name=="li" and node.select("div.border-b"):result.extend([Spacer(1,13),HRFlowable(width="100%",thickness=.45,color=LINE)])
   return result
  classes=node.get("class",[])
@@ -100,7 +100,7 @@ def html_flows(node):
  return sum((html_flows(ch) for ch in node.children),[])
 def sources():
  return [PageBreak()]+head("REPÈRES ET LIMITES","Pour vérifier une règle")+[
- P("Les exemples ne déterminent pas vos droits. Les dates, la propriété, les donations passées et les dispositions familiales doivent être examinées ensemble. Les repères ci-dessous ont été consultés le 10 septembre 2026."),
+ P("Les exemples ne déterminent pas vos droits. Les dates, la propriété, les donations passées et les dispositions familiales doivent être examinées ensemble. Consultez toujours les sources officielles dans leur version en vigueur."),
  rich('<b>Donations : abattements et calcul</b><br/><link href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits" color="#12365E">impots.gouv.fr - Calcul et paiement des droits</link>'),
  rich('<b>Usufruit et nue-propriété</b><br/><link href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934" color="#12365E">Service Public - En quoi consiste l’usufruit ?</link>'),
  rich('<b>Assurance-vie : fiscalité au décès</b><br/><link href="https://www.impots.gouv.fr/particulier/questions/je-suis-beneficiaire-dune-assurance-vie-comment-la-declarer" color="#12365E">impots.gouv.fr - Bénéficiaire d’une assurance-vie</link>'),
@@ -188,15 +188,7 @@ def creer_lexique_offert():
    story+=product_bridge("Lire les formes - ou préparer un rendez-vous qui part de vos volontés","Vous pouvez lire les textes officiels, inventorier seul vos souhaits et préparer vos questions. Le Dossier Testament vous donne le diagnostic, la carte des personnes et des biens, le contrôle des contradictions avec donations et assurance-vie, le brief non juridique à remettre au notaire, les questions de validité et le registre de conservation. Vous savez ainsi ce que vous voulez protéger, ce qui manque encore et ce que le professionnel doit transformer en solution valable. Il ne constitue jamais un testament prêt à signer.","Découvrir le Dossier Testament")
   elif label=="ASSURANCE-VIE : LE CONTRAT, LA CLAUSE ET LA FISCALITÉ":
    story+=product_bridge("Lire les articles - ou obtenir les preuves détenues par l’assureur","Les textes expliquent le cadre, mais ils ne révèlent ni votre clause enregistrée ni l’historique de vos versements. Le guide assurance-vie fournit la grille et le courrier pour demander les informations puis préparer leur vérification.","Découvrir le guide assurance-vie")
- story+=head("AVANT VOTRE RENDEZ-VOUS","Transformez les mots en questions")+[
-  P("Cochez uniquement ce qui reste flou. Le but n’est pas d’arriver avec une conclusion juridique, mais avec les faits et les pièces qui permettront au professionnel de répondre."),
-  P("[ ] Qui est propriétaire de chaque bien et selon quel acte ?"),
-  P("[ ] Existe-t-il un testament, une donation entre époux ou des donations antérieures ?"),
-  P("[ ] Quels versements d’assurance-vie ont été effectués, à quelles dates et sous quelle clause ?"),
-  P("[ ] Quelle notion de ce lexique change le plus mon hypothèse actuelle ?"),
-  P("[ ] Quel article dois-je relire dans sa version en vigueur le jour de ma décision ?"),
-  P("Références vérifiées le 11 septembre 2026. Les liens conduisent aux textes officiels consolidés. La loi et votre situation peuvent évoluer : consultez la version en vigueur et faites valider toute décision individuelle.","small"),
- ]
+ story += [P("Les liens conduisent aux sources officielles. La loi et votre situation peuvent évoluer : consultez toujours la version en vigueur et faites valider toute décision individuelle.","small")]
  file=OUT/(slug+".pdf")
  doc=Doc(str(file),pagesize=A4,rightMargin=M,leftMargin=M,topMargin=53,bottomMargin=52,title=title,author="Héritage Intact")
  doc.sans_date=True
@@ -235,7 +227,7 @@ for sku,slug,title,subtitle in CAT:
  story+=[P(ed.get("adresseTitre","À qui ce guide s’adresse"),"h2")]
  for personne in ed.get("adresse",[]):story+=[P("- "+personne)]
  story+=[P(ed.get("essentielTitre","Pour aller à l’essentiel"),"h3"),P(ed["essentiel"])]
- if sku!="front":story+=[P("Édition du 10 septembre 2026. Les scènes imaginées et exemples fictifs ne sont pas des témoignages. Supports à conserver chez vous.","small")]
+ if sku!="front":story+=[P("Les scènes imaginées et exemples fictifs ne sont pas des témoignages. Supports à conserver chez vous.","small")]
  story+=[PageBreak()]+head("VOTRE PARCOURS",ed.get("parcoursTitre","Ce que les sept erreurs vont vous révéler" if sku=="front" else "Le fil de votre préparation"))
  if sku=="front":
   for l in DATA["lecons"]:

@@ -53,7 +53,7 @@ export default async function Page({ params }: { params: Promise<{ jeton: string
         </ul>
         <SuiteProduit moment="upsell2" possede={e.possede} profil={e.profil} hub={"/espace/"+jeton} conclusion />
         <p className="mt-8 text-sm">
-          Repères du 9 septembre 2026.{" "}
+          Source à consulter dans sa version en vigueur :{" "}
           <a href="https://www.impots.gouv.fr/je-suis-beneficiaire-dune-assurance-vie">
             Documentation fiscale officielle sur l’assurance-vie
           </a>

@@ -33,11 +33,10 @@ export function SimulateurPapier() {
       <Champ label="Quels abattements et donations passées faut-il prendre en compte ?" />
       <Champ label="Quel serait le coût total, frais compris ?" />
       <Source>
-        Repères du 9 septembre 2026.{" "}
         <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">
           Barème et abattements : impots.gouv.fr
         </a>
-        .
+        . Consultez toujours la version en vigueur.
       </Source>
     </Feuille>
   );

@@ -9,6 +9,6 @@ export function ExempleSeuil() {
      <div className="bg-red-bg p-4"><h3>À 71 ans</h3><p>70% × 480 000 € = 336 000 €.</p><p>Après abattement : 236 000 € taxables.</p><p className="mt-2 text-xl font-bold">Environ 45 394 € de droits.</p></div>
    </div>
    <p className="font-bold">Le bon réflexe : faire examiner les dates avant le projet, pas après.</p>
-   <p className="mt-3 text-sm text-text-soft">Hors frais d’acte et autres paramètres. Ce cas ne décrit pas votre famille et ne recommande pas une donation. L’achat du guide ne réserve aucun régime fiscal. Calcul au barème en ligne directe, repères consultés le 9 septembre 2026 : <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">abattement et barème</a>, <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934">usufruit viager</a>.</p>
+   <p className="mt-3 text-sm text-text-soft">Hors frais d’acte et autres paramètres. Ce cas ne décrit pas votre famille et ne recommande pas une donation. L’achat du guide ne réserve aucun régime fiscal. Sources officielles à consulter dans leur version en vigueur : <a href="https://www.impots.gouv.fr/particulier/calcul-et-paiement-des-droits">abattement et barème</a>, <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F934">usufruit viager</a>.</p>
  </section>;
 }
