@@ -78,7 +78,7 @@ export async function Boutique({ etat }: { etat: EtatEspace }) {
           Complétez votre préparation
         </h2>
         <p className="mt-2 text-[1.05rem] text-text-soft">
-          Retrouvez ici les produits que vous ne possédez pas encore. Chaque achat est ensuite ajouté dans Mon dossier.
+          Tous vos documents seront disponibles dans l’onglet « Mon dossier ».
         </p>
       </div>
 
