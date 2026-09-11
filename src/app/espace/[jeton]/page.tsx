@@ -6,10 +6,18 @@ import { MonLien } from "@/components/espace/MonLien";
 import { ButtonLink } from "@/components/ui";
 import { chargerEspace } from "@/lib/espace";
 import { estJetonValide } from "@/lib/jeton";
-import { CONTACT_EMAIL } from "@/lib/config";
+import { CONTACT_EMAIL, type ProductSku } from "@/lib/config";
 import { MesurerAchat } from "@/components/MetaPixel";
 import { MesGuidesPdf } from "@/components/espace/MesGuidesPdf";
 export const metadata = { title: "Mon parcours" };
+const CONFIRMATION_AJOUT: Partial<Record<ProductSku, string>> = {
+  bump: "Votre Dossier Notaire est maintenant accessible dans Mon dossier.",
+  upsell1: "Votre plan adapté à votre situation est maintenant accessible dans Mon dossier.",
+  upsell2: "Votre guide Assurance-vie est maintenant accessible dans Mon dossier.",
+};
+function estProduitAjoute(produit?: string): produit is ProductSku {
+  return Boolean(produit && produit in CONFIRMATION_AJOUT);
+}
 export default async function Page({
   params,
   searchParams,
@@ -32,6 +40,9 @@ export default async function Page({
       />
     );
   const hub = `/espace/${jeton}`;
+  const confirmationAjout = estProduitAjoute(ajoute) && etat.possede.has(ajoute)
+    ? CONFIRMATION_AJOUT[ajoute]
+    : undefined;
   const onglets = [
     ["parcours", "Mon parcours"],
     ["dossier", "Mon dossier"],
@@ -64,9 +75,9 @@ export default async function Page({
             </Link>
           ))}
         </nav>
-        {ajoute && etat.possede.has(ajoute as never) && (
+        {confirmationAjout && (
           <p role="status" className="mb-6 border-l-4 border-green bg-green-bg p-4">
-            Votre complément est maintenant accessible dans Mon dossier.
+            {confirmationAjout}
           </p>
         )}
         <div className="max-w-[760px]">
