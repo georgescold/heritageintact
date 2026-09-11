@@ -113,6 +113,74 @@ def sources():
  P("Gardez vos documents personnels chez vous et utilisez les canaux sécurisés de vos interlocuteurs. N’envoyez pas de relevés, données de santé ou pièces de vos proches à la formation."),
  P("Une succession déjà ouverte, un conflit, une entreprise, un élément international ou une échéance proche nécessitent un professionnel. Ne retardez pas sa consultation pour finir ce guide."),
  P("Dans votre espace : les fiches séparées peuvent être réimprimées à l’unité. En cas de nouvelle version, privilégiez l’édition la plus récente. Les PDF ne se mettent pas à jour une fois téléchargés.")]
+def article_box(reference,comprendre,attention,url):
+ rows=[
+  [rich("<b>"+html.escape(clean(reference))+"</b>","h3")],
+  [rich("<b>Ce qu’il faut y chercher :</b> "+html.escape(clean(comprendre)),"check")],
+  [rich("<b>Attention :</b> "+html.escape(clean(attention)),"small")],
+  [rich('<link href="'+url+'" color="#12365E"><b>Lire le texte à jour sur Légifrance</b></link>',"small")],
+ ]
+ t=Table(rows,colWidths=[CW-22])
+ t.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,-1),GREY),("BOX",(0,0),(-1,-1),.6,LINE),("LINEBEFORE",(0,0),(0,-1),3,BLUE),("LEFTPADDING",(0,0),(-1,-1),11),("RIGHTPADDING",(0,0),(-1,-1),11),("TOPPADDING",(0,0),(-1,-1),5),("BOTTOMPADDING",(0,0),(-1,-1),5)]))
+ return [KeepTogether([t]),Spacer(1,10)]
+def creer_lexique_offert():
+ slug="lexique-succession";title="Lexique détaillé de la succession"
+ story=head("BONUS OFFERT AVEC VOTRE GUIDE",title)+[
+  P("Comprendre les mots qui changent une transmission - et retrouver les textes officiels qui les encadrent.","h2"),
+  P("Un mot juridique ne sert pas à impressionner. Il sert à distinguer deux situations qui peuvent produire des effets très différents. Ce document vous aide à suivre une conversation, relire un acte et transformer une expression inconnue en question précise."),
+  P("Pour chaque notion, vous trouverez quatre niveaux : une définition en langage courant, ce que le mot change concrètement, le risque de confusion et le premier document à retrouver. La seconde partie vous oriente vers les articles de loi essentiels sans prétendre remplacer leur lecture ni l’analyse d’un professionnel."),
+ ]
+ story+=box("La règle d’utilisation","Ne choisissez jamais une solution à partir d’un seul mot ou d’un seul article. Reliez toujours la situation familiale, la propriété des biens, les donations passées, les contrats et les dates. Si une succession est ouverte, qu’un délai court ou qu’un conflit existe, contactez directement un notaire ou un avocat.")
+ story+=[P("Votre boussole avant tout calcul","h2"),P("1. Qui possède quoi aujourd’hui ? 2. Qui recevrait selon la loi, un testament ou un contrat ? 3. Quelle valeur serait réellement transmise ? 4. Quels abattements, barèmes et donations antérieures doivent être pris en compte ?")]
+ for theme in DATA["lexique"]:
+  story+=[PageBreak()]+head("LEXIQUE DÉTAILLÉ",theme["titre"])+[P(theme["question"])]
+  for entry in theme["entrees"]:story+=lexicon_box(entry)
+ lois=[
+  ("PROTÉGER LES PARTS ET COMPRENDRE LES DONATIONS",[
+   ("Code civil, articles 912 et 913 - réserve héréditaire et quotité disponible","La définition des parts protégées et la fraction dont une personne peut disposer librement selon le nombre d’enfants.","Un testament ou une donation exprime une volonté, mais ne fait pas disparaître les droits réservataires.","https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006150544"),
+   ("Code civil, article 894 - donation entre vifs","Le caractère actuel et, en principe, irrévocable de la donation acceptée.","Une donation n’est pas une simple intention que l’on annule librement plus tard.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006433497"),
+   ("Code civil, articles 1075 à 1080 - donation-partage","Le cadre permettant d’organiser de son vivant la distribution et le partage de biens entre héritiers présomptifs.","Les effets sur les valeurs et l’équilibre familial dépendent de la rédaction et des conditions de l’acte.","https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136339/"),
+   ("Code civil, articles 843 à 863 - rapport des libéralités","Quand une libéralité reçue par un héritier doit être prise en compte au partage et selon quelles règles de valeur.","Le rapport civil et le rappel fiscal de quinze ans sont deux mécanismes différents.","https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006150166/"),
+  ]),
+  ("PROPRIÉTÉ, DÉMEMBREMENT ET INDIVISION",[
+   ("Code civil, articles 578 à 624 - usufruit","Les droits et obligations attachés à la jouissance d’un bien dont une autre personne détient la propriété.","Usufruit ne signifie ni pleine propriété ni liberté de vendre seul le bien entier.","https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006136246"),
+   ("Code général des impôts, article 669 - valeur fiscale de l’usufruit et de la nue-propriété","Le barème fiscal fondé sur l’âge de l’usufruitier pour certaines liquidations de droits.","Ce barème fiscal ne répond pas, à lui seul, aux questions de pouvoir, de financement ou d’opportunité familiale.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006310173/"),
+   ("Code civil, articles 815 à 815-18 - indivision","Le droit de provoquer le partage et les règles applicables aux actes portant sur un bien indivis.","Détenir une quote-part ne revient pas à posséder une pièce déterminée de la maison.","https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006136538/"),
+  ]),
+  ("ABATTEMENTS, BARÈME ET DÉLAI DE QUINZE ANS",[
+   ("Code général des impôts, article 777 - tarifs des droits","Les barèmes applicables à la part nette taxable selon le lien entre le défunt ou donateur et le bénéficiaire.","Le taux le plus élevé d’un barème ne s’applique pas nécessairement à toute la part transmise.","https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006197326/"),
+   ("Code général des impôts, article 779 - principaux abattements","Les abattements applicables selon le lien de parenté et certaines situations particulières.","Un montant affiché dans un article peut avoir été utilisé lors d’une donation antérieure ou dépendre de conditions précises.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000026292566/"),
+   ("Code général des impôts, article 784 - donations antérieures","La déclaration des donations antérieures et leur prise en compte pour les abattements et le tarif, notamment dans la période de quinze ans.","Une donation ancienne peut rester importante civilement même lorsqu’elle n’entre plus dans le rappel fiscal.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000033809289/"),
+  ]),
+  ("ASSURANCE-VIE : LE CONTRAT, LA CLAUSE ET LA FISCALITÉ",[
+   ("Code des assurances, article L132-8 - désignation du bénéficiaire","Les manières de désigner un bénéficiaire suffisamment identifiable et l’obligation de recherche après le décès.","La personne que vous avez en tête n’est pas forcément celle que le texte enregistré permet d’identifier.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000018154217/"),
+   ("Code des assurances, article L132-9 - acceptation du bénéficiaire","Les conditions et les conséquences de l’acceptation du bénéfice du contrat.","Une acceptation peut limiter certaines possibilités : vérifiez la situation avant toute modification ou rachat.","https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006157304/"),
+   ("Code des assurances, articles L132-12 et L132-13 - capital et primes","Le principe selon lequel le capital versé à un bénéficiaire déterminé ne fait pas partie de la succession, ainsi que la limite liée aux primes manifestement exagérées.","La formule « hors succession » n’autorise pas à ignorer la clause, les primes, l’âge et le contexte patrimonial.","https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006157304/"),
+   ("Code général des impôts, article 757 B - primes versées après 70 ans","Le traitement successoral de certaines primes versées après soixante-dix ans et l’abattement global prévu par le texte.","La date d’ouverture du contrat ne remplace jamais l’historique daté des versements.","https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006197321"),
+   ("Code général des impôts, article 990 I - prélèvement sur certains capitaux décès","Le prélèvement applicable à certains capitaux selon la date des primes et la part revenant à chaque bénéficiaire.","Les régimes des articles 757 B et 990 I ne se résument pas à « avant ou après 70 ans » sans examiner les dates et conditions du contrat.","https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047288653"),
+  ]),
+ ]
+ for label,articles in lois:
+  story+=[PageBreak()]+head("ARTICLES DE LOI À LIRE",label)
+  for article in articles:story+=article_box(*article)
+ story+=head("AVANT VOTRE RENDEZ-VOUS","Transformez les mots en questions")+[
+  P("Cochez uniquement ce qui reste flou. Le but n’est pas d’arriver avec une conclusion juridique, mais avec les faits et les pièces qui permettront au professionnel de répondre."),
+  P("[ ] Qui est propriétaire de chaque bien et selon quel acte ?"),
+  P("[ ] Existe-t-il un testament, une donation entre époux ou des donations antérieures ?"),
+  P("[ ] Quels versements d’assurance-vie ont été effectués, à quelles dates et sous quelle clause ?"),
+  P("[ ] Quelle notion de ce lexique change le plus mon hypothèse actuelle ?"),
+  P("[ ] Quel article dois-je relire dans sa version en vigueur le jour de ma décision ?"),
+  P("Références vérifiées le 11 septembre 2026. Les liens conduisent aux textes officiels consolidés. La loi et votre situation peuvent évoluer : consultez la version en vigueur et faites valider toute décision individuelle.","small"),
+ ]
+ file=OUT/(slug+".pdf")
+ doc=Doc(str(file),pagesize=A4,rightMargin=M,leftMargin=M,topMargin=53,bottomMargin=52,title=title,author="Héritage Intact")
+ doc.sans_date=True
+ doc.build(story,onFirstPage=furniture,onLaterPages=furniture)
+ reader=PdfReader(str(file))
+ for i,page in enumerate(reader.pages,1):
+  text=page.extract_text()
+  if not text or "\ufffd" in text:raise ValueError(f"Page invalide {slug} {i}")
+ return {"sku":"front","slug":slug,"pages":len(reader.pages),"fiches":0,"octets":file.stat().st_size}
 CAT=[
  ("front","les-7-erreurs","Les 7 erreurs qui offrent votre héritage à l’État","Les 3 dates qui avancent. Les 4 pièges qui restent invisibles. Les actions à mener."),
  ("bump","dossier-notaire","Dossier Notaire","Partir de l’exemple. Rassembler les pièces utiles. Conserver les réponses."),
@@ -121,6 +189,8 @@ CAT=[
 ]
 ONLY=set(sys.argv[1:])
 manifest=[]
+if not ONLY or "lexique-succession" in ONLY:
+ item=creer_lexique_offert();manifest.append(item);print(item["slug"]+": "+str(item["pages"])+" pages / bonus offert")
 for sku,slug,title,subtitle in CAT:
  if ONLY and slug not in ONLY:continue
  guide=next(g for g in DATA["guides"] if g["sku"]==sku)
@@ -136,18 +206,6 @@ for sku,slug,title,subtitle in CAT:
  for personne in ed.get("adresse",[]):story+=[P("- "+personne)]
  story+=[P(ed.get("essentielTitre","Pour aller à l’essentiel"),"h3"),P(ed["essentiel"])]
  if sku!="front":story+=[P("Édition du 10 septembre 2026. Les scènes imaginées et exemples fictifs ne sont pas des témoignages. Supports à conserver chez vous.","small")]
- if sku=="front":
-  story+=[PageBreak()]+head("AVANT LES 7 ERREURS","Les mots qui changent le sens d’une décision")
-  story+=[
-   P("Vous êtes assis face au notaire. En quelques minutes, vous entendez « réserve », « abattement », « usufruit », « bénéficiaire ». Vous pensez comprendre. Vous acquiescez. Puis vous rentrez chez vous avec la mauvaise question, le mauvais document ou la certitude rassurante que tout est déjà réglé."),
-   P("Le danger n’est pas de ne pas connaître le vocabulaire juridique. Le danger est de croire qu’un mot familier signifie ce que vous imaginez. Une seule confusion au départ peut fausser le calcul, laisser une clause ancienne intacte ou transmettre à vos enfants une difficulté que vous pensiez avoir évitée."),
-   P("Vous n’avez pas à mémoriser le Code civil. Vous devez reconnaître les mots qui changent le résultat, comprendre ce qu’ils ne prouvent pas et retrouver la pièce qui empêchera votre famille de découvrir trop tard la véritable réponse."),
-  ]
-  story+=box("Votre boussole en quatre questions","1. Qui possède le bien aujourd’hui ? 2. Qui peut le recevoir et par quel dispositif ? 3. Quelle valeur sera réellement transmise ? 4. Quel abattement et quel barème s’appliqueront à cette personne ?")
-  story+=[P("Lisez ce lexique maintenant, puis revenez-y au fil des erreurs. Chaque définition se termine par un premier réflexe concret : une preuve retrouvée aujourd’hui peut éviter demain un calcul faux, une démarche perdue ou une dispute que personne ne pourra plus arbitrer.","small")]
-  for theme in DATA["lexique"]:
-   story+=[PageBreak()]+head("LEXIQUE PRATIQUE",theme["titre"])+[P(theme["question"])]
-   for entry in theme["entrees"]:story+=lexicon_box(entry)
  story+=[PageBreak()]+head("VOTRE PARCOURS",ed.get("parcoursTitre","Ce que les sept erreurs vont vous révéler" if sku=="front" else "Le fil de votre préparation"))
  if sku=="front":
   for l in DATA["lecons"]:
