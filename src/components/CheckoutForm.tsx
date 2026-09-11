@@ -305,9 +305,9 @@ function Inner({
                   Ajouter {PRODUCTS.bump.name}
                 </span>
                 <span className="mt-1 block text-[0.95rem]">
-                  Une donation oubliée, une date imprécise ou une pièce manquante peut laisser votre
-                  rendez-vous sans réponse et vous obliger à recommencer. Le Dossier Notaire réunit
-                  l’inventaire, les documents et les questions à apporter.
+                  Une pièce manquante peut imposer un nouvel échange et, selon l’étude, des honoraires
+                  supplémentaires. Le Dossier Notaire réunit les documents, les questions et le coût
+                  à clarifier avant votre rendez-vous.
                 </span>
               </span>
             </span>

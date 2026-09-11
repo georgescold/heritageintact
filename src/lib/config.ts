@@ -100,11 +100,11 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
     ],
   },
   bump: {
-    promesse: "Repérez avant le rendez-vous la pièce manquante qui pourrait bloquer l’échange, puis repartez avec des réponses conservées et une prochaine action claire.",
+    promesse: "Repérez avant le rendez-vous la pièce qui pourrait bloquer l’échange, clarifiez ce qui sera facturé, puis repartez avec des réponses conservées et une prochaine action claire.",
     contenu: [
       "Inventaire guidé et fiche famille",
       "Liste des pièces à rassembler",
-      "Modèle de demande de rendez-vous",
+      "Modèle de demande de rendez-vous, avec les questions sur le coût et ce qui est inclus",
       "Compte rendu et exemple de dossier rempli",
     ],
   },

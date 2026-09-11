@@ -32,9 +32,9 @@ const VITRINE: Partial<Record<ProductSku, {
   bump: {
     badge: "Avant votre rendez-vous",
     alerteTitre: "Une heure de rendez-vous ne rattrape pas le document resté dans un tiroir.",
-    alerteTexte: "Le notaire ne peut pas analyser ce que vous oubliez de signaler. Une date approximative, une clause absente ou un acte introuvable peut repousser la seule réponse que vous étiez venu chercher et vous imposer de reprendre l’échange depuis le début.",
+    alerteTexte: "Le notaire ne peut pas analyser ce que vous oubliez de signaler. Une date approximative ou un acte introuvable peut repousser la seule réponse recherchée, imposer un nouvel échange et, selon l’étude et la prestation demandée, ajouter des honoraires de consultation ou de recherche.",
     resultatTitre: "Faites apparaître les manques avant qu’ils ne bloquent le rendez-vous.",
-    resultatTexte: "Le Dossier Notaire transforme vos papiers et souvenirs en inventaire, questions et compte rendu. Le stress ne décide plus de ce qui sera dit, oublié ou conservé.",
+    resultatTexte: "Le Dossier Notaire transforme vos papiers et souvenirs en inventaire, questions et compte rendu. Il vous aide aussi à demander avant le rendez-vous ce qui est inclus, ce qui sera facturé et dans quel cas un devis est nécessaire.",
     points: [
       "La liste des pièces à réunir avant le rendez-vous",
       "Les questions à poser pour ne pas repartir dans le flou",

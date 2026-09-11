@@ -137,7 +137,7 @@ export const EDITORIAL_PRODUITS = {
  bump: {
   ouverture: "Le rendez-vous peut durer une heure. Le regret d’avoir oublié la seule information décisive peut durer des années.",
   histoire: [
-   "Madeleine arrive avec une chemise gonflée de papiers et trois questions retenues de mémoire. À la troisième minute, le rendez-vous s’arrête sur ce qui manque : la date exacte d’une donation, le dernier avenant du contrat et l’acte qui précise la propriété de la maison. Le sujet qu’elle voulait absolument régler n’est même pas abordé. Elle repart avec une nouvelle liste, un second rendez-vous à organiser et cette impression pénible d’avoir payé pour découvrir qu’elle n’était pas prête.",
+   "Madeleine arrive avec une chemise gonflée de papiers et trois questions retenues de mémoire. À la troisième minute, le rendez-vous s’arrête sur ce qui manque : la date exacte d’une donation, le dernier avenant du contrat et l’acte qui précise la propriété de la maison. Le sujet qu’elle voulait absolument régler n’est même pas abordé. Elle repart avec une nouvelle liste et un second rendez-vous à organiser. Selon l’étude et la nature du travail demandé, ce nouvel échange, les recherches ou une consultation écrite peuvent aussi entraîner des honoraires supplémentaires.",
    "Le problème n’est ni son sérieux ni la compétence du notaire. Un professionnel ne peut pas analyser le fait qu’on oublie de lui signaler. Le Dossier Notaire transforme la pile et les souvenirs en inventaire, questions et compte rendu : vous voyez ce qui manque avant le rendez-vous, quand il est encore temps de le retrouver."
   ],
   apprendreTitre: "Ce que vous refuserez désormais de laisser au hasard",
@@ -145,10 +145,10 @@ export const EDITORIAL_PRODUITS = {
   adresseTitre: "Ce dossier est fait pour vous si le rendez-vous vous inquiète déjà",
   adresse: ["Vos documents sont répartis entre plusieurs tiroirs, classeurs ou membres de la famille.", "Vous avez peur de payer un rendez-vous sans réussir à poser toutes vos questions.", "Vous ne voulez plus terminer un échange important avec des notes illisibles et aucune prochaine étape."],
   essentielTitre: "Votre raccourci : ne préparez pas tout, préparez ce qui sera demandé",
-  essentiel: "Commencez par l’exemple de Claire et Marc, une famille fictive. Reprenez leur logique de classement, jamais leurs réponses. Écrivez « à retrouver » plutôt que d’inventer une date : un vide visible avant le rendez-vous est moins dangereux qu’un souvenir présenté comme un fait.",
+  essentiel: "Commencez par l’exemple de Claire et Marc, une famille fictive. Reprenez leur logique de classement, jamais leurs réponses. Écrivez « à retrouver » plutôt que d’inventer une date : un vide visible avant le rendez-vous est moins dangereux qu’un souvenir présenté comme un fait. Demandez aussi dès la prise de rendez-vous ce qui est inclus, ce qui pourrait être facturé et si un écrit ou un échange supplémentaire nécessite un devis.",
   parcoursTitre: "Les supports qui empêchent votre rendez-vous de tourner à la chasse aux papiers",
   limite: "Ranger vos pièces ne suffit pas à choisir ce qui convient à votre famille. Le Dossier organise l’échange ; il ne tranche ni les droits ni les options.",
-  acquis: "Vous n’arrivez plus avec « tous vos papiers ». Vous arrivez avec les faits qui comptent, les absences identifiées et les questions que le stress ne pourra plus vous faire oublier.",
+  acquis: "Vous n’arrivez plus avec « tous vos papiers ». Vous arrivez avec les faits qui comptent, les absences identifiées, les questions que le stress ne pourra plus vous faire oublier et le cadre tarifaire annoncé par l’étude.",
   sortieLabel: "APRÈS LE DOSSIER NOTAIRE",
   sortieTitre: "Votre rendez-vous est préparé. Reste une question que le dossier ne peut pas trancher.",
   suiteLabel: "Le risque d’un dossier parfaitement rangé : croire que classement signifie priorité.",
