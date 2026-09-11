@@ -51,7 +51,7 @@ export async function OffrePreparation({
   const decision = <section id="decision-complement" className="my-6 border-2 border-blue bg-grey-bg p-5">
     <p className="text-sm font-bold uppercase text-orange-dark">{sku === "upsell1" ? "Votre simulation est prête à être déverrouillée" : "Dernière étape de votre parcours"}</p>
     <h2 className="mb-3 mt-2 text-[1.45rem]">{produit.name}</h2>
-    <p className="mb-4">{sku === "upsell2" ? "Une clause oubliée ou une date de versement mal comprise peut décider à la place de vos intentions. Retrouvez les informations du contrat, préparez votre demande et gardez une trace claire des réponses." : "Vos réponses ont déjà fait apparaître les premiers points sensibles. Déverrouillez maintenant le résultat chiffré, les hypothèses et l’ordre de préparation adapté à votre situation."}</p>
+    <p className="mb-4">{sku === "upsell2" ? "Votre relevé peut afficher le bon capital tout en cachant le mauvais nom. Obtenez la clause que l’assureur exécutera, reconstruisez les versements et préparez sa vérification tant qu’une correction reste possible." : "Vos réponses ont déjà révélé les premiers points sensibles. Ne repartez pas avec un aperçu impossible à hiérarchiser : déverrouillez le résultat expliqué, les hypothèses capables de le changer et l’ordre précis des vérifications."}</p>
     {sku === "upsell1" && (d.montant < d.total ? <p className="mb-2"><span className="line-through">Prix habituel : {euros(d.total)}</span> · <strong className="text-red">Votre prix actuel : {euros(d.montant)}</strong></p> : <p className="mb-2 font-bold">Paiement unique : {euros(d.montant)}</p>)}
     {sku === "upsell2" && <p className="mb-2 font-bold">Paiement unique : {euros(d.montant)}</p>}
     <AvantageDemarrage promotion={d.promotion} base={d.total}/>
@@ -72,9 +72,9 @@ export async function OffrePreparation({
         <p className="font-bold text-orange-dark">
           Ce que vous devez absolument avoir également
         </p>
-        <h1 className="my-4 text-[2rem] leading-tight">{sku === "upsell1" ? "Simulez votre situation avant de laisser vos enfants découvrir les conséquences trop tard." : contexte.titre}</h1>
+        <h1 className="my-4 text-[2rem] leading-tight">{sku === "upsell1" ? "Vous pouvez tout préparer avec sérieux… et commencer par ce qui compte le moins." : "Votre assurance-vie peut transmettre exactement comme le contrat l’indique — et pas comme vous l’avez expliqué à votre famille."}</h1>
         <p className="mb-3 text-[1.1rem] font-bold text-blue">{produit.name}</p>
-        <p className="mb-6 border-l-4 border-orange bg-grey-bg p-4">{contexte.raison}</p>
+        <p className="mb-6 border-l-4 border-orange bg-grey-bg p-4">{sku === "upsell1" ? "Votre famille, vos biens, les aides passées et les dates forment un seul problème d’ordre. Tant qu’ils restent séparés, le point le plus urgent peut rester invisible derrière la démarche la plus facile." : contexte.raison}</p>
         <p className="text-[1.2rem]">{texte?.promesse}</p>
         {sku === "upsell1" ? <SimulationPlan verrouille demarrerOffre={demarrer}>{decision}</SimulationPlan> : decision}
         <ValeurComplement av={sku === "upsell2"} />

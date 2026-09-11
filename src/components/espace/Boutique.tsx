@@ -18,10 +18,10 @@ const VITRINE: Partial<Record<ProductSku, {
 }>> = {
   upsell1: {
     badge: "L’étape la plus importante",
-    alerteTitre: "Ne restez pas avec des règles générales et aucun ordre pour agir.",
-    alerteTexte: "Sans relier les sept erreurs à votre âge, votre famille, vos biens et vos donations, vous risquez de surveiller le mauvais point, de repousser la bonne vérification ou de commencer par une démarche secondaire.",
-    resultatTitre: "À la fin de votre simulation, votre situation devient lisible.",
-    resultatTexte: "Vos réponses génèrent votre estimation, vos points de vigilance et votre plan détaillé. Le résultat sépare clairement vos intentions, les questions à faire vérifier et les actes qui pourront produire un effet réel.",
+    alerteTitre: "Le plus grand risque maintenant : agir sérieusement dans le mauvais ordre.",
+    alerteTexte: "Une règle générale ne sait rien de votre couple, de vos donations ni de la propriété réelle de votre maison. Sans relier ces faits, vous pouvez consacrer des semaines au sujet le plus rassurant pendant qu’une date ou une protection plus fragile continue d’attendre.",
+    resultatTitre: "Vous saurez quoi vérifier d’abord — et pourquoi.",
+    resultatTexte: "Vos réponses génèrent une estimation expliquée, révèlent les données capables de la faire changer et produisent votre plan détaillé. Vous ne repartez plus avec une liste : vous repartez avec un ordre.",
     points: [
       "Votre estimation et les hypothèses qui l’expliquent",
       "Les alertes concernant votre famille, votre maison et votre capacité future de décider",
@@ -31,10 +31,10 @@ const VITRINE: Partial<Record<ProductSku, {
   },
   bump: {
     badge: "Avant votre rendez-vous",
-    alerteTitre: "Le notaire ne peut pas examiner ce que vous avez oublié de lui signaler.",
-    alerteTexte: "Une donation ancienne mal retracée, une clause absente ou un acte resté dans un tiroir peut laisser une question importante sans réponse. Vous risquez alors de repartir dans le flou, de chercher les pièces après le rendez-vous et de devoir reprendre les échanges.",
-    resultatTitre: "Arrivez préparé et repartez avec des réponses exploitables.",
-    resultatTexte: "Le Dossier Notaire rassemble tout au même endroit pour présenter clairement votre famille, vos biens, vos donations et les questions que vous ne voulez pas oublier.",
+    alerteTitre: "Une heure de rendez-vous ne rattrape pas le document resté dans un tiroir.",
+    alerteTexte: "Le notaire ne peut pas analyser ce que vous oubliez de signaler. Une date approximative, une clause absente ou un acte introuvable peut repousser la seule réponse que vous étiez venu chercher et vous imposer de reprendre l’échange depuis le début.",
+    resultatTitre: "Faites apparaître les manques avant qu’ils ne bloquent le rendez-vous.",
+    resultatTexte: "Le Dossier Notaire transforme vos papiers et souvenirs en inventaire, questions et compte rendu. Le stress ne décide plus de ce qui sera dit, oublié ou conservé.",
     points: [
       "La liste des pièces à réunir avant le rendez-vous",
       "Les questions à poser pour ne pas repartir dans le flou",
@@ -44,10 +44,10 @@ const VITRINE: Partial<Record<ProductSku, {
   },
   upsell2: {
     badge: "Indispensable pour les détenteurs d’une assurance-vie",
-    alerteTitre: "Votre contrat peut ne plus transmettre comme vous l’imaginez.",
-    alerteTexte: "Le montant visible sur votre relevé ne dit pas qui recevra le capital. Une clause jamais relue, un bénéficiaire mal désigné ou des versements dont les dates sont inconnues peuvent créer une mauvaise surprise lorsque votre famille ne pourra plus vous demander ce que vous vouliez.",
-    resultatTitre: "Sachez enfin ce qui est écrit — et ce qui manque encore.",
-    resultatTexte: "Vous apprenez à retrouver la clause réellement enregistrée, à reconstituer les dates utiles et à demander les informations manquantes à l’assureur avant d’envisager une modification.",
+    alerteTitre: "L’assureur exécutera le contrat, pas la promesse faite à votre famille.",
+    alerteTexte: "Le capital affiché peut être exact alors que la clause ne l’est plus pour votre vie actuelle. Si l’écart est découvert après votre décès, vous ne pourrez plus expliquer un ancien nom, une répartition imprécise ou faire signer la correction que vous pensiez encore possible.",
+    resultatTitre: "Passez du relevé rassurant à la preuve écrite.",
+    resultatTexte: "Vous obtenez la clause réellement enregistrée, reconstruisez les versements utiles et préparez une demande précise. Vous saurez ce qui est confirmé, ce qui manque et ce qui doit être vérifié avant toute modification.",
     points: [
       "La grille pour relire chacun de vos contrats",
       "Le courrier pour obtenir les informations manquantes",

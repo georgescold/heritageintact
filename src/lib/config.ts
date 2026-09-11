@@ -1,6 +1,8 @@
 /** Catalogue V2. Les SKU historiques restent lisibles pour honorer les achats. */
 export const BRAND = "Héritage Intact";
 export const CONTACT_EMAIL = "contact@heritageintact.fr";
+/** Adresse AFS fournie par Trustpilot : uniquement en BCC du reçu du premier achat payé. */
+export const TRUSTPILOT_INVITE_BCC = "heritageintact.fr+4f77d6a16e@invite.trustpilot.com";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const LEGAL = {
   siret: "989 331 418 00016",
@@ -98,7 +100,7 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
     ],
   },
   bump: {
-    promesse: "Gagnez du temps pour rassembler vos papiers avant le rendez-vous.",
+    promesse: "Repérez avant le rendez-vous la pièce manquante qui pourrait bloquer l’échange, puis repartez avec des réponses conservées et une prochaine action claire.",
     contenu: [
       "Inventaire guidé et fiche famille",
       "Liste des pièces à rassembler",
@@ -108,7 +110,7 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
   },
   upsell1: {
     promesse:
-      "Simulez votre situation, repérez les hypothèses qui changent le résultat et obtenez un plan adapté à vos réponses.",
+      "Reliez entièrement votre situation, découvrez ce qui change réellement le résultat et obtenez l’ordre exact des vérifications à préparer.",
     contenu: [
       "Simulateur détaillé avec hypothèses affichées",
       "Plan adapté aux réponses saisies",
@@ -121,7 +123,7 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
   },
   upsell2: {
     promesse:
-      "Repérez les informations manquantes et préparez les questions à adresser à votre assureur.",
+      "Découvrez ce que votre relevé ne montre pas, obtenez la clause réellement enregistrée et préparez sa vérification pendant qu’une correction reste possible.",
     contenu: [
       "Grille de lecture de vos contrats",
       "Demande d’informations à votre assureur",

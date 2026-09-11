@@ -20,6 +20,12 @@ export default function Confidentialite() {
           traitées exclusivement par Stripe et ne nous sont jamais transmises.
         </li>
         <li>
+          Après le premier achat payé : prénom, adresse email, produit acheté et montant transmis
+          à Trustpilot avec le reçu afin de permettre l’envoi d’une invitation à partager un avis.
+          Le lien personnel de l’espace, les réponses au questionnaire et les données patrimoniales
+          ne sont jamais transmis à Trustpilot.
+        </li>
+        <li>
           Lorsque la mesure publicitaire est activée et que vous l&apos;autorisez : achats confirmés,
           montant, date, identifiant technique d&apos;événement et empreinte de votre adresse email
           transmis à Meta pour mesurer et améliorer les publicités. L&apos;empreinte peut être
@@ -47,6 +53,11 @@ export default function Confidentialite() {
       <ul>
         <li>Fourniture des contenus commandés : exécution du contrat.</li>
         <li>
+          Invitation unique à partager un avis après le premier achat : intérêt légitime à recueillir
+          l’expérience réelle des clients. Vous pouvez vous y opposer gratuitement en écrivant à {CONTACT_EMAIL}
+          ou au moyen du lien prévu dans l’invitation.
+        </li>
+        <li>
           Envoi d&apos;informations et d&apos;offres par email : consentement ; désinscription
           possible à tout moment par le lien présent dans chaque email.
         </li>
@@ -65,7 +76,7 @@ export default function Confidentialite() {
       <h2>Destinataires et sous-traitants</h2>
       <p>
         Vercel (hébergement), Stripe (paiement), Resend (emails), Supabase (base de données), Vimeo
-        (vidéos), Meta (publicité).
+        (vidéos), Trustpilot (invitation à déposer un avis après achat), Meta (publicité).
       </p>
 
       <h2>Vos droits</h2>

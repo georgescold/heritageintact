@@ -1,7 +1,7 @@
 import { empreinte, reserverEmail, terminerEmail } from "./mail-journal";
 import { accesParEmail, getLead, promotionParEmail } from "./db";
 import { palier, appliquerRemise } from "./promotions";
-import { CONTACT_EMAIL, PRODUCTS, SITE_URL, euros, urlEspace, type ProductSku } from "./config";
+import { CONTACT_EMAIL, PRODUCTS, SITE_URL, TRUSTPILOT_INVITE_BCC, euros, urlEspace, type ProductSku } from "./config";
 import type { Acces, Lead } from "./db";
 import { SEQUENCE, lien, type Etape } from "./sequence";
 import type { EtapeClient } from "./sequence-client";
@@ -24,6 +24,8 @@ const adresseLisible = SITE_URL.replace(/^https?:\/\//, "");
 
 type Envoi = {
   to: string;
+  /** Réservé à l’invitation Trustpilot déclenchée par un achat réel. */
+  bcc?: string;
   cle?: string;
   subject: string;
   html: string;
@@ -61,7 +63,7 @@ export async function envoyer(e: Envoi): Promise<{ ok: boolean; id?: string; sim
     "List-Unsubscribe": `<${SITE_URL}/api/desinscription?id=${encodeURIComponent(e.leadId)}>`,
     "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
   } : undefined;
-  const body = JSON.stringify({ from: EXPEDITEUR, to: [e.to], reply_to: CONTACT_EMAIL,
+  const body = JSON.stringify({ from: EXPEDITEUR, to: [e.to], ...(e.bcc ? {bcc:[e.bcc]} : {}), reply_to: CONTACT_EMAIL,
     subject: e.subject, html: e.html, text: e.text, ...(headers ? {headers} : {}) });
   const cle = empreinte(e.cle ?? `demande/${Math.floor(Date.now()/120000)}/${body}`);
   try {
@@ -285,6 +287,7 @@ async function envoyerAuClient(
     paragraphes: string[];
     bouton: { texte: string; lien: string };
     ps?: string;
+    inviterAvis?: boolean;
   },
 ): Promise<{ ok: boolean }> {
   const contenu: Contenu = {
@@ -296,6 +299,7 @@ async function envoyerAuClient(
   };
   return envoyer({
     to: acces.email,
+    bcc: o.inviterAvis ? TRUSTPILOT_INVITE_BCC : undefined,
     type: "transactionnel",
     cle: o.cle,
     subject: o.objet,
@@ -372,7 +376,12 @@ export async function envoyerRecuAchat(
     cle: operation ? `recu-v3/${operation}/${sku}` : undefined,
     objet: `Votre reçu — ${produit.name}`,
     paragraphes,
-    bouton: { texte: "Ouvrir mon espace", lien: urlEspace(acces.jeton) },
+    // Le reçu du guide part aussi vers le collecteur d’avis : il ne doit donc jamais
+    // contenir le jeton privé de l’espace. L’email d’accès séparé reste le seul à le porter.
+    bouton: { texte: "Ouvrir mon espace", lien: sku === "front" ? `${SITE_URL}/espace` : urlEspace(acces.jeton) },
+    // Une invitation par client : le reçu du produit d’entrée, jamais un renvoi d’accès
+    // ni un achat complémentaire qui multiplierait les sollicitations.
+    inviterAvis: sku === "front" && montant > 0,
   });
 }
 

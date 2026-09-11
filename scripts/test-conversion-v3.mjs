@@ -67,4 +67,11 @@ realLead.desabonne=true;eq((await email.envoyerEtape(realLead,SEQUENCE[1])).ok,f
 realLead.desabonne=false;reservation="bloque";eq((await email.envoyerEtape(realLead,SEQUENCE[1])).ok,false);eq(called,1);
 let failed=loader({RESEND_API_KEY:"fictif"},overrides,async()=>{throw Error("timeout");})("src/lib/email.ts");
 reservation="envoyer";eq((await failed.envoyerEtape(realLead,SEQUENCE[1])).ok,false);
+reservation="envoyer";journal.clear();
+const accesClient={email:"client@example.invalid",firstName:"Claire",jeton:"jeton-fictif"};
+eq((await email.envoyerRecuAchat(accesClient,"front",26,"achat-front")).ok,true);
+eq(lastBody.bcc[0],"heritageintact.fr+4f77d6a16e@invite.trustpilot.com");
+eq(lastBody.html.includes("jeton-fictif"),false);ok(lastBody.html.includes("/espace"));
+eq((await email.envoyerRecuAchat(accesClient,"upsell1",147,"achat-plan")).ok,true);ok(!("bcc" in lastBody));
+eq((await email.envoyerAcces(accesClient,"renvoi-test")).ok,true);ok(!("bcc" in lastBody));
 console.log(n+" assertions V3 réussies : orientation, CEO J1–J7, LTV, signatures Svix, consentement, échappement, absence de service, idempotence et erreurs avec transport simulé.");
