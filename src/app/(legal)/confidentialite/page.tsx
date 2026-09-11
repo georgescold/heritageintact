@@ -34,13 +34,12 @@ export default function Confidentialite() {
         <li>
           Les réponses fournies <strong>uniquement lorsque vous demandez votre plan personnalisé</strong> :
           situation familiale, âge, catégories et montants arrondis de patrimoine, bénéficiaires,
-          donations et assurance-vie. Les montants détaillés et le nombre facultatif de bénéficiaires
-          en situation de handicap restent enregistrés dans votre navigateur, sans nom ni identité,
-          afin de restaurer votre simulation. Seules les catégories nécessaires à l’orientation de
-          l’espace sont enregistrées sur nos serveurs. Si vous téléchargez votre plan personnalisé,
-          les réponses détaillées sont transmises temporairement au serveur afin de générer le PDF,
-          puis ne sont pas conservées. Ces informations ne sont transmises ni à un
-          tiers ni à un outil publicitaire.
+          donations et assurance-vie. Vos réponses et votre avancement sont enregistrés dans votre
+          espace sur nos serveurs pour reprendre sur un autre appareil et générer votre PDF après
+          l’achat du Plan. Une copie de reprise peut également être conservée dans votre navigateur.
+          Les fiches que vous choisissez de compléter en ligne sont enregistrées lorsque vous cliquez
+          sur « Enregistrer ma fiche ». N’y inscrivez pas de données de santé, de coordonnées bancaires
+          ni de pièces d’identité. Ces contenus ne sont transmis ni aux outils publicitaires ni à Trustpilot.
         </li>
       </ul>
 
@@ -65,6 +64,7 @@ export default function Confidentialite() {
       </ul>
 
       <h2>Durée de conservation</h2>
+      <p>Les réponses au questionnaire et les fiches enregistrées sont conservées pour permettre la reprise de votre préparation tant que votre espace reste actif, ou jusqu’à votre demande d’effacement auprès de {CONTACT_EMAIL}. Pour retirer aussi la copie locale de votre questionnaire, effacez les données du site dans votre navigateur.</p>
       <p id="mesure-publicitaire">Votre préférence publicitaire est mémorisée pendant 180 jours dans ce navigateur par un cookie de première partie, « hi_publicite », qui contient une clé aléatoire, pas votre adresse email. Sans accord explicite et valable, aucune transmission publicitaire n’est effectuée. Le dispositif n’utilise pas de Pixel Meta dans votre navigateur.</p>
       <p>Vous pouvez refuser, fermer le bandeau sans accepter, ou retirer votre accord depuis « Mes préférences publicitaires », en bas de page. Le retrait arrête les transmissions futures depuis ce navigateur ; il ne rappelle pas les données déjà envoyées. Les autres navigateurs ont leurs propres préférences. Pour exercer vos droits sur les données déjà transmises, contactez-nous.</p>
       <p>La preuve de votre choix (date, version et texte présenté) et le journal technique des transmissions sont conservés au maximum 13 mois, avec purge planifiée. Ni vos réponses familiales ni vos liens privés ne figurent dans les données transmises à Meta. Le consentement publicitaire est distinct de celui des emails commerciaux.</p>

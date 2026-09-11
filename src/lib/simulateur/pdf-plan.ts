@@ -5,6 +5,8 @@ import {
   dossierProfessionnel,
   planPreparation,
   pointsPreparation,
+  raisonsChiffrage,
+  informationsARetrouver,
   type DonneesSimulation,
 } from "./donnees";
 
@@ -79,6 +81,8 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
   const gras = await document.embedFont(StandardFonts.HelveticaBold);
   const saisie = donneesVersSaisie(d);
   const resultat = calculer(saisie, date.getFullYear());
+  const raisons = raisonsChiffrage(d);
+  const montant = (cle: keyof DonneesSimulation, n: number) => d.inconnues?.includes(cle) ? "A retrouver" : argent(n);
   const marge = 48;
   const largeur = A4[0] - marge * 2;
   let page!: PDFPage;
@@ -137,17 +141,25 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
   page.drawText("Le professionnel pourra confirmer et formaliser la solution adaptee.", { x: marge + 16, y: y - 54, size: 9, font: normal, color: GRIS });
   y -= 88;
 
-  titre("1. Votre situation saisie");
+  titre("Votre premiere action");
+  paragraphe(planPreparation(d)[0], { police: gras, couleur: BLEU, taille: 11 });
+  paragraphe("Votre préparation est prête lorsque vous avez réuni les informations connues, les pièces disponibles et les questions restantes. Il n’est pas nécessaire de tout savoir pour prendre rendez-vous.");
+  if (informationsARetrouver(d).length) titre("Vos informations a retrouver");
+  informationsARetrouver(d).forEach(info => paragraphe(info));
+
+  titre("Votre situation saisie");
   valeur("Age", `${d.age} ans`);
   valeur("Situation", situation(d.vie));
-  valeur("Part de residence saisie", argent(d.residence));
-  valeur("Parts des autres biens saisies", argent(d.immobilier));
-  valeur("Epargne, titres et autres biens", argent(d.epargne + d.titres + d.autres));
-  valeur("Dettes indiquees", argent(d.dettes));
-  valeur("Masse nette modelisee", argent(resultat.masse));
+  valeur("Part de residence saisie", d.inconnues?.some(k => ["residenceTotale", "quotePart"].includes(k)) ? "A retrouver" : montant("residence", d.residence));
+  valeur("Parts des autres biens saisies", montant("immobilier", d.immobilier));
+  valeur("Epargne", montant("epargne", d.epargne));
+  valeur("Titres", montant("titres", d.titres));
+  valeur("Autres biens", montant("autres", d.autres));
+  valeur("Dettes indiquees", montant("dettes", d.dettes));
+  if (!raisons.length) valeur("Masse nette modelisee", argent(resultat.masse));
   valeur("Personnes modelisees", String(resultat.parts.length));
-  valeur("Assurance-vie avant / apres 70 ans", `${argent(d.avAvant)} / ${argent(d.avApres)}`);
-  valeur("Derniere donation declaree", d.donationAnnee ? `${d.donationAnnee} - ${argent(d.donationMontant)}` : "Aucune indiquee");
+  valeur("Assurance-vie avant / apres 70 ans", `${montant("avAvant", d.avAvant)} / ${montant("avApres", d.avApres)}`);
+  valeur("Derniere donation declaree", d.inconnues?.includes("donationAnnee") ? "Date a retrouver" : d.donationAnnee ? `${d.donationAnnee} - ${montant("donationMontant", d.donationMontant)}` : "Aucune indiquee");
   valeur("Protection deja formalisee", ouiNonInconnu(d.protectionSignee));
   valeur("Personne de confiance informee", ouiNonInconnu(d.personneConfiance));
   if (d.residence > 0) {
@@ -155,7 +167,12 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
     valeur("Souhait principal pour la maison", souhaitMaison(d.souhaitResidence));
   }
 
-  titre("2. Votre estimation indicative");
+  if (raisons.length) {
+    titre("Pour etablir votre chiffrage personnel");
+    paragraphe("Votre plan tient compte des réponses disponibles. Les éléments ci-dessous doivent être précisés pour établir un montant personnel : une information manquante n’est pas remplacée par zéro.");
+    raisons.forEach(raison => paragraphe(`- ${raison}`));
+  } else {
+  titre("Votre estimation indicative");
   verifierPlace(88);
   page.drawRectangle({ x: marge, y: y - 62, width: largeur, height: 70, color: VERT_CLAIR });
   page.drawText("Estimation totale du cas modelise", { x: marge + 18, y: y - 18, size: 11, font: normal, color: BLEU });
@@ -164,7 +181,7 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
   paragraphe("Cette estimation relie vos réponses aux hypothèses affichées plus loin. Utilisez-la pour comprendre le calcul, préparer les pièces utiles et demander au professionnel un chiffrage confirmé.", { taille: 9 });
 
   if (resultat.parts.length) {
-    titre("3. Detail du scenario modelise");
+    titre("Detail du scenario modelise");
     resultat.parts.forEach((part, index) => {
       verifierPlace(112);
       page.drawRectangle({ x: marge, y: y - 88, width: largeur, height: 96, color: index % 2 ? CLAIR : rgb(1, 1, 1), borderColor: rgb(0.78, 0.82, 0.86), borderWidth: 0.7 });
@@ -177,7 +194,8 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
     });
   }
 
-  titre("4. Vos points de vigilance personnels");
+  }
+  titre("Vos points de vigilance personnels");
   const points = pointsPreparation(d);
   if (!points.length) {
     paragraphe("Aucun point complémentaire n'a été déclenché par ces réponses. Les pièces et les droits restent néanmoins à faire confirmer.");
@@ -189,7 +207,7 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
     paragraphe(`Ce qui donnera un effet réel : ${point.effetReel}`, { police: gras, taille: 9, espace: 12 });
   }
 
-  titre("5. Vos reperes de temps");
+  titre("Vos reperes de temps");
   for (const repere of resultat.dates) {
     const delai = repere.moisRestants === null
       ? "A calculer selon les informations disponibles"
@@ -198,17 +216,17 @@ export async function genererPlanPersonnalisePdf(d: DonneesSimulation, date = ne
         : repere.moisRestants === 0
           ? "Repere atteint cette annee"
           : `Environ ${repere.moisRestants} mois restants`;
-    paragraphe(`${repere.libelle} - ${delai}. Reference : ${repere.article}.`, { police: gras, couleur: BLEU, espace: 4 });
+    paragraphe(`${repere.libelle.replace(/Votre abattement (?:revient|redevient) plein/, "Renouvellement possible de l'abattement")} - ${delai}. Reference : ${repere.article}.`, { police: gras, couleur: BLEU, espace: 4 });
     if (repere.note) paragraphe(repere.note, { taille: 9, espace: 10 });
   }
 
-  titre("6. Votre ordre de preparation");
+  titre("Votre ordre de preparation");
   planPreparation(d).forEach((etape, index) => paragraphe(`${index + 1}. ${etape}`, { police: index === 0 ? gras : normal, couleur: BLEU, espace: 9 }));
 
-  titre("7. Votre dossier pour le professionnel");
+  titre("Votre dossier pour le professionnel");
   dossierProfessionnel(d).forEach((piece) => paragraphe(`- ${piece}`, { taille: 9, espace: 6 }));
 
-  titre("8. Hypotheses et limites");
+  titre("Hypotheses et limites");
   if (resultat.hypotheses.length) resultat.hypotheses.forEach((hypothese) => paragraphe(`- ${hypothese}`, { taille: 9, espace: 7 }));
   else paragraphe("Aucune hypothèse complémentaire n'a été ajoutée au calcul.");
   paragraphe("Avant toute décision ou opération, faites vérifier votre situation, les actes existants, le régime matrimonial et les règles en vigueur par le professionnel compétent.", { police: gras, couleur: BLEU, espace: 0 });

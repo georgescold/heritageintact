@@ -14,7 +14,7 @@ import { redirect } from "next/navigation";
 import { acceptUpsell } from "@/app/actions";
 import { Header, Footer } from "./Chrome";
 import { BoutonAchat as Button } from "./BoutonAchat";
-import { getOrder } from "@/lib/db";
+import { getOrder, accesParEmail, assurerAcces } from "@/lib/db";
 import { devisPour } from "@/lib/devis";
 import { PRODUCTS, PRESENTATION, euros, type ProductSku } from "@/lib/config";
 import { etapeTunnel } from "@/lib/tunnel";
@@ -37,6 +37,7 @@ export async function OffrePreparation({
   const order = id ? await getOrder(id) : null;
   if (!order || order.status !== "paid") redirect("/commande");
   const profil = await profilDeCommande(order.id);
+  const acces = await accesParEmail(order.email) ?? await assurerAcces({email:order.email,firstName:order.firstName});
   const etape = await etapeTunnel(ecran, order.id, {
     bumpPresent: order.items.some((i) => i.sku === "bump"),
   });
@@ -83,7 +84,7 @@ export async function OffrePreparation({
           <p className="font-bold uppercase tracking-wide text-orange-dark">Votre guide est acquis — passons à votre situation</p>
           <h1 className="my-3 text-[1.9rem] leading-tight sm:text-[2.35rem]">L’État appliquera les règles aux faits et aux actes réellement en place — pas à ce que vous pensiez avoir prévu.</h1>
           <p className="text-[1.08rem] leading-relaxed">Une donation oubliée, une mauvaise quote-part ou une clause non vérifiée peut déplacer fortement le résultat. Répondez à une question à la fois pour faire apparaître votre estimation, vos points de vigilance et l’ordre des vérifications à préparer.</p>
-          <SimulationPlan verrouille demarrerOffre={demarrer}>{decision}</SimulationPlan>
+          <SimulationPlan verrouille jeton={acces?.jeton} demarrerOffre={demarrer}>{decision}</SimulationPlan>
         </div>
       </main>
       <Footer />

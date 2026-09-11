@@ -14,7 +14,7 @@ for item in manifest:
    for w in words:
     if w["x0"]<39 or w["x1"]>page.width-39:issues.append([slug,number,"hors marge",w["text"]])
     if w["top"]<14 or w["bottom"]>page.height-15:issues.append([slug,number,"hors page",w["text"]])
- imgs=sorted(Path("tmp/pdfs/rendu-v9-final").glob(slug+"-*.png"))
+ imgs=[Path("tmp/pdfs/rendu-v9-final")/(slug+f"-{i:02}.png") for i in range(1,item["pages"]+1)]
  for k in range(0,len(imgs),6):
   sheet=Image.new("RGB",(1320,1260),"#dce2e8");draw=ImageDraw.Draw(sheet)
   for i,file in enumerate(imgs[k:k+6]):

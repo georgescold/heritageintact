@@ -68,8 +68,8 @@ export function PiecesAApporter() {
         {PIECES.map((p, i) => (
           <li key={p.titre} className="flex min-h-[44px] items-start gap-3 py-2">
             <span
-              aria-hidden
-              className="mt-[3px] block h-[18px] w-[18px] shrink-0 border border-black"
+              data-a-remplir={`Pièce ${i + 1} réunie : notez oui`}
+              className="mt-[3px] block min-h-[24px] min-w-[32px] shrink-0 border border-black"
             />
             <div>
               <p className="font-bold">
@@ -81,11 +81,11 @@ export function PiecesAApporter() {
         ))}
       </ol>
 
-      <Titre>Les trois feuilles du guide à joindre</Titre>
+      <Titre>Vos notes de préparation à joindre</Titre>
       <ul className="space-y-1">
         <Case>Mon inventaire patrimonial, rempli.</Case>
         <Case>Ma fiche famille, remplie.</Case>
-        <Case>Mon plan en une page, avec mes priorités, mes questions et les dates à faire vérifier.</Case>
+        <Case>Une feuille avec mes priorités, mes questions et les dates à faire vérifier.</Case>
       </ul>
 
       <Encadre titre="SI UNE PIÈCE MANQUE, ALLEZ QUAND MÊME">

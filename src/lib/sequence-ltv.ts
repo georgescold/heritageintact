@@ -7,9 +7,9 @@ export function offreLtv(profil: Reponses | null, possede: Set<ProductSku>): Pro
   const sku=e==="plan"?"upsell1":e==="assurance-vie"?"upsell2":null;
   return sku && !possede.has(sku) ? sku : null;
 }
-export function etapeLtvDue(lead: Lead, acces: Acces, progression: Progression[], maintenant=Date.now()) {
+export function etapeLtvDue(lead: Lead, acces: Acces, _progression: Progression[], maintenant=Date.now()) {
   const jours=(maintenant-Date.parse(acces.createdAt))/86400000;
-  if(!lead.marketingConsent || lead.desabonne || acces.revoque || !Number.isFinite(jours) || jours<10 || jours>35 || !progression.some(p=>p.etape==="e0"&&p.faiteLe))return null;
+  if(!lead.marketingConsent || lead.desabonne || acces.revoque || !Number.isFinite(jours) || jours<10 || jours>35)return null;
   const cles=acces.envoyes ?? [];
   if(cles.includes("ltv-pause"))return null;
   if(!cles.includes("ltv-v3-1"))return "ltv-v3-1";

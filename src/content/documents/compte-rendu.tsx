@@ -67,7 +67,7 @@ export function CompteRendu() {
       <Titre>Avant de ranger cette feuille</Titre>
       <ul className="space-y-1">
         <Case>Je l&apos;ai relue à voix haute avec mon conjoint.</Case>
-        <Case>J&apos;ai reporté les dates décidées sur mon plan en une page.</Case>
+        <Case>J&apos;ai reporté les dates décidées dans mon agenda et noté la prochaine action.</Case>
         <Case>J&apos;ai rangé la feuille au classeur, à sa place.</Case>
       </ul>
 

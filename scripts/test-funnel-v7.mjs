@@ -128,7 +128,7 @@ etat={acces:{revoque:false},possede:new Set(["upsell1"])};
 eq((await pdf.POST(new Request("http://localhost",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({...simulation,residence:-1})}),postParams)).status,400);
 response=await pdf.POST(new Request("http://localhost",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(simulation)}),postParams);
 eq(response.status,200);eq(response.headers.get("Content-Type"),"application/pdf");ok(Buffer.from(await response.arrayBuffer()).subarray(0,5).toString()==="%PDF-");
-for(const slug of ["les-7-erreurs","dossier-notaire","preparation-familiale","assurance-vie"]){
+for(const slug of ["les-7-erreurs","dossier-notaire","bibliotheque-12-situations-familiales","assurance-vie","dossier-testament","lexique-succession"]){
  ok(fs.readFileSync("output/pdf/"+slug+".pdf").subarray(0,5).toString()==="%PDF-");
  ok(!fs.existsSync("public/"+slug+".pdf"));
 }

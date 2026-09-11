@@ -316,7 +316,7 @@ export async function envoyerAcces(acces: Acces, demande?: string): Promise<{ ok
     `Bonjour ${p},`,
     "Votre espace est ouvert. Tout ce que vous avez commandé s'y trouve, sur une seule page, et vous pouvez y revenir autant de fois que vous le souhaitez.",
     "<strong>Votre lien personnel est votre clé d’accès : conservez-le sans le partager.</strong>",
-    "Ouvrez les contenus acquis dans votre espace. Si vous avez le guide, commencez par votre fiche de situation. Les explications sont accessibles à l’écrit.",
+    "Dans « Mon dossier », retrouvez les documents correspondant à vos produits. Si vous avez le guide des 7 erreurs, téléchargez-le et commencez par la première erreur. « Mon parcours » vous indique une première action concrète selon vos produits.",
   ];
   // Le lien en toutes lettres est placé APRÈS le bouton, dans le bloc du bas :
   // c'est là que regarde quelqu'un pour qui le bouton n'a pas fonctionné.
@@ -378,7 +378,7 @@ export async function envoyerRecuAchat(
     paragraphes,
     // Le reçu du guide part aussi vers le collecteur d’avis : il ne doit donc jamais
     // contenir le jeton privé de l’espace. L’email d’accès séparé reste le seul à le porter.
-    bouton: { texte: "Ouvrir mon espace", lien: sku === "front" ? `${SITE_URL}/espace` : urlEspace(acces.jeton) },
+    bouton: { texte: "Retrouver mes documents", lien: sku === "front" ? `${SITE_URL}/espace` : urlEspace(acces.jeton) + "?vue=dossier" },
     // Une invitation par client : le reçu du produit d’entrée, jamais un renvoi d’accès
     // ni un achat complémentaire qui multiplierait les sollicitations.
     inviterAvis: sku === "front" && montant > 0,
@@ -393,12 +393,20 @@ export async function envoyerComplement(lead: Lead, acces: Acces, sku: ProductSk
   if (!actuel || actuel.revoque || actuel.envoyes.includes("ltv-pause") || !lead.marketingConsent || lead.desabonne) return {ok:false};
   const p = echapper(acces.firstName.trim());
   const rappel = cle.endsWith("-2");
+  const angles: Partial<Record<ProductSku, { sujet: string; histoire: string; resultat: string }>> = {
+    upsell1: { sujet: "La règle qui compte est-elle celle qui vous concerne ?", histoire: "Vous connaissez les erreurs à surveiller. Mais votre âge, vos biens, votre famille et vos donations peuvent changer l’ordre des vérifications. Le risque, maintenant, est de consacrer votre énergie au mauvais point.", resultat: "Mon plan adapté à ma situation relie vos réponses à vos priorités : les points à vérifier, les informations à retrouver et les pièces à réunir. Un chiffrage est présenté lorsque les informations et le cas permettent de le modéliser ; sinon, les éléments à préciser sont clairement identifiés." },
+    bump: { sujet: "Le rendez-vous approche. Vos questions sont-elles prêtes ?", histoire: "Vous ressortez d’un rendez-vous, puis la question importante vous revient dans la voiture. Ce n’est pas un manque de sérieux : sans notes, l’échange peut passer à côté de ce qui vous préoccupait vraiment.", resultat: "Le Dossier Notaire vous aide à rassembler votre inventaire, préparer votre message et conserver les réponses du rendez-vous. Vous arrivez avec vos questions, et repartez avec la suite à donner." },
+    upsell2: { sujet: "Votre contrat dit-il encore ce que vous voulez ?", histoire: "Le montant du relevé rassure. Pourtant, il ne dit pas à lui seul qui recevra le capital. Une clause ancienne ou une information manquante peut laisser un écart entre votre intention et le contrat enregistré.", resultat: "Le dossier Assurance-vie vous donne une grille de relecture et un courrier pour demander les informations manquantes à l’assureur. Vous pourrez confronter votre intention à la clause réellement en vigueur avant d’envisager une modification." },
+    backend4: { sujet: "Vos volontés sont-elles assez claires pour être préparées ?", histoire: "Avoir une volonté très claire dans sa tête ne signifie pas qu’elle sera comprise de la même façon par tous. Les personnes, les biens et les dispositions déjà prises doivent être mis en regard.", resultat: "Le Dossier Testament organise vos volontés et les points de contradiction à présenter au notaire. Vous préparez un échange précis pour faire formaliser la solution qui correspond à votre situation." },
+  };
+  const angle = angles[sku];
+  if (!angle) return { ok: false };
   const contenu: Contenu = {
-    titre: rappel ? "Ne laissez pas votre première avancée sans suite" : "Vous avez commencé pour eux. Préparez maintenant la suite.",
+    titre: rappel ? "Une question en suspens mérite une prochaine action" : angle.sujet,
     paragraphes: [
       `Bonjour ${p},`,
-      rappel ? "Votre première fiche a posé ce qui compte pour vous. La prochaine avancée peut être tout aussi concrète : retrouver les pièces, poser les bonnes questions, conserver les réponses. Ne laissez pas ce premier élan redevenir un dossier « à reprendre un jour »." : "Imaginez votre prochain échange : vous n’ouvrez plus trois tiroirs pour retrouver une information. Vous ouvrez votre préparation, avec ce qui est connu, ce qui manque et les questions propres à votre famille. C’est la suite de votre première fiche.",
-      sku === "upsell2" ? "Vos contrats d’assurance-vie méritent une lecture organisée : clause en vigueur, informations manquantes et réponse de l’assureur. Le guide vous aide à préparer cette vérification sans modifier un contrat à l’aveugle." : "Mon plan adapté à ma situation est généré à partir de vos réponses : il fait apparaître une estimation indicative, ses hypothèses et un ordre de préparation adapté. Vous savez enfin quels points faire confirmer au lieu de rester face à un cas général.",
+      rappel ? "Vous n’avez pas besoin de devenir spécialiste pour avancer. Commencez par une question précise et les pièces qui permettent d’y répondre. Le vrai obstacle est souvent de laisser cette question en suspens, faute de savoir par quel bout la prendre." : angle.histoire,
+      angle.resultat,
       `Le produit proposé est « ${PRODUCTS[sku].name} ». Le montant à ajouter, calculé aujourd’hui, est de ${euros(montant)}.`,
       "Votre guide déjà acheté reste acquis. Ce produit répond à une autre question et fait l’objet d’un paiement distinct.",
       "La page de confirmation affiche le montant à jour avant tout paiement. Cliquer dans cet email ne déclenche aucun débit.",

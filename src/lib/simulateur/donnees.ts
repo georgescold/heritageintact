@@ -1,6 +1,21 @@
 import type { Heritier, Saisie } from "./types";
 
 export type DonneesSimulation = {
+  inconnues?: string[];
+  regime?: string;
+  testament?: string;
+  donationEpoux?: string;
+  donationsMultiples?: string;
+  residenceTotale?: number;
+  quotePart?: number;
+  recomposition?: string;
+  international?: string;
+  entreprise?: string;
+  urgence?: string;
+  intention?: string;
+  descendantDecede?: string;
+  demembrement?: string;
+  repartition?: string;
   age: number;
   vie: string;
   residence: number;
@@ -38,7 +53,7 @@ export type PointPreparation = {
 export const CLE_SIMULATION = "hi_simulation_plan_v1";
 
 export const DONNEES_VIDES: DonneesSimulation = {
-  age: 65,
+  age: 0,
   vie: "M",
   residence: 0,
   immobilier: 0,
@@ -46,7 +61,7 @@ export const DONNEES_VIDES: DonneesSimulation = {
   titres: 0,
   autres: 0,
   dettes: 0,
-  enfants: 1,
+  enfants: 0,
   petitsEnfants: 0,
   fratrie: 0,
   neveux: 0,
@@ -136,7 +151,17 @@ export function donneesVersSaisie(d: DonneesSimulation): Saisie {
 export function planPreparation(d: DonneesSimulation): string[] {
   const specifiques = pointsPreparation(d).flatMap((point) => point.actions.slice(0, 1));
   return [
-    "Faire confirmer la propriété réelle des biens, les dettes déductibles et les personnes appelées à recevoir.",
+    ...(d.urgence && d.urgence !== "non" ? ["Appelez d’abord votre notaire : indiquez la succession ouverte, la signature prévue ou le désaccord signalé. Demandez la prochaine démarche et les pièces nécessaires. Notez sa réponse et la date convenue."] : []),
+    ...(d.intention === "maison" ? ["Retrouvez le titre de propriété de votre logement. Notez les propriétaires et leurs parts. Si le document manque, demandez une copie à l’étude qui a signé l’achat. Vous avez fini lorsque le document ou la demande de copie est classé."] : []),
+    ...(d.intention === "conjoint" || d.vie === "M" ? ["Réunissez votre livret de famille et votre contrat de mariage s’il existe. Demandez à votre étude quels actes sont déjà enregistrés pour protéger votre conjoint. Notez les réponses manquantes."] : []),
+    ...(d.testament === "O" ? ["Retrouvez votre testament et son lieu de conservation. Notez les changements familiaux intervenus depuis sa rédaction pour les signaler au rendez-vous."] : []),
+    ...(d.international === "O" ? ["Listez les pays concernés et les biens ou résidences qui s’y trouvent. Signalez-les dès la prise de rendez-vous pour que l’étude oriente votre dossier."] : []),
+    ...(d.entreprise === "O" ? ["Réunissez les statuts et le dernier relevé de vos parts. Demandez à votre comptable la liste des pièces utiles à l’étude de leur transmission."] : []),
+    ...(d.descendantDecede === "O" ? ["Notez les liens entre l’enfant décédé et ses descendants. Apportez cette liste au notaire pour identifier les personnes et les parts à retenir."] : []),
+    ...(d.demembrement === "O" ? ["Retrouvez l’acte qui distingue usufruit et nue-propriété. Relevez les titulaires de chaque droit et demandez quelle valeur doit être retenue dans votre situation."] : []),
+    ...(d.repartition === "N" ? ["Écrivez la répartition que vous souhaitez, sans lui donner vous-même une valeur juridique. Demandez au notaire de la confronter aux droits des personnes concernées."] : []),
+    ...(d.inconnues?.length ? ["Consultez les informations à retrouver dans ce plan. Pour chacune, notez le document ou l’interlocuteur indiqué. Une demande envoyée est déjà une action terminée."] : []),
+    "Rassemblez dans une seule chemise vos titres de propriété, vos relevés et vos actes familiaux. Sur la première page, notez la question que vous voulez résoudre au rendez-vous.",
     ...specifiques,
     d.donationAnnee
       ? "Retrouver les actes et déclarations de donations avant de considérer un abattement comme disponible."
@@ -167,14 +192,14 @@ export function pointsPreparation(d: DonneesSimulation): PointPreparation[] {
         "Le pouvoir d’agir viendra uniquement d’un dispositif officiel valablement établi et, le moment venu, régulièrement mis en œuvre.",
     });
   }
-  if (d.beauxEnfants > 0 || d.vie === "P" || d.vie === "U") {
+  if (d.beauxEnfants > 0 || d.recomposition === "O" || d.vie === "P" || d.vie === "U") {
     points.push({
       cle: "famille",
       titre: "Votre intention familiale peut différer des droits réellement applicables",
       constat:
         d.beauxEnfants > 0
           ? "Un enfant du conjoint non adopté n’est pas automatiquement traité comme votre propre enfant."
-          : "Partager une vie ou être pacsé ne suffit pas à déterminer ce que le partenaire recevra.",
+          : d.recomposition === "O" ? "Vous indiquez des enfants d’une précédente union : leurs liens et les droits du conjoint doivent être examinés ensemble." : "Partager une vie ou être pacsé ne suffit pas à déterminer ce que le partenaire recevra.",
       actions: [
         "Dessiner les liens de filiation et distinguer clairement vos enfants de ceux de votre conjoint.",
         "Retrouver le régime matrimonial, la convention de PACS, le testament et les actes déjà signés.",
@@ -219,7 +244,7 @@ export function pointsPreparation(d: DonneesSimulation): PointPreparation[] {
       effetReel: "Seule la clause effectivement enregistrée auprès de l’assureur produit ses effets.",
     });
   }
-  if (d.donationAnnee > 0) {
+  if (d.donationAnnee > 0 || d.donationsMultiples === "O") {
     points.push({
       cle: "donation",
       titre: "Une donation passée doit être retrouvée avant tout nouveau calcul",
@@ -315,7 +340,7 @@ export function validerDonneesSimulation(valeur: unknown): DonneesSimulation | n
     d[cle] = n;
   }
   const total = d.enfants + d.petitsEnfants + d.fratrie + d.neveux + d.sansLien + d.beauxEnfants;
-  if (total < 1 || d.handicap > total) return null;
+  if (d.handicap > total) return null;
   const choix = <T extends string>(cle: string, permis: readonly T[]): T | null => {
     const valeur = String(source[cle] ?? "?") as T;
     return permis.includes(valeur) ? valeur : null;
@@ -336,5 +361,69 @@ export function validerDonneesSimulation(valeur: unknown): DonneesSimulation | n
   d.personneConfiance = personneConfiance;
   d.detentionResidence = detentionResidence;
   d.souhaitResidence = souhaitResidence;
+  d.inconnues = Array.isArray(source.inconnues) ? source.inconnues.filter((v): v is string => typeof v === "string" && /^[a-zA-Z]{1,40}$/.test(v)).slice(0, 60) : [];
+  const valeursPermises = { regime: ["communaute", "separation", "autre", "?"], testament: ["O", "N", "?"], donationEpoux: ["O", "N", "?"], donationsMultiples: ["O", "N", "?"], recomposition: ["O", "N", "?"], international: ["O", "N", "?"], entreprise: ["O", "N", "?"], urgence: ["succession", "signature", "conflit", "non"], intention: ["maison", "conjoint", "famille", "ordre"], descendantDecede: ["O", "N", "?"], demembrement: ["O", "N", "?"], repartition: ["O", "N", "?"] };
+  for (const key of Object.keys(valeursPermises) as (keyof typeof valeursPermises)[]) {
+    if (source[key] != null) {
+      if (typeof source[key] !== "string" || !valeursPermises[key].includes(source[key])) return null;
+      d[key] = source[key];
+      if (source[key] === "?" && !d.inconnues.includes(key)) d.inconnues.push(key);
+    }
+  }
+  for (const key of ["residenceTotale", "quotePart"] as const) {
+    if (source[key] != null) {
+      const n = Number(source[key]);
+      if (!Number.isFinite(n) || n < 0 || n > (key === "quotePart" ? 100 : 1_000_000_000)) return null;
+      d[key] = n;
+    }
+  }
   return d;
+}
+
+/** Pas de montant présenté comme une estimation personnelle avec une assiette inconnue. */
+export function raisonsChiffrage(d: DonneesSimulation): string[] {
+  const raisons: string[] = [];
+  if (d.inconnues?.length) raisons.push("Des informations restent à retrouver : votre plan indique comment les obtenir.");
+  if (d.vie === "M") raisons.push("La part du conjoint et le régime matrimonial doivent être déterminés avant le chiffrage de votre succession.");
+  if (d.testament === "O" || d.donationEpoux === "O") raisons.push("Les dispositions déjà signées doivent être rapprochées des droits des bénéficiaires.");
+  if (d.donationAnnee || d.donationsMultiples === "O") raisons.push("Les donations antérieures doivent être attribuées à leurs bénéficiaires avant le calcul des abattements restants.");
+  if (d.international === "O" || d.entreprise === "O") raisons.push("Les biens professionnels ou les éléments internationaux nécessitent une étude spécifique.");
+  if (d.petitsEnfants + d.fratrie + d.neveux + d.sansLien + d.beauxEnfants > 0 || !d.enfants) raisons.push("Les personnes à protéger et la répartition applicable doivent être confirmées.");
+  if (d.avAvant + d.avApres > 0) raisons.push("La valeur des contrats, leurs dates et les clauses doivent être confirmées pour chiffrer la transmission de l’assurance-vie.");
+  if (!d.regime && d.vie === "M" || !d.testament || !d.international || !d.donationsMultiples) raisons.push("Complétez les nouvelles questions pour actualiser votre préparation.");
+  if (d.recomposition === "O" || d.intention === "conjoint" || d.intention === "maison") raisons.push("Votre objectif demande de confirmer les droits et la répartition avant d’afficher un montant personnel.");
+  if (d.descendantDecede !== "N") raisons.push("L’existence de descendants d’un enfant décédé doit être précisée pour déterminer les personnes et les parts à retenir.");
+  if (d.residence + d.immobilier > 0 && d.demembrement !== "N") raisons.push("Les droits de propriété, d’usufruit ou de nue-propriété doivent être distingués pour retenir la bonne valeur.");
+  if (d.enfants > 0 && d.repartition !== "O") raisons.push("Précisez la répartition souhaitée : le scénario chiffré disponible compare des parts égales entre enfants.");
+  return raisons;
+}
+
+export function informationsARetrouver(d: DonneesSimulation): string[] {
+  return (d.inconnues ?? []).map(cle => {
+    if (/av|beneficiaires/.test(cle)) return "Assurance-vie : demandez à votre assureur le relevé du contrat, la clause en vigueur et la ventilation des versements avant et après 70 ans.";
+    if (/residence|quotePart|detention|immobilier/.test(cle)) return "Immobilier : consultez votre titre de propriété ; demandez une copie à l’étude qui a établi l’acte si vous ne le retrouvez pas.";
+    if (/donation/.test(cle)) return "Donations : recherchez chaque acte ou déclaration, sa date, son montant et son bénéficiaire ; votre notaire pourra vous aider à reconstituer l’historique.";
+    if (/regime|testament|recomposition/.test(cle)) return "Situation familiale : réunissez livret de famille et actes existants ; demandez au notaire de confirmer les dispositions enregistrées.";
+    if (cle === "descendantDecede") return "Descendance : notez les liens familiaux et faites confirmer par le notaire les personnes qui doivent être représentées dans la transmission.";
+    if (cle === "demembrement") return "Propriété : retrouvez sur l’acte les mentions pleine propriété, usufruit et nue-propriété ; ne déduisez pas ces droits du seul fait d’occuper le bien.";
+    if (cle === "repartition") return "Répartition : notez votre intention avec vos propres mots, puis demandez au notaire de confirmer les parts applicables.";
+    if (/epargne|titres|autres|dettes/.test(cle)) return "Montants : consultez vos derniers relevés et tableaux de remboursement. Séparez ce qui vous appartient de ce qui appartient à votre conjoint.";
+    return "Question à préciser : " + ({ entreprise: "retrouvez les statuts et vos parts avec votre comptable", international: "notez les pays concernés avant de contacter le notaire", protectionSignee: "retrouvez le dispositif de protection déjà signé", personneConfiance: "prévoyez un échange avec la personne envisagée", enfants: "reprenez votre livret de famille", souhaitResidence: "notez ce que vous voulez préserver pour le logement" }[cle] ?? "reprenez cette réponse dans le questionnaire, ou notez-la pour votre rendez-vous");
+  }).filter((v, i, all) => all.indexOf(v) === i);
+}
+
+/** Suggestions de lecture, pas attribution automatique de droits. */
+export function fichesPourSituation(d: DonneesSimulation): string[] {
+  const keys: string[] = [];
+  if (d.vie === "M" && d.enfants > 0) keys.push(d.enfants === 1 ? "plan-marie-1-enfant" : "plan-marie-2-enfants");
+  if (d.recomposition === "O" || d.beauxEnfants > 0) keys.push("plan-famille-recomposee");
+  if (d.vie === "V") keys.push("plan-veuf-veuve");
+  if (["P", "U"].includes(d.vie)) keys.push("plan-concubins-pacs");
+  if (!d.enfants && !d.inconnues?.includes("enfants")) keys.push("plan-sans-enfant");
+  if (d.entreprise === "O") keys.push("plan-entreprise");
+  if (d.donationAnnee || d.donationsMultiples === "O") keys.push("plan-donations-deja-faites", "calendrier-15-ans");
+  if (d.residence + d.immobilier + d.epargne + d.titres + d.autres > 1_000_000) keys.push("plan-patrimoine-important");
+  if (d.protectionSignee !== "O") keys.push("protection-future");
+  if (d.residence > 0) keys.push("maison-indivision");
+  return keys;
 }

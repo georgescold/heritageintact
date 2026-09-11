@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CLE_SIMULATION } from "@/lib/simulateur/donnees";
+import Link from "next/link";
 
 export function TelechargerPlanPersonnalise({ jeton }: { jeton: string }) {
   const [attente, setAttente] = useState(false);
@@ -10,20 +10,10 @@ export function TelechargerPlanPersonnalise({ jeton }: { jeton: string }) {
   async function telecharger() {
     if (attente) return;
     setErreur("");
-    let donnees: string | null = null;
-    try {
-      donnees = localStorage.getItem(CLE_SIMULATION);
-    } catch {}
-    if (!donnees) {
-      setErreur("Aucune simulation n’est enregistrée sur cet appareil. Ouvrez le simulateur, complétez-le, puis revenez télécharger votre plan.");
-      return;
-    }
     setAttente(true);
     try {
       const reponse = await fetch(`/espace/${jeton}/pdf/plan-personnalise`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: donnees,
+        method: "GET",
       });
       if (!reponse.ok) {
         setErreur(await reponse.text());
@@ -49,7 +39,7 @@ export function TelechargerPlanPersonnalise({ jeton }: { jeton: string }) {
     <li className="border-2 border-blue bg-grey-bg p-5">
       <p className="mb-1 text-sm font-bold uppercase tracking-wide text-orange-dark">Votre résultat principal</p>
       <p className="mb-2 text-[1.1rem] font-bold text-blue">Mon plan personnalisé</p>
-      <p className="mb-3 text-sm">Votre estimation, vos alertes et l’ordre des démarches générés à partir de la dernière simulation enregistrée sur cet appareil.</p>
+      <p className="mb-3 text-sm">Vos réponses, vos priorités et vos prochaines démarches. Retrouvez votre dernière préparation enregistrée, depuis votre téléphone ou votre ordinateur.</p>
       <button
         type="button"
         onClick={telecharger}
@@ -58,6 +48,7 @@ export function TelechargerPlanPersonnalise({ jeton }: { jeton: string }) {
       >
         {attente ? "Génération du PDF…" : "Télécharger mon plan personnalisé PDF"}
       </button>
+      <p className="mt-3"><Link className="inline-flex min-h-[48px] items-center underline" href={`/espace/${jeton}/simulateur`}>Reprendre ou modifier mes réponses</Link></p>
       {erreur && <p role="alert" className="mt-3 border-l-4 border-red bg-red-bg p-3 text-sm">{erreur}</p>}
     </li>
   );

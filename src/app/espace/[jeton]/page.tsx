@@ -9,6 +9,7 @@ import { estJetonValide } from "@/lib/jeton";
 import { CONTACT_EMAIL, type ProductSku } from "@/lib/config";
 import { MesurerAchat } from "@/components/MetaPixel";
 import { MesGuidesPdf } from "@/components/espace/MesGuidesPdf";
+import { PremiereAction } from "@/components/espace/PremiereAction";
 export const metadata = { title: "Mon parcours" };
 const CONFIRMATION_AJOUT: Partial<Record<ProductSku, string>> = {
   bump: "Votre Dossier Notaire est maintenant accessible dans Mon dossier.",
@@ -83,7 +84,7 @@ export default async function Page({
         )}
         <div className="max-w-[760px]">
           {!["dossier", "aide"].includes(vue) && !etat.possede.has("front") && (
-            <section><h2 className="mb-3 text-[1.5rem]">Vos contenus restent accessibles</h2><p className="mb-4">Retrouvez les dossiers correspondant à vos achats actifs.</p><ButtonLink href={`${hub}?vue=dossier`}>Ouvrir mon dossier</ButtonLink></section>
+            <section><h2 className="mb-3 text-[1.5rem]">Vos contenus restent accessibles</h2><p className="mb-4">Retrouvez les dossiers correspondant à vos achats actifs.</p><ButtonLink href={`${hub}?vue=dossier`}>Ouvrir mon dossier</ButtonLink><PremiereAction etat={etat}/></section>
           )}
           {!["dossier", "aide"].includes(vue) && etat.possede.has("front") && (
             <>
@@ -98,11 +99,12 @@ export default async function Page({
                 </div>
               </section>
               <div className="mt-10 border-t-2 border-blue pt-8">
+                <PremiereAction etat={etat}/>
                 <Boutique etat={etat} />
               </div>
             </>
           )}
-          {vue==="dossier" && <MesGuidesPdf jeton={jeton} possede={etat.possede}/>}
+          {vue==="dossier" && <MesGuidesPdf jeton={jeton} possede={etat.possede} email={etat.acces.email}/>}
           {vue === "aide" && (
             <div>
               <h2 className="mb-2 text-[1.5rem]">Retrouver facilement mon espace</h2>

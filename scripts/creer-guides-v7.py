@@ -5,6 +5,7 @@ sys.path.insert(0,str(Path("tmp/pdfs/deps").resolve()))
 from bs4 import BeautifulSoup, NavigableString
 from reportlab.pdfgen import canvas
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Table, TableStyle, KeepTogether, HRFlowable
+from reportlab.platypus.tableofcontents import TableOfContents
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT
@@ -54,10 +55,12 @@ def lexicon_box(entry):
 def lines(label,n=2):
  return [KeepTogether([P(label,"field")]+sum(([Spacer(1,13),HRFlowable(width="100%",thickness=.45,color=LINE)] for _ in range(n)),[]))]
 class Doc(SimpleDocTemplate):
+ def beforeDocument(self):self.marks=0
  def afterFlowable(self,f):
   if isinstance(f,Paragraph) and f.style.name=="h1":
    key="s"+str(self.page)+"-"+str(getattr(self,"marks",0)); self.marks=getattr(self,"marks",0)+1
    self.canv.bookmarkPage(key);self.canv.addOutlineEntry(f.getPlainText(),key,0,False)
+   if getattr(self,"toc_titles",None) and f.getPlainText() in self.toc_titles:self.notify("TOCEntry",(0,f.getPlainText(),self.page,key))
 def furniture(c,d):
  c.saveState();c.setFillColor(BLUE);c.setFont("HI-Bold",9);c.drawString(M,H-26,"HÉRITAGE INTACT")
  c.setFont("HI",8);c.setFillColor(colors.HexColor("#526171"));c.drawRightString(W-M,H-26,"GUIDE PRATIQUE")
@@ -70,6 +73,7 @@ def html_flows(node):
  if isinstance(node,NavigableString):
   return [P(str(node))] if clean(str(node)) else []
  if node.name in ("header","footer"):return []
+ if "no-print" in node.get("class",[]):return []
  if node.name=="table":
   rows=[]
   for tr in node.find_all("tr"):
@@ -130,7 +134,7 @@ def product_bridge(title,body,cta):
   [P(title,"h3")],
   [P(body)],
   [rich('<link href="https://www.heritageintact.fr/espace" color="#B74716"><b>'+html.escape(clean(cta))+'</b></link>',"check")],
-  [P("Le lien ouvre votre espace. Il ne déclenche aucun paiement ; le contenu et le prix sont présentés avant toute confirmation.","small")],
+  [P("Le lien ouvre la page d’accès. Indiquez l’adresse email de votre commande pour recevoir votre lien personnel, puis ouvrez Mon parcours. Aucun paiement n’est déclenché par ce lien.","small")],
  ]
  t=Table(rows,colWidths=[CW-22])
  t.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,-1),GREY),("BOX",(0,0),(-1,-1),.8,ORANGE),("LINEBEFORE",(0,0),(0,-1),3,ORANGE),("LEFTPADDING",(0,0),(-1,-1),11),("RIGHTPADDING",(0,0),(-1,-1),11),("TOPPADDING",(0,0),(-1,-1),5),("BOTTOMPADDING",(0,0),(-1,-1),5)]))
@@ -143,6 +147,7 @@ def creer_lexique_offert():
   P("Pour chaque notion, vous trouverez quatre niveaux : une définition en langage courant, ce que le mot change concrètement, le risque de confusion et le premier document à retrouver. La seconde partie vous oriente vers les articles de loi essentiels sans prétendre remplacer leur lecture ni l’analyse d’un professionnel."),
  ]
  story+=box("La règle d’utilisation","Ne choisissez jamais une solution à partir d’un seul mot ou d’un seul article. Reliez toujours la situation familiale, la propriété des biens, les donations passées, les contrats et les dates. Si une succession est ouverte, qu’un délai court ou qu’un conflit existe, contactez directement un notaire ou un avocat.")
+ story+=box("Commencez par un seul mot", "Cherchez le mot qui vous bloque avec la fonction de recherche de votre lecteur PDF. Lisez sa définition, puis revenez au passage de votre guide ou de votre document. Vous n’avez pas à lire tout le lexique : ce bonus explique le vocabulaire, sans remplacer les fiches pratiques propres à chaque produit.")
  story+=[P("Votre boussole avant tout calcul","h2"),P("1. Qui possède quoi aujourd’hui ? 2. Qui recevrait selon la loi, un testament ou un contrat ? 3. Quelle valeur serait réellement transmise ? 4. Quels abattements, barèmes et donations antérieures doivent être pris en compte ?")]
  for theme in DATA["lexique"]:
   story+=[PageBreak()]+head("LEXIQUE DÉTAILLÉ",theme["titre"])+[P(theme["question"])]
@@ -205,6 +210,13 @@ CAT=[
  ("upsell2","assurance-vie","Mon guide assurance-vie","Retrouver la clause. Demander les informations. Suivre les vérifications."),
  ("backend4","dossier-testament","Dossier Testament","Clarifier vos volontés. Détecter les contradictions. Préparer leur formalisation."),
 ]
+USAGE={
+ "front":("Lisez une seule erreur pour commencer", "Ouvrez la première erreur. Sur une feuille, notez ce qui vous concerne, ce que vous savez déjà et ce qui reste à retrouver. Passez à l’erreur suivante quand vous pouvez expliquer la première avec vos propres mots.", "Vous avez repéré les erreurs qui vous concernent et noté une prochaine vérification. Votre lecture a produit une liste utile : gardez-la avec ce guide."),
+ "bump":("Préparez d’abord votre fiche famille", "Lisez l’exemple rempli, puis complétez Ma fiche famille et Mon inventaire patrimonial. Inscrivez « à retrouver » au lieu d’inventer une réponse. Préparez ensuite les pièces et le message de rendez-vous. Après l’échange, notez dans le compte-rendu qui fait quoi et pour quand.", "Votre rendez-vous est préparé lorsque votre objectif, vos questions et les pièces disponibles sont réunis. Après le rendez-vous, conservez le compte-rendu et la prochaine action convenue."),
+ "upsell1":("Commencez par votre résultat personnel", "Cette bibliothèque accompagne le PDF Mon plan personnalisé : elle ne remplace pas vos réponses et ne demande pas de lire douze situations. Ouvrez d’abord votre plan dans Mon dossier. Choisissez ensuite la fiche dont le titre correspond à votre famille ; plusieurs peuvent se compléter. Ignorez celles qui ne vous concernent pas.", "Vous avez votre plan personnel et les seules fiches utiles à votre situation. Votre prochaine étape est identifiée ; vous n’avez pas à compléter toute la bibliothèque."),
+ "upsell2":("Prenez un seul contrat pour commencer", "Retrouvez son dernier relevé et complétez une grille de lecture pour ce contrat. Si la clause ou les dates manquent, utilisez le courrier de demande d’informations. À réception de la réponse, complétez la grille et notez les questions restantes. Recommencez séparément pour chaque autre contrat.", "Votre revue est préparée lorsque les informations de chaque contrat sont identifiées, les demandes manquantes envoyées et les réponses conservées. Faites confirmer la suite avant toute modification."),
+ "backend4":("Commencez par le diagnostic", "Complétez le diagnostic, puis la carte de vos volontés. Comparez ces intentions aux dispositions déjà prises avec le contrôle de cohérence. Reportez les points importants dans le brief pour le notaire. Conservez les questions de validation pour le rendez-vous, puis renseignez le suivi après la formalisation.", "Vos volontés, les personnes concernées et les questions de cohérence sont réunies dans votre brief. Vous avez préparé un échange concret avec le notaire pour leur formalisation."),
+}
 ONLY=set(sys.argv[1:])
 manifest=[]
 if not ONLY or "lexique-succession" in ONLY:
@@ -229,12 +241,12 @@ for sku,slug,title,subtitle in CAT:
  story+=[P(ed.get("essentielTitre","Pour aller à l’essentiel"),"h3"),P(ed["essentiel"])]
  if sku!="front":story+=[P("Les cas illustratifs montrent comment utiliser les supports. Adaptez uniquement les champs correspondant à votre situation et conservez-les chez vous.","small")]
  story+=[PageBreak()]+head("VOTRE PARCOURS",ed.get("parcoursTitre","Ce que les sept erreurs vont vous révéler" if sku=="front" else "Le fil de votre préparation"))
- if sku=="front":
-  for l in DATA["lecons"]:
-   if l["numero"]:story+=[P(l["titre"],"h3"),P(l["resume"],"small")]
- else:
-  for d in docs:story+=[P(d["titre"],"h3")]
+ toc=TableOfContents();toc.levelStyles=[ParagraphStyle("toc",fontName="HI",fontSize=10.5,leading=14,spaceBefore=5,textColor=BLUE)]
+ story+=[toc]
  story+=[P("Utilisez les signets du PDF pour rejoindre directement la question qui vous concerne. Ce n’est pas un cours à mémoriser : une information manquante devient une demande précise à faire.")]
+ story+=[PageBreak()]+head("UNE ACTION, UN DOCUMENT, UN RÉSULTAT",USAGE[sku][0])+[P(USAGE[sku][1])]
+ story+=box("À votre rythme", "Vous pouvez vous arrêter après cette première action. Notez la page à reprendre. Les blancs sont des zones pour vos réponses : ne recopiez pas l’exemple comme s’il décrivait votre situation.")
+ if sku!="front":story+=[P("Pour remplir en ligne : ouvrez Mon dossier, retrouvez ce produit puis « Remplir mes fiches en ligne ». Écrivez dans la fiche et cliquez sur « Enregistrer ma fiche ». Pour une copie locale, choisissez « Imprimer / PDF ». Vous pouvez aussi imprimer ce dossier et écrire à la main.")]
  if sku=="front":
   for l in DATA["lecons"]:
    if not l["numero"]:continue
@@ -267,16 +279,19 @@ for sku,slug,title,subtitle in CAT:
   elif subtitle_node:story+=[P(subtitle_node.get_text(" ",strip=True),"small")]
   story+=html_flows(soup)
   S["body"]=normalBody
+ story+=[PageBreak()]+head("VOTRE PRÉPARATION A AVANCÉ","Ce que vous avez maintenant")+[P(USAGE[sku][2])]
+ story+=box("Gardez votre point de reprise", "Notez la prochaine action choisie, la pièce ou la réponse attendue et la personne à contacter. Vous pourrez reprendre sans tout recommencer.")
  story+=[PageBreak()]+head(ed.get("sortieLabel","VOTRE PROCHAINE ÉTAPE"),ed.get("sortieTitre","Ne laissez pas vos réponses retourner dans le tiroir."))
  story+=[P(ed["acquis"]),P(ed["limite"])]
  story+=box(ed["suiteLabel"],ed["suite"])
  story+=[P(ed["suiteResultat"]),rich('<link href="https://www.heritageintact.fr/espace" color="#12365E"><b>'+html.escape(clean(ed["suiteCta"]))+'</b></link>')]
- story+=[P("Votre espace vérifie vos achats avant d’afficher une offre. Un produit déjà acquis n’est jamais proposé une seconde fois ; le lien ne déclenche aucun paiement.","small")]
+ story+=[P("Le lien ouvre la page d’accès : indiquez votre email de commande pour recevoir votre lien personnel, puis ouvrez Mon parcours. L’espace distingue vos produits acquis des propositions. Ce clic ne déclenche aucun paiement.","small")]
  story+=sources()
  file=OUT/(slug+".pdf")
  doc=Doc(str(file),pagesize=A4,rightMargin=M,leftMargin=M,topMargin=53,bottomMargin=52,title=title,author="Héritage Intact")
  doc.sans_date=sku=="front"
- doc.build(story,onFirstPage=furniture,onLaterPages=furniture)
+ doc.toc_titles=set(clean(l["titre"]) for l in DATA["lecons"] if l["numero"]) if sku=="front" else set(clean(d["titre"]) for d in docs)
+ doc.multiBuild(story,onFirstPage=furniture,onLaterPages=furniture)
  reader=PdfReader(str(file))
  for i,page in enumerate(reader.pages,1):
   text=page.extract_text()

@@ -69,6 +69,7 @@ export function Champ({ label, indice }: { label: string; indice?: string }) {
     <div className="flex min-h-[44px] flex-wrap items-end gap-x-3 border-b border-black pb-1">
       <span className="font-bold">{label}</span>
       {indice && <span className="text-[0.85rem]">{indice}</span>}
+      <span data-a-remplir={label} className="block min-h-[30px] w-full focus:bg-blue-50 focus:outline-2" />
     </div>
   );
 }
@@ -77,7 +78,7 @@ export function Champ({ label, indice }: { label: string; indice?: string }) {
 export function Case({ children }: { children: ReactNode }) {
   return (
     <li className="flex min-h-[36px] items-start gap-3">
-      <span aria-hidden className="mt-[3px] block h-[18px] w-[18px] shrink-0 border border-black" />
+      <span data-a-remplir="Notez oui lorsque cette action est faite" className="mt-[3px] block min-h-[24px] min-w-[32px] shrink-0 border border-black" />
       <span>{children}</span>
     </li>
   );
@@ -90,7 +91,9 @@ export function Case({ children }: { children: ReactNode }) {
  */
 export function TableauVierge({ colonnes, lignes }: { colonnes: string[]; lignes: number }) {
   return (
-    <div className="overflow-x-auto">
+    <div>
+      <p className="no-print mb-2 text-sm sm:hidden">Si toutes les colonnes ne sont pas visibles, faites glisser le tableau vers la gauche.</p>
+    <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Tableau à compléter, défilement horizontal possible">
       <table className="w-full min-w-[16rem] border-collapse text-left text-[0.92rem]">
         <thead>
           <tr>
@@ -105,12 +108,13 @@ export function TableauVierge({ colonnes, lignes }: { colonnes: string[]; lignes
           {Array.from({ length: lignes }, (_, i) => (
             <tr key={i}>
               {colonnes.map((c) => (
-                <td key={c} className="h-[36px] border border-black px-2 py-1.5" />
+                <td key={c} data-a-remplir={`${c}, ligne ${i + 1}`} className="h-[36px] border border-black px-2 py-1.5" />
               ))}
             </tr>
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 }

@@ -59,7 +59,7 @@ export default async function SimulateurPage({ params }: { params: Promise<{ jet
           ← Mon espace
         </Link>
       </div>
-      <main className="wrap py-4"><SimulationPlan verrouille={false} /></main>
+      <main className="wrap py-4"><SimulationPlan verrouille={false} jeton={jeton} /></main>
     </>
   );
 }

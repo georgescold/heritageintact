@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { BoutonImprimer } from "@/components/espace/BoutonImprimer";
 import { LienInvalide } from "@/components/espace/LienInvalide";
 import { profilParEmail } from "@/lib/db";
 import { chargerEspace } from "@/lib/espace";
@@ -9,6 +8,7 @@ import { estJetonValide } from "@/lib/jeton";
 import { EDITORIAL_FICHES } from "@/lib/editorial-fiches";
 import { SuiteProduit } from "@/components/SuiteProduit";
 import { documentParCle } from "@/lib/methode";
+import { DocumentEditable } from "@/components/documents/DocumentEditable";
 
 export const metadata: Metadata = { title: "Votre document" };
 
@@ -82,16 +82,15 @@ export default async function DocumentPage({
     <main className="flex-1">
       <div className="no-print wrap py-6">
         <p className="mb-4">
-          <Link href={`/espace/${jeton}`}>← Revenir à mon espace</Link>
+          <Link href={`/espace/${jeton}?vue=dossier`}>← Revenir à Mon dossier</Link>
         </p>
         {intro && <section className="mb-6 border-l-4 border-orange bg-grey-bg p-5"><h1 className="mb-3 text-[1.5rem]">{doc.titre}</h1><p className="mb-3 text-lg">{intro[0]}</p><p><strong>Ce que vous allez comprendre : </strong>{intro[1]}</p></section>}
-        <BoutonImprimer />
       </div>
 
-      <div className="wrap-wide pb-10 print:pb-0">
+      <DocumentEditable jeton={jeton} cle={cle}><div className="wrap-wide pb-10 print:pb-0">
         <Corps profil={profil ?? undefined} />
-      </div>
-      {!etat.acces.revoque && <div className="no-print wrap"><SuiteProduit moment={cle} possede={etat.possede} profil={profil} hub={"/espace/"+jeton} /></div>}
+      </div></DocumentEditable>
+      {!etat.acces.revoque && <div className="no-print wrap"><p className="my-6 border-l-4 border-green bg-green-bg p-4">Votre fiche est prête à être utilisée lorsque les informations connues et les questions restantes sont notées. Enregistrez-la avant de quitter cette page : vous pourrez la retrouver dans Mon dossier.</p><SuiteProduit moment={cle} possede={etat.possede} profil={profil} hub={"/espace/"+jeton} /></div>}
     </main>
   );
 }

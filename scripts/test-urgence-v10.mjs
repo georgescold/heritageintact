@@ -37,5 +37,5 @@ for (const file of ["src/app/page.tsx", "src/app/methode/page.tsx"]) {
   ok(page.includes(file.includes("/methode/")?"<CalculHistorique":"<OptinForm")); ok(page.indexOf("<UrgencyBar") < page.indexOf("<Header"));
 }
 const exemple = fs.readFileSync("src/components/ExempleHeadline.tsx", "utf8");
-ok(exemple.includes("EXEMPLE FICTIF")); ok(exemple.includes("Voir les hypothèses"));
+ok(exemple.includes("CAS CHIFFRÉ · DEUX ENFANTS · HYPOTHÈSES VISIBLES")); ok(exemple.includes("Voir les hypothèses"));
 console.log(n + " contrôles V10 réussis : échéance fiscale fixe, expiration, rendu, headline, conditions et absence de réinitialisation.");
