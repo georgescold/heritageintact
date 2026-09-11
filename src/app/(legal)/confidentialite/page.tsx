@@ -41,6 +41,13 @@ export default function Confidentialite() {
           sur « Enregistrer ma fiche ». N’y inscrivez pas de données de santé, de coordonnées bancaires
           ni de pièces d’identité. Ces contenus ne sont transmis ni aux outils publicitaires ni à Trustpilot.
         </li>
+        <li>
+          L’avis que vous choisissez de déposer dans l’onglet « Mon avis » de votre espace : note,
+          réponses au questionnaire et message libre. Il sert à améliorer nos produits et n’est transmis
+          ni aux outils publicitaires ni à Trustpilot. Votre message n’est publié sur le site qu’avec
+          votre accord explicite, sous votre prénom et avec sa date, et vous pouvez retirer cet accord
+          à tout moment. Un avis déposé sur Trustpilot relève des conditions de Trustpilot.
+        </li>
       </ul>
 
       <h2>Orientation et fiabilité des envois</h2>

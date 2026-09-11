@@ -3,10 +3,14 @@ import { Header, Footer } from "@/components/Chrome";
 import { LienInvalide } from "@/components/espace/LienInvalide";
 import { Boutique } from "@/components/espace/Boutique";
 import { MonLien } from "@/components/espace/MonLien";
+import { FormulaireAvis } from "@/components/espace/FormulaireAvis";
 import { ButtonLink } from "@/components/ui";
 import { chargerEspace } from "@/lib/espace";
 import { estJetonValide } from "@/lib/jeton";
 import { CONTACT_EMAIL, type ProductSku } from "@/lib/config";
+import { contexteAvis, MESSAGE_MAX, questionnaireAvis } from "@/lib/avis-questions";
+import { lireAvis } from "@/lib/avis-store";
+import { envoyerAvis } from "@/app/espace/avis-actions";
 import { MesurerAchat } from "@/components/MetaPixel";
 import { MesGuidesPdf } from "@/components/espace/MesGuidesPdf";
 import { PremiereAction } from "@/components/espace/PremiereAction";
@@ -48,8 +52,12 @@ export default async function Page({
   const onglets = [
     ["parcours", "Mon parcours"],
     ["dossier", "Mon dossier"],
+    ["avis", "Mon avis"],
     ["aide", "Aide"],
   ];
+  const surParcours = !["dossier", "avis", "aide"].includes(vue);
+  // Un incident de lecture de l'avis ne doit jamais fermer l'espace : on continue sans.
+  const avis = surParcours || vue === "avis" ? await lireAvis(etat.acces.email).catch(() => null) : null;
   return (
     <>
       <Header minimal />
@@ -83,10 +91,10 @@ export default async function Page({
           </p>
         )}
         <div className="max-w-[760px]">
-          {!["dossier", "aide"].includes(vue) && !etat.possede.has("front") && (
+          {surParcours && !etat.possede.has("front") && (
             <section><h2 className="mb-3 text-[1.5rem]">Vos contenus restent accessibles</h2><p className="mb-4">Retrouvez les dossiers correspondant à vos achats actifs.</p><ButtonLink href={`${hub}?vue=dossier`}>Ouvrir mon dossier</ButtonLink><PremiereAction etat={etat}/></section>
           )}
-          {!["dossier", "aide"].includes(vue) && etat.possede.has("front") && (
+          {surParcours && etat.possede.has("front") && (
             <>
               <section className="mb-8 border-2 border-blue bg-grey-bg p-5 sm:p-6">
                 <p className="font-bold uppercase tracking-wide text-orange-dark">Votre achat</p>
@@ -104,7 +112,26 @@ export default async function Page({
               </div>
             </>
           )}
+          {surParcours && (
+            <section className="mt-10 border-2 border-grey-line p-5">
+              <h2 className="mb-2 text-[1.3rem]">{avis ? "Merci pour votre avis" : "Votre avis nous aide"}</h2>
+              <p className="mb-4">
+                {avis
+                  ? "Vous pouvez le compléter ou le modifier à tout moment."
+                  : "Deux minutes pour noter votre expérience et nous dire ce qui vous a aidé ou manqué."}
+              </p>
+              <ButtonLink href={`${hub}?vue=avis`} variant="blue">{avis ? "Modifier mon avis" : "Donner mon avis"}</ButtonLink>
+            </section>
+          )}
           {vue==="dossier" && <MesGuidesPdf jeton={jeton} possede={etat.possede} email={etat.acces.email}/>}
+          {vue === "avis" && (
+            <FormulaireAvis
+              action={envoyerAvis.bind(null, jeton)}
+              sections={questionnaireAvis(contexteAvis(etat))}
+              existant={avis && { note: avis.note, reponses: avis.reponses, message: avis.message, publication: avis.publication, modifieLe: avis.modifieLe }}
+              messageMax={MESSAGE_MAX}
+            />
+          )}
           {vue === "aide" && (
             <div>
               <h2 className="mb-2 text-[1.5rem]">Retrouver facilement mon espace</h2>

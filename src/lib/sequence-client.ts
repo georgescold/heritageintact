@@ -43,6 +43,7 @@ export const SEQUENCE_CLIENT: EtapeClient[] = [
       `Bonjour ${p},`,
       "Tous vos documents sont regroupés dans « Mon dossier ». Retrouvez le produit concerné, puis son bouton de téléchargement. Si votre produit comporte des fiches, vous pouvez aussi les remplir en ligne et les enregistrer.",
       "Inutile de tout imprimer ou de tout finir cette semaine. Une question claire à faire valider vaut mieux qu’un dossier rempli à la hâte.",
+      "Votre avis nous aide à améliorer les guides : dans votre espace, l’onglet « Mon avis » vous prend deux minutes. Vous pouvez aussi publier un avis public sur Trustpilot.",
       "Pour un problème d’accès ou une explication du parcours, répondez à cet email. Pour une décision juridique ou fiscale, adressez-vous au professionnel qui connaît votre situation.",
     ],
     bouton: { texte: "Retrouver mes documents", chemin: (j) => `/espace/${j}?vue=dossier` },

@@ -3,6 +3,8 @@ export const BRAND = "Héritage Intact";
 export const CONTACT_EMAIL = "contact@heritageintact.fr";
 /** Adresse AFS fournie par Trustpilot : uniquement en BCC du reçu du premier achat payé. */
 export const TRUSTPILOT_INVITE_BCC = "heritageintact.fr+4f77d6a16e@invite.trustpilot.com";
+/** Page publique d'évaluation. Proposée à tous les clients dans « Mon avis », jamais selon leur note. */
+export const URL_AVIS_TRUSTPILOT = "https://fr.trustpilot.com/evaluate/heritageintact.fr";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const LEGAL = {
   siret: "989 331 418 00016",

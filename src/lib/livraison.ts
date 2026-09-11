@@ -9,7 +9,7 @@ import {
   type Acces,
   type Order,
 } from "./db";
-import { envoyerAcces } from "./email";
+import { envoyerAcces, envoyerRecuAchat } from "./email";
 
 /**
  * LA LIVRAISON. Ce que reçoit un acheteur, et par quels chemins il peut le
@@ -96,6 +96,19 @@ export async function livrer(order: Order): Promise<Acces | null> {
 
     const r = await envoyerAcces(gagne);
     if (!r.ok) await libererEnvoi(gagne.email, CLE_ACCES);
+
+    // LE REÇU DU GUIDE, séparé de l'accès. C'est lui qui porte l'invitation
+    // Trustpilot (copie cachée), et il ne contient jamais le lien personnel.
+    // Sans lui, l'invitation ne partait jamais : le reçu n'existait que pour les
+    // achats suivants. Même clé à chaque appel (confirmation, webhook, cron) :
+    // un seul envoi par commande.
+    const guide = order.items.find((i) => i.sku === "front" && !i.rembourse);
+    if (r.ok && guide) {
+      const autres = order.items
+        .filter((i) => i.sku !== "front" && !i.rembourse)
+        .map((i) => ({ sku: i.sku, montant: i.price }));
+      await envoyerRecuAchat(gagne, "front", guide.price, order.id, autres);
+    }
     return gagne;
   } catch (err) {
     console.error("[livraison] livrer a échoué", err);

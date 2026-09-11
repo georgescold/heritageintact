@@ -361,12 +361,16 @@ export async function envoyerRecuAchat(
   sku: ProductSku,
   montant: number,
   operation?: string,
+  /** Les autres articles de la même commande (le Dossier notaire pris avec le guide). */
+  complements: { sku: ProductSku; montant: number }[] = [],
 ): Promise<{ ok: boolean }> {
   const p = echapper(acces.firstName.trim()) || "";
   const produit = PRODUCTS[sku];
+  const achats = [{ sku, montant }, ...complements].map((a) => `<strong>${PRODUCTS[a.sku].name}</strong>, ${euros(a.montant)}`);
+  const ajout = achats.length > 1 ? `${achats.slice(0, -1).join(", ")} et ${achats[achats.length - 1]}` : achats[0];
   const paragraphes = [
     `Bonjour ${p},`,
-    `C'est ajouté à votre espace&nbsp;: <strong>${produit.name}</strong>, ${euros(montant)}.`,
+    `C'est ajouté à votre espace&nbsp;: ${ajout}.`,
     "Retrouvez tous les dossiers correspondant à vos achats dans « Mon dossier ».",
     "Garantie 30 jours&nbsp;: si cela ne vous sert pas, un message suffit et vous êtes remboursé, sans justification à fournir.",
     "<strong>Vous n'êtes pas à l'origine de cet achat&nbsp;?</strong> Répondez simplement à ce message&nbsp;: nous l'annulons et nous vous remboursons, sans discussion.",
@@ -382,6 +386,50 @@ export async function envoyerRecuAchat(
     // Une invitation par client : le reçu du produit d’entrée, jamais un renvoi d’accès
     // ni un achat complémentaire qui multiplierait les sollicitations.
     inviterAvis: sku === "front" && montant > 0,
+  });
+}
+
+/**
+ * NOTIFICATION INTERNE : un client vient de déposer ou de modifier son avis
+ * dans l'espace. Part uniquement vers notre boîte, jamais vers le client.
+ */
+export async function envoyerAvisInterne(o: {
+  prenom: string;
+  email: string;
+  note: number;
+  lignes: [string, string][];
+  message: string;
+  publication: boolean;
+  modification: boolean;
+}): Promise<{ ok: boolean }> {
+  const etoiles = "★".repeat(o.note) + "☆".repeat(5 - o.note);
+  const qui = `${echapper(o.prenom.trim()) || "Un client"} (${echapper(o.email)})`;
+  const action = o.modification ? "a modifié son avis" : "vient de déposer un avis";
+  const tableau = o.lignes
+    .map(([q, r]) => `<tr><td style="padding:6px 8px;border-bottom:1px solid #e1e6ec;color:#555555;">${echapper(q)}</td><td style="padding:6px 8px;border-bottom:1px solid #e1e6ec;font-weight:bold;">${echapper(r)}</td></tr>`)
+    .join("");
+  const html = `<!doctype html><html lang="fr"><head><meta charset="utf-8"></head>
+<body style="font:16px/1.5 Arial,Helvetica,sans-serif;color:#222222;">
+<p>${qui} ${action} dans son espace.</p>
+<p style="margin:8px 0;font-size:26px;color:#e8730c;">${etoiles} <span style="font-size:16px;color:#222222;">${o.note}/5</span></p>
+${tableau ? `<table style="border-collapse:collapse;width:100%;max-width:640px;">${tableau}</table>` : ""}
+<p><strong>Message libre :</strong><br>${o.message ? echapper(o.message).replace(/\n/g, "<br>") : "<em>aucun</em>"}</p>
+<p><strong>Publication autorisée :</strong> ${o.publication ? "oui, avec son prénom et la date" : "non"}</p>
+</body></html>`;
+  const text = [
+    `${o.prenom || "Un client"} (${o.email}) ${action} dans son espace.`,
+    `Note : ${etoiles} ${o.note}/5`,
+    ...o.lignes.map(([q, r]) => `- ${q} → ${r}`),
+    `Message libre : ${o.message || "aucun"}`,
+    `Publication autorisée : ${o.publication ? "oui" : "non"}`,
+  ].join("\n\n");
+  return envoyer({
+    to: CONTACT_EMAIL,
+    type: "transactionnel",
+    cle: `avis-interne/${o.email}/${Date.now()}`,
+    subject: `Avis client ${etoiles} — ${o.prenom || o.email}`,
+    html,
+    text,
   });
 }
 
