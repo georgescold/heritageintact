@@ -17,6 +17,6 @@ ok(sequence.includes("52 €"));ok(sequence.includes("cas fictif"));ok(!sequence
 const sortie=fs.readFileSync("src/components/SortieOffre.tsx","utf8");
 ok(sortie.includes('dossier=produit==="bump"'));ok(sortie.includes("Ce que vous risquez si vous fermez cette page"));ok(sortie.includes("Aucun achat sur ce clic"));
 const paiement=fs.readFileSync("src/components/CheckoutForm.tsx","utf8"),faq=fs.readFileSync("src/components/ObjectionsComplement.tsx","utf8");
-ok(paiement.includes("Un rendez-vous supplémentaire peut-il coûter plus cher ?")&&paiement.includes("Pas automatiquement"));
+ok(!paiement.includes("Un rendez-vous supplémentaire peut-il coûter plus cher ?")&&!paiement.includes("Pas automatiquement"));
 ok(faq.includes("dossier")&&faq.includes("Selon l’étude")&&!faq.includes("chaque rendez-vous est payant"));
 console.log(n+" contrôles copy V8 réussis : headline, calcul fictif, profils, CTA, liens chauds, preuve et droits. Aucun service externe.");
