@@ -10,18 +10,36 @@ export type EtapeClient = {
   condition?: (etat: EtatMembre) => boolean;
 };
 export const SEQUENCE_CLIENT: EtapeClient[] = [
+  /**
+   * c1 arrive quelques heures après l'email d'accès, qui a déjà donné le lien,
+   * la clé, l'emplacement des documents et la première action. Répéter tout ça
+   * faisait de c1 un doublon — c'était son défaut jusqu'au 12/09/2026.
+   *
+   * Son travail propre est ailleurs, et il est psychologique : à ce moment
+   * précis, le risque n'est pas que le client ne trouve pas son dossier, c'est
+   * qu'il le range « pour ce week-end » après avoir évité le sujet des années
+   * (`strategie/02-avatar.md` : « ne rien faire, c'est ce qu'il fait depuis
+   * 10 ans »). Un produit jamais ouvert, c'est un remboursement et zéro LTV.
+   *
+   * Structure CEO : on excuse l'échec passé, on nomme le réflexe, on réduit la
+   * peur de ne pas comprendre (objection n°1 de l'avatar), on ferme sur le rêve.
+   * Aucune logistique, et rien à vendre — la séquence client ne vend jamais.
+   */
   {
     cle: "c1",
     jour: 1,
-    objet: () => "Votre accès et votre point de départ",
-    corps: (p, lien) => [
+    objet: () => "Ne le rangez pas pour ce week-end",
+    corps: (p) => [
       `Bonjour ${p},`,
-      "Votre guide vous attend dans « Mon dossier ». Téléchargez-le, ouvrez la première erreur et notez un point qui concerne votre situation. Vous n’avez pas besoin de lire tous les documents aujourd’hui.",
-      "Votre lien personnel fonctionne comme une clé : conservez-le dans vos favoris et ne le partagez pas.",
-      `Votre espace : ${lien}`,
-      "En cas de lien perdu, demandez son renvoi sur la page « Mon espace ». Aucun achat supplémentaire n’est nécessaire pour commencer.",
+      "Vous venez de faire quelque chose que vous repoussiez peut-être depuis des années. Ce n’est pas rien, et ça n’a rien à voir avec un manque de volonté : ce dossier mélange l’argent, la famille et sa propre disparition. Peu de gens s’y mettent de bon cœur.",
+      "Il va maintenant se passer une chose très prévisible. Vous allez vous dire : « je regarderai ça tranquillement ce week-end. » Et le week-end, il y aura les petits-enfants, une course à faire, un rendez-vous. C’est exactement comme ça que dix ans passent.",
+      "Alors faisons l’inverse, tout de suite. <strong>Dix minutes, un seul document, le premier.</strong> Vous n’avez rien à décider, rien à signer, rien à calculer ce soir.",
+      "Et si un mot vous arrête, c’est normal : le vocabulaire de la succession a été écrit pour les professionnels, pas pour ceux qui transmettent. Chaque terme est expliqué là où il apparaît. Vous n’avez pas à devenir expert, ni à tout retenir.",
+      "Parce que ce que vous cherchez, au fond, ce n’est pas de comprendre la fiscalité. C’est de pouvoir dire, au prochain repas de famille : « je m’en suis occupé. Voilà ce qui est réglé, et voilà ce qu’il reste à faire vérifier. »",
+      "Ce soir, un seul document. Le reste suivra tout seul.",
     ],
-    bouton: { texte: "Ouvrir mon parcours", chemin: (j) => `/espace/${j}` },
+    bouton: { texte: "Ouvrir le premier document", chemin: (j) => `/espace/${j}` },
+    ps: "Si quelque chose ne s’ouvre pas ou ne fonctionne pas comme prévu, répondez simplement à cet email.",
   },
   {
     cle: "c2",
