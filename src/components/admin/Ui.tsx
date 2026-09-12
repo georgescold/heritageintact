@@ -13,6 +13,7 @@ export const ONGLETS = [
   { href: "/admin", t: "Vue d’ensemble" },
   { href: "/admin/acquisition", t: "Acquisition" },
   { href: "/admin/ventes", t: "Ventes" },
+  { href: "/admin/publicite", t: "Publicité" },
   { href: "/admin/membres", t: "Membres" },
   { href: "/admin/emails", t: "Emails" },
   { href: "/admin/client", t: "Fiche client" },

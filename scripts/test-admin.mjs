@@ -225,6 +225,86 @@ ok(
 );
 eq(A.fiche("inconnu@x.fr", { leads, commandes, acces: [], progression }), []);
 
+/* ── Publicite et rentabilite ────────────────────────────────────────── */
+const P = mod("src/lib/admin/publicite.ts");
+
+const sem = [
+  { debut: "2026-01-01", fin: "2026-01-07", depense: 100, clics: 200, impressions: 5000 },
+  { debut: "2026-01-08", fin: "2026-01-14", depense: 0, clics: 0, impressions: 0 },
+];
+const leadsPub = [
+  { id: "p1", email: "a@x.fr", firstName: "A", createdAt: "2026-01-02T10:00:00.000Z" },
+  { id: "p2", email: "b@x.fr", firstName: "B", createdAt: "2026-01-07T23:30:00.000Z" },
+  { id: "p3", email: "c@x.fr", firstName: "C", createdAt: "2026-01-09T10:00:00.000Z" },
+];
+const cmdPub = [
+  commande("a@x.fr", 3, [{ sku: "front", price: 26 }, { sku: "bump", price: 17 }]),
+  // Hors des deux semaines : ne doit peser nulle part.
+  commande("z@x.fr", 20, [{ sku: "front", price: 26 }]),
+];
+
+const avec = P.cockpit(sem, leadsPub, cmdPub, true);
+eq(avec.length, 2);
+eq(avec[0].depense, 100);
+eq(avec[0].ca, 43);
+eq(avec[0].leads, 2, "la borne haute de la semaine est inclusive : 23h30 le dernier jour compte");
+eq(avec[0].conversions, 1);
+eq(avec[0].cpc, 0.5, "100 / 200 clics");
+eq(avec[0].cpl, 50, "100 / 2 inscrits");
+eq(avec[0].cpa, 100, "100 / 1 achat");
+eq(avec[0].epl, 21.5, "43 / 2 inscrits");
+eq(avec[0].roas, 0.43);
+eq(avec[0].benefice, -57, "43 encaisses pour 100 depenses");
+eq(avec[1].leads, 1);
+eq(avec[1].ca, 0);
+eq(avec[1].roas, null, "aucune division par zero : rien depense, donc pas de ROAS");
+eq(avec[1].cpa, null);
+eq(avec[1].cpc, null);
+
+// Meta absent : la depense est INCONNUE, et tout ce qui en depend reste vide.
+const sans = P.cockpit(sem, leadsPub, cmdPub, false);
+eq(sans[0].depense, null, "depense inconnue, jamais zero");
+eq(sans[0].benefice, null, "un benefice egal au CA serait le pire des mensonges");
+eq(sans[0].roas, null);
+eq(sans[0].cpl, null);
+eq(sans[0].ca, 43, "ce que nous savons reste affiche");
+eq(sans[0].leads, 2);
+
+// Le verdict de sante.
+eq(P.sante(sans).scalable, null, "sans depense connue, on ne conclut pas");
+ok(P.sante(sans).message.includes("inconnue"));
+eq(P.sante(avec).scalable, false, "21,50 € par inscrit pour 50 € de cout : non scalable");
+ok(P.sante(avec).message.includes("ROAS"));
+
+const rentable = P.cockpit(
+  [{ debut: "2026-01-01", fin: "2026-01-07", depense: 10, clics: 100, impressions: 1000 }],
+  leadsPub.slice(0, 2),
+  cmdPub,
+  true,
+);
+eq(P.sante(rentable).scalable, true, "43 € encaisses pour 10 € depenses");
+
+// Les semaines locales, quand Meta n'est pas connecte.
+const locales = P.semainesLocales(3, Date.parse("2026-01-22T12:00:00.000Z"));
+eq(locales.length, 3);
+eq(locales[2].fin, "2026-01-22", "la derniere semaine se termine aujourd'hui");
+eq(locales[0].debut, "2026-01-02");
+ok(
+  locales.every((l) => Date.parse(l.fin) - Date.parse(l.debut) === 6 * 86400000),
+  "sept jours pleins par semaine",
+);
+
+// Le connecteur Meta ne parle a personne tant qu'il n'est pas configure.
+const M = mod("src/lib/meta-ads.ts");
+ok(!M.adsConfigure(), "sans jeton ni compte publicitaire, la lecture Meta est desactivee");
+const source_ads = fs.readFileSync("src/lib/meta-ads.ts", "utf8");
+ok(
+  source_ads.includes("Authorization: `Bearer ${e.META_ADS_TOKEN}`"),
+  "le jeton voyage en en-tete, jamais dans l'URL",
+);
+ok(!/searchParams.set\("access_token"/.test(source_ads), "aucun jeton en parametre d'URL");
+ok(source_ads.includes("AbortSignal.timeout"), "un Meta muet ne doit pas bloquer le panel");
+
 /* ── La garde ────────────────────────────────────────────────────────── */
 /**
  * La garde se recharge sous plusieurs environnements : la règle de longueur ne
@@ -318,5 +398,5 @@ for (const page of ["page", "acquisition/page", "ventes/page", "membres/page", "
 
 console.log(
   n +
-    " contrôles du panel réussis : périodes, recettes hors test et hors impayé, remboursement par ligne, attribution par source, série sans trou, entonnoir, envois, fiche sans jeton et garde d'accès. Aucun réseau ni base.",
+    " contrôles du panel réussis : périodes, recettes hors test et hors impayé, remboursement par ligne, attribution par source, série sans trou, entonnoir, envois, rentabilité publicitaire à dépense connue ET inconnue, verdict de scalabilité, fiche sans jeton et garde d'accès. Aucun réseau ni base.",
 );
