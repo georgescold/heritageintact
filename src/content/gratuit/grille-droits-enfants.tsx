@@ -1,6 +1,12 @@
 /**
  * LEAD MAGNET — GRATUIT. Structure CEO appliquée (03-marketing-copy/structure-ceo.md).
  *
+ * Positionnement, choisi pour ne doublonner aucune page vendue : le front vend
+ * les erreurs (« Les 7 erreurs qui offrent votre héritage à l'État »), la home
+ * promet le gain (« 68 206 € de plus »). Ce document occupe la troisième place,
+ * la seule libre — la MESURE. Son titre est celui de l'ennemi : le chiffre que
+ * personne n'a été payé pour vous donner.
+ *
  * Pain point visé, pris dans `strategie/02-avatar.md` : la FRUSTRATION n°1 de
  * Jean-Pierre — « ne pas savoir combien ses enfants paieront réellement » — et
  * son DÉSIR n°1 — « un chiffre clair : ce que l'État prendra ». L'objection n°2
@@ -59,12 +65,12 @@ export function GrilleDroitsEnfants() {
         Document de référence · Héritage Intact
       </p>
       <h1 className="mb-3 text-[1.8rem] font-bold leading-tight">
-        Ce que vos enfants paieront vraiment sur ce que vous leur laissez
+        Le chiffre que personne ne vous a donné
       </h1>
       <p className="mb-2 text-text-soft">
-        La grille complète, par patrimoine et par nombre d’enfants. Vous trouverez votre ligne en dix
-        secondes. Chaque chiffre porte l’article qui le fonde, et la date à laquelle il a été
-        vérifié.
+        Combien vos enfants paieront sur ce que vous leur laisserez. La grille complète, par
+        patrimoine et par nombre d’enfants — vous trouverez votre ligne en dix secondes. Chaque
+        montant porte l’article qui le fonde et la date à laquelle il a été vérifié.
       </p>
 
       {/* ── 1. RÊVE ─────────────────────────────────────────────────────── */}

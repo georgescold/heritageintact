@@ -9,7 +9,7 @@ import { GrilleDroitsEnfants } from "@/content/gratuit/grille-droits-enfants";
  * déclarer ici, c'est le conserver.
  */
 export const metadata: Metadata = {
-  title: "Ce que vos enfants paieront",
+  title: "Le chiffre que personne ne vous a donné",
 };
 
 export default function Page() {

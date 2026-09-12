@@ -478,17 +478,17 @@ export async function envoyerComplement(lead: Lead, acces: Acces, sku: ProductSk
 export async function envoyerGrilleDroits(lead: Lead): Promise<{ ok: boolean }> {
   if (lead.marketingConsent !== true || lead.desabonne) return { ok: false };
   const p = echapper(lead.firstName.trim()) || "";
-  const url = lien("/document/ce-quils-paieront");
+  const url = lien("/document/le-chiffre");
   const contenu: Contenu = {
     titre: "Votre grille est prête",
     paragraphes: [
       `Bonjour ${p},`,
-      "Voici ce que vous avez demandé : <strong>la grille de ce que vos enfants paieront réellement sur ce que vous leur laisserez.</strong> Vous y trouverez votre ligne en dix secondes, selon votre patrimoine et leur nombre.",
+      "Voici ce que vous avez demandé : <strong>le chiffre que personne ne vous a donné</strong> — combien vos enfants paieront sur ce que vous leur laisserez. Vous trouverez votre ligne en dix secondes, selon votre patrimoine et leur nombre.",
       "Si ce dossier vous accompagne depuis des années sans jamais aboutir, ce n’est pas de la négligence. C’est qu’il vous manquait un chiffre. Tant qu’on n’a pas de chiffre, il n’y a rien à décider — seulement une inquiétude qu’on repousse.",
       "Et si personne ne vous l’a donné, il y a une raison simple : personne n’est payé pour vous prévenir. L’État encaisse au décès, votre banque est rémunérée sur les frais du contrat, votre notaire est payé à l’acte — et l’acte arrive au moment de la succession. Ils ne sont pas malhonnêtes. Ils ne sont pas payés pour ça.",
       "Un point vous surprendra sans doute : à 300 000 € avec trois enfants, l’État ne prend rien. Avec un seul enfant, sur le même patrimoine, il prend 38 194 €. Le nombre d’enfants pèse aussi lourd que le montant.",
     ],
-    bouton: { texte: "Voir ma ligne dans la grille", lien: url },
+    bouton: { texte: "Voir mon chiffre", lien: url },
     ps: `Le lien en toutes lettres, si le bouton ne fonctionne pas&nbsp;:<br><strong>${url}</strong><br><br><strong>P.-S.</strong> Gardez un chiffre en tête en le lisant&nbsp;: <strong>six mois</strong>. C’est le délai dont vos enfants disposeront pour payer ces droits, en euros, pas en parts de maison. Tout ce qui peut réduire cette facture se décide de votre vivant.`,
     pied: "prospect",
     leadId: lead.id,
@@ -497,7 +497,7 @@ export async function envoyerGrilleDroits(lead: Lead): Promise<{ ok: boolean }> 
     to: lead.email,
     leadId: lead.id,
     cle: `magnet-grille-v1/${lead.id}`,
-    subject: `${p ? p + ", v" : "V"}otre grille : ce que vos enfants paieront`,
+    subject: `${p ? p + ", l" : "L"}e chiffre que personne ne vous a donné`,
     html: gabarit(contenu),
     text: versionTexte(contenu),
   });
