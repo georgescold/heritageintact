@@ -28,6 +28,8 @@
  * oblige à corriger les deux.
  */
 import Link from "next/link";
+import { BoutonImprimer } from "@/components/BoutonImprimer";
+import { ButtonLink } from "@/components/ui";
 
 /** Doit rester identique à `VERIFIE_LE` de lib/simulateur/bareme.ts. */
 export const VERIFIE_LE = "8 septembre 2026";
@@ -67,10 +69,26 @@ export function GrilleDroitsEnfants() {
       <h1 className="mb-3 text-[1.8rem] font-bold leading-tight">
         Le chiffre que personne ne vous a donné
       </h1>
-      <p className="mb-2 text-text-soft">
+      <p className="mb-4 text-text-soft">
         Combien vos enfants paieront sur ce que vous leur laisserez. La grille complète, par
         patrimoine et par nombre d’enfants — vous trouverez votre ligne en dix secondes. Chaque
         montant porte l’article qui le fonde et la date à laquelle il a été vérifié.
+      </p>
+
+      {/*
+        La mention de confidentialité est littéralement vraie : la page porte
+        `noindex, nofollow`, n'est inscrite dans aucune liste blanche et ne figure
+        dans aucun menu. Ne jamais l'écrire si l'une de ces trois choses change.
+      */}
+      <p className="mb-5 border-l-4 border-blue bg-blue/5 py-3 pl-4 text-[0.92rem]">
+        <strong>Cette page ne se trouve pas.</strong> Elle n’apparaît ni dans le menu du site, ni
+        dans les résultats de recherche : elle n’existe que pour les personnes à qui nous en avons
+        envoyé l’adresse. Gardez ce lien, ou imprimez la page — elle restera en ligne, mais elle ne
+        se retrouvera pas par hasard.
+      </p>
+
+      <p className="mb-2">
+        <BoutonImprimer />
       </p>
 
       {/* ── 1. RÊVE ─────────────────────────────────────────────────────── */}
@@ -218,9 +236,89 @@ export function GrilleDroitsEnfants() {
           l’étranger.
         </p>
         <p>
-          Autrement dit : vous savez maintenant <em>de quel ordre</em> est le problème. Savoir ce
-          qu’il faut faire dans votre situation précise, et dans quel ordre, est une autre question —
-          et elle se règle avec un professionnel, en arrivant préparé.
+          Autrement dit : vous savez maintenant <em>de quel ordre</em> est le problème. Vous ne
+          savez pas encore quoi en faire.
+        </p>
+      </Bloc>
+
+      {/* ── 7. MÉCANISME ────────────────────────────────────────────────── */}
+      <Bloc titre="Ce qui sépare ce chiffre de votre situation">
+        <p className="mb-3">
+          Entre « je sais que c’est de cet ordre » et « je sais quoi faire », il n’y a pas quinze
+          étapes. Il y en a trois, et elles se font dans cet ordre :
+        </p>
+        <ol className="mb-3 list-decimal space-y-2 pl-6">
+          <li>
+            <strong>Repérer</strong> — savoir lesquelles des sept erreurs courantes vous concernent.
+            La plupart des gens en ont deux ou trois, jamais les sept.
+          </li>
+          <li>
+            <strong>Rassembler</strong> — retrouver les documents qui permettent d’en parler :
+            titres, contrats, actes de donation, régime matrimonial.
+          </li>
+          <li>
+            <strong>Faire vérifier</strong> — apporter tout ça à un notaire, avec des questions
+            écrites, au lieu d’y arriver les mains vides.
+          </li>
+        </ol>
+        <p>
+          Vous n’avez rien à décider dans ces trois étapes. Aucune donation à signer, aucun contrat
+          à modifier. Elles servent uniquement à transformer une inquiétude en dossier.
+        </p>
+      </Bloc>
+
+      {/* ── 8. BÉNÉFICE + RÊVE ──────────────────────────────────────────── */}
+      <Bloc titre="Ce que ça change, concrètement">
+        <p className="mb-3">
+          Ce soir, vous saurez quelles erreurs vous concernent. Cette semaine, vous aurez retrouvé
+          les trois ou quatre documents qui manquent. Le mois prochain, vous serez chez le notaire
+          avec des questions précises — pas pour qu’il vous explique la succession, mais pour qu’il
+          valide ce que vous avez déjà repéré.
+        </p>
+        <p>
+          Et au prochain repas de famille, vous ne direz plus « il faudrait qu’on s’en occupe ». Vous
+          direz : « je m’en suis occupé. Voilà ce qui est réglé, voilà ce qu’il reste à faire
+          confirmer. » C’est la phrase que vous cherchiez depuis le début de cette page.
+        </p>
+      </Bloc>
+
+      {/* ── 9. URGENCE — démontrée, jamais un compte à rebours ───────────── */}
+      <Bloc titre="Pourquoi ça ne se reporte pas indéfiniment">
+        <p className="mb-3">
+          Il n’y a pas de date limite commerciale ici, et vous n’en trouverez aucune sur cette page.
+          Mais il y a une horloge, et elle est écrite dans la loi.
+        </p>
+        <p className="mb-3">
+          L’abattement de {eur(100_000)} par enfant <strong>se reconstitue tous les quinze ans</strong>{" "}
+          (art. 784 du CGI). Chaque année qui passe sans l’utiliser n’est pas neutre : c’est une
+          fenêtre de quinze ans qui ne se rouvrira qu’après votre décès, c’est-à-dire jamais.
+        </p>
+        <p>
+          À 62 ans, vous pouvez encore en ouvrir deux. À 72, une seule. À 80, la question ne se pose
+          plus. Ce n’est pas une pression de vente, c’est un calendrier — et c’est exactement ce que
+          personne n’était payé pour vous dire.
+        </p>
+      </Bloc>
+
+      {/* ── 10 et 11. GARANTIE + CTA ────────────────────────────────────── */}
+      <Bloc titre="La suite, si vous voulez l’ordre complet">
+        <p className="mb-3">
+          Les sept erreurs sont expliquées à l’écrit, une par une, dans l’ordre où il faut les
+          examiner. Vous les lisez à votre rythme, vous notez ce qui vous concerne, et vous repartez
+          avec des questions à poser plutôt qu’avec des règles générales.
+        </p>
+        <p className="mb-3">
+          Le prix catalogue est de {eur(52)}, en paiement unique, sans abonnement — et la garantie
+          commerciale de 30 jours s’applique selon les conditions générales. Vous pouvez donc les
+          découvrir, et demander le remboursement si ce n’est pas ce que vous cherchiez.
+        </p>
+        <div className="print:hidden mb-3">
+          <ButtonLink href="/methode">Découvrir les 7 erreurs</ButtonLink>
+        </div>
+        <p className="text-[0.92rem] text-text-soft">
+          Et si vous préférez aller voir votre notaire directement, faites-le : c’est lui qui engage
+          sa responsabilité, pas nous. Cette grille vous servira quand même — vous saurez de quoi il
+          parle.
         </p>
       </Bloc>
 

@@ -528,7 +528,7 @@ export async function envoyerGrilleDroits(lead: Lead): Promise<{ ok: boolean }> 
       "Un point vous surprendra sans doute : à 300 000 € avec trois enfants, l’État ne prend rien. Avec un seul enfant, sur le même patrimoine, il prend 38 194 €. Le nombre d’enfants pèse aussi lourd que le montant.",
     ],
     bouton: { texte: "Voir mon chiffre", lien: url },
-    ps: `Le lien en toutes lettres, si le bouton ne fonctionne pas&nbsp;:<br><strong>${url}</strong><br><br><strong>P.-S.</strong> Gardez un chiffre en tête en le lisant&nbsp;: <strong>six mois</strong>. C’est le délai dont vos enfants disposeront pour payer ces droits, en euros, pas en parts de maison. Tout ce qui peut réduire cette facture se décide de votre vivant.`,
+    ps: `Le lien en toutes lettres, si le bouton ne fonctionne pas&nbsp;:<br><strong>${url}</strong><br><br>Cette adresse ne figure ni dans le menu du site, ni dans les résultats de recherche&nbsp;: elle n’a été envoyée qu’à vous. Gardez cet email, ou imprimez la page — un bouton est prévu en haut du document.<br><br><strong>P.-S.</strong> Gardez un chiffre en tête en la lisant&nbsp;: <strong>six mois</strong>. C’est le délai dont vos enfants disposeront pour payer ces droits, en euros, pas en parts de maison. Tout ce qui peut réduire cette facture se décide de votre vivant.`,
     pied: "prospect",
     leadId: lead.id,
   };
