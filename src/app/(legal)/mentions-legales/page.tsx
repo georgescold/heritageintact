@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { BRAND, CONTACT_EMAIL, LEGAL, SITE_URL } from "@/lib/config";
+import { metadataPublique } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Mentions légales" };
+export const metadata: Metadata = metadataPublique(
+  "/mentions-legales",
+  "Mentions légales",
+  "Éditeur du site Héritage Intact, hébergement, nature des contenus et propriété intellectuelle.",
+);
 
 export default function MentionsLegales() {
   return (

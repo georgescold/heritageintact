@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { BRAND, CONTACT_EMAIL, LEGAL } from "@/lib/config";
+import { metadataPublique } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Politique de confidentialité" };
+export const metadata: Metadata = metadataPublique(
+  "/confidentialite",
+  "Politique de confidentialité",
+  "Données collectées, finalités, durées de conservation et exercice de vos droits.",
+);
 
 export default function Confidentialite() {
   return (
