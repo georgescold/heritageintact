@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { Footer, Header, TestModeBanner } from "@/components/Chrome";
 import { CommandeGuide } from "@/components/CommandeGuide";
 import { Guarantee } from "@/components/ui";
-import { guideVendable } from "@/lib/guides-vente";
+import { bumpPour, guideVendable } from "@/lib/guides-vente";
 import { BOUTIQUE } from "@/content/boutique";
 import { PRESENTATION, PRODUCTS, isTestMode, stripeEnModeTest } from "@/lib/config";
 
@@ -56,7 +56,13 @@ export default async function CommanderGuide({
         {fiche && <p className="mb-3 text-[1.15rem] font-bold text-blue">{fiche.resultat}</p>}
         {fiche && <p className="mb-6 text-[1.02rem]">{fiche.pourQui}</p>}
 
-        <CommandeGuide sku={sku} nom={produit.name} prix={produit.price} defaults={defauts} />
+        <CommandeGuide
+          sku={sku}
+          nom={produit.name}
+          prix={produit.price}
+          complement={bumpPour(sku)}
+          defaults={defauts}
+        />
 
         {presentation && (
           <section className="mt-8 border border-grey-line bg-grey-bg p-5">

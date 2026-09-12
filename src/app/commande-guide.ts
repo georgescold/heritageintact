@@ -1,10 +1,10 @@
 "use server";
 
-import { creerCommandeEspace, getOrder, markOrderPaid } from "@/lib/db";
+import { addItem, creerCommandeEspace, getOrder, markOrderPaid } from "@/lib/db";
 import { livrer } from "@/lib/livraison";
 import { stripe, toCents } from "@/lib/stripe";
 import { PRODUCTS, isTestMode, stripeEnModeTest, type ProductSku } from "@/lib/config";
-import { guideVendable } from "@/lib/guides-vente";
+import { bumpPour, guideVendable } from "@/lib/guides-vente";
 
 /**
  * LA COMMANDE D'UN GUIDE À L'UNITÉ, POUR QUI N'EST PAS ENCORE CLIENT.
@@ -40,6 +40,8 @@ export async function preparerCommandeGuide(input: {
   firstName: string;
   email: string;
   consent: boolean;
+  /** Le complément coché sur le bon de commande. */
+  withBump?: boolean;
   montantAffiche: number;
 }): Promise<PreparationGuide> {
   const firstName = input.firstName.trim();
@@ -59,7 +61,13 @@ export async function preparerCommandeGuide(input: {
   }
 
   const sku = input.sku as ProductSku;
-  const prix = PRODUCTS[sku].price;
+  const complement = input.withBump ? bumpPour(sku) : null;
+
+  // ⚠️ UN SEUL CALCUL DU PRIX, ET IL ALIMENTE LA LIGNE DE COMMANDE COMME LA
+  // BANQUE. C'est la règle que db.ts et actions.ts répètent tous les deux, après
+  // l'accident où deux chemins avaient divergé et où le débit contredisait le
+  // récapitulatif.
+  const prix = PRODUCTS[sku].price + (complement ? PRODUCTS[complement].price : 0);
 
   // ⚠️ LE MONTANT AFFICHÉ DOIT ÊTRE CELUI DU CATALOGUE. Le prix vient du serveur
   // dans les deux cas, mais on refuse quand même une page restée ouverte
@@ -73,12 +81,13 @@ export async function preparerCommandeGuide(input: {
     };
   }
 
-  const order = await creerCommandeEspace({
+  let order = await creerCommandeEspace({
     email,
     firstName,
     sku,
     mode: isTestMode || stripeEnModeTest ? "test" : "live",
   });
+  if (complement) order = (await addItem(order.id, complement)) ?? order;
 
   // La ligne écrite fait foi : si elle ne porte pas le montant attendu, on
   // s'arrête avant d'appeler la banque plutôt que de débiter puis constater.
@@ -122,7 +131,7 @@ export async function preparerCommandeGuide(input: {
       setup_future_usage: "off_session",
       payment_method_types: ["card"],
       receipt_email: email,
-      metadata: { orderId: order.id, sku },
+      metadata: { orderId: order.id, sku, bump: complement ?? "" },
     });
 
     if (!intent.client_secret) {

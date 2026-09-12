@@ -4,8 +4,8 @@ import { AchatValide } from "@/components/AchatValide";
 import { Header, Footer } from "@/components/Chrome";
 import { MesurerAchat } from "@/components/MetaPixel";
 import { ButtonLink, Panel } from "@/components/ui";
-import { accesParEmail, getOrder, orderTotal } from "@/lib/db";
-import { CONTACT_EMAIL, PRODUCTS, SITE_URL, euros, urlEspace } from "@/lib/config";
+import { accesParEmail, commandesPayeesParEmail, getOrder, orderTotal } from "@/lib/db";
+import { CONTACT_EMAIL, PRESENTATION, PRODUCTS, SITE_URL, euros, urlEspace } from "@/lib/config";
 import { etapeParNumero } from "@/lib/methode";
 
 export const metadata: Metadata = { title: "Bienvenue" };
@@ -37,6 +37,26 @@ export default async function ThankYouPage({
    */
   const acces = await accesParEmail(order.email);
 
+  /**
+   * LE COMPLÉMENT PROPOSÉ : le moins cher que cet acheteur ne possède pas.
+   *
+   * L'ordre est celui du prix croissant, et c'est délibéré — juste après un
+   * paiement, la seule offre qui passe est celle qui ne fait pas rouvrir la
+   * discussion budgétaire. On regarde TOUS ses achats payés, pas seulement
+   * cette commande : quelqu'un qui revient acheter un second guide ne doit pas
+   * se voir proposer ce qu'il a déjà.
+   */
+  const possede = new Set(
+    (await commandesPayeesParEmail(order.email).catch(() => []))
+      .flatMap((c) => c.items)
+      .filter((i) => !i.rembourse)
+      .map((i) => i.sku),
+  );
+  const complement =
+    (["bump", "backend4", "upsell2"] as const).find(
+      (sku) => PRODUCTS[sku].disponible && !possede.has(sku),
+    ) ?? null;
+
   return (
     <>
       <MesurerAchat id={order.id} />
@@ -64,15 +84,21 @@ export default async function ThankYouPage({
             </p>
           )}
 
-          {/* ⚠️ LE MONTANT EST DANS LA CONFIRMATION, ET C'EST VOLONTAIRE.
-              Le tunnel peut avoir enchaîné jusqu'à trois débits en deux
-              minutes. Quelqu'un qui vient d'en accepter deux et d'en refuser un
-              ne sait plus ce qu'il a pris : il ouvre son application bancaire
-              avant de lire la page. Le total écrit ici, à côté de la coche, est
-              la seule chose qui l'en dispense — et `orderTotal` est la même
-              source que le débit réel. */}
+          {/* ⚠️ LE MONTANT N'EST PLUS DANS LA CONFIRMATION — décision de Loys,
+              12/09/2026, et elle renverse celle qui tenait ici jusque-là.
+
+              L'argument d'origine reste vrai : le tunnel peut enchaîner
+              plusieurs débits en deux minutes, et le total évitait au client
+              d'ouvrir son application bancaire. L'argument qui l'emporte est
+              commercial : rappeler la somme dépensée juste avant de proposer un
+              complément supprime ce complément.
+
+              Le montant n'a pas disparu du site pour autant. Le récapitulatif
+              détaillé reste EN BAS de cette page — après l'offre, donc — et
+              Stripe envoie son reçu par email. C'est ce qui permet de retirer le
+              rappel sans laisser l'acheteur sans trace de ce qu'il a payé. */}
           <div className="mb-6">
-            <AchatValide titre={`Votre commande est confirmée — ${euros(total)}`}>
+            <AchatValide titre="Votre commande est confirmée">
               Tout est déjà ouvert dans votre espace, et il n&apos;y a ni mot de passe ni compte à
               créer.
             </AchatValide>
@@ -115,6 +141,31 @@ export default async function ThankYouPage({
             deux pages qui doivent survivre séparément ne partagent pas un
             composant qu'un seul lot maintient.
           */}
+          {/* ⚠️ LE COMPLÉMENT PASSE AVANT LE LIEN D'ACCÈS, PAS APRÈS.
+              Une fois le lien ouvert, l'acheteur est dans son espace et ne
+              revient pas sur cette page. C'est donc ici, et nulle part ailleurs,
+              que l'offre a une chance d'être lue.
+
+              ⚠️ Il n'y a AUCUN débit sur cette page : le bouton mène à
+              /espace/<jeton>/ajouter/<sku>, l'écran d'ajout existant, qui
+              affiche le prix et demande une confirmation. On ne débite jamais
+              une carte depuis une page de remerciement. */}
+          {complement && acces && (
+            <section className="mt-7 border-2 border-orange bg-yellow-bg p-4 sm:p-5">
+              <p className="mb-2 text-[1.1rem] font-bold text-orange-dark">
+                Nous vous le conseillons très fortement :
+              </p>
+              <h2 className="mb-2 text-[1.3rem] leading-snug">{PRODUCTS[complement].name}</h2>
+              <p className="mb-4 text-[1.02rem]">{PRESENTATION[complement]?.promesse}</p>
+              <ButtonLink href={`/espace/${acces.jeton}/ajouter/${complement}`}>
+                L’ajouter à mon espace — {euros(PRODUCTS[complement].price)}
+              </ButtonLink>
+              <p className="mt-2 text-[0.9rem] text-text-soft">
+                Rien n’est débité sur cette page : vous verrez le détail avant de confirmer.
+              </p>
+            </section>
+          )}
+
           {acces ? (
             <div className="mt-7 border-2 border-grey-line bg-grey-bg p-4 sm:p-5">
               <p className="mb-2 text-[1.1rem] font-bold text-blue">Votre lien personnel</p>

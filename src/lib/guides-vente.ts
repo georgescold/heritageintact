@@ -17,6 +17,22 @@ import { PRODUCTS, SKU_TUNNEL_UNIQUEMENT, type ProductSku } from "./config";
  */
 export const GUIDES_A_LA_CARTE: ProductSku[] = ["upsell1", "upsell2", "backend4", "bump"];
 
+/**
+ * LE BUMP PROPOSÉ SUR LE BON DE COMMANDE D'UN GUIDE.
+ *
+ * Toujours « Mon dossier notaire » : c'est le moins cher du catalogue, il
+ * complète les quatre autres sans les recouper, et c'est déjà celui du tunnel —
+ * un acheteur qui verrait un bump différent selon la porte d'entrée ne
+ * comprendrait pas lequel est le bon.
+ *
+ * `null` quand le guide commandé EST le dossier notaire : se proposer soi-même
+ * en complément est le genre de détail qui fait douter de tout le reste.
+ */
+export function bumpPour(sku: ProductSku): ProductSku | null {
+  if (sku === "bump") return null;
+  return PRODUCTS.bump.disponible ? "bump" : null;
+}
+
 export function guideVendable(sku: string): sku is ProductSku {
   const s = sku as ProductSku;
   return (

@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { confirmCheckout } from "@/app/actions";
 import { preparerCommandeGuide } from "@/app/commande-guide";
-import { SITE_URL, euros } from "@/lib/config";
+import { PRESENTATION, PRODUCTS, SITE_URL, euros, type ProductSku } from "@/lib/config";
 import { Button } from "./ui";
 
 const PK = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
@@ -28,11 +28,14 @@ export function CommandeGuide({
   sku,
   nom,
   prix,
+  complement,
   defaults,
 }: {
   sku: string;
   nom: string;
   prix: number;
+  /** Le complément proposé, ou null quand il n'y en a pas. */
+  complement: ProductSku | null;
   defaults: { firstName?: string; email?: string };
 }) {
   // ⚠️ LES HOOKS STRIPE EXIGENT LE FOURNISSEUR <Elements>, MÊME POUR RENDRE
@@ -41,7 +44,17 @@ export function CommandeGuide({
   // la page entière répond 500. On ne rend donc jamais le même composant dans
   // les deux cas : celui d'en bas appelle les hooks, l'autre non.
   if (!stripePromise) {
-    return <Formulaire sku={sku} nom={nom} prix={prix} defaults={defaults} stripe={null} elements={null} />;
+    return (
+      <Formulaire
+        sku={sku}
+        nom={nom}
+        prix={prix}
+        complement={complement}
+        defaults={defaults}
+        stripe={null}
+        elements={null}
+      />
+    );
   }
   return (
     <Elements
@@ -78,7 +91,7 @@ export function CommandeGuide({
         },
       }}
     >
-      <AvecStripe sku={sku} nom={nom} prix={prix} defaults={defaults} />
+      <AvecStripe sku={sku} nom={nom} prix={prix} complement={complement} defaults={defaults} />
     </Elements>
   );
 }
@@ -88,6 +101,7 @@ function AvecStripe(props: {
   sku: string;
   nom: string;
   prix: number;
+  complement: ProductSku | null;
   defaults: { firstName?: string; email?: string };
 }) {
   const stripe = useStripe();
@@ -99,6 +113,7 @@ function Formulaire({
   sku,
   nom,
   prix,
+  complement,
   defaults,
   stripe,
   elements,
@@ -106,11 +121,22 @@ function Formulaire({
   sku: string;
   nom: string;
   prix: number;
+  complement: ProductSku | null;
   defaults: { firstName?: string; email?: string };
   stripe: ReturnType<typeof useStripe>;
   elements: ReturnType<typeof useElements>;
 }) {
   const router = useRouter();
+  const [bump, setBump] = useState(false);
+  const total = prix + (bump && complement ? PRODUCTS[complement].price : 0);
+
+  // ⚠️ STRIPE DOIT SUIVRE LE TOTAL. Sans cette mise à jour, l'intention part au
+  // montant du seul guide et la banque prélève moins que le récapitulatif
+  // affiché : le client paie 67 € pour 84 € de produits, et s'en aperçoit à la
+  // livraison. C'est le même réglage que `CheckoutForm`.
+  useEffect(() => {
+    if (elements) elements.update({ amount: Math.round(total * 100) });
+  }, [elements, total]);
   const [firstName, setFirstName] = useState(defaults.firstName ?? "");
   const [email, setEmail] = useState(defaults.email ?? "");
   const [consent, setConsent] = useState(false);
@@ -122,7 +148,14 @@ function Formulaire({
     setErreur(null);
     setAttente(true);
     try {
-      const demande = { sku, firstName, email, consent, montantAffiche: prix };
+      const demande = {
+        sku,
+        firstName,
+        email,
+        consent,
+        withBump: bump && complement !== null,
+        montantAffiche: total,
+      };
 
       // Mode simulé : aucune clé Stripe, aucun débit.
       if (!stripe || !elements) {
@@ -175,7 +208,17 @@ function Formulaire({
       <div className="border-2 border-blue bg-grey-bg p-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <span className="font-bold">{nom}</span>
-          <span className="text-[1.3rem] font-bold text-blue">{euros(prix)}</span>
+          <span className="font-bold">{euros(prix)}</span>
+        </div>
+        {bump && complement && (
+          <div className="mt-2 flex flex-wrap items-baseline justify-between gap-2 border-t border-grey-line pt-2">
+            <span className="font-bold">{PRODUCTS[complement].name}</span>
+            <span className="font-bold">{euros(PRODUCTS[complement].price)}</span>
+          </div>
+        )}
+        <div className="mt-2 flex flex-wrap items-baseline justify-between gap-2 border-t-2 border-blue pt-2">
+          <span className="font-bold">Total à payer</span>
+          <span className="text-[1.3rem] font-bold text-blue">{euros(total)}</span>
         </div>
       </div>
 
@@ -205,6 +248,35 @@ function Formulaire({
           C’est à cette adresse que votre lien d’accès est envoyé.
         </span>
       </label>
+
+      {/* LE COMPLÉMENT, SUR CHOIX EXPLICITE ET JAMAIS PRÉ-COCHÉ.
+          Une case déjà cochée fait payer quelqu'un pour un produit qu'il n'a pas
+          demandé : c'est ce qu'on découvre sur son relevé, et c'est le genre de
+          surprise qui transforme un client en demande de remboursement. */}
+      {complement && (
+        <div className="space-y-2">
+          <p className="text-[1.05rem] font-bold text-blue">Nous vous le conseillons fortement :</p>
+          <label className="block cursor-pointer border-2 border-orange bg-yellow-bg p-3 sm:p-4">
+            <span className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                checked={bump}
+                onChange={(e) => setBump(e.target.checked)}
+                className="mt-1 h-6 w-6 shrink-0 accent-orange"
+              />
+              <span>
+                <span className="block font-bold">
+                  Ajouter {PRODUCTS[complement].name} pour{" "}
+                  {euros(PRODUCTS[complement].price)}
+                </span>
+                <span className="mt-1 block text-[0.98rem]">
+                  {PRESENTATION[complement]?.promesse}
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      )}
 
       {stripe && (
         <div className="border border-grey-line bg-white p-4">
@@ -252,7 +324,7 @@ function Formulaire({
       )}
 
       <Button disabled={attente}>
-        {attente ? "Validation en cours…" : `Valider ma commande — ${euros(prix)}`}
+        {attente ? "Validation en cours…" : `Valider ma commande — ${euros(total)}`}
       </Button>
     </form>
   );

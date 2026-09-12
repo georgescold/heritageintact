@@ -138,6 +138,55 @@ ok(action.includes('setup_future_usage: "off_session"'), "le PaymentIntent porte
 // l'acheteur saisit sa carte. Coupe, comme dans le tunnel.
 ok(formulaire.includes('wallets: { link: "never" }'), "Link est coupe sur le bon de commande");
 
+/* ── Le complement sur le bon de commande ──────────────────────────── */
+const { bumpPour } = mod("src/lib/guides-vente.ts");
+
+// Toujours le dossier notaire : le moins cher, il complete les autres sans
+// les recouper, et c'est deja celui du tunnel.
+for (const sku of ["upsell1", "upsell2", "backend4"]) eq(bumpPour(sku), "bump", sku + " : complement = dossier notaire");
+
+// ⚠️ UN PRODUIT NE SE PROPOSE JAMAIS LUI-MEME EN COMPLEMENT.
+eq(bumpPour("bump"), null, "LE DOSSIER NOTAIRE NE SE PROPOSE PAS A LUI-MEME");
+
+// Le total suit la case, cote ecran comme cote banque.
+ok(formulaire.includes("elements.update({ amount"), "Stripe suit le total quand la case change");
+ok(action.includes("addItem(order.id, complement)"), "le complement entre dans la commande");
+ok(
+  action.includes("PRODUCTS[sku].price + (complement ? PRODUCTS[complement].price : 0)"),
+  "un seul calcul du prix, pour la ligne de commande comme pour la banque",
+);
+
+// ⚠️ JAMAIS PRE-COCHEE. Une case cochee d'avance fait payer un produit que
+// personne n'a demande, et cela se decouvre sur un releve bancaire.
+ok(formulaire.includes("useState(false)"), "la case du complement n'est pas pre-cochee");
+
+/* ── La page de remerciement ───────────────────────────────────────── */
+const merci = fs.readFileSync("src/app/merci/page.tsx", "utf8");
+
+// Le montant ne se rappelle plus dans la confirmation : le rappeler juste
+// avant de proposer un complement supprime ce complement.
+ok(merci.includes('titre="Votre commande est confirmée"'), "aucun montant dans la confirmation");
+
+// Mais il n'a pas disparu du site : le recapitulatif detaille reste plus bas,
+// apres l'offre, et fait office de recu.
+ok(merci.includes("Récapitulatif de votre commande"), "le recapitulatif detaille subsiste");
+ok(
+  merci.indexOf("très fortement") < merci.indexOf("Récapitulatif de votre commande"),
+  "l'offre passe AVANT le rappel du montant",
+);
+
+// ⚠️ L'OFFRE PASSE AVANT LE LIEN D'ACCES. Une fois dans son espace,
+// l'acheteur ne revient pas sur cette page.
+ok(
+  merci.indexOf("très fortement") < merci.indexOf("Votre lien personnel"),
+  "L'OFFRE PASSE AVANT LE LIEN D'ACCES",
+);
+
+// ⚠️ AUCUN DEBIT DEPUIS UNE PAGE DE REMERCIEMENT : le bouton mene a l'ecran
+// d'ajout, qui affiche le prix et demande confirmation.
+ok(merci.includes("/ajouter/${complement}"), "le bouton mene a l'ecran d'ajout, pas a un debit");
+ok(!merci.includes("chargeUpsell") && !merci.includes("prepareCheckout"), "aucun paiement declenche ici");
+
 console.log(
   n +
     " controles boutique reussis : perimetre de vente a l'unite, produit d'appel preserve, fiches completes, reve avant peur, ancrage avant tarif, hors index, et bon de commande branche sur le tunnel existant. Aucun reseau ni base.",
