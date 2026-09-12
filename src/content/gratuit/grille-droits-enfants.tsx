@@ -122,27 +122,49 @@ export function GrilleDroitsEnfants() {
         </p>
       </Bloc>
 
-      {/* ── 3. ENNEMI ───────────────────────────────────────────────────── */}
-      <Bloc titre="Pourquoi personne ne vous a prévenu">
+      {/*
+        ── 3. ENNEMI ─────────────────────────────────────────────────────
+        L'ennemi reste celui de l'avatar (A.5) : LE SILENCE. Mais l'angle a été
+        change le 13/09/2026, et il ne doit pas revenir en arriere.
+
+        ⚠️ La version precedente demontrait le silence par les INCITATIONS —
+        l'Etat encaisse, la banque est payee sur les frais, le notaire a l'acte.
+        C'est mot pour mot l'argument de l'email J5, dont c'est le levier declare
+        (« Ennemi : personne n'est paye pour vous prevenir »). Le lecteur SEO
+        lisait donc le meme raisonnement ici, puis une seconde fois cinq jours
+        plus tard. Loys a tranche : les emails ne bougent pas, c'est le document
+        qui cede le terrain.
+
+        Le silence familial est libre, aucun email ne le traite, et il est dans
+        la fiche avatar telle quelle : « proche de ses enfants mais on ne parle
+        pas d'argent a table ». Il relie aussi le bloc REVE (le repas du
+        dimanche) au bloc AGITATION (les enfants qui cessent de se parler).
+      */}
+      <Bloc titre="Pourquoi personne ne vous en a jamais parlé">
         <p className="mb-3">
-          Posez-vous la question autrement : <strong>qui était payé pour vous appeler à 62 ans et
-          vous dire qu’il vous restait quinze ans pour agir ?</strong>
+          Il y a une règle chez vous, et elle n’a jamais été dite à voix haute :{" "}
+          <strong>on ne parle pas d’argent à table.</strong>
         </p>
-        <p className="mb-3">Personne.</p>
         <p className="mb-3">
-          L’État encaisse au décès — il n’a aucune raison de vous avertir avant. Votre banque est
-          rémunérée sur les frais du contrat, pas sur la bonne rédaction de sa clause bénéficiaire.
-          Votre notaire est payé à l’acte, et l’acte arrive au moment de la succession, c’est-à-dire
-          trop tard pour changer quoi que ce soit.
+          Vos enfants ne poseront pas la question. Demander « et la maison, il se passe quoi
+          après ? », c’est demander à quelqu’un qu’on aime de se projeter dans sa propre mort — et
+          personne ne veut être celui qui compte. Alors ils attendent. Ils se disent que vous en
+          parlerez le moment venu.
         </p>
         <p className="mb-3">
-          Votre banquier n’est pas malhonnête. Votre notaire non plus. Ils ne sont simplement pas
-          payés pour ça.
+          Et vous n’en parlerez pas non plus. Aborder le sujet, ce serait leur imposer une
+          conversation dont vous savez qu’elle va les gêner, un dimanche où tout allait bien. Alors
+          vous remettez. Vous vous dites que vous verrez ça cet hiver, quand ce sera plus calme.
+        </p>
+        <p className="mb-3">
+          Vingt ans passent comme ça. Personne n’a eu tort. Personne n’a manqué de courage. Chacun a
+          protégé l’autre, à sa façon.
         </p>
         <p>
-          L’adversaire n’a pas de visage : <strong>c’est le silence.</strong> Un système où chacun
-          fait correctement son métier, où tout est légal, public et voté — et où le seul à ne rien
-          savoir est celui qui a construit le patrimoine.
+          L’adversaire n’a pas de visage : <strong>c’est ce silence-là.</strong> Pas une mauvaise
+          volonté, une politesse. Et le jour où il se rompt enfin, ce n’est plus autour de votre
+          table : c’est dans le bureau d’un notaire, entre vos enfants, sans vous pour expliquer ce
+          que vous aviez en tête.
         </p>
       </Bloc>
 
@@ -160,9 +182,9 @@ export function GrilleDroitsEnfants() {
       */}
       <Bloc titre="Et nous, pourquoi on vous le dit ?">
         <p className="mb-3">
-          Question légitime, et la réponse est simple : nous vendons ensuite un guide. Vous venez de
-          lire que personne n’est payé pour vous prévenir — nous, nous le sommes, et autant que vous
-          le sachiez avant de lire la suite plutôt qu’après.
+          Question légitime, et la réponse tient en une phrase : parce que nous ne sommes pas à
+          votre table. Aucune pudeur ne nous retient, et nous vendons ensuite un guide — autant que
+          vous le sachiez maintenant plutôt qu’à la fin.
         </p>
         <p className="mb-3">
           Ce que ça change pour vous : rien sur les chiffres. Un barème ne se négocie pas, il se
