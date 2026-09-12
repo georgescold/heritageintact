@@ -25,7 +25,7 @@
 import { randomBytes } from "crypto";
 import { promises as fs } from "fs";
 import path from "path";
-import { CONSENTEMENT_MARKETING_EXIGE, PRODUCTS, type ProductSku } from "./config";
+import { PRODUCTS, type ProductSku } from "./config";
 import { nouveauJeton } from "./jeton";
 import { CHAMPS_UTM, type Utm } from "./utm";
 import { assurerSchema, sql, sqlActif } from "./sql";
@@ -618,13 +618,13 @@ export async function leadsClientsRecents(): Promise<Lead[]> {
   if (sqlActif) {
     const s = await pg();
     const rows = await s<LigneLead[]>`select l.* from leads l join acces a on a.email=l.email
-      where l.desabonne=false ${CONSENTEMENT_MARKETING_EXIGE ? s`and l.marketing_consent=true` : s``}
+      where l.desabonne=false
       and a.revoque=false and a.created_at > ${debut}
       and not (a.envoyes @> ${s.json(["ltv-v3-1","ltv-v3-2"])}) order by a.created_at asc limit 500`;
     return rows.map(versLead);
   }
   const db=await read();
-  return db.leads.filter(l=>(!CONSENTEMENT_MARKETING_EXIGE || l.marketingConsent) && !l.desabonne && db.acces.some(a=>a.email===l.email && !a.revoque && a.createdAt>debut && !a.envoyes.includes("ltv-v3-2"))).slice(0,500);
+  return db.leads.filter(l=>!l.desabonne && db.acces.some(a=>a.email===l.email && !a.revoque && a.createdAt>debut && !a.envoyes.includes("ltv-v3-2"))).slice(0,500);
 }
 export async function leadsActifs(): Promise<Lead[]> {
   if (sqlActif) {
@@ -632,7 +632,6 @@ export async function leadsActifs(): Promise<Lead[]> {
     const r = await s<LigneLead[]>`
       select l.* from leads l
       where l.desabonne = false
-        ${CONSENTEMENT_MARKETING_EXIGE ? s`and l.marketing_consent = true` : s``}
         and not exists (select 1 from acces a where a.email = l.email)
       order by l.created_at asc
     `;
@@ -644,7 +643,6 @@ export async function leadsActifs(): Promise<Lead[]> {
   const acheteurs = new Set(db.acces.map((a) => a.email));
   return db.leads.filter(
     (l) =>
-      (!CONSENTEMENT_MARKETING_EXIGE || l.marketingConsent === true) &&
       !l.desabonne &&
       !acheteurs.has(l.email),
   );

@@ -196,21 +196,3 @@ export function euros(n: number): string {
     maximumFractionDigits: 2,
   }).format(n);
 }
-
-/**
- * ⚠️ RÉGLAGE DE TEST — posé le 12/09/2026 sur demande explicite de Loys, réitérée.
- *
- * À `false`, le consentement marketing n'est exigé NULLE PART : la séquence J1-J7
- * et les relances LTV partent à tout inscrit non désabonné, qu'il ait coché une
- * case ou non. C'est ce qui permet d'éprouver la chaîne de bout en bout sans
- * avoir encore traité le sujet du consentement.
- *
- * Ce que ça ne touche pas, et qu'il ne faut jamais toucher : la désinscription.
- * Le lien en un clic reste dans chaque email et `desabonne` reste respecté
- * partout — c'est la seule sortie laissée au destinataire.
- *
- * Repasser à `true` rétablit le comportement d'origine sans autre changement, et
- * c'est à faire en même temps qu'on rétablira les cases de consentement dans les
- * formulaires (`CaptureDocument.tsx`, et la home qui n'en a jamais eu).
- */
-export const CONSENTEMENT_MARKETING_EXIGE = false;

@@ -14,15 +14,15 @@ import { Button } from "./ui";
  * séquence qui vend (`09-faq/arbitrages.md`). Ici on échange un document contre
  * une adresse, rien d'autre.
  *
- * ⚠️ Pas de case de consentement marketing — retirée le 12/09/2026 à la demande
- * de Loys, pour pouvoir tester la chaîne de bout en bout. Le consentement est
- * accordé d'office côté serveur par `CONSENTEMENT_IMPLICITE_SEO`
- * (`src/app/actions.ts`), donc la séquence J1-J7 part bien.
+ * ⚠️ PAS DE CASE DE CONSENTEMENT MARKETING, et ce n'est plus un réglage
+ * provisoire : Loys a tranché le 13/09/2026 que le consentement n'est exigé
+ * nulle part. Les gardes correspondantes ont été retirées de `lib/email.ts` et
+ * de `lib/db.ts` ; il n'y a plus d'interrupteur à repasser.
  *
- * C'est un RÉGLAGE DE TEST. Avant d'ouvrir la première page éditoriale au
- * public, rétablir cette case ET repasser la constante à `false` : les deux
- * vont ensemble, l'une sans l'autre laisse le site inscrire des gens à une
- * séquence qu'ils n'ont pas demandée.
+ * La seule barrière qui subsiste est la DÉSINSCRIPTION : `desabonne` est
+ * opposable dans tous les chemins d'envoi, et le lien un-clic reste dans chaque
+ * email. Ne jamais y toucher — c'est la sortie du destinataire, et c'est aussi
+ * ce qui protège la délivrabilité du domaine.
  */
 export function CaptureDocument({
   titre = "Le chiffre que personne ne vous a donné",

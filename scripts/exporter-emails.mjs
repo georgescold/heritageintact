@@ -61,7 +61,7 @@ async function rendre(appel) {
 }
 
 /* ── Les emails, dans l'ordre du parcours ── */
-const MARKETING_PROSPECT = "Envoyée à tout inscrit non désinscrit, tant qu’il n’a rien acheté : un achat arrête la séquence. Le consentement marketing n’est plus exigé (réglage de test, CONSENTEMENT_MARKETING_EXIGE dans config.ts). Un seul email par jour, rien au-delà de 21 jours.";
+const MARKETING_PROSPECT = "Envoyée à tout inscrit non désinscrit, tant qu’il n’a rien acheté : un achat arrête la séquence. Le consentement marketing n’est exigé nulle part ; seule la désinscription arrête les envois. Un seul email par jour, rien au-delà de 21 jours.";
 const groupes = [];
 
 groupes.push({
@@ -134,7 +134,7 @@ for (const [sku, declenche] of [["upsell1", true], ["upsell2", true], ["bump", f
   complements.push({
     cle: "complement-" + sku, nom: `Complément — ${PRODUCTS[sku].name}${declenche ? "" : " (écrit, jamais déclenché aujourd’hui)"}`,
     quand: declenche ? "À partir de 10 jours après l’ouverture de l’espace." : "Jamais : le déclencheur actuel ne propose que le plan adapté ou l’assurance-vie.",
-    conditions: "Un seul produit proposé, choisi selon les réponses au questionnaire et les produits déjà possédés. Le consentement marketing n’est plus exigé (réglage de test). Arrêt à 35 jours.",
+    conditions: "Un seul produit proposé, choisi selon les réponses au questionnaire et les produits déjà possédés. Le consentement marketing n’est exigé nulle part. Arrêt à 35 jours.",
     rendu: await rendre(() => email.envoyerComplement(LEAD, ACCES, sku, "ltv-v3-1", 0, PRODUCTS[sku].price)),
   });
 }

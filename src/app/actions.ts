@@ -96,25 +96,6 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
 }
 
 /**
- * ⚠️ RÉGLAGE DE TEST — posé le 12/09/2026 à la demande de Loys.
- *
- * Le formulaire SEO n'affiche plus de case de consentement marketing, mais il
- * faut que la séquence J1-J7 parte pour pouvoir éprouver la chaîne complète :
- * page → capture → document → séquence → produit. Ces leads sont donc inscrits
- * comme consentants.
- *
- * À REMETTRE À `false`, et à rétablir la case dans `CaptureDocument.tsx`, avant
- * d'ouvrir la première page éditoriale au public : enregistrer un consentement
- * que la personne n'a pas donné tient le temps d'un test entre soi, plus dès
- * qu'il y a de vrais lecteurs derrière.
- *
- * Le garde-fou de `lib/email.ts` n'est volontairement PAS touché — il protège
- * aussi les leads venus de Meta, et la base de production contient de vraies
- * personnes. Le contournement s'arrête à ce formulaire.
- */
-const CONSENTEMENT_IMPLICITE_SEO = true;
-
-/**
  * Démarre la séquence prospect tout de suite, sans attendre le cron du
  * lendemain matin (demande de Loys, 12/09/2026 : « un nouveau lead rentre =
  * la séquence part »).
@@ -149,8 +130,9 @@ async function demarrerSequence(lead: Awaited<ReturnType<typeof addLead>>) {
  *    trafic chaud ou organique, on ne pose pas un produit low ticket derrière.
  *    On renvoie vers le document lui-même — il est lu tout de suite, et l'email
  *    en garde une copie. La vente se fait ensuite, par la séquence.
- * 3. La livraison est transactionnelle : elle part quoi qu'il arrive. La suite
- *    dépend de `CONSENTEMENT_IMPLICITE_SEO` ci-dessus — réglage de test.
+ * 3. La livraison est transactionnelle : elle part quoi qu'il arrive, et la
+ *    séquence qui suit aussi — le consentement marketing n'est plus une
+ *    condition d'envoi. Seule la désinscription arrête quelque chose.
  */
 export async function demanderDocument(
   _prev: FormState,
@@ -174,7 +156,10 @@ export async function demanderDocument(
     firstName,
     source,
     utm: await origine(formData),
-    marketingConsent: CONSENTEMENT_IMPLICITE_SEO,
+    // Le consentement marketing n'est plus une condition d'envoi nulle part
+    // (décision de Loys, 13/09/2026). On l'enregistre quand même à `true` pour
+    // que la base reflète la réalité : ces inscrits reçoivent bien la séquence.
+    marketingConsent: true,
   });
   // Attendu, jamais lancé en arrière-plan : la redirection termine la fonction
   // et couperait l'envoi net sur Vercel. `envoyer` ne lève jamais.
