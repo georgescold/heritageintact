@@ -20,6 +20,11 @@
   --color-yellow-line: #e6c85a;
   --color-green: #1e7d3c;
   --color-green-bg: #eaf5ec;
+  /* Le brun du Dossier notaire. Seule teinte ajoutee pour la boutique : les
+     quatre autres guides reprennent les couleurs deja portees par l espace
+     membre, pour qu un client retrouve le meme code avant et apres l achat. */
+  --color-brown: #7a5230;
+  --color-brown-bg: #f6f0e9;
   --color-red: #b02a2a;
   --color-red-bg: #fdecec;
 

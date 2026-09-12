@@ -45,6 +45,23 @@ export function Header({ minimal = false, nav = false }: { minimal?: boolean; na
           <Logo size={34} />
         </Link>
 
+        {/* Le cadenas est collé au nom, et pas relégué à droite : sur cet
+            avatar, « est-ce que ce site est sérieux » se joue dans les deux
+            premières secondes, et la réponse doit se lire dans le même coup
+            d'œil que la marque. */}
+        <span className="flex shrink-0 items-center gap-1.5 border border-green/50 bg-green-bg px-2.5 py-1 text-[0.82rem] font-bold text-green">
+          <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden focusable="false">
+            <path
+              d="M4.4 7V4.8a3.6 3.6 0 0 1 7.2 0V7"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+            />
+            <rect x="2.6" y="7" width="10.8" height="7.2" fill="currentColor" />
+          </svg>
+          Site sécurisé
+        </span>
+
         {!minimal && !nav && (
           <span className="ml-auto hidden text-[0.9rem] text-text-soft lg:block">
             La succession enfin expliquée clairement
@@ -54,7 +71,7 @@ export function Header({ minimal = false, nav = false }: { minimal?: boolean; na
         {nav && (
           <nav
             aria-label="Navigation principale"
-            className="order-last -mx-4 mt-2 flex w-[calc(100%+2rem)] flex-wrap items-center gap-x-1 border-t border-grey-line bg-grey-bg px-4 sm:mx-0 sm:mt-0 sm:w-auto sm:flex-nowrap sm:gap-x-2 sm:border-0 sm:bg-transparent sm:px-0"
+            className="order-last -mx-4 mt-2 flex w-[calc(100%+2rem)] flex-wrap items-center gap-x-1 border-t border-grey-line bg-grey-bg px-4 sm:mx-0 sm:ml-auto sm:mt-0 sm:w-auto sm:flex-nowrap sm:gap-x-2 sm:border-0 sm:bg-transparent sm:px-0"
           >
             {NAVIGATION.map((l) => (
               <Link
@@ -84,21 +101,6 @@ export function Header({ minimal = false, nav = false }: { minimal?: boolean; na
           </nav>
         )}
 
-        {/* Le cadenas est visible partout, y compris sur la landing page :
-            sur cet avatar, « est-ce que ce site est sérieux » se joue dans
-            les deux premières secondes, en haut à droite. */}
-        <span className="ml-auto flex shrink-0 items-center gap-1.5 border border-green/50 bg-green-bg px-2.5 py-1 text-[0.82rem] font-bold text-green">
-          <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden focusable="false">
-            <path
-              d="M4.4 7V4.8a3.6 3.6 0 0 1 7.2 0V7"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.7"
-            />
-            <rect x="2.6" y="7" width="10.8" height="7.2" fill="currentColor" />
-          </svg>
-          Site sécurisé
-        </span>
       </div>
     </header>
   );

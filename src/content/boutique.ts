@@ -22,9 +22,33 @@ export type FicheBoutique = {
   resultat: string;
   /** Ce que le lecteur saura faire. Trois à cinq, jamais des livrables. */
   changements: string[];
+  /**
+   * CE QUE COÛTE L'INACTION, et pourquoi ce champ existe.
+   *
+   * « Les gens détestent perdre plus qu'ils n'aiment gagner »
+   * (03-marketing-copy/biais-cognitifs.md § 8). Pour une même action demandée,
+   * « fais X pour ne pas rester pauvre » convertit mieux que « fais X pour
+   * devenir riche » : le biais de négativité est plus fort que le biais de
+   * désir (01-principes/principes-premiers.md § Peur > Rêve).
+   *
+   * ⚠️ MAIS ELLE NE VIENT JAMAIS EN PREMIER. Le même fichier l'écrit : ne pas
+   * ouvrir par la douleur, ça fait fuir. La séquence tenue par chaque fiche est
+   * donc rêve d'abord (`resultat`, `changements`), peur ensuite (ici).
+   *
+   * ⚠️ Et elle reste VRAIE. La peur utilisée ici est une conséquence réelle et
+   * datée du droit, pas une menace inventée : sur ce sujet, une exagération se
+   * vérifie en un appel au notaire et détruit tout le reste.
+   */
+  perte: string;
   pourQui: string;
   /** Ce que ce guide ne fait PAS. Lever l'objection avant qu'elle ne se pose. */
   limite: string;
+  /**
+   * La teinte de la fiche. Elle reprend le code déjà porté par l'espace membre
+   * (components/espace/Boutique.tsx) : le plan en orange, l'assurance-vie en
+   * vert. Un client doit retrouver après l'achat la couleur qu'il a vue avant.
+   */
+  teinte: "blue" | "orange" | "green" | "brown" | "blue-mid";
 };
 
 export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
@@ -36,8 +60,11 @@ export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
       "Vous savez lesquelles de vos décisions dépendent d’une date, et laquelle de ces dates vous concerne en premier.",
       "Vous cessez d’être exclu du vocabulaire : usufruit, abattement, clause bénéficiaire redeviennent des questions concrètes.",
     ],
+    perte:
+      "Chaque année qui passe sans que vous ayez regardé, ce sont des décisions qui se prennent toutes seules — et c’est la loi, pas vous, qui décide alors qui reçoit quoi.",
     pourQui:
       "Vous avez plus de 60 ans, une maison payée, des enfants, et vous n’avez jamais rien chiffré.",
+    teinte: "blue",
     limite:
       "Ce guide explique les repères ; il ne calcule pas votre situation et ne décide rien à votre place.",
   },
@@ -49,7 +76,10 @@ export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
       "Vous savez à l’avance ce qui sera facturé et ce qui ne l’est pas.",
       "Vous repartez avec une trace écrite des réponses, au lieu de les reconstituer de mémoire une semaine plus tard.",
     ],
+    perte:
+      "Un rendez-vous passé à expliquer ce que vous auriez pu lire est un rendez-vous perdu : vous le paierez au même prix, et vous repartirez avec les mêmes questions.",
     pourQui: "Vous avez un rendez-vous prévu, ou vous voulez enfin en prendre un.",
+    teinte: "brown",
     limite:
       "Il prépare l’échange avec le professionnel ; il ne remplace ni son analyse ni sa responsabilité.",
   },
@@ -62,8 +92,11 @@ export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
       "Vous repérez les points propres à votre famille : recomposition, protection future, avenir de la maison.",
       "Vous remettez au professionnel un dossier qu’il peut lire en cinq minutes.",
     ],
+    perte:
+      "Sans ordre, on traite d’abord ce qui est facile. Les points qui coûtent vraiment restent au fond du tiroir — et ce sont eux qui se referment avec le temps.",
     pourQui:
       "Votre situation a une particularité — famille recomposée, bien locatif, proche vulnérable — ou vous voulez simplement savoir par quoi commencer.",
+    teinte: "orange",
     limite:
       "L’estimation est conditionnelle et reste à confirmer par un professionnel. Ce n’est pas une consultation.",
   },
@@ -75,8 +108,11 @@ export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
       "Vous savez quoi demander à votre assureur, par écrit, et quoi faire de sa réponse.",
       "Vous traitez la question pendant qu’une correction reste possible.",
     ],
+    perte:
+      "Une clause écrite il y a vingt ans désigne parfois quelqu’un qui n’est plus là, ou oublie quelqu’un qui est arrivé depuis. Personne ne s’en apercevra de votre vivant — c’est précisément le problème.",
     pourQui:
       "Vous détenez au moins un contrat, souvent ouvert il y a longtemps, et vous ne l’avez jamais relu.",
+    teinte: "green",
     limite:
       "Il vous aide à lire et à demander ; il ne modifie aucun contrat et ne vend aucun placement.",
   },
@@ -88,8 +124,11 @@ export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
       "Vous détectez les contradictions entre vos volontés, vos donations passées et vos contrats.",
       "Vous remettez au notaire un projet clair à vérifier et à formaliser, au lieu d’une conversation.",
     ],
+    perte:
+      "Ce qui n’est pas écrit devra être deviné. Vos enfants interpréteront vos intentions au moment où ils sont le moins en état de le faire, et parfois les uns contre les autres.",
     pourQui:
       "Vous avez des intentions précises que personne n’a écrites, ou une situation où la loi ne prévoit pas ce que vous souhaitez.",
+    teinte: "blue-mid",
     limite:
       "Il prépare la formalisation ; la rédaction et la validité relèvent du notaire.",
   },
