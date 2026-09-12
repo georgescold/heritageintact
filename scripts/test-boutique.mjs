@@ -126,6 +126,18 @@ ok(
   "les hooks Stripe ne sont appeles que sous <Elements>",
 );
 
+// ⚠️ LES DEUX setup_future_usage DOIVENT CONCORDER. Le serveur cree l'intention
+// avec off_session ; si Elements ne le declare pas aussi, Stripe refuse la
+// confirmation par « The provided setup_future_usage (off_session) does not
+// match the expected setup_future_usage (null) » -- en anglais, en rouge, sous
+// la carte deja saisie de l'acheteur.
+ok(formulaire.includes('setupFutureUsage: "off_session"'), "Elements declare setup_future_usage");
+ok(action.includes('setup_future_usage: "off_session"'), "le PaymentIntent porte setup_future_usage");
+
+// Link reclame un numero de portable au nom d'une marque tierce, au moment ou
+// l'acheteur saisit sa carte. Coupe, comme dans le tunnel.
+ok(formulaire.includes('wallets: { link: "never" }'), "Link est coupe sur le bon de commande");
+
 console.log(
   n +
     " controles boutique reussis : perimetre de vente a l'unite, produit d'appel preserve, fiches completes, reve avant peur, ancrage avant tarif, hors index, et bon de commande branche sur le tunnel existant. Aucun reseau ni base.",

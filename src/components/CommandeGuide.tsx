@@ -50,8 +50,32 @@ export function CommandeGuide({
         mode: "payment",
         amount: Math.round(prix * 100),
         currency: "eur",
+        /**
+         * ⚠️ IL DOIT ÊTRE ICI AUSSI, ET PAS SEULEMENT CÔTÉ SERVEUR.
+         *
+         * Le PaymentIntent est créé avec `setup_future_usage: "off_session"`.
+         * En mode différé, Elements compare ce qu'il a déclaré à ce que porte
+         * l'intention : sans cette ligne il annonce `null`, et Stripe refuse la
+         * confirmation par « The provided setup_future_usage (off_session) does
+         * not match the expected setup_future_usage (null) ». L'acheteur voit ce
+         * message anglais, en rouge, sous sa carte déjà saisie.
+         *
+         * Les deux valeurs se règlent donc ensemble. C'est aussi ce que fait
+         * `CheckoutForm`, pour la même raison.
+         */
+        setupFutureUsage: "off_session",
+        // Carte uniquement : Klarna et consorts ajoutent de la friction et de la
+        // méfiance sur un avatar de 60-78 ans, et c'est la seule démarche qui
+        // permette de débiter un ajout ultérieur en un clic.
         paymentMethodTypes: ["card"],
         locale: "fr",
+        appearance: {
+          variables: {
+            colorPrimary: "#12365E",
+            colorText: "#222222",
+            fontFamily: "Arial, Helvetica, sans-serif",
+          },
+        },
       }}
     >
       <AvecStripe sku={sku} nom={nom} prix={prix} defaults={defaults} />
@@ -184,7 +208,26 @@ function Formulaire({
 
       {stripe && (
         <div className="border border-grey-line bg-white p-4">
-          <PaymentElement options={{ layout: "tabs" }} />
+          <PaymentElement
+            options={{
+              layout: "tabs",
+              /**
+               * LINK EST COUPÉ, PAS REPLIÉ — même décision que `CheckoutForm`,
+               * où le raisonnement complet est écrit.
+               *
+               * Stripe insérait ici « Enregistrer mes informations pour un
+               * paiement plus rapide » : un second formulaire réclamant un
+               * NUMÉRO DE PORTABLE au nom d'une marque tierce, avec ses propres
+               * conditions, à la seconde où l'acheteur saisit sa carte. Sur un
+               * acheteur de 74 ans, ce bloc pose la question qui tue.
+               *
+               * Et il n'apporte rien : nos paiements suivants sont déjà en un
+               * clic, parce que `setup_future_usage` conserve la carte côté
+               * Stripe.
+               */
+              wallets: { link: "never" },
+            }}
+          />
         </div>
       )}
 
