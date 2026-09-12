@@ -250,6 +250,24 @@ ok(route.includes("guideVendable(guide)"), "seul un guide vendable ouvre une fen
 // Le prix barre n'apparait que s'il y a une remise reelle.
 ok(formulaire.includes("prix < base &&"), "aucun prix barre sans remise en cours");
 
+/* ── L annonce de promotion sur la boutique ─────────────────────────── */
+
+// ⚠️ ON N ANNONCE UNE PROMOTION QUE SI LE SITE SAIT L APPLIQUER. Sans secret,
+// aucune fenetre ne s ouvre au clic : annoncer la remise ferait une promesse
+// dementie dix secondes plus tard, sur l ecran ou le lecteur sort sa carte.
+ok(page.includes("fenetreDisponible()"), "l annonce depend de la disponibilite reelle de la fenetre");
+ok(page.includes("Voir la promotion"), "le CTA annonce la promotion");
+ok(page.includes("En promotion"), "le bandeau annonce la promotion");
+
+// ⚠️ LE PRODUIT D APPEL N EST PAS CONCERNE : sa fenetre depend d une adresse
+// email deja connue, donc l annoncer a tout le monde serait faux.
+ok(page.includes("promotion && !entree"), "le produit d appel garde son propre libelle");
+
+// ⚠️ RENDU A CHAQUE REQUETE. Prerendu, l etat de la promotion serait fige a la
+// compilation : poser le secret en production ne changerait rien, et la
+// boutique afficherait le prix sec pendant que la commande applique la remise.
+ok(page.includes("export const dynamic = \"force-dynamic\""), "la boutique n est pas prerendue");
+
 console.log(
   n +
     " controles boutique reussis : perimetre de vente, produit d appel preserve, fiches completes, reve avant peur, ancrage avant tarif, hors index, complement jamais pre-coche, et fenetre de prix degressive dont la remise ne porte que sur le guide. Aucun reseau ni base.",

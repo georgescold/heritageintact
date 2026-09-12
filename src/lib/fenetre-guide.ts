@@ -52,6 +52,23 @@ const memeValeur = (a: string, b: string) => {
   return x.length === y.length && timingSafeEqual(x, y);
 };
 
+/**
+ * LA FENÊTRE PEUT-ELLE S’OUVRIR SUR CE SERVEUR ?
+ *
+ * Sert à n’annoncer une promotion QUE si le site sait l’appliquer. Sans secret
+ * configuré, aucun cookie n’est posé et le prix reste celui du catalogue :
+ * afficher « en promotion » dans ce cas ferait une promesse que la page de
+ * commande démentirait dix secondes plus tard.
+ */
+export function fenetreDisponible(): boolean {
+  return cle() !== null && PROMOTIONS_ACTIVES;
+}
+
+/** La remise du premier palier, pour l’annoncer sans la recopier. */
+export const REMISE_MAX = PALIERS_GUIDE[0].pourcent;
+/** La durée du premier palier, en minutes. */
+export const DUREE_PREMIER_PALIER = PALIERS_GUIDE[0].finMinutes;
+
 /** La valeur à déposer dans le cookie, ou `null` si aucune clé n'est configurée. */
 export function marqueFenetre(debut = Date.now()): string | null {
   const secret = cle();

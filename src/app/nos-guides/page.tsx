@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Footer, Header, TrustRow } from "@/components/Chrome";
 import { BOUTIQUE, ORDRE_BOUTIQUE, type FicheBoutique } from "@/content/boutique";
 import { BRAND, PRESENTATION, PRODUCTS, euros } from "@/lib/config";
+import { DUREE_PREMIER_PALIER, REMISE_MAX, fenetreDisponible } from "@/lib/fenetre-guide";
 import { guideVendable } from "@/lib/guides-vente";
 
 /**
@@ -32,6 +33,20 @@ import { guideVendable } from "@/lib/guides-vente";
  *      par la douleur fait fuir, la placer après fait décider.
  */
 export const metadata: Metadata = { title: `Nos guides — ${BRAND}` };
+
+/**
+ * ⚠️ RENDU À CHAQUE REQUÊTE, ET CE N'EST PAS UN CONFORT.
+ *
+ * Cette page décide d'annoncer ou non une promotion à partir d'une variable
+ * d'environnement. Prérendue, elle figeait cette décision au moment de la
+ * compilation : poser `PRIX_SECRET` en production ne changeait rien, et la
+ * boutique continuait d'afficher le prix sec pendant que la page de commande
+ * appliquait bien la remise. Deux écrans du même parcours, deux vérités.
+ *
+ * Le coût est nul : la page n'est pas indexée et affiche des prix, donc elle
+ * n'a aucune raison d'être servie depuis un cache.
+ */
+export const dynamic = "force-dynamic";
 
 /**
  * Les teintes, reprises de l'espace membre pour qu'un client retrouve après
@@ -72,6 +87,20 @@ const TEINTES: Record<
 
 export default function NosGuides() {
   const fiches = ORDRE_BOUTIQUE.filter((sku) => BOUTIQUE[sku] && PRODUCTS[sku]);
+
+  /**
+   * ⚠️ ON N'ANNONCE UNE PROMOTION QUE SI LE SITE SAIT L'APPLIQUER.
+   *
+   * Sans secret de signature configuré, aucune fenêtre ne s'ouvre au clic et la
+   * page de commande affiche le prix du catalogue. Annoncer « en promotion »
+   * dans ce cas ferait une promesse démentie dix secondes plus tard, sur l'écran
+   * même où le lecteur sort sa carte.
+   *
+   * ⚠️ La mention ne porte QUE sur les guides vendus à l'unité. La fenêtre du
+   * produit d'appel dépend d'une adresse email déjà connue : l'annoncer à tout
+   * le monde serait faux pour la plupart des visiteurs.
+   */
+  const promotion = fenetreDisponible();
 
   return (
     <>
@@ -153,7 +182,11 @@ export default function NosGuides() {
                       Guide officiel
                     </p>
                     <p className="text-[0.85rem] font-bold uppercase tracking-wide opacity-90">
-                      {rang === 0 ? "À commencer par là" : `Étape ${rang + 1}`}
+                      {promotion && !entree && guideVendable(sku)
+                        ? `En promotion · −${REMISE_MAX} %`
+                        : rang === 0
+                          ? "À commencer par là"
+                          : `Étape ${rang + 1}`}
                     </p>
                   </div>
 
@@ -222,14 +255,23 @@ export default function NosGuides() {
                         </>
                       ) : (
                         <>
+                          {promotion && guideVendable(sku) && (
+                            <p className="mb-3 border-2 border-red bg-red-bg p-3 text-[1rem] font-bold text-red">
+                              En ce moment : −{REMISE_MAX} % sur ce guide, pendant{" "}
+                              {DUREE_PREMIER_PALIER} minutes à partir de l’ouverture de votre
+                              commande.
+                            </p>
+                          )}
                           <Link
                             // La fenêtre de prix s ouvre sur /commander, au clic, et jamais pendant la lecture.
                             href={guideVendable(sku) ? `/commander?g=${sku}` : "/connexion"}
                             className={`flex min-h-[54px] w-full items-center justify-center border-b-4 px-5 py-3 text-center text-[1.08rem] font-bold text-white no-underline sm:w-auto sm:px-8 ${couleur.badge} ${couleur.cadre} hover:brightness-90`}
                           >
-                            {guideVendable(sku)
-                              ? `Commander ce guide — ${euros(produit.price)}`
-                              : "L’ajouter depuis mon espace"}
+                            {!guideVendable(sku)
+                              ? "L’ajouter depuis mon espace"
+                              : promotion
+                                ? "Voir la promotion"
+                                : `Commander ce guide — ${euros(produit.price)}`}
                           </Link>
                           <p className="mt-2 text-[0.92rem] text-text-soft">
                             Paiement sécurisé, garantie 30 jours.{" "}
