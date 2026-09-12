@@ -191,8 +191,9 @@ export function GrilleDroitsEnfants() {
         <p className="mb-3">
           Passé le délai, la note grossit toute seule : <strong>0,20 % d’intérêt par mois</strong> dès
           le 7<sup>e</sup> mois, puis une <strong>majoration de 10 %</strong> à partir du 13<sup>e</sup>.
-          Sur des droits de {eur(58_389)}, cela fait 117 € de plus chaque mois, puis{" "}
-          {eur(5_839)} d’un seul coup.
+          Sur des droits de {eur(86_389)} — la ligne d’un patrimoine de {eur(650_000)} transmis à
+          deux enfants, dans la grille plus bas — cela fait {eur(173)} de plus chaque mois, puis{" "}
+          {eur(8_639)} d’un seul coup.
         </p>
 
         <SchemaSixMois />
