@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer, Header } from "@/components/Chrome";
 import { CaptureDocument } from "@/components/CaptureDocument";
-import { BRAND } from "@/lib/config";
+import { UrgencyBar } from "@/components/Urgency";
+import { FAQ } from "@/components/ui";
+import { QUESTIONS } from "@/content/faq";
+import { BRAND, CONTACT_EMAIL } from "@/lib/config";
 import { ARTICLES } from "@/content/guide/articles";
 import { metadataPublique } from "@/lib/seo";
 
@@ -50,6 +53,13 @@ export const metadata: Metadata = metadataPublique(
 export default function PageDeMarque() {
   return (
     <>
+      {/* L'ÉCHÉANCE EST LÉGALE, PAS COMMERCIALE.
+          Ce compteur porte la fin du dispositif de l'article 790 A bis, le
+          31 décembre 2026. Il est identique pour tout le monde, il ne dépend
+          d'aucun parcours et il n'annonce aucune remise — c'est ce qui lui
+          permet de figurer sur une page indexée, là où un minuteur commercial
+          n'aurait rien à y faire (voir lib/seo.ts). */}
+      <UrgencyBar />
       <Header nav />
       <main className="flex-1">
         {/* ───────────── RÊVE : la promesse, le nom de la marque tenu ───────────── */}
@@ -60,7 +70,7 @@ export default function PageDeMarque() {
             </p>
             <h1 className="text-[1.7rem] leading-[1.12] sm:text-[2.4rem]">
               Transmettre <span className="text-orange">intact</span> ce que vous avez mis
-              quarante ans à construire
+              40 ans à construire
             </h1>
             <p className="mt-3 text-[1.08rem] font-bold text-blue sm:text-[1.3rem]">
               Sans rien vendre, sans quitter votre maison, et sans confier un centime à qui que ce
@@ -213,8 +223,8 @@ export default function PageDeMarque() {
             </ul>
             <p className="mt-5 text-[1.02rem]">
               Reste la question honnête :{" "}
-              <Link href="/faq">pourquoi est-ce gratuit, et où est le piège</Link> ? Nous y
-              répondons dans les questions fréquentes, sans détour.
+              <a href="#questions">pourquoi est-ce gratuit, et où est le piège</a> ? Nous y
+              répondons plus bas, sans détour.
             </p>
           </div>
         </section>
@@ -268,6 +278,22 @@ export default function PageDeMarque() {
               dix secondes : vous trouvez votre ligne, et vous savez.
             </p>
             <CaptureDocument cta="Recevoir la grille des droits" />
+          </div>
+        </section>
+
+        {/* ───────────── DOUTE, suite : les questions qu'on nous pose ─────────────
+            Elles descendent ici plutôt que de vivre sur leur propre page : le
+            lecteur qui hésite ne clique pas vers un autre écran, il déroule.
+            L'ancre #questions est la cible du header, et /faq y redirige. */}
+        <section id="questions" className="scroll-mt-4 border-b border-grey-line bg-grey-bg">
+          <div className="wrap py-8 sm:py-11">
+            <h2 className="text-[1.4rem] leading-snug sm:text-[1.8rem]">Questions fréquentes</h2>
+            <p className="mb-5 mt-2 max-w-[70ch] text-[1.02rem]">
+              Les questions qu’on nous pose le plus, dans l’ordre où on nous les pose. Si la vôtre
+              n’y est pas, écrivez-nous à{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> : nous répondons nous-mêmes.
+            </p>
+            <FAQ items={QUESTIONS} />
           </div>
         </section>
 

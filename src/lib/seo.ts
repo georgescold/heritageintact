@@ -10,8 +10,15 @@
  * dans son `metadata`. Conséquence voulue : une page ajoutée au site est muette
  * pour Google tant que personne ne l'a inscrite ici en connaissance de cause.
  *
- * ⚠️ N'ajoute jamais à cette liste une page qui affiche un prix, une remise, un
- * compte à rebours ou un contenu payant. Le contenu gratuit ne doit empiéter sur
+ * ⚠️ N'ajoute jamais à cette liste une page qui affiche un prix, une remise ou
+ * un contenu payant.
+ *
+ * ⚠️ NUANCE SUR LES COMPTES À REBOURS, ajoutée le 12/09/2026. Un minuteur
+ * COMMERCIAL reste interdit ici : il dépend du parcours de chacun, donc ce
+ * qu'un résultat de recherche montrerait contredirait ce que le visiteur voit.
+ * Une ÉCHÉANCE LÉGALE est un autre objet — la fin du dispositif de l'article
+ * 790 A bis au 31 décembre 2026 est la même date pour tout le monde, ne dépend
+ * d'aucun parcours et n'annonce aucune remise. La racine l'affiche à ce titre. Le contenu gratuit ne doit empiéter sur
  * aucun composant vendu (cf. `INCLUS_DANS` dans config.ts).
  */
 import type { Metadata } from "next";
@@ -31,7 +38,6 @@ export const CHEMINS_INDEXABLES = [
   // déplacée sur /lp et reste volontairement hors index : deux pages indexées
   // sur la même promesse se cannibaliseraient.
   "/",
-  "/faq",
   // Le sommaire éditorial. Il n'est listé que parce qu'il contient déjà un
   // article : un sommaire vide indexé est exactement la « section fantôme »
   // que ce fichier interdit plus bas.

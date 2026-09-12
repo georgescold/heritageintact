@@ -17,7 +17,10 @@ import { Logo } from "./Logo";
  */
 const NAVIGATION = [
   { href: "/guide", t: "Blog" },
-  { href: "/faq", t: "Questions fréquentes" },
+  // Une ancre, pas une page : le lecteur descend sur la page de marque au lieu
+  // d'en ouvrir une autre. Le chemin est absolu pour que l'entrée fonctionne
+  // aussi depuis /guide, d'où une ancre nue ne mènerait nulle part.
+  { href: "/#questions", t: "Questions fréquentes" },
 ] as const;
 
 export function Header({ minimal = false, nav = false }: { minimal?: boolean; nav?: boolean }) {
