@@ -13,9 +13,12 @@ import { Button } from "./ui";
  * séquence qui vend (`09-faq/arbitrages.md`). Ici on échange un document contre
  * une adresse, rien d'autre.
  *
- * La case marketing est séparée de celle des conditions générales, et elle est
- * facultative : le document part quoi qu'il arrive. Les fusionner reviendrait à
- * extorquer un consentement en otage d'une promesse.
+ * ⚠️ Pas de case de consentement marketing pour l'instant — retirée à la demande
+ * de Loys le 12/09/2026, à traiter plus tard. CONSÉQUENCE : ces leads arrivent
+ * avec `marketingConsent = false`, donc `envoyerEtape` les ignore et la séquence
+ * J1-J7 ne leur part PAS. Seule la livraison du document fonctionne, parce
+ * qu'elle est transactionnelle. Remettre la case rebranche la séquence : l'action
+ * `demanderDocument` lit toujours le champ.
  */
 export function CaptureDocument({
   titre = "Le chiffre que personne ne vous a donné",
@@ -63,13 +66,6 @@ export function CaptureDocument({
           <span>
             J&apos;accepte les <Link href="/cgv">conditions générales</Link> et la{" "}
             <Link href="/confidentialite">politique de confidentialité</Link>.
-          </span>
-        </label>
-        <label className="flex items-start gap-2 text-[0.85rem] text-text-soft">
-          <input type="checkbox" name="marketingConsent" className="mt-1 h-5 w-5 shrink-0 accent-blue-mid" />
-          <span>
-            Je souhaite recevoir la suite des repères sur la transmission (facultatif,
-            désinscription en un clic).
           </span>
         </label>
         {state?.error && (
