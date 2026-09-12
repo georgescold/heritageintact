@@ -226,6 +226,58 @@ ok(
 eq(A.fiche("inconnu@x.fr", { leads, commandes, acces: [], progression }), []);
 
 /* ── La garde ────────────────────────────────────────────────────────── */
+/**
+ * La garde se recharge sous plusieurs environnements : la règle de longueur ne
+ * vaut qu'en production, et c'est précisément ce qu'il faut éprouver.
+ */
+function session(env) {
+  const exports = {};
+  const js = ts.transpileModule(fs.readFileSync("src/lib/admin/session.ts", "utf8"), {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+  }).outputText;
+  vm.runInNewContext(
+    js,
+    {
+      exports,
+      process: { env },
+      Buffer,
+      require: (p) =>
+        p === "next/headers" ? { cookies: async () => ({}) } : require("node:crypto"),
+    },
+    { filename: "session.ts" },
+  );
+  return exports;
+}
+
+// Valeur quelconque : le test porte sur la LONGUEUR, pas sur ce mot de passe.
+// Le secret de développement réel vit dans .env.local, qui n'est jamais commité.
+const COURT = "trop-court";
+const LONG = "phrase-de-passe-assez-longue";
+
+// Développement : un mot de passe court est accepté, et signalé comme faible.
+const dev = session({ ADMIN_PASSWORD: COURT });
+ok(dev.adminConfigure(), "en développement, un mot de passe court ouvre le panel");
+ok(dev.motDePasseValide(COURT), "le mot de passe de développement fonctionne");
+ok(!dev.motDePasseValide(COURT + "x"), "un mot de passe voisin est refusé");
+ok(dev.secretFaible(), "un mot de passe court est signalé comme faible");
+
+// Production : le même mot de passe n'ouvre RIEN. Il ne dégrade pas la
+// protection, il l'annule — c'est ce qui empêche un secret de test de se
+// retrouver en ligne par oubli.
+const prod = session({ ADMIN_PASSWORD: COURT, NODE_ENV: "production" });
+ok(!prod.adminConfigure(), "EN PRODUCTION, UN MOT DE PASSE COURT N'OUVRE RIEN");
+ok(!prod.motDePasseValide(COURT), "et il ne vaut pas non plus pour entrer");
+
+// Production avec un secret suffisant : tout fonctionne, sans avertissement.
+const prodOk = session({ ADMIN_PASSWORD: LONG, NODE_ENV: "production" });
+ok(prodOk.adminConfigure(), "en production, un secret assez long ouvre le panel");
+ok(prodOk.motDePasseValide(LONG));
+ok(!prodOk.secretFaible(), "aucun avertissement quand le secret tient en production");
+ok(!session({}).adminConfigure(), "aucun ADMIN_PASSWORD : le panel n'existe pas");
+
+const cadre = fs.readFileSync("src/components/admin/Cadre.tsx", "utf8");
+ok(cadre.includes("secretFaible()"), "l'avertissement est affiché sur chaque écran du panel");
+
 const S = mod("src/lib/admin/session.ts");
 ok(!S.adminConfigure(), "sans ADMIN_PASSWORD, le panel n'existe pas");
 ok(!S.motDePasseValide(""), "aucun mot de passe n'ouvre un panel non configuré");
