@@ -1,3 +1,10 @@
+// Recette navigateur de l'interface de consentement publicitaire et de la boutique de l'espace.
+//
+// ⚠️ PRÉREQUIS : une compilation FAITE AVEC le bandeau, sinon rien ne s'affiche.
+//   node scripts/build-sans-services.mjs --consent-ui
+// NEXT_PUBLIC_META_SERVER_MEASUREMENT est figé à la compilation : la compilation ordinaire
+// (sans --consent-ui) retire le composant du bundle, et cette recette échoue dès le premier écran.
+// Les autres recettes se contentent de la compilation ordinaire.
 import { spawn } from "node:child_process";
 import { createRequire } from "node:module";
 import fs from "node:fs";
@@ -34,6 +41,7 @@ const server = spawn(
 let browser,
   n = 0,
   externes = 0;
+const versMeta = [];
 const ok = (x) => {
   assert.ok(x);
   n++;
@@ -60,9 +68,13 @@ try {
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.route("**/*", (r) => {
-    if (["127.0.0.1", "localhost"].includes(new URL(r.request().url()).hostname))
-      return r.continue();
-    externes++;
+    const u = new URL(r.request().url());
+    if (["127.0.0.1", "localhost"].includes(u.hostname)) return r.continue();
+    // Le Pixel Meta est chargé volontairement sur les pages publiques : sa demande de fbevents.js
+    // n'est pas un service tiers oublié. Elle est comptée à part, et jamais laissée passer.
+    if (u.hostname.endsWith("facebook.net") || u.hostname.endsWith("facebook.com"))
+      versMeta.push(r.request().frame().url());
+    else externes++;
     return r.abort();
   });
   let choix = "inconnu",
@@ -79,19 +91,27 @@ try {
       body: JSON.stringify({ choix }),
     });
   });
+  // Les pages de l'espace gardent une connexion ouverte : « networkidle » n'y arrive jamais.
+  // On attend le document puis le contenu principal, comme la recette V7.
   const go = async (p) => {
-    const r = await page.goto("http://127.0.0.1:3311" + p, { waitUntil: "networkidle" });
+    const r = await page.goto("http://127.0.0.1:3311" + p, { waitUntil: "domcontentloaded" });
     ok(r.status() === 200);
+    await page.locator("main").waitFor();
   };
   for (const width of [390, 1440]) {
     choix = "inconnu";
     await page.setViewportSize({ width, height: 1000 });
     await go("/methode");
-    ok(
-      await page
-        .getByRole("heading", { name: "Votre choix pour la mesure publicitaire" })
-        .isVisible(),
-    );
+    // Le bandeau n'apparaît qu'après la lecture de la préférence enregistrée : on l'attend.
+    const titreBandeau = page.getByRole("heading", {
+      name: "Votre choix pour la mesure publicitaire",
+    });
+    await titreBandeau.waitFor().catch(() => {
+      throw Error(
+        "Bandeau de consentement absent : compilez avec « node scripts/build-sans-services.mjs --consent-ui » avant cette recette.",
+      );
+    });
+    ok(await titreBandeau.isVisible());
     const refuse = page.getByRole("button", { name: "Refuser", exact: true }),
       accepte = page.getByRole("button", { name: "Autoriser", exact: true });
     const r = await refuse.boundingBox(),
@@ -128,63 +148,63 @@ try {
     document.body.textContent.includes("Mes préférences publicitaires : refusées"),
   );
   ok(posts.at(-1).accord === false);
-  ok((await page.locator('script[src*="facebook"]').count()) === 0);
+  // Le Pixel Meta du navigateur est posé sans recueil d'accord (décision du 11/09/2026) : il est
+  // donc normalement présent ici. Le bandeau ci-dessus ne gouverne que la transmission serveur des
+  // achats ; il ne conditionne pas encore le pixel, comme l'annonce la politique de confidentialité.
+  ok((await page.locator("head script#meta-pixel").count()) === 1);
   ok((await page.request.get("http://127.0.0.1:3311/api/pilotage")).status() === 401);
+  // L'espace est organisé en quatre onglets depuis la refonte. Le bloc « Actualiser ma priorité »
+  // et l'onglet « outils » ont été retirés de la page : on vérifie les onglets réellement offerts,
+  // et que le réglage supprimé ne réapparaît pas par une ancienne adresse.
   await go("/espace/aaaaaaaaaaaaaaaaaaaa");
-  await page.getByText("Votre besoin a évolué ? Actualiser ma priorité", { exact: true }).click();
-  await page.locator('select[name="objectif"]').selectOption("assurance-vie");
-  await page.locator('select[name="av"]').selectOption("O");
-  await page.getByRole("button", { name: "Actualiser sans rien acheter" }).click();
-  await page.waitForFunction(() =>
-    document.body.textContent.includes("Votre priorité a été actualisée"),
-  );
+  for (const onglet of ["Mon parcours", "Mon dossier", "Mon avis", "Aide"])
+    ok((await page.getByRole("link", { name: onglet, exact: true }).count()) === 1);
   ok(
-    JSON.parse(fs.readFileSync(fixture, "utf8")).profils.find(
-      (p) => p.email === "front@example.invalid",
-    ).av === "O",
+    (await page
+      .getByText("Votre besoin a évolué ? Actualiser ma priorité", { exact: true })
+      .count()) === 0,
   );
-  await go("/espace/aaaaaaaaaaaaaaaaaaaa/etape/3");
-  const coche = page.getByRole("button", { name: "J'ai terminé cette étape", exact: true });
-  if (await coche.count()) await coche.click();
   await go("/espace/aaaaaaaaaaaaaaaaaaaa?vue=outils");
-  ok(
-    await page
-      .getByText("Vous avez terminé l’étape sur l’assurance-vie.", { exact: false })
-      .isVisible(),
-  );
-  await page.getByText("Votre besoin a évolué ? Actualiser ma priorité", { exact: true }).click();
-  await page.locator('select[name="objectif"]').selectOption("preparer");
-  await page.getByRole("button", { name: "Actualiser sans rien acheter" }).click();
-  await page.waitForFunction(() =>
-    document.body.textContent.includes("Votre priorité a été actualisée"),
-  );
+  ok((await page.locator('select[name="objectif"]').count()) === 0);
+  ok((await page.getByRole("link", { name: "Mon parcours", exact: true }).count()) === 1);
+  // La vente d'un complément a quitté le tunnel : /dossier-complet renvoie désormais vers
+  // /plan-complet, et le bilan « Vous conservez / Vous ajoutez » se lit dans la boutique de
+  // l'espace, sur /espace/<jeton>/ajouter/<sku>. C'est cet écran que l'on contrôle ici.
   for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
-    await go("/dossier-complet?o=ord_revue_front");
+    await go("/espace/aaaaaaaaaaaaaaaaaaaa/ajouter/upsell2");
     ok(await page.getByRole("heading", { name: "Vous conservez", exact: true }).isVisible());
     ok(await page.getByRole("heading", { name: "Vous ajoutez", exact: true }).isVisible());
-    ok(await page.getByText("L’avantage du pack :", { exact: false }).isVisible());
+    // Le titre d'un Panel n'est pas un titre de section : on le lit comme du texte.
+    ok(await page.getByText("Votre carte", { exact: true }).isVisible());
     ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
     await page
       .getByRole("heading", { name: "Vous conservez", exact: true })
       .scrollIntoViewIfNeeded();
     await page.screenshot({ path: ".build-refonte/v5-bilan-" + width + ".png" });
   }
-  await page.getByText("Le pack est trop large pour mon besoin actuel", { exact: true }).click();
-  await page
-    .getByRole("link", { name: "Voir uniquement le module assurance-vie, sans acheter" })
-    .click();
-  await page.waitForURL("**/kit-assurance-vie?*");
-  ok(new URL(page.url()).searchParams.get("alternative") === "1");
-  ok(await page.getByRole("button", { name: /Ajouter pour 67/ }).isVisible());
+  // Le prix affiché est celui qui sera débité, et il est porté par le formulaire de décision.
+  ok((await page.locator("#decision-membre").count()) === 1);
   ok(
-    (await page
-      .getByText("Le pack est trop large pour mon besoin actuel", { exact: true })
-      .count()) === 0,
+    Number(await page.locator('#decision-membre input[name="montantAffiche"]').inputValue()) === 67,
   );
-  await page.getByRole("link", { name: "Commencer avec mon achat actuel", exact: true }).click();
-  await page.waitForURL("**/merci?*");
-  ok(new URL(page.url()).pathname === "/merci");
+  // Les gardes de la boutique, sur une adresse devinable : rien ne se vend deux fois, rien ne se
+  // vend hors tunnel, et un accès révoqué n'achète pas.
+  for (const [jeton, sku] of [
+    ["aaaaaaaaaaaaaaaaaaaa", "pack1"],
+    ["aaaaaaaaaaaaaaaaaaaa", "inexistant"],
+    ["bbbbbbbbbbbbbbbbbbbb", "upsell1"],
+  ]) {
+    await page.goto("http://127.0.0.1:3311/espace/" + jeton + "/ajouter/" + sku, {
+      waitUntil: "domcontentloaded",
+    });
+    ok(new URL(page.url()).pathname === "/espace/" + jeton);
+  }
+  await page.goto("http://127.0.0.1:3311/espace/cccccccccccccccccccc/ajouter/upsell2", {
+    waitUntil: "domcontentloaded",
+  });
+  ok((await page.locator("#decision-membre").count()) === 0);
+  // Rien n'a été acheté : la commande de référence garde son unique ligne.
   ok(
     JSON.parse(fs.readFileSync(fixture, "utf8")).orders.find((o) => o.id === "ord_revue_front")
       .items.length === 1,
@@ -198,10 +218,17 @@ try {
   await alerte.waitFor();
   ok(await alerte.isVisible());
   ok(externes === 0);
+  // Les seules demandes sortantes tolérées viennent du pixel, et seulement depuis une page publique.
+  ok(versMeta.length > 0);
+  ok(
+    versMeta.every(
+      (u) => !u.includes("/espace/") && !u.includes("/reprendre/") && !/[?&](o|id)=/.test(u),
+    ),
+  );
   ok(errors.length === 0);
   console.log(
     n +
-      " contrôles navigateur V5 réussis. Interface de consentement avec service simulé, échec réel sans Postgres, priorité réelle sur fixture, offres et absence de requêtes tierces.",
+      " contrôles navigateur V5 réussis : interface de consentement avec service simulé, échec réel sans enregistrement, onglets de l'espace, gardes et bilan de la boutique, pixel isolé et aucune autre requête tierce.",
   );
 } finally {
   await browser?.close();
