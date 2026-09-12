@@ -132,7 +132,11 @@ export function UsufruitIndivision() {
           Conséquence concrète : le jour où la toiture doit être refaite, la facture est pour vos
           enfants — alors qu’ils n’habitent pas la maison et n’en tirent aucun revenu. C’est le point
           de friction numéro un des démembrements familiaux, et il n’apparaît jamais au moment de
-          signer.
+          signer. Le détail ligne par ligne, et le piège que le texte contient, sont ici :{" "}
+          <Link href="/guide/usufruit-travaux-charges">
+            qui paie les travaux, la taxe foncière et les charges
+          </Link>
+          .
         </p>
       </Bloc>
 
@@ -170,7 +174,13 @@ export function UsufruitIndivision() {
         <p>
           Vous pouvez aussi convenir que l’usufruit se reporte sur le prix ou sur un autre bien
           plutôt que d’être payé — ce qu’on appelle le remploi. Ce sont deux issues très
-          différentes pour vos revenus futurs, et elles se décident avant la vente, pas après.
+          différentes pour vos revenus futurs, et elles se décident avant la vente, pas après. Les
+          trois ventes possibles, la répartition du prix et les deux formes de report sont
+          détaillées ici :{" "}
+          <Link href="/guide/vendre-maison-usufruit-nue-propriete">
+            vendre une maison en usufruit et nue-propriété
+          </Link>
+          .
         </p>
       </Bloc>
 
