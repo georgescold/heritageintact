@@ -27,6 +27,9 @@ import { SITE_URL } from "./config";
 export const CHEMINS_INDEXABLES = [
   "/mentions-legales",
   "/confidentialite",
+  // Section éditoriale. Chaque page s'inscrit ici explicitement : une page en
+  // cours d'écriture reste muette pour Google tant qu'elle n'y figure pas.
+  "/guide/usufruit-nue-propriete-indivision",
 ] as const;
 
 /**
