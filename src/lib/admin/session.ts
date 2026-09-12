@@ -66,18 +66,6 @@ export function adminConfigure(): boolean {
   return secret() !== null;
 }
 
-/**
- * Le secret en place tiendrait-il en production ?
- *
- * Sert à afficher un avertissement permanent sur le panel en développement. Un
- * réglage de confort qui ne se voit pas est un réglage qu'on oublie, et
- * celui-ci garde des adresses email de clients.
- */
-export function secretFaible(): boolean {
-  const valeur = process.env.ADMIN_PASSWORD ?? "";
-  return valeur.length > 0 && valeur.length < LONGUEUR_MINIMALE;
-}
-
 function signer(echeance: number, cle: string): string {
   return createHmac("sha256", cle).update(String(echeance)).digest("hex");
 }
@@ -122,8 +110,4 @@ export async function ouvrirSessionAdmin(): Promise<void> {
     path: "/admin",
     maxAge: Math.floor(DUREE_MS / 1000),
   });
-}
-
-export async function fermerSessionAdmin(): Promise<void> {
-  (await cookies()).delete({ name: COOKIE, path: "/admin" });
 }

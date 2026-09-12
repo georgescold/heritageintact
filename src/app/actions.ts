@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { COOKIE_UTM, lireUtm, utmPresent, type Utm } from "@/lib/utm";
 import {
   accesParEmail,
   addItem,
@@ -29,6 +30,32 @@ export type FormState = { error?: string } | undefined;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+/**
+ * L'ORIGINE PUBLICITAIRE, LUE DU FORMULAIRE PUIS DU COOKIE.
+ *
+ * Le formulaire d'abord : c'est le cas normal, la publicite pointe vers la page
+ * qui porte le formulaire. Le cookie ensuite : il rattrape celui qui est arrive
+ * par une publicite, a lu deux pages, puis s'est inscrit -- la requete n'a plus
+ * de parametres, mais l'origine a ete deposee a l'arrivee.
+ *
+ * ⚠️ Les deux sources sont des entrees NON FIABLES : un champ cache se modifie,
+ * un cookie s'ecrit a la main. `nettoyerUtm` borne donc la longueur et le jeu
+ * de caracteres. Le pire qu'on risque est une ligne inventee dans un tableau de
+ * bord interne, jamais une injection.
+ */
+async function origine(form: FormData): Promise<Utm> {
+  const duFormulaire = lireUtm((cle) => form.get(cle));
+  if (utmPresent(duFormulaire)) return duFormulaire;
+  try {
+    const brut = (await cookies()).get(COOKIE_UTM)?.value;
+    if (!brut) return {};
+    const stocke = JSON.parse(decodeURIComponent(brut)) as Record<string, unknown>;
+    return lireUtm((cle) => stocke[cle]);
+  } catch {
+    return {};
+  }
+}
+
 function clean(v: FormDataEntryValue | null): string {
   return typeof v === "string" ? v.trim() : "";
 }
@@ -48,7 +75,7 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   if (!cgv) {
     return { error: "Cochez la case pour accepter les conditions générales avant de continuer." };
   }
-  const lead = await addLead({ email, firstName, source, marketingConsent });
+  const lead = await addLead({ email, firstName, source, utm: await origine(formData), marketingConsent });
   // L'email de livraison part tout de suite. On l'attend : sans ça, la fonction
   // se termine avec la redirection et l'envoi peut être coupé net sur Vercel.
   // Il ne lève jamais, un incident chez Resend ne doit pas bloquer l'inscription.
@@ -146,6 +173,7 @@ export async function demanderDocument(
     email,
     firstName,
     source,
+    utm: await origine(formData),
     marketingConsent: CONSENTEMENT_IMPLICITE_SEO,
   });
   // Attendu, jamais lancé en arrière-plan : la redirection termine la fonction

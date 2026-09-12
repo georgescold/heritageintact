@@ -239,6 +239,15 @@ export function assurerSchema(): Promise<void> {
       await s`alter table profils add column if not exists blocage text`;
       await s`alter table leads add column if not exists marketing_consent boolean not null default false`;
       await s`alter table leads add column if not exists marketing_consent_at timestamptz`;
+      // L'origine publicitaire d'un inscrit. Cinq colonnes plutot qu'un jsonb :
+      // elles se lisent dans un client SQL sans decodage, et l'attribution par
+      // annonce est exactement le genre de chiffre qu'on veut pouvoir verifier
+      // a la main le jour ou il surprend.
+      await s`alter table leads add column if not exists utm_source text`;
+      await s`alter table leads add column if not exists utm_medium text`;
+      await s`alter table leads add column if not exists utm_campaign text`;
+      await s`alter table leads add column if not exists utm_content text`;
+      await s`alter table leads add column if not exists utm_id text`;
       await s`create index if not exists orders_status_idx on orders (status)`;
       // L'espace retrouve les commandes d'un membre PAR SON EMAIL à chaque
       // affichage (calcul des possessions), et le cron y fait une jointure pour

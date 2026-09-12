@@ -3,9 +3,9 @@ import { Colonnes, Courbes } from "@/components/admin/Graphiques";
 import { Carte, Grille, Section, Tableau, eur } from "@/components/admin/Ui";
 import { periodeValide } from "@/lib/admin/agregats";
 import { chargerAdmin } from "@/lib/admin/donnees";
-import { cockpit, sante, semainesLocales } from "@/lib/admin/publicite";
+import { cockpit, parAnnonce, sante, semainesLocales } from "@/lib/admin/publicite";
 import { exigerAdmin } from "@/lib/admin/garde";
-import { adsConfigure, depensesHebdomadaires } from "@/lib/meta-ads";
+import { depensesHebdomadaires, depensesParAnnonce } from "@/lib/meta-ads";
 
 const SEMAINES = 12;
 
@@ -36,9 +36,10 @@ export default async function Publicite({
   await exigerAdmin();
   const periode = periodeValide((await searchParams).p);
 
-  const [d, ads] = await Promise.all([
+  const [d, ads, pub] = await Promise.all([
     chargerAdmin("tout"),
     depensesHebdomadaires(SEMAINES * 7),
+    depensesParAnnonce(SEMAINES * 7),
   ]);
 
   // Quand Meta répond, ce sont SES bornes de semaine qui font foi : les montants
@@ -49,6 +50,11 @@ export default async function Publicite({
 
   const lignes = cockpit(semaines, d.tous.leads, d.tous.commandes, depenseConnue);
   const verdict = sante(lignes);
+  const annonces = parAnnonce(
+    pub.etat === "ok" ? pub.annonces : null,
+    d.tous.leads,
+    d.tous.commandes,
+  );
   const etiquettes = lignes.map((l) => libelle(l.debut, l.fin));
 
   const cumul = lignes.reduce(
@@ -195,6 +201,42 @@ export default async function Publicite({
             eur(l.epl),
           ])}
         />
+      </Section>
+
+      <Section
+        titre="Par annonce"
+        aide="Rattachement sur l’identifiant de l’annonce porté par utm_id, jamais sur son nom : un nom se renomme, et l’historique d’une annonce renommée se couperait en deux lignes. La ligne « origine inconnue » rassemble les inscrits venus sans paramètre — référencement, bouche à oreille, et celui qui a cliqué sur son téléphone avant d’acheter depuis son ordinateur. Elle reste affichée : la masquer gonflerait mécaniquement le ROAS de toutes les autres."
+      >
+        {pub.etat === "absent" && !annonces.some((a) => a.leads > 0) ? (
+          <p className="border border-grey-line bg-grey-bg p-4 text-[0.95rem]">
+            Aucune origine publicitaire enregistrée pour l’instant. Ajouter les paramètres d’URL à
+            la campagne Meta — <code>utm_source=facebook&amp;utm_medium=cpc&amp;utm_campaign=&#123;&#123;campaign.name&#125;&#125;&amp;utm_content=&#123;&#123;ad.name&#125;&#125;&amp;utm_id=&#123;&#123;ad.id&#125;&#125;</code> — puis la dépense
+            par annonce apparaîtra ici dès la connexion du Business Manager.
+          </p>
+        ) : (
+          <Tableau
+            colonnes={["Annonce", "Campagne", "Dépense", "Inscrits", "CPL", "Acheteurs", "CPA", "CA", "Bénéfice", "ROAS"]}
+            lignes={annonces.map((a) => [
+              a.nom,
+              a.campagne || "—",
+              ou(a.depense, eur),
+              a.leads,
+              ou(a.cpl, eur),
+              a.acheteurs,
+              ou(a.cpa, eur),
+              eur(a.ca),
+              a.benefice === null ? (
+                "—"
+              ) : (
+                <span className={a.benefice >= 0 ? "font-bold text-green" : "font-bold text-red"}>
+                  {eur(a.benefice)}
+                </span>
+              ),
+              ou(a.roas, (n) => n.toFixed(2)),
+            ])}
+            vide="Aucune annonce ni origine enregistrée."
+          />
+        )}
       </Section>
 
       <Section titre="Courbes">

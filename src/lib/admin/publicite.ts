@@ -134,6 +134,109 @@ export function cockpit(
   });
 }
 
+export type LigneAnnonce = {
+  cle: string;
+  nom: string;
+  campagne: string;
+  depense: number | null;
+  leads: number;
+  acheteurs: number;
+  ca: number;
+  cpl: number | null;
+  cpa: number | null;
+  roas: number | null;
+  benefice: number | null;
+};
+
+/**
+ * L'ATTRIBUTION PAR ANNONCE — la colonne « meilleure publicité ».
+ *
+ * Elle joint trois choses : ce que Meta dit avoir dépensé par annonce, l'origine
+ * publicitaire enregistrée sur l'inscrit, et ce que cet inscrit a acheté.
+ *
+ * ⚠️ LE RATTACHEMENT SE FAIT SUR L'IDENTIFIANT D'ANNONCE (`utm_id`), pas sur son
+ * nom : un nom se renomme dans le gestionnaire, et l'historique d'une annonce
+ * renommée se couperait en deux lignes. Le nom ne sert qu'à l'affichage.
+ *
+ * ⚠️ UNE LIGNE « ORIGINE INCONNUE » EXISTE TOUJOURS, ET ELLE EST IMPORTANTE.
+ * Elle rassemble les inscrits arrivés sans origine : référencement, bouche à
+ * oreille, et surtout celui qui a cliqué sur son téléphone puis acheté depuis
+ * son ordinateur. La masquer ferait croire que tout le chiffre d'affaires est
+ * attribué, et gonflerait mécaniquement le ROAS de chaque annonce.
+ */
+export function parAnnonce(
+  annonces: { id: string; nom: string; campagne: string; depense: number }[] | null,
+  leads: Lead[],
+  commandes: Order[],
+): LigneAnnonce[] {
+  const normal = (e: string) => e.trim().toLowerCase();
+
+  const netParEmail = new Map<string, number>();
+  for (const c of commandes) {
+    if (!commandeReelle(c)) continue;
+    let net = 0;
+    for (const i of c.items) {
+      if (!Number.isFinite(i.price) || i.price < 0 || i.rembourse) continue;
+      net += centimes(i.price);
+    }
+    const email = normal(c.email);
+    netParEmail.set(email, (netParEmail.get(email) ?? 0) + net);
+  }
+
+  const table = new Map<string, { leads: number; acheteurs: number; net: number; nom: string; campagne: string }>();
+  const parId = new Map((annonces ?? []).map((a) => [a.id, a]));
+
+  for (const l of leads) {
+    const id = l.utm?.utm_id;
+    const cle = id ?? l.utm?.utm_content ?? "(origine inconnue)";
+    const meta = id ? parId.get(id) : undefined;
+    const ligne = table.get(cle) ?? {
+      leads: 0,
+      acheteurs: 0,
+      net: 0,
+      nom: meta?.nom ?? l.utm?.utm_content ?? "Hors publicité ou origine perdue",
+      campagne: meta?.campagne ?? l.utm?.utm_campaign ?? "",
+    };
+    ligne.leads++;
+    const net = netParEmail.get(normal(l.email));
+    if (net !== undefined) {
+      ligne.acheteurs++;
+      ligne.net += net;
+    }
+    table.set(cle, ligne);
+  }
+
+  // Une annonce qui a coûté sans produire un seul inscrit doit apparaître :
+  // c'est exactement celle qu'on veut couper, et elle serait invisible si on
+  // ne partait que des inscrits.
+  for (const a of annonces ?? []) {
+    if (!table.has(a.id)) {
+      table.set(a.id, { leads: 0, acheteurs: 0, net: 0, nom: a.nom, campagne: a.campagne });
+    }
+  }
+
+  return [...table.entries()]
+    .map(([cle, l]) => {
+      const meta = parId.get(cle);
+      const depense = meta ? meta.depense : null;
+      const ca = euros(l.net);
+      return {
+        cle,
+        nom: l.nom,
+        campagne: l.campagne,
+        depense,
+        leads: l.leads,
+        acheteurs: l.acheteurs,
+        ca,
+        cpl: depense !== null ? rapport(depense, l.leads) : null,
+        cpa: depense !== null ? rapport(depense, l.acheteurs) : null,
+        roas: depense !== null ? rapport(ca, depense) : null,
+        benefice: depense !== null ? euros(l.net - centimes(depense)) : null,
+      };
+    })
+    .sort((a, b) => (b.benefice ?? b.ca) - (a.benefice ?? a.ca));
+}
+
 export type Sante = {
   /** `null` quand la dépense est inconnue : on ne conclut pas sans elle. */
   scalable: boolean | null;

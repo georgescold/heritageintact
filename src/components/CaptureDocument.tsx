@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useActionState } from "react";
 import { demanderDocument, type FormState } from "@/app/actions";
+import { ChampsUtm } from "./ChampsUtm";
 import { Button } from "./ui";
 
 /**
@@ -49,6 +50,8 @@ export function CaptureDocument({
       <form action={action} className="space-y-3">
         {/* La page d'origine : c'est elle qui dira quelle grappe rapporte. */}
         <input type="hidden" name="source" value={pathname} />
+        {/* L origine publicitaire, quand il y en a une. */}
+        <ChampsUtm />
         <label className="block">
           <span className="mb-1 block font-bold">Votre prénom</span>
           <input name="firstName" type="text" autoComplete="given-name" required className="field" />

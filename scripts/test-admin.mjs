@@ -339,7 +339,6 @@ const dev = session({ ADMIN_PASSWORD: COURT });
 ok(dev.adminConfigure(), "en développement, un mot de passe court ouvre le panel");
 ok(dev.motDePasseValide(COURT), "le mot de passe de développement fonctionne");
 ok(!dev.motDePasseValide(COURT + "x"), "un mot de passe voisin est refusé");
-ok(dev.secretFaible(), "un mot de passe court est signalé comme faible");
 
 // Production : le même mot de passe n'ouvre RIEN. Il ne dégrade pas la
 // protection, il l'annule — c'est ce qui empêche un secret de test de se
@@ -352,11 +351,14 @@ ok(!prod.motDePasseValide(COURT), "et il ne vaut pas non plus pour entrer");
 const prodOk = session({ ADMIN_PASSWORD: LONG, NODE_ENV: "production" });
 ok(prodOk.adminConfigure(), "en production, un secret assez long ouvre le panel");
 ok(prodOk.motDePasseValide(LONG));
-ok(!prodOk.secretFaible(), "aucun avertissement quand le secret tient en production");
 ok(!session({}).adminConfigure(), "aucun ADMIN_PASSWORD : le panel n'existe pas");
 
+// Bandeau d avertissement et bouton de deconnexion retires le 12/09/2026 a la
+// demande de Loys. Ce qui protege reellement reste verifie plus haut : en
+// production, un secret trop court n ouvre rien.
 const cadre = fs.readFileSync("src/components/admin/Cadre.tsx", "utf8");
-ok(cadre.includes("secretFaible()"), "l'avertissement est affiché sur chaque écran du panel");
+ok(!cadre.includes("Fermer la session"), "aucun bouton de deconnexion");
+ok(!/secretFaible/.test(cadre), "aucun bandeau sur la force du mot de passe");
 
 const S = mod("src/lib/admin/session.ts");
 ok(!S.adminConfigure(), "sans ADMIN_PASSWORD, le panel n'existe pas");

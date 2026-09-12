@@ -27,6 +27,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { CONSENTEMENT_MARKETING_EXIGE, PRODUCTS, type ProductSku } from "./config";
 import { nouveauJeton } from "./jeton";
+import { CHAMPS_UTM, type Utm } from "./utm";
 import { assurerSchema, sql, sqlActif } from "./sql";
 
 /**
@@ -49,6 +50,12 @@ export type Lead = {
   createdAt: string;
   /** Chemin de la landing page d'arrivée : c'est la mesure de l'A/B test. */
   source?: string;
+  /**
+   * L'origine publicitaire, telle qu'elle est arrivée dans l'adresse. C'est ce
+   * qui permet de rattacher un achat à UNE annonce, là où `source` ne donne que
+   * la page d'arrivée — la même pour quarante publicités.
+   */
+  utm?: Utm;
   /** Désinscrit : plus aucun email ne part, jamais. */
   desabonne?: boolean;
   /** Étapes déjà envoyées : "j0", "j1"… Empêche tout doublon si le cron rejoue. */
@@ -200,7 +207,19 @@ async function write(db: Db): Promise<void> {
    LE MODE POSTGRES — traduction des lignes
    ═══════════════════════════════════════════════════════════════ */
 
-type LigneLead = {
+/** Les colonnes utm_* de la table, telles quelles. */
+type LigneUtm = Partial<Record<(typeof CHAMPS_UTM)[number], string | null>>;
+
+const utmDeLigne = (r: LigneUtm): Utm | undefined => {
+  const sortie: Utm = {};
+  for (const champ of CHAMPS_UTM) {
+    const valeur = r[champ];
+    if (typeof valeur === "string" && valeur) sortie[champ] = valeur;
+  }
+  return Object.keys(sortie).length ? sortie : undefined;
+};
+
+type LigneLead = LigneUtm & {
   marketing_consent?: boolean;
   marketing_consent_at?: Date | null;
   id: string;
@@ -233,6 +252,7 @@ const versLead = (r: LigneLead): Lead => ({
   firstName: r.first_name,
   createdAt: r.created_at.toISOString(),
   source: r.source ?? undefined,
+  utm: utmDeLigne(r),
   desabonne: r.desabonne,
   envoyes: r.envoyes ?? [],
 });
@@ -344,6 +364,13 @@ export async function addLead(input: {
   email: string;
   firstName: string;
   source?: string;
+  /**
+   * L'origine publicitaire. Elle n'est ecrite qu'A LA CREATION du lead, jamais
+   * sur une reinscription : la premiere publicite qui a amene quelqu'un est
+   * celle qui l'a amene. L'ecraser avec la derniere ferait credit a l'annonce
+   * qui a le moins travaille -- celle du visiteur qui revenait deja.
+   */
+  utm?: Utm;
   marketingConsent?: boolean;
 }): Promise<Lead> {
   const email = input.email.trim().toLowerCase();
@@ -356,9 +383,13 @@ export async function addLead(input: {
     // deux lignes. Le `do update` est un no-op — il ne sert qu'à obtenir la
     // ligne existante en retour, `do nothing` ne renvoyant rien.
     const [r] = await s<LigneLead[]>`
-      insert into leads (id, email, first_name, source, marketing_consent, marketing_consent_at)
+      insert into leads (id, email, first_name, source, marketing_consent, marketing_consent_at,
+                         utm_source, utm_medium, utm_campaign, utm_content, utm_id)
       values (${id("lead")}, ${email}, ${firstName}, ${input.source ?? null},
-              ${input.marketingConsent === true}, ${input.marketingConsent === true ? new Date().toISOString() : null})
+              ${input.marketingConsent === true}, ${input.marketingConsent === true ? new Date().toISOString() : null},
+              ${input.utm?.utm_source ?? null}, ${input.utm?.utm_medium ?? null},
+              ${input.utm?.utm_campaign ?? null}, ${input.utm?.utm_content ?? null},
+              ${input.utm?.utm_id ?? null})
       on conflict (email) do update set
         marketing_consent = leads.marketing_consent or excluded.marketing_consent,
         marketing_consent_at = coalesce(leads.marketing_consent_at, excluded.marketing_consent_at)
@@ -383,6 +414,7 @@ export async function addLead(input: {
     firstName,
     createdAt: new Date().toISOString(),
     source: input.source,
+    utm: input.utm && Object.keys(input.utm).length ? input.utm : undefined,
     marketingConsent: input.marketingConsent === true,
     marketingConsentAt: input.marketingConsent === true ? new Date().toISOString() : undefined,
   };

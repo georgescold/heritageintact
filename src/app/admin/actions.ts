@@ -1,12 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import {
-  adminConfigure,
-  fermerSessionAdmin,
-  motDePasseValide,
-  ouvrirSessionAdmin,
-} from "@/lib/admin/session";
+import { adminConfigure, motDePasseValide, ouvrirSessionAdmin } from "@/lib/admin/session";
 
 export type EtatConnexion = { erreur?: string };
 
@@ -28,9 +23,4 @@ export async function entrer(_etat: EtatConnexion, form: FormData): Promise<Etat
   if (typeof fourni !== "string" || !motDePasseValide(fourni)) return refus;
   await ouvrirSessionAdmin();
   redirect("/admin");
-}
-
-export async function sortir(): Promise<void> {
-  await fermerSessionAdmin();
-  redirect("/admin/connexion");
 }
