@@ -146,6 +146,37 @@ export function GrilleDroitsEnfants() {
         </p>
       </Bloc>
 
+      {/*
+        RAISON D'ÊTRE + TRAITEMENT D'OBJECTION, placé juste après l'ennemi.
+
+        Le lecteur qui vient de lire « personne n'était payé pour vous prévenir »
+        enchaîne mécaniquement sur « et vous, pourquoi vous me le dites ? ». Ne
+        pas y répondre laisse l'objection travailler pendant tout le reste.
+
+        Ce bloc porte aussi la légitimité, et c'est le seul endroit où elle peut
+        vivre : Loys a tranché qu'il n'y aurait aucun auteur nommé. Elle ne vient
+        donc pas d'un titre mais de la vérifiabilité — d'où l'invitation explicite
+        à contester chaque chiffre, qui est à la fois honnête et persuasive.
+      */}
+      <Bloc titre="Et nous, pourquoi on vous le dit ?">
+        <p className="mb-3">
+          Question légitime, et la réponse est simple : nous vendons ensuite un guide. Vous venez de
+          lire que personne n’est payé pour vous prévenir — nous, nous le sommes, et autant que vous
+          le sachiez avant de lire la suite plutôt qu’après.
+        </p>
+        <p className="mb-3">
+          Ce que ça change pour vous : rien sur les chiffres. Un barème ne se négocie pas, il se
+          vérifie. <strong>Chaque montant de cette page porte l’article qui le fonde et la date à
+          laquelle il a été contrôlé.</strong> Prenez-les un par un, allez voir sur
+          impots.gouv.fr ou service-public.fr, et contestez-les. Vous ne trouverez rien à redire —
+          c’est précisément pour ça qu’on les affiche avec leur source.
+        </p>
+        <p>
+          Ce qu’on vous demande, c’est de nous juger là-dessus. Pas sur un titre, pas sur une photo,
+          pas sur une promesse : sur le fait que ce que vous lisez ici tient devant le texte de loi.
+        </p>
+      </Bloc>
+
       {/* ── 4. PEUR ─────────────────────────────────────────────────────── */}
       <Bloc titre="Le jour où le silence se paie : six mois">
         <p className="mb-3">
