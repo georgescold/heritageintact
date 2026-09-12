@@ -67,6 +67,25 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
 }
 
 /**
+ * ⚠️ RÉGLAGE DE TEST — posé le 12/09/2026 à la demande de Loys.
+ *
+ * Le formulaire SEO n'affiche plus de case de consentement marketing, mais il
+ * faut que la séquence J1-J7 parte pour pouvoir éprouver la chaîne complète :
+ * page → capture → document → séquence → produit. Ces leads sont donc inscrits
+ * comme consentants.
+ *
+ * À REMETTRE À `false`, et à rétablir la case dans `CaptureDocument.tsx`, avant
+ * d'ouvrir la première page éditoriale au public : enregistrer un consentement
+ * que la personne n'a pas donné tient le temps d'un test entre soi, plus dès
+ * qu'il y a de vrais lecteurs derrière.
+ *
+ * Le garde-fou de `lib/email.ts` n'est volontairement PAS touché — il protège
+ * aussi les leads venus de Meta, et la base de production contient de vraies
+ * personnes. Le contournement s'arrête à ce formulaire.
+ */
+const CONSENTEMENT_IMPLICITE_SEO = true;
+
+/**
  * Capture d'un lecteur venu de Google, contre le document de référence.
  *
  * Différences assumées avec `optin()` ci-dessus, et elles sont toutes les trois
@@ -78,8 +97,8 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
  *    trafic chaud ou organique, on ne pose pas un produit low ticket derrière.
  *    On renvoie vers le document lui-même — il est lu tout de suite, et l'email
  *    en garde une copie. La vente se fait ensuite, par la séquence.
- * 3. La case marketing reste FACULTATIVE : la livraison est transactionnelle et
- *    part quoi qu'il arrive, seule la suite en dépend.
+ * 3. La livraison est transactionnelle : elle part quoi qu'il arrive. La suite
+ *    dépend de `CONSENTEMENT_IMPLICITE_SEO` ci-dessus — réglage de test.
  */
 export async function demanderDocument(
   _prev: FormState,
@@ -88,7 +107,6 @@ export async function demanderDocument(
   const firstName = clean(formData.get("firstName"));
   const email = clean(formData.get("email"));
   const cgv = formData.get("cgv") === "on";
-  const marketingConsent = formData.get("marketingConsent") === "on";
   // La page SEO d'origine : c'est ce qui dira plus tard quelle grappe rapporte.
   const source = clean(formData.get("source")).slice(0, 60) || undefined;
 
@@ -99,7 +117,12 @@ export async function demanderDocument(
     return { error: "Cochez la case pour accepter les conditions générales avant de continuer." };
   }
 
-  const lead = await addLead({ email, firstName, source, marketingConsent });
+  const lead = await addLead({
+    email,
+    firstName,
+    source,
+    marketingConsent: CONSENTEMENT_IMPLICITE_SEO,
+  });
   // Attendu, jamais lancé en arrière-plan : la redirection termine la fonction
   // et couperait l'envoi net sur Vercel. `envoyer` ne lève jamais.
   await envoyerGrilleDroits(lead);
@@ -113,7 +136,7 @@ export async function demanderDocument(
   });
 
   // On ne marque PAS l'étape « j0 » : ce lead n'a pas vu la présentation, sa
-  // séquence doit commencer au début — et seulement s'il a coché la case.
+  // séquence doit commencer au début.
   redirect("/document/le-chiffre?envoye=1");
 }
 

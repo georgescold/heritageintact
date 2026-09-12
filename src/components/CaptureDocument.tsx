@@ -13,12 +13,15 @@ import { Button } from "./ui";
  * séquence qui vend (`09-faq/arbitrages.md`). Ici on échange un document contre
  * une adresse, rien d'autre.
  *
- * ⚠️ Pas de case de consentement marketing pour l'instant — retirée à la demande
- * de Loys le 12/09/2026, à traiter plus tard. CONSÉQUENCE : ces leads arrivent
- * avec `marketingConsent = false`, donc `envoyerEtape` les ignore et la séquence
- * J1-J7 ne leur part PAS. Seule la livraison du document fonctionne, parce
- * qu'elle est transactionnelle. Remettre la case rebranche la séquence : l'action
- * `demanderDocument` lit toujours le champ.
+ * ⚠️ Pas de case de consentement marketing — retirée le 12/09/2026 à la demande
+ * de Loys, pour pouvoir tester la chaîne de bout en bout. Le consentement est
+ * accordé d'office côté serveur par `CONSENTEMENT_IMPLICITE_SEO`
+ * (`src/app/actions.ts`), donc la séquence J1-J7 part bien.
+ *
+ * C'est un RÉGLAGE DE TEST. Avant d'ouvrir la première page éditoriale au
+ * public, rétablir cette case ET repasser la constante à `false` : les deux
+ * vont ensemble, l'une sans l'autre laisse le site inscrire des gens à une
+ * séquence qu'ils n'ont pas demandée.
  */
 export function CaptureDocument({
   titre = "Le chiffre que personne ne vous a donné",
