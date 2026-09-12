@@ -205,13 +205,28 @@ const T0 = Date.parse("2026-01-01T12:00:00.000Z");
 const min = (n) => T0 + n * 60_000;
 
 // Degressive : -30 % pendant vingt minutes, -20 % pendant dix de plus, puis rien.
-eq(F.fenetreGuide(T0, min(0)).pourcent, 30, "a l'ouverture : -30 %");
-eq(F.fenetreGuide(T0, min(19)).pourcent, 30, "encore -30 % a 19 minutes");
-eq(F.fenetreGuide(T0, min(19)).suivant, 20, "le palier suivant est annonce");
-eq(F.fenetreGuide(T0, min(20)).pourcent, 20, "a 20 minutes : -20 %");
-eq(F.fenetreGuide(T0, min(29)).pourcent, 20, "encore -20 % a 29 minutes");
-eq(F.fenetreGuide(T0, min(30)).pourcent, 0, "a 30 minutes : plus de remise");
-eq(F.fenetreGuide(T0, min(30)).fin, null, "aucune echeance quand la fenetre est fermee");
+// Trois paliers : -75 % pendant quinze minutes, -50 % pendant dix, -30 %
+// pendant dix encore, puis le prix du catalogue.
+eq(F.fenetreGuide(T0, min(0)).pourcent, 75, "a l'ouverture : -75 %");
+eq(F.fenetreGuide(T0, min(14)).pourcent, 75, "encore -75 % a 14 minutes");
+eq(F.fenetreGuide(T0, min(0)).suivant, 50, "le palier suivant est annonce");
+eq(F.fenetreGuide(T0, min(15)).pourcent, 50, "a 15 minutes : -50 %");
+eq(F.fenetreGuide(T0, min(24)).pourcent, 50, "encore -50 % a 24 minutes");
+eq(F.fenetreGuide(T0, min(15)).suivant, 30, "puis -30 %");
+eq(F.fenetreGuide(T0, min(25)).pourcent, 30, "a 25 minutes : -30 %");
+eq(F.fenetreGuide(T0, min(34)).pourcent, 30, "encore -30 % a 34 minutes");
+eq(F.fenetreGuide(T0, min(25)).suivant, 0, "le dernier palier n'annonce plus de suite");
+eq(F.fenetreGuide(T0, min(35)).pourcent, 0, "a 35 minutes : plus de remise");
+eq(F.fenetreGuide(T0, min(35)).fin, null, "aucune echeance quand la fenetre est fermee");
+
+// ⚠️ CHAQUE PALIER DOIT ETRE DANS LA LISTE BLANCHE DE appliquerRemise. Sinon
+// le calcul leve, non pas au premier palier, mais au moment exact ou le
+// visiteur bascule sur celui qui manque -- en pleine page de commande.
+const { appliquerRemise } = mod("src/lib/promotions.ts");
+for (const p of F.PALIERS_GUIDE) {
+  appliquerRemise(100, p.pourcent);
+  n++;
+}
 
 // ⚠️ AUCUNE FENETRE SANS DEPART VALIDE. Un cookie absent, illisible ou falsifie
 // rend le prix du catalogue -- jamais une remise qu'on ne saurait pas verifier.
@@ -219,12 +234,12 @@ eq(F.fenetreGuide(null).pourcent, 0, "sans cookie : prix catalogue");
 eq(F.fenetreGuide(null).fin, null);
 
 // Le prix : la remise porte sur le guide, jamais sur le complement.
-const palier30 = F.fenetreGuide(T0, min(1));
-const tarif = F.prixGuide("upsell2", palier30, "bump");
+const palier75 = F.fenetreGuide(T0, min(1));
+const tarif = F.prixGuide("upsell2", palier75, "bump");
 eq(tarif.base, 67, "la base reste le prix catalogue");
-eq(tarif.guide, 46.9, "67 moins 30 % = 46,90");
+eq(tarif.guide, 16.75, "67 moins 75 % = 16,75");
 eq(tarif.complement, 17, "LE COMPLEMENT RESTE AU PRIX CATALOGUE");
-eq(tarif.total, 63.9, "total = guide remise + complement plein tarif");
+eq(tarif.total, 33.75, "total = 16,75 remise + 17,00 plein tarif");
 
 const sansRemise = F.prixGuide("upsell2", F.fenetreGuide(null), "bump");
 eq(sansRemise.guide, 67, "sans fenetre, le guide est au catalogue");

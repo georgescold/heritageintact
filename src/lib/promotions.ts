@@ -36,6 +36,10 @@ export function palier(p:Promotion|null,maintenant=Date.now()):Palier {
   return base;
 }
 export function appliquerRemise(montant:number,pourcent:number) {
-  if(!Number.isFinite(montant)||montant<0||![0,10,20,25,30,50].includes(pourcent))throw Error("Tarif promotionnel invalide");
+  // ⚠️ LISTE BLANCHE, ET ELLE EST LA DERNIÈRE BARRIÈRE. Un pourcentage arrive
+  // ici depuis un palier ou depuis un appelant ; s'il n'est pas dans cette
+  // liste, on refuse plutôt que de calculer un prix que personne n'a décidé.
+  // 75 y a été ajouté le 12/09/2026 pour la fenêtre de la boutique.
+  if(!Number.isFinite(montant)||montant<0||![0,10,20,25,30,50,75].includes(pourcent))throw Error("Tarif promotionnel invalide");
   return Math.round(Math.round(montant*100)*(100-pourcent)/100)/100;
 }

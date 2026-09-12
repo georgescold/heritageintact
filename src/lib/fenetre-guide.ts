@@ -5,11 +5,21 @@ import { appliquerRemise, PROMOTIONS_ACTIVES, type Palier } from "./promotions";
 /**
  * LA FENÊTRE DE PRIX DES GUIDES VENDUS À L'UNITÉ.
  *
- * Dégressive : −30 % pendant vingt minutes, puis −20 % pendant dix de plus,
- * puis le prix du catalogue. Deux paliers plutôt qu'un seul couperet, parce que
- * l'expiration brutale d'une remise sous les yeux de quelqu'un qui lisait
- * encore fait plus de mal que pas de remise du tout — et parce qu'un second
- * palier rattrape celui qui a voulu en parler à son conjoint.
+ * Dégressive : −75 % pendant quinze minutes, −50 % pendant dix de plus, −30 %
+ * pendant dix encore, puis le prix du catalogue. Trois paliers plutôt qu'un
+ * couperet, parce que l'expiration brutale d'une remise sous les yeux de
+ * quelqu'un qui lisait encore fait plus de mal que pas de remise du tout — et
+ * parce que les paliers suivants rattrapent celui qui a voulu en parler à son
+ * conjoint.
+ *
+ * ⚠️ CES TAUX SONT PLUS BAS QUE CEUX DU TUNNEL, ET C'EST À SURVEILLER.
+ * « Mon plan adapté à ma situation » descend ici à 74,25 € au premier palier,
+ * quand la meilleure fenêtre du tunnel s'arrête à 147 € (`promotions.ts`,
+ * montantFixe). Deux visiteurs du même produit, deux prix du simple au double
+ * selon la porte d'entrée. C'est une décision commerciale de Loys, prise le
+ * 12/09/2026 après que l'écart lui a été montré chiffré — mais si les deux
+ * chemins doivent se rejoindre un jour, c'est ici ou dans `palier()` que ça se
+ * corrige, pas ailleurs.
  *
  * ⚠️ POURQUOI UN COOKIE ET PAS LA BASE. Les fenêtres du tunnel sont ancrées par
  * email dans la table `promotions` : elles ne peuvent pas se relancer. Ici, la
@@ -30,10 +40,18 @@ import { appliquerRemise, PROMOTIONS_ACTIVES, type Palier } from "./promotions";
 
 export const COOKIE_FENETRE = "hi_fenetre";
 
-/** Paliers cumulés depuis l'ouverture. Le dernier ferme la fenêtre. */
+/**
+ * Paliers cumulés depuis l'ouverture. Le dernier ferme la fenêtre.
+ *
+ * ⚠️ Tout pourcentage écrit ici doit figurer dans la liste blanche de
+ * `appliquerRemise` (`promotions.ts`), sinon le calcul du prix lève et la page
+ * de commande tombe en erreur — pas au premier palier, mais au moment précis où
+ * le visiteur bascule sur celui qui manque.
+ */
 export const PALIERS_GUIDE = [
-  { finMinutes: 20, pourcent: 30 },
-  { finMinutes: 30, pourcent: 20 },
+  { finMinutes: 15, pourcent: 75 },
+  { finMinutes: 25, pourcent: 50 },
+  { finMinutes: 35, pourcent: 30 },
 ] as const;
 
 function cle(): string | null {
