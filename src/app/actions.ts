@@ -19,7 +19,7 @@ import { devisPour } from "@/lib/devis";
 import { devisFront } from "@/lib/prix-front";
 import { profilComplet } from "@/lib/questionnaire";
 import { stripe, toCents } from "@/lib/stripe";
-import { envoyerLivraison, envoyerRecuAchat } from "@/lib/email";
+import { envoyerGrilleDroits, envoyerLivraison, envoyerRecuAchat } from "@/lib/email";
 import { livrer } from "@/lib/livraison";
 import { identifiantAchatMeta } from "@/lib/meta-conversions";
 import type { MesureAchat } from "@/lib/meta-pixel";
@@ -64,6 +64,57 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
 
   // Le marqueur permet d'envoyer le Lead au pixel, qui le retire ensuite de l'adresse.
   redirect("/methode?inscrit=1");
+}
+
+/**
+ * Capture d'un lecteur venu de Google, contre le document de référence.
+ *
+ * Différences assumées avec `optin()` ci-dessus, et elles sont toutes les trois
+ * voulues :
+ *
+ * 1. On livre le DOCUMENT, pas la présentation du produit. Ce lecteur cherchait
+ *    une réponse, pas une offre.
+ * 2. On ne redirige PAS vers /methode. `09-faq/arbitrages.md` tranche : sur du
+ *    trafic chaud ou organique, on ne pose pas un produit low ticket derrière.
+ *    On renvoie vers le document lui-même — il est lu tout de suite, et l'email
+ *    en garde une copie. La vente se fait ensuite, par la séquence.
+ * 3. La case marketing reste FACULTATIVE : la livraison est transactionnelle et
+ *    part quoi qu'il arrive, seule la suite en dépend.
+ */
+export async function demanderDocument(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const firstName = clean(formData.get("firstName"));
+  const email = clean(formData.get("email"));
+  const cgv = formData.get("cgv") === "on";
+  const marketingConsent = formData.get("marketingConsent") === "on";
+  // La page SEO d'origine : c'est ce qui dira plus tard quelle grappe rapporte.
+  const source = clean(formData.get("source")).slice(0, 60) || undefined;
+
+  if (firstName.length < 2) return { error: "Indiquez votre prénom." };
+  if (!EMAIL_RE.test(email))
+    return { error: "Vérifiez votre adresse email : elle semble incomplète." };
+  if (!cgv) {
+    return { error: "Cochez la case pour accepter les conditions générales avant de continuer." };
+  }
+
+  const lead = await addLead({ email, firstName, source, marketingConsent });
+  // Attendu, jamais lancé en arrière-plan : la redirection termine la fonction
+  // et couperait l'envoi net sur Vercel. `envoyer` ne lève jamais.
+  await envoyerGrilleDroits(lead);
+
+  const jar = await cookies();
+  jar.set("hi_lead", JSON.stringify({ email: lead.email, firstName: lead.firstName }), {
+    httpOnly: true,
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 30,
+  });
+
+  // On ne marque PAS l'étape « j0 » : ce lead n'a pas vu la présentation, sa
+  // séquence doit commencer au début — et seulement s'il a coché la case.
+  redirect("/document/le-chiffre?envoye=1");
 }
 
 // ─────────────────────────────────────────────────────────────────────

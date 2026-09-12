@@ -498,7 +498,6 @@ export async function envoyerComplement(lead: Lead, acces: Acces, sku: ProductSk
  * (les six mois). Le document fait le reste.
  */
 export async function envoyerGrilleDroits(lead: Lead): Promise<{ ok: boolean }> {
-  if (lead.marketingConsent !== true || lead.desabonne) return { ok: false };
   const p = echapper(lead.firstName.trim()) || "";
   const url = lien("/document/le-chiffre");
   const contenu: Contenu = {
@@ -511,13 +510,18 @@ export async function envoyerGrilleDroits(lead: Lead): Promise<{ ok: boolean }> 
       "Un point vous surprendra sans doute : à 300 000 € avec trois enfants, l’État ne prend rien. Avec un seul enfant, sur le même patrimoine, il prend 38 194 €. Le nombre d’enfants pèse aussi lourd que le montant.",
     ],
     bouton: { texte: "Voir mon chiffre", lien: url },
-    ps: `Le lien en toutes lettres, si le bouton ne fonctionne pas&nbsp;:<br><strong>${url}</strong><br><br><strong>P.-S.</strong> Gardez un chiffre en tête en le lisant&nbsp;: <strong>six mois</strong>. C’est le délai dont vos enfants disposeront pour payer ces droits, en euros, pas en parts de maison. Tout ce qui peut réduire cette facture se décide de votre vivant.`,
+    ps: `Le lien en toutes lettres, si le bouton ne fonctionne pas&nbsp;:<br><strong>${url}</strong><br><br><strong>P.-S.</strong> Gardez un chiffre en tête en le lisant&nbsp;: <strong>six mois</strong>. C’est le délai dont vos enfants disposeront pour payer ces droits, en euros, pas en parts de maison. Tout ce qui peut réduire cette facture se décide de votre vivant.<br><br>La suite des repères n’est envoyée que si vous avez coché la case facultative. Vous pouvez vous désinscrire à tout moment, en un clic.`,
     pied: "prospect",
     leadId: lead.id,
   };
   return envoyer({
     to: lead.email,
     leadId: lead.id,
+    // Transactionnel, comme `envoyerLivraison` : cette personne a demandé ce
+    // document. Le lui refuser faute de case cochée casserait la promesse au
+    // moment exact où on lui demande sa confiance. La SÉQUENCE, elle, reste
+    // conditionnée au consentement marketing — c'est elle qui vend.
+    type: "transactionnel",
     cle: `magnet-grille-v1/${lead.id}`,
     subject: `${p ? p + ", l" : "L"}e chiffre que personne ne vous a donné`,
     html: gabarit(contenu),

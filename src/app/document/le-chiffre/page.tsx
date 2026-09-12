@@ -12,11 +12,29 @@ export const metadata: Metadata = {
   title: "Le chiffre que personne ne vous a donné",
 };
 
-export default function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ envoye?: string }>;
+}) {
+  // Le document s'ouvre tout de suite après la demande : faire patienter le
+  // lecteur devant un « vérifiez votre boîte mail » ajoute une friction pour
+  // rien, alors qu'il vient de donner son adresse pour lire CE document.
+  const { envoye } = await searchParams;
   return (
     <>
       <Header minimal />
       <main className="flex-1">
+        {envoye === "1" && (
+          <p
+            role="status"
+            className="mx-auto mt-6 max-w-3xl border-2 border-blue bg-white px-4 py-3 text-[0.95rem]"
+          >
+            <strong>C’est envoyé.</strong> Une copie de ce document vient de partir vers votre
+            adresse, pour que vous puissiez le retrouver plus tard. Vous pouvez le lire
+            maintenant, ci-dessous.
+          </p>
+        )}
         <GrilleDroitsEnfants />
       </main>
       <Footer />
