@@ -207,7 +207,7 @@ export async function envoyerLivraison(lead: Lead) {
     "Commencez par votre objectif : protéger votre sécurité, clarifier les informations de votre famille ou préparer un rendez-vous.",
   ];
   const ps =
-    "La série de conseils et d’offres est envoyée uniquement si vous avez coché la case facultative. Vous pouvez vous désinscrire à tout moment.";
+    "Vous recevrez ensuite quelques repères sur la transmission, répartis sur une semaine. Si vous n’en voulez pas, un lien de désinscription se trouve en bas de chaque message : un clic suffit, c’est immédiat et définitif.";
 
   const contenu: Contenu = {
     titre: "Votre présentation Héritage Intact",

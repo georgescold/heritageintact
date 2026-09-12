@@ -61,7 +61,7 @@ async function rendre(appel) {
 }
 
 /* ── Les emails, dans l'ordre du parcours ── */
-const MARKETING_PROSPECT = "Uniquement si la case facultative « recevoir les conseils et offres » a été cochée, sans désinscription, et tant que la personne n’a rien acheté : un achat arrête la séquence. Un seul email par jour, rien au-delà de 21 jours.";
+const MARKETING_PROSPECT = "Envoyée à tout inscrit non désinscrit, tant qu’il n’a rien acheté : un achat arrête la séquence. Le consentement marketing n’est plus exigé (réglage de test, CONSENTEMENT_MARKETING_EXIGE dans config.ts). Un seul email par jour, rien au-delà de 21 jours.";
 const groupes = [];
 
 groupes.push({
@@ -71,7 +71,7 @@ groupes.push({
   emails: [{
     cle: "j0-presentation", nom: "J0 — Le lien vers la présentation",
     quand: "Immédiatement après l’inscription.",
-    conditions: "Email de service : il part même si la case marketing n’est pas cochée.",
+    conditions: "Email de service : il part toujours, c’est ce qui a été demandé.",
     rendu: await rendre(() => email.envoyerLivraison(LEAD)),
   }],
 });
@@ -134,7 +134,7 @@ for (const [sku, declenche] of [["upsell1", true], ["upsell2", true], ["bump", f
   complements.push({
     cle: "complement-" + sku, nom: `Complément — ${PRODUCTS[sku].name}${declenche ? "" : " (écrit, jamais déclenché aujourd’hui)"}`,
     quand: declenche ? "À partir de 10 jours après l’ouverture de l’espace." : "Jamais : le déclencheur actuel ne propose que le plan adapté ou l’assurance-vie.",
-    conditions: "Un seul produit proposé, choisi selon les réponses au questionnaire et les produits déjà possédés. Uniquement avec la case marketing cochée. Arrêt à 35 jours.",
+    conditions: "Un seul produit proposé, choisi selon les réponses au questionnaire et les produits déjà possédés. Le consentement marketing n’est plus exigé (réglage de test). Arrêt à 35 jours.",
     rendu: await rendre(() => email.envoyerComplement(LEAD, ACCES, sku, "ltv-v3-1", 0, PRODUCTS[sku].price)),
   });
 }
@@ -231,9 +231,9 @@ ${lignes.join("\n")}
 | Emails | Condition d’envoi dans le code |
 |---|---|
 | Présentation (J0), accès, reçu | Toujours, dès l’évènement (inscription, paiement). |
-| Prise en main client (J1, J3, J7) | Toujours, au passage quotidien de l’automate d’envoi (chaque matin à 7 h UTC, soit 9 h à Paris en été, 8 h en hiver). |
-| Séquence prospect J1 à J7 | Seulement si la variable \`EMAIL_MARKETING_ACTIVE=true\` est posée sur Vercel. |
-| Compléments J10 et J17 | Seulement si \`EMAIL_MARKETING_ACTIVE=true\` **et** \`EMAIL_LTV_ACTIVE=true\`. |
+| Prise en main client (J1, J3, J7) | Toujours. C1 est remis à l’envoi dès l’achat, délivré 3 h plus tard dans la fenêtre 9 h - 20 h ; C2 et C3 au passage quotidien (7 h UTC). |
+| Séquence prospect J1 à J7 | Toujours. J1 est remis à l’envoi dès l’inscription, délivré 3 h plus tard dans la fenêtre 9 h - 20 h ; J2 à J7 au passage quotidien. |
+| Compléments J10 et J17 | Toujours, au passage quotidien. Les interrupteurs \`EMAIL_MARKETING_ACTIVE\` et \`EMAIL_LTV_ACTIVE\` ont été retirés du code le 12/09/2026. |
 
 Tous partent de **Héritage Intact — contact@heritageintact.fr**, et les réponses arrivent sur la même adresse.
 
