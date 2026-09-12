@@ -67,11 +67,6 @@ export default async function CommanderGuide({
           </section>
         )}
 
-        {fiche && (
-          <p className="mt-4 border-l-4 border-grey-line pl-3 text-[0.95rem] text-text-soft">
-            <strong>Ce qu’il ne fait pas :</strong> {fiche.limite}
-          </p>
-        )}
 
         <div className="mt-8">
           <Guarantee product="ce guide" />

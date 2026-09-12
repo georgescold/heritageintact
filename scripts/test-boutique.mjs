@@ -71,7 +71,7 @@ for (const sku of ORDRE_BOUTIQUE) {
   ok(f.resultat.length > 20, sku + " : le titre est un resultat");
   ok(f.changements.length >= 3, sku + " : au moins trois changements");
   ok(f.perte.length > 40, sku + " : le cout de l'inaction est ecrit");
-  ok(f.limite.length > 30, sku + " : ce que le guide ne fait pas");
+  ok(!("limite" in f), sku + " : plus de ligne « ce qu'il ne fait pas »");
   // Vocabulaire proscrit par 05-funnel/teardowns.md (correction n°6).
   const texte = [f.resultat, ...f.changements, f.perte].join(" ").toLowerCase();
   ok(!texte.includes("offert"), sku + " : pas de « offert »");

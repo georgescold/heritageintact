@@ -41,8 +41,6 @@ export type FicheBoutique = {
    */
   perte: string;
   pourQui: string;
-  /** Ce que ce guide ne fait PAS. Lever l'objection avant qu'elle ne se pose. */
-  limite: string;
   /**
    * La teinte de la fiche. Elle reprend le code déjà porté par l'espace membre
    * (components/espace/Boutique.tsx) : le plan en orange, l'assurance-vie en
@@ -65,8 +63,6 @@ export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
     pourQui:
       "Vous avez plus de 60 ans, une maison payée, des enfants, et vous n’avez jamais rien chiffré.",
     teinte: "blue",
-    limite:
-      "Ce guide explique les repères ; il ne calcule pas votre situation et ne décide rien à votre place.",
   },
   bump: {
     resultat: "Arriver chez le notaire avec vos questions, repartir avec ses réponses",
@@ -80,8 +76,6 @@ export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
       "Un rendez-vous passé à expliquer ce que vous auriez pu lire est un rendez-vous perdu : vous le paierez au même prix, et vous repartirez avec les mêmes questions.",
     pourQui: "Vous avez un rendez-vous prévu, ou vous voulez enfin en prendre un.",
     teinte: "brown",
-    limite:
-      "Il prépare l’échange avec le professionnel ; il ne remplace ni son analyse ni sa responsabilité.",
   },
   upsell1: {
     resultat: "Obtenir l’ordre exact des vérifications, à partir de votre situation",
@@ -97,8 +91,6 @@ export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
     pourQui:
       "Votre situation a une particularité — famille recomposée, bien locatif, proche vulnérable — ou vous voulez simplement savoir par quoi commencer.",
     teinte: "orange",
-    limite:
-      "L’estimation est conditionnelle et reste à confirmer par un professionnel. Ce n’est pas une consultation.",
   },
   upsell2: {
     resultat: "Savoir qui votre contrat d’assurance-vie protège réellement",
@@ -113,8 +105,6 @@ export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
     pourQui:
       "Vous détenez au moins un contrat, souvent ouvert il y a longtemps, et vous ne l’avez jamais relu.",
     teinte: "green",
-    limite:
-      "Il vous aide à lire et à demander ; il ne modifie aucun contrat et ne vend aucun placement.",
   },
   backend4: {
     resultat: "Transformer ce que vous avez dit à voix haute en volontés vérifiables",
@@ -129,8 +119,6 @@ export const BOUTIQUE: Partial<Record<ProductSku, FicheBoutique>> = {
     pourQui:
       "Vous avez des intentions précises que personne n’a écrites, ou une situation où la loi ne prévoit pas ce que vous souhaitez.",
     teinte: "blue-mid",
-    limite:
-      "Il prépare la formalisation ; la rédaction et la validité relèvent du notaire.",
   },
 };
 
