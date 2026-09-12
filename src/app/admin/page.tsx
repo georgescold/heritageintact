@@ -74,7 +74,7 @@ export default async function VueDEnsemble({
 
       <Section
         titre="Cohortes d’acquisition"
-        aide="Sur tout l’historique payé, indépendamment du filtre ci-dessus : une cohorte à 90 jours perdrait son sens si on lui retirait d’avance les commandes anciennes. Reprend le calcul déjà utilisé par /api/pilotage."
+        aide="Sur tout l’historique payé, indépendamment du filtre ci-dessus : une cohorte à 90 jours perdrait son sens si on lui retirait d’avance les commandes anciennes. Reprend le calcul déjà utilisé par /api/pilotage, qui ne retient QUE les clients entrés par le produit d’appel — ces montants sont donc normalement inférieurs aux recettes affichées plus haut, où figure aussi celui qui a acheté un pack directement."
       >
         <Tableau
           colonnes={["Fenêtre", "Acheteurs", "Commandes", "Avec complément", "Recettes nettes", "Net / acheteur"]}

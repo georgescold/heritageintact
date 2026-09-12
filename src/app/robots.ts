@@ -28,6 +28,7 @@ export default function robots(): MetadataRoute.Robots {
           "/resultat-plan",
           "/desinscription",
           "/connexion",
+          "/admin",
           "/api/",
         ],
       },

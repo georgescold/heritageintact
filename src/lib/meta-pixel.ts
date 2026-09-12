@@ -15,9 +15,13 @@
  */
 export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || "3751904564985082";
 
-/** Les chemins dont l'adresse porte une clé ou un identifiant de commande. */
+/**
+ * Les chemins dont l'adresse porte une clé, un identifiant de commande — ou,
+ * pour /admin, les adresses email de clients en clair dans la page comme dans
+ * la requête. Le panel de pilotage ne doit émettre aucune requête vers Meta.
+ */
 const CHEMINS_PRIVES =
-  "^/(espace|reprendre|offre|plan-complet|kit-assurance-vie|dossier-complet|situation|bienvenue|merci|resultat-plan|simulateur-seul|desinscription|derniere-chance|commande/confirmation)(/|$)";
+  "^/(admin|espace|reprendre|offre|plan-complet|kit-assurance-vie|dossier-complet|situation|bienvenue|merci|resultat-plan|simulateur-seul|desinscription|derniere-chance|commande/confirmation)(/|$)";
 
 export const cheminSansPixel = (chemin: string) => new RegExp(CHEMINS_PRIVES).test(chemin);
 
