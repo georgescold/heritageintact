@@ -258,8 +258,7 @@ export default function NosGuides() {
                           {promotion && guideVendable(sku) && (
                             <p className="mb-3 border-2 border-red bg-red-bg p-3 text-[1rem] font-bold text-red">
                               En ce moment : −{REMISE_MAX} % sur ce guide, pendant{" "}
-                              {DUREE_PREMIER_PALIER} minutes à partir de l’ouverture de votre
-                              commande.
+                              {DUREE_PREMIER_PALIER} minutes.
                             </p>
                           )}
                           <Link
