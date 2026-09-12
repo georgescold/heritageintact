@@ -14,60 +14,62 @@ import { Logo } from "./Logo";
  * envoie promener un acheteur qui n'a pas encore acheté.
  *
  * ⚠️ N'active `nav` sur aucune page du tunnel.
+ *
+ * `court` est le libellé des petits écrans, et il n'est pas cosmétique : à
+ * 375 px, « Questions fréquentes » en entier pousse « Mon espace » hors de
+ * l'écran. Tronquer une cible de frappe est le pire des trois choix possibles
+ * — devant le repli à la ligne, et devant un mot plus court mais entier.
  */
 const NAVIGATION = [
+  { href: "/nos-guides", t: "Nos guides", court: "Guides" },
   { href: "/guide", t: "Blog" },
   // Une ancre, pas une page : le lecteur descend sur la page de marque au lieu
   // d'en ouvrir une autre. Le chemin est absolu pour que l'entrée fonctionne
   // aussi depuis /guide, d'où une ancre nue ne mènerait nulle part.
-  { href: "/#questions", t: "Questions fréquentes" },
+  { href: "/#questions", t: "Questions fréquentes", court: "Questions" },
 ] as const;
 
 export function Header({ minimal = false, nav = false }: { minimal?: boolean; nav?: boolean }) {
   return (
     <header className="border-b-4 border-blue bg-white">
-      <div className="wrap-wide flex items-center justify-between gap-4 py-2.5">
-        <Link href="/" aria-label={BRAND} className="no-underline">
+      {/* UNE BANDE SUR GRAND ÉCRAN, DEUX SUR TÉLÉPHONE.
+          Au-dessus de 640 px, tout tient sur une ligne : logo, rubriques, entrée
+          client et cadenas. En dessous, les rubriques passent à la ligne ET
+          reçoivent leur propre fond : à cette largeur, une ligne de liens collée
+          sous le logo sans séparation se lit comme une suite de mots plutôt que
+          comme une barre de navigation.
+          Aucun libellé n'est jamais tronqué ni rétréci — le lecteur a 68 ans et
+          vise au pouce, donc chaque entrée garde ses 44 px de hauteur. */}
+      <div className="wrap-wide flex flex-wrap items-center gap-x-4 gap-y-0 py-2 sm:gap-y-1">
+        <Link href="/" aria-label={BRAND} className="shrink-0 no-underline">
           <Logo size={34} />
         </Link>
-        <div className="flex items-center gap-4">
-          {!minimal && !nav && (
-            <span className="hidden text-[0.9rem] text-text-soft lg:block">
-              La succession enfin expliquée clairement
-            </span>
-          )}
-          {/* Le cadenas est visible partout, y compris sur la landing page :
-              sur cet avatar, « est-ce que ce site est sérieux » se joue dans
-              les deux premières secondes, en haut à droite. */}
-          <span className="flex shrink-0 items-center gap-1.5 border border-green/50 bg-green-bg px-2.5 py-1 text-[0.82rem] font-bold text-green">
-            <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden focusable="false">
-              <path
-                d="M4.4 7V4.8a3.6 3.6 0 0 1 7.2 0V7"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.7"
-              />
-              <rect x="2.6" y="7" width="10.8" height="7.2" fill="currentColor" />
-            </svg>
-            Site sécurisé
+
+        {!minimal && !nav && (
+          <span className="ml-auto hidden text-[0.9rem] text-text-soft lg:block">
+            La succession enfin expliquée clairement
           </span>
-        </div>
-      </div>
-      {/* LA NAVIGATION OCCUPE SA PROPRE LIGNE, A TOUTES LES LARGEURS.
-          Comprimée à côté du logo et du cadenas, elle déborderait à 390 px ou
-          forcerait des libellés tronqués. Sur une ligne à elle, chaque entrée
-          garde 44 px de hauteur de frappe et son libellé entier — ce qui compte
-          plus ici qu'ailleurs : le lecteur a 68 ans et vise avec le pouce. */}
-      {nav && (
-        <div className="border-t border-grey-line bg-grey-bg">
-          <nav aria-label="Navigation principale" className="wrap-wide flex items-center gap-1 py-1 sm:gap-2">
+        )}
+
+        {nav && (
+          <nav
+            aria-label="Navigation principale"
+            className="order-last -mx-4 mt-2 flex w-[calc(100%+2rem)] flex-wrap items-center gap-x-1 border-t border-grey-line bg-grey-bg px-4 sm:mx-0 sm:mt-0 sm:w-auto sm:flex-nowrap sm:gap-x-2 sm:border-0 sm:bg-transparent sm:px-0"
+          >
             {NAVIGATION.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="flex min-h-[44px] items-center px-2 text-[0.95rem] font-bold no-underline hover:underline sm:px-3 sm:text-[1.02rem]"
+                className="flex min-h-[44px] items-center whitespace-nowrap px-2 text-[0.95rem] font-bold no-underline hover:underline sm:px-2.5 sm:text-[1rem]"
               >
-                {l.t}
+                {"court" in l ? (
+                  <>
+                    <span className="sm:hidden">{l.court}</span>
+                    <span className="hidden sm:inline">{l.t}</span>
+                  </>
+                ) : (
+                  l.t
+                )}
               </Link>
             ))}
             {/* L'entrée des clients, poussée à droite et encadrée : c'est la
@@ -75,13 +77,29 @@ export function Header({ minimal = false, nav = false }: { minimal?: boolean; na
                 les rubriques de lecture. */}
             <Link
               href="/connexion"
-              className="ml-auto flex min-h-[44px] shrink-0 items-center border-2 border-blue bg-white px-2.5 text-[0.95rem] font-bold text-blue no-underline hover:bg-blue hover:text-white sm:px-4 sm:text-[1.02rem]"
+              className="ml-auto flex min-h-[44px] shrink-0 items-center border-2 border-blue bg-white px-2.5 text-[0.95rem] font-bold text-blue no-underline hover:bg-blue hover:text-white sm:px-3.5 sm:text-[1rem]"
             >
               Mon espace
             </Link>
           </nav>
-        </div>
-      )}
+        )}
+
+        {/* Le cadenas est visible partout, y compris sur la landing page :
+            sur cet avatar, « est-ce que ce site est sérieux » se joue dans
+            les deux premières secondes, en haut à droite. */}
+        <span className="ml-auto flex shrink-0 items-center gap-1.5 border border-green/50 bg-green-bg px-2.5 py-1 text-[0.82rem] font-bold text-green">
+          <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden focusable="false">
+            <path
+              d="M4.4 7V4.8a3.6 3.6 0 0 1 7.2 0V7"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+            />
+            <rect x="2.6" y="7" width="10.8" height="7.2" fill="currentColor" />
+          </svg>
+          Site sécurisé
+        </span>
+      </div>
     </header>
   );
 }
