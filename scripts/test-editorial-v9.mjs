@@ -4,7 +4,7 @@ function read(file){const exports={};vm.runInNewContext(ts.transpileModule(fs.re
 const {EDITORIAL_PRODUITS:guides,OUVERTURES_CHAPITRES:chapitres,LEXIQUE_SUCCESSION:lexique,suiteProduit:suite}=read("src/lib/editorial-produits.ts"),{EDITORIAL_FICHES:fiches}=read("src/lib/editorial-fiches.ts"),{LECONS}=read("src/lib/lecons.ts");
 let n=0;const ok=(v,m)=>{assert.ok(v,m);n++};
 for(const g of Object.values(guides)){ok(g.histoire.length===2);ok(g.apprendre.length===3);ok(g.adresse.length>=3);for(const p of [g.ouverture,...g.histoire,...g.apprendre,...g.adresse,g.essentiel,g.limite,g.acquis,g.suite])ok(p.length>30);}
-ok(Object.keys(chapitres).length===8);ok(Object.keys(fiches).length===36);
+ok(Object.keys(chapitres).length===8);ok(Object.keys(fiches).length===42);
 ok(lexique.length===4);ok(lexique.flatMap(t=>t.entrees).length===12);
 const termes=lexique.flatMap(t=>t.entrees.map(e=>e.terme));ok(new Set(termes).size===termes.length);
 for(const theme of lexique){ok(theme.question.length>60);ok(theme.entrees.length===3);for(const entree of theme.entrees){ok(entree.definition.length>100);ok(entree.impact.length>80);ok(entree.verifier.length>70);}}

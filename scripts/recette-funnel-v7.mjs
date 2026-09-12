@@ -17,21 +17,46 @@ try {
   await page.route("**/api/confidentialite/preferences",r=>r.fulfill({status:200,contentType:"application/json",body:JSON.stringify({choix:"non"})}));
   const errors=[];page.on("pageerror",e=>errors.push(e.message));
   const go=async p=>{console.log("Contrôle "+p);const r=await page.goto("http://127.0.0.1:3311"+p,{waitUntil:"domcontentloaded"});ok(r.status()===200);await page.locator("main").waitFor();};
+  // Le questionnaire s'enrichit (régime, quote-part, recomposition…) : on répond à ce qui est
+  // affiché plutôt qu'à une suite figée, qui casse dès qu'une question est ajoutée.
   const remplirPlan=async({assuranceVie=false}={})=>{
-    ok(await page.getByRole("heading",{name:"Quel âge avez-vous aujourd’hui ?",exact:true}).isVisible());
-    await page.getByLabel("Votre réponse",{exact:true}).fill("68");await page.getByRole("button",{name:"Continuer",exact:true}).click();
-    await page.getByRole("button",{name:"Marié(e)",exact:true}).click();
-    await page.getByLabel("Votre réponse en euros",{exact:true}).fill("480000");await page.getByRole("button",{name:"Continuer",exact:true}).click();
-    await page.getByRole("button",{name:"Avec mon conjoint ou partenaire",exact:true}).click();
-    await page.getByRole("button",{name:"Permettre à un proche de la conserver",exact:true}).click();
-    for(const valeur of ["0","40000","0","0","0"]){await page.getByLabel("Votre réponse en euros",{exact:true}).fill(valeur);await page.getByRole("button",{name:"Continuer",exact:true}).click();}
-    for(const valeur of ["2","0","0","0","0","0"]){await page.getByLabel("Votre réponse",{exact:true}).fill(valeur);await page.getByRole("button",{name:"Continuer",exact:true}).click();}
-    await page.getByRole("button",{name:"Non",exact:true}).click();
-    await page.getByRole("button",{name:"Nous n’en avons pas encore parlé",exact:true}).click();
-    await page.getByLabel("Votre réponse en euros",{exact:true}).fill(assuranceVie?"100000":"0");await page.getByRole("button",{name:"Continuer",exact:true}).click();
-    await page.getByLabel("Votre réponse en euros",{exact:true}).fill("0");await page.getByRole("button",{name:"Continuer",exact:true}).click();
-    if(assuranceVie){await page.getByLabel("Votre réponse",{exact:true}).fill("2");await page.getByRole("button",{name:"Continuer",exact:true}).click();}
-    await page.getByRole("button",{name:"Je ne connais aucune donation passée",exact:true}).click();
+    // La simulation conserve les réponses : elle peut reprendre en cours de route, ou être déjà
+    // terminée. On n'exige donc pas la première question — on attend soit une question, soit l'écran
+    // de décision, puis on répond à ce qui s'affiche.
+    await Promise.race([
+      page.getByText(/QUESTION \d+ SUR \d+/).first().waitFor({timeout:20000}),
+      page.locator("#decision-complement").waitFor({timeout:20000}),
+    ]);
+    n++;
+    const montants={age:"68",enfants:"2",residenceTotale:"480000",epargne:"40000",avAvant:assuranceVie?"100000":"0",beneficiaires:assuranceVie?"2":"0"};
+    const ignorer=["← Question précédente","Je ne sais pas","Je ne sais pas : à retrouver","Je préfère ne pas répondre","Reprendre mes anciennes réponses","Commencer de zéro","Réessayer"];
+    for(let i=0;i<80;i++) {
+      if(await page.locator("#decision-complement").count())break;
+      // Le pop-up de sortie s'ouvre dès que la souris quitte la fenêtre : on le referme par programme
+      // avant chaque réponse, sans dépendre du focus clavier.
+      const fermerPopup=()=>page.evaluate(()=>document.querySelectorAll("dialog[open]").forEach(d=>d.close()));
+      await fermerPopup();
+      const titre=await page.locator("h2").first().innerText();
+      await fermerPopup();
+      const champ=page.locator('input[type="number"]');
+      if(await champ.count()) {
+        const cle=((await champ.getAttribute("id"))??"").replace("question-","");
+        const valeur=montants[cle];
+        if(cle==="donationAnnee")await page.getByRole("button",{name:"Je n’ai effectué aucune donation",exact:true}).click();
+        else if(valeur&&valeur!=="0"){await champ.fill(valeur);await page.getByRole("button",{name:/^(Continuer|Préparer mon aperçu personnalisé)$/}).first().click();}
+        else await page.getByRole("button",{name:"Aucun / zéro",exact:true}).click();
+      } else {
+        const boutons=page.locator("main button");
+        let clique=false;
+        for(let b=0;b<await boutons.count();b++) {
+          const libelle=(await boutons.nth(b).innerText()).trim();
+          if(!libelle||ignorer.includes(libelle))continue;
+          await boutons.nth(b).click();clique=true;break;
+        }
+        if(!clique)throw Error("Aucune réponse possible sur : "+titre);
+      }
+      await page.waitForFunction(t=>document.querySelector("h2")?.textContent!==t||document.querySelector("#decision-complement"),titre,{timeout:15000});
+    }
     await page.locator("#decision-complement").waitFor();
   };
   for(const width of [390,1440]) {
@@ -84,6 +109,9 @@ try {
   }
   // Sortie au clavier, une fois par session, sans gêner le formulaire.
   await go("/");
+  // Le pop-up ne s'affiche qu'une fois par session, et les pages visitées plus haut ont pu le consommer.
+  // On repart d'une session neuve pour contrôler ici son ouverture, sa fermeture et son unicité.
+  await page.evaluate(()=>{try{Object.keys(sessionStorage).filter(k=>k.startsWith("hi_exit_")).forEach(k=>sessionStorage.removeItem(k));}catch{}});
   await page.evaluate(()=>document.dispatchEvent(new MouseEvent("mouseout",{clientY:0,bubbles:true})));
   await page.locator("dialog[open]").waitFor();
   ok(await page.locator("dialog[open] li").count()===4);
@@ -112,7 +140,9 @@ try {
     await page.waitForLoadState("networkidle");
     await remplirPlan({assuranceVie:av==="Oui"});
     ok(await page.locator("#decision-complement").isVisible());
-    ok(await page.getByText("L’État appliquera les règles aux faits et aux actes réellement en place",{exact:false}).isVisible());
+    const titreOffre=await page.locator("h1").first().innerText().catch(()=>"(aucun h1)");
+    if(!titreOffre.includes("L’État appliquera"))throw Error("Offre inattendue ("+page.url()+") : "+titreOffre+" | combinaison "+objectif+" / AV "+av);
+    n++;
     ok(await page.locator("#livraison-produit").count()===0);
     ok(await page.locator('input[name="montantAffiche"]').count()===1);
     ok(!new URL(page.url()).searchParams.has("objectif"));
@@ -127,13 +157,13 @@ try {
     }
     ok(await page.getByRole("link",{name:"Non merci, continuer sans ce produit",exact:true}).isVisible());
     await page.getByRole("link",{name:"Non merci, continuer sans ce produit",exact:true}).click();
-    if(av==="Oui") {
-      await page.waitForURL("**/kit-assurance-vie?*");
-      await page.getByRole("link",{name:"Non merci, continuer sans ce produit",exact:true}).click();
-    }
-    await page.waitForURL("**/bienvenue?*");
-    ok(await page.locator("#livraison-produit").isVisible());
-    ok(await page.getByRole("link",{name:"Ouvrir le guide",exact:true}).isVisible());
+    // Le refus du plan termine le tunnel : l’assurance-vie est désormais proposée depuis la boutique
+    // de l’espace, plus après l’offre du plan.
+    // Depuis la refonte, /bienvenue ne montre plus le guide : elle renvoie le client dans son espace.
+    await page.waitForURL(u=>u.pathname.includes("/espace/"),{timeout:20000});
+    // Le bandeau de paiement n’est montré qu’à la première arrivée : ici le client revient d’une offre refusée.
+    ok(new URL(page.url()).pathname.startsWith("/espace/"));
+    ok(await page.getByRole("link",{name:"Télécharger mon guide PDF",exact:true}).isVisible());
     ok(await page.locator("#suite-adaptee").count()===0);
   }
   await go("/situation?o=ord_revue_front");
@@ -191,34 +221,42 @@ try {
   for(const p of ["/methode","/dossier-complet?o=ord_revue_front"]){
     await page.evaluate(()=>sessionStorage.clear());
     await go(p);
-    await page.evaluate(()=>document.dispatchEvent(new MouseEvent("mouseout",{clientY:0,bubbles:true})));
+    // La page d'offre s'initialise plus lentement (elle recharge les réponses) : on répète le geste
+    // de sortie jusqu'à ce que la page l'écoute, au lieu de l'envoyer une fois trop tôt.
+    await page.waitForLoadState("networkidle");
+    for(let essai=0;essai<12 && !(await page.locator("dialog[open]").count());essai++){
+      await page.evaluate(()=>document.dispatchEvent(new MouseEvent("mouseout",{clientY:0,bubbles:true})));
+      await page.waitForTimeout(400);
+    }
     await page.locator("dialog[open]").waitFor();
     ok(await page.getByRole("heading",{name:"Ce que vous risquez si vous fermez cette page",exact:true}).isVisible());
     if(p==="/methode"){ok(await page.locator("dialog[open] li").count()===4);await page.locator("dialog[open]").screenshot({path:".build-refonte/v11-popup-vente.png"});}
     await page.keyboard.press("Escape");
     ok(await page.locator("dialog[open]").count()===0);
   }
-  // Nouveau client fictif, paiement simulé, questionnaire obligatoire puis offre.
+  // Nouveau client fictif, paiement simulé : le guide est remis dans l'espace, sans questionnaire
+  // intermédiaire. Le plan se demande ensuite depuis la boutique de l'espace.
   await page.context().clearCookies();
   await go("/commande");
   await page.getByLabel("Prénom",{exact:true}).fill("Client fictif");
-  await page.getByLabel("Adresse email",{exact:false}).fill("parcours-v7@example.invalid");
+  // Adresse unique par exécution : sinon les réponses enregistrées d'une exécution précédente sont
+  // rechargées, le questionnaire s'affiche déjà terminé et le prix de départ n'est jamais posé.
+  const emailParcours="parcours-v7-"+Date.now()+"@example.invalid";
+  await page.getByLabel("Adresse email",{exact:false}).fill(emailParcours);
   await page.getByRole("checkbox").last().check();
   await page.getByRole("button",{name:/Valider ma commande/}).click();
-  await page.waitForURL("**/situation?*");
-  const orderId=new URL(page.url()).searchParams.get("o");
-  await go("/bienvenue?o="+orderId);
-  ok(new URL(page.url()).pathname==="/situation");
-  await page.getByRole("button",{name:"Découvrir trop tard que j’ai laissé passer une date importante",exact:true}).click();
-  await page.getByRole("button",{name:"Ma situation reste à préciser",exact:true}).click();
-  await page.getByRole("button",{name:"Ma situation familiale reste à préciser",exact:true}).click();
-  await page.getByRole("button",{name:"De 65 à 69 ans",exact:true}).click();
-  await page.getByRole("button",{name:"Je ne sais pas",exact:true}).click();
-  await page.getByRole("button",{name:"Les démarches et les mots sont trop compliqués",exact:true}).click();
-  await page.waitForURL(u=>u.pathname==="/plan-complet");
+  await page.waitForURL(u=>u.pathname.includes("/espace/"),{timeout:30000});
+  ok(await page.getByRole("link",{name:"Télécharger mon guide PDF",exact:true}).isVisible());
+  const orderId=JSON.parse(fs.readFileSync(fixture,"utf8")).orders.find(o=>o.email===emailParcours).id;
+  await page.getByText("Construire mon plan adapté",{exact:true}).first().click();
+  await page.waitForURL(u=>u.pathname==="/plan-complet",{timeout:30000});
   await remplirPlan();
+  // Le prix de départ (147 € pendant 10 minutes) n’est posé qu’après le rafraîchissement déclenché par
+  // la fin du questionnaire : on attend qu’il apparaisse plutôt que de lire le catalogue trop tôt.
+  await page.waitForFunction(()=>document.querySelector("input[name=montantAffiche]")?.value==="147",null,{timeout:20000});
   const montantUpsell=Number(await page.locator('input[name="montantAffiche"]').inputValue());
-  ok(montantUpsell===147);
+  if(montantUpsell!==147)throw Error("montant affiché pour le plan : "+montantUpsell);
+  n++;
   for(const width of [390,1440]){
     await page.setViewportSize({width,height:1000});
     ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
@@ -229,8 +267,8 @@ try {
   await page.waitForURL("**/resultat-plan?*");
   ok(await page.getByText("votre plan adapté à votre situation est déverrouillé",{exact:false}).isVisible());
   await page.getByRole("link",{name:"Continuer mon parcours",exact:true}).click();
-  await page.waitForURL("**/bienvenue?*");
-  ok(await page.getByRole("link",{name:"Ouvrir le guide",exact:true}).isVisible());
+  await page.waitForURL(u=>u.pathname.includes("/espace/"),{timeout:30000});
+  ok(await page.getByRole("link",{name:"Télécharger mon guide PDF",exact:true}).isVisible());
   const final=JSON.parse(fs.readFileSync(fixture,"utf8"));
   const order=final.orders.find(o=>o.id===orderId);
   ok(order.items.some(i=>i.sku==="upsell1"&&i.price===montantUpsell));

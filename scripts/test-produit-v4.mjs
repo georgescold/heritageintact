@@ -29,9 +29,9 @@ for (const l of LECONS) {
   ok(l.aFaire.length > 20);
 }
 ok(Object.keys(OUVERTURES_CHAPITRES).length === 8);
-ok(GUIDES_UTILISATION.length === 4);
+ok(GUIDES_UTILISATION.length === 5);
 ok(guidesPossedes(new Set()).length === 0);
-for (const sku of ["front", "bump", "upsell1", "upsell2"]) {
+for (const sku of ["front", "bump", "upsell1", "upsell2", "backend4"]) {
   const g = guidesPossedes(new Set([sku]));
   ok(g.length === 1);
   ok(g[0].sku === sku);

@@ -35,7 +35,8 @@ const {offreLtv,etapeLtvDue}=mod("src/lib/sequence-ltv.ts");
 const now=Date.now(), lead={marketingConsent:true}, acces={createdAt:new Date(now-12*86400000).toISOString(),envoyes:[],revoque:false}, prog=[{etape:"e0",faiteLe:"2026-09-01"}];
 eq(etapeLtvDue(lead,acces,prog,now),"ltv-v3-1");
 for(const l of [{}, {marketingConsent:false},{marketingConsent:true,desabonne:true}])eq(etapeLtvDue(l,acces,prog,now),null);
-eq(etapeLtvDue(lead,acces,[],now),null);
+// Depuis « Simplifie la delivery » : plus aucune étape à terminer, seuls le délai et le consentement comptent.
+eq(etapeLtvDue(lead,acces,[],now),"ltv-v3-1");
 eq(etapeLtvDue(lead,{...acces,envoyes:["ltv-pause"]},prog,now),null);
 eq(etapeLtvDue(lead,{...acces,revoque:true},prog,now),null);
 eq(etapeLtvDue(lead,{...acces,createdAt:new Date(now-40*86400000).toISOString()},prog,now),null);

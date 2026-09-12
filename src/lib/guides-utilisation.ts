@@ -33,7 +33,7 @@ export const GUIDES_UTILISATION: GuideUtilisation[] = [
     "seances": [
       [
         "1. Reprenez l’exemple avant les cases vides",
-        "Lisez le cas guidé de Claire et Marc. Regardez comment ils distinguent ce qu’ils savent, ce qui manque et leurs questions. Ouvrez ensuite votre inventaire : une ligne par bien ou compte utile, avec la source et la date. Reprenez leur méthode de classement avec vos propres informations.",
+        "Lisez le cas guidé de Claire et Marc. Regardez comment ils distinguent ce qu’ils savent, ce qui manque et leurs questions. Ouvrez ensuite votre inventaire : une ligne par bien ou compte utile, avec la source et la date. Reprenez leur logique de classement avec vos propres informations.",
         "Chaque ligne renvoie à un document ou porte clairement « à retrouver ».",
         "exemple-dossier"
       ],
