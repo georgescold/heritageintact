@@ -19,7 +19,8 @@ import { devisPour } from "@/lib/devis";
 import { devisFront } from "@/lib/prix-front";
 import { profilComplet } from "@/lib/questionnaire";
 import { stripe, toCents } from "@/lib/stripe";
-import { envoyerGrilleDroits, envoyerLivraison, envoyerRecuAchat } from "@/lib/email";
+import { envoyerEtape, envoyerGrilleDroits, envoyerLivraison, envoyerRecuAchat } from "@/lib/email";
+import { SEQUENCE } from "@/lib/sequence";
 import { livrer } from "@/lib/livraison";
 import { identifiantAchatMeta } from "@/lib/meta-conversions";
 import type { MesureAchat } from "@/lib/meta-pixel";
@@ -53,6 +54,7 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
   // Il ne lève jamais, un incident chez Resend ne doit pas bloquer l'inscription.
   const envoi = await envoyerLivraison(lead);
   if (envoi.ok) await marquerEnvoye(lead.id, "j0");
+  await demarrerSequence(lead);
 
   const jar = await cookies();
   jar.set("hi_lead", JSON.stringify({ email: lead.email, firstName: lead.firstName }), {
@@ -84,6 +86,27 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
  * personnes. Le contournement s'arrête à ce formulaire.
  */
 const CONSENTEMENT_IMPLICITE_SEO = true;
+
+/**
+ * Démarre la séquence prospect tout de suite, sans attendre le cron du
+ * lendemain matin (demande de Loys, 12/09/2026 : « un nouveau lead rentre =
+ * la séquence part »).
+ *
+ * ⚠️ Conséquence à connaître : l'inscrit reçoit DEUX emails à quelques secondes
+ * d'intervalle — sa livraison, puis J1. `etapeDue` porte la règle inverse en
+ * commentaire (« deux emails le même jour sur un domaine jeune, c'est le
+ * meilleur moyen de finir en indésirable »), et heritageintact.fr est un domaine
+ * jeune. À surveiller dans les statistiques Resend ; si le placement se dégrade,
+ * c'est le premier endroit où revenir.
+ *
+ * Ne lève jamais : un incident d'envoi ne doit pas faire échouer l'inscription.
+ */
+async function demarrerSequence(lead: Awaited<ReturnType<typeof addLead>>) {
+  const premiere = SEQUENCE[0];
+  if (!premiere) return;
+  const r = await envoyerEtape(lead, premiere);
+  if (r.ok) await marquerEnvoye(lead.id, premiere.cle);
+}
 
 /**
  * Capture d'un lecteur venu de Google, contre le document de référence.
@@ -126,6 +149,7 @@ export async function demanderDocument(
   // Attendu, jamais lancé en arrière-plan : la redirection termine la fonction
   // et couperait l'envoi net sur Vercel. `envoyer` ne lève jamais.
   await envoyerGrilleDroits(lead);
+  await demarrerSequence(lead);
 
   const jar = await cookies();
   jar.set("hi_lead", JSON.stringify({ email: lead.email, firstName: lead.firstName }), {

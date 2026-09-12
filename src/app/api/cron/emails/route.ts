@@ -179,9 +179,12 @@ export async function GET(req: Request) {
     /* ─── PASSE 3 — SÉQUENCE PROSPECT ─────────────────────────────────
      Inchangée. `leadsActifs()` exclut désormais les acheteurs : quelqu'un
      qui a acheté à J2 ne doit plus recevoir « l'offre à 27 € » à J6. */
-    const leads = process.env.EMAIL_MARKETING_ACTIVE === "true" ? await leadsActifs() : [];
-    const ltvActive =
-      process.env.EMAIL_MARKETING_ACTIVE === "true" && process.env.EMAIL_LTV_ACTIVE === "true";
+    // Les interrupteurs EMAIL_MARKETING_ACTIVE / EMAIL_LTV_ACTIVE sont retirés
+    // (demande de Loys, 12/09/2026) : le cron rattrape désormais toujours les
+    // étapes dues. Le démarrage, lui, ne l'attend plus — la première étape part
+    // à l'inscription et à l'achat. Ce passage ne sert donc qu'au rattrapage.
+    const leads = await leadsActifs();
+    const ltvActive = true;
     const reserveLtv = reserveComplements(budget, ltvActive);
     async function prospecter(reserve: number) {
       for (const lead of leads) {
@@ -205,11 +208,7 @@ export async function GET(req: Request) {
 
     // Compléments : un besoin déclaré, une première étape terminée, deux messages maximum.
     let complements = 0;
-    if (
-      budget > 0 &&
-      process.env.EMAIL_MARKETING_ACTIVE === "true" &&
-      process.env.EMAIL_LTV_ACTIVE === "true"
-    ) {
+    if (budget > 0) {
       for (const lead of await leadsClientsRecents()) {
         if (budget <= 0 || Date.now() - maintenant > 240000) break;
         if (servis.has(lead.email)) continue;
