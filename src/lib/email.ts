@@ -433,8 +433,6 @@ ${tableau ? `<table style="border-collapse:collapse;width:100%;max-width:640px;"
   });
 }
 
-export const _SITE_URL = SITE_URL;
-
 /** Campagne client distincte des emails d’accès. Montant indicatif recalculé au clic. */
 export async function envoyerComplement(lead: Lead, acces: Acces, sku: ProductSku, cle: string, credit: number, montant: number) {
   const actuel = await accesParEmail(acces.email);
@@ -464,4 +462,43 @@ export async function envoyerComplement(lead: Lead, acces: Acces, sku: ProductSk
     pied:"prospect",leadId:lead.id,
   };
   return envoyer({to:lead.email,leadId:lead.id,cle:`client-v3/${acces.jeton}/${cle}`,subject:contenu.titre,html:gabarit(contenu),text:versionTexte(contenu)});
+}
+
+/**
+ * LIVRAISON DU LEAD MAGNET — le premier contact d'un visiteur venu de Google.
+ *
+ * Il ne vend rien. Sur du trafic organique, `09-faq/arbitrages.md` est explicite :
+ * lead magnet -> email -> vente PAR la séquence. Un email de livraison qui vend
+ * casse la promesse au moment précis où on demande la confiance.
+ *
+ * Structure CEO tenue en quatre paragraphes : rêve (ce qu'il cherche vraiment),
+ * échec excusé (personne ne vous a donné le chiffre), ennemi (le silence), peur
+ * (les six mois). Le document fait le reste.
+ */
+export async function envoyerGrilleDroits(lead: Lead): Promise<{ ok: boolean }> {
+  if (lead.marketingConsent !== true || lead.desabonne) return { ok: false };
+  const p = echapper(lead.firstName.trim()) || "";
+  const url = lien("/document/ce-quils-paieront");
+  const contenu: Contenu = {
+    titre: "Votre grille est prête",
+    paragraphes: [
+      `Bonjour ${p},`,
+      "Voici ce que vous avez demandé : <strong>la grille de ce que vos enfants paieront réellement sur ce que vous leur laisserez.</strong> Vous y trouverez votre ligne en dix secondes, selon votre patrimoine et leur nombre.",
+      "Si ce dossier vous accompagne depuis des années sans jamais aboutir, ce n’est pas de la négligence. C’est qu’il vous manquait un chiffre. Tant qu’on n’a pas de chiffre, il n’y a rien à décider — seulement une inquiétude qu’on repousse.",
+      "Et si personne ne vous l’a donné, il y a une raison simple : personne n’est payé pour vous prévenir. L’État encaisse au décès, votre banque est rémunérée sur les frais du contrat, votre notaire est payé à l’acte — et l’acte arrive au moment de la succession. Ils ne sont pas malhonnêtes. Ils ne sont pas payés pour ça.",
+      "Un point vous surprendra sans doute : à 300 000 € avec trois enfants, l’État ne prend rien. Avec un seul enfant, sur le même patrimoine, il prend 38 194 €. Le nombre d’enfants pèse aussi lourd que le montant.",
+    ],
+    bouton: { texte: "Voir ma ligne dans la grille", lien: url },
+    ps: `Le lien en toutes lettres, si le bouton ne fonctionne pas&nbsp;:<br><strong>${url}</strong><br><br><strong>P.-S.</strong> Gardez un chiffre en tête en le lisant&nbsp;: <strong>six mois</strong>. C’est le délai dont vos enfants disposeront pour payer ces droits, en euros, pas en parts de maison. Tout ce qui peut réduire cette facture se décide de votre vivant.`,
+    pied: "prospect",
+    leadId: lead.id,
+  };
+  return envoyer({
+    to: lead.email,
+    leadId: lead.id,
+    cle: `magnet-grille-v1/${lead.id}`,
+    subject: `${p ? p + ", v" : "V"}otre grille : ce que vos enfants paieront`,
+    html: gabarit(contenu),
+    text: versionTexte(contenu),
+  });
 }
