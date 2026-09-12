@@ -30,6 +30,7 @@
 import Link from "next/link";
 import { BoutonImprimer } from "@/components/BoutonImprimer";
 import { ButtonLink } from "@/components/ui";
+import { SchemaNombreEnfants, SchemaSixMois } from "./schemas";
 
 /** Doit rester identique à `VERIFIE_LE` de lib/simulateur/bareme.ts. */
 export const VERIFIE_LE = "8 septembre 2026";
@@ -83,8 +84,7 @@ export function GrilleDroitsEnfants() {
       <p className="mb-5 border-l-4 border-blue bg-blue/5 py-3 pl-4 text-[0.92rem]">
         <strong>Cette page ne se trouve pas.</strong> Elle n’apparaît ni dans le menu du site, ni
         dans les résultats de recherche : elle n’existe que pour les personnes à qui nous en avons
-        envoyé l’adresse. Gardez ce lien, ou imprimez la page — elle restera en ligne, mais elle ne
-        se retrouvera pas par hasard.
+        envoyé l’adresse.
       </p>
 
       <p className="mb-2">
@@ -188,11 +188,57 @@ export function GrilleDroitsEnfants() {
           vendre. Et une maison de famille ne se vend pas toujours en six mois — surtout quand deux
           enfants ne sont pas d’accord sur le fait de la vendre.
         </p>
-        <p>
+        <p className="mb-3">
           Passé le délai, la note grossit toute seule : <strong>0,20 % d’intérêt par mois</strong> dès
           le 7<sup>e</sup> mois, puis une <strong>majoration de 10 %</strong> à partir du 13<sup>e</sup>.
           Sur des droits de {eur(58_389)}, cela fait 117 € de plus chaque mois, puis{" "}
           {eur(5_839)} d’un seul coup.
+        </p>
+
+        <SchemaSixMois />
+
+        {/*
+          DIMENSIONNALISATION VERS LA VIE, et non vers l'argent. Un montant ne se
+          ressent pas ; une scène, oui. Tout ce qui est décrit ici découle
+          mécaniquement du délai et de l'indivision — la vente forcée, le blocage
+          à deux, la maison qui sort de la famille. Rien n'est ajouté pour faire
+          peur : c'est la conséquence du mécanisme, déroulée.
+
+          ⚠️ La limite est celle que pose structure-ceo.md : « ne pas trop
+          planter le couteau ». D'où la sortie du bloc, qui rend la main au
+          lecteur au lieu de le laisser au fond du trou.
+        */}
+        <p className="mb-3">
+          Maintenant, sortez des euros une minute, et regardez à quoi ressemblent ces six mois.
+        </p>
+        <p className="mb-3">
+          C’est un mercredi de février. Vos deux enfants sont dans votre cuisine, avec un agent
+          immobilier qu’ils ne connaissent pas, qui prend des photos du salon. Ils n’ont pas encore
+          vidé l’armoire de votre chambre — personne n’a voulu s’y mettre. Le panneau est posé
+          devant le portail que vous aviez repeint l’été dernier.
+        </p>
+        <p className="mb-3">
+          Sophie voudrait garder la maison. Thomas ne peut pas : il a un crédit, deux enfants, et sa
+          part représente la seule somme qui lui permettrait de souffler. Ils ne se disputent même
+          pas vraiment. Ils se parlent poliment, de moins en moins souvent, et un jour ils ne se
+          parleront plus qu’aux enterrements.
+        </p>
+        <p className="mb-3">
+          L’été suivant, il n’y a plus de repas du 15 août dans le jardin. Vos petits-enfants ne
+          verront plus jamais la maison où ils ont appris à faire du vélo. Et la question que
+          personne n’osera poser à voix haute, c’est : est-ce qu’il aurait pu faire quelque chose ?
+        </p>
+        <p className="mb-3">
+          <strong>
+            Ce n’est pas l’impôt qui fait le plus de dégâts dans une succession. C’est la vente
+            décidée dans l’urgence, et ce qu’elle laisse entre deux frères et sœurs.
+          </strong>
+        </p>
+        <p>
+          Voilà pour le pire. Maintenant la bonne nouvelle, et elle est réelle : rien de tout ça
+          n’est une fatalité, et rien ne se joue le jour du décès. Tout se joue maintenant, pendant
+          que vous êtes là pour décider — et la première chose à faire est simplement de savoir de
+          quel montant on parle. C’est l’objet de la page que vous lisez.
         </p>
       </Bloc>
 
@@ -231,6 +277,7 @@ export function GrilleDroitsEnfants() {
           Avec un seul enfant, sur le même patrimoine, il prend {eur(38_194)}. Le nombre d’enfants
           pèse aussi lourd que le montant — et c’est une chose que personne ne vous dit.
         </p>
+        <SchemaNombreEnfants />
       </Bloc>
 
       {/*
