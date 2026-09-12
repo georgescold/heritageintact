@@ -38,6 +38,24 @@ for(const gamme of ["front","suite"]){
  eq(palier({...p,commenceLe:"invalide"},now).pourcent,0);
  eq(loader({}, {OFFRES_TEMPORAIRES_ACTIVES:"false"})("src/lib/promotions.ts").palier(p,now).pourcent,0);
 }
+// La seconde fenêtre : 58 minutes, une seule fois, et elle prime sur le départ initial.
+const {RELANCE_MINUTES}=mod("src/lib/promotions.ts");
+eq(RELANCE_MINUTES,58);
+{
+ const base={id:"promo_relance",email:"relance@example.invalid",gamme:"front",commenceLe:new Date(now-86400000).toISOString()};
+ eq(palier(base,now).pourcent,0);
+ const relance={...base,relanceLe:new Date(now).toISOString()};
+ eq(palier(relance,now).pourcent,50);
+ eq(palier(relance,now+58*60000-1).pourcent,50);
+ eq(palier(relance,now+58*60000).pourcent,0);
+ eq(palier(relance,now+58*60000).fin,null);
+ eq(palier(relance,now-1).pourcent,0);
+ eq(palier({...relance,relanceLe:"invalide"},now).pourcent,0);
+ // Une relance ouverte pendant que le départ court ne raccourcit jamais la fenêtre.
+ const pendant={id:"promo_deux",email:"deux@example.invalid",gamme:"front",commenceLe:new Date(now).toISOString(),relanceLe:new Date(now).toISOString()};
+ eq(palier(pendant,now+10*60000).pourcent,50);
+ eq(loader({},{OFFRES_TEMPORAIRES_ACTIVES:"false"})("src/lib/promotions.ts").palier(relance,now).pourcent,0);
+}
 for(const [v,p,r]of[[52,50,26],[52,30,36.4],[170,25,127.5],[153,25,114.75],[203,25,152.25],[0,25,0],[67,25,50.25]])eq(appliquerRemise(v,p),r);
 for(const [v,p]of[[NaN,20],[-1,20],[100,99],[Infinity,25]]){assert.throws(()=>appliquerRemise(v,p));n++}
 const {QUESTIONS,profilComplet}=mod("src/lib/questionnaire.ts");

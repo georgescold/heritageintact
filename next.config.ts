@@ -90,7 +90,7 @@ const nextConfig: NextConfig = {
        * ou l'identifiant d'inscrit. Voir lib/meta-pixel.ts.
        */
       {
-        source: "/:chemin(resultat-plan|simulateur-seul|desinscription)",
+        source: "/:chemin(resultat-plan|simulateur-seul|desinscription|derniere-chance)",
         headers: [
           { key: "Referrer-Policy", value: "no-referrer" },
           { key: "Cache-Control", value: "private, no-store, max-age=0" },

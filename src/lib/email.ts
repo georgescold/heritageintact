@@ -1,6 +1,6 @@
 import { empreinte, reserverEmail, terminerEmail } from "./mail-journal";
 import { accesParEmail, getLead, promotionParEmail } from "./db";
-import { palier, appliquerRemise } from "./promotions";
+import { palier, appliquerRemise, RELANCE_MINUTES } from "./promotions";
 import { CONTACT_EMAIL, PRODUCTS, SITE_URL, TRUSTPILOT_INVITE_BCC, euros, urlEspace, type ProductSku } from "./config";
 import type { Acces, Lead } from "./db";
 import { SEQUENCE, lien, type Etape } from "./sequence";
@@ -227,9 +227,31 @@ export async function envoyerEtape(lead: Lead, etape: Etape) {
   const offre = await promotionParEmail(lead.email,"front");
   const tarif = palier(offre);
   const prix = appliquerRemise(PRODUCTS.front.price,tarif.pourcent);
-  const bouton = { texte: "Commencer les 7 erreurs maintenant · "+euros(prix), lien: offre ? lien("/reprendre/"+offre.id+(etape.bouton.chemin==="/commander"?"?destination=commande":"")) : lien(etape.bouton.chemin) };
+  /**
+   * LA SECONDE FENÊTRE, ET LES TROIS CONDITIONS POUR LA PROPOSER.
+   *
+   * Au closing seulement : proposée au J3, elle brûlerait trois jours avant le
+   * moment où elle sert. Jamais deux fois : `relanceLe` est écrit une seule
+   * fois par `relancerPromotion`. Et jamais à quelqu'un dont une fenêtre court
+   * déjà : on ne remplace pas un compte à rebours en cours par un autre.
+   *
+   * Le décompte part du CLIC, pas de l'ouverture de l'email. Détecter une
+   * ouverture demanderait un pixel, que la protection d'Apple déclenche à la
+   * réception pour tout le monde et qu'Outlook bloque : le compte à rebours
+   * serait faux dans les deux sens, et ce serait un traceur de plus.
+   */
+  const relanceOfferte = (etape.cle === "j6" || etape.cle === "j7") && !offre?.relanceLe && !tarif.pourcent;
+  const prixRelance = appliquerRemise(PRODUCTS.front.price, 50);
+  const bouton = relanceOfferte
+    ? { texte: "Ouvrir mes "+RELANCE_MINUTES+" minutes · "+euros(prixRelance), lien: lien("/derniere-chance?id="+encodeURIComponent(lead.id)) }
+    : { texte: "Commencer les 7 erreurs maintenant · "+euros(prix), lien: offre ? lien("/reprendre/"+offre.id+(etape.bouton.chemin==="/commander"?"?destination=commande":"")) : lien(etape.bouton.chemin) };
   const paragraphes = etape.corps(p);
-  paragraphes.push(tarif.pourcent && tarif.fin
+  if (relanceOfferte) {
+    paragraphes.push("Vous n’avez pas encore ouvert votre accès, et votre fenêtre de démarrage est passée. En voici une dernière. Au moment où vous cliquerez sur le bouton ci-dessous, vous aurez <strong>"+RELANCE_MINUTES+" minutes</strong> pour obtenir les 7 erreurs à "+euros(prixRelance)+" au lieu de "+euros(PRODUCTS.front.price)+". Une seule fois, et jamais une deuxième : cette fenêtre ne se rouvrira pas, sur aucun appareil.");
+    paragraphes.push("Le récapitulatif affiche le montant à jour avant tout paiement, et rien n’est débité sur ce clic. Paiement unique, sans abonnement, garantie commerciale de 30 jours selon les CGV.");
+    // Le regret en dernier : c'est la phrase qui doit rester sous les yeux au moment du clic.
+    paragraphes.push("Ne cliquez pas « pour voir plus tard ». Dans six mois, ce ne sont pas ces "+euros(prixRelance)+" que vous regretterez. Ce sera d’avoir laissé vos enfants découvrir seuls un dossier que vous étiez le seul à pouvoir leur expliquer.");
+  } else paragraphes.push(tarif.pourcent && tarif.fin
     ? "Votre avantage au moment de cet envoi : −"+tarif.pourcent+"% sur le prix catalogue de "+euros(PRODUCTS.front.price)+", soit "+euros(prix)+". Ce palier prend fin le "+new Date(tarif.fin).toLocaleString("fr-FR",{timeZone:"Europe/Paris",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})+" (Paris). Le lien conserve votre date de départ ; le récapitulatif affichera le montant à jour avant tout paiement."
     : "Votre accès au guide complet : "+euros(PRODUCTS.front.price)+", en paiement unique, sans abonnement. Garantie commerciale de 30 jours selon les CGV. Cliquez pour ouvrir votre première fiche aujourd’hui.");
 

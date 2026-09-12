@@ -17,7 +17,7 @@ export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || "375190456
 
 /** Les chemins dont l'adresse porte une clé ou un identifiant de commande. */
 const CHEMINS_PRIVES =
-  "^/(espace|reprendre|offre|plan-complet|kit-assurance-vie|dossier-complet|situation|bienvenue|merci|resultat-plan|simulateur-seul|desinscription|commande/confirmation)(/|$)";
+  "^/(espace|reprendre|offre|plan-complet|kit-assurance-vie|dossier-complet|situation|bienvenue|merci|resultat-plan|simulateur-seul|desinscription|derniere-chance|commande/confirmation)(/|$)";
 
 export const cheminSansPixel = (chemin: string) => new RegExp(CHEMINS_PRIVES).test(chemin);
 

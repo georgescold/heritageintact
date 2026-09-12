@@ -6,7 +6,7 @@ const lire=f=>fs.readFileSync(f,"utf8");
 const {cheminSansPixel,scriptPixelMeta,META_PIXEL_ID}=mod("src/lib/meta-pixel.ts");
 
 // 1. Les adresses qui portent une clé n'ont jamais de pixel.
-for(const p of ["/espace","/espace/abcdefghijklmnopqrst","/reprendre/xyz","/offre/upsell1","/plan-complet","/kit-assurance-vie","/dossier-complet","/situation","/bienvenue","/merci","/resultat-plan","/simulateur-seul","/desinscription","/commande/confirmation"])ok(cheminSansPixel(p),"chemin privé : "+p);
+for(const p of ["/espace","/espace/abcdefghijklmnopqrst","/reprendre/xyz","/offre/upsell1","/plan-complet","/kit-assurance-vie","/dossier-complet","/situation","/bienvenue","/merci","/resultat-plan","/simulateur-seul","/desinscription","/derniere-chance","/commande/confirmation"])ok(cheminSansPixel(p),"chemin privé : "+p);
 for(const p of ["/","/methode","/commande","/lp-questions","/apercu","/connexion","/cgv","/confidentialite","/conditions-offres"])ok(!cheminSansPixel(p),"chemin public : "+p);
 ok(!cheminSansPixel("/methodes-annexes"),"préfixe partiel non bloqué par erreur");
 

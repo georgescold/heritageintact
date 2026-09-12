@@ -29,7 +29,16 @@ import { PRODUCTS, type ProductSku } from "./config";
 import { nouveauJeton } from "./jeton";
 import { assurerSchema, sql, sqlActif } from "./sql";
 
-export type Promotion = { id: string; email: string; gamme: "front" | "suite"; commenceLe: string };
+/**
+ * Une fenêtre de prix, et au plus une relance.
+ *
+ * `commenceLe` est le départ pris sur le site, au premier clic vers la commande.
+ * `relanceLe` est la SECONDE fenêtre, la seule, ouverte depuis le dernier email
+ * de la séquence pour quelqu'un qui n'a jamais acheté. Elle ne s'écrit qu'une
+ * fois : c'est ce qui permet d'écrire « elle ne se rouvrira pas » sans mentir,
+ * et ce que promet `/conditions-offres`.
+ */
+export type Promotion = { id: string; email: string; gamme: "front" | "suite"; commenceLe: string; relanceLe?: string };
 
 export type Lead = {
   marketingConsent?: boolean;
@@ -1518,11 +1527,11 @@ export async function commencerPromotion(email: string, gamme: Promotion["gamme"
   if (sqlActif) {
     const s = await pg();
     await assurerPromotions();
-    const [r] = await s<{id:string;email:string;gamme:Promotion["gamme"];commence_le:Date}[]> `
+    const [r] = await s<LignePromotion[]> `
       insert into promotions (id,email,gamme) values (${id("promo")},${adresse},${gamme})
       on conflict (email,gamme) do update set email=excluded.email returning *
     `;
-    return {id:r.id,email:r.email,gamme:r.gamme,commenceLe:r.commence_le.toISOString()};
+    return versPromotion(r);
   }
   const db = await read();
   const existante = db.promotions?.find(p=>p.email===adresse && p.gamme===gamme);
@@ -1538,15 +1547,23 @@ async function assurerPromotions() {
       id text primary key, email text not null, gamme text not null check (gamme in ('front','suite')),
       commence_le timestamptz not null default now(), unique(email,gamme)
     )`;
+    await s`alter table promotions add column if not exists relance_le timestamptz`;
   })().catch(e=>{promotionsPretes=null;throw e;});
   await promotionsPretes;
 }
+
+/** Les lignes SQL et les lignes du fichier n'ont pas la même forme : un seul endroit les traduit. */
+type LignePromotion = {id:string;email:string;gamme:Promotion["gamme"];commence_le:Date;relance_le?:Date|null};
+const versPromotion = (r:LignePromotion):Promotion => ({
+  id:r.id, email:r.email, gamme:r.gamme, commenceLe:r.commence_le.toISOString(),
+  ...(r.relance_le ? {relanceLe:r.relance_le.toISOString()} : {}),
+});
 export async function promotionParEmail(email:string,gamme:Promotion["gamme"]):Promise<Promotion|null> {
   const adresse=normaliserEmail(email);
   if(sqlActif){
     await assurerPromotions(); const s=await pg();
-    const [r]=await s<{id:string;email:string;gamme:Promotion["gamme"];commence_le:Date}[]>`select * from promotions where email=${adresse} and gamme=${gamme}`;
-    return r?{id:r.id,email:r.email,gamme:r.gamme,commenceLe:r.commence_le.toISOString()}:null;
+    const [r]=await s<LignePromotion[]>`select * from promotions where email=${adresse} and gamme=${gamme}`;
+    return r?versPromotion(r):null;
   }
   return (await read()).promotions?.find(p=>p.email===adresse&&p.gamme===gamme)??null;
 }
@@ -1554,8 +1571,40 @@ export async function promotionParId(identifiant:string):Promise<Promotion|null>
   if(!/^promo_[a-zA-Z0-9]+$/.test(identifiant))return null;
   if(sqlActif){
     await assurerPromotions();const s=await pg();
-    const [r]=await s<{id:string;email:string;gamme:Promotion["gamme"];commence_le:Date}[]>`select * from promotions where id=${identifiant}`;
-    return r?{id:r.id,email:r.email,gamme:r.gamme,commenceLe:r.commence_le.toISOString()}:null;
+    const [r]=await s<LignePromotion[]>`select * from promotions where id=${identifiant}`;
+    return r?versPromotion(r):null;
   }
   return (await read()).promotions?.find(p=>p.id===identifiant)??null;
+}
+
+/**
+ * LA SECONDE FENÊTRE, ET IL N'Y EN A QU'UNE.
+ *
+ * Ouverte depuis le dernier email de la séquence, pour quelqu'un dont le départ
+ * est passé sans achat. Le `where relance_le is null` est tout le mécanisme :
+ * un deuxième clic, un autre navigateur ou un email transféré retombent sur la
+ * même date et ne rallongent rien. Sans lui, « elle ne se rouvrira pas » serait
+ * faux, et le prix barré de 52 € ne serait plus un prix de référence.
+ */
+export async function relancerPromotion(email:string,gamme:Promotion["gamme"]):Promise<Promotion> {
+  const adresse=normaliserEmail(email);
+  if(sqlActif){
+    await assurerPromotions(); const s=await pg();
+    await s`
+      insert into promotions (id,email,gamme) values (${id("promo")},${adresse},${gamme})
+      on conflict (email,gamme) do update set email=excluded.email
+    `;
+    const [r]=await s<LignePromotion[]>`
+      update promotions set relance_le=now() where email=${adresse} and gamme=${gamme} and relance_le is null returning *
+    `;
+    if(r)return versPromotion(r);
+    const [existante]=await s<LignePromotion[]>`select * from promotions where email=${adresse} and gamme=${gamme}`;
+    return versPromotion(existante);
+  }
+  const db=await read();
+  let p=db.promotions?.find(x=>x.email===adresse&&x.gamme===gamme);
+  if(!p){p={id:id("promo"),email:adresse,gamme,commenceLe:new Date().toISOString()};db.promotions=[...(db.promotions??[]),p];}
+  if(!p.relanceLe)p.relanceLe=new Date().toISOString();
+  await write(db);
+  return p;
 }

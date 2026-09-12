@@ -75,4 +75,42 @@ eq(lastBody.bcc[0],"heritageintact.fr+4f77d6a16e@invite.trustpilot.com");
 eq(lastBody.html.includes("jeton-fictif"),false);ok(lastBody.html.includes("/espace"));
 eq((await email.envoyerRecuAchat(accesClient,"upsell1",147,"achat-plan")).ok,true);ok(!("bcc" in lastBody));
 eq((await email.envoyerAcces(accesClient,"renvoi-test")).ok,true);ok(!("bcc" in lastBody));
+
+/* LA SECONDE FENÊTRE : au closing seulement, une seule fois, jamais par-dessus une fenêtre en cours. */
+const envoiAvecPromotion=async(promotion,etape)=>{
+ journal.clear();
+ const m=loader({RESEND_API_KEY:"fictif"},{...overrides,"src/lib/db.ts":{...overrides["src/lib/db.ts"],promotionParEmail:async()=>promotion}},
+  async(url,opts)=>{lastBody=JSON.parse(opts.body);return Response.json({id:"fake-id"});})("src/lib/email.ts");
+ await m.envoyerEtape(realLead,etape);
+ return lastBody;
+};
+// J1 à J5 ne proposent jamais la fenêtre : elle serait morte au moment de conclure.
+for(const i of [0,1,2,3,4]){
+ const corps=await envoiAvecPromotion(null,SEQUENCE[i]);
+ ok(!corps.html.includes("/derniere-chance"),"fenêtre proposée trop tôt : "+SEQUENCE[i].cle);
+}
+// J6 et J7, sans fenêtre en cours et sans relance déjà utilisée : elle est proposée.
+for(const i of [5,6]){
+ const corps=await envoiAvecPromotion(null,SEQUENCE[i]);
+ ok(corps.html.includes("/derniere-chance?id=fictif"),"lien de relance absent sur "+SEQUENCE[i].cle);
+ ok(corps.html.includes("58 minutes"));
+ ok(corps.html.includes("26,00"));
+ ok(corps.html.includes("ne se rouvrira pas"));
+ ok(corps.html.includes("regretterez"));
+ ok(!corps.html.includes("Votre accès au guide complet"),"ancienne ligne de prix laissée sur "+SEQUENCE[i].cle);
+}
+// Relance déjà consommée : on ne la repropose pas, et le prix revient au catalogue.
+{
+ const consommee={id:"promo_x",email:realLead.email,gamme:"front",commenceLe:new Date(Date.now()-86400000).toISOString(),relanceLe:new Date(Date.now()-86400000).toISOString()};
+ const corps=await envoiAvecPromotion(consommee,SEQUENCE[6]);
+ ok(!corps.html.includes("/derniere-chance"),"seconde relance proposée");
+ ok(corps.html.includes("52,00"));
+}
+// Fenêtre encore ouverte : on ne remplace pas un compte à rebours par un autre.
+{
+ const enCours={id:"promo_y",email:realLead.email,gamme:"front",commenceLe:new Date().toISOString()};
+ const corps=await envoiAvecPromotion(enCours,SEQUENCE[5]);
+ ok(!corps.html.includes("/derniere-chance"),"relance proposée par-dessus une fenêtre en cours");
+ ok(corps.html.includes("Votre avantage au moment de cet envoi"));
+}
 console.log(n+" assertions V3 réussies : orientation, CEO J1–J7, LTV, signatures Svix, consentement, échappement, absence de service, idempotence et erreurs avec transport simulé.");
