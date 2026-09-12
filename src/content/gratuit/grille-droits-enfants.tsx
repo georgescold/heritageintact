@@ -202,6 +202,30 @@ export function GrilleDroitsEnfants() {
         </p>
       </Bloc>
 
+      {/*
+        DIMENSIONALISATION. Un montant en euros reste abstrait ; la même somme
+        ramenée au délai réel devient physique. Le calcul ne sort d'aucune source
+        externe — c'est la division du montant de la ligne par les six mois déjà
+        établis plus haut, donc vérifiable à la main par le lecteur.
+      */}
+      <Bloc titre="Ce que ce montant veut dire, en vrai">
+        <p className="mb-3">
+          Un nombre à cinq chiffres ne dit pas grand-chose tant qu’on ne le rapporte pas au temps
+          dont vos enfants disposeront pour le réunir. Reprenons la ligne d’un patrimoine de{" "}
+          {eur(650_000)} avec deux enfants : {eur(86_389)}.
+        </p>
+        <p className="mb-3">
+          Six mois pour les payer, cela fait <strong>{eur(14_398)} à trouver chaque mois</strong>,
+          pendant six mois, à deux. Pas à emprunter sur quinze ans : à sortir, en liquide, avant la
+          date.
+        </p>
+        <p>
+          Posez-vous la question pour vos propres enfants, avec votre propre ligne. S’ils ne peuvent
+          pas, il n’existe que deux issues : emprunter, ou vendre. Et c’est là que la maison de
+          famille se met à bouger.
+        </p>
+      </Bloc>
+
       {/* ── 6. DOUTE ────────────────────────────────────────────────────── */}
       <Bloc titre="« Avec 100 000 € chacun, ça devrait aller »">
         <p className="mb-3">
@@ -209,9 +233,9 @@ export function GrilleDroitsEnfants() {
           c’était vrai. En 2012.
         </p>
         <p className="mb-3">
-          L’abattement de {eur(100_000)} par enfant <strong>n’a pas été revalorisé depuis</strong>{" "}
-          (art. 779 I). Pendant ce temps, le prix de l’immobilier a, dans beaucoup de régions,
-          doublé. Une maison achetée 180 000 € en 2005 et qui en vaut 380 000 aujourd’hui n’a pas
+          L’abattement de {eur(100_000)} par enfant <strong>n’a pas bougé d’un euro depuis
+          quatorze ans</strong> (art. 779 I). Pendant ce temps, le prix de l’immobilier a, dans
+          beaucoup de régions, doublé. Une maison achetée 180 000 € en 2005 et qui en vaut 380 000 aujourd’hui n’a pas
           rendu son propriétaire plus riche : il habite toujours la même maison. Mais elle a fait
           passer ses enfants dans la tranche à 20 %.
         </p>
