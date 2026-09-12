@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Footer, Header, TrustRow } from "@/components/Chrome";
 import { BOUTIQUE, ORDRE_BOUTIQUE, type FicheBoutique } from "@/content/boutique";
 import { BRAND, PRESENTATION, PRODUCTS, euros } from "@/lib/config";
+import { guideVendable } from "@/lib/guides-vente";
 
 /**
  * LA BOUTIQUE — « Nos guides ».
@@ -12,12 +13,12 @@ import { BRAND, PRESENTATION, PRODUCTS, euros } from "@/lib/config";
  * la fenêtre ouverte pour chaque personne, donc un montant remonté dans un
  * résultat de recherche contredirait celui que le visiteur voit réellement.
  *
- * ⚠️ CHAQUE FICHE A SON BOUTON, MAIS PAS LE MÊME. Un seul guide dispose d'un
- * bon de commande pour qui n'est pas encore client : /commande ne vend que le
- * guide d'entrée, et /offre/[sku] exige un identifiant de commande. Les quatre
- * autres s'ajoutent depuis l'espace. Leur bouton mène donc là où ils s'obtiennent
- * réellement, et un second lien sert le client déjà inscrit. Aucun bouton ne
- * mène nulle part : une boutique dont un bouton sur cinq ne répond pas détruit
+ * ⚠️ CHAQUE FICHE A SON BOUTON D'ACHAT, MAIS PAS LE MÊME CHEMIN. Le guide
+ * d'entrée garde `/commande`, qui porte sa fenêtre de prix. Les quatre autres
+ * passent par `/commander/<sku>`, ouvert pour eux — lui donner aussi le guide
+ * d'entrée ferait exister deux tarifs du même produit selon le lien emprunté.
+ * Un guide qui ne serait pas vendable à l'unité retombe sur l'espace plutôt que
+ * d'afficher un bouton mort : une boutique dont un bouton ne répond pas détruit
  * plus de confiance qu'elle n'en crée.
  *
  * COPY — trois règles du dossier, tenues dans cet ordre sur chaque fiche :
@@ -89,9 +90,40 @@ export default function NosGuides() {
               professionnel compétent consacre son temps à décider plutôt qu’à vous expliquer ce que
               vous auriez pu lire. Aucun ne remplace votre notaire, et aucun ne décide à votre place.
             </p>
+            {/* L'ANCRAGE, ET POURQUOI IL EST FAIT AINSI.
+                « La première information vue sert de référence pour évaluer tout
+                le reste » (03-marketing-copy/biais-cognitifs.md § 2). Le premier
+                nombre de la page doit donc être l'enjeu, pas le tarif : lu après
+                86 389 €, un guide à 52 € ne se compare plus à un livre.
+
+                ⚠️ AUCUN PRIX BARRÉ. Un « 97 € → 52 € » serait une annonce de
+                réduction sans prix antérieur réel : c'est interdit, et sur ce
+                public la moindre fausse promotion coûte plus qu'elle ne
+                rapporte. On ancre sur un chiffre VÉRIFIABLE, tiré du barème en
+                ligne directe (art. 777 et 779 CGI) — le même que celui du
+                document gratuit. C'est aussi ce que dit la règle de pricing du
+                dossier : le prix se justifie par le besoin du client, jamais par
+                le produit. */}
+            <div className="mt-5 border-2 border-blue bg-grey-bg p-5">
+              <p className="text-[1.02rem]">
+                Sur un patrimoine de 650 000 €, deux enfants paient aujourd’hui{" "}
+                <strong className="whitespace-nowrap">86 389 €</strong> de droits de succession.
+                Trois enfants, 64 583 €. Un seul, 108 194 €.
+              </p>
+              <p className="mt-2 text-[1.02rem] font-bold text-blue">
+                C’est ce chiffre-là que nos guides servent à comprendre, puis à faire vérifier. Le
+                premier coûte {euros(PRODUCTS.front.price)}.
+              </p>
+              <p className="mt-2 text-[0.85rem] text-text-soft">
+                Barème en ligne directe après l’abattement de 100 000 € par enfant (art. 777 et 779
+                du Code général des impôts). Montants de référence, hors frais et hors situation
+                particulière.
+              </p>
+            </div>
+
             <p className="mt-4 border-l-4 border-blue bg-grey-bg p-4 text-[1rem]">
-              <strong>Commencez par le premier.</strong> Les quatre autres s’ajoutent ensuite depuis
-              votre espace, quand votre situation le justifie — jamais avant.
+              <strong>Commencez par le premier.</strong> Les quatre autres s’achètent séparément, ou
+              s’ajoutent depuis votre espace quand votre situation le justifie.
             </p>
           </div>
         </section>
@@ -185,16 +217,16 @@ export default function NosGuides() {
                       ) : (
                         <>
                           <Link
-                            href="/connexion"
-                            className={`flex min-h-[54px] w-full items-center justify-center border-b-4 px-5 py-3 text-center text-[1.08rem] font-bold text-white no-underline sm:w-auto sm:px-8 ${couleur.badge} ${couleur.cadre} brightness-100 hover:brightness-90`}
+                            href={guideVendable(sku) ? `/commander/${sku}` : "/connexion"}
+                            className={`flex min-h-[54px] w-full items-center justify-center border-b-4 px-5 py-3 text-center text-[1.08rem] font-bold text-white no-underline sm:w-auto sm:px-8 ${couleur.badge} ${couleur.cadre} hover:brightness-90`}
                           >
-                            L’ajouter depuis mon espace
+                            {guideVendable(sku)
+                              ? `Commander ce guide — ${euros(produit.price)}`
+                              : "L’ajouter depuis mon espace"}
                           </Link>
                           <p className="mt-2 text-[0.92rem] text-text-soft">
-                            Réservé aux membres.{" "}
-                            <a href="#front" className="font-bold">
-                              Pas encore le guide d’entrée ? Commencez ici →
-                            </a>
+                            Paiement sécurisé, garantie 30 jours.{" "}
+                            <Link href="/connexion">Déjà client ? Ajoutez-le depuis votre espace</Link>
                           </p>
                         </>
                       )}
