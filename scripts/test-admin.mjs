@@ -329,29 +329,33 @@ function session(env) {
   return exports;
 }
 
-// Valeur quelconque : le test porte sur la LONGUEUR, pas sur ce mot de passe.
-// Le secret de développement réel vit dans .env.local, qui n'est jamais commité.
-const COURT = "trop-court";
+// Valeurs quelconques : le test porte sur la LONGUEUR, pas sur ces mots de
+// passe. Le secret réel vit dans .env.local et sur Vercel, jamais dans le dépôt.
+const HUIT = "12345678";
+const TROP_COURT = "1234567";
 const LONG = "phrase-de-passe-assez-longue";
 
-// Développement : un mot de passe court est accepté, et signalé comme faible.
-const dev = session({ ADMIN_PASSWORD: COURT });
-ok(dev.adminConfigure(), "en développement, un mot de passe court ouvre le panel");
-ok(dev.motDePasseValide(COURT), "le mot de passe de développement fonctionne");
-ok(!dev.motDePasseValide(COURT + "x"), "un mot de passe voisin est refusé");
+// ⚠️ LE MÊME MOT DE PASSE PARTOUT, décision de Loys du 12/09/2026 prise en
+// connaissance de cause. La longueur minimale ne dépend donc plus de
+// l'environnement : ce qui ouvre le panel en local l'ouvre aussi en ligne.
+for (const env of [{ ADMIN_PASSWORD: HUIT }, { ADMIN_PASSWORD: HUIT, NODE_ENV: "production" }]) {
+  const s = session(env);
+  ok(s.adminConfigure(), "huit caractères ouvrent le panel, en local comme en production");
+  ok(s.motDePasseValide(HUIT), "le mot de passe fonctionne");
+  ok(!s.motDePasseValide(HUIT + "x"), "un mot de passe voisin est refusé");
+  ok(!s.motDePasseValide(HUIT.slice(0, 7)), "un préfixe est refusé");
+}
 
-// Production : le même mot de passe n'ouvre RIEN. Il ne dégrade pas la
-// protection, il l'annule — c'est ce qui empêche un secret de test de se
-// retrouver en ligne par oubli.
-const prod = session({ ADMIN_PASSWORD: COURT, NODE_ENV: "production" });
-ok(!prod.adminConfigure(), "EN PRODUCTION, UN MOT DE PASSE COURT N'OUVRE RIEN");
-ok(!prod.motDePasseValide(COURT), "et il ne vaut pas non plus pour entrer");
+// Le plancher qui reste écarte la valeur vide et la faute de frappe, rien de
+// plus. Il ne prétend pas protéger : ce qui protège est la comparaison à temps
+// constant et l'absence de mot de passe par défaut, vérifiées plus bas.
+for (const env of [{}, { ADMIN_PASSWORD: "" }, { ADMIN_PASSWORD: TROP_COURT }]) {
+  ok(!session(env).adminConfigure(), "secret absent ou sous le plancher : le panel n'existe pas");
+}
 
-// Production avec un secret suffisant : tout fonctionne, sans avertissement.
 const prodOk = session({ ADMIN_PASSWORD: LONG, NODE_ENV: "production" });
-ok(prodOk.adminConfigure(), "en production, un secret assez long ouvre le panel");
+ok(prodOk.adminConfigure(), "un secret long fonctionne évidemment aussi");
 ok(prodOk.motDePasseValide(LONG));
-ok(!session({}).adminConfigure(), "aucun ADMIN_PASSWORD : le panel n'existe pas");
 
 // Bandeau d avertissement et bouton de deconnexion retires le 12/09/2026 a la
 // demande de Loys. Ce qui protege reellement reste verifie plus haut : en

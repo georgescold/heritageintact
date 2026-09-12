@@ -32,36 +32,39 @@ import { cookies } from "next/headers";
 const COOKIE = "hi_admin";
 /** Douze heures : une journée de travail, pas une session permanente. */
 const DUREE_MS = 12 * 60 * 60 * 1000;
-const LONGUEUR_MINIMALE = 16;
-
 /**
- * ⚠️ LA LONGUEUR MINIMALE NE S'APPLIQUE QU'EN PRODUCTION, ET C'EST VOLONTAIRE.
+ * Le plancher, et il ne dépend plus de l'environnement.
  *
- * En développement, un mot de passe court est commode et sans conséquence : la
- * base locale est sur la machine de son propriétaire. En production, le même
- * mot de passe ouvrirait l'email, les commandes et les réponses personnelles de
- * chaque client à quiconque le devine.
+ * ⚠️ IL VALAIT 16 CARACTÈRES EN PRODUCTION JUSQU'AU 12/09/2026, et un secret
+ * plus court y fermait le panel plutôt que de l'ouvrir faiblement. Loys a
+ * demandé le même mot de passe partout, en connaissance de cause et après que
+ * la conséquence lui a été exposée deux fois : le panel affiche l'adresse
+ * email, les commandes et les réponses personnelles de chaque client.
  *
- * Le choix fait ici est donc qu'un secret trop court en production ne DÉGRADE
- * pas la protection : il l'annule. `secret()` rend `null`, la garde répond 404,
- * et le panel reste fermé. Un mot de passe de test ne peut pas se retrouver en
- * ligne par oubli — il n'ouvre simplement rien.
+ * Les huit caractères qui restent ne protègent plus de grand-chose — ils
+ * écartent la valeur vide et la faute de frappe à un caractère, rien de plus.
+ * Ce qui protège réellement aujourd'hui tient en trois lignes, et il faut les
+ * garder à l'esprit avant de toucher à ce fichier :
  *
- * Le prix de ce choix, assumé : en production, un ADMIN_PASSWORD trop court se
- * manifeste par un 404, pas par un message. C'est indistinguable d'un panel non
- * installé, ce qui est exactement le comportement voulu vis-à-vis d'un visiteur
- * — et ce qui oblige à relire ce commentaire quand on se demande pourquoi.
+ *   1. la comparaison à temps constant, qui interdit de deviner le secret
+ *      caractère par caractère en mesurant le temps de réponse ;
+ *   2. l'absence totale de mot de passe par défaut — sans variable, 404 ;
+ *   3. le message d'erreur unique, qui ne dit jamais si le panel existe.
+ *
+ * ⚠️ CE QUI MANQUE, ET QUI DEVIENT LE VRAI SUJET : rien ne limite le nombre de
+ * tentatives. Un mot de passe court et prononçable se devine en ligne si on
+ * laisse quelqu'un essayer indéfiniment. La réponse n'est pas d'allonger ce
+ * nombre en douce, c'est un compteur de tentatives — à faire le jour où de
+ * vrais clients seront en base.
  */
+const LONGUEUR_MINIMALE = 8;
+
 function secret(): string | null {
   const valeur = process.env.ADMIN_PASSWORD ?? "";
-  if (!valeur) return null;
-  if (process.env.NODE_ENV === "production") {
-    return valeur.length >= LONGUEUR_MINIMALE ? valeur : null;
-  }
-  return valeur;
+  return valeur.length >= LONGUEUR_MINIMALE ? valeur : null;
 }
 
-/** Le panel est-il installable du tout ? Faux = secret absent, ou trop court en production. */
+/** Le panel est-il installable du tout ? Faux = secret absent ou trop court. */
 export function adminConfigure(): boolean {
   return secret() !== null;
 }
