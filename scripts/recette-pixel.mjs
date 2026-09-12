@@ -23,11 +23,21 @@ try {
   await page.goto(site+chemin);await page.waitForLoadState("load");
   const a=await appels();
   assert.ok(a,"pixel absent sur "+chemin);
-  assert.deepEqual(a,[["set","autoConfig","false"],["init",ID],["track","PageView"]],"appels du pixel sur "+chemin);
+  assert.deepEqual(a.slice(0,3),[["set","autoConfig","false"],["init",ID],["track","PageView"]],"appels du pixel sur "+chemin);
+  const attendu={"/methode":"ViewContent","/commande":"InitiateCheckout"}[chemin];
+  if(attendu)assert.ok(a.some(x=>x[0]==="track"&&x[1]===attendu),attendu+" attendu sur "+chemin);
+  else assert.ok(!a.some(x=>x[0]==="track"&&x[1]!=="PageView"),"événement inattendu sur "+chemin+" : "+JSON.stringify(a));
   assert.equal(await page.evaluate(()=>window.fbq.disablePushState),true,"suivi automatique des navigations coupé sur "+chemin);
   assert.ok(await page.locator("head script#meta-pixel").count()===1,"script dans le head sur "+chemin);
   assert.ok(versMeta.length>=1,"fbevents.js demandé sur "+chemin);
  }
+
+ // 1 bis. Le retour d'inscription : un Lead, puis le marqueur disparaît de l'adresse.
+ await page.goto(site+"/methode?inscrit=1");await page.waitForLoadState("load");
+ const retour=await appels();
+ assert.ok(retour.some(x=>x[0]==="track"&&x[1]==="Lead"),"Lead absent au retour d'inscription");
+ assert.equal(new URL(page.url()).search,"","marqueur d'inscription laissé dans l'adresse");
+ console.log("  /methode?inscrit=1 : Lead envoyé, adresse nettoyée");
 
  // 2. Adresses privées : aucun pixel, aucune requête vers Meta. Une adresse privée qui redirige
  //    (commande inconnue, espace sans jeton) atterrit sur une page publique : c'est la page
@@ -54,5 +64,5 @@ try {
   assert.equal(versMeta.length,0,"requête vers Meta depuis "+chemin);
  }
  assert.ok(restees>=6,"trop peu d'adresses privées réellement affichées : "+restees);
- console.log("Recette pixel OK : chargé et PageView sur les pages publiques, suivi automatique et autoConfig coupés, aucun chargement ni requête Meta sur les "+restees+" adresses privées affichées.");
+ console.log("Recette pixel OK : PageView, ViewContent, InitiateCheckout et Lead sur les pages publiques, suivi automatique et autoConfig coupés, aucun chargement ni requête Meta sur les "+restees+" adresses privées affichées.");
 } finally {await browser?.close();server.kill();}

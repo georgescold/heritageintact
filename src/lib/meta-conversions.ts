@@ -36,6 +36,9 @@ export function paiementsMesurables(order: Order) {
     .filter(([, p]) => p.montant > 0 && !p.rembourse)
     .map(([id, p]) => ({ id, montant: p.montant }));
 }
+/** L'identifiant d'un achat, partagé par le navigateur et le serveur : Meta ne le compte qu'une fois. */
+export const identifiantAchatMeta = (paymentIntentId: string) => "hi-v5-" + hash(paymentIntentId);
+
 export function evenementMeta(
   email: string,
   paiement: { id: string; montant: number; date: number },
@@ -46,7 +49,7 @@ export function evenementMeta(
     throw new Error("Origine Meta invalide");
   return {
     event_name: "Purchase",
-    event_id: "hi-v5-" + hash(paiement.id),
+    event_id: identifiantAchatMeta(paiement.id),
     event_time: paiement.date,
     action_source: "website",
     event_source_url: origine.origin + "/merci",

@@ -21,6 +21,8 @@ import { profilComplet } from "@/lib/questionnaire";
 import { stripe, toCents } from "@/lib/stripe";
 import { envoyerLivraison, envoyerRecuAchat } from "@/lib/email";
 import { livrer } from "@/lib/livraison";
+import { identifiantAchatMeta } from "@/lib/meta-conversions";
+import type { MesureAchat } from "@/lib/meta-pixel";
 
 export type FormState = { error?: string } | undefined;
 
@@ -60,7 +62,8 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
     maxAge: 60 * 60 * 24 * 30,
   });
 
-  redirect("/methode");
+  // Le marqueur permet d'envoyer le Lead au pixel, qui le retire ensuite de l'adresse.
+  redirect("/methode?inscrit=1");
 }
 
 // ─────────────────────────────────────────────────────────────────────
@@ -202,10 +205,14 @@ export async function prepareCheckout(input: {
 export async function confirmCheckout(
   orderId: string,
   paymentIntentId: string,
-): Promise<{ ok: boolean; error?: string; jeton?: string }> {
+): Promise<{ ok: boolean; error?: string; jeton?: string; mesure?: MesureAchat }> {
   const order = await getOrder(orderId);
   if (!order) return { ok: false, error: "Commande introuvable." };
   if (!stripe) return { ok: true };
+
+  // L'achat est mesuré depuis la page de commande, dont l'adresse est publique — les pages
+  // qui suivent portent l'identifiant de commande. Même identifiant que l'envoi serveur.
+  let mesure: MesureAchat | undefined;
 
   try {
     const intent = await stripe.paymentIntents.retrieve(paymentIntentId);
@@ -222,6 +229,10 @@ export async function confirmCheckout(
         typeof intent.payment_method === "string" ? intent.payment_method : undefined,
       paymentIntentId: intent.id,
     });
+    mesure = {
+      eventId: identifiantAchatMeta(intent.id),
+      valeur: (intent.amount_received || intent.amount || 0) / 100,
+    };
   } catch (e) {
     console.error("[stripe] confirmCheckout", e);
     return { ok: false, error: "Vérification du paiement impossible." };
@@ -238,10 +249,10 @@ export async function confirmCheckout(
   // client : environ 400 ms avant l'upsell.
   try {
     const acces = await livrer(order);
-    return { ok: true, jeton: acces?.jeton };
+    return { ok: true, jeton: acces?.jeton, mesure };
   } catch (e) {
     console.error("[livraison] confirmCheckout", e);
-    return { ok: true };
+    return { ok: true, mesure };
   }
 }
 

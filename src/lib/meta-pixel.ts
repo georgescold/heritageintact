@@ -28,3 +28,31 @@ export function scriptPixelMeta(): string {
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq.disablePushState=true;fbq('set','autoConfig',false,${id});fbq('init',${id});fbq('track','PageView');})();`;
 }
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
+/** Un achat mesurable : le montant réellement débité, et l'identifiant partagé avec l'envoi serveur. */
+export type MesureAchat = { eventId: string; valeur: number };
+
+/** Un événement standard du parcours. Sans pixel chargé (page privée), rien ne part. */
+export function evenementPixel(nom: "ViewContent" | "Lead" | "InitiateCheckout"): void {
+  if (typeof window === "undefined") return;
+  window.fbq?.("track", nom);
+}
+
+/**
+ * L'ACHAT.
+ *
+ * Déclenché depuis la page de commande, dont l'adresse est publique : les pages
+ * qui suivent le paiement portent l'identifiant de commande et n'ont pas de pixel.
+ * L'`eventID` est celui de l'envoi serveur (lib/meta-conversions.ts) : le jour où
+ * les deux fonctionneront ensemble, Meta ne comptera l'achat qu'une fois.
+ */
+export function achatPixel(mesure?: MesureAchat | null): void {
+  if (!mesure || typeof window === "undefined") return;
+  window.fbq?.("track", "Purchase", { value: mesure.valeur, currency: "EUR" }, { eventID: mesure.eventId });
+}

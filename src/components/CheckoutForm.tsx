@@ -8,6 +8,7 @@ import { confirmCheckout, prepareCheckout } from "@/app/actions";
 import { CONTACT_EMAIL, PRESENTATION, PRODUCTS, SITE_URL, euros } from "@/lib/config";
 import { TrustRow } from "./Chrome";
 import { Button, Panel } from "./ui";
+import { achatPixel } from "@/lib/meta-pixel";
 
 const PK = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = PK ? loadStripe(PK) : null;
@@ -196,6 +197,9 @@ function Inner({
           setError(done.error ?? "Le paiement n'a pas pu être vérifié.");
           return;
         }
+        // L'achat est signalé ICI, sur une adresse publique : les pages qui suivent
+        // portent l'identifiant de commande et n'ont pas de pixel (lib/meta-pixel.ts).
+        achatPixel(done.mesure);
       }
       router.push(`/bienvenue?o=${prep.orderId}`);
     } finally {

@@ -4,12 +4,6 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { cheminSansPixel } from "@/lib/meta-pixel";
 
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void;
-  }
-}
-
 /**
  * LE PAGEVIEW DES NAVIGATIONS INTERNES.
  *

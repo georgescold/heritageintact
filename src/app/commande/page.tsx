@@ -7,6 +7,7 @@ import { Guarantee } from "@/components/ui";
 import { isTestMode, stripeEnModeTest } from "@/lib/config";
 import { devisFront } from "@/lib/prix-front";
 import { AvantageDemarrage } from "@/components/AvantageDemarrage";
+import { EvenementPixel } from "@/components/EvenementPixel";
 export const metadata: Metadata = { title: "Votre commande · Les 7 erreurs" };
 export default async function Page() {
   const jar = await cookies();
@@ -20,6 +21,7 @@ export default async function Page() {
   return (
     <>
       <MesureFunnel evenement="vue_commande" />
+      <EvenementPixel nom="InitiateCheckout" />
       {(isTestMode || stripeEnModeTest) && <TestModeBanner stripeReel={stripeEnModeTest} />}
       <Header minimal />
       <main className="wrap-wide flex-1 py-8">

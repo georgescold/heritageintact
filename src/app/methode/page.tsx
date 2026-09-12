@@ -13,6 +13,7 @@ import {
   DernierMotHistorique,
 } from "@/components/marketing/SectionsHistoriques";
 import { OffreMethodeHistorique } from "@/components/marketing/OffreMethodeHistorique";
+import { EvenementPixel, LeadInscription } from "@/components/EvenementPixel";
 
 export const metadata: Metadata = { title: "Les 7 erreurs qui offrent votre héritage à l’État" };
 
@@ -34,6 +35,8 @@ export default function VslPage() {
   return (
     <>
       <MesureFunnel evenement="vue_vente" />
+      <EvenementPixel nom="ViewContent" />
+      <LeadInscription />
       <UrgencyBar />
       <Header minimal />
       <main className="flex-1" data-version-vente="historique-v11">
