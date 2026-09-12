@@ -14,6 +14,7 @@ import { envoyerAvis } from "@/app/espace/avis-actions";
 import { MesurerAchat } from "@/components/MetaPixel";
 import { MesGuidesPdf } from "@/components/espace/MesGuidesPdf";
 import { PremiereAction } from "@/components/espace/PremiereAction";
+import { PrioriteActuelle } from "@/components/espace/PrioriteActuelle";
 export const metadata = { title: "Mon parcours" };
 const CONFIRMATION_AJOUT: Partial<Record<ProductSku, string>> = {
   bump: "Votre Dossier Notaire est maintenant accessible dans Mon dossier.",
@@ -111,6 +112,10 @@ export default async function Page({
                 <Boutique etat={etat} />
               </div>
             </>
+          )}
+          {/* L'action refuse tant que l'étape 0 n'est pas cochée : ne pas proposer un bouton qui échoue. */}
+          {surParcours && etat.etapes.some((e) => e.etape.cle === "e0" && e.faite) && (
+            <PrioriteActuelle jeton={jeton} objectif={etat.profil?.objectif} av={etat.profil?.av} />
           )}
           {surParcours && (
             <section className="mt-10 border-2 border-grey-line p-5">

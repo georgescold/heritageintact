@@ -3,7 +3,24 @@ import { BRAND, CONTACT_EMAIL } from "@/lib/config";
 import { MetaDisclaimer } from "./LpExtras";
 import { Logo } from "./Logo";
 
-export function Header({ minimal = false }: { minimal?: boolean }) {
+/**
+ * LES TROIS SEULES ENTREES DE NAVIGATION DU SITE, ET POURQUOI ELLES SONT RARES.
+ *
+ * `nav` n'est vrai que sur les pages de marque — la racine, la FAQ, la section
+ * éditoriale — c'est-à-dire là où le visiteur est venu de lui-même et cherche
+ * quelque chose. Partout ailleurs (capture publicitaire, page de vente, bon de
+ * commande, espace membre) le header reste muet : sur un tunnel payé, chaque
+ * lien sortant est une fuite, et « Mon espace » en haut d'une page de vente
+ * envoie promener un acheteur qui n'a pas encore acheté.
+ *
+ * ⚠️ N'active `nav` sur aucune page du tunnel.
+ */
+const NAVIGATION = [
+  { href: "/guide", t: "Blog" },
+  { href: "/faq", t: "Questions fréquentes" },
+] as const;
+
+export function Header({ minimal = false, nav = false }: { minimal?: boolean; nav?: boolean }) {
   return (
     <header className="border-b-4 border-blue bg-white">
       <div className="wrap-wide flex items-center justify-between gap-4 py-2.5">
@@ -11,7 +28,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
           <Logo size={34} />
         </Link>
         <div className="flex items-center gap-4">
-          {!minimal && (
+          {!minimal && !nav && (
             <span className="hidden text-[0.9rem] text-text-soft lg:block">
               La succession enfin expliquée clairement
             </span>
@@ -33,6 +50,35 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
           </span>
         </div>
       </div>
+      {/* LA NAVIGATION OCCUPE SA PROPRE LIGNE, A TOUTES LES LARGEURS.
+          Comprimée à côté du logo et du cadenas, elle déborderait à 390 px ou
+          forcerait des libellés tronqués. Sur une ligne à elle, chaque entrée
+          garde 44 px de hauteur de frappe et son libellé entier — ce qui compte
+          plus ici qu'ailleurs : le lecteur a 68 ans et vise avec le pouce. */}
+      {nav && (
+        <div className="border-t border-grey-line bg-grey-bg">
+          <nav aria-label="Navigation principale" className="wrap-wide flex items-center gap-1 py-1 sm:gap-2">
+            {NAVIGATION.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="flex min-h-[44px] items-center px-2 text-[0.95rem] font-bold no-underline hover:underline sm:px-3 sm:text-[1.02rem]"
+              >
+                {l.t}
+              </Link>
+            ))}
+            {/* L'entrée des clients, poussée à droite et encadrée : c'est la
+                seule action du header, et elle ne doit pas se confondre avec
+                les rubriques de lecture. */}
+            <Link
+              href="/connexion"
+              className="ml-auto flex min-h-[44px] shrink-0 items-center border-2 border-blue bg-white px-2.5 text-[0.95rem] font-bold text-blue no-underline hover:bg-blue hover:text-white sm:px-4 sm:text-[1.02rem]"
+            >
+              Mon espace
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

@@ -2,7 +2,7 @@ import fs from "node:fs";
 import assert from "node:assert/strict";
 let n=0; const ok=(v,msg)=>{assert.ok(v,msg);n++};
 const read=p=>fs.readFileSync(p,"utf8");
-const sale=read("src/app/methode/page.tsx"), lp=read("src/app/page.tsx"), preview=read("src/app/apercu/page.tsx");
+const sale=read("src/app/methode/page.tsx"), lp=read("src/app/lp/page.tsx"), preview=read("src/app/apercu/page.tsx");
 ok(!/hi_objectif|objectifValide|Loys|Coquelle/.test(sale),"vente commune, sans nom personnel");
 ok(lp.includes('id="inscription"')&&!lp.includes("OrientationAvant"),"formulaire visible sans qualification");
 ok(!/content\/documents|<MaSituation|<ExempleDossier|<ExerciceGuide/.test(preview),"pas de support payant dans aperçu");

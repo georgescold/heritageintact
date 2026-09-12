@@ -18,7 +18,7 @@ try {
  const appels=async()=>{for(let i=0;i<8;i++){await page.waitForLoadState("networkidle").catch(()=>{});try{return await page.evaluate(()=>window.fbq?window.fbq.queue.map(a=>Array.from(a).slice(0,3).map(String)):null);}catch(e){if(!/context was destroyed|navigation/i.test(e.message))throw e;await page.waitForTimeout(400);}}throw Error("page instable : "+page.url());};
 
  // 1. Pages publiques : pixel chargé, autoConfig coupé, suivi automatique coupé, un PageView.
- for(const chemin of ["/","/methode","/commande","/lp-questions","/mentions-legales"]) {
+ for(const chemin of ["/","/lp","/faq","/guide","/methode","/commande","/lp-questions","/mentions-legales"]) {
   versMeta.length=0;
   await page.goto(site+chemin);await page.waitForLoadState("load");
   const a=await appels();

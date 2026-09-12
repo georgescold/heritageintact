@@ -25,11 +25,26 @@ import { SITE_URL } from "./config";
  * faire remonter dans un résultat de recherche contredirait l'affichage réel.
  */
 export const CHEMINS_INDEXABLES = [
+  // La page de marque. C'est elle que Google doit renvoyer sur « heritage
+  // intact », et c'est la seule page du site dont l'indexation est la raison
+  // d'être. La capture publicitaire, qui vivait ici avant le 12/09/2026, a été
+  // déplacée sur /lp et reste volontairement hors index : deux pages indexées
+  // sur la même promesse se cannibaliseraient.
+  "/",
+  "/faq",
+  // Le sommaire éditorial. Il n'est listé que parce qu'il contient déjà un
+  // article : un sommaire vide indexé est exactement la « section fantôme »
+  // que ce fichier interdit plus bas.
+  "/guide",
   "/mentions-legales",
   "/confidentialite",
   // Section éditoriale. Chaque page s'inscrit ici explicitement : une page en
   // cours d'écriture reste muette pour Google tant qu'elle n'y figure pas.
+  // Grappe démembrement : la page « indivision » est le pilier, les deux autres
+  // approfondissent l'un de ses blocs et sont maillées depuis lui.
   "/guide/usufruit-nue-propriete-indivision",
+  "/guide/vendre-maison-usufruit-nue-propriete",
+  "/guide/usufruit-travaux-charges",
 ] as const;
 
 /**

@@ -79,7 +79,7 @@ try {
   ok(await page.getByText("Lire l’explication",{exact:true}).count()===0);
   for(const width of [390,1440]) {
     await page.setViewportSize({width,height:1000});
-    await go("/");
+    await go("/lp");
     ok(await page.locator("#inscription input[name=email]").isVisible());
     ok(await page.locator('select[name="objectif"]').count()===0);
     ok(await page.locator('#inscription input[name="marketingConsent"]').count()===0);
@@ -108,7 +108,7 @@ try {
     await page.screenshot({path:".build-refonte/v6-apercu-"+width+".png",fullPage:true});
   }
   // Sortie au clavier, une fois par session, sans gêner le formulaire.
-  await go("/");
+  await go("/lp");
   // Le pop-up ne s'affiche qu'une fois par session, et les pages visitées plus haut ont pu le consommer.
   // On repart d'une session neuve pour contrôler ici son ouverture, sa fermeture et son unicité.
   await page.evaluate(()=>{try{Object.keys(sessionStorage).filter(k=>k.startsWith("hi_exit_")).forEach(k=>sessionStorage.removeItem(k));}catch{}});

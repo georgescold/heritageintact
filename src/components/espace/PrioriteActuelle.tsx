@@ -1,6 +1,23 @@
 "use client";
 import { useActionState, useState } from "react";
 import { actualiserPriorite } from "@/app/espace/preferences";
+import { OBJECTIFS, type Objectif } from "@/lib/positionnement";
+/**
+ * Les sept objectifs dans le registre de l’intention. Le questionnaire les formule en
+ * inquiétudes (« Que mes enfants doivent vendre la maison… »), ce qui ne se lit pas sous
+ * « Ce que je souhaite maintenant ». Le Record force la couverture : ajouter un objectif à
+ * OBJECTIFS sans son libellé ne compile pas, et le client ne peut pas tomber devant une liste
+ * où sa propre priorité manque.
+ */
+const LIBELLES: Record<Objectif, string> = {
+  comprendre: "Continuer à comprendre les bases",
+  preparer: "Préparer mon rendez-vous et mon dossier",
+  maison: "Protéger la maison familiale",
+  facture: "Savoir ce que la succession coûterait à mes proches",
+  date: "Ne pas laisser passer une date importante",
+  documents: "Rassembler les documents que mes proches devront retrouver",
+  "assurance-vie": "Faire le point sur mes contrats d’assurance-vie",
+};
 export function PrioriteActuelle({
   jeton,
   objectif,
@@ -36,9 +53,11 @@ export function PrioriteActuelle({
             <option value="" disabled>
               Choisir ma priorité
             </option>
-            <option value="comprendre">Continuer à comprendre les bases</option>
-            <option value="preparer">Préparer mon rendez-vous et mon dossier</option>
-            <option value="assurance-vie">Faire le point sur mes contrats d’assurance-vie</option>
+            {OBJECTIFS.map((code) => (
+              <option key={code} value={code}>
+                {LIBELLES[code]}
+              </option>
+            ))}
           </select>
         </label>
         {choix === "assurance-vie" && (

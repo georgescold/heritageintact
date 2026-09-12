@@ -1528,6 +1528,93 @@ export async function commandesPourPilotage(): Promise<{ commandes: Order[]; tro
   return { commandes: lignes.slice(0, limite), tronque: lignes.length > limite };
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   LECTURES DU PANEL D'ADMINISTRATION
+
+   Quatre lectures en vrac, agrégées ensuite en mémoire par
+   `lib/admin/agregats.ts`. Le choix d'agréger hors SQL est délibéré : les
+   mêmes fonctions doivent tourner sur Postgres ET sur le fichier JSON de
+   développement, et une agrégation écrite deux fois diverge toujours.
+
+   ⚠️ CHACUNE PLAFONNE, ET LE DIT. Le plafond reprend celui de
+   `commandesPourPilotage` et sa règle : au-delà, on renvoie `tronque` et
+   l'écran REFUSE d'afficher un total. Un chiffre d'affaires partiel présenté
+   comme un total est pire que pas de chiffre du tout — c'est sur ce genre de
+   nombre qu'on décide de couper une campagne.
+
+   ⚠️ Ces lectures sortent des adresses email en clair. Elles ne doivent être
+   appelées que derrière la garde de `lib/admin/session.ts`, jamais depuis une
+   page publique.
+   ═══════════════════════════════════════════════════════════════ */
+
+const LIMITE_ADMIN = 50000;
+
+export async function leadsPourAdmin(): Promise<{ leads: Lead[]; tronque: boolean }> {
+  if (sqlActif) {
+    const s = await pg();
+    const lignes = await s<LigneLead[]>`select * from leads order by created_at asc limit ${LIMITE_ADMIN + 1}`;
+    return { leads: lignes.slice(0, LIMITE_ADMIN).map(versLead), tronque: lignes.length > LIMITE_ADMIN };
+  }
+  const db = await read();
+  return { leads: db.leads.slice(0, LIMITE_ADMIN), tronque: db.leads.length > LIMITE_ADMIN };
+}
+
+/**
+ * TOUTES les commandes, `pending` comprises — c'est la différence avec
+ * `commandesPourPilotage`, qui ne garde que le payé réel. Le panel a besoin des
+ * abandons : un bon de commande ouvert et jamais payé est le signal le plus
+ * utile du tunnel, et il disparaît si on filtre en amont.
+ */
+export async function commandesPourAdmin(): Promise<{ commandes: Order[]; tronque: boolean }> {
+  if (sqlActif) {
+    const s = await pg();
+    const lignes = await s<LigneOrder[]>`select * from orders order by created_at asc limit ${LIMITE_ADMIN + 1}`;
+    return { commandes: lignes.slice(0, LIMITE_ADMIN).map(versOrder), tronque: lignes.length > LIMITE_ADMIN };
+  }
+  const db = await read();
+  return { commandes: db.orders.slice(0, LIMITE_ADMIN), tronque: db.orders.length > LIMITE_ADMIN };
+}
+
+export async function accesPourAdmin(): Promise<{ acces: Acces[]; tronque: boolean }> {
+  if (sqlActif) {
+    const s = await pg();
+    const lignes = await s<LigneAcces[]>`select * from acces order by created_at asc limit ${LIMITE_ADMIN + 1}`;
+    return { acces: lignes.slice(0, LIMITE_ADMIN).map(versAcces), tronque: lignes.length > LIMITE_ADMIN };
+  }
+  const db = await read();
+  return { acces: db.acces.slice(0, LIMITE_ADMIN), tronque: db.acces.length > LIMITE_ADMIN };
+}
+
+export async function progressionPourAdmin(): Promise<{
+  progression: Progression[];
+  tronque: boolean;
+}> {
+  if (sqlActif) {
+    const s = await pg();
+    const lignes = await s<LigneProgression[]>`select * from progression order by ouverte_le asc limit ${LIMITE_ADMIN + 1}`;
+    return {
+      progression: lignes.slice(0, LIMITE_ADMIN).map(versProgression),
+      tronque: lignes.length > LIMITE_ADMIN,
+    };
+  }
+  const db = await read();
+  return {
+    progression: db.progression.slice(0, LIMITE_ADMIN),
+    tronque: db.progression.length > LIMITE_ADMIN,
+  };
+}
+
+export async function profilsPourAdmin(): Promise<{ profils: Profil[]; tronque: boolean }> {
+  if (sqlActif) {
+    const s = await pg();
+    const lignes = await s<LigneProfil[]>`select * from profils limit ${LIMITE_ADMIN + 1}`;
+    return { profils: lignes.slice(0, LIMITE_ADMIN).map(versProfil), tronque: lignes.length > LIMITE_ADMIN };
+  }
+  const db = await read();
+  const profils = db.profils ?? [];
+  return { profils: profils.slice(0, LIMITE_ADMIN), tronque: profils.length > LIMITE_ADMIN };
+}
+
 /** Une seule fenêtre par email et gamme. Un refresh, une réinscription ou un nouvel onglet ne la réinitialise pas. */
 export async function commencerPromotion(email: string, gamme: Promotion["gamme"]): Promise<Promotion> {
   const adresse = normaliserEmail(email);
