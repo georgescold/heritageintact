@@ -4,6 +4,8 @@ import { addItem, creerCommandeEspace, getOrder, markOrderPaid } from "@/lib/db"
 import { livrer } from "@/lib/livraison";
 import { stripe, toCents } from "@/lib/stripe";
 import { PRODUCTS, isTestMode, stripeEnModeTest, type ProductSku } from "@/lib/config";
+import { cookies } from "next/headers";
+import { COOKIE_FENETRE, debutFenetre, fenetreGuide, prixGuide } from "@/lib/fenetre-guide";
 import { bumpPour, guideVendable } from "@/lib/guides-vente";
 
 /**
@@ -66,8 +68,12 @@ export async function preparerCommandeGuide(input: {
   // ⚠️ UN SEUL CALCUL DU PRIX, ET IL ALIMENTE LA LIGNE DE COMMANDE COMME LA
   // BANQUE. C'est la règle que db.ts et actions.ts répètent tous les deux, après
   // l'accident où deux chemins avaient divergé et où le débit contredisait le
-  // récapitulatif.
-  const prix = PRODUCTS[sku].price + (complement ? PRODUCTS[complement].price : 0);
+  // récapitulatif. La fenêtre est relue ICI, depuis le cookie signé : ce que le
+  // navigateur envoie ne sert qu'à vérifier qu'il affichait bien la même chose.
+  const jar = await cookies();
+  const palier = fenetreGuide(debutFenetre(jar.get(COOKIE_FENETRE)?.value));
+  const tarif = prixGuide(sku, palier, complement);
+  const prix = tarif.total;
 
   // ⚠️ LE MONTANT AFFICHÉ DOIT ÊTRE CELUI DU CATALOGUE. Le prix vient du serveur
   // dans les deux cas, mais on refuse quand même une page restée ouverte
@@ -86,6 +92,8 @@ export async function preparerCommandeGuide(input: {
     firstName,
     sku,
     mode: isTestMode || stripeEnModeTest ? "test" : "live",
+    // Le palier, pas le montant : la base reste calculée par la couche de données.
+    remisePourcent: palier.pourcent,
   });
   if (complement) order = (await addItem(order.id, complement)) ?? order;
 

@@ -223,7 +223,8 @@ export default function NosGuides() {
                       ) : (
                         <>
                           <Link
-                            href={guideVendable(sku) ? `/commander/${sku}` : "/connexion"}
+                            // La fenêtre de prix s ouvre sur /commander, au clic, et jamais pendant la lecture.
+                            href={guideVendable(sku) ? `/commander?g=${sku}` : "/connexion"}
                             className={`flex min-h-[54px] w-full items-center justify-center border-b-4 px-5 py-3 text-center text-[1.08rem] font-bold text-white no-underline sm:w-auto sm:px-8 ${couleur.badge} ${couleur.cadre} hover:brightness-90`}
                           >
                             {guideVendable(sku)

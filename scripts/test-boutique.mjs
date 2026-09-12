@@ -24,9 +24,15 @@ function mod(rel) {
     js,
     {
       exports,
-      process: { env: {} },
+      process: { env: { PRIX_SECRET: "secret-de-test-assez-long" } },
+      Buffer,
       require: (p) =>
-        mod(path.relative(process.cwd(), path.resolve(path.dirname(file), p.replace(/^@\//, "src/"))) + ".ts"),
+        p.startsWith("node:")
+          ? require(p)
+          : mod(
+              path.relative(process.cwd(), path.resolve(path.dirname(file), p.replace(/^@\//, "src/"))) +
+                ".ts",
+            ),
     },
     { filename: file },
   );
@@ -117,7 +123,11 @@ const action = fs.readFileSync("src/app/commande-guide.ts", "utf8");
 ok(action.includes("creerCommandeEspace"), "reutilise la creation de commande existante");
 ok(action.includes("markOrderPaid"), "le mode simule marque la commande payee, sinon rien n'est livre");
 ok(action.includes("montantAffiche !== prix"), "refus si l'ecran et le serveur divergent");
-ok(!action.includes("palier(") && !action.includes("appliquerRemise"), "aucune promotion sur la vente a l'unite");
+// La vente a l unite a SA fenetre (fenetre-guide.ts), pas celle du tunnel :
+// les paliers a montant fixe du tunnel valent 147 et 197 EUR, ce qui n aurait
+// aucun sens sur un guide a 47 EUR.
+ok(!action.includes("promotionParEmail"), "pas de fenetre du tunnel sur la vente a l unite");
+ok(action.includes("fenetreGuide("), "la vente a l unite a sa propre fenetre");
 const formulaire = fs.readFileSync("src/components/CommandeGuide.tsx", "utf8");
 ok(formulaire.includes("confirmCheckout"), "la confirmation reste celle du tunnel");
 ok(formulaire.includes("useStripe()"), "les hooks Stripe existent");
@@ -152,7 +162,8 @@ eq(bumpPour("bump"), null, "LE DOSSIER NOTAIRE NE SE PROPOSE PAS A LUI-MEME");
 ok(formulaire.includes("elements.update({ amount"), "Stripe suit le total quand la case change");
 ok(action.includes("addItem(order.id, complement)"), "le complement entre dans la commande");
 ok(
-  action.includes("PRODUCTS[sku].price + (complement ? PRODUCTS[complement].price : 0)"),
+  action.includes("const tarif = prixGuide(sku, palier, complement);") &&
+    action.includes("const prix = tarif.total;"),
   "un seul calcul du prix, pour la ligne de commande comme pour la banque",
 );
 
@@ -187,7 +198,59 @@ ok(
 ok(merci.includes("/ajouter/${complement}"), "le bouton mene a l'ecran d'ajout, pas a un debit");
 ok(!merci.includes("chargeUpsell") && !merci.includes("prepareCheckout"), "aucun paiement declenche ici");
 
+
+/* ── La fenetre de prix des guides ───────────────────────────────────── */
+const F = mod("src/lib/fenetre-guide.ts");
+const T0 = Date.parse("2026-01-01T12:00:00.000Z");
+const min = (n) => T0 + n * 60_000;
+
+// Degressive : -30 % pendant vingt minutes, -20 % pendant dix de plus, puis rien.
+eq(F.fenetreGuide(T0, min(0)).pourcent, 30, "a l'ouverture : -30 %");
+eq(F.fenetreGuide(T0, min(19)).pourcent, 30, "encore -30 % a 19 minutes");
+eq(F.fenetreGuide(T0, min(19)).suivant, 20, "le palier suivant est annonce");
+eq(F.fenetreGuide(T0, min(20)).pourcent, 20, "a 20 minutes : -20 %");
+eq(F.fenetreGuide(T0, min(29)).pourcent, 20, "encore -20 % a 29 minutes");
+eq(F.fenetreGuide(T0, min(30)).pourcent, 0, "a 30 minutes : plus de remise");
+eq(F.fenetreGuide(T0, min(30)).fin, null, "aucune echeance quand la fenetre est fermee");
+
+// ⚠️ AUCUNE FENETRE SANS DEPART VALIDE. Un cookie absent, illisible ou falsifie
+// rend le prix du catalogue -- jamais une remise qu'on ne saurait pas verifier.
+eq(F.fenetreGuide(null).pourcent, 0, "sans cookie : prix catalogue");
+eq(F.fenetreGuide(null).fin, null);
+
+// Le prix : la remise porte sur le guide, jamais sur le complement.
+const palier30 = F.fenetreGuide(T0, min(1));
+const tarif = F.prixGuide("upsell2", palier30, "bump");
+eq(tarif.base, 67, "la base reste le prix catalogue");
+eq(tarif.guide, 46.9, "67 moins 30 % = 46,90");
+eq(tarif.complement, 17, "LE COMPLEMENT RESTE AU PRIX CATALOGUE");
+eq(tarif.total, 63.9, "total = guide remise + complement plein tarif");
+
+const sansRemise = F.prixGuide("upsell2", F.fenetreGuide(null), "bump");
+eq(sansRemise.guide, 67, "sans fenetre, le guide est au catalogue");
+eq(sansRemise.total, 84);
+
+// Le palier transmis a la couche de donnees est un POURCENTAGE, jamais un
+// montant : c'est ce qui preserve la regle « le prix ne vient jamais de
+// l'appelant » de creerCommandeEspace.
+ok(action.includes("remisePourcent: palier.pourcent"), "le serveur transmet le palier, pas le montant");
+const donnees = fs.readFileSync("src/lib/db.ts", "utf8");
+ok(donnees.includes("remisePourcent?: number"), "creerCommandeEspace prend un pourcentage");
+ok(
+  donnees.includes("const pourcent = reduction.pourcent || input.remisePourcent || 0;"),
+  "la reduction du tunnel prime, et les deux ne se cumulent jamais",
+);
+
+// La fenetre s'ouvre au CLIC vers la commande, pas pendant la lecture, et ne se
+// relance pas si elle est deja ouverte.
+const route = fs.readFileSync("src/app/commander/route.ts", "utf8");
+ok(route.includes("request.cookies.get(COOKIE_FENETRE)"), "une fenetre ouverte n'est pas relancee");
+ok(route.includes("guideVendable(guide)"), "seul un guide vendable ouvre une fenetre");
+
+// Le prix barre n'apparait que s'il y a une remise reelle.
+ok(formulaire.includes("prix < base &&"), "aucun prix barre sans remise en cours");
+
 console.log(
   n +
-    " controles boutique reussis : perimetre de vente a l'unite, produit d'appel preserve, fiches completes, reve avant peur, ancrage avant tarif, hors index, et bon de commande branche sur le tunnel existant. Aucun reseau ni base.",
+    " controles boutique reussis : perimetre de vente, produit d appel preserve, fiches completes, reve avant peur, ancrage avant tarif, hors index, complement jamais pre-coche, et fenetre de prix degressive dont la remise ne porte que sur le guide. Aucun reseau ni base.",
 );

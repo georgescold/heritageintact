@@ -1209,6 +1209,21 @@ export async function creerCommandeEspace(input: {
   firstName: string;
   sku: ProductSku;
   mode: "test" | "live";
+  /**
+   * ⚠️ UN POURCENTAGE, JAMAIS UN MONTANT — et c'est ce qui préserve la règle
+   * écrite deux lignes plus bas.
+   *
+   * La vente d'un guide à l'unité a sa propre fenêtre de prix, dont le départ
+   * vit dans un cookie signé que cette couche n'a pas à connaître. L'appelant
+   * transmet donc le seul palier ; la BASE reste calculée ici, à partir des
+   * achats réellement payés. Un appelant ne peut pas fixer un prix, seulement
+   * choisir une remise — et `appliquerRemise` refuse tout pourcentage hors de
+   * sa liste blanche.
+   *
+   * Ignoré quand le tunnel a déjà sa propre réduction pour ce client : deux
+   * remises ne se cumulent jamais.
+   */
+  remisePourcent?: number;
   stripeCustomerId?: string;
   stripePaymentMethodId?: string;
 }): Promise<Order> {
@@ -1221,7 +1236,8 @@ export async function creerCommandeEspace(input: {
   const prixFixe = typeof reduction.montantFixe === "number" && Number.isFinite(reduction.montantFixe)
     ? Math.max(0, Math.min(prixBase, reduction.montantFixe))
     : null;
-  const prix = prixFixe ?? appliquerRemise(prixBase, reduction.pourcent);
+  const pourcent = reduction.pourcent || input.remisePourcent || 0;
+  const prix = prixFixe ?? appliquerRemise(prixBase, pourcent);
   if (!Number.isFinite(prix) || prix < 0) throw new Error("Prix de commande invalide");
   const items: OrderItem[] = [{ sku: input.sku, price: prix }];
   const base = {

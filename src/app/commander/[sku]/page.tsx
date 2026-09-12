@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { Footer, Header, TestModeBanner } from "@/components/Chrome";
 import { CommandeGuide } from "@/components/CommandeGuide";
 import { Guarantee } from "@/components/ui";
+import { AvantageDemarrage } from "@/components/AvantageDemarrage";
+import { COOKIE_FENETRE, debutFenetre, fenetreGuide, prixGuide } from "@/lib/fenetre-guide";
 import { bumpPour, guideVendable } from "@/lib/guides-vente";
 import { BOUTIQUE } from "@/content/boutique";
 import { PRESENTATION, PRODUCTS, isTestMode, stripeEnModeTest } from "@/lib/config";
@@ -33,13 +35,22 @@ export default async function CommanderGuide({
   const fiche = BOUTIQUE[sku as keyof typeof BOUTIQUE];
   const presentation = PRESENTATION[sku as keyof typeof PRESENTATION];
 
+  const jar = await cookies();
+
   // Le prénom et l'email déjà connus évitent une ressaisie à quelqu'un qui
   // vient de laisser son adresse pour le document gratuit.
   let defauts: { firstName?: string; email?: string } = {};
   try {
-    const brut = (await cookies()).get("hi_lead")?.value;
+    const brut = jar.get("hi_lead")?.value;
     if (brut) defauts = JSON.parse(brut) as { firstName?: string; email?: string };
   } catch {}
+
+  // ⚠️ LE PRIX VIENT DU SERVEUR, ET DU MÊME CALCUL QUE LE DÉBIT. L'écran ne
+  // décide de rien : `preparerCommandeGuide` refait ce calcul et refuse si le
+  // montant affiché ne correspond pas.
+  const complement = bumpPour(sku);
+  const palier = fenetreGuide(debutFenetre(jar.get(COOKIE_FENETRE)?.value));
+  const tarif = prixGuide(sku, palier, complement);
 
   return (
     <>
@@ -56,11 +67,14 @@ export default async function CommanderGuide({
         {fiche && <p className="mb-3 text-[1.15rem] font-bold text-blue">{fiche.resultat}</p>}
         {fiche && <p className="mb-6 text-[1.02rem]">{fiche.pourQui}</p>}
 
+        <AvantageDemarrage promotion={palier} base={tarif.base} />
+
         <CommandeGuide
           sku={sku}
           nom={produit.name}
-          prix={produit.price}
-          complement={bumpPour(sku)}
+          prix={tarif.guide}
+          base={tarif.base}
+          complement={complement}
           defaults={defauts}
         />
 

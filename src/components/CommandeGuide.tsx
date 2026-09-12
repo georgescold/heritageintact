@@ -28,12 +28,14 @@ export function CommandeGuide({
   sku,
   nom,
   prix,
+  base,
   complement,
   defaults,
 }: {
   sku: string;
   nom: string;
   prix: number;
+  base: number;
   /** Le complément proposé, ou null quand il n'y en a pas. */
   complement: ProductSku | null;
   defaults: { firstName?: string; email?: string };
@@ -49,6 +51,7 @@ export function CommandeGuide({
         sku={sku}
         nom={nom}
         prix={prix}
+        base={base}
         complement={complement}
         defaults={defaults}
         stripe={null}
@@ -91,7 +94,7 @@ export function CommandeGuide({
         },
       }}
     >
-      <AvecStripe sku={sku} nom={nom} prix={prix} complement={complement} defaults={defaults} />
+      <AvecStripe sku={sku} nom={nom} prix={prix} base={base} complement={complement} defaults={defaults} />
     </Elements>
   );
 }
@@ -101,6 +104,7 @@ function AvecStripe(props: {
   sku: string;
   nom: string;
   prix: number;
+  base: number;
   complement: ProductSku | null;
   defaults: { firstName?: string; email?: string };
 }) {
@@ -113,6 +117,7 @@ function Formulaire({
   sku,
   nom,
   prix,
+  base,
   complement,
   defaults,
   stripe,
@@ -121,6 +126,7 @@ function Formulaire({
   sku: string;
   nom: string;
   prix: number;
+  base: number;
   complement: ProductSku | null;
   defaults: { firstName?: string; email?: string };
   stripe: ReturnType<typeof useStripe>;
@@ -208,7 +214,15 @@ function Formulaire({
       <div className="border-2 border-blue bg-grey-bg p-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <span className="font-bold">{nom}</span>
-          <span className="font-bold">{euros(prix)}</span>
+          {/* Le prix barré n'apparaît QUE s'il a réellement été proposé à ce
+              montant : `base` est le tarif du catalogue, et la remise vient
+              d'une fenêtre ouverte au clic. Sans remise en cours, aucune
+              mention barrée — une fausse réduction est interdite, et sur ce
+              public elle coûte plus qu'elle ne rapporte. */}
+          <span className="font-bold">
+            {prix < base && <span className="mr-2 font-normal text-text-soft line-through">{euros(base)}</span>}
+            {euros(prix)}
+          </span>
         </div>
         {bump && complement && (
           <div className="mt-2 flex flex-wrap items-baseline justify-between gap-2 border-t border-grey-line pt-2">
