@@ -10,3 +10,48 @@ export const SEQUENCE: Etape[] = [
 { cle: "j7", jour: 7, levier: "Closing final : dernière fenêtre de prix et fin de la série", objet: p => p ? "Dernier message, " + p : "Dernier message de cette série", corps: p => ["Bonjour " + p + ",", ...["C’est le septième et dernier message de cette série. Après celui-ci, je ne reviendrai plus vous parler des 7 erreurs.","Il serait facile de le fermer en se disant « après les vacances ». Puis après les fêtes. Puis l’année prochaine. La maison sera toujours là. Les questions aussi. Les dates, elles, auront avancé.","Et le jour venu, vos enfants auront six mois pour payer les droits, en euros. Chaque mois de retard leur coûtera ensuite des intérêts, puis une majoration.","Ou bien, au prochain repas de famille, vous ne direz plus « il faudrait qu’on s’en occupe ». Vous direz : « J’ai commencé. Voilà ce que j’ai vérifié, voilà ce qui reste à faire confirmer. »","Il n’y a rien à décider ce soir. Il y a une première erreur à lire et une question à écrire. Dix minutes suffisent.","Les 7 erreurs se paient une seule fois, avec la garantie commerciale de 30 jours. Une réduction commerciale ne change pas vos droits fiscaux : le prix qui vous concerne, et sa date de fin s’il y en a une, figurent ci-dessous. Si un seuil vous concerne de près, contactez directement votre notaire.","Ouvrez la première erreur maintenant, pendant que vous pouvez encore en parler ensemble."]], bouton: { texte: "Découvrir les 7 erreurs", chemin: "/commander" } },
 ];
 export const lien = (chemin: string) => `${SITE_URL}${chemin}`;
+
+/**
+ * QUAND ENVOYER LA PREMIÈRE ÉTAPE.
+ *
+ * La séquence démarre à l'inscription, mais pas dans la même seconde que
+ * l'email de livraison : deux messages collés sur un domaine jeune est le
+ * meilleur moyen de finir en indésirable (c'est la règle que porte `etapeDue`).
+ * On remet donc J1 à Resend tout de suite, avec une heure de délivrance
+ * différée — le déclenchement ne dépend d'aucun cron, et le lecteur reçoit deux
+ * messages espacés.
+ *
+ * Le garde-fou d'horaire n'est pas cosmétique : l'avatar a entre 60 et 80 ans
+ * (`strategie/02-avatar.md`). Un email qui arrive à 2 h du matin est ouvert au
+ * réveil, dans le tas, ou pas ouvert du tout.
+ *
+ * Approximation acceptée : le recalage se fait par heures entières, donc les
+ * minutes sont conservées, et un changement d'heure peut décaler d'une heure.
+ * C'est une fenêtre de politesse, pas un horaire à la minute.
+ */
+export const DELAI_PREMIERE_ETAPE_H = 3;
+const HEURE_OUVERTURE = 9;
+const HEURE_FERMETURE = 20;
+
+export function momentPremiereEtape(maintenant: Date = new Date()): Date {
+  const cible = new Date(maintenant.getTime() + DELAI_PREMIERE_ETAPE_H * 3_600_000);
+  // `formatToParts` et non `format` : en français, une heure seule se rend
+  // « 08 h », et `Number("08 h")` vaut NaN — ce qui produisait une date de
+  // programmation invalide, donc un email jamais délivré.
+  const heureParis = Number(
+    new Intl.DateTimeFormat("fr-FR", {
+      timeZone: "Europe/Paris",
+      hour: "2-digit",
+      hour12: false,
+    })
+      .formatToParts(cible)
+      .find((p) => p.type === "hour")?.value,
+  );
+  if (!Number.isFinite(heureParis)) return cible;
+  if (heureParis >= HEURE_OUVERTURE && heureParis < HEURE_FERMETURE) return cible;
+  const decalage =
+    heureParis < HEURE_OUVERTURE
+      ? HEURE_OUVERTURE - heureParis
+      : 24 - heureParis + HEURE_OUVERTURE;
+  return new Date(cible.getTime() + decalage * 3_600_000);
+}

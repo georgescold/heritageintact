@@ -11,6 +11,7 @@ import {
 } from "./db";
 import { envoyerAcces, envoyerEtapeClient, envoyerRecuAchat } from "./email";
 import { SEQUENCE_CLIENT } from "./sequence-client";
+import { momentPremiereEtape } from "./sequence";
 
 /**
  * LA LIVRAISON. Ce que reçoit un acheteur, et par quels chemins il peut le
@@ -103,15 +104,18 @@ export async function livrer(order: Order): Promise<Acces | null> {
     // qu'un seul appelant l'envoie, quel que soit le chemin — confirmation,
     // webhook Stripe ou cron.
     //
+    // Remise immédiate à Resend, délivrance différée de quelques heures : le
+    // client ne reçoit pas deux messages collés après son achat.
+    //
     // ⚠️ La première étape « c1 » recouvre largement l'email d'accès ci-dessus :
-    // les deux disent « voici votre espace ». Le client reçoit donc deux messages
-    // très proches à la suite. Si on veut l'éviter, c'est le contenu de c1 qu'il
-    // faut réécrire, pas ce déclenchement.
+    // les deux disent « voici votre espace ». Le décalage les espace, il ne
+    // supprime pas la redite — pour ça, c'est le contenu de c1 qu'il faut
+    // réécrire, pas ce déclenchement.
     const premiere = SEQUENCE_CLIENT[0];
     if (r.ok && premiere) {
       const reserve = await reserverEnvoi(gagne.email, premiere.cle);
       if (reserve) {
-        const c = await envoyerEtapeClient(reserve, premiere);
+        const c = await envoyerEtapeClient(reserve, premiere, momentPremiereEtape());
         if (!c.ok) await libererEnvoi(reserve.email, premiere.cle);
       }
     }

@@ -38,6 +38,12 @@ type Envoi = {
   leadId?: string;
   /** L’acceptation fournisseur ne prouve pas le placement en boîte de réception. */
   type?: "marketing" | "transactionnel";
+  /**
+   * Délivrance différée, en ISO 8601, confiée à Resend (`scheduled_at`). L'email
+   * est remis au fournisseur tout de suite — donc le déclenchement ne dépend
+   * d'aucun cron — mais il n'arrive qu'à cette heure-là.
+   */
+  quand?: Date;
 };
 
 /**
@@ -68,7 +74,8 @@ export async function envoyer(e: Envoi): Promise<{ ok: boolean; id?: string; sim
     "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
   } : undefined;
   const body = JSON.stringify({ from: EXPEDITEUR, to: [e.to], ...(e.bcc ? {bcc:[e.bcc]} : {}), reply_to: CONTACT_EMAIL,
-    subject: e.subject, html: e.html, text: e.text, ...(headers ? {headers} : {}) });
+    subject: e.subject, html: e.html, text: e.text, ...(headers ? {headers} : {}),
+    ...(e.quand ? { scheduled_at: e.quand.toISOString() } : {}) });
   const cle = empreinte(e.cle ?? `demande/${Math.floor(Date.now()/120000)}/${body}`);
   try {
     const reservation = await reserverEmail(cle, e.to, body, marketing);
@@ -225,7 +232,7 @@ export async function envoyerLivraison(lead: Lead) {
 /* ─────────────────────────────────────────────────────────────────
    J1 à J7 — une étape de la séquence.
    ───────────────────────────────────────────────────────────── */
-export async function envoyerEtape(lead: Lead, etape: Etape) {
+export async function envoyerEtape(lead: Lead, etape: Etape, quand?: Date) {
   if (lead.desabonne || await accesParEmail(lead.email)) return { ok: false };
   if (CONSENTEMENT_MARKETING_EXIGE && lead.marketingConsent !== true) return { ok: false };
   const p = echapper(lead.firstName.trim()) || "";
@@ -276,6 +283,7 @@ export async function envoyerEtape(lead: Lead, etape: Etape) {
     subject: etape.objet(p),
     html: gabarit(contenu),
     text: versionTexte(contenu),
+    quand,
   });
 }
 
@@ -315,6 +323,7 @@ async function envoyerAuClient(
     bouton: { texte: string; lien: string };
     ps?: string;
     inviterAvis?: boolean;
+    quand?: Date;
   },
 ): Promise<{ ok: boolean }> {
   const contenu: Contenu = {
@@ -328,6 +337,7 @@ async function envoyerAuClient(
     to: acces.email,
     bcc: o.inviterAvis ? TRUSTPILOT_INVITE_BCC : undefined,
     type: "transactionnel",
+    quand: o.quand,
     cle: o.cle,
     subject: o.objet,
     html: gabarit(contenu),
@@ -362,6 +372,7 @@ export async function envoyerAcces(acces: Acces, demande?: string): Promise<{ ok
 export async function envoyerEtapeClient(
   acces: Acces,
   etape: EtapeClient,
+  quand?: Date,
 ): Promise<{ ok: boolean }> {
   const p = echapper(acces.firstName.trim()) || "";
   return envoyerAuClient(acces, {
@@ -370,6 +381,7 @@ export async function envoyerEtapeClient(
     paragraphes: etape.corps(p, urlEspace(acces.jeton)),
     bouton: { texte: etape.bouton.texte, lien: lien(etape.bouton.chemin(acces.jeton)) },
     ps: etape.ps,
+    quand,
   });
 }
 

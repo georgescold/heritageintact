@@ -20,7 +20,7 @@ import { devisFront } from "@/lib/prix-front";
 import { profilComplet } from "@/lib/questionnaire";
 import { stripe, toCents } from "@/lib/stripe";
 import { envoyerEtape, envoyerGrilleDroits, envoyerLivraison, envoyerRecuAchat } from "@/lib/email";
-import { SEQUENCE } from "@/lib/sequence";
+import { SEQUENCE, momentPremiereEtape } from "@/lib/sequence";
 import { livrer } from "@/lib/livraison";
 import { identifiantAchatMeta } from "@/lib/meta-conversions";
 import type { MesureAchat } from "@/lib/meta-pixel";
@@ -92,19 +92,21 @@ const CONSENTEMENT_IMPLICITE_SEO = true;
  * lendemain matin (demande de Loys, 12/09/2026 : « un nouveau lead rentre =
  * la séquence part »).
  *
- * ⚠️ Conséquence à connaître : l'inscrit reçoit DEUX emails à quelques secondes
- * d'intervalle — sa livraison, puis J1. `etapeDue` porte la règle inverse en
- * commentaire (« deux emails le même jour sur un domaine jeune, c'est le
- * meilleur moyen de finir en indésirable »), et heritageintact.fr est un domaine
- * jeune. À surveiller dans les statistiques Resend ; si le placement se dégrade,
- * c'est le premier endroit où revenir.
+ * J1 est remis à Resend immédiatement, mais avec une heure de délivrance
+ * différée (`momentPremiereEtape`) : le déclenchement ne dépend d'aucun cron, et
+ * l'inscrit ne reçoit pas deux messages collés — ce que `etapeDue` déconseille
+ * explicitement sur un domaine jeune.
+ *
+ * L'étape est marquée comme faite dès la remise au fournisseur, pas à la
+ * délivrance : sans ça, le cron du lendemain la renverrait avant que la version
+ * programmée ne soit partie.
  *
  * Ne lève jamais : un incident d'envoi ne doit pas faire échouer l'inscription.
  */
 async function demarrerSequence(lead: Awaited<ReturnType<typeof addLead>>) {
   const premiere = SEQUENCE[0];
   if (!premiere) return;
-  const r = await envoyerEtape(lead, premiere);
+  const r = await envoyerEtape(lead, premiere, momentPremiereEtape());
   if (r.ok) await marquerEnvoye(lead.id, premiere.cle);
 }
 
