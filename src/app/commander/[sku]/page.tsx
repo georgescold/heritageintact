@@ -49,10 +49,12 @@ export default async function CommanderGuide({
         <p className="mb-2 text-[0.8rem] font-bold uppercase tracking-[0.14em] text-orange">
           Guide officiel
         </p>
-        <h1 className="mb-3 text-[1.6rem] leading-snug sm:text-[2rem]">
-          {fiche?.resultat ?? produit.name}
-        </h1>
-        {fiche && <p className="mb-6 text-[1.05rem]">{fiche.pourQui}</p>}
+        {/* Même hiérarchie que la boutique : le nom identifie, la phrase de
+            résultat dit ce que le guide fait. Quelqu'un qui arrive ici depuis
+            une fiche doit retrouver le même titre, au même endroit. */}
+        <h1 className="mb-2 text-[1.6rem] leading-tight sm:text-[2rem]">{produit.name}</h1>
+        {fiche && <p className="mb-3 text-[1.15rem] font-bold text-blue">{fiche.resultat}</p>}
+        {fiche && <p className="mb-6 text-[1.02rem]">{fiche.pourQui}</p>}
 
         <CommandeGuide sku={sku} nom={produit.name} prix={produit.price} defaults={defauts} />
 

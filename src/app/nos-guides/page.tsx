@@ -158,13 +158,22 @@ export default function NosGuides() {
                   </div>
 
                   <div className="p-5 sm:p-6">
+                    {/* LE NOM D'ABORD, LE RÉSULTAT JUSTE DESSOUS.
+                        Sur une boutique, le lecteur cherche d'abord à savoir CE
+                        QU'IL ACHÈTE : un nom en petites lettres grises sous une
+                        longue phrase se saute. Le nom porte donc le titre, et la
+                        phrase de résultat devient le sous-titre — elle dit en une
+                        ligne ce que le guide fait, sans que rien ne se perde.
+                        La règle « on vend un résultat, jamais un produit » est
+                        tenue : le résultat reste au-dessus du pli de la fiche, en
+                        gras et dans la couleur du guide. */}
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                      <h2 className={`text-[1.35rem] leading-snug sm:text-[1.6rem] ${couleur.titre}`}>
-                        {fiche.resultat}
+                      <h2 className={`text-[1.5rem] font-bold leading-tight sm:text-[1.8rem] ${couleur.titre}`}>
+                        {produit.name}
                       </h2>
                       <p className="text-[1.35rem] font-bold text-blue">{euros(produit.price)}</p>
                     </div>
-                    <p className="mt-1 text-[0.95rem] text-text-soft">{produit.name}</p>
+                    <p className="mt-1.5 text-[1.08rem] font-bold leading-snug">{fiche.resultat}</p>
 
                     <p className="mt-4 text-[1.02rem]">{fiche.pourQui}</p>
 

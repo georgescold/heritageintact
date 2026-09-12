@@ -84,9 +84,19 @@ for (const sku of ORDRE_BOUTIQUE) {
   ok(guideVendable(sku), "aucun bouton mort sur la boutique : " + sku);
 }
 
+
 // L'ordre du copy sur la page : le cout de l'inaction vient APRES les
 // changements. Ouvrir par la douleur fait fuir (principes-premiers.md).
 const page = fs.readFileSync("src/app/nos-guides/page.tsx", "utf8");
+
+// Le nom du guide est le titre de la fiche, le resultat son sous-titre.
+// Une inversion renverrait le nom en petites lettres grises, ou ferait
+// disparaitre la phrase qui dit ce que le guide fait.
+ok(
+  page.indexOf("{produit.name}") < page.indexOf("{fiche.resultat}"),
+  "LE NOM DU GUIDE EST LE TITRE, LE RESULTAT LE SOUS-TITRE",
+);
+ok(page.includes("<h2"), "le nom est bien un titre de niveau 2");
 ok(
   page.indexOf("Ce qui change pour vous") < page.indexOf("Si vous ne le faites pas"),
   "LE REVE AVANT LA PEUR, JAMAIS L'INVERSE",
