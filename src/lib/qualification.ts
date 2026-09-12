@@ -36,15 +36,6 @@ export const ROUTE: Record<Ecran, string> = {
   "assurance-vie-notaire": "/offre/pack4",
   simulateur: "/simulateur-seul",
 };
-export const LIBELLE: Record<Ecran, string> = {
-  plan: "Votre préparation",
-  "assurance-vie": "Votre assurance-vie",
-  pack: "Ancienne offre",
-  "pack-notaire": "Votre préparation",
-  "plan-notaire": "Votre préparation",
-  "assurance-vie-notaire": "Votre assurance-vie",
-  simulateur: "Votre atelier",
-};
 export function urlEcran(e: Ecran, id: string, _position: number) {
   void _position;
   return `${ROUTE[e]}?o=${encodeURIComponent(id)}`;

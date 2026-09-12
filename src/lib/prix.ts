@@ -38,4 +38,3 @@ export function prixUpsell(sku: ProductSku, possede: Set<ProductSku>, _remise = 
     racines.map((s) => ({ sku: s, price: PRODUCTS[s].price })),
   ).montant;
 }
-export const prixUpsellPlein = prixUpsell;

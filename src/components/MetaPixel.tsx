@@ -131,14 +131,6 @@ export function MetaPixel() {
     </aside>
   );
 }
-/** Les anciens événements navigateur sont neutralisés, y compris Purchase. */
-export function PixelEvent(_props: {
-  name: "Lead" | "InitiateCheckout" | "Purchase" | "ViewContent";
-  params?: Record<string, string | number>;
-}) {
-  void _props;
-  return null;
-}
 export function MesurerAchat({ id, membre = false }: { id: string; membre?: boolean }) {
   const [, transition] = useTransition();
   useEffect(() => {

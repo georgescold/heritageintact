@@ -58,32 +58,3 @@ export function Logo({ size = 38, stacked = false }: { size?: number; stacked?: 
     </span>
   );
 }
-
-/** Version sur fond sombre (pied de page, bandeaux bleus, image de couverture). */
-export function LogoInverse({ size = 38 }: { size?: number }) {
-  return (
-    <span className="flex items-center gap-2.5">
-      <svg viewBox="0 0 48 48" width={size} height={size} role="img" aria-label="Héritage Intact">
-        <rect width="48" height="48" rx="5" fill="#ffffff" />
-        <path d="M10 22.5 24 11l14 11.5" fill="none" stroke="var(--color-blue)" strokeWidth="3.4" />
-        <rect x="13" y="26" width="22" height="3.2" fill="var(--color-blue)" />
-        <rect x="13" y="31.4" width="22" height="3.2" fill="var(--color-orange)" />
-        <rect x="13" y="36.8" width="22" height="3.2" fill="var(--color-blue)" />
-      </svg>
-      <span className="leading-none">
-        <span
-          className="block font-bold tracking-[0.14em] text-white"
-          style={{ fontSize: size * 0.42 }}
-        >
-          HÉRITAGE
-        </span>
-        <span
-          className="mt-[0.18em] block font-bold tracking-[0.14em] text-orange"
-          style={{ fontSize: size * 0.42 }}
-        >
-          INTACT
-        </span>
-      </span>
-    </span>
-  );
-}

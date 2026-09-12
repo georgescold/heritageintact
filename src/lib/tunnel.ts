@@ -1,6 +1,6 @@
 import { PRODUCTS, type ProductSku } from "./config";
 import { profilDeCommande } from "./db";
-import { ROUTE, sequence, urlEcran, type Ecran } from "./qualification";
+import { sequence, urlEcran, type Ecran } from "./qualification";
 import type { Accroche } from "./accroches";
 const SKU: Record<Ecran, ProductSku> = {
   plan: "upsell1",
@@ -32,4 +32,3 @@ export async function etapeTunnel(
     total: seq.length,
   };
 }
-export const CHEMIN_ECRAN = ROUTE;

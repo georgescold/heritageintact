@@ -9,16 +9,3 @@ export function planPrincipal(p: Reponses | null): string | null {
   if (p?.vie === "M" && p.enfants === "2") return "plan-marie-2-enfants";
   return null;
 }
-export function selectionParDefaut(cles: string[], p: Reponses | null): string[] {
-  const plan = planPrincipal(p);
-  const base = [
-    "ma-situation",
-    "trois-poches",
-    "fiche-famille",
-    "inventaire",
-    "pieces-a-apporter",
-    "questions-notaire",
-    "plan-en-1-page",
-  ];
-  return cles.filter((c) => base.includes(c) || c === plan);
-}

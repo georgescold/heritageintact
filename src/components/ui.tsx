@@ -124,54 +124,6 @@ export function FAQ({ items }: { items: { q: string; a: ReactNode }[] }) {
   );
 }
 
-export function ValueStack({
-  rows,
-  total,
-  today,
-  todayLabel = "Aujourd'hui",
-}: {
-  rows: { label: string; value: string }[];
-  total: string;
-  /**
-   * Un nœud, et non une chaîne : le prix du jour dépend du compteur du
-   * visiteur, donc il doit être rendu côté client. Il valait
-   * `euros(PRODUCTS.front.price)` en dur, et le tableau annonçait donc
-   * « Aujourd'hui : 27 € » à quelqu'un dont le bandeau venait de dire
-   * « offre terminée, le guide reste accessible à 89 € ».
-   */
-  today: ReactNode;
-  todayLabel?: string;
-}) {
-  return (
-    <div className="overflow-x-auto border border-grey-line">
-      <table className="w-full min-w-[18rem] text-left text-[0.95rem] sm:text-[1rem]">
-        <tbody>
-          {rows.map((r) => (
-            <tr key={r.label} className="border-b border-grey-line-soft">
-              <td className="px-3 py-2 align-top">{r.label}</td>
-              <td className="whitespace-nowrap px-3 py-2 text-right align-top text-text-soft">
-                {r.value}
-              </td>
-            </tr>
-          ))}
-          <tr className="border-b border-grey-line bg-grey-bg">
-            <td className="px-3 py-2 font-bold">Total si acheté à l&apos;unité</td>
-            <td className="whitespace-nowrap px-3 py-2 text-right font-bold line-through">
-              {total}
-            </td>
-          </tr>
-          <tr className="bg-yellow-bg">
-            <td className="px-3 py-3 text-[1.1rem] font-bold text-blue">{todayLabel}</td>
-            <td className="whitespace-nowrap px-3 py-3 text-right text-[1.5rem] font-bold text-red">
-              {today}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
 export function Check({ children }: { children: ReactNode }) {
   return (
     <li className="flex gap-2">

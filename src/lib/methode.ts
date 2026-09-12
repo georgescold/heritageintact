@@ -342,10 +342,6 @@ export function etapeParNumero(n: number): EtapeMethode | null {
   return ETAPES.find((e) => e.numero === n) ?? null;
 }
 
-export function etapeParCle(cle: string): EtapeMethode | null {
-  return ETAPES.find((e) => e.cle === cle) ?? null;
-}
-
 export function documentParCle(cle: string): DocumentImprimable | null {
   return DOCUMENTS.find((d) => d.cle === cle) ?? null;
 }

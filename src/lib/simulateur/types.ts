@@ -61,14 +61,6 @@ export type Saisie = {
   dettes?: number;
 };
 
-export const SAISIE_VIDE: Saisie = {
-  heritiers: [],
-  biens: [],
-  contrats: [],
-  donations: [],
-  dettes: 0,
-};
-
 /** Le détail par héritier, tel qu'il s'affiche : chaque ligne se vérifie. */
 export type PartHeritier = {
   heritier: Heritier;

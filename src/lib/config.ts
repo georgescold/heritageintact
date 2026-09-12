@@ -168,22 +168,13 @@ export const PRESENTATION: Partial<Record<ProductSku, { promesse: string; conten
     ],
   },
 };
-export const REMISE_LIGNE_DUPLIQUEE = 0; // Compatibilité des anciennes pages, aucun ancrage fictif.
 export const SKU_TUNNEL_UNIQUEMENT: ProductSku[] = ["pack1", "pack2", "pack3", "pack4", "pack5"];
 export const urlEspace = (jeton: string) => `${SITE_URL}/espace/${jeton}`;
-export const VARIANTES = { "/": "Présentation", "/lp-questions": "Orientation" };
 export const CTA = {
   benefice: "Commencer maintenant",
   urgence: "Accéder au guide",
   optin: "Recevoir les repères pour commencer",
 };
-// Anciens exports conservés sans changement de prix au fil du temps.
-export const FLASH_MINUTES = 0;
-export const PRIX_APRES_FLASH = 52;
-export const REDUCTION_RATTRAPAGE = 0;
-export const PRIX_RATTRAPAGE = 52;
-export const PRIX_APRES_FONDATEURS = 52;
-export const FOUNDERS_CAP = 20;
 const CLE_STRIPE = process.env.STRIPE_SECRET_KEY ?? "";
 export const isTestMode = !CLE_STRIPE;
 export const stripeEnModeTest = CLE_STRIPE.startsWith("sk_test_");

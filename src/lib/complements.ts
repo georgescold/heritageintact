@@ -1,12 +1,4 @@
-import { composants, PRODUCTS, type ProductSku } from "./config";
-import type { Reponses } from "./qualification";
-
-/** Une réduction de catalogue vérifiable, jamais une valeur fictive ou un avoir. */
-export const avantagePack = () => ({
-  separes: PRODUCTS.upsell1.price + PRODUCTS.upsell2.price,
-  ensemble: PRODUCTS.pack1.price,
-  difference: PRODUCTS.upsell1.price + PRODUCTS.upsell2.price - PRODUCTS.pack1.price,
-});
+import { composants, type ProductSku } from "./config";
 
 const SUPPORTS: [ProductSku, string][] = [
   ["front", "Guide et premières questions"],
@@ -31,8 +23,4 @@ export function motifEtape(sku: ProductSku, etape?: string): string | null {
   if (etape === "e7" && sku === "bump")
     return "Vous avez terminé l’étape de préparation du rendez-vous. Le Dossier ajoute les trames pour rassembler les pièces et conserver les réponses, avec un exemple rempli.";
   return null;
-}
-/** Proposition secondaire sur demande seulement, jamais après un échec bancaire. */
-export function alternativeAv(profil: Reponses | null, sku: ProductSku, possede: Set<ProductSku>) {
-  return sku === "pack1" && profil?.av === "O" && !possede.has("upsell2");
 }

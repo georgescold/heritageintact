@@ -780,20 +780,6 @@ export async function accesParEmail(email: string): Promise<Acces | null> {
   return db.acces.find((a) => a.email === cle) ?? null;
 }
 
-/** La visite, notée sans bloquer le rendu. Aucun appelant n'attend le résultat. */
-export async function marquerVu(jeton: string): Promise<void> {
-  if (sqlActif) {
-    const s = await pg();
-    await s`update acces set vu_le = now() where jeton = ${jeton}`;
-    return;
-  }
-  const db = await read();
-  const acces = db.acces.find((a) => a.jeton === jeton);
-  if (!acces) return;
-  acces.vuLe = new Date().toISOString();
-  await write(db);
-}
-
 /**
  * ⚠️ RÉSERVE UN ENVOI. LE MOTIF LE PLUS IMPORTANT DE CE FICHIER.
  *
@@ -922,30 +908,6 @@ export async function reouvrirAcces(email: string): Promise<Acces | null> {
   if (!acces) return null;
   acces.revoque = false;
   acces.envoyes = acces.envoyes.filter((v) => v !== "acces");
-  await write(db);
-  return acces;
-}
-
-/**
- * Change le jeton d'un membre : lien diffusé, ordinateur familial, capture
- * d'écran partagée.
- *
- * C'est UN update d'une seule ligne, et la progression n'est pas touchée
- * puisqu'elle est clée sur l'email — c'est toute la raison de ce choix de clé.
- */
-export async function regenererJeton(email: string, jeton: string): Promise<Acces | null> {
-  const adresse = normaliserEmail(email);
-  if (sqlActif) {
-    const s = await pg();
-    const [r] = await s<LigneAcces[]>`
-      update acces set jeton = ${jeton} where email = ${adresse} returning *
-    `;
-    return r ? versAcces(r) : null;
-  }
-  const db = await read();
-  const acces = db.acces.find((a) => a.email === adresse);
-  if (!acces) return null;
-  acces.jeton = jeton;
   await write(db);
   return acces;
 }

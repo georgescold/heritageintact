@@ -220,31 +220,3 @@ export function datesButoir(s: Saisie, anneeCourante: number): DateButoir[] {
     },
   ];
 }
-
-/**
- * VÉRIFICATION DU MOTEUR sur les deux cas canoniques du projet.
- *
- * Ce n'est pas de la décoration : ces deux nombres sont écrits sur la page de
- * vente, dans la VSL et dans les 9 fiches de tournage. Le jour où le moteur
- * rendrait autre chose, c'est le moteur qui aurait tort, et il faudrait le voir
- * immédiatement plutôt qu'à travers un client qui écrit au support.
- *
- * Appelée par le simulateur au premier rendu, en développement uniquement.
- */
-export function verifierMoteur(): { cas: string; attendu: number; obtenu: number; ok: boolean }[] {
-  const bareme = (base: number) => Math.round(droits(base).total * 100) / 100;
-  return [
-    {
-      cas: "Julien — 520 000 € moins 100 000 €",
-      attendu: 82_194.35,
-      obtenu: bareme(420_000),
-      ok: bareme(420_000) === 82_194.35,
-    },
-    {
-      cas: "Jean-Pierre — 500 000 € moins 100 000 €",
-      attendu: 78_194.35,
-      obtenu: bareme(400_000),
-      ok: bareme(400_000) === 78_194.35,
-    },
-  ];
-}
