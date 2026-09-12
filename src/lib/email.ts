@@ -1,7 +1,7 @@
 import { empreinte, reserverEmail, terminerEmail } from "./mail-journal";
 import { accesParEmail, getLead, promotionParEmail } from "./db";
 import { palier, appliquerRemise, RELANCE_MINUTES } from "./promotions";
-import { CONTACT_EMAIL, PRODUCTS, SITE_URL, TRUSTPILOT_INVITE_BCC, euros, urlEspace, type ProductSku } from "./config";
+import { CONSENTEMENT_MARKETING_EXIGE, CONTACT_EMAIL, PRODUCTS, SITE_URL, TRUSTPILOT_INVITE_BCC, euros, urlEspace, type ProductSku } from "./config";
 import type { Acces, Lead } from "./db";
 import { SEQUENCE, lien, type Etape } from "./sequence";
 import type { EtapeClient } from "./sequence-client";
@@ -56,7 +56,11 @@ export async function envoyer(e: Envoi): Promise<{ ok: boolean; id?: string; sim
   if (marketing) {
     if (!e.leadId) return { ok: false };
     const actuel = await getLead(e.leadId);
-    if (!actuel || actuel.desabonne || actuel.marketingConsent !== true || actuel.email !== e.to) return { ok: false };
+    // `desabonne` reste opposable en toutes circonstances : c'est la seule
+    // sortie laissée au destinataire. Seule l'exigence de consentement est
+    // débrayable, par CONSENTEMENT_MARKETING_EXIGE (config.ts).
+    if (!actuel || actuel.desabonne || actuel.email !== e.to) return { ok: false };
+    if (CONSENTEMENT_MARKETING_EXIGE && actuel.marketingConsent !== true) return { ok: false };
   }
   } catch { return {ok:false}; }
   const headers = marketing && e.leadId ? {
@@ -222,7 +226,8 @@ export async function envoyerLivraison(lead: Lead) {
    J1 à J7 — une étape de la séquence.
    ───────────────────────────────────────────────────────────── */
 export async function envoyerEtape(lead: Lead, etape: Etape) {
-  if (lead.marketingConsent !== true || lead.desabonne || await accesParEmail(lead.email)) return { ok: false };
+  if (lead.desabonne || await accesParEmail(lead.email)) return { ok: false };
+  if (CONSENTEMENT_MARKETING_EXIGE && lead.marketingConsent !== true) return { ok: false };
   const p = echapper(lead.firstName.trim()) || "";
   const offre = await promotionParEmail(lead.email,"front");
   const tarif = palier(offre);
@@ -458,7 +463,8 @@ ${tableau ? `<table style="border-collapse:collapse;width:100%;max-width:640px;"
 /** Campagne client distincte des emails d’accès. Montant indicatif recalculé au clic. */
 export async function envoyerComplement(lead: Lead, acces: Acces, sku: ProductSku, cle: string, credit: number, montant: number) {
   const actuel = await accesParEmail(acces.email);
-  if (!actuel || actuel.revoque || actuel.envoyes.includes("ltv-pause") || !lead.marketingConsent || lead.desabonne) return {ok:false};
+  if (!actuel || actuel.revoque || actuel.envoyes.includes("ltv-pause") || lead.desabonne) return {ok:false};
+  if (CONSENTEMENT_MARKETING_EXIGE && !lead.marketingConsent) return {ok:false};
   const p = echapper(acces.firstName.trim());
   const rappel = cle.endsWith("-2");
   const angles: Partial<Record<ProductSku, { sujet: string; histoire: string; resultat: string }>> = {
