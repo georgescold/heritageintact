@@ -29,6 +29,7 @@ import { PRODUCTS, type ProductSku } from "./config";
 import { nouveauJeton } from "./jeton";
 import { CHAMPS_UTM, type Utm } from "./utm";
 import { assurerSchema, sql, sqlActif } from "./sql";
+import { notifierAchat, notifierNouveauLead } from "./discord";
 
 /**
  * Une fenêtre de prix, et au plus une relance.
@@ -393,9 +394,13 @@ export async function addLead(input: {
       on conflict (email) do update set
         marketing_consent = leads.marketing_consent or excluded.marketing_consent,
         marketing_consent_at = coalesce(leads.marketing_consent_at, excluded.marketing_consent_at)
-      returning *
+      returning *, (xmax = 0) as cree
     `;
-    return versLead(r);
+    // `xmax = 0` : la ligne vient d'être insérée. Sur un conflit (réinscription),
+    // Postgres la met à jour et xmax ne vaut plus 0 — donc pas de notification.
+    const lead = versLead(r);
+    if ((r as LigneLead & { cree?: boolean }).cree) await notifierNouveauLead(lead);
+    return lead;
   }
 
   const db = await read();
@@ -420,6 +425,7 @@ export async function addLead(input: {
   };
   db.leads.push(lead);
   await write(db);
+  await notifierNouveauLead(lead);
   return lead;
 }
 
@@ -496,6 +502,12 @@ export async function markOrderPaid(
     const s = await pg();
     const [ligne] = await s<LigneOrder[]>`select * from orders where id = ${orderId}`;
     if (!ligne) return null;
+    // La bascule de statut est faite SEULE et sous condition : elle ne réussit
+    // qu'une fois, même si la confirmation navigateur et le webhook Stripe
+    // arrivent en même temps. C'est elle qui décide de la notification.
+    const [bascule] = await s<{ id: string }[]>`
+      update orders set status = 'paid' where id = ${orderId} and status <> 'paid' returning id
+    `;
     const order = appliquer(versOrder(ligne));
     await s`
       update orders set
@@ -505,14 +517,26 @@ export async function markOrderPaid(
         stripe_payment_method_id = ${order.stripePaymentMethodId ?? null}
       where id = ${orderId}
     `;
+    if (bascule) {
+      const [autres] = await s<{ n: number }[]>`
+        select count(*)::int as n from orders
+        where email = ${order.email} and id <> ${orderId} and status = 'paid'
+      `;
+      await notifierAchat({ ...order, reachat: autres.n > 0 });
+    }
     return order;
   }
 
   const db = await read();
   const order = db.orders.find((o) => o.id === orderId);
   if (!order) return null;
+  const etaitPayee = order.status === "paid";
   appliquer(order);
   await write(db);
+  if (!etaitPayee) {
+    const reachat = db.orders.some((o) => o.email === order.email && o.id !== orderId && o.status === "paid");
+    await notifierAchat({ ...order, reachat });
+  }
   return order;
 }
 
@@ -694,7 +718,15 @@ export async function addItem(
       where id = ${orderId} and not (items @> ${s.json([{ sku }])})
       returning *
     `;
-    if (maj) return versOrder(maj);
+    if (maj) {
+      // Achat en un clic ajouté à une commande déjà payée : c'est un réachat.
+      // L'ajout étant idempotent, `maj` n'existe qu'au premier ajout réel.
+      const commande = versOrder(maj);
+      if (commande.status === "paid") {
+        await notifierAchat({ ...commande, items: [item], reachat: true });
+      }
+      return commande;
+    }
     const [existant] = await s<LigneOrder[]>`select * from orders where id = ${orderId}`;
     return existant ? versOrder(existant) : null;
   }
