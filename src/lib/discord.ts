@@ -17,14 +17,18 @@ import { PRODUCTS, euros, type ProductSku } from "./config";
  */
 const URL_WEBHOOK = process.env.DISCORD_WEBHOOK_URL;
 
-async function poster(contenu: string): Promise<void> {
+async function poster(contenu: string, pingTous = false): Promise<void> {
   if (!URL_WEBHOOK) return;
   try {
     await fetch(URL_WEBHOOK, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       signal: AbortSignal.timeout(3000),
-      body: JSON.stringify({ content: contenu.slice(0, 1900), allowed_mentions: { parse: [] } }),
+      body: JSON.stringify({
+        content: contenu.slice(0, 1900),
+        // @everyone n'est autorisé que sur un achat réel, jamais sur un lead.
+        allowed_mentions: { parse: pingTous ? ["everyone"] : [] },
+      }),
     });
   } catch {
     // Silence volontaire : la notification est un confort, pas une étape du parcours.
@@ -58,11 +62,15 @@ export async function notifierAchat(achat: {
   const total = achat.items.reduce((s, i) => s + i.price, 0);
   const produits = achat.items.map((i) => `${PRODUCTS[i.sku]?.short ?? i.sku} (${euros(i.price)})`).join(" + ");
   const titre = achat.reachat ? "🔁 **Réachat**" : "💰 **Nouvel achat**";
+  const reel = achat.mode === "live";
   await poster(
     [
-      `${titre} — **${euros(total)}**${achat.mode === "test" ? " · ⚠️ TEST" : ""}`,
-      `${propre(achat.firstName)} · ${propre(achat.email)}`,
+      `${reel ? "@everyone " : ""}${titre} — **${euros(total)}**${reel ? "" : " · ⚠️ TEST"}`,
+      // Le prénom est saisi par l'acheteur : ses « @ » sont neutralisés pour
+      // qu'il ne puisse pas déclencher de mention lui-même.
+      `${propre(achat.firstName).replace(/@/g, "@​")} · ${propre(achat.email)}`,
       produits,
     ].join("\n"),
+    reel,
   );
 }
