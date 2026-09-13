@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Footer, Header, TrustRow } from "@/components/Chrome";
 import { BOUTIQUE, ORDRE_BOUTIQUE, type FicheBoutique } from "@/content/boutique";
 import { BRAND, PRESENTATION, PRODUCTS, euros } from "@/lib/config";
-import { DUREE_PREMIER_PALIER, REMISE_MAX, fenetreDisponible } from "@/lib/fenetre-guide";
+import { REMISE_MAX, fenetreDisponible } from "@/lib/fenetre-guide";
 import { guideVendable } from "@/lib/guides-vente";
 
 /**
@@ -257,8 +257,7 @@ export default function NosGuides() {
                         <>
                           {promotion && guideVendable(sku) && (
                             <p className="mb-3 border-2 border-red bg-red-bg p-3 text-[1rem] font-bold text-red">
-                              En ce moment : −{REMISE_MAX} % sur ce guide, pendant{" "}
-                              {DUREE_PREMIER_PALIER} minutes.
+                              −{REMISE_MAX} % dès l’ouverture de votre commande.
                             </p>
                           )}
                           <Link

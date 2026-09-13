@@ -84,8 +84,6 @@ export function fenetreDisponible(): boolean {
 
 /** La remise du premier palier, pour l’annoncer sans la recopier. */
 export const REMISE_MAX = PALIERS_GUIDE[0].pourcent;
-/** La durée du premier palier, en minutes. */
-export const DUREE_PREMIER_PALIER = PALIERS_GUIDE[0].finMinutes;
 
 /** La valeur à déposer dans le cookie, ou `null` si aucune clé n'est configurée. */
 export function marqueFenetre(debut = Date.now()): string | null {
