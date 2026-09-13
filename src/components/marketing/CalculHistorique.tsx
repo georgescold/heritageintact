@@ -61,9 +61,9 @@ function DelaiPaiement() {
   ];
   return (
     <Section id="delai-paiement">
-      <SectionTitle>Cette facture a une date limite : six mois</SectionTitle>
-      <p className="mb-4 text-[1.05rem]">Le jour du décès, un délai commence. Les héritiers ont six mois pour déposer la déclaration de succession et payer les droits. En euros, pas en parts de maison.</p>
-      <p className="mb-5 text-[1.05rem]">Dans l’exemple ci-dessus, l’épargne suffirait à régler la facture. Mais quand l’essentiel de ce qu’on laisse, c’est la maison, il faut trouver l’argent ailleurs : emprunter, ou vendre. Et une maison ne se vend pas toujours en six mois.</p>
+      <SectionTitle>Cette facture a une date limite : 6 mois</SectionTitle>
+      <p className="mb-4 text-[1.05rem]">Le jour du décès, un délai commence. Les héritiers ont 6 mois pour déposer la déclaration de succession et payer les droits. En euros, pas en parts de maison.</p>
+      <p className="mb-5 text-[1.05rem]">Dans l’exemple ci-dessus, l’épargne suffirait à régler la facture. Mais quand l’essentiel de ce qu’on laisse, c’est la maison, il faut trouver l’argent ailleurs : emprunter, ou vendre. Et une maison ne se vend pas toujours en 6 mois.</p>
       <div className="max-w-[38rem] overflow-hidden border-2 border-red bg-white">
         <p className="border-b border-grey-line bg-red-bg px-4 py-2 text-[0.88rem] font-bold uppercase tracking-[0.08em] text-red">Si le paiement prend du retard · Droits de {entier(droits)}</p>
         <table className="w-full text-left"><tbody>{lignes.map(([quand, quoi, montant]) => <tr key={quand} className="border-b border-grey-line-soft"><td className="px-4 py-2.5"><span className="block font-bold">{quand}</span><span className="text-[0.95rem] text-text-soft">{quoi}</span></td><td className="whitespace-nowrap px-4 py-2.5 text-right font-bold tabular-nums text-red">{montant}</td></tr>)}</tbody></table>
