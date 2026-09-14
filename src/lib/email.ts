@@ -13,8 +13,17 @@ const API = "https://api.resend.com/emails";
 const CLE = process.env.RESEND_API_KEY;
 
 /** L’acceptation fournisseur ne prouve pas le placement en boîte de réception. */
-export const EXPEDITEUR =
-  process.env.EMAIL_FROM ?? "Héritage Intact <contact@heritageintact.fr>";
+/**
+ * ⚠️ ON N'ENVOIE QUE DEPUIS LE SOUS-DOMAINE `info.heritageintact.fr` (exigence de
+ * Loys, 14/09/2026). Il isole la réputation d'envoi du domaine principal, qui
+ * porte le site et la boîte de contact. Un `EMAIL_FROM` pointant ailleurs est
+ * ignoré : on retombe sur l'adresse du sous-domaine, jamais sur le domaine nu.
+ * Les réponses, elles, arrivent toujours sur `CONTACT_EMAIL` (reply_to).
+ */
+const EXPEDITEUR_PAR_DEFAUT = "Héritage Intact <contact@info.heritageintact.fr>";
+export const EXPEDITEUR = /@info\.heritageintact\.fr>?\s*$/i.test(process.env.EMAIL_FROM ?? "")
+  ? process.env.EMAIL_FROM!
+  : EXPEDITEUR_PAR_DEFAUT;
 
 /** Lien de désinscription propre à chaque inscrit. L'identifiant suffit : il est aléatoire. */
 export const lienDesinscription = (leadId: string) => `${SITE_URL}/desinscription?id=${leadId}`;
