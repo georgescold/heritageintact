@@ -46,10 +46,11 @@ export function PopupInscription() {
           Vidéo gratuite · 5 minutes
         </p>
         <h2 id="popup-inscription-titre" className="mb-2 text-[1.4rem] leading-tight">
-          Débloquez la présentation
+          Que laisserez-vous vraiment à vos enfants ?
         </h2>
         <p className="mb-4 text-[1rem] leading-snug">
-          Indiquez votre prénom et votre email : la vidéo s’ouvre tout de suite.
+          La maison, les droits à payer, les démarches… Découvrez les 7 erreurs à éviter avant de
+          transmettre.
         </p>
         <form action={action} className="space-y-3">
           <input type="hidden" name="source" value="/lp" />
@@ -79,7 +80,10 @@ export function PopupInscription() {
               {state.error}
             </p>
           )}
-          <Button disabled={pending}>{pending ? "Un instant..." : "Débloquer la vidéo"}</Button>
+          <Button disabled={pending}>{pending ? "Un instant..." : "Voir les 7 erreurs en vidéo"}</Button>
+          <p className="text-center text-[0.9rem] font-bold leading-snug text-blue">
+            Accès gratuit à la vidéo après inscription.
+          </p>
           <p className="text-center text-[0.78rem] leading-snug text-text-soft">
             En continuant, vous acceptez les <Link href="/cgv">conditions générales</Link> et la{" "}
             <Link href="/confidentialite">politique de confidentialité</Link>.
