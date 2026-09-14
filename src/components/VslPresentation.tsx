@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { suivre } from "@/lib/parcours-client";
 
 /**
  * Courbe de type VSL : la barre avance vite au début puis ralentit
@@ -18,6 +19,13 @@ export function VslPresentation() {
   const cadreRef = useRef<HTMLDivElement>(null);
   const dernierTempsLu = useRef(0);
   const repositionnementAutorise = useRef(false);
+  // Chaque jalon de visionnage n'est enregistré qu'une fois par affichage de la page.
+  const jalonsSignales = useRef(new Set<string>());
+  const jalon = (nom: "vsl_lecture" | "vsl_25" | "vsl_50" | "vsl_75" | "vsl_100") => {
+    if (jalonsSignales.current.has(nom)) return;
+    jalonsSignales.current.add(nom);
+    suivre(nom);
+  };
   const [lecture, setLecture] = useState(false);
   const [demarree, setDemarree] = useState(false);
   const [muet, setMuet] = useState(false);
@@ -97,9 +105,11 @@ export function VslPresentation() {
           onPlay={() => {
             setLecture(true);
             setDemarree(true);
+            jalon("vsl_lecture");
           }}
           onPause={() => setLecture(false)}
           onEnded={() => {
+            jalon("vsl_100");
             setLecture(false);
             setTemps(duree);
             dernierTempsLu.current = duree;
@@ -109,6 +119,15 @@ export function VslPresentation() {
             if (!event.currentTarget.seeking) {
               dernierTempsLu.current = Math.max(dernierTempsLu.current, nouveauTemps);
               setTemps(nouveauTemps);
+              // Le saut en avant est bloqué : le temps lu le plus loin est donc du visionnage réel.
+              const total = event.currentTarget.duration;
+              if (Number.isFinite(total) && total > 0) {
+                const part = dernierTempsLu.current / total;
+                if (part >= 0.25) jalon("vsl_25");
+                if (part >= 0.5) jalon("vsl_50");
+                if (part >= 0.75) jalon("vsl_75");
+                if (part >= 0.98) jalon("vsl_100");
+              }
             }
           }}
           onSeeking={empecherLeSaut}

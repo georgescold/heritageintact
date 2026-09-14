@@ -94,6 +94,17 @@ export function RechercheClient() {
               vide="Aucun événement daté."
             />
           </Section>
+
+          <Section
+            titre="Parcours sur le site"
+            aide="Chaque étape franchie, du plus récent au plus ancien — y compris ce que son navigateur a fait avant l’inscription. Suivi en place depuis le 14/09/2026. Un changement d’appareil (téléphone puis ordinateur) n’est relié qu’une fois l’adresse email connue sur le second."
+          >
+            <Tableau
+              colonnes={["Date", "Étape", "Page", "Détail"]}
+              lignes={(r.parcours ?? []).map((e) => [dateHeure(e.date), e.etape, e.chemin, e.detail])}
+              vide="Aucune étape enregistrée pour cette adresse."
+            />
+          </Section>
         </>
       )}
     </>

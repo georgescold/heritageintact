@@ -2,11 +2,27 @@ import { NextRequest, NextResponse } from "next/server";
 import { commencerPromotion } from "@/lib/db";
 import { COOKIE_FENETRE, marqueFenetre } from "@/lib/fenetre-guide";
 import { guideVendable } from "@/lib/guides-vente";
+import { enregistrerEtape } from "@/lib/parcours";
+import { COOKIE_VISITEUR, normaliserChemin, visiteurValide } from "@/lib/parcours-etapes";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /** Le délai commercial ne commence qu'au clic vers la commande, jamais sur la page de vente. */
 export async function GET(request: NextRequest) {
+  // Le clic vers la commande, et la page d'où il part (lib/parcours.ts).
+  let depuis: string | null = null;
+  try {
+    depuis = normaliserChemin(new URL(request.headers.get("referer") ?? "").pathname);
+  } catch {}
+  const suivi = (email: string | null, detail: Record<string, string>) =>
+    enregistrerEtape({
+      etape: "clic_commande",
+      email,
+      visiteur: visiteurValide(request.cookies.get(COOKIE_VISITEUR)?.value),
+      chemin: "/commander",
+      detail: depuis ? { ...detail, depuis } : detail,
+    });
+
   /**
    * ?g=<sku> — LA PORTE D'ENTRÉE DES GUIDES VENDUS À L'UNITÉ.
    *
@@ -38,6 +54,7 @@ export async function GET(request: NextRequest) {
         });
       }
     }
+    await suivi(null, { guide });
     return versGuide;
   }
 
@@ -47,6 +64,7 @@ export async function GET(request: NextRequest) {
     const lead = JSON.parse(request.cookies.get("hi_lead")?.value ?? "{}") as { email?: string };
     email = lead.email?.trim().toLowerCase() ?? "";
   } catch {}
+  await suivi(EMAIL_RE.test(email) ? email : null, {});
 
   const response = NextResponse.redirect(destination);
   if (!EMAIL_RE.test(email)) return response;

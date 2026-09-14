@@ -75,7 +75,7 @@ export async function OffrePreparation({
         <p className="mt-3 text-sm text-text-soft">Paiement unique sur votre carte enregistrée, uniquement si vous confirmez. Garantie commerciale de 30 jours selon les CGV. Aucun abonnement.</p>
       </form>
     )}
-    <p className="mt-4 text-sm"><Link href={fin}>Non merci, continuer sans ce produit</Link></p>
+    <p className="mt-4 text-sm"><Link href={fin} data-parcours="upsell_refuse" data-parcours-detail={sku}>Non merci, continuer sans ce produit</Link></p>
   </section>;
   if (sku === "upsell1") return (
     <>
@@ -171,7 +171,7 @@ export async function OffrePreparation({
           </p>
         </details>
         <p className="mt-6">
-          <Link href={fin}>Commencer avec mon achat actuel</Link>
+          <Link href={fin} data-parcours="upsell_refuse" data-parcours-detail={sku}>Commencer avec mon achat actuel</Link>
         </p>
       </main>
       <Footer />

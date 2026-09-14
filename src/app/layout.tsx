@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { MetaPixel } from "@/components/MetaPixel";
 import { SuiviPagesMeta } from "@/components/SuiviPagesMeta";
+import { SuiviParcours } from "@/components/SuiviParcours";
 import { EphemeralStorageBanner } from "@/components/Chrome";
 import { BRAND, SITE_URL, stockageEphemere } from "@/lib/config";
 import { scriptPixelMeta } from "@/lib/meta-pixel";
@@ -42,6 +43,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {stockageEphemere && <EphemeralStorageBanner />}
         {children}
         <SuiviPagesMeta />
+        {/* Le parcours de chaque visiteur, de la pub à l'achat : voir lib/parcours.ts. */}
+        <SuiviParcours />
         {mesurePublicitaireActive && <MetaPixel />}
       </body>
     </html>

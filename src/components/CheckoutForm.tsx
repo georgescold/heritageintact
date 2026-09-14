@@ -9,6 +9,7 @@ import { CONTACT_EMAIL, PRESENTATION, PRODUCTS, SITE_URL, euros } from "@/lib/co
 import { TrustRow } from "./Chrome";
 import { Button, Panel } from "./ui";
 import { achatPixel } from "@/lib/meta-pixel";
+import { suivre } from "@/lib/parcours-client";
 
 const PK = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = PK ? loadStripe(PK) : null;
@@ -140,20 +141,29 @@ function Inner({
 
   const label = pending ? "Validation en cours..." : "Valider ma commande";
 
+  // Chaque message d'erreur affiché est aussi enregistré, avec l'étape où il
+  // tombe : c'est la seule façon de savoir où un acheteur décroche (lib/parcours.ts).
+  const echec = (phase: string, message: string) => {
+    setError(message);
+    suivre("paiement_erreur", { phase, message });
+  };
+
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
     setPending(true);
+    suivre("paiement_clic", { montant: total, bump });
 
     try {
       // Mode simulé : pas de Stripe, on crée simplement la commande.
       if (!stripe || !elements) {
         const prep = await prepareCheckout({ firstName, email, withBump: bump, consent, montantAffiche: prixFront });
         if (!prep.ok) {
-          setError(prep.error);
+          echec("commande", prep.error);
           if (prep.actualiser) router.refresh();
           return;
         }
+        suivre("paiement_reussi", { montant: total, simule: true });
         router.push(`/bienvenue?o=${prep.orderId}`);
         return;
       }
@@ -161,14 +171,14 @@ function Inner({
       // 1. Stripe valide la saisie de la carte avant tout appel serveur.
       const { error: submitError } = await elements.submit();
       if (submitError) {
-        setError(submitError.message ?? "Vérifiez les informations de votre carte.");
+        echec("carte", submitError.message ?? "Vérifiez les informations de votre carte.");
         return;
       }
 
       // 2. Le serveur crée la commande, le client Stripe et le PaymentIntent.
       const prep = await prepareCheckout({ firstName, email, withBump: bump, consent, montantAffiche: prixFront });
       if (!prep.ok) {
-        setError(prep.error);
+        echec("commande", prep.error);
         if (prep.actualiser) router.refresh();
         return;
       }
@@ -186,7 +196,7 @@ function Inner({
       });
 
       if (payError) {
-        setError(payError.message ?? "Le paiement a été refusé. Aucun montant n'a été débité.");
+        echec("banque", payError.message ?? "Le paiement a été refusé. Aucun montant n'a été débité.");
         return;
       }
 
@@ -194,14 +204,22 @@ function Inner({
       if (paymentIntent?.id) {
         const done = await confirmCheckout(prep.orderId, paymentIntent.id);
         if (!done.ok) {
-          setError(done.error ?? "Le paiement n'a pas pu être vérifié.");
+          echec("verification", done.error ?? "Le paiement n'a pas pu être vérifié.");
           return;
         }
         // L'achat est signalé ICI, sur une adresse publique : les pages qui suivent
         // portent l'identifiant de commande et n'ont pas de pixel (lib/meta-pixel.ts).
         achatPixel(done.mesure);
       }
+      suivre("paiement_reussi", { montant: total });
       router.push(`/bienvenue?o=${prep.orderId}`);
+    } catch {
+      // Une coupure réseau au milieu de la validation laissait le bouton se
+      // réactiver sans aucun message : l'acheteur ne savait pas quoi faire.
+      echec(
+        "technique",
+        "La validation n’a pas pu aboutir. Vérifiez votre connexion puis réessayez. Si vous recevez un email de confirmation, votre commande est bien enregistrée.",
+      );
     } finally {
       setPending(false);
     }

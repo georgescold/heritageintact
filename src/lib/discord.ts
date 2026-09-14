@@ -17,10 +17,10 @@ import { PRODUCTS, euros, type ProductSku } from "./config";
  */
 const URL_WEBHOOK = process.env.DISCORD_WEBHOOK_URL;
 
-async function poster(contenu: string, pingTous = false): Promise<void> {
-  if (!URL_WEBHOOK) return;
+async function poster(contenu: string, pingTous = false): Promise<boolean> {
+  if (!URL_WEBHOOK) return false;
   try {
-    await fetch(URL_WEBHOOK, {
+    const r = await fetch(URL_WEBHOOK, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       signal: AbortSignal.timeout(3000),
@@ -30,9 +30,31 @@ async function poster(contenu: string, pingTous = false): Promise<void> {
         allowed_mentions: { parse: pingTous ? ["everyone"] : [] },
       }),
     });
+    return r.ok;
   } catch {
     // Silence volontaire : la notification est un confort, pas une étape du parcours.
+    return false;
   }
+}
+
+/** Le résumé quotidien du parcours (lib/parcours.ts). Sans mention. */
+export const posterResume = (texte: string) => poster(texte);
+
+/** Un visiteur vient de voir un message d'erreur au moment de payer. */
+export async function notifierBlocagePaiement(b: {
+  prenom?: string;
+  email?: string;
+  phase: string;
+  message: string;
+  appareil: string;
+}): Promise<void> {
+  await poster(
+    [
+      `⚠️ **Blocage au paiement** — ${b.prenom ? propre(b.prenom).replace(/@/g, "@​") : "visiteur"}${b.email ? ` · ${propre(b.email)}` : " (non inscrit)"}`,
+      `Étape : ${propre(b.phase)} · ${b.appareil}`,
+      `Message affiché : « ${propre(b.message).replace(/@/g, "@​")} »`,
+    ].join("\n"),
+  );
 }
 
 const propre = (v: string | undefined) => (v ?? "").replace(/[`*_~|>]/g, "").trim() || "—";

@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { demanderDocument, type FormState } from "@/app/actions";
+import { suivre } from "@/lib/parcours-client";
 import { ChampsUtm } from "./ChampsUtm";
 import { Button } from "./ui";
 
@@ -38,6 +39,9 @@ export function CaptureDocument({
     undefined,
   );
   const pathname = usePathname();
+  useEffect(() => {
+    if (state?.error) suivre("inscription_erreur", { message: state.error });
+  }, [state]);
 
   return (
     <aside className="my-8 border-2 border-blue bg-white p-4 sm:p-6">

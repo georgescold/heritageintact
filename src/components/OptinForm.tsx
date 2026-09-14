@@ -2,13 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { optin, type FormState } from "@/app/actions";
+import { suivre } from "@/lib/parcours-client";
 import { ChampsUtm } from "./ChampsUtm";
 import { Button } from "./ui";
 
 export function OptinForm({ cta = "Accéder à la présentation" }: { cta?: string }) {
   const [state, action, pending] = useActionState<FormState, FormData>(optin, undefined);
+  // Un message d'erreur affiché, c'est un inscrit qui peut partir : on le mesure.
+  useEffect(() => {
+    if (state?.error) suivre("inscription_erreur", { message: state.error });
+  }, [state]);
   const pathname = usePathname();
 
   return (

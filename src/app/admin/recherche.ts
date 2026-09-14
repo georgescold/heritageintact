@@ -3,6 +3,7 @@
 import { commandeReelle, fiche, recettes, type EvenementFiche } from "@/lib/admin/agregats";
 import { chargerAdmin } from "@/lib/admin/donnees";
 import { adminConfigure, sessionAdminOuverte } from "@/lib/admin/session";
+import { parcoursDe, type EtapeFiche } from "@/lib/parcours";
 
 export type ResultatFiche = {
   erreur?: string;
@@ -20,6 +21,8 @@ export type ResultatFiche = {
   envoyes?: string[];
   profil?: [string, string][];
   evenements?: EvenementFiche[];
+  /** Chaque étape franchie sur le site, y compris avant l'inscription (lib/parcours.ts). */
+  parcours?: EtapeFiche[];
 };
 
 /**
@@ -55,7 +58,8 @@ export async function chercherClient(
   const profil = d.tous.profils.find((p) => memeAdresse(p.email));
   const commandes = d.tous.commandes.filter((c) => memeAdresse(c.email));
 
-  if (!lead && !acces && !commandes.length) return { email, trouve: false };
+  const parcours = await parcoursDe(email);
+  if (!lead && !acces && !commandes.length && !parcours.length) return { email, trouve: false };
 
   const r = recettes(commandes);
   return {
@@ -79,5 +83,6 @@ export async function chercherClient(
       : undefined,
     // `fiche` n'émet jamais le jeton d'accès : voir son commentaire.
     evenements: fiche(email, d.tous),
+    parcours,
   };
 }

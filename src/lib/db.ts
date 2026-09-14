@@ -30,6 +30,7 @@ import { nouveauJeton } from "./jeton";
 import { CHAMPS_UTM, type Utm } from "./utm";
 import { assurerSchema, sql, sqlActif } from "./sql";
 import { notifierAchat, notifierNouveauLead } from "./discord";
+import { enregistrerEtape } from "./parcours";
 
 /**
  * Une fenêtre de prix, et au plus une relance.
@@ -399,7 +400,9 @@ export async function addLead(input: {
     // `xmax = 0` : la ligne vient d'être insérée. Sur un conflit (réinscription),
     // Postgres la met à jour et xmax ne vaut plus 0 — donc pas de notification.
     const lead = versLead(r);
-    if ((r as LigneLead & { cree?: boolean }).cree) await notifierNouveauLead(lead);
+    const cree = Boolean((r as LigneLead & { cree?: boolean }).cree);
+    if (cree) await notifierNouveauLead(lead);
+    await enregistrerEtape({ etape: "inscription", email: lead.email, chemin: lead.source ?? null, detail: { nouveau: cree } });
     return lead;
   }
 
@@ -471,7 +474,13 @@ export async function createOrder(input: {
               ${base.mode}, ${base.consentImmediateAccess}, ${base.status})
       returning *
     `;
-    return versOrder(r);
+    const commande = versOrder(r);
+    await enregistrerEtape({
+      etape: "commande_creee",
+      email: commande.email,
+      detail: { commande: commande.id, montant: orderTotal(commande), bump: input.withBump, mode: commande.mode },
+    });
+    return commande;
   }
 
   const db = await read();
@@ -523,6 +532,11 @@ export async function markOrderPaid(
         where email = ${order.email} and id <> ${orderId} and status = 'paid'
       `;
       await notifierAchat({ ...order, reachat: autres.n > 0 });
+      await enregistrerEtape({
+        etape: "achat",
+        email: order.email,
+        detail: { commande: order.id, montant: orderTotal(order), reachat: autres.n > 0, mode: order.mode },
+      });
     }
     return order;
   }
@@ -724,6 +738,11 @@ export async function addItem(
       const commande = versOrder(maj);
       if (commande.status === "paid") {
         await notifierAchat({ ...commande, items: [item], reachat: true });
+        await enregistrerEtape({
+          etape: "upsell_accepte",
+          email: commande.email,
+          detail: { commande: commande.id, produit: item.sku, montant: item.price },
+        });
       }
       return commande;
     }
