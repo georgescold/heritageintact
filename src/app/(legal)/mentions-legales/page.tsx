@@ -18,7 +18,7 @@ export default function MentionsLegales() {
       {/* ⚠️ PROVISOIRE (14/09/2026, demande de Loys) : identité de l'éditeur retirée
           — nom, forme juridique, SIRET, SIREN, immatriculation, siège, directeur de
           la publication. Les valeurs restent dans LEGAL (lib/config.ts) : à remettre
-          ici dès que Loys le demande. Les CGV et la confidentialité les affichent encore. */}
+          ici dès que Loys le demande (retirées aussi des CGV et de la confidentialité). */}
       <p>
         Le site {SITE_URL.replace(/^https?:\/\//, "")} est exploité sous le nom commercial « {BRAND} ».
       </p>

@@ -12,8 +12,9 @@ export default function CGV() {
 
       <h2>1. Objet</h2>
       <p>
-        Les présentes conditions régissent la vente, par {LEGAL.operatorName} ({LEGAL.legalForm},
-        SIRET {LEGAL.siret}), sous le nom commercial « {BRAND} », de contenus numériques
+        {/* ⚠️ PROVISOIRE (14/09/2026, demande de Loys) : identité de l'éditeur retirée
+            (nom, forme juridique, SIRET). Valeurs conservées dans LEGAL (lib/config.ts). */}
+        Les présentes conditions régissent la vente, sous le nom commercial « {BRAND} », de contenus numériques
         pédagogiques accessibles en ligne : parcours écrits, guides PDF, documents et
         outils de calcul.
       </p>

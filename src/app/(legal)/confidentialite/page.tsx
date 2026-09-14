@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BRAND, CONTACT_EMAIL, LEGAL } from "@/lib/config";
+import { BRAND, CONTACT_EMAIL } from "@/lib/config";
 import { metadataPublique } from "@/lib/seo";
 
 export const metadata: Metadata = metadataPublique(
@@ -13,8 +13,9 @@ export default function Confidentialite() {
     <>
       <h1>Politique de confidentialité</h1>
       <p>
-        Responsable du traitement : {LEGAL.operatorName} ({LEGAL.legalForm}, SIRET {LEGAL.siret}),
-        exerçant sous le nom commercial « {BRAND} », {LEGAL.address}. Contact : {CONTACT_EMAIL}.
+        {/* ⚠️ PROVISOIRE (14/09/2026, demande de Loys) : identité du responsable retirée
+            (nom, forme juridique, SIRET, adresse). Valeurs conservées dans LEGAL (lib/config.ts). */}
+        Responsable du traitement : « {BRAND} ». Contact : {CONTACT_EMAIL}.
       </p>
 
       <h2>Données collectées</h2>
