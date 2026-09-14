@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { after } from "next/server";
 import { COOKIE_UTM, lireUtm, utmPresent, type Utm } from "@/lib/utm";
 import {
   accesParEmail,
@@ -76,12 +77,17 @@ export async function optin(_prev: FormState, formData: FormData): Promise<FormS
     return { error: "Cochez la case pour accepter les conditions générales avant de continuer." };
   }
   const lead = await addLead({ email, firstName, source, utm: await origine(formData), marketingConsent });
-  // L'email de livraison part tout de suite. On l'attend : sans ça, la fonction
-  // se termine avec la redirection et l'envoi peut être coupé net sur Vercel.
-  // Il ne lève jamais, un incident chez Resend ne doit pas bloquer l'inscription.
-  const envoi = await envoyerLivraison(lead);
-  if (envoi.ok) await marquerEnvoye(lead.id, "j0");
-  await demarrerSequence(lead);
+  // Next prolonge la fonction après la réponse : les emails restent attendus
+  // par le serveur, mais leur latence ne bloque plus l'accès à la méthode.
+  after(async () => {
+    try {
+      const envoi = await envoyerLivraison(lead);
+      if (envoi.ok) await marquerEnvoye(lead.id, "j0");
+    } catch {
+      console.error("[optin] livraison différée non confirmée");
+    }
+    await demarrerSequence(lead);
+  });
 
   const jar = await cookies();
   jar.set("hi_lead", JSON.stringify({ email: lead.email, firstName: lead.firstName }), {
@@ -161,10 +167,15 @@ export async function demanderDocument(
     // que la base reflète la réalité : ces inscrits reçoivent bien la séquence.
     marketingConsent: true,
   });
-  // Attendu, jamais lancé en arrière-plan : la redirection termine la fonction
-  // et couperait l'envoi net sur Vercel. `envoyer` ne lève jamais.
-  await envoyerGrilleDroits(lead);
-  await demarrerSequence(lead);
+  // Travail conservé par Next après la redirection, sans bloquer le document.
+  after(async () => {
+    try {
+      await envoyerGrilleDroits(lead);
+    } catch {
+      console.error("[document] livraison différée non confirmée");
+    }
+    await demarrerSequence(lead);
+  });
 
   const jar = await cookies();
   jar.set("hi_lead", JSON.stringify({ email: lead.email, firstName: lead.firstName }), {
