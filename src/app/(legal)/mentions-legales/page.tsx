@@ -15,16 +15,14 @@ export default function MentionsLegales() {
       <p>Dernière mise à jour : {LEGAL.updatedAt}</p>
 
       <h2>Éditeur du site</h2>
+      {/* ⚠️ PROVISOIRE (14/09/2026, demande de Loys) : identité de l'éditeur retirée
+          — nom, forme juridique, SIRET, SIREN, immatriculation, siège, directeur de
+          la publication. Les valeurs restent dans LEGAL (lib/config.ts) : à remettre
+          ici dès que Loys le demande. Les CGV et la confidentialité les affichent encore. */}
       <p>
-        Le site {SITE_URL.replace(/^https?:\/\//, "")} est édité par {LEGAL.operatorName},{" "}
-        {LEGAL.legalForm}, exerçant sous le nom commercial « {BRAND} ».
+        Le site {SITE_URL.replace(/^https?:\/\//, "")} est exploité sous le nom commercial « {BRAND} ».
       </p>
       <ul>
-        <li>SIRET : {LEGAL.siret}</li>
-        <li>SIREN : {LEGAL.siren}</li>
-        <li>{LEGAL.registration}</li>
-        <li>Siège : {LEGAL.address}</li>
-        <li>Directeur de la publication : {LEGAL.operatorName}</li>
         <li>Contact : {CONTACT_EMAIL}</li>
         <li>{LEGAL.vatNotice}</li>
       </ul>
