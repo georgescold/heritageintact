@@ -41,6 +41,14 @@ export default function Confidentialite() {
           familiales ni vos liens privés.
         </li>
         <li>
+          PostHog (mesure d’audience, hébergement en Europe) : sur les pages publiques du site, les
+          pages consultées, les clics, la progression sur la page et un enregistrement de la
+          navigation (mouvements, défilement) afin de comprendre où la lecture ou la commande
+          s’interrompt. Les champs de saisie sont masqués dans ces enregistrements, les données de
+          carte bancaire restent chez Stripe, et PostHog n’est jamais actif dans votre espace
+          client, sur les pages qui suivent un paiement ni sur le lien de désinscription.
+        </li>
+        <li>
           Lorsque la mesure publicitaire est activée et que vous l&apos;autorisez : achats confirmés,
           montant, date, identifiant technique d&apos;événement et empreinte de votre adresse email
           transmis à Meta pour mesurer et améliorer les publicités. L&apos;empreinte peut être
@@ -69,7 +77,7 @@ export default function Confidentialite() {
       <p>Le produit de base est commun à tous et accessible sans remplir ce questionnaire. Les informations du plan ne sont demandées que si vous choisissez de lancer la simulation, afin de préparer l’aperçu et de présenter le produit correspondant. L’accès déjà acquis et l’assistance restent disponibles en cas de difficulté. Ces réponses ne valent pas consentement aux emails commerciaux ni à la publicité.</p>
       <p>Les avantages de démarrage utilisent une date enregistrée avec l’adresse email et la gamme d’offre. Le cookie de fonctionnement « hi_offre » conserve pendant 30 jours une clé aléatoire permettant de retrouver le palier de prix, sans contenir l’adresse email. Il ne sert pas à vous suivre sur des sites tiers. Une nouvelle visite ne relance pas une offre expirée. Voir les <a href="/conditions-offres">conditions des offres</a>.</p>
       <p>Un journal technique conserve des identifiants et états d’envoi, des empreintes et les réponses de rejet ou plainte nécessaires pour limiter les doublons et cesser les envois vers les adresses concernées. Il ne contient ni vos réponses familiales ni le corps des emails. Les empreintes sont des données pseudonymisées, pas une anonymisation.</p>
-      <p>Des compteurs internes peuvent mesurer des vues et clics agrégés, sans identifiant visiteur ni réponses au questionnaire. Ils ne constituent pas un suivi individuel.</p>
+      <p>Un suivi interne du parcours enregistre, sur nos serveurs, les étapes franchies sur le site (pages vues, lecture de la vidéo, clics vers la commande, messages d’erreur affichés, commandes) avec un identifiant aléatoire de navigateur, conservé 1 an dans le cookie « hi_v », et, une fois inscrit, votre adresse email. Il sert à comprendre où le parcours s’interrompt et à corriger les blocages. Il ne contient ni données de carte, ni adresse IP, ni vos liens privés, ni vos réponses au questionnaire.</p>
       <h2>Finalités et bases légales</h2>
       <ul>
         <li>Fourniture des contenus commandés : exécution du contrat.</li>
@@ -98,7 +106,8 @@ export default function Confidentialite() {
       <h2>Destinataires et sous-traitants</h2>
       <p>
         Vercel (hébergement), Stripe (paiement), Resend (emails), Supabase (base de données), Vimeo
-        (vidéos), Trustpilot (invitation à déposer un avis après achat), Meta (publicité).
+        (vidéos), Trustpilot (invitation à déposer un avis après achat), Meta (publicité), PostHog
+        (mesure d’audience, Europe).
       </p>
 
       <h2>Vos droits</h2>

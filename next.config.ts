@@ -130,9 +130,18 @@ const nextConfig: NextConfig = {
    * récupération. C'est déroutant dix secondes pour nous, et c'est un client
    * sauvé.
    */
+  /**
+   * PostHog passe par notre propre domaine (`/ingest`) : les bloqueurs de
+   * publicité coupent les appels directs vers posthog.com, et l'on perdrait une
+   * partie des sessions. Projet hébergé en Europe (eu.i.posthog.com).
+   */
+  skipTrailingSlashRedirect: true,
   async rewrites() {
     return {
-      beforeFiles: [],
+      beforeFiles: [
+        { source: "/ingest/static/:path*", destination: "https://eu-assets.i.posthog.com/static/:path*" },
+        { source: "/ingest/:path*", destination: "https://eu.i.posthog.com/:path*" },
+      ],
       afterFiles: [],
       fallback: [{ source: "/espace/:chemin*", destination: "/espace" }],
     };
