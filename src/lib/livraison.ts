@@ -9,7 +9,7 @@ import {
   type Acces,
   type Order,
 } from "./db";
-import { envoyerAcces, envoyerEtapeClient, envoyerRecuAchat } from "./email";
+import { annulerPremiereEtapeProgrammee, envoyerAcces, envoyerEtapeClient, envoyerRecuAchat } from "./email";
 import { SEQUENCE_CLIENT } from "./sequence-client";
 import { momentPremiereEtape } from "./sequence";
 
@@ -95,6 +95,10 @@ export async function livrer(order: Order): Promise<Acces | null> {
     // partir dans l'autre appelant. On rend quand même l'accès — l'appelant en
     // a besoin pour afficher le lien.
     if (!gagne) return acces;
+
+    // Un acheteur ne reçoit plus l'email de vente programmé à son inscription
+    // (voir `annulerPremiereEtapeProgrammee`).
+    await annulerPremiereEtapeProgrammee(gagne.email);
 
     const r = await envoyerAcces(gagne);
     if (!r.ok) await libererEnvoi(gagne.email, CLE_ACCES);

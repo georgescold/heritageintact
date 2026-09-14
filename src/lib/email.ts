@@ -1,5 +1,5 @@
-import { empreinte, reserverEmail, terminerEmail } from "./mail-journal";
-import { accesParEmail, getLead, promotionParEmail } from "./db";
+import { empreinte, fournisseurDe, marquerAnnule, reserverEmail, terminerEmail } from "./mail-journal";
+import { accesParEmail, getLead, leadParEmail, promotionParEmail } from "./db";
 import { palier, appliquerRemise, RELANCE_MINUTES } from "./promotions";
 import { CONTACT_EMAIL, PRODUCTS, SITE_URL, TRUSTPILOT_INVITE_BCC, euros, urlEspace, type ProductSku } from "./config";
 import type { Acces, Lead } from "./db";
@@ -253,14 +253,16 @@ export async function envoyerEtape(lead: Lead, etape: Etape, quand?: Date) {
   const relanceOfferte = (etape.cle === "j6" || etape.cle === "j7") && !offre?.relanceLe && !tarif.pourcent;
   const prixRelance = appliquerRemise(PRODUCTS.front.price, 50);
   const bouton = relanceOfferte
-    ? { texte: "Ouvrir mes "+RELANCE_MINUTES+" minutes · "+euros(prixRelance), lien: lien("/derniere-chance?id="+encodeURIComponent(lead.id)) }
-    : { texte: "Commencer les 7 erreurs maintenant · "+euros(prix), lien: offre ? lien("/reprendre/"+offre.id+(etape.bouton.chemin==="/commander"?"?destination=commande":"")) : lien(etape.bouton.chemin) };
+    // ⚠️ JAMAIS DE PRIX SUR LE BOUTON D'UN EMAIL (règle de Loys, 14/09/2026) :
+    // le montant est dans le corps, le bouton ne porte que l'action.
+    ? { texte: "Ouvrir mes "+RELANCE_MINUTES+" minutes", lien: lien("/derniere-chance?id="+encodeURIComponent(lead.id)) }
+    : { texte: "Commencer les 7 erreurs maintenant", lien: offre ? lien("/reprendre/"+offre.id+(etape.bouton.chemin==="/commander"?"?destination=commande":"")) : lien(etape.bouton.chemin) };
   const paragraphes = etape.corps(p);
   if (relanceOfferte) {
-    paragraphes.push("Vous n’avez pas encore ouvert votre accès, et votre fenêtre de démarrage est passée. En voici une dernière. Au moment où vous cliquerez sur le bouton ci-dessous, vous aurez <strong>"+RELANCE_MINUTES+" minutes</strong> pour obtenir les 7 erreurs à "+euros(prixRelance)+" au lieu de "+euros(PRODUCTS.front.price)+". Une seule fois, et jamais une deuxième : cette fenêtre ne se rouvrira pas, sur aucun appareil.");
+    paragraphes.push("Vous n’avez pas encore ouvert votre accès, et votre fenêtre de démarrage est passée. En voici une dernière. Au moment où vous cliquerez sur le bouton ci-dessous, vous aurez <strong>"+RELANCE_MINUTES+" minutes</strong> pour obtenir les 7 erreurs à "+euros(prixRelance)+" au lieu de "+euros(PRODUCTS.front.price)+". Une seule fois, et jamais une 2e : cette fenêtre ne se rouvrira pas, sur aucun appareil.");
     paragraphes.push("Le récapitulatif affiche le montant à jour avant tout paiement, et rien n’est débité sur ce clic. Paiement unique, sans abonnement, garantie commerciale de 30 jours selon les CGV.");
     // Le regret en dernier : c'est la phrase qui doit rester sous les yeux au moment du clic.
-    paragraphes.push("Ne cliquez pas « pour voir plus tard ». Dans six mois, ce ne sont pas ces "+euros(prixRelance)+" que vous regretterez. Ce sera d’avoir laissé vos enfants découvrir seuls un dossier que vous étiez le seul à pouvoir leur expliquer.");
+    paragraphes.push("Ne cliquez pas « pour voir plus tard ». Dans 6 mois, ce ne sont pas ces "+euros(prixRelance)+" que vous regretterez. Ce sera d’avoir laissé vos enfants découvrir seuls un dossier que vous étiez le seul à pouvoir leur expliquer.");
   } else paragraphes.push(tarif.pourcent && tarif.fin
     ? "Votre avantage au moment de cet envoi : −"+tarif.pourcent+"% sur le prix catalogue de "+euros(PRODUCTS.front.price)+", soit "+euros(prix)+". Ce palier prend fin le "+new Date(tarif.fin).toLocaleString("fr-FR",{timeZone:"Europe/Paris",day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"})+" (Paris). Le lien conserve votre date de départ ; le récapitulatif affichera le montant à jour avant tout paiement."
     : "Votre accès au guide complet : "+euros(PRODUCTS.front.price)+", en paiement unique, sans abonnement. Garantie commerciale de 30 jours selon les CGV. Cliquez pour ouvrir votre première fiche aujourd’hui.");
@@ -283,6 +285,47 @@ export async function envoyerEtape(lead: Lead, etape: Etape, quand?: Date) {
     text: versionTexte(contenu),
     quand,
   });
+}
+
+/**
+ * ⚠️ L'ACHETEUR NE DOIT PAS RECEVOIR LE J1 PROGRAMMÉ À SON INSCRIPTION.
+ *
+ * Le J1 est remis à Resend dès l'inscription, avec une délivrance différée
+ * (`momentPremiereEtape`). Quelqu'un qui achète dans la foulée recevait donc,
+ * le lendemain à 9 h, un email de VENTE du guide qu'il venait de payer — et
+ * collé à son premier email client c1, programmé à la même heure (constaté par
+ * Loys le 14/09/2026). Au paiement, on annule donc cette délivrance.
+ *
+ * ⚠️ L'annulation exige une clé Resend qui en a le droit : la clé d'envoi
+ * (« send only ») est refusée. `RESEND_ADMIN_KEY` est lue en priorité, sinon
+ * `RESEND_API_KEY`. Un refus est journalisé, jamais bloquant.
+ */
+export async function annulerPremiereEtapeProgrammee(email: string): Promise<void> {
+  const cleApi = process.env.RESEND_ADMIN_KEY || CLE;
+  if (!cleApi) return;
+  try {
+    const lead = await leadParEmail(email);
+    const premiere = SEQUENCE[0];
+    if (!lead || !premiere) return;
+    // Le J1 part au plus tard le lendemain à 9 h : au-delà de 24 h, il est déjà délivré.
+    if (Date.now() - new Date(lead.createdAt).getTime() > 24 * 3_600_000) return;
+    const cle = empreinte(`prospect-v3/${lead.id}/${premiere.cle}`);
+    const id = await fournisseurDe(cle);
+    if (!id) return;
+    const r = await fetch(`${API}/${encodeURIComponent(id)}/cancel`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${cleApi}` },
+      signal: AbortSignal.timeout(8000),
+    });
+    if (r.ok) {
+      await marquerAnnule(cle);
+      console.info("[email] J1 programmé annulé après achat");
+    } else {
+      console.error("[email] annulation du J1 programmé refusée", { status: r.status });
+    }
+  } catch {
+    console.error("[email] annulation du J1 programmé non confirmée");
+  }
 }
 
 /**
@@ -495,7 +538,7 @@ export async function envoyerComplement(lead: Lead, acces: Acces, sku: ProductSk
       "La page de confirmation affiche le montant à jour avant tout paiement. Cliquer dans cet email ne déclenche aucun débit.",
       "Vous n’avez pas besoin de devenir spécialiste ni de tout décider maintenant. Les guides PDF donnent le mode d’emploi, un exemple et les étapes. La garantie commerciale de 30 jours permet de découvrir cette préparation selon les CGV. Ouvrez votre proposition et choisissez votre prochaine avancée ; le guide de base reste autonome.",
     ],
-    bouton: {texte:"Préparer la suite · "+euros(montant),lien:urlEspace(acces.jeton)+"/ajouter/"+sku},
+    bouton: {texte:"Préparer la suite",lien:urlEspace(acces.jeton)+"/ajouter/"+sku},
     pied:"prospect",leadId:lead.id,
   };
   return envoyer({to:lead.email,leadId:lead.id,cle:`client-v3/${acces.jeton}/${cle}`,subject:contenu.titre,html:gabarit(contenu),text:versionTexte(contenu)});
@@ -519,13 +562,13 @@ export async function envoyerGrilleDroits(lead: Lead): Promise<{ ok: boolean }> 
     titre: "Votre grille est prête",
     paragraphes: [
       `Bonjour ${p},`,
-      "Voici ce que vous avez demandé : <strong>le chiffre que personne ne vous a donné</strong> — combien vos enfants paieront sur ce que vous leur laisserez. Vous trouverez votre ligne en dix secondes, selon votre patrimoine et leur nombre.",
+      "Voici ce que vous avez demandé : <strong>le chiffre que personne ne vous a donné</strong> — combien vos enfants paieront sur ce que vous leur laisserez. Vous trouverez votre ligne en 10 secondes, selon votre patrimoine et leur nombre.",
       "Si ce dossier vous accompagne depuis des années sans jamais aboutir, ce n’est pas de la négligence. C’est qu’il vous manquait un chiffre. Tant qu’on n’a pas de chiffre, il n’y a rien à décider — seulement une inquiétude qu’on repousse.",
       "Et si personne ne vous l’a donné, il y a une raison simple : personne n’est payé pour vous prévenir. L’État encaisse au décès, votre banque est rémunérée sur les frais du contrat, votre notaire est payé à l’acte — et l’acte arrive au moment de la succession. Ils ne sont pas malhonnêtes. Ils ne sont pas payés pour ça.",
-      "Un point vous surprendra sans doute : à 300 000 € avec trois enfants, l’État ne prend rien. Avec un seul enfant, sur le même patrimoine, il prend 38 194 €. Le nombre d’enfants pèse aussi lourd que le montant.",
+      "Un point vous surprendra sans doute : à 300 000 € avec 3 enfants, l’État ne prend rien. Avec un seul enfant, sur le même patrimoine, il prend 38 194 €. Le nombre d’enfants pèse aussi lourd que le montant.",
     ],
     bouton: { texte: "Voir mon chiffre", lien: url },
-    ps: `Le lien en toutes lettres, si le bouton ne fonctionne pas&nbsp;:<br><strong>${url}</strong><br><br>Cette adresse ne figure ni dans le menu du site, ni dans les résultats de recherche&nbsp;: elle n’a été envoyée qu’à vous. Gardez cet email, ou imprimez la page — un bouton est prévu en haut du document.<br><br><strong>P.-S.</strong> Gardez un chiffre en tête en la lisant&nbsp;: <strong>six mois</strong>. C’est le délai dont vos enfants disposeront pour payer ces droits, en euros, pas en parts de maison. Tout ce qui peut réduire cette facture se décide de votre vivant.`,
+    ps: `Le lien en toutes lettres, si le bouton ne fonctionne pas&nbsp;:<br><strong>${url}</strong><br><br>Cette adresse ne figure ni dans le menu du site, ni dans les résultats de recherche&nbsp;: elle n’a été envoyée qu’à vous. Gardez cet email, ou imprimez la page — un bouton est prévu en haut du document.<br><br><strong>P.-S.</strong> Gardez un chiffre en tête en la lisant&nbsp;: <strong>6 mois</strong>. C’est le délai dont vos enfants disposeront pour payer ces droits, en euros, pas en parts de maison. Tout ce qui peut réduire cette facture se décide de votre vivant.`,
     pied: "prospect",
     leadId: lead.id,
   };

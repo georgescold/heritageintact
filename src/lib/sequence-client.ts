@@ -32,8 +32,8 @@ export const SEQUENCE_CLIENT: EtapeClient[] = [
     corps: (p) => [
       `Bonjour ${p},`,
       "Vous venez de faire quelque chose que vous repoussiez peut-être depuis des années. Ce n’est pas rien, et ça n’a rien à voir avec un manque de volonté : ce dossier mélange l’argent, la famille et sa propre disparition. Peu de gens s’y mettent de bon cœur.",
-      "Il va maintenant se passer une chose très prévisible. Vous allez vous dire : « je regarderai ça tranquillement ce week-end. » Et le week-end, il y aura les petits-enfants, une course à faire, un rendez-vous. C’est exactement comme ça que dix ans passent.",
-      "Alors faisons l’inverse, tout de suite. <strong>Dix minutes, un seul document, le premier.</strong> Vous n’avez rien à décider, rien à signer, rien à calculer ce soir.",
+      "Il va maintenant se passer une chose très prévisible. Vous allez vous dire : « je regarderai ça tranquillement ce week-end. » Et le week-end, il y aura les petits-enfants, une course à faire, un rendez-vous. C’est exactement comme ça que 10 ans passent.",
+      "Alors faisons l’inverse, tout de suite. <strong>10 minutes, un seul document, le premier.</strong> Vous n’avez rien à décider, rien à signer, rien à calculer ce soir.",
       "Et si un mot vous arrête, c’est normal : le vocabulaire de la succession a été écrit pour les professionnels, pas pour ceux qui transmettent. Chaque terme est expliqué là où il apparaît. Vous n’avez pas à devenir expert, ni à tout retenir.",
       "Parce que ce que vous cherchez, au fond, ce n’est pas de comprendre la fiscalité. C’est de pouvoir dire, au prochain repas de famille : « je m’en suis occupé. Voilà ce qui est réglé, et voilà ce qu’il reste à faire vérifier. »",
       "Ce soir, un seul document. Le reste suivra tout seul.",
@@ -44,7 +44,7 @@ export const SEQUENCE_CLIENT: EtapeClient[] = [
   {
     cle: "c2",
     jour: 3,
-    objet: () => "Dix minutes pour poser votre première question",
+    objet: () => "10 minutes pour poser votre première question",
     corps: (p) => [
       `Bonjour ${p},`,
       "Si vous ne savez pas par où commencer, prenez simplement une feuille. Notez votre objectif, ce que vous savez déjà et une information manquante.",
@@ -61,7 +61,7 @@ export const SEQUENCE_CLIENT: EtapeClient[] = [
       `Bonjour ${p},`,
       "Tous vos documents sont regroupés dans « Mon dossier ». Retrouvez le produit concerné, puis son bouton de téléchargement. Si votre produit comporte des fiches, vous pouvez aussi les remplir en ligne et les enregistrer.",
       "Inutile de tout imprimer ou de tout finir cette semaine. Une question claire à faire valider vaut mieux qu’un dossier rempli à la hâte.",
-      "Votre avis nous aide à améliorer les guides : dans votre espace, l’onglet « Mon avis » vous prend deux minutes. Vous pouvez aussi publier un avis public sur Trustpilot.",
+      "Votre avis nous aide à améliorer les guides : dans votre espace, l’onglet « Mon avis » vous prend 2 minutes. Vous pouvez aussi publier un avis public sur Trustpilot.",
       "Pour un problème d’accès ou une explication du parcours, répondez à cet email. Pour une décision juridique ou fiscale, adressez-vous au professionnel qui connaît votre situation.",
     ],
     bouton: { texte: "Retrouver mes documents", chemin: (j) => `/espace/${j}?vue=dossier` },

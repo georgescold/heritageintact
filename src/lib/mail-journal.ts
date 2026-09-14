@@ -48,6 +48,17 @@ export async function terminerEmail(cle: string, etat: "accepte" | "reessayer" |
     accepte_le=case when ${etat}='accepte' then now() else accepte_le end,
     bail=now() + interval '5 minutes' where cle=${cle}`;
 }
+/** L'identifiant Resend d'un email accepté, pour pouvoir annuler sa délivrance programmée. */
+export async function fournisseurDe(cle: string): Promise<string | null> {
+  await schema();
+  const [r] = await sql()<{ provider_id: string | null }[]>`
+    select provider_id from email_dispatch where cle = ${cle} and etat = 'accepte'`;
+  return r?.provider_id ?? null;
+}
+export async function marquerAnnule(cle: string) {
+  await schema();
+  await sql()`update email_dispatch set etat = 'annule' where cle = ${cle}`;
+}
 export async function supprimerDestinataire(email: string, raison: string) {
   await schema();
   await sql()`insert into email_suppressions (destinataire,raison) values (${empreinte(email.trim().toLowerCase())},${raison})

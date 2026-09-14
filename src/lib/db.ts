@@ -558,6 +558,18 @@ export async function markOrderPaid(
    La séquence email
    ───────────────────────────────────────────────────────────── */
 
+/** Le lead d'une adresse, s'il existe. */
+export async function leadParEmail(email: string): Promise<Lead | null> {
+  const adresse = email.trim().toLowerCase();
+  if (sqlActif) {
+    const s = await pg();
+    const [r] = await s<LigneLead[]>`select * from leads where email = ${adresse}`;
+    return r ? versLead(r) : null;
+  }
+  const db = await read();
+  return db.leads.find((l) => l.email === adresse) ?? null;
+}
+
 export async function getLead(id: string): Promise<Lead | null> {
   if (sqlActif) {
     const s = await pg();
