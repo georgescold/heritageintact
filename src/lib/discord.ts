@@ -65,11 +65,20 @@ export async function notifierNouveauLead(lead: {
   source?: string;
   utm?: { utm_source?: string; utm_campaign?: string; utm_content?: string };
 }): Promise<void> {
-  const pub = lead.utm?.utm_campaign || lead.utm?.utm_source;
+  // Les paramètres d'URL de Meta portent des IDENTIFIANTS du gestionnaire de
+  // publicités (campagne, annonce) : ils ne correspondent pas aux « ID de
+  // bibliothèque » de la Bibliothèque publicitaire. On les nomme donc clairement.
+  const u = lead.utm;
+  const origine = [
+    u?.utm_source && `Réseau : ${propre(u.utm_source)}`,
+    u?.utm_campaign && `Campagne : ${propre(u.utm_campaign)}`,
+    u?.utm_content && `Annonce : ${propre(u.utm_content)}`,
+  ].filter(Boolean);
   await poster(
     [
-      `🟢 **Nouveau lead** — ${propre(lead.firstName)} · ${propre(lead.email)}`,
-      `Page : ${propre(lead.source)}${pub ? ` · Pub : ${propre(pub)}${lead.utm?.utm_content ? ` / ${propre(lead.utm.utm_content)}` : ""}` : ""}`,
+      `🟢 **Nouveau lead** — ${propre(lead.firstName).replace(/@/g, "@​")} · ${propre(lead.email)}`,
+      `Page : ${propre(lead.source)}`,
+      ...(origine.length ? [origine.join(" · ")] : []),
     ].join("\n"),
   );
 }
