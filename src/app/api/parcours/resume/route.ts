@@ -1,17 +1,19 @@
 import { timingSafeEqual } from "node:crypto";
-import { construireResume } from "@/lib/parcours";
+import { construireResume, envoyerResumeQuotidien } from "@/lib/parcours";
 import { posterResume } from "@/lib/discord";
 
 export const dynamic = "force-dynamic";
 
 /**
- * LE RÉSUMÉ À LA DEMANDE — pour le relire ou le renvoyer sans relancer le cron
- * des emails (qui, lui, enverrait aussi les étapes dues de la séquence).
+ * LE RÉSUMÉ DU PARCOURS SUR DISCORD.
  *
- *   GET /api/parcours/resume?jour=2026-09-14            → le texte, rien n'est envoyé
- *   GET /api/parcours/resume?jour=2026-09-14&envoyer=1  → posté sur Discord
+ *   GET ?quotidien=1                     → l'envoi du soir, appelé par les crons de vercel.json
+ *                                          (ne part qu'à partir de 21 h à Paris, une fois par jour)
+ *   GET ?jour=2026-09-14                 → le texte d'un jour, rien n'est envoyé
+ *   GET ?jour=2026-09-14&envoyer=1       → ce texte posté sur Discord
  *
- * Protégé par CRON_SECRET, en en-tête `Authorization: Bearer …`.
+ * Protégé par CRON_SECRET, en en-tête `Authorization: Bearer …` (Vercel l'envoie
+ * de lui-même à ses crons).
  */
 export async function GET(req: Request) {
   const secret = process.env.CRON_SECRET;
@@ -25,6 +27,16 @@ export async function GET(req: Request) {
     return Response.json({ erreur: "non autorisé" }, { status: 401 });
 
   const params = new URL(req.url).searchParams;
+  if (params.get("quotidien") === "1") {
+    try {
+      const statut = await envoyerResumeQuotidien();
+      console.log("[parcours] résumé du soir :", statut);
+      return Response.json({ statut }, { status: statut === "echec" ? 503 : 200 });
+    } catch {
+      console.error("[parcours] résumé du soir non envoyé");
+      return Response.json({ erreur: "résumé indisponible" }, { status: 503 });
+    }
+  }
   const jour = params.get("jour") ?? undefined;
   if (jour && !/^\d{4}-\d{2}-\d{2}$/.test(jour)) return Response.json({ erreur: "jour invalide" }, { status: 400 });
   try {

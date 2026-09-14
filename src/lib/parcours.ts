@@ -147,26 +147,47 @@ export async function parcoursDe(email: string): Promise<EtapeFiche[]> {
 
 /* ─── LE RÉSUMÉ QUOTIDIEN ─────────────────────────────────────────────── */
 
-/** Le jour où le suivi du parcours a été mis en ligne. */
-const DEBUT_SUIVI = "2026-09-14";
+/**
+ * ⚠️ ENVOYÉ À 21 H (PARIS), JAMAIS AVANT — décision de Loys, 14/09/2026.
+ *
+ * Il couvre les 24 h qui se terminent à 21 h : de la veille 21 h au jour 21 h.
+ * Une fenêtre « minuit → 21 h » laisserait les soirées hors de tout résumé ;
+ * celle-ci ne perd rien et ne compte rien deux fois. La fin est FIXÉE à 21 h
+ * pile, jamais à l'heure réelle d'exécution : un cron en retard ne décale pas
+ * les chiffres.
+ */
+const HEURE_RESUME = 21;
+/** Mise en ligne du suivi du parcours : avant, les étapes de visite n'existent pas. */
+const DEBUT_SUIVI = new Date("2026-09-14T06:45:00Z");
 
 type Item = { sku: string; price: number; rembourse?: boolean };
 const net = (items: Item[]) => items.filter((i) => !i.rembourse).reduce((t, i) => t + i.price, 0);
 const pct = (a: number, b: number) => (b > 0 ? `${Math.round((a / b) * 100)} %` : "—");
 const nomPub = (cle: string) => (cle === "(sans pub)" ? "Sans pub" : `Pub …${cle.slice(-6)}`);
 
-/** Le texte du résumé d'un jour (heure de Paris). Par défaut : hier. */
+/** La fenêtre d'un jour : [veille 21 h, jour 21 h[, heure de Paris. Par défaut : aujourd'hui. */
+async function fenetre(jourDemande?: string): Promise<{ jour: string; debut: Date; fin: Date }> {
+  const heure = `${HEURE_RESUME}:00`;
+  const [r] = await sql()<{ jour: string; debut: Date; fin: Date }[]>`
+    with j as (select coalesce(${jourDemande ?? null}::date, (now() at time zone 'Europe/Paris')::date) as d)
+    select to_char(d, 'YYYY-MM-DD') as jour,
+           ((d + ${heure}::time) at time zone 'Europe/Paris') - interval '24 hours' as debut,
+           ((d + ${heure}::time) at time zone 'Europe/Paris') as fin
+    from j
+  `;
+  return r;
+}
+
+/** Le texte du résumé d'un jour (fenêtre ci-dessus). */
 export async function construireResume(jourDemande?: string): Promise<{ jour: string; texte: string }> {
   await schema();
   const s = sql();
-  const jour =
-    jourDemande ??
-    (await s<{ j: string }[]>`select to_char((now() at time zone 'Europe/Paris')::date - 1, 'YYYY-MM-DD') as j`)[0].j;
+  const { jour, debut, fin } = await fenetre(jourDemande);
 
   const etapes = await s<{ etape: string; chemin: string | null; u: number }[]>`
     select etape, chemin, count(distinct coalesce(visiteur, email, id::text))::int as u
     from parcours_evenements
-    where (created_at at time zone 'Europe/Paris')::date = ${jour}::date
+    where created_at >= ${debut} and created_at < ${fin}
     group by etape, chemin
   `;
   const u = (etape: string, chemin?: string) =>
@@ -174,41 +195,40 @@ export async function construireResume(jourDemande?: string): Promise<{ jour: st
 
   const [{ visiteurs }] = await s<{ visiteurs: number }[]>`
     select count(distinct coalesce(visiteur, id::text))::int as visiteurs from parcours_evenements
-    where etape = 'page_vue' and (created_at at time zone 'Europe/Paris')::date = ${jour}::date
+    where etape = 'page_vue' and created_at >= ${debut} and created_at < ${fin}
   `;
   const [{ leads }] = await s<{ leads: number }[]>`
-    select count(*)::int as leads from leads where (created_at at time zone 'Europe/Paris')::date = ${jour}::date
+    select count(*)::int as leads from leads where created_at >= ${debut} and created_at < ${fin}
   `;
   const erreurs = await s<{ phase: string | null; message: string | null; n: number }[]>`
     select detail->>'phase' as phase, detail->>'message' as message, count(*)::int as n
     from parcours_evenements
-    where etape = 'paiement_erreur' and (created_at at time zone 'Europe/Paris')::date = ${jour}::date
+    where etape = 'paiement_erreur' and created_at >= ${debut} and created_at < ${fin}
     group by 1, 2 order by n desc limit 3
   `;
   const commandes = await s<{ id: string; items: Item[]; cle: string }[]>`
     select o.id, o.items, coalesce(l.utm_content, '(sans pub)') as cle
     from orders o left join leads l on l.email = o.email
-    where o.mode = 'live' and o.status = 'paid'
-      and (o.created_at at time zone 'Europe/Paris')::date = ${jour}::date
+    where o.mode = 'live' and o.status = 'paid' and o.created_at >= ${debut} and o.created_at < ${fin}
   `;
   const visiteursPub = await s<{ cle: string; n: number }[]>`
     select detail->>'utm_content' as cle, count(distinct coalesce(visiteur, id::text))::int as n
     from parcours_evenements
     where etape = 'page_vue' and detail->>'utm_content' is not null
-      and (created_at at time zone 'Europe/Paris')::date = ${jour}::date
+      and created_at >= ${debut} and created_at < ${fin}
     group by 1
   `;
   const leadsPub = await s<{ cle: string; n: number }[]>`
     select coalesce(utm_content, '(sans pub)') as cle, count(*)::int as n from leads
-    where (created_at at time zone 'Europe/Paris')::date = ${jour}::date group by 1
+    where created_at >= ${debut} and created_at < ${fin} group by 1
   `;
   const [semaine] = await s<{ leads: number }[]>`
     select count(*)::int as leads from leads
-    where (created_at at time zone 'Europe/Paris')::date between ${jour}::date - 6 and ${jour}::date
+    where created_at >= ${fin}::timestamptz - interval '7 days' and created_at < ${fin}
   `;
   const commandesSemaine = await s<{ items: Item[] }[]>`
     select items from orders where mode = 'live' and status = 'paid'
-      and (created_at at time zone 'Europe/Paris')::date between ${jour}::date - 6 and ${jour}::date
+      and created_at >= ${fin}::timestamptz - interval '7 days' and created_at < ${fin}
   `;
 
   const ca = commandes.reduce((t, c) => t + net(c.items), 0);
@@ -244,7 +264,7 @@ export async function construireResume(jourDemande?: string): Promise<{ jour: st
   });
 
   const texte = [
-    `📊 **Résumé du ${libelleJour}**`,
+    `📊 **Résumé du ${libelleJour}** — de la veille 21 h à ${HEURE_RESUME} h`,
     "",
     "**Acquisition**",
     `Visiteurs uniques : ${visiteurs} · sur /lp : ${lp}`,
@@ -269,22 +289,32 @@ export async function construireResume(jourDemande?: string): Promise<{ jour: st
     ...(lignesPubs.length ? lignesPubs : ["Aucune donnée"]),
     "",
     `**7 derniers jours** : ${semaine.leads} inscrits · ${commandesSemaine.length} achats · ${euros(commandesSemaine.reduce((t, c) => t + net(c.items), 0))}`,
-    ...(jour <= DEBUT_SUIVI
-      ? ["", `⚠️ Suivi des étapes en ligne depuis le ${DEBUT_SUIVI.split("-").reverse().join("/")} : les chiffres de visite de ce jour sont partiels.`]
+    ...(debut < DEBUT_SUIVI
+      ? ["", "⚠️ Suivi des étapes en ligne depuis le 14/09 au matin : les chiffres de visite de cette période sont partiels."]
       : []),
   ].join("\n");
 
   return { jour, texte };
 }
 
-/** Appelé par le cron quotidien. Une seule fois par jour, même si le cron repasse. */
-export async function envoyerResumeQuotidien(): Promise<boolean> {
-  if (!sqlActif) return false;
-  const { jour, texte } = await construireResume();
+/**
+ * Appelé par les deux crons du soir (19 h et 20 h UTC, voir vercel.json) : Vercel
+ * ne connaît que l'heure UTC, et 21 h à Paris vaut 19 h UTC l'été, 20 h l'hiver.
+ * Le passage d'avant 21 h (Paris) ne fait rien ; le premier à 21 h ou après
+ * envoie ; le suivant trouve le jour déjà réservé.
+ */
+export async function envoyerResumeQuotidien(): Promise<
+  "envoye" | "trop_tot" | "deja_envoye" | "echec" | "indisponible"
+> {
+  if (!sqlActif) return "indisponible";
+  await schema();
   const s = sql();
+  const [{ h }] = await s<{ h: number }[]>`select extract(hour from now() at time zone 'Europe/Paris')::int as h`;
+  if (h < HEURE_RESUME) return "trop_tot";
+  const { jour, texte } = await construireResume();
   const [pris] = await s`insert into parcours_resumes (jour) values (${jour}::date) on conflict do nothing returning jour`;
-  if (!pris) return false;
+  if (!pris) return "deja_envoye";
   const ok = await posterResume(texte);
   if (!ok) await s`delete from parcours_resumes where jour = ${jour}::date`;
-  return ok;
+  return ok ? "envoye" : "echec";
 }

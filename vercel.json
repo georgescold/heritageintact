@@ -4,6 +4,14 @@
     {
       "path": "/api/cron/emails",
       "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/parcours/resume?quotidien=1&utc=19",
+      "schedule": "0 19 * * *"
+    },
+    {
+      "path": "/api/parcours/resume?quotidien=1&utc=20",
+      "schedule": "0 20 * * *"
     }
   ]
 }

@@ -21,7 +21,6 @@ import { livrer } from "@/lib/livraison";
 import { SEQUENCE_CLIENT, etapeClientDue } from "@/lib/sequence-client";
 import { capaciteEmail, reserveComplements } from "@/lib/capacite-email";
 import { purgerJournalMeta } from "@/lib/meta-conversions";
-import { envoyerResumeQuotidien } from "@/lib/parcours";
 
 /**
  * Le passage quotidien des emails.
@@ -102,15 +101,7 @@ export async function GET(req: Request) {
       await purgerJournalMeta();
     } catch {
       console.error("[meta] purge technique non confirmée");
-    }
-    // Le résumé de la veille sur Discord (lib/parcours.ts). Porté par ce cron parce
-    // qu'il ne faut pas en ajouter un second ; une fois par jour, jamais bloquant.
-    try {
-      await envoyerResumeQuotidien();
-    } catch {
-      console.error("[parcours] résumé quotidien non envoyé");
-    }
-    const maintenant = Date.now();
+    }    const maintenant = Date.now();
     let budget = PLAFOND_PAR_PASSAGE;
     let livres = 0;
     let rassurances = 0;
