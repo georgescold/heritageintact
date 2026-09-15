@@ -9,7 +9,8 @@ export function offreLtv(profil: Reponses | null, possede: Set<ProductSku>): Pro
 }
 export function etapeLtvDue(lead: Lead, acces: Acces, _progression: Progression[], maintenant=Date.now()) {
   const jours=(maintenant-Date.parse(acces.createdAt))/86400000;
-  if(!lead.marketingConsent || lead.desabonne || acces.revoque || !Number.isFinite(jours) || jours<10 || jours>35)return null;
+  // Seul `desabonne` bloque : l'accord marketing n'est plus exigé nulle part (Loys, 13/09/2026).
+  if(lead.desabonne || acces.revoque || !Number.isFinite(jours) || jours<10 || jours>35)return null;
   const cles=acces.envoyes ?? [];
   if(cles.includes("ltv-pause"))return null;
   if(!cles.includes("ltv-v3-1"))return "ltv-v3-1";

@@ -31,8 +31,11 @@ export async function GET(request: Request) {
   if (!identifiant) return refus;
 
   const lead = await getLead(identifiant).catch(() => null);
-  // Pas d'accord marketing, désinscrit, ou déjà client : aucune fenêtre à ouvrir.
-  if (!lead || lead.desabonne || lead.marketingConsent !== true) return refus;
+  // Désinscrit ou déjà client : aucune fenêtre à ouvrir. ⚠️ L'accord marketing
+  // n'est plus exigé (décision de Loys, 13/09/2026) : la garde qui le demandait
+  // ici refusait la réduction à tous les inscrits de la fenêtre /lp, qui ne le
+  // donnent jamais. Seul `desabonne` bloque. Retiré le 15/09/2026.
+  if (!lead || lead.desabonne) return refus;
   if (await accesParEmail(lead.email).catch(() => null)) return refus;
 
   const promotion = await relancerPromotion(lead.email, "front");
