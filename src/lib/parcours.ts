@@ -118,6 +118,26 @@ export async function erreursRecentes(visiteur: string | null, email: string | n
   }
 }
 
+/**
+ * Depuis quand ce visiteur est-il sur le site, et combien d'étapes a-t-il déjà
+ * franchies ? Sert à ne PAS alerter sur un clic de robot : les crawlers
+ * publicitaires chargent la page et appuient sur le bouton principal dans la
+ * foulée, sans jamais rien saisir (constaté le 16/09/2026 : clic 4 secondes
+ * après l'affichage, avec un cookie visiteur différent de celui de la page).
+ */
+export async function ancienneteVisiteur(visiteur: string | null): Promise<number | null> {
+  if (!sqlActif || !visiteur) return null;
+  try {
+    const [r] = await sql()<{ premier: Date | null }[]>`
+      select min(created_at) as premier from parcours_evenements
+      where visiteur = ${visiteur} and created_at > now() - interval '6 hours'
+    `;
+    return r?.premier ? Date.now() - r.premier.getTime() : null;
+  } catch {
+    return null;
+  }
+}
+
 export type EtapeFiche = { date: string; etape: string; chemin: string; detail: string };
 
 /** Tout le parcours d'une adresse, y compris ce que son navigateur a fait avant l'inscription. */

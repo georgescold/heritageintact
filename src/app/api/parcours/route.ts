@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import { notifierBlocagePaiement } from "@/lib/discord";
-import { enregistrerEtape, erreursRecentes, leadDuCookie } from "@/lib/parcours";
+import { ancienneteVisiteur, enregistrerEtape, erreursRecentes, leadDuCookie } from "@/lib/parcours";
 import { COOKIE_VISITEUR, estEtapeClient, normaliserChemin, visiteurValide } from "@/lib/parcours-etapes";
 import { lireUtm } from "@/lib/utm";
 
@@ -63,7 +63,17 @@ export async function POST(req: NextRequest) {
 
   // Un blocage au paiement, c'est un achat en train de se perdre : alerte immédiate,
   // une seule par visiteur toutes les 10 minutes.
-  if (corps.etape === "paiement_erreur" && (await erreursRecentes(visiteur, lead?.email ?? null)) <= 1) {
+  //
+  // ⚠️ SAUF LE CLIC À VIDE D'UN ROBOT. « phase: carte » est une validation du
+  // navigateur : personne n'a encore payé, Stripe a seulement constaté un champ
+  // carte vide ou incomplet. Les crawlers publicitaires appuient sur le bouton
+  // dans les secondes qui suivent l'affichage — deux alertes identiques le
+  // 16/09/2026, dont une 4 secondes après l'arrivée. On n'alerte donc sur cette
+  // phase que si le visiteur est là depuis au moins 1 minute. Tout ce qui touche
+  // à la banque, à la commande ou à la vérification alerte toujours.
+  const anciennete = corps.etape === "paiement_erreur" ? await ancienneteVisiteur(visiteur) : null;
+  const clicSansSaisie = detail.phase === "carte" && (anciennete === null || anciennete < 60_000);
+  if (corps.etape === "paiement_erreur" && !clicSansSaisie && (await erreursRecentes(visiteur, lead?.email ?? null)) <= 1) {
     await notifierBlocagePaiement({
       prenom: lead?.prenom,
       email: lead?.email,
