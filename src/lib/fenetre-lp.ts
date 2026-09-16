@@ -20,9 +20,15 @@ import { PROMOTIONS_ACTIVES, type Palier } from "./promotions";
  * ⚠️ SANS SECRET CONFIGURÉ, PAS DE FENÊTRE : le prix du catalogue s'affiche
  * plutôt qu'une remise que la page de paiement ne saurait pas justifier.
  */
-/** Fenêtre portée de 5 à 10 minutes le 16/09/2026, à la demande de Loys. */
+/**
+ * Fenêtre portée de 5 à 10 puis à 30 minutes le 16/09/2026, à la demande de Loys.
+ * Motif du dernier passage : un visiteur venu d'Instagram a regardé la vidéo deux
+ * fois (18 min sur la page) et a vu la remise expirer AVANT d'avoir touché au bon
+ * de commande — il a cliqué à 52 € au lieu de 26 €. Le compte à rebours doit
+ * survivre au visionnage, sinon il pénalise exactement ceux qui écoutent tout.
+ */
 export const COOKIE_FENETRE_LP = "hi_lp";
-export const MINUTES_FENETRE_LP = 10;
+export const MINUTES_FENETRE_LP = 30;
 export const REMISE_LP = 50;
 
 function cle(): string | null {
