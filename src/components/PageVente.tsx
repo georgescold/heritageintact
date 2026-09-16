@@ -135,7 +135,7 @@ export function PageVente({
             items={[
               {
                 q: "« J’ai le temps, je suis en forme. »",
-                a: "Le sujet n’est pas de deviner la date de votre mort. C’est de regarder ce qui dépend de votre vivant. À 67 ans, une donation atteint le repère des quinze ans à 82 ans. Faite deux ans plus tard, à 84 ans. Vous ne pouvez pas antidater ce que vous n’avez pas encore fait. Le guide aide à préparer la décision ; il ne déclenche aucun délai fiscal.",
+                a: "Le sujet n’est pas de deviner la date de votre décès. C’est de regarder ce qui dépend de votre vivant. À 67 ans, une donation atteint le repère des quinze ans à 82 ans. Faite deux ans plus tard, à 84 ans. Vous ne pouvez pas antidater ce que vous n’avez pas encore fait. Le guide aide à préparer la décision ; il ne déclenche aucun délai fiscal.",
               },
               {
                 q: "« Il faut de toute façon aller chez le notaire, alors autant y aller directement. »",
