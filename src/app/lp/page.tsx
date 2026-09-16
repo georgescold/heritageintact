@@ -49,10 +49,10 @@ export default async function AtterrissagePublicitaire() {
       {(isTestMode || stripeEnModeTest) && <TestModeBanner stripeReel={stripeEnModeTest} />}
       <div className="border-2 border-blue bg-white p-4 sm:p-6">
         <h2 className="mb-1 text-[1.35rem] leading-tight sm:text-[1.6rem]">
-          Obtenez le guide des 7 erreurs
+          Obtenez le guide des 7 erreurs à ne pas faire sur sa succession
         </h2>
         <p className="mb-4 text-[1.02rem] text-text-soft">
-          Accès immédiat après paiement, en ligne et en PDF. Garantie 30 jours.
+          Accès immédiat après paiement, en ligne et en téléchargement. Garantie 30 jours.
         </p>
         <AvantageDemarrage promotion={devis.promotion} base={devis.total} />
         <CheckoutForm
