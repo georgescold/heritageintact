@@ -1,6 +1,7 @@
 import { timingSafeEqual } from "node:crypto";
 import { construireResume, envoyerResumeQuotidien } from "@/lib/parcours";
 import { posterResume } from "@/lib/discord";
+import { relancerPaiementsEchoues } from "@/lib/relance-paiement";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +30,8 @@ export async function GET(req: Request) {
   const params = new URL(req.url).searchParams;
   if (params.get("quotidien") === "1") {
     try {
+      // Le passage du soir relance aussi les paiements non aboutis de la journée.
+      await relancerPaiementsEchoues();
       const statut = await envoyerResumeQuotidien();
       console.log("[parcours] résumé du soir :", statut);
       return Response.json({ statut }, { status: statut === "echec" ? 503 : 200 });

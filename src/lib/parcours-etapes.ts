@@ -31,6 +31,7 @@ export const ETAPES_SERVEUR = [
   "commande_creee",
   "achat",
   "upsell_accepte",
+  "relance_paiement",
 ] as const;
 
 export type EtapeClient = (typeof ETAPES_CLIENT)[number];
@@ -55,6 +56,7 @@ export const LIBELLES_ETAPES: Record<Etape, string> = {
   paiement_reussi: "Paiement validé (navigateur)",
   achat: "Achat payé",
   upsell_accepte: "Upsell accepté",
+  relance_paiement: "Relance de paiement envoyée",
   upsell_refuse: "Upsell refusé",
 };
 

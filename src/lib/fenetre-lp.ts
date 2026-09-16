@@ -76,3 +76,22 @@ export function palierLp(brut: string | undefined, maintenant = Date.now()): Pal
   if (maintenant >= fin) return ferme;
   return { ...ferme, pourcent: REMISE_LP, fin: new Date(fin).toISOString() };
 }
+
+/**
+ * LE JETON DU LIEN DE RELANCE.
+ *
+ * L'email de relance (`relance-paiement.ts`) doit rouvrir une fenêtre à −50 %,
+ * sinon son destinataire retombe sur le prix plein : son cookie existe déjà,
+ * expiré, et le proxy ne le remplace pas. Le jeton lie le lien à UNE commande,
+ * pour qu'une adresse `/relancer` recopiée au hasard n'ouvre rien.
+ */
+export function jetonRelance(orderId: string): string | null {
+  const secret = cle();
+  return secret ? createHmac("sha256", secret).update("relance-lp|" + orderId).digest("hex").slice(0, 32) : null;
+}
+
+export function relanceValide(orderId: string, jeton: string | null | undefined): boolean {
+  const attendu = jetonRelance(orderId);
+  if (!attendu || !jeton || jeton.length !== attendu.length) return false;
+  return timingSafeEqual(Buffer.from(attendu), Buffer.from(jeton));
+}

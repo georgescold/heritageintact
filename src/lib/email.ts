@@ -2,8 +2,9 @@ import { empreinte, fournisseurDe, marquerAnnule, reserverEmail, terminerEmail }
 import { accesParEmail, getLead, leadParEmail, promotionParEmail } from "./db";
 import { palier, appliquerRemise, RELANCE_MINUTES } from "./promotions";
 import { CONTACT_EMAIL, PRODUCTS, SITE_URL, TRUSTPILOT_INVITE_BCC, euros, urlEspace, type ProductSku } from "./config";
-import type { Acces, Lead } from "./db";
+import type { Acces, Lead, Order } from "./db";
 import { SEQUENCE, lien, type Etape } from "./sequence";
+import { jetonRelance } from "./fenetre-lp";
 import type { EtapeClient } from "./sequence-client";
 
 /** L’acceptation fournisseur ne prouve pas le placement en boîte de réception. */
@@ -119,7 +120,7 @@ export async function envoyer(e: Envoi): Promise<{ ok: boolean; id?: string; sim
    ───────────────────────────────────────────────────────────── */
 
 /**
- * Le pied de page, et il y en a deux.
+ * Le pied de page, et il y en a trois.
  *
  * « prospect » : la provenance est l'inscription à la vidéo, et le lien de
  * désinscription est obligatoire.
@@ -132,7 +133,7 @@ export async function envoyer(e: Envoi): Promise<{ ok: boolean; id?: string; sim
  * Le `leadId` n'existe que dans la branche « prospect » — c'est le type qui
  * l'impose, pas une convention.
  */
-type Pied = { pied: "prospect"; leadId: string } | { pied: "client" };
+type Pied = { pied: "prospect"; leadId: string } | { pied: "client" } | { pied: "commande" };
 
 type Contenu = {
   titre: string;
@@ -149,7 +150,9 @@ function gabarit(o: Contenu): string {
     o.pied === "prospect"
       ? `Vous recevez ce message après votre demande sur ${adresseLisible}.<br>
       <a href="${lienDesinscription(o.leadId)}" style="color:#0b5aa8;">Me désinscrire en un clic</a> — c'est immédiat et définitif.`
-      : "Ce message concerne votre achat Héritage Intact et son utilisation.";
+      : o.pied === "commande"
+        ? `Vous recevez ce message parce qu'une commande a été commencée avec cette adresse sur ${adresseLisible}. Répondez « STOP » et nous n'écrirons plus à ce sujet.`
+        : "Ce message concerne votre achat Héritage Intact et son utilisation.";
 
   return `<!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
@@ -190,7 +193,9 @@ function versionTexte(o: Contenu) {
           `Vous recevez ce message après votre demande sur ${adresseLisible}.`,
           `Me désinscrire : ${lienDesinscription(o.leadId)}`,
         ]
-      : ["Ce message concerne votre achat Héritage Intact et son utilisation."];
+      : o.pied === "commande"
+        ? [`Vous recevez ce message parce qu'une commande a été commencée avec cette adresse sur ${adresseLisible}. Répondez « STOP » et nous n'écrirons plus à ce sujet.`]
+        : ["Ce message concerne votre achat Héritage Intact et son utilisation."];
   return [
     ...o.paragraphes.map(nettoyer),
     `${o.bouton.texte} :\n${o.bouton.lien}`,
@@ -591,6 +596,51 @@ export async function envoyerGrilleDroits(lead: Lead): Promise<{ ok: boolean }> 
     type: "transactionnel",
     cle: `magnet-grille-v1/${lead.id}`,
     subject: `${p ? p + ", l" : "L"}e chiffre que personne ne vous a donné`,
+    html: gabarit(contenu),
+    text: versionTexte(contenu),
+  });
+}
+
+/**
+ * LA RELANCE D'UN PAIEMENT QUI N'A PAS ABOUTI.
+ *
+ * Demandée par Loys le 16/09/2026 après le cas « Jean Pierre » : banque qui ne
+ * confirme pas l'authentification, aucun débit, et un acheteur prêt à payer qui
+ * repart sans rien. Le premier envoi de ce type a été rédigé et envoyé à la
+ * main ce jour-là ; celui-ci l'automatise (`relance-paiement.ts`).
+ *
+ * ⚠️ TRANSACTIONNEL PAR NATURE : le destinataire a lui-même lancé ce paiement,
+ * quelques heures plus tôt, avec cette adresse. Il n'est ni inscrit à la
+ * séquence, ni client — d'où le pied de page « commande », qui explique d'où
+ * vient le message et comment le faire cesser.
+ *
+ * ⚠️ UNE SEULE PAR COMMANDE : la clé d'envoi porte l'identifiant de commande, et
+ * `reserverEmail` refuse le doublon même si le cron repasse trois fois par jour.
+ */
+export async function envoyerRelancePaiement(order: Order): Promise<{ ok: boolean; id?: string }> {
+  const p = echapper(order.firstName.trim()) || "";
+  const jeton = jetonRelance(order.id);
+  const url = jeton
+    ? lien(`/relancer?o=${encodeURIComponent(order.id)}&s=${jeton}`)
+    : lien("/lp");
+  const contenu: Contenu = {
+    titre: p ? `${p}, votre banque n’a pas validé votre commande` : "Votre banque n’a pas validé votre commande",
+    paragraphes: [
+      `Bonjour ${p},`,
+      "Vous avez commencé une commande sur notre site, et votre banque n’a pas confirmé le paiement : <strong>aucun montant n’a été débité</strong>, et votre commande n’a pas été validée.",
+      "C’est fréquent sur téléphone. La banque demande une confirmation dans son application ou par code SMS, et le délai passe avant qu’on ait eu le temps de valider.",
+      "Pour que ça passe du premier coup :<br>1. Ouvrez l’application de votre banque avant de cliquer, pour être prêt à confirmer.<br>2. Après la confirmation, revenez sur la page de paiement sans la fermer.",
+      "Le bouton ci-dessous rouvre votre avantage de démarrage pendant 10 minutes.",
+    ],
+    bouton: { texte: "Reprendre ma commande", lien: url },
+    ps: "Si le problème se reproduit, répondez simplement à cet email : nous trouverons une solution avec vous.",
+    pied: "commande",
+  };
+  return envoyer({
+    to: order.email,
+    type: "transactionnel",
+    cle: `relance-paiement-v1/${order.id}`,
+    subject: contenu.titre,
     html: gabarit(contenu),
     text: versionTexte(contenu),
   });

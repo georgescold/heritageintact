@@ -1355,6 +1355,47 @@ export async function creerCommandeEspace(input: {
  * Aucune colonne n'a été ajoutée à `orders` pour cela : la jointure gauche
  * sur `acces` suffit, et `acces` est une table neuve — donc vide.
  */
+/**
+ * LES COMMANDES COMMENCÉES ET JAMAIS PAYÉES, dans une fenêtre de temps.
+ *
+ * Le paiement a été lancé (la ligne existe, donc prénom et email ont été saisis)
+ * mais la banque n'a pas confirmé, ou l'acheteur a fermé la page. Sont écartés
+ * ceux qui ont fini par payer — par cette commande ou une autre — et ceux qui
+ * ont déjà un accès : leur relancer un paiement serait une erreur grossière.
+ */
+export async function commandesAbandonnees(depuis: string, jusqu: string, limite: number): Promise<Order[]> {
+  if (sqlActif) {
+    const s = await pg();
+    const r = await s<LigneOrder[]>`
+      select o.* from orders o
+      where o.status = 'pending'
+        and o.mode = 'live'
+        and o.created_at > ${depuis}
+        and o.created_at < ${jusqu}
+        and not exists (select 1 from orders p where p.email = o.email and p.status = 'paid')
+        and not exists (select 1 from acces a where a.email = o.email)
+      order by o.created_at asc
+      limit ${limite}
+    `;
+    return r.map(versOrder);
+  }
+  const db = await read();
+  const payes = new Set(db.orders.filter((o) => o.status === "paid").map((o) => o.email));
+  const avecAcces = new Set(db.acces.map((a) => a.email));
+  return db.orders
+    .filter(
+      (o) =>
+        o.status === "pending" &&
+        o.mode === "live" &&
+        o.createdAt > depuis &&
+        o.createdAt < jusqu &&
+        !payes.has(o.email) &&
+        !avecAcces.has(o.email),
+    )
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+    .slice(0, limite);
+}
+
 export async function commandesSansAcces(depuis: string, limite: number): Promise<Order[]> {
   if (sqlActif) {
     const s = await pg();

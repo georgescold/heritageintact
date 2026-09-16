@@ -21,6 +21,7 @@ import { livrer } from "@/lib/livraison";
 import { SEQUENCE_CLIENT, etapeClientDue } from "@/lib/sequence-client";
 import { capaciteEmail, reserveComplements } from "@/lib/capacite-email";
 import { purgerJournalMeta } from "@/lib/meta-conversions";
+import { relancerPaiementsEchoues } from "@/lib/relance-paiement";
 
 /**
  * Le passage quotidien des emails.
@@ -102,6 +103,9 @@ export async function GET(req: Request) {
     } catch {
       console.error("[meta] purge technique non confirmée");
     }
+    // Les paiements restés en attente : un email par commande, jamais deux.
+    await relancerPaiementsEchoues();
+
     const maintenant = Date.now();
     let budget = PLAFOND_PAR_PASSAGE;
     let livres = 0;

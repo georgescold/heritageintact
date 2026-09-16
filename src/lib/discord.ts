@@ -105,3 +105,17 @@ export async function notifierAchat(achat: {
     reel,
   );
 }
+
+/** Une relance automatique vient de partir vers un paiement non abouti. */
+export async function notifierRelancePaiement(r: {
+  prenom: string;
+  email: string;
+  montant: number;
+}): Promise<void> {
+  await poster(
+    [
+      `📨 **Relance envoyée** — paiement non abouti de ${euros(r.montant)}`,
+      `${propre(r.prenom).replace(/@/g, "@\u200b")} · ${propre(r.email)}`,
+    ].join("\n"),
+  );
+}
