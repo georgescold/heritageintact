@@ -178,7 +178,7 @@ export function PageVente({
       </main>
       <Footer />
       <StickyCta href={lienCta} label="Accéder au guide" />
-      <SortieGuide storageKey="vsl-historique-v12" />
+      <SortieGuide storageKey="vsl-historique-v12" href={lienCta} />
     </>
   );
 }

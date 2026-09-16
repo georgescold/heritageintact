@@ -1,6 +1,10 @@
 import { ExitPopup } from "./ExitPopup";
 
-export function SortieGuide({ storageKey }: { storageKey: string }) {
+/**
+ * `href` : sur /lp, le bon de commande est SUR la page — le pop-up de sortie y
+ * fait défiler au lieu d'envoyer sur /commande, qui ferait une page de plus.
+ */
+export function SortieGuide({ storageKey, href = "/commander" }: { storageKey: string; href?: string }) {
   return (
     <ExitPopup storageKey={storageKey} title="Ce que vous risquez si vous fermez cette page">
       <ul className="space-y-2 text-[1.03rem]">
@@ -22,7 +26,7 @@ export function SortieGuide({ storageKey }: { storageKey: string }) {
       </p>
       <div data-mesure="clic_commande">
         <a
-          href="/commander"
+          href={href}
           className="flex min-h-[58px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-4 py-3 text-center text-[1.08rem] font-bold leading-tight text-white no-underline hover:bg-orange-dark sm:text-[1.15rem]"
         >
           Accéder au guide
