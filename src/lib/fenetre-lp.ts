@@ -20,8 +20,9 @@ import { PROMOTIONS_ACTIVES, type Palier } from "./promotions";
  * ⚠️ SANS SECRET CONFIGURÉ, PAS DE FENÊTRE : le prix du catalogue s'affiche
  * plutôt qu'une remise que la page de paiement ne saurait pas justifier.
  */
+/** Fenêtre portée de 5 à 10 minutes le 16/09/2026, à la demande de Loys. */
 export const COOKIE_FENETRE_LP = "hi_lp";
-export const MINUTES_FENETRE_LP = 5;
+export const MINUTES_FENETRE_LP = 10;
 export const REMISE_LP = 50;
 
 function cle(): string | null {
