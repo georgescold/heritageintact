@@ -1,5 +1,6 @@
 "use client";
 
+import { COOKIE_AB } from "./ab";
 import { COOKIE_VISITEUR, type EtapeClient } from "./parcours-etapes";
 
 /**
@@ -28,10 +29,13 @@ export function suivre(
   if (typeof window === "undefined") return;
   try {
     assurerVisiteur();
+    // La version du test A/B voyage avec chaque étape : sans elle, impossible de
+    // comparer deux versions sur autre chose que le total.
+    const ab = document.cookie.split("; ").find((c) => c.startsWith(COOKIE_AB + "="))?.slice(COOKIE_AB.length + 1);
     void fetch("/api/parcours", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ etape, chemin: location.pathname, detail, utm }),
+      body: JSON.stringify({ etape, chemin: location.pathname, detail: ab ? { ...detail, ab } : detail, utm }),
       keepalive: true,
     }).catch(() => {});
   } catch {

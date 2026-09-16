@@ -1,4 +1,5 @@
 import posthog, { type CaptureResult } from "posthog-js";
+import { COOKIE_AB } from "@/lib/ab";
 import { cheminSansPixel } from "@/lib/meta-pixel";
 
 /**
@@ -68,6 +69,10 @@ if (CLE && typeof window !== "undefined") {
     session_recording: { maskAllInputs: true },
     before_send: avantEnvoi,
   });
+  // La version du test A/B (proxy.ts) est attachée à tous les événements :
+  // c'est ce qui permet de comparer les deux versions dans PostHog.
+  const ab = document.cookie.split("; ").find((c) => c.startsWith(COOKIE_AB + "="))?.slice(COOKIE_AB.length + 1);
+  if (ab === "A" || ab === "B") posthog.register({ variante_lp: ab });
 }
 
 /** Navigation interne : l'enregistrement s'arrête en entrant sur une page privée, reprend en sortant. */

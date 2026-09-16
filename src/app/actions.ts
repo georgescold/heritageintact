@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { after } from "next/server";
 import { COOKIE_UTM, lireUtm, utmPresent, type Utm } from "@/lib/utm";
+import { COOKIE_FENETRE_LP } from "@/lib/fenetre-lp";
 import {
   accesParEmail,
   addItem,
@@ -234,7 +235,7 @@ export async function prepareCheckout(input: {
   // Meta remontait la valeur basse. Une seule variable alimente désormais la
   // ligne de commande ET le PaymentIntent.
   const jar = await cookies();
-  const estimation = await devisFront(jar.get("hi_offre")?.value, email);
+  const estimation = await devisFront(jar.get("hi_offre")?.value, email, jar.get(COOKIE_FENETRE_LP)?.value);
   const prix = estimation.montant;
   if (
     !estimation.admissible ||

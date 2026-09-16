@@ -6,6 +6,7 @@ import { CheckoutForm } from "@/components/CheckoutForm";
 import { Guarantee } from "@/components/ui";
 import { isTestMode, stripeEnModeTest } from "@/lib/config";
 import { devisFront } from "@/lib/prix-front";
+import { COOKIE_FENETRE_LP } from "@/lib/fenetre-lp";
 import { AvantageDemarrage } from "@/components/AvantageDemarrage";
 import { EvenementPixel } from "@/components/EvenementPixel";
 export const metadata: Metadata = { title: "Votre commande · Les 7 erreurs" };
@@ -16,7 +17,7 @@ export default async function Page() {
     const raw = jar.get("hi_lead")?.value;
     if (raw) defaults = JSON.parse(raw);
   } catch {}
-  const d = await devisFront(jar.get("hi_offre")?.value);
+  const d = await devisFront(jar.get("hi_offre")?.value, undefined, jar.get(COOKIE_FENETRE_LP)?.value);
   const prix = d.montant;
   return (
     <>

@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { euros } from "./config";
 import { posterResume } from "./discord";
+import { COOKIE_AB, varianteValide } from "./ab";
 import { COOKIE_VISITEUR, LIBELLES_ETAPES, visiteurValide, type Etape } from "./parcours-etapes";
 import { sql, sqlActif } from "./sql";
 
@@ -77,11 +78,15 @@ export async function enregistrerEtape(e: {
   if (!sqlActif) return;
   try {
     let { visiteur, email } = e;
-    if (visiteur === undefined || email === undefined) {
+    let detail = e.detail;
+    if (visiteur === undefined || email === undefined || !detail?.ab) {
       try {
         const jar = await cookies();
         if (visiteur === undefined) visiteur = visiteurValide(jar.get(COOKIE_VISITEUR)?.value);
         if (email === undefined) email = leadDuCookie(jar.get("hi_lead")?.value)?.email ?? null;
+        // Un achat sans sa version de test ne se compare à rien.
+        const ab = varianteValide(jar.get(COOKIE_AB)?.value);
+        if (ab && !detail?.ab) detail = { ...detail, ab };
       } catch {
         // Hors requête (cron) : rien à lire.
       }
@@ -91,7 +96,7 @@ export async function enregistrerEtape(e: {
     await s`
       insert into parcours_evenements (etape, visiteur, email, chemin, detail, appareil)
       values (${e.etape}, ${visiteur ?? null}, ${email?.trim().toLowerCase() || null},
-              ${e.chemin ?? null}, ${s.json(e.detail ?? {})}, ${e.appareil ?? null})
+              ${e.chemin ?? null}, ${s.json(detail ?? {})}, ${e.appareil ?? null})
     `;
   } catch {
     console.error("[parcours] étape non enregistrée :", e.etape);
@@ -222,6 +227,16 @@ export async function construireResume(jourDemande?: string): Promise<{ jour: st
     select coalesce(utm_content, '(sans pub)') as cle, count(*)::int as n from leads
     where created_at >= ${debut} and created_at < ${fin} group by 1
   `;
+  const parVariante = await s<{ ab: string; visiteurs: number; clics: number; achats: number; ca: number }[]>`
+    select coalesce(detail->>'ab', '(sans version)') as ab,
+           count(distinct case when etape = 'page_vue' and chemin = '/lp' then coalesce(visiteur, id::text) end)::int as visiteurs,
+           count(distinct case when etape = 'paiement_clic' then coalesce(visiteur, email, id::text) end)::int as clics,
+           count(*) filter (where etape = 'achat')::int as achats,
+           coalesce(sum((detail->>'montant')::numeric) filter (where etape = 'achat'), 0)::float as ca
+    from parcours_evenements
+    where created_at >= ${debut} and created_at < ${fin}
+    group by 1 order by 1
+  `;
   const [semaine] = await s<{ leads: number }[]>`
     select count(*)::int as leads from leads
     where created_at >= ${fin}::timestamptz - interval '7 days' and created_at < ${fin}
@@ -284,6 +299,14 @@ export async function construireResume(jourDemande?: string): Promise<{ jour: st
     `Achats : ${commandes.length} · CA : ${euros(ca)} · panier moyen : ${commandes.length ? euros(Math.round(ca / commandes.length)) : "—"}`,
     `Dossier notaire : ${avecBump}/${commandes.length} · upsells acceptés : ${u("upsell_accepte")} · refusés : ${u("upsell_refuse")} · CA upsells : ${euros(caUpsells)}`,
     `Conversion inscrit → achat : ${pct(commandes.length, leads)}`,
+    "",
+    "**Test A/B de /lp**",
+    ...(parVariante.length
+      ? parVariante.map(
+          (v) =>
+            `${v.ab === "A" ? "A (vidéo + commande)" : v.ab === "B" ? "B (commande seule)" : v.ab} : ${v.visiteurs} visiteurs · ${v.clics} clics « Valider » · ${v.achats} achats · ${euros(v.ca)}`,
+        )
+      : ["Aucune donnée"]),
     "",
     "**Par pub**",
     ...(lignesPubs.length ? lignesPubs : ["Aucune donnée"]),

@@ -12,17 +12,16 @@ import {
   DernierMotHistorique,
 } from "@/components/marketing/SectionsHistoriques";
 import { OffreMethodeHistorique } from "@/components/marketing/OffreMethodeHistorique";
+import type { ReactNode } from "react";
 import { EvenementPixel, LeadInscription } from "@/components/EvenementPixel";
-import { PopupInscription } from "@/components/PopupInscription";
 
-function AccesMethode() {
+function AccesMethode({ href = "/commander" }: { href?: string }) {
   return (
     <div data-mesure="clic_commande">
       {/* Un vrai <a>, pas <Link> : /commander est une route qui démarre le compte à
           rebours de l'offre. Le préchargement de <Link> le lancerait sans clic. */}
-      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
       <a
-        href="/commander"
+        href={href}
         className="flex min-h-[58px] w-full items-center justify-center border-b-4 border-orange-dark bg-orange px-4 py-3 text-center text-[1.08rem] font-bold leading-tight text-white no-underline hover:bg-orange-dark sm:text-[1.15rem]"
       >
         Accéder au guide
@@ -34,14 +33,32 @@ function AccesMethode() {
 /**
  * LA PAGE DE VENTE — partagée par /methode et /lp.
  *
- * `verrouillee` (sur /lp, pour un visiteur pas encore inscrit) : la page est
- * rendue telle quelle sous une fenêtre qui demande prénom et email. Le pop-up de
- * sortie et le bouton collant sont retirés tant qu'elle est verrouillée : ils
- * s'afficheraient sous la fenêtre, et le pop-up se marquerait « déjà vu » sans
- * avoir été lu. Demande de Loys, 14/09/2026 : les visiteurs des pubs cliquaient
- * sans remplir la page de capture seule (désormais sur /lp-email).
+ * ⚠️ PLUS AUCUNE CAPTURE D'EMAIL AVANT LA VENTE (décision de Loys, 16/09/2026,
+ * « skip les mails »). La pub mène ici et le paiement se fait SUR CETTE PAGE :
+ * `paywall` reçoit le bon de commande, posé sous la vidéo (version A) ou à sa
+ * place (version B, `sansVideo`). Tous les boutons deviennent alors des ancres
+ * vers ce bloc : pas de page en plus, pas de clic supplémentaire.
+ *
+ * Sans `paywall` (c'est le cas de /methode), la page garde son fonctionnement
+ * d'origine : les boutons mènent à /commander.
+ *
+ * L'email n'est demandé qu'au moment de payer, dans le formulaire de commande.
+ * Historique : la fenêtre email du 14/09 et la page de capture seule vivent
+ * encore sur /lp-email.
  */
-export function PageVente({ verrouillee = false }: { verrouillee?: boolean }) {
+export function PageVente({
+  paywall,
+  sansVideo = false,
+}: {
+  /** Le bon de commande, posé directement sous la vidéo (version A) ou en tête (version B). */
+  paywall?: ReactNode;
+  /** Version B du test : la vidéo est retirée, la vente commence au bon de commande. */
+  sansVideo?: boolean;
+} = {}) {
+  // Avec le paiement sur la page, les boutons ne changent plus d'adresse : ils
+  // font défiler jusqu'au bon de commande. Aucun clic supplémentaire, aucune
+  // page en plus — c'est toute la consigne du 16/09/2026.
+  const lienCta = paywall ? "#paywall" : "/commander";
   return (
     <>
       <MesureFunnel evenement="vue_vente" />
@@ -65,13 +82,19 @@ export function PageVente({ verrouillee = false }: { verrouillee?: boolean }) {
             prises de son vivant — sans vendre ni quitter la maison. Soit{" "}
             <strong className="whitespace-nowrap">68 206 €</strong> d’écart dans cet exemple.
           </p>
-          <VslPresentation />
-          <div id="premier-cta" className="mt-5 space-y-3">
-            <AccesMethode />
-            <div className="flex justify-center">
-              <TrustRow />
+          {!sansVideo && <VslPresentation />}
+          {paywall ? (
+            <div id="paywall" className={sansVideo ? "" : "mt-6"}>
+              {paywall}
             </div>
-          </div>
+          ) : (
+            <div id="premier-cta" className="mt-5 space-y-3">
+              <AccesMethode href={lienCta} />
+              <div className="flex justify-center">
+                <TrustRow />
+              </div>
+            </div>
+          )}
         </section>
         <div id="presentation-ecrite">
           <CalculHistorique />
@@ -100,7 +123,7 @@ export function PageVente({ verrouillee = false }: { verrouillee?: boolean }) {
         </div>
         <JeanPierreHistorique />
         <MartineHistorique />
-        <OffreMethodeHistorique action={<AccesMethode />} />
+        <OffreMethodeHistorique action={<AccesMethode href={lienCta} />} />
         <section className="wrap py-8">
           <Guarantee />
         </section>
@@ -148,20 +171,14 @@ export function PageVente({ verrouillee = false }: { verrouillee?: boolean }) {
         <DernierMotHistorique
           action={
             <div id="dernier-cta">
-              <AccesMethode />
+              <AccesMethode href={lienCta} />
             </div>
           }
         />
       </main>
       <Footer />
-      {verrouillee ? (
-        <PopupInscription />
-      ) : (
-        <>
-          <StickyCta href="/commander" label="Accéder au guide" />
-          <SortieGuide storageKey="vsl-historique-v12" />
-        </>
-      )}
+      <StickyCta href={lienCta} label="Accéder au guide" />
+      <SortieGuide storageKey="vsl-historique-v12" />
     </>
   );
 }
