@@ -630,7 +630,7 @@ export async function envoyerRelancePaiement(order: Order): Promise<{ ok: boolea
       "Vous avez commencé une commande sur notre site, et votre banque n’a pas confirmé le paiement : <strong>aucun montant n’a été débité</strong>, et votre commande n’a pas été validée.",
       "C’est fréquent sur téléphone. La banque demande une confirmation dans son application ou par code SMS, et le délai passe avant qu’on ait eu le temps de valider.",
       "Pour que ça passe du premier coup :<br>1. Ouvrez l’application de votre banque avant de cliquer, pour être prêt à confirmer.<br>2. Après la confirmation, revenez sur la page de paiement sans la fermer.",
-      "Le bouton ci-dessous rouvre votre avantage de démarrage pendant 30 minutes.",
+      "Le bouton ci-dessous rouvre votre avantage de démarrage pendant 60 minutes.",
     ],
     bouton: { texte: "Reprendre ma commande", lien: url },
     ps: "Si le problème se reproduit, répondez simplement à cet email : nous trouverons une solution avec vous.",

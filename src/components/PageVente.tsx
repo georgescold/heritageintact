@@ -72,7 +72,7 @@ export function PageVente({
             Vous avez une maison payée et des enfants&nbsp;?
             <br />
             <span className="text-orange">
-              Si vous ne faites rien, l’État en prendra une part à votre mort.
+              Si vous ne faites rien, l’État en prendra une part à votre décès.
             </span>
           </h1>
           <p className="mb-5 text-[1.12rem] leading-snug">
@@ -80,7 +80,7 @@ export function PageVente({
             d’environ <strong className="whitespace-nowrap text-red">82 194 €</strong> de droits à{" "}
             <strong className="whitespace-nowrap text-green">13 988 €</strong> après les opérations
             prises de son vivant — sans vendre ni quitter la maison. Soit{" "}
-            <strong className="whitespace-nowrap">68 206 €</strong> d’écart dans cet exemple.
+            <strong className="whitespace-nowrap">68 206 €</strong> d’écart.
           </p>
           {!sansVideo && <VslPresentation />}
           {paywall ? (
