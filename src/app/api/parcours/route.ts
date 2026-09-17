@@ -71,9 +71,15 @@ export async function POST(req: NextRequest) {
   // 16/09/2026, dont une 4 secondes après l'arrivée. On n'alerte donc sur cette
   // phase que si le visiteur est là depuis au moins 1 minute. Tout ce qui touche
   // à la banque, à la commande ou à la vérification alerte toujours.
+  //
+  // ⚠️ NI SUR NOS PROPRES TESTS. Le cookie `hi_test` (posé à la main dans un
+  // navigateur de vérification) coupe l'alerte sans rien changer au reste : nos
+  // essais de la page de commande ont fait sonner Discord quatre fois le
+  // 17/09/2026, et une alerte qu'on apprend à ignorer ne sert plus à rien.
+  const test = req.cookies.get("hi_test")?.value === "1";
   const anciennete = corps.etape === "paiement_erreur" ? await ancienneteVisiteur(visiteur) : null;
   const clicSansSaisie = detail.phase === "carte" && (anciennete === null || anciennete < 60_000);
-  if (corps.etape === "paiement_erreur" && !clicSansSaisie && (await erreursRecentes(visiteur, lead?.email ?? null)) <= 1) {
+  if (corps.etape === "paiement_erreur" && !test && !clicSansSaisie && (await erreursRecentes(visiteur, lead?.email ?? null)) <= 1) {
     await notifierBlocagePaiement({
       prenom: lead?.prenom,
       email: lead?.email,
