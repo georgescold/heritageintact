@@ -28,7 +28,15 @@ export function VslPresentation() {
   };
   const [lecture, setLecture] = useState(false);
   const [demarree, setDemarree] = useState(false);
-  const [muet, setMuet] = useState(false);
+  /**
+   * ⚠️ DÉPART EN SOURDINE, C'EST LA SEULE FAÇON QUE LES NAVIGATEURS ACCEPTENT UNE
+   * LECTURE AUTOMATIQUE — et c'était nécessaire : sur 278 visiteurs venus des
+   * publicités, 5 seulement avaient appuyé sur « Lire » (mesure du 17/09/2026).
+   * La vidéo qui devait vendre n'était donc jamais vue. Elle démarre désormais
+   * seule, sans son, et un bouton bien visible propose de l'activer.
+   */
+  const [muet, setMuet] = useState(true);
+  const sonSignale = useRef(false);
   const [temps, setTemps] = useState(0);
   const [duree, setDuree] = useState(313.578);
 
@@ -56,6 +64,13 @@ export function VslPresentation() {
     if (!video) return;
     video.muted = !video.muted;
     setMuet(video.muted);
+    // Activer le son est le VRAI signal d'intérêt, maintenant que la lecture
+    // démarre toute seule : c'est lui qu'on mesure, pas le simple démarrage.
+    if (!video.muted && !sonSignale.current) {
+      sonSignale.current = true;
+      suivre("vsl_son");
+    }
+    if (video.paused) void video.play().catch(() => {});
   };
 
   const afficherPleinEcran = async () => {
@@ -93,7 +108,9 @@ export function VslPresentation() {
           ref={videoRef}
           className="h-full w-full"
           playsInline
-          preload="none"
+          autoPlay
+          muted
+          preload="metadata"
           poster="/img/vsl-heritage-intact-thumbnail-v4.webp"
           aria-label="Les 7 erreurs qui offrent votre héritage à l’État"
           controlsList="nodownload noplaybackrate noremoteplayback"
@@ -161,6 +178,20 @@ export function VslPresentation() {
             </span>
           )}
         </button>
+
+        {/* ⚠️ LA VIDÉO DÉMARRE EN SOURDINE — c'est la seule façon d'obtenir la
+            lecture automatique des navigateurs. Sans cette invitation bien
+            visible, le visiteur regarde une vidéo muette sans comprendre qu'il
+            lui manque le son, et repart. */}
+        {muet && (
+          <button
+            type="button"
+            onClick={basculerSon}
+            className="absolute inset-x-0 bottom-[4.5rem] z-30 mx-auto flex min-h-12 w-fit items-center gap-2 border-2 border-white bg-orange px-4 py-2 text-[1.05rem] font-bold text-white shadow-lg hover:bg-orange-dark focus-visible:outline-2 focus-visible:outline-white"
+          >
+            <span aria-hidden>🔊</span> Activer le son
+          </button>
+        )}
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-3 pb-2 pt-8">
           <div

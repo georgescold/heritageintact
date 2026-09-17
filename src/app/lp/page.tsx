@@ -51,9 +51,29 @@ export default async function AtterrissagePublicitaire() {
         <h2 className="mb-1 text-[1.35rem] leading-tight sm:text-[1.6rem]">
           Obtenez le guide des 7 erreurs à ne pas faire sur sa succession
         </h2>
-        <p className="mb-4 text-[1.02rem] text-text-soft">
+        <p className="mb-3 text-[1.02rem] text-text-soft">
           Accès immédiat après paiement, en ligne et en téléchargement. Garantie 30 jours.
         </p>
+        {/* ⚠️ TROIS PREUVES AVANT LE CHAMP CARTE (17/09/2026). Mesuré sur 278
+            visiteurs : la vidéo n'était lancée que 5 fois, et la version B
+            présentait le bon de commande AVANT le moindre argument — on demandait
+            une carte bancaire à quelqu'un à qui l'on n'avait encore rien démontré.
+            Ces trois lignes tiennent en un écran et portent le cas chiffré, les
+            sources et la garantie. */}
+        <ul className="mb-4 space-y-2 text-[1rem]">
+          {[
+            "Les 7 erreurs expliquées à l’écrit, avec les articles du Code général des impôts pour les vérifier.",
+            "Le cas chiffré du guide : 82 194 € de droits ramenés à 13 988 €, sans vendre ni quitter la maison.",
+            "Remboursé sous 30 jours si cela ne vous sert pas, sans justification à donner.",
+          ].map((t) => (
+            <li key={t} className="flex gap-2">
+              <span aria-hidden className="shrink-0 font-bold text-green">
+                ✔
+              </span>
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
         <AvantageDemarrage promotion={devis.promotion} base={devis.total} />
         <CheckoutForm
           defaults={{ firstName: lead?.prenom, email: lead?.email }}
