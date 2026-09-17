@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
@@ -131,6 +131,19 @@ function Inner({
   const [consent, setConsent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+  /**
+   * ⚠️ LE CHAMP QUI BLOQUE, ET OÙ IL EST.
+   *
+   * Trois acheteurs de suite ont cliqué sur « Valider ma commande » sans avoir
+   * saisi leur carte, ont vu « Votre numéro de carte est incomplet » en bas du
+   * formulaire — à près de 2 000 px du champ concerné — et sont partis dans la
+   * seconde (15, 16 et 17/09/2026). Le message ne suffit pas : on remonte
+   * l'écran sur le champ fautif et on l'entoure de rouge.
+   */
+  const refIdentite = useRef<HTMLDivElement>(null);
+  const refCarte = useRef<HTMLDivElement>(null);
+  const refConsentement = useRef<HTMLLabelElement>(null);
+  const [champFautif, setChampFautif] = useState<"identite" | "carte" | "consentement" | null>(null);
   const identiteConnue =
     firstName.trim().length >= 2 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -146,11 +159,30 @@ function Inner({
   const echec = (phase: string, message: string) => {
     setError(message);
     suivre("paiement_erreur", { phase, message });
+    const cible =
+      phase === "carte" || phase === "banque"
+        ? "carte"
+        : /rétractation/i.test(message)
+          ? "consentement"
+          : /prénom|adresse email/i.test(message)
+            ? "identite"
+            : null;
+    setChampFautif(cible);
+    const noeud =
+      cible === "carte"
+        ? refCarte.current
+        : cible === "identite"
+          ? refIdentite.current
+          : cible === "consentement"
+            ? refConsentement.current
+            : null;
+    noeud?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
+    setChampFautif(null);
     setPending(true);
     suivre("paiement_clic", { montant: total, bump });
 
@@ -230,6 +262,10 @@ function Inner({
       {/* Colonne gauche */}
       <div className="space-y-5">
         {!identiteConnue && (
+          <div
+            ref={refIdentite}
+            className={champFautif === "identite" ? "outline outline-[3px] outline-offset-2 outline-red" : undefined}
+          >
           <Panel title="1. Vos coordonnées">
             <div className="space-y-3">
               <label className="block">
@@ -259,8 +295,13 @@ function Inner({
               </label>
             </div>
           </Panel>
+          </div>
         )}
 
+        <div
+          ref={refCarte}
+          className={champFautif === "carte" ? "outline outline-[3px] outline-offset-2 outline-red" : undefined}
+        >
         <Panel title={identiteConnue ? "Paiement sécurisé" : "2. Paiement sécurisé"}>
           {stripe ? (
             <PaymentElement
@@ -302,40 +343,46 @@ function Inner({
           <div className="mt-3">
             <TrustRow />
           </div>
+          {champFautif === "carte" && error && (
+            <p role="alert" className="mt-3 border border-red bg-red-bg px-3 py-2 text-[0.95rem] font-bold text-red">
+              {error}
+            </p>
+          )}
           <p className="mt-2 text-[0.85rem] text-text-soft">
             Le paiement est traité par Stripe. Nous ne voyons jamais votre numéro de carte.
           </p>
         </Panel>
+        </div>
 
-        {/* Option payante uniquement sur choix explicite. */}
-        <div className="space-y-2">
-          <p className="text-[1.05rem] font-bold text-blue">Nous vous le conseillons fortement :</p>
-          <label className="block cursor-pointer border-2 border-orange bg-yellow-bg p-3 sm:p-4">
-            <span className="flex items-start gap-3">
-              <input
-                type="checkbox"
-                checked={bump}
-                onChange={(e) => setBump(e.target.checked)}
-                className="mt-1 h-6 w-6 shrink-0 accent-orange"
-              />
-              <span>
-                {/* Le nom se lit dans PRODUCTS, jamais en dur : « Dossier Notaire
-                  Prêt-à-Signer » traînait encore ici alors que le produit a été
-                  renommé, et deux noms pour une seule chose sur le bon de
-                  commande, c'est un acheteur qui doute au moment de payer. */}
-                <span className="block text-[1.05rem] font-bold text-blue">
-                  Ajouter {PRODUCTS.bump.name}
-                </span>
-                <span className="mt-1 block text-[0.95rem]">
-                  Une pièce manquante peut laisser votre rendez-vous sans réponse et vous obliger à
-                  reprendre les échanges. Le Dossier Notaire réunit les documents et les questions
-                  à préparer avant votre rendez-vous.
-                </span>
+        {/* ⚠️ FORMULAIRE RACCOURCI (17/09/2026) : il fallait descendre jusqu'à
+            2 377 px pour atteindre le bouton, en traversant trois pavés de texte.
+            L'option et la case tiennent désormais chacune sur une ligne. Le nom du
+            produit se lit dans PRODUCTS, jamais en dur. */}
+        <label className="block cursor-pointer border-2 border-orange bg-yellow-bg p-3">
+          <span className="flex items-start gap-3">
+            <input
+              type="checkbox"
+              checked={bump}
+              onChange={(e) => setBump(e.target.checked)}
+              className="mt-0.5 h-6 w-6 shrink-0 accent-orange"
+            />
+            <span>
+              <span className="block font-bold text-blue">
+                Ajouter {PRODUCTS.bump.name} · {euros(PRODUCTS.bump.price)}
+              </span>
+              <span className="block text-[0.95rem]">
+                Les documents et les questions à préparer avant votre rendez-vous.
               </span>
             </span>
-          </label>
-        </div>
-        <label className="flex items-start gap-3 text-[0.9rem] text-text-soft">
+          </span>
+        </label>
+        <label
+          ref={refConsentement}
+          className={
+            "flex items-start gap-3 text-[0.9rem] text-text-soft" +
+            (champFautif === "consentement" ? " outline outline-[3px] outline-offset-2 outline-red" : "")
+          }
+        >
           <input
             type="checkbox"
             checked={consent}
@@ -343,13 +390,12 @@ function Inner({
             className="mt-1 h-5 w-5 shrink-0 accent-blue-mid"
           />
           <span>
-            Je demande l&apos;accès immédiat au contenu numérique et reconnais renoncer à mon droit
-            de rétractation de 14 jours. La garantie contractuelle de 30 jours « satisfait ou
-            remboursé » s&apos;applique intégralement.
+            J&apos;accède au contenu immédiatement et renonce au droit de rétractation de 14 jours.
+            La garantie « satisfait ou remboursé » de 30 jours s&apos;applique.
           </span>
         </label>
 
-        {error && (
+        {error && champFautif !== "carte" && (
           <p role="alert" className="border border-red bg-red-bg px-3 py-2 text-[0.95rem] text-red">
             {error}
           </p>
