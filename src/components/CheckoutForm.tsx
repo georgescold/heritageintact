@@ -313,6 +313,14 @@ function Inner({
           className={champFautif === "carte" ? "outline outline-[3px] outline-offset-2 outline-red" : undefined}
         >
         <Panel title={identiteConnue ? "Paiement sécurisé" : "2. Paiement sécurisé"}>
+          {/* Le message se lit AVANT le champ : placé après, il tombait 887 px
+              plus bas que le cadre de saisie sur un téléphone de 320 px, donc hors
+              de l'écran au moment même où l'acheteur y était renvoyé (17/09/2026). */}
+          {champFautif === "carte" && error && (
+            <p role="alert" className="mb-3 border border-red bg-red-bg px-3 py-2 text-[0.95rem] font-bold text-red">
+              {error}
+            </p>
+          )}
           {stripe ? (
             <PaymentElement
               options={{
@@ -353,11 +361,6 @@ function Inner({
           <div className="mt-3">
             <TrustRow />
           </div>
-          {champFautif === "carte" && error && (
-            <p role="alert" className="mt-3 border border-red bg-red-bg px-3 py-2 text-[0.95rem] font-bold text-red">
-              {error}
-            </p>
-          )}
           <p className="mt-2 text-[0.85rem] text-text-soft">
             Le paiement est traité par Stripe. Nous ne voyons jamais votre numéro de carte.
           </p>
