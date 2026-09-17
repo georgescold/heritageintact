@@ -180,7 +180,13 @@ function Inner({
     // par seconde, que le téléphone suspend dès que l'onglet passe en arrière-plan
     // ou qu'il économise la batterie — l'acheteur restait alors devant un écran
     // inchangé, avec son message d'erreur à 1 500 px plus bas (vérifié le 17/09).
-    noeud?.scrollIntoView({ behavior: "auto", block: "center" });
+    if (noeud) {
+      // « start » et non « center » : le bloc de paiement fait 900 px de haut, et
+      // le centrer laissait le champ carte au-dessus de l'écran, message compris.
+      // Les 72 px rendus laissent voir le titre du bloc juste au-dessus.
+      noeud.scrollIntoView({ behavior: "auto", block: "start" });
+      window.scrollBy(0, -72);
+    }
   };
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
