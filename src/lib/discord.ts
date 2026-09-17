@@ -40,22 +40,64 @@ async function poster(contenu: string, pingTous = false): Promise<boolean> {
 /** Le résumé quotidien du parcours (lib/parcours.ts). Sans mention. */
 export const posterResume = (texte: string) => poster(texte);
 
-/** Un visiteur vient de voir un message d'erreur au moment de payer. */
+/**
+ * UN VISITEUR VIENT DE SE BLOQUER AU PAIEMENT — et l'alerte doit suffire à
+ * comprendre sans rien ouvrir (demande de Loys, 17/09/2026).
+ *
+ * Chaque étape a sa traduction : « carte » n'est pas un incident technique mais
+ * un clic sur Valider sans carte saisie, tandis que « vérification » signale un
+ * paiement peut-être abouti sans avoir été enregistré — à contrôler tout de
+ * suite dans Stripe.
+ */
+const EXPLICATIONS: Record<string, string> = {
+  carte: "Il a cliqué sur « Valider » sans que sa carte soit complète. Rien n'est parti en banque.",
+  banque: "Sa banque a refusé le paiement ou l'authentification. Aucun montant débité.",
+  commande: "Le bon de commande a refusé la demande avant la banque (montant actualisé, champ manquant).",
+  verification:
+    "⚠️ Le paiement est parti mais n'a pas pu être vérifié : à contrôler dans Stripe, le client peut avoir été débité.",
+  technique: "La validation s'est interrompue (connexion coupée pendant l'envoi).",
+};
+
 export async function notifierBlocagePaiement(b: {
   prenom?: string;
   email?: string;
   phase: string;
   message: string;
   appareil: string;
+  montant?: number;
+  contexte?: {
+    depuisMinutes: number | null;
+    pagesVues: number;
+    video: string | null;
+    pub: string | null;
+    variante: string | null;
+    essais: number;
+    arrivee: string | null;
+  };
 }): Promise<void> {
-  await poster(
-    [
-      `⚠️ **Blocage au paiement** — ${b.prenom ? propre(b.prenom).replace(/@/g, "@​") : "visiteur"}${b.email ? ` · ${propre(b.email)}` : " (non inscrit)"}`,
-      `Étape : ${propre(b.phase)} · ${b.appareil}`,
-      `Message affiché : « ${propre(b.message).replace(/@/g, "@​")} »`,
-    ].join("\n"),
-  );
+  const c = b.contexte;
+  const qui = b.prenom ? sansMention(b.prenom) : "Visiteur non inscrit";
+  const lignes = [
+    `⚠️ **Blocage au paiement**${b.montant ? ` — panier de ${euros(b.montant)}` : ""}`,
+    `${qui}${b.email ? ` · ${propre(b.email)}` : ""} · ${b.appareil}${c?.variante ? ` · version ${c.variante}` : ""}`,
+  ];
+  if (c) {
+    const visite = [
+      c.depuisMinutes !== null ? `sur le site depuis ${c.depuisMinutes} min` : null,
+      c.pagesVues ? `${c.pagesVues} page${c.pagesVues > 1 ? "s" : ""} vue${c.pagesVues > 1 ? "s" : ""}` : null,
+      c.video ? `vidéo ${c.video}` : "vidéo jamais lancée",
+      c.essais > 1 ? `${c.essais} tentatives` : null,
+    ].filter(Boolean);
+    if (visite.length) lignes.push("Sa visite : " + visite.join(" · "));
+    if (c.pub) lignes.push(`Venu de l'annonce ${propre(c.pub)}`);
+  }
+  lignes.push(`Message affiché : « ${sansMention(b.message)} »`);
+  lignes.push(EXPLICATIONS[b.phase] ?? `Étape : ${propre(b.phase)}`);
+  await poster(lignes.join("\n"));
 }
+
+/** Neutralise les « @ » d'un texte saisi par un visiteur : pas de mention involontaire. */
+const sansMention = (v: string | undefined) => propre(v).replace(/@/g, "@\u200b");
 
 const propre = (v: string | undefined) => (v ?? "").replace(/[`*_~|>]/g, "").trim() || "—";
 

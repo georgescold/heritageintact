@@ -1,6 +1,12 @@
 import type { NextRequest } from "next/server";
 import { notifierBlocagePaiement } from "@/lib/discord";
-import { ancienneteVisiteur, enregistrerEtape, erreursRecentes, leadDuCookie } from "@/lib/parcours";
+import {
+  ancienneteVisiteur,
+  contexteBlocage,
+  enregistrerEtape,
+  erreursRecentes,
+  leadDuCookie,
+} from "@/lib/parcours";
 import { COOKIE_VISITEUR, estEtapeClient, normaliserChemin, visiteurValide } from "@/lib/parcours-etapes";
 import { lireUtm } from "@/lib/utm";
 
@@ -86,6 +92,8 @@ export async function POST(req: NextRequest) {
       phase: String(detail.phase ?? "?"),
       message: String(detail.message ?? ""),
       appareil,
+      montant: typeof detail.montant === "number" ? detail.montant : undefined,
+      contexte: await contexteBlocage(visiteur, lead?.email ?? null),
     });
   }
   return new Response(null, { status: 204 });

@@ -3,7 +3,13 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {
+  Elements,
+  ExpressCheckoutElement,
+  PaymentElement,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
 import { confirmCheckout, prepareCheckout } from "@/app/actions";
 import { CONTACT_EMAIL, PRESENTATION, PRODUCTS, SITE_URL, euros } from "@/lib/config";
 import { TrustRow } from "./Chrome";
@@ -144,6 +150,19 @@ function Inner({
   const refCarte = useRef<HTMLDivElement>(null);
   const refConsentement = useRef<HTMLLabelElement>(null);
   const [champFautif, setChampFautif] = useState<"identite" | "carte" | "consentement" | null>(null);
+  /**
+   * ⚠️ APPLE PAY / GOOGLE PAY — LE RACCOURCI QUI SUPPRIME LA SAISIE.
+   *
+   * Trois visiteurs de suite ont cliqué sur « Valider » sans avoir tapé leur
+   * carte, puis sont partis (15, 16 et 17/09/2026). Notre acheteur a entre 60 et
+   * 80 ans et vient à 90 % d'un téléphone : taper 16 chiffres, une date et un
+   * cryptogramme y est la marche la plus haute du parcours. Avec le portefeuille
+   * du téléphone, il n'y a plus rien à taper — empreinte ou visage, c'est payé.
+   *
+   * Le bloc ne s'affiche QUE si l'appareil en propose un (`onReady` le dit) :
+   * sinon un intitulé « ou payez par carte » flotterait au-dessus de rien.
+   */
+  const [portefeuilles, setPortefeuilles] = useState(false);
   const identiteConnue =
     firstName.trim().length >= 2 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -158,7 +177,7 @@ function Inner({
   // tombe : c'est la seule façon de savoir où un acheteur décroche (lib/parcours.ts).
   const echec = (phase: string, message: string) => {
     setError(message);
-    suivre("paiement_erreur", { phase, message });
+    suivre("paiement_erreur", { phase, message, montant: total, bump });
     const cible =
       phase === "carte" || phase === "banque"
         ? "carte"
@@ -188,6 +207,72 @@ function Inner({
       window.scrollBy(0, -72);
     }
   };
+
+  async function payerAvecPortefeuille(evenement: {
+    billingDetails?: { name?: string | null; email?: string | null } | null;
+  }) {
+    setError(null);
+    setChampFautif(null);
+    setPending(true);
+    suivre("paiement_clic", { montant: total, bump, portefeuille: true });
+    try {
+      if (!stripe || !elements) return;
+      const { error: submitError } = await elements.submit();
+      if (submitError) {
+        echec("carte", submitError.message ?? "Le paiement n’a pas pu être préparé.");
+        return;
+      }
+      // Le portefeuille fournit le nom et l'adresse email : l'acheteur n'a donc
+      // rien saisi, et c'est tout l'intérêt. On retombe sur les champs du
+      // formulaire s'il les avait déjà remplis.
+      const nom = (evenement.billingDetails?.name || firstName || "Client").trim();
+      const adresse = (evenement.billingDetails?.email || email).trim();
+      const prep = await prepareCheckout({
+        firstName: nom,
+        email: adresse,
+        withBump: bump,
+        // Le renoncement au délai de rétractation est affiché juste au-dessus du
+        // bouton du portefeuille : payer vaut acceptation, comme sur la case.
+        consent: true,
+        montantAffiche: prixFront,
+      });
+      if (!prep.ok) {
+        echec("commande", prep.error);
+        if (prep.actualiser) router.refresh();
+        return;
+      }
+      const { error: payError, paymentIntent } = await stripe.confirmPayment({
+        elements,
+        clientSecret: prep.clientSecret,
+        confirmParams: {
+          return_url: `${SITE_URL}/commande/confirmation?o=${prep.orderId}`,
+          receipt_email: adresse,
+        },
+        redirect: "if_required",
+      });
+      if (payError) {
+        echec("banque", payError.message ?? "Le paiement a été refusé. Aucun montant n'a été débité.");
+        return;
+      }
+      if (paymentIntent?.id) {
+        const done = await confirmCheckout(prep.orderId, paymentIntent.id);
+        if (!done.ok) {
+          echec("verification", done.error ?? "Le paiement n'a pas pu être vérifié.");
+          return;
+        }
+        achatPixel(done.mesure);
+      }
+      suivre("paiement_reussi", { montant: total, portefeuille: true });
+      router.push(`/bienvenue?o=${prep.orderId}`);
+    } catch {
+      echec(
+        "technique",
+        "La validation n’a pas pu aboutir. Vérifiez votre connexion puis réessayez. Si vous recevez un email de confirmation, votre commande est bien enregistrée.",
+      );
+    } finally {
+      setPending(false);
+    }
+  }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -271,6 +356,43 @@ function Inner({
     <form onSubmit={onSubmit} noValidate className="grid gap-6 lg:grid-cols-[3fr_2fr] lg:gap-8">
       {/* Colonne gauche */}
       <div className="space-y-5">
+        {stripe && elements && (
+          <div className={portefeuilles ? "space-y-2" : "sr-only"}>
+            {portefeuilles && (
+              <p className="text-center text-[0.95rem] font-bold text-blue">
+                Payez en une seule fois, sans rien saisir :
+              </p>
+            )}
+            <ExpressCheckoutElement
+              options={{
+                buttonHeight: 52,
+                paymentMethods: {
+                  applePay: "auto",
+                  googlePay: "auto",
+                  link: "never",
+                  paypal: "never",
+                  amazonPay: "never",
+                  klarna: "never",
+                },
+              }}
+              onReady={(evenement) => setPortefeuilles((evenement.availablePaymentMethods ?? undefined) !== undefined)}
+              onClick={({ resolve }) => resolve({ emailRequired: true })}
+              onConfirm={payerAvecPortefeuille}
+            />
+            {portefeuilles && (
+              <>
+                <p className="text-center text-[0.8rem] leading-snug text-text-soft">
+                  En payant, vous demandez l’accès immédiat et renoncez au droit de rétractation de
+                  14 jours. La garantie « satisfait ou remboursé » de 30 jours s’applique.
+                </p>
+                <p className="border-t border-grey-line pt-3 text-center font-bold">
+                  ou payez par carte ci-dessous
+                </p>
+              </>
+            )}
+          </div>
+        )}
+
         {!identiteConnue && (
           <div
             ref={refIdentite}

@@ -138,6 +138,73 @@ export async function ancienneteVisiteur(visiteur: string | null): Promise<numbe
   }
 }
 
+/**
+ * TOUT CE QU'ON SAIT DU VISITEUR QUI VIENT DE SE BLOQUER.
+ *
+ * Demandé par Loys le 17/09/2026 : une alerte qui dit seulement « numéro de
+ * carte incomplet » ne permet ni de comprendre, ni de décider. Celle-ci raconte
+ * la visite — d'où il vient, depuis combien de temps il est là, ce qu'il a vu de
+ * la vidéo, combien de fois il a essayé.
+ */
+export type ContexteBlocage = {
+  depuisMinutes: number | null;
+  pagesVues: number;
+  video: string | null;
+  pub: string | null;
+  variante: string | null;
+  essais: number;
+  arrivee: string | null;
+};
+
+export async function contexteBlocage(
+  visiteur: string | null,
+  email: string | null,
+): Promise<ContexteBlocage> {
+  const vide: ContexteBlocage = {
+    depuisMinutes: null,
+    pagesVues: 0,
+    video: null,
+    pub: null,
+    variante: null,
+    essais: 0,
+    arrivee: null,
+  };
+  if (!sqlActif || (!visiteur && !email)) return vide;
+  try {
+    const lignes = await sql()<
+      { created_at: Date; etape: string; chemin: string | null; detail: Record<string, string> }[]
+    >`
+      select created_at, etape, chemin, detail from parcours_evenements
+      where created_at > now() - interval '6 hours'
+        and (visiteur = ${visiteur ?? ""} or email = ${email ?? ""})
+      order by created_at
+    `;
+    if (!lignes.length) return vide;
+    const premier = lignes[0];
+    const jalons = ["vsl_100", "vsl_75", "vsl_50", "vsl_25", "vsl_lecture"];
+    const atteint = jalons.find((j) => lignes.some((l) => l.etape === j));
+    const libelles: Record<string, string> = {
+      vsl_lecture: "lancée, sans aller jusqu'au quart",
+      vsl_25: "vue au quart",
+      vsl_50: "vue à la moitié",
+      vsl_75: "vue aux trois quarts",
+      vsl_100: "vue en entier",
+    };
+    const son = lignes.some((l) => l.etape === "vsl_son");
+    return {
+      depuisMinutes: Math.round((Date.now() - premier.created_at.getTime()) / 60000),
+      pagesVues: lignes.filter((l) => l.etape === "page_vue").length,
+      video: atteint ? libelles[atteint] + (son ? ", son activé" : ", sans le son") : null,
+      pub: premier.detail?.utm_content ?? null,
+      variante: premier.detail?.ab ?? null,
+      essais: lignes.filter((l) => l.etape === "paiement_clic").length,
+      arrivee: premier.chemin ?? null,
+    };
+  } catch {
+    return vide;
+  }
+}
+
 export type EtapeFiche = { date: string; etape: string; chemin: string; detail: string };
 
 /** Tout le parcours d'une adresse, y compris ce que son navigateur a fait avant l'inscription. */
