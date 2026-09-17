@@ -176,7 +176,11 @@ function Inner({
           : cible === "consentement"
             ? refConsentement.current
             : null;
-    noeud?.scrollIntoView({ behavior: "smooth", block: "center" });
+    // ⚠️ Saut immédiat, pas de défilement animé : l'animation dépend des images
+    // par seconde, que le téléphone suspend dès que l'onglet passe en arrière-plan
+    // ou qu'il économise la batterie — l'acheteur restait alors devant un écran
+    // inchangé, avec son message d'erreur à 1 500 px plus bas (vérifié le 17/09).
+    noeud?.scrollIntoView({ behavior: "auto", block: "center" });
   };
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {

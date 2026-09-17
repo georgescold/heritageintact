@@ -51,15 +51,18 @@ export function AvantageDemarrage({
   if (estFront) {
     return (
       <aside
-        className="my-6 border-4 border-red bg-red px-4 py-5 text-center text-white shadow-[0_8px_0_rgba(120,0,0,0.25)] sm:px-7"
+        className="my-4 border-4 border-red bg-red px-3 py-4 text-center text-white shadow-[0_8px_0_rgba(120,0,0,0.25)] sm:my-6 sm:px-7 sm:py-5"
         aria-label="Offre de première inscription à durée limitée"
       >
-        <p className="text-[1.35rem] font-extrabold uppercase leading-tight sm:text-[1.65rem]">
+        {/* ⚠️ Tailles réduites sur petit écran : ce bloc occupait près d'un écran
+            entier sur un 320 px — la largeur la plus fréquente chez nos visiteurs
+            (audit du 17/09/2026) — et repoussait d'autant le bon de commande. */}
+        <p className="text-[1.15rem] font-extrabold uppercase leading-tight sm:text-[1.65rem]">
           Nous offrons -50% pour votre première inscription
         </p>
         <p className="mt-2 font-bold">Cette offre disparaît dans :</p>
         <p
-          className="mx-auto mt-3 w-fit min-w-40 border-2 border-white bg-[#760d13] px-5 py-2 text-[2.6rem] font-extrabold leading-none tabular-nums tracking-wider"
+          className="mx-auto mt-2 w-fit min-w-40 border-2 border-white bg-[#760d13] px-4 py-1.5 text-[2.1rem] font-extrabold leading-none tabular-nums tracking-wider sm:mt-3 sm:px-5 sm:py-2 sm:text-[2.6rem]"
           aria-label="Temps restant"
         >
           {reste > 0 ? temps : "Actualisation…"}

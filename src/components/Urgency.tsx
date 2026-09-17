@@ -16,9 +16,11 @@ function useCompteur() {
 }
 const deuxChiffres = (n: number) => String(n).padStart(2, "0");
 function Case({ n, u }: { n: string; u: string }) {
-  return <span className="flex w-[3.1rem] flex-col items-center justify-center border border-white/35 bg-black/25 py-1 leading-none sm:w-[3.6rem] sm:py-1.5">
+  return <span className="flex w-[3.4rem] flex-col items-center justify-center border border-white/35 bg-black/25 py-1 leading-none sm:w-[3.8rem] sm:py-1.5">
     <span className="text-[1.2rem] font-bold tabular-nums sm:text-[1.45rem]">{n}</span>
-    <span className="mt-1 text-[0.65rem] uppercase tracking-wide text-white/90">{u}</span>
+    {/* 0,8rem et non 0,65 : à 10 px, « JOURS » était illisible sur un téléphone
+        tenu à bout de bras par un lecteur de 70 ans (audit du 17/09/2026). */}
+    <span className="mt-1 text-[0.8rem] uppercase tracking-wide text-white/90">{u}</span>
   </span>;
 }
 function Cases({ c }: { c: ReturnType<typeof useCompteur> }) {
