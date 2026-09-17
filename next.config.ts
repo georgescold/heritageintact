@@ -139,6 +139,13 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
+        /**
+         * APPLE PAY : le fichier de vérification que Stripe fournit doit être servi
+         * à cette adresse exacte, sans quoi Apple refuse d'afficher le bouton. Il vit
+         * dans public/ sans le dossier « .well-known », que les dossiers cachés
+         * rendent capricieux à la compilation.
+         */
+        { source: "/.well-known/apple-developer-merchantid-domain-association", destination: "/apple-developer-merchantid-domain-association" },
         { source: "/ingest/static/:path*", destination: "https://eu-assets.i.posthog.com/static/:path*" },
         { source: "/ingest/:path*", destination: "https://eu.i.posthog.com/:path*" },
       ],
