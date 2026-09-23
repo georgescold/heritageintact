@@ -29,7 +29,7 @@ import { PRODUCTS, type ProductSku } from "./config";
 import { nouveauJeton } from "./jeton";
 import { CHAMPS_UTM, type Utm } from "./utm";
 import { assurerSchema, sql, sqlActif } from "./sql";
-import { notifierAchat, notifierNouveauLead } from "./discord";
+import { notifierAchat } from "./discord";
 import { enregistrerEtape } from "./parcours";
 
 /**
@@ -400,8 +400,11 @@ export async function addLead(input: {
     // `xmax = 0` : la ligne vient d'être insérée. Sur un conflit (réinscription),
     // Postgres la met à jour et xmax ne vaut plus 0 — donc pas de notification.
     const lead = versLead(r);
+    // ⚠️ PLUS DE NOTIFICATION DISCORD À L'INSCRIPTION (Loys, 23/09/2026) : les
+    // publicités sont coupées, et un salon qui ne sonne plus pour rien reste un
+    // salon qu'on lit. Les achats, eux, continuent de notifier. Pour la remettre,
+    // `notifierNouveauLead` vit dans l'historique git (commit 11f3d2f).
     const cree = Boolean((r as LigneLead & { cree?: boolean }).cree);
-    if (cree) await notifierNouveauLead(lead);
     await enregistrerEtape({ etape: "inscription", email: lead.email, chemin: lead.source ?? null, detail: { nouveau: cree } });
     return lead;
   }
@@ -428,7 +431,6 @@ export async function addLead(input: {
   };
   db.leads.push(lead);
   await write(db);
-  await notifierNouveauLead(lead);
   return lead;
 }
 

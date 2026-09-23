@@ -1,13 +1,16 @@
 import { PRODUCTS, euros, type ProductSku } from "./config";
 
 /**
- * NOTIFICATIONS DISCORD — nouveau lead, nouvel achat, réachat.
+ * NOTIFICATIONS DISCORD — achats, blocages au paiement, relances, résumé du soir.
  *
- * Les appels partent depuis `lib/db.ts`, au point où la base constate le fait :
- * la création réelle d'un lead (pas une réinscription), et le passage d'une
- * commande de « pending » à « paid ». C'est ce qui garantit une notification par
- * événement, quel que soit le chemin qui l'a produit — confirmation navigateur,
- * webhook Stripe ou cron de rattrapage appellent tous les mêmes fonctions.
+ * ⚠️ L'inscription ne notifie plus rien depuis le 23/09/2026 : les publicités
+ * sont coupées, et Loys a demandé le silence sur les leads.
+ *
+ * L'appel part depuis `lib/db.ts`, au point où la base constate le fait : le
+ * passage d'une commande de « pending » à « paid ». C'est ce qui garantit une
+ * notification par événement, quel que soit le chemin qui l'a produit —
+ * confirmation navigateur, webhook Stripe ou cron de rattrapage appellent tous
+ * la même fonction.
  *
  * ⚠️ Ne lève jamais et ne bloque jamais plus de 3 s : Discord indisponible ne doit
  * ni faire échouer une inscription, ni retarder la livraison d'un achat payé.
@@ -100,30 +103,6 @@ export async function notifierBlocagePaiement(b: {
 const sansMention = (v: string | undefined) => propre(v).replace(/@/g, "@\u200b");
 
 const propre = (v: string | undefined) => (v ?? "").replace(/[`*_~|>]/g, "").trim() || "—";
-
-export async function notifierNouveauLead(lead: {
-  firstName: string;
-  email: string;
-  source?: string;
-  utm?: { utm_source?: string; utm_campaign?: string; utm_content?: string };
-}): Promise<void> {
-  // Les paramètres d'URL de Meta portent des IDENTIFIANTS du gestionnaire de
-  // publicités (campagne, annonce) : ils ne correspondent pas aux « ID de
-  // bibliothèque » de la Bibliothèque publicitaire. On les nomme donc clairement.
-  const u = lead.utm;
-  const origine = [
-    u?.utm_source && `Réseau : ${propre(u.utm_source)}`,
-    u?.utm_campaign && `Campagne : ${propre(u.utm_campaign)}`,
-    u?.utm_content && `Annonce : ${propre(u.utm_content)}`,
-  ].filter(Boolean);
-  await poster(
-    [
-      `🟢 **Nouveau lead** — ${propre(lead.firstName).replace(/@/g, "@​")} · ${propre(lead.email)}`,
-      `Page : ${propre(lead.source)}`,
-      ...(origine.length ? [origine.join(" · ")] : []),
-    ].join("\n"),
-  );
-}
 
 export async function notifierAchat(achat: {
   firstName: string;
